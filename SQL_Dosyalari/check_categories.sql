@@ -1,1 +1,0 @@
-SELECT "Id", "Ad", "Slug", "ParentKategoriId" FROM "Kategoriler" ORDER BY "Ad";

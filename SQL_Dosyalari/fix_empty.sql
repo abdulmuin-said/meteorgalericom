@@ -1,1 +1,0 @@
-DELETE FROM "UrunSecenekleri" WHERE "Olcu" IS NULL OR TRIM("Olcu") = '';

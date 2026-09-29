@@ -1,1 +1,0 @@
-DELETE FROM "UrunSecenekleri" WHERE "Olcu" = '$1cm x $2';

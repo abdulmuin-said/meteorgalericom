@@ -47,3 +47,39 @@ repomix-*.txt
 # Session dosyaları
 session-*.md
 sonkonuşma.md
+
+# Orijinal proje yedek/analiz dosyaları (repo'ya girmez)
+*.dump
+canvasia_*.sql
+kanvasdb_*.sql
+kanvasdb_*.dump
+meteorgaleri_full_*.sql
+db-backups/
+deploy/
+veriler/
+SQL_Dosyalari/
+
+# Screenshot / analiz görselleri (kök dizindeki)
+*.png
+*.jpeg
+*.jpg
+anasayfa-*.png
+canvasia-*.png
+desktop-*.png
+dropdown-*.png
+error-*.png
+fatura-*.png
+favori-*.png
+final-*.png
+homepage-*.png
+homesections-*.png
+modal-*.png
+nav-*.png
+page-*.png
+screenshot.png
+
+# Geçici/analiz dosyaları
+analiz_promptu.txt
+opencode.*.json
+test-section.sh
+docs/build_social_oauth_guide.py

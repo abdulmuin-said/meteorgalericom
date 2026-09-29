@@ -1,1 +1,0 @@
-UPDATE "__EFMigrationsHistory" SET "ProductVersion" = '8.0.4' WHERE "MigrationId" = '20260504111249';
