@@ -1,0 +1,132 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:     
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Kupon Yönetimi" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Sepet ve ödeme akışında kullanılacak kampanya kodlarını buradan yönetin.
+          - link "+ Yeni Kupon" [ref=e44] [cursor=pointer]:
+            - /url: /Admin/Kupon/Ekle
+            - generic [ref=e45]: +
+            - text: Yeni Kupon
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]: Toplam Kupon
+              - strong [ref=e50]: "1"
+            - generic [ref=e51]: 
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: Aktif Kullanılabilir
+              - strong [ref=e55]: "1"
+            - generic [ref=e56]: 
+          - generic [ref=e57]:
+            - generic [ref=e58]:
+              - generic [ref=e59]: Süresi Dolan
+              - strong [ref=e60]: "0"
+            - generic [ref=e61]: 
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - generic [ref=e64]: Toplam Kullanım
+              - strong [ref=e65]: "1"
+            - generic [ref=e66]: 
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - generic [ref=e69]:
+              - generic [ref=e70]: 
+              - text: Kampanya Kodları
+            - generic [ref=e71]: Sınırsız kullanım için limit alanına 0 yazılır.
+          - table [ref=e73]:
+            - rowgroup [ref=e74]:
+              - row "Kupon İndirim Minimum Sepet Kullanım Son Tarih Durum İşlemler" [ref=e75]:
+                - columnheader "Kupon" [ref=e76]
+                - columnheader "İndirim" [ref=e77]
+                - columnheader "Minimum Sepet" [ref=e78]
+                - columnheader "Kullanım" [ref=e79]
+                - columnheader "Son Tarih" [ref=e80]
+                - columnheader "Durum" [ref=e81]
+                - columnheader "İşlemler" [ref=e82]
+            - rowgroup [ref=e83]:
+              - 'row " MERHABA20 Oluşturma: 26.01.2026 19:11 %20 1.000,00 TL 1 100 11.05.2026 Gün sonuna kadar geçerli Aktif   " [ref=e84]':
+                - 'cell " MERHABA20 Oluşturma: 26.01.2026 19:11" [ref=e85]':
+                  - generic [ref=e86]:
+                    - generic [ref=e87]: 
+                    - text: MERHABA20
+                  - generic [ref=e88]: "Oluşturma: 26.01.2026 19:11"
+                - cell "%20" [ref=e89]:
+                  - generic [ref=e90]: "%20"
+                - cell "1.000,00 TL" [ref=e91]
+                - cell "1 100" [ref=e92]:
+                  - generic [ref=e94]:
+                    - generic [ref=e95]: "1"
+                    - generic [ref=e96]: "100"
+                - cell "11.05.2026 Gün sonuna kadar geçerli" [ref=e99]:
+                  - text: 11.05.2026
+                  - generic [ref=e100]: Gün sonuna kadar geçerli
+                - cell "Aktif" [ref=e101]:
+                  - generic [ref=e102]: Aktif
+                - cell "  " [ref=e103]:
+                  - generic [ref=e104]:
+                    - link "" [ref=e105] [cursor=pointer]:
+                      - /url: /Admin/Kupon/Duzenle/1
+                      - generic [ref=e106]: 
+                    - button "" [ref=e108] [cursor=pointer]:
+                      - generic [ref=e109]: 
+                    - button "" [ref=e111] [cursor=pointer]:
+                      - generic [ref=e112]: 
+    - contentinfo [ref=e113]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

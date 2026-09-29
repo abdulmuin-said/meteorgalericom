@@ -1,0 +1,230 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e3]:
+    - generic [ref=f5e4]:
+      - generic [ref=f5e5]: 
+      - text: 500 TL UZERI UCRETSIZ KARGO
+    - generic [ref=f5e6]:
+      - generic [ref=f5e7]: 
+      - text: DEMO E-TICARET MAGAZA SISTEMI
+    - generic [ref=f5e8]:
+      - generic [ref=f5e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f5e10]:
+      - generic [ref=f5e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f5e12]:
+      - generic [ref=f5e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f5e14]:
+      - generic [ref=f5e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f5e16]:
+      - generic [ref=f5e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f5e18]:
+      - generic [ref=f5e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f5e20]:
+      - generic [ref=f5e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f5e22]:
+      - generic [ref=f5e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=f5e24]:
+      - generic [ref=f5e25]: 
+      - text: 500 TL UZERI UCRETSIZ KARGO
+    - generic [ref=f5e26]:
+      - generic [ref=f5e27]: 
+      - text: DEMO E-TICARET MAGAZA SISTEMI
+    - generic [ref=f5e28]:
+      - generic [ref=f5e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f5e30]:
+      - generic [ref=f5e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f5e32]:
+      - generic [ref=f5e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f5e34]:
+      - generic [ref=f5e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f5e36]:
+      - generic [ref=f5e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f5e38]:
+      - generic [ref=f5e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f5e40]:
+      - generic [ref=f5e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f5e42]:
+      - generic [ref=f5e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=f5e44]:
+    - generic [ref=f5e45]:
+      - link "E-Ticaret Demo" [ref=f5e46] [cursor=pointer]:
+        - /url: /
+        - img "E-Ticaret Demo" [ref=f5e47]
+      - generic [ref=f5e48]:
+        - button "Arama" [ref=f5e49] [cursor=pointer]
+        - link "Giriş Yap" [ref=f5e52] [cursor=pointer]:
+          - /url: /Hesap/GirisYap
+        - link "Favoriler" [ref=f5e55] [cursor=pointer]:
+          - /url: /Favori
+        - link "Sepet" [ref=f5e58] [cursor=pointer]:
+          - /url: /Sepet
+          - generic [ref=f5e61]: "0"
+      - navigation [ref=f5e62]:
+        - list [ref=f5e63]:
+          - listitem [ref=f5e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=f5e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=f5e66]: 
+          - listitem [ref=f5e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=f5e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=f5e69]: 
+          - listitem [ref=f5e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=f5e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=f5e72]: 
+          - listitem [ref=f5e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=f5e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=f5e75]: 
+          - listitem [ref=f5e76] [cursor=pointer]:
+            - link "Ayna " [ref=f5e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=f5e78]: 
+          - listitem [ref=f5e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=f5e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=f5e81]: 
+          - listitem [ref=f5e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=f5e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=f5e84]: 
+          - listitem [ref=f5e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=f5e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=f5e87]: 
+          - listitem [ref=f5e88] [cursor=pointer]:
+            - link "Lightbox " [ref=f5e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=f5e90]: 
+          - listitem [ref=f5e91] [cursor=pointer]:
+            - link "Afiş " [ref=f5e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=f5e93]: 
+          - listitem [ref=f5e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=f5e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=f5e96]:
+    - generic [ref=f5e98]:
+      - generic [ref=f5e99]:
+        - link "E-Ticaret Demo" [ref=f5e100] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f5e101]: Hesabınıza giriş yapın
+      - generic [ref=f5e103]:
+        - generic [ref=f5e104]:
+          - generic [ref=f5e105]: E-posta
+          - textbox "E-posta" [ref=f5e106]:
+            - /placeholder: ornek@mail.com
+        - generic [ref=f5e107]:
+          - generic [ref=f5e108]: Şifre
+          - textbox "Şifre" [ref=f5e109]:
+            - /placeholder: ••••••••
+        - link "Şifremi unuttum" [ref=f5e111] [cursor=pointer]:
+          - /url: /Hesap/SifremiUnuttum
+        - button "Giriş Yap" [ref=f5e112] [cursor=pointer]
+      - generic [ref=f5e113]:
+        - generic [ref=f5e114]: veya
+        - generic [ref=f5e119]:
+          - button " Google ile Giriş Yap" [ref=f5e121] [cursor=pointer]:
+            - generic [ref=f5e122]: 
+            - generic [ref=f5e123]: Google ile
+            - text: Giriş Yap
+          - button " Facebook ile Giriş Yap" [ref=f5e125] [cursor=pointer]:
+            - generic [ref=f5e126]: 
+            - generic [ref=f5e127]: Facebook ile
+            - text: Giriş Yap
+      - paragraph [ref=f5e128]:
+        - text: Hesabınız yok mu?
+        - link "Kayıt Olun" [ref=f5e129] [cursor=pointer]:
+          - /url: /Hesap/KayitOl
+  - contentinfo [ref=f5e130]:
+    - generic [ref=f5e132]:
+      - generic [ref=f5e133]:
+        - generic [ref=f5e134]: 
+        - generic [ref=f5e136]:
+          - generic [ref=f5e137]: Tüm Türkiye'ye
+          - generic [ref=f5e138]: Ücretsiz Kargo
+      - generic [ref=f5e139]:
+        - generic [ref=f5e140]: 
+        - generic [ref=f5e142]:
+          - generic [ref=f5e143]: "%100 Güvenli Alışveriş"
+          - generic [ref=f5e144]: 256 Bit SSL Sertifikası
+      - generic [ref=f5e145]:
+        - generic [ref=f5e146]: 
+        - generic [ref=f5e148]:
+          - generic [ref=f5e149]: Tüm Kredi Kartlarına
+          - generic [ref=f5e150]: 12 Taksit İmkanı
+    - generic [ref=f5e151]:
+      - generic [ref=f5e152]:
+        - generic [ref=f5e153]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=f5e154]
+          - paragraph [ref=f5e155]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere E-Ticaret Demo'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=f5e156]:
+            - textbox "E-posta Adresi" [ref=f5e157]
+            - button "ABONE OL" [ref=f5e158] [cursor=pointer]
+        - generic [ref=f5e159]:
+          - heading "KURUMSAL" [level=4] [ref=f5e160]
+          - list [ref=f5e161]:
+            - listitem [ref=f5e162]:
+              - link "Hakkımızda" [ref=f5e163] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=f5e164]:
+              - link "İletişim" [ref=f5e165] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=f5e166]:
+              - link "Koleksiyonlar" [ref=f5e167] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=f5e168]:
+              - link "Gizlilik Politikası" [ref=f5e169] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=f5e170]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=f5e171] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=f5e172]:
+            - link "Instagram" [ref=f5e173] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=f5e174]: 
+            - link "WhatsApp" [ref=f5e175] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=f5e176]: 
+      - generic [ref=f5e177]:
+        - paragraph [ref=f5e179]: © 2026 E-Ticaret Demo — Tüm hakları saklıdır.
+        - generic [ref=f5e180]:
+          - link "Gizlilik Politikası" [ref=f5e181] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=f5e182] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=f5e183] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=f5e186]
+  - link "WhatsApp ile iletişim" [ref=f5e187] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - generic [ref=f5e190]: WhatsApp

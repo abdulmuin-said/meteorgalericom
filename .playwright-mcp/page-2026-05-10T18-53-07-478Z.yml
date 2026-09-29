@@ -1,0 +1,215 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:     
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Sipariş Detayı 20260509073632615170" [level=1] [ref=e42]
+            - paragraph [ref=e43]: "09 Mayıs 2026 07:36 tarihinde oluşturuldu. Durum: Teslim Edildi"
+          - generic [ref=e44]:
+            - link " Listeye Dön" [ref=e45] [cursor=pointer]:
+              - /url: /Admin/Siparis
+              - generic [ref=e46]: 
+              - text: Listeye Dön
+            - button " Kargo Etiketi Yazdır" [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]: 
+              - text: Kargo Etiketi Yazdır
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e53]: 
+            - generic [ref=e54]:
+              - generic [ref=e55]: Sipariş Alındı
+              - generic [ref=e56]: Oluşturuldu
+          - generic [ref=e57]:
+            - generic [ref=e59]: 
+            - generic [ref=e60]:
+              - generic [ref=e61]: Hazırlanıyor
+              - generic [ref=e62]: Baskı & Paket
+          - generic [ref=e63]:
+            - generic [ref=e65]: 
+            - generic [ref=e66]:
+              - generic [ref=e67]: Paketleniyor
+              - generic [ref=e68]: Korunaklı paket
+          - generic [ref=e69]:
+            - generic [ref=e71]: 
+            - generic [ref=e72]:
+              - generic [ref=e73]: Kargoya Verildi
+              - generic [ref=e74]: Yolda
+          - generic [ref=e75]:
+            - generic [ref=e77]: 
+            - generic [ref=e78]:
+              - generic [ref=e79]: Teslim Edildi
+              - generic [ref=e80]: Tamamlandı
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - generic [ref=e84]:
+                - generic [ref=e85]:
+                  - generic [ref=e86]: 
+                  - text: Ürünler
+                - generic [ref=e87]: 1 adet
+              - table [ref=e89]:
+                - rowgroup [ref=e90]:
+                  - row "Ürün Varyasyon Adet Tutar" [ref=e91]:
+                    - columnheader "Ürün" [ref=e92]
+                    - columnheader "Varyasyon" [ref=e93]
+                    - columnheader "Adet" [ref=e94]
+                    - columnheader "Tutar" [ref=e95]
+                - rowgroup [ref=e96]:
+                  - 'row "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo 100cm x 65cm Standart Çerçeve: Ceviz 100cm x 65cm / Standart / Standart / Kanvas Baskı / Standart SKU: URN-001066-VAR-008052 1 1.642,00 TL" [ref=e97]':
+                    - 'cell "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo 100cm x 65cm Standart Çerçeve: Ceviz" [ref=e98]':
+                      - generic [ref=e99]:
+                        - img "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo" [ref=e100]
+                        - generic [ref=e101]:
+                          - generic [ref=e102]: Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo
+                          - text: 100cm x 65cm Standart
+                          - generic [ref=e103]: "Çerçeve: Ceviz"
+                    - 'cell "100cm x 65cm / Standart / Standart / Kanvas Baskı / Standart SKU: URN-001066-VAR-008052" [ref=e104]':
+                      - generic [ref=e105]: 100cm x 65cm / Standart / Standart / Kanvas Baskı / Standart
+                      - generic [ref=e106]: "SKU: URN-001066-VAR-008052"
+                    - cell "1" [ref=e107]
+                    - cell "1.642,00 TL" [ref=e108]
+            - generic [ref=e109]:
+              - generic [ref=e111]:
+                - generic [ref=e112]: 
+                - text: Ödeme ve Tutar
+              - generic [ref=e114]:
+                - generic [ref=e115]:
+                  - generic [ref=e116]: Ara Toplam
+                  - generic [ref=e117]: 1.642,00 TL
+                - generic [ref=e118]:
+                  - generic [ref=e119]: İndirim
+                  - generic [ref=e120]: 0,00 TL
+                - generic [ref=e121]:
+                  - generic [ref=e122]: Genel Toplam
+                  - generic [ref=e123]: 1.642,00 TL
+          - generic [ref=e124]:
+            - generic [ref=e125]:
+              - generic [ref=e127]:
+                - generic [ref=e128]: 
+                - text: Operasyon
+              - generic [ref=e130]:
+                - generic [ref=e131]:
+                  - generic [ref=e132]: Sipariş Durumu
+                  - combobox [ref=e133]:
+                    - option "Teslim Edildi" [selected]
+                - generic [ref=e134]:
+                  - generic [ref=e135]: Kargo Firması
+                  - combobox [ref=e136]:
+                    - option "Aras Kargo" [selected]
+                - generic [ref=e137]:
+                  - generic [ref=e138]: Kargo Takip No
+                  - textbox "Takip numarası girildiğinde etikette görünür" [ref=e139]
+                - button " Operasyonu Güncelle" [ref=e140] [cursor=pointer]:
+                  - generic [ref=e141]: 
+                  - text: Operasyonu Güncelle
+            - generic [ref=e142]:
+              - generic [ref=e144]:
+                - generic [ref=e145]: 
+                - text: Kargo Özeti
+              - generic [ref=e146]:
+                - generic [ref=e147]:
+                  - img "Aras Kargo" [ref=e148]
+                  - generic [ref=e149]:
+                    - generic [ref=e150]: Aras Kargo
+                    - generic [ref=e151]: Varsayılan kargo firması
+                - generic [ref=e152]: Takip No
+                - generic [ref=e153]: Henüz girilmedi
+                - link " Kargo Takip Sayfası" [ref=e154] [cursor=pointer]:
+                  - /url: https://www.araskargo.com.tr/tr/online-islemler/kargo-takip
+                  - generic [ref=e155]: 
+                  - text: Kargo Takip Sayfası
+            - generic [ref=e156]:
+              - generic [ref=e157]:
+                - generic [ref=e158]:
+                  - generic [ref=e159]: 
+                  - text: Elektronik Fatura
+                - generic [ref=e160]: Yok
+              - generic [ref=e162]:
+                - generic [ref=e163]: 
+                - paragraph [ref=e164]: Henüz fatura yüklenmemiş
+                - button " Fatura Yükle" [ref=e165] [cursor=pointer]:
+                  - generic [ref=e166]: 
+                  - text: Fatura Yükle
+            - generic [ref=e167]:
+              - generic [ref=e169]:
+                - generic [ref=e170]: 
+                - text: Müşteri
+              - generic [ref=e171]:
+                - heading "abdulmuin said" [level=5] [ref=e172]
+                - generic [ref=e173]: admin@canvasia.com
+                - generic [ref=e174]: "05313919428"
+                - generic [ref=e175]: Teslimat Adresi
+                - paragraph [ref=e176]:
+                  - text: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                  - strong [ref=e177]: merkez / Kastamonu
+      - dialog "Fatura Yükle" [active] [ref=e179]:
+        - generic [ref=e180]:
+          - generic [ref=e181]:
+            - heading "Fatura Yükle" [level=5] [ref=e182]
+            - button "Kapat" [ref=e183] [cursor=pointer]
+          - generic [ref=e184]:
+            - generic [ref=e186]:
+              - generic [ref=e187]: PDF Dosyası (Maks. 5MB)
+              - button "PDF Dosyası (Maks. 5MB)" [ref=e188] [cursor=pointer]
+              - generic [ref=e189]: Sadece PDF formatında dosya yükleyebilirsiniz.
+            - generic [ref=e190]:
+              - button "İptal" [ref=e191] [cursor=pointer]
+              - button " Yükle ve Müşteriye Gönder" [ref=e192] [cursor=pointer]:
+                - generic [ref=e193]: 
+                - text: Yükle ve Müşteriye Gönder
+    - contentinfo [ref=e178]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

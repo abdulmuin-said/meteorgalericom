@@ -1,0 +1,310 @@
+@{
+    ViewData["Title"] = "Excel Toplu Ürün İşlemleri";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var history = ViewBag.ImportHistory as List<KanvasProje.Web.Areas.Admin.Controllers.UrunController.ProductExcelImportReport>
+        ?? new List<KanvasProje.Web.Areas.Admin.Controllers.UrunController.ProductExcelImportReport>();
+    var lastReport = ViewBag.SonRapor as KanvasProje.Web.Areas.Admin.Controllers.UrunController.ProductExcelImportReport;
+}
+
+<style>
+    .ca-import-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    .ca-operation-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .ca-operation-card {
+        position: relative;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 14px;
+        cursor: pointer;
+        transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    .ca-operation-card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(var(--ca-primary-rgb), .28);
+        box-shadow: var(--ca-shadow-sm);
+    }
+
+    .ca-operation-card input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .ca-operation-card:has(input:checked) {
+        border-color: var(--ca-primary);
+        box-shadow: 0 0 0 3px rgba(var(--ca-primary-rgb), .1);
+    }
+
+    .ca-template-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: #4f7d38;
+        color: #fff;
+        font-size: .78rem;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 8px 18px rgba(79, 125, 56, .18);
+        transition: background .2s ease, transform .2s ease;
+    }
+
+    .ca-template-button:hover {
+        background: #3f642d;
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    .ca-operation-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--ca-primary-light);
+        color: var(--ca-primary);
+        margin-bottom: 10px;
+    }
+
+    .ca-upload-zone {
+        border: 1px dashed var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 26px;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color .2s ease, background .2s ease;
+    }
+
+    .ca-upload-zone:hover {
+        border-color: var(--ca-primary);
+        background: #fffaf0;
+    }
+
+    .ca-history-list {
+        display: grid;
+        gap: 10px;
+        max-height: 520px;
+        overflow: auto;
+        padding-right: 4px;
+    }
+
+    .ca-history-item {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 12px;
+    }
+
+    .ca-error-log {
+        background: #1f2937;
+        color: #fecaca;
+        border-radius: var(--ca-radius);
+        padding: 14px;
+        max-height: 260px;
+        overflow: auto;
+        font-family: Consolas, monospace;
+        font-size: .82rem;
+    }
+
+    @@media (max-width: 1180px) {
+        .ca-import-grid,
+        .ca-operation-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Excel Toplu Ürün İşlemleri</h1>
+            <p class="ca-page-subtitle">Şablonlu Excel yükleme, ürün güncelleme ve toplu fiyat yönetimi.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="/Admin/Urun/UrunExcelExport" class="ca-btn ca-btn-excel">
+                <i class="fas fa-file-excel"></i> Tüm Ürünleri Excele Aktar
+            </a>
+            <a href="/Admin/Urun" class="ca-btn ca-btn-outline">
+                <i class="fas fa-arrow-left"></i> Ürünlere Dön
+            </a>
+        </div>
+    </div>
+
+    @if (ViewBag.Mesaj != null)
+    {
+        <div class="ca-alert ca-alert-success mb-3">
+            <i class="fas fa-check-circle"></i>
+            <span>@ViewBag.Mesaj</span>
+        </div>
+    }
+
+    @if (ViewBag.Hata != null)
+    {
+        <div class="ca-alert ca-alert-danger mb-3">
+            <i class="fas fa-triangle-exclamation"></i>
+            <span>@ViewBag.Hata</span>
+        </div>
+    }
+
+    <div class="ca-import-grid">
+        <div>
+            <div class="ca-card mb-4">
+                <div class="ca-card-header">
+                    <span class="ca-card-title"><i class="fas fa-file-excel me-2"></i>Excel Dosyası Yükle</span>
+                </div>
+                <div class="ca-card-body">
+                    <div class="ca-alert ca-alert-info mb-4">
+                        <i class="fas fa-lightbulb me-1"></i>
+                        <strong>Yeni Başlayanlar İçin:</strong> Önce ilgili şablonu indirin. Sarı örnek satır referans içindir ve yükleme sırasında otomatik atlanır; kendi ürünlerinizi 3. satırdan itibaren ekleyin.
+                    </div>
+                    <form method="post" enctype="multipart/form-data" asp-action="Excel" id="excelImportForm">
+                        @Html.AntiForgeryToken()
+
+                        <label class="ca-label mb-2">İşlem Türü</label>
+                        <div class="ca-operation-grid mb-4">
+                            <label class="ca-operation-card">
+                                <input type="radio" name="islemTipi" value="create" checked>
+                                <span class="ca-operation-icon"><i class="fas fa-plus"></i></span>
+                                <div class="fw-bold">Ürün Yükleme</div>
+                                <div class="small text-muted">Yeni ürünleri ekler. Sadece temel alanları ister.</div>
+                                <a href="/Admin/Urun/ExcelSablon?tip=create" class="ca-template-button"><i class="fas fa-download"></i> Şablonu indir</a>
+                            </label>
+                            <label class="ca-operation-card">
+                                <input type="radio" name="islemTipi" value="update">
+                                <span class="ca-operation-icon"><i class="fas fa-pen"></i></span>
+                                <div class="fw-bold">Ürün Güncelleme</div>
+                                <div class="small text-muted">Id ile mevcut ürün bilgilerini günceller.</div>
+                                <a href="/Admin/Urun/ExcelSablon?tip=update" class="ca-template-button"><i class="fas fa-download"></i> Şablonu indir</a>
+                            </label>
+                            <label class="ca-operation-card">
+                                <input type="radio" name="islemTipi" value="price">
+                                <span class="ca-operation-icon"><i class="fas fa-tags"></i></span>
+                                <div class="fw-bold">Fiyat Güncelleme</div>
+                                <div class="small text-muted">Id veya SKU ile fiyatları hızlı günceller.</div>
+                                <a href="/Admin/Urun/ExcelSablon?tip=price" class="ca-template-button"><i class="fas fa-download"></i> Şablonu indir</a>
+                            </label>
+                        </div>
+
+                        <label class="ca-label mb-2">Excel Dosyası</label>
+                        <div class="ca-upload-zone" onclick="document.getElementById('excelFile').click()">
+                            <div id="uploadText">
+                                <i class="fas fa-cloud-upload-alt" style="font-size:2.8rem; color:var(--ca-text-muted); margin-bottom:12px;"></i>
+                                <h6 class="fw-bold">Dosyayı buraya sürükleyin veya seçin</h6>
+                                <p class="text-muted small mb-0">Sadece .xlsx formatı desteklenir.</p>
+                            </div>
+                            <div id="fileInfo" class="d-none mt-3">
+                                <i class="fas fa-file-excel me-2 text-success"></i>
+                                <span id="fileName" class="fw-semibold"></span>
+                            </div>
+                            <input type="file" id="excelFile" name="excelDosyasi" class="d-none" accept=".xlsx" required onchange="fileSelected(this)" />
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <div class="small text-muted">Önce şablonu indirip sadece istenen sütunları doldurun.</div>
+                            <button type="submit" class="ca-btn ca-btn-primary" id="btnSubmit">
+                                <i class="fas fa-upload"></i> Yüklemeyi Başlat
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @if (lastReport != null)
+            {
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title"><i class="fas fa-chart-simple me-2"></i>Son Yükleme Raporu</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-3"><div class="ca-mini-stat"><span>İşlem</span><strong>@lastReport.OperationLabel</strong></div></div>
+                            <div class="col-md-3"><div class="ca-mini-stat"><span>Toplam Satır</span><strong>@lastReport.TotalRows</strong></div></div>
+                            <div class="col-md-3"><div class="ca-mini-stat"><span>Başarılı</span><strong>@lastReport.SuccessCount</strong></div></div>
+                            <div class="col-md-3"><div class="ca-mini-stat"><span>Hatalı</span><strong>@lastReport.ErrorCount</strong></div></div>
+                        </div>
+                        @if (lastReport.Errors.Any())
+                        {
+                            <div class="ca-error-log">
+                                @foreach (var error in lastReport.Errors)
+                                {
+                                    <div>@error</div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <aside class="ca-card">
+            <div class="ca-card-header">
+                <span class="ca-card-title"><i class="fas fa-clock-rotate-left me-2"></i>Yükleme Geçmişi</span>
+            </div>
+            <div class="ca-card-body">
+                @if (!history.Any())
+                {
+                    <div class="text-muted small">Henüz Excel yüklemesi yapılmadı.</div>
+                }
+                else
+                {
+                    <div class="ca-history-list">
+                        @foreach (var item in history)
+                        {
+                            <div class="ca-history-item">
+                                <div class="d-flex justify-content-between gap-2">
+                                    <div class="fw-bold">@item.OperationLabel</div>
+                                    <span class="ca-badge @(item.ErrorCount > 0 ? "ca-badge-warning" : "ca-badge-success")">@item.Status</span>
+                                </div>
+                                <div class="small text-muted">@item.OriginalFileName</div>
+                                <div class="small text-muted">@item.UploadedAt.ToString("dd.MM.yyyy HH:mm")</div>
+                                <div class="d-flex gap-2 flex-wrap mt-2 small">
+                                    <span>Satır: <strong>@item.TotalRows</strong></span>
+                                    <span>Başarılı: <strong>@item.SuccessCount</strong></span>
+                                    <span>Hata: <strong>@item.ErrorCount</strong></span>
+                                </div>
+                                @if (item.Errors.Any())
+                                {
+                                    <details class="mt-2">
+                                        <summary class="small" style="cursor:pointer;">Hataları göster</summary>
+                                        <div class="ca-error-log mt-2">
+                                            @foreach (var error in item.Errors.Take(30))
+                                            {
+                                                <div>@error</div>
+                                            }
+                                        </div>
+                                    </details>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script>
+    function fileSelected(input) {
+        if (input.files && input.files[0]) {
+            document.getElementById('uploadText').classList.add('d-none');
+            document.getElementById('fileInfo').classList.remove('d-none');
+            document.getElementById('fileName').textContent = input.files[0].name;
+        }
+    }
+</script>

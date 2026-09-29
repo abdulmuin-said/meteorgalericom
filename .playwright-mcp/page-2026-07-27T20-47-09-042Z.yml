@@ -1,0 +1,491 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - generic [ref=f3e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=f3e6]:
+      - generic [ref=f3e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=f3e8]:
+      - generic [ref=f3e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f3e10]:
+      - generic [ref=f3e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f3e12]:
+      - generic [ref=f3e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f3e14]:
+      - generic [ref=f3e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f3e16]:
+      - generic [ref=f3e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f3e18]:
+      - generic [ref=f3e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f3e20]:
+      - generic [ref=f3e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f3e22]:
+      - generic [ref=f3e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=f3e24]:
+      - generic [ref=f3e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=f3e26]:
+      - generic [ref=f3e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=f3e28]:
+      - generic [ref=f3e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f3e30]:
+      - generic [ref=f3e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f3e32]:
+      - generic [ref=f3e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f3e34]:
+      - generic [ref=f3e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f3e36]:
+      - generic [ref=f3e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f3e38]:
+      - generic [ref=f3e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f3e40]:
+      - generic [ref=f3e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f3e42]:
+      - generic [ref=f3e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=f3e44]:
+    - generic [ref=f3e45]:
+      - link "Canvasia" [ref=f3e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=f3e47]
+      - generic [ref=f3e48]:
+        - button "Arama" [ref=f3e49] [cursor=pointer]
+        - link "Hesabım" [ref=f3e52] [cursor=pointer]:
+          - /url: /Profil
+        - link "Favoriler" [ref=f3e55] [cursor=pointer]:
+          - /url: /Favori
+        - link "Sepet" [ref=f3e58] [cursor=pointer]:
+          - /url: /Sepet
+          - generic [ref=f3e61]: "1"
+      - navigation [ref=f3e62]:
+        - list [ref=f3e63]:
+          - listitem [ref=f3e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=f3e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=f3e66]: 
+          - listitem [ref=f3e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=f3e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=f3e69]: 
+          - listitem [ref=f3e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=f3e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=f3e72]: 
+          - listitem [ref=f3e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=f3e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=f3e75]: 
+          - listitem [ref=f3e76] [cursor=pointer]:
+            - link "Ayna " [ref=f3e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=f3e78]: 
+          - listitem [ref=f3e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=f3e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=f3e81]: 
+          - listitem [ref=f3e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=f3e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=f3e84]: 
+          - listitem [ref=f3e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=f3e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=f3e87]: 
+          - listitem [ref=f3e88] [cursor=pointer]:
+            - link "Lightbox " [ref=f3e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=f3e90]: 
+          - listitem [ref=f3e91] [cursor=pointer]:
+            - link "Afiş " [ref=f3e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=f3e93]: 
+          - listitem [ref=f3e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=f3e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=f3e96]:
+    - generic [ref=f3e98]:
+      - link "Ana Sayfa" [ref=f3e99] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e100]: /
+      - generic [ref=f3e101]: Tüm Koleksiyonlar
+    - generic [ref=f3e103]:
+      - complementary [ref=f3e104]:
+        - heading "Kategoriler" [level=3] [ref=f3e105]
+        - list [ref=f3e106]:
+          - listitem [ref=f3e107]:
+            - link "Tüm Koleksiyonlar (12259)" [ref=f3e108] [cursor=pointer]:
+              - /url: /Urun
+              - generic [ref=f3e109]: Tüm Koleksiyonlar
+              - generic [ref=f3e110]: (12259)
+          - listitem [ref=f3e111]:
+            - group [ref=f3e112]:
+              - generic "Kanvas Tablo (12193) " [ref=f3e113] [cursor=pointer]:
+                - generic [ref=f3e114]: Kanvas Tablo
+                - generic [ref=f3e115]:
+                  - text: (12193)
+                  - generic [ref=f3e116]: 
+          - listitem [ref=f3e117]:
+            - group [ref=f3e118]:
+              - generic "Cam Tablo (58) " [ref=f3e119] [cursor=pointer]:
+                - generic [ref=f3e120]: Cam Tablo
+                - generic [ref=f3e121]:
+                  - text: (58)
+                  - generic [ref=f3e122]: 
+          - listitem [ref=f3e123]:
+            - link "Duvar Kağıdı (0)" [ref=f3e124] [cursor=pointer]:
+              - /url: /Urun?k=31
+              - generic [ref=f3e125]: Duvar Kağıdı
+              - generic [ref=f3e126]: (0)
+          - listitem [ref=f3e127]:
+            - link "Cam Kesme Tahtası (7)" [ref=f3e128] [cursor=pointer]:
+              - /url: /Urun?k=32
+              - generic [ref=f3e129]: Cam Kesme Tahtası
+              - generic [ref=f3e130]: (7)
+          - listitem [ref=f3e131]:
+            - link "Ayna (1)" [ref=f3e132] [cursor=pointer]:
+              - /url: /Urun?k=33
+              - generic [ref=f3e133]: Ayna
+              - generic [ref=f3e134]: (1)
+          - listitem [ref=f3e135]:
+            - link "Baskılı Halı (0)" [ref=f3e136] [cursor=pointer]:
+              - /url: /Urun?k=34
+              - generic [ref=f3e137]: Baskılı Halı
+              - generic [ref=f3e138]: (0)
+          - listitem [ref=f3e139]:
+            - link "Ahşap Dekorasyon (0)" [ref=f3e140] [cursor=pointer]:
+              - /url: /Urun?k=35
+              - generic [ref=f3e141]: Ahşap Dekorasyon
+              - generic [ref=f3e142]: (0)
+          - listitem [ref=f3e143]:
+            - link "Mobilya Aksesuar (0)" [ref=f3e144] [cursor=pointer]:
+              - /url: /Urun?k=36
+              - generic [ref=f3e145]: Mobilya Aksesuar
+              - generic [ref=f3e146]: (0)
+          - listitem [ref=f3e147]:
+            - link "Lightbox (0)" [ref=f3e148] [cursor=pointer]:
+              - /url: /Urun?k=37
+              - generic [ref=f3e149]: Lightbox
+              - generic [ref=f3e150]: (0)
+          - listitem [ref=f3e151]:
+            - link "Afiş (0)" [ref=f3e152] [cursor=pointer]:
+              - /url: /Urun?k=38
+              - generic [ref=f3e153]: Afiş
+              - generic [ref=f3e154]: (0)
+        - heading "Fiyat Aralığı" [level=3] [ref=f3e155]
+        - generic [ref=f3e156]:
+          - generic [ref=f3e157]:
+            - spinbutton "Min ₺" [ref=f3e158]
+            - generic [ref=f3e159]: —
+            - spinbutton "Max ₺" [ref=f3e160]
+          - button "Uygula" [ref=f3e161] [cursor=pointer]
+      - main [ref=f3e162]:
+        - generic [ref=f3e163]:
+          - generic [ref=f3e164]:
+            - heading "Tüm Koleksiyonlar" [level=1] [ref=f3e165]
+            - paragraph [ref=f3e166]: 20 ürün listeleniyor
+          - generic [ref=f3e167]:
+            - generic [ref=f3e168]:
+              - text: "\""
+              - generic [ref=f3e169]: makam
+              - text: "\""
+              - link "×" [ref=f3e170] [cursor=pointer]:
+                - /url: /Urun
+            - combobox [ref=f3e171]:
+              - option "En Yeniler" [selected]
+              - 'option "Fiyat: Düşükten Yükseğe"'
+              - 'option "Fiyat: Yüksekten Düşüğe"'
+              - option "Çok Satanlar"
+        - generic [ref=f3e172]:
+          - generic [ref=f3e173]:
+            - link "Yeni Atatürk - Makam Odası Deri Çerçeveli Tablo" [ref=f3e174] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-makam-odasi-deri-cerceveli-tablo-9464
+              - generic [ref=f3e175]: Yeni
+              - img "Atatürk - Makam Odası Deri Çerçeveli Tablo" [ref=f3e176]
+            - button "" [ref=f3e177] [cursor=pointer]
+            - heading [level=3] [ref=f3e179]:
+              - link "Atatürk - Makam Odası Deri Çerçeveli Tablo" [ref=f3e180] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-makam-odasi-deri-cerceveli-tablo-9464
+            - generic [ref=f3e181]: 2.159 TL
+          - generic [ref=f3e183]:
+            - link "Yeni Atatürk Makam Panosu" [ref=f3e184] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-makam-panosu-9463
+              - generic [ref=f3e185]: Yeni
+              - img "Atatürk Makam Panosu" [ref=f3e186]
+            - button "" [ref=f3e187] [cursor=pointer]
+            - heading [level=3] [ref=f3e189]:
+              - link "Atatürk Makam Panosu" [ref=f3e190] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-makam-panosu-9463
+            - generic [ref=f3e191]: 2.159 TL
+          - generic [ref=f3e193]:
+            - link "Yeni Çanakkale Makam Odası Tablosu" [ref=f3e194] [cursor=pointer]:
+              - /url: /Urun/Detay/canakkale-makam-odasi-tablosu-9462
+              - generic [ref=f3e195]: Yeni
+              - img "Çanakkale Makam Odası Tablosu" [ref=f3e196]
+            - button "" [ref=f3e197] [cursor=pointer]
+            - heading [level=3] [ref=f3e199]:
+              - link "Çanakkale Makam Odası Tablosu" [ref=f3e200] [cursor=pointer]:
+                - /url: /Urun/Detay/canakkale-makam-odasi-tablosu-9462
+            - generic [ref=f3e201]: 2.159 TL
+          - generic [ref=f3e203]:
+            - link "Yeni Türk Bayrağı Makam Odası Tablosu" [ref=f3e204] [cursor=pointer]:
+              - /url: /Urun/Detay/turk-bayragi-makam-odasi-tablosu-9460
+              - generic [ref=f3e205]: Yeni
+              - img "Türk Bayrağı Makam Odası Tablosu" [ref=f3e206]
+            - button "" [ref=f3e207] [cursor=pointer]
+            - heading [level=3] [ref=f3e209]:
+              - link "Türk Bayrağı Makam Odası Tablosu" [ref=f3e210] [cursor=pointer]:
+                - /url: /Urun/Detay/turk-bayragi-makam-odasi-tablosu-9460
+            - generic [ref=f3e211]: 2.159 TL
+          - generic [ref=f3e213]:
+            - link "Yeni Atatürk - İstiklal Marşı - Gençliğe Hitabe Makam Tablosu" [ref=f3e214] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-istiklal-marsi-genclige-hitabe-makam-tablosu-9459
+              - generic [ref=f3e215]: Yeni
+              - img "Atatürk - İstiklal Marşı - Gençliğe Hitabe Makam Tablosu" [ref=f3e216]
+            - button "" [ref=f3e217] [cursor=pointer]
+            - heading [level=3] [ref=f3e219]:
+              - link "Atatürk - İstiklal Marşı - Gençliğe Hitabe Makam Tablosu" [ref=f3e220] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-istiklal-marsi-genclige-hitabe-makam-tablosu-9459
+            - generic [ref=f3e221]: 2.159 TL
+          - generic [ref=f3e223]:
+            - link "Yeni Atatürk Resimli Makam Panosu" [ref=f3e224] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-resimli-makam-panosu-9458
+              - generic [ref=f3e225]: Yeni
+              - img "Atatürk Resimli Makam Panosu" [ref=f3e226]
+            - button "" [ref=f3e227] [cursor=pointer]
+            - heading [level=3] [ref=f3e229]:
+              - link "Atatürk Resimli Makam Panosu" [ref=f3e230] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-resimli-makam-panosu-9458
+            - generic [ref=f3e231]: 2.159 TL
+          - generic [ref=f3e233]:
+            - link "Yeni Atatürk Resimli Makam Arkalığı Panosu" [ref=f3e234] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-resimli-makam-arkaligi-panosu-9450
+              - generic [ref=f3e235]: Yeni
+              - img "Atatürk Resimli Makam Arkalığı Panosu" [ref=f3e236]
+            - button "" [ref=f3e237] [cursor=pointer]
+            - heading [level=3] [ref=f3e239]:
+              - link "Atatürk Resimli Makam Arkalığı Panosu" [ref=f3e240] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-resimli-makam-arkaligi-panosu-9450
+            - generic [ref=f3e241]: 2.159 TL
+          - generic [ref=f3e243]:
+            - link "Yeni Çanakkale Zaferi Deri Makam Panosu" [ref=f3e244] [cursor=pointer]:
+              - /url: /Urun/Detay/canakkale-zaferi-deri-makam-panosu-9449
+              - generic [ref=f3e245]: Yeni
+              - img "Çanakkale Zaferi Deri Makam Panosu" [ref=f3e246]
+            - button "" [ref=f3e247] [cursor=pointer]
+            - heading [level=3] [ref=f3e249]:
+              - link "Çanakkale Zaferi Deri Makam Panosu" [ref=f3e250] [cursor=pointer]:
+                - /url: /Urun/Detay/canakkale-zaferi-deri-makam-panosu-9449
+            - generic [ref=f3e251]: 2.159 TL
+          - generic [ref=f3e253]:
+            - link "Yeni Atatürk Portresi Makam Panosu" [ref=f3e254] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-portresi-makam-panosu-9423
+              - generic [ref=f3e255]: Yeni
+              - img "Atatürk Portresi Makam Panosu" [ref=f3e256]
+            - button "" [ref=f3e257] [cursor=pointer]
+            - heading [level=3] [ref=f3e259]:
+              - link "Atatürk Portresi Makam Panosu" [ref=f3e260] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-portresi-makam-panosu-9423
+            - generic [ref=f3e261]: 2.159 TL
+          - generic [ref=f3e263]:
+            - link "Yeni Türk Bayraklı Atatürk Makam Fonu" [ref=f3e264] [cursor=pointer]:
+              - /url: /Urun/Detay/turk-bayrakli-ataturk-makam-fonu-9422
+              - generic [ref=f3e265]: Yeni
+              - img "Türk Bayraklı Atatürk Makam Fonu" [ref=f3e266]
+            - button "" [ref=f3e267] [cursor=pointer]
+            - heading [level=3] [ref=f3e269]:
+              - link "Türk Bayraklı Atatürk Makam Fonu" [ref=f3e270] [cursor=pointer]:
+                - /url: /Urun/Detay/turk-bayrakli-ataturk-makam-fonu-9422
+            - generic [ref=f3e271]: 2.159 TL
+          - generic [ref=f3e273]:
+            - link "Yeni 15 Temmuz Makam Panosu" [ref=f3e274] [cursor=pointer]:
+              - /url: /Urun/Detay/15-temmuz-makam-panosu-9421
+              - generic [ref=f3e275]: Yeni
+              - img "15 Temmuz Makam Panosu" [ref=f3e276]
+            - button "" [ref=f3e277] [cursor=pointer]
+            - heading [level=3] [ref=f3e279]:
+              - link "15 Temmuz Makam Panosu" [ref=f3e280] [cursor=pointer]:
+                - /url: /Urun/Detay/15-temmuz-makam-panosu-9421
+            - generic [ref=f3e281]: 2.159 TL
+          - generic [ref=f3e283]:
+            - link "Yeni Atatürk Kurumsal Makam Arkası Panosu" [ref=f3e284] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-kurumsal-makam-arkasi-panosu-9420
+              - generic [ref=f3e285]: Yeni
+              - img "Atatürk Kurumsal Makam Arkası Panosu" [ref=f3e286]
+            - button "" [ref=f3e287] [cursor=pointer]
+            - heading [level=3] [ref=f3e289]:
+              - link "Atatürk Kurumsal Makam Arkası Panosu" [ref=f3e290] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-kurumsal-makam-arkasi-panosu-9420
+            - generic [ref=f3e291]: 2.159 TL
+          - generic [ref=f3e293]:
+            - link "Yeni Modern Atatürk Makam Arkalığı Panosu" [ref=f3e294] [cursor=pointer]:
+              - /url: /Urun/Detay/modern-ataturk-makam-arkaligi-panosu-9419
+              - generic [ref=f3e295]: Yeni
+              - img "Modern Atatürk Makam Arkalığı Panosu" [ref=f3e296]
+            - button "" [ref=f3e297] [cursor=pointer]
+            - heading [level=3] [ref=f3e299]:
+              - link "Modern Atatürk Makam Arkalığı Panosu" [ref=f3e300] [cursor=pointer]:
+                - /url: /Urun/Detay/modern-ataturk-makam-arkaligi-panosu-9419
+            - generic [ref=f3e301]: 2.159 TL
+          - generic [ref=f3e303]:
+            - link "Yeni Atatürk Üniformalı Makam Panosu" [ref=f3e304] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-uniformali-makam-panosu-9418
+              - generic [ref=f3e305]: Yeni
+              - img "Atatürk Üniformalı Makam Panosu" [ref=f3e306]
+            - button "" [ref=f3e307] [cursor=pointer]
+            - heading [level=3] [ref=f3e309]:
+              - link "Atatürk Üniformalı Makam Panosu" [ref=f3e310] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-uniformali-makam-panosu-9418
+            - generic [ref=f3e311]: 2.159 TL
+          - generic [ref=f3e313]:
+            - link "Yeni Atatürk Vektörel Makam Arkalığı Fonu" [ref=f3e314] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-vektorel-makam-arkaligi-fonu-9417
+              - generic [ref=f3e315]: Yeni
+              - img "Atatürk Vektörel Makam Arkalığı Fonu" [ref=f3e316]
+            - button "" [ref=f3e317] [cursor=pointer]
+            - heading [level=3] [ref=f3e319]:
+              - link "Atatürk Vektörel Makam Arkalığı Fonu" [ref=f3e320] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-vektorel-makam-arkaligi-fonu-9417
+            - generic [ref=f3e321]: 2.159 TL
+          - generic [ref=f3e323]:
+            - link "Yeni Atatürk Vecize Sözlü Makam Panosu" [ref=f3e324] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-vecize-sozlu-makam-panosu-9416
+              - generic [ref=f3e325]: Yeni
+              - img "Atatürk Vecize Sözlü Makam Panosu" [ref=f3e326]
+            - button "" [ref=f3e327] [cursor=pointer]
+            - heading [level=3] [ref=f3e329]:
+              - link "Atatürk Vecize Sözlü Makam Panosu" [ref=f3e330] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-vecize-sozlu-makam-panosu-9416
+            - generic [ref=f3e331]: 2.159 TL
+          - generic [ref=f3e333]:
+            - link "Yeni Atatürk Makam Panosu - Vatanını En Çok Seven" [ref=f3e334] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-makam-panosu-vatanini-en-cok-seven-9411
+              - generic [ref=f3e335]: Yeni
+              - img "Atatürk Makam Panosu - Vatanını En Çok Seven" [ref=f3e336]
+            - button "" [ref=f3e337] [cursor=pointer]
+            - heading [level=3] [ref=f3e339]:
+              - link "Atatürk Makam Panosu - Vatanını En Çok Seven" [ref=f3e340] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-makam-panosu-vatanini-en-cok-seven-9411
+            - generic [ref=f3e341]: 2.159 TL
+          - generic [ref=f3e343]:
+            - link "Yeni Atatürk Dua Ederken Makam Fonu" [ref=f3e344] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-dua-ederken-makam-fonu-9409
+              - generic [ref=f3e345]: Yeni
+              - img "Atatürk Dua Ederken Makam Fonu" [ref=f3e346]
+            - button "" [ref=f3e347] [cursor=pointer]
+            - heading [level=3] [ref=f3e349]:
+              - link "Atatürk Dua Ederken Makam Fonu" [ref=f3e350] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-dua-ederken-makam-fonu-9409
+            - generic [ref=f3e351]: 2.159 TL
+          - generic [ref=f3e353]:
+            - link "Yeni İstiklal Marşı Gençliğe Hitabe Atatürk Makam Panosu" [ref=f3e354] [cursor=pointer]:
+              - /url: /Urun/Detay/istiklal-marsi-genclige-hitabe-ataturk-makam-panosu-9403
+              - generic [ref=f3e355]: Yeni
+              - img "İstiklal Marşı Gençliğe Hitabe Atatürk Makam Panosu" [ref=f3e356]
+            - button "" [ref=f3e357] [cursor=pointer]
+            - heading [level=3] [ref=f3e359]:
+              - link "İstiklal Marşı Gençliğe Hitabe Atatürk Makam Panosu" [ref=f3e360] [cursor=pointer]:
+                - /url: /Urun/Detay/istiklal-marsi-genclige-hitabe-ataturk-makam-panosu-9403
+            - generic [ref=f3e361]: 2.159 TL
+          - generic [ref=f3e363]:
+            - link "Yeni Atatürk Resimli Makam Ofis Kanvas Tablosu" [ref=f3e364] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-resimli-makam-ofis-kanvas-tablosu-9400
+              - generic [ref=f3e365]: Yeni
+              - img "Atatürk Resimli Makam Ofis Kanvas Tablosu" [ref=f3e366]
+            - button "" [ref=f3e367] [cursor=pointer]
+            - heading [level=3] [ref=f3e369]:
+              - link "Atatürk Resimli Makam Ofis Kanvas Tablosu" [ref=f3e370] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-resimli-makam-ofis-kanvas-tablosu-9400
+            - generic [ref=f3e371]: 1.349 TL
+  - contentinfo [ref=f3e373]:
+    - generic [ref=f3e375]:
+      - generic [ref=f3e376]:
+        - generic [ref=f3e377]: 
+        - generic [ref=f3e379]:
+          - generic [ref=f3e380]: Tüm Türkiye'ye
+          - generic [ref=f3e381]: Ücretsiz Kargo
+      - generic [ref=f3e382]:
+        - generic [ref=f3e383]: 
+        - generic [ref=f3e385]:
+          - generic [ref=f3e386]: "%100 Güvenli Alışveriş"
+          - generic [ref=f3e387]: 256 Bit SSL Sertifikası
+      - generic [ref=f3e388]:
+        - generic [ref=f3e389]: 
+        - generic [ref=f3e391]:
+          - generic [ref=f3e392]: Tüm Kredi Kartlarına
+          - generic [ref=f3e393]: 12 Taksit İmkanı
+    - generic [ref=f3e394]:
+      - generic [ref=f3e395]:
+        - generic [ref=f3e396]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=f3e397]
+          - paragraph [ref=f3e398]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=f3e399]:
+            - textbox "E-posta Adresi" [ref=f3e400]
+            - button "ABONE OL" [ref=f3e401] [cursor=pointer]
+        - generic [ref=f3e402]:
+          - heading "KURUMSAL" [level=4] [ref=f3e403]
+          - list [ref=f3e404]:
+            - listitem [ref=f3e405]:
+              - link "Hakkımızda" [ref=f3e406] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=f3e407]:
+              - link "İletişim" [ref=f3e408] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=f3e409]:
+              - link "Koleksiyonlar" [ref=f3e410] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=f3e411]:
+              - link "Gizlilik Politikası" [ref=f3e412] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=f3e413]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=f3e414] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=f3e415]:
+            - link "Instagram" [ref=f3e416] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=f3e417]: 
+            - link "WhatsApp" [ref=f3e418] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=f3e419]: 
+      - generic [ref=f3e420]:
+        - paragraph [ref=f3e422]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=f3e423]:
+          - link "Gizlilik Politikası" [ref=f3e424] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=f3e425] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=f3e426] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=f3e429]
+  - link "WhatsApp ile iletişim" [ref=f3e430] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - generic [ref=f3e433]: WhatsApp

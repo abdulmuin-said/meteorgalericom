@@ -1,0 +1,132 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:     
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e41]:
+          - heading "Kargo Yönetimi" [level=1] [ref=e42]
+          - paragraph [ref=e43]: Siparişlerde kullanılacak kargo firmalarını, takip bağlantılarını ve etiket gönderici bilgilerini yönetin.
+        - generic [ref=e44]:
+          - generic [ref=e46]:
+            - heading "+ Yeni Kargo Firması" [level=3] [ref=e48]:
+              - generic [ref=e49]: +
+              - text: Yeni Kargo Firması
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - generic [ref=e53]:
+                  - generic [ref=e54]: Firma Adı
+                  - 'textbox "Örn: Aras Kargo" [ref=e55]'
+                - generic [ref=e56]:
+                  - generic [ref=e57]: Kod
+                  - textbox "aras" [ref=e58]
+                - generic [ref=e59]:
+                  - generic [ref=e60]: Logo URL
+                  - textbox "/img/kargo/aras-kargo.svg" [ref=e61]
+                - generic [ref=e62]:
+                  - generic [ref=e63]: Telefon
+                  - textbox "444 25 52" [ref=e64]
+                - generic [ref=e65]:
+                  - generic [ref=e66]: Varsayılan
+                  - combobox [ref=e67]:
+                    - option "Hayır" [selected]
+                    - option "Evet"
+                - generic [ref=e68]:
+                  - generic [ref=e69]: Takip URL
+                  - textbox "https://..." [ref=e70]
+                - generic [ref=e71]:
+                  - generic [ref=e72]: Gönderici Ünvanı
+                  - textbox [ref=e73]: Canvasia
+                - generic [ref=e74]:
+                  - generic [ref=e75]: Gönderici Adresi
+                  - textbox "Etikette görünecek gönderici adresi" [ref=e76]
+                - generic [ref=e77]:
+                  - generic [ref=e78]: Gönderici Telefonu
+                  - textbox "0850 123 45 67" [ref=e79]
+              - button " Firmayı Kaydet" [ref=e80] [cursor=pointer]:
+                - generic [ref=e81]: 
+                - text: Firmayı Kaydet
+          - generic [ref=e83]:
+            - heading " Kargo Firmaları" [level=3] [ref=e85]:
+              - generic [ref=e86]: 
+              - text: Kargo Firmaları
+            - table [ref=e88]:
+              - rowgroup [ref=e89]:
+                - row "Firma Takip Durum İşlem" [ref=e90]:
+                  - columnheader "Firma" [ref=e91]
+                  - columnheader "Takip" [ref=e92]
+                  - columnheader "Durum" [ref=e93]
+                  - columnheader "İşlem" [ref=e94]
+              - rowgroup [ref=e95]:
+                - row "Aras Kargo Aras Kargo aras 444 25 52 https://www.araskargo.com.tr/tr/online-islemler/kargo-takip Aktif Varsayılan " [ref=e96]:
+                  - cell "Aras Kargo Aras Kargo aras" [ref=e97]:
+                    - generic [ref=e98]:
+                      - img "Aras Kargo" [ref=e99]
+                      - generic [ref=e100]:
+                        - generic [ref=e101]: Aras Kargo
+                        - generic [ref=e102]: aras
+                  - cell "444 25 52 https://www.araskargo.com.tr/tr/online-islemler/kargo-takip" [ref=e103]:
+                    - generic [ref=e104]: 444 25 52
+                    - generic [ref=e105]: https://www.araskargo.com.tr/tr/online-islemler/kargo-takip
+                  - cell "Aktif Varsayılan" [ref=e106]:
+                    - generic [ref=e107]: Aktif
+                    - generic [ref=e108]: Varsayılan
+                  - cell "" [ref=e109]:
+                    - generic [ref=e110]:
+                      - button "" [ref=e111] [cursor=pointer]:
+                        - generic [ref=e112]: 
+                      - text:  
+                - text: 
+    - contentinfo [ref=e113]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

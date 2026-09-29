@@ -1,0 +1,608 @@
+@model IEnumerable<KanvasProje.Core.Varliklar.Siparis>
+@functions {
+    private static TimeZoneInfo GetTurkeyTimeZone()
+    {
+        try
+        {
+            return TimeZoneInfo.FindSystemTimeZoneById("Europe/Istanbul");
+        }
+        catch (TimeZoneNotFoundException)
+        {
+            return TimeZoneInfo.FindSystemTimeZoneById("Turkey Standard Time");
+        }
+    }
+
+    private static string FormatTurkeyDateTime(DateTime value)
+    {
+        var utcValue = value.Kind == DateTimeKind.Utc
+            ? value
+            : DateTime.SpecifyKind(value, DateTimeKind.Utc);
+
+        return TimeZoneInfo.ConvertTimeFromUtc(utcValue, GetTurkeyTimeZone()).ToString("dd.MM.yyyy HH:mm");
+    }
+}
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Sipariş Yönetimi";
+
+    int? currentDurum = ViewBag.CurrentDurum as int?;
+    var currentSearch = ViewBag.CurrentSearch as string ?? string.Empty;
+    var detayOzetleri = ViewBag.SiparisDetayOzetleri as Dictionary<int, string> ?? new Dictionary<int, string>();
+    var currentPage = ViewBag.Page as int? ?? 1;
+    var pageSize = ViewBag.PageSize as int? ?? 20;
+    var totalPages = ViewBag.TotalPages as int? ?? 1;
+    var totalCount = ViewBag.TotalCount as int? ?? Model.Count();
+    var pageSizeOptions = ViewBag.PageSizeOptions as int[] ?? new[] { 20, 50, 100 };
+
+    string BuildUrl(int? pageValue = null, int? pageSizeValue = null)
+    {
+        var query = new List<string>();
+        if (currentDurum.HasValue) query.Add($"durum={currentDurum.Value}");
+        if (!string.IsNullOrWhiteSpace(currentSearch)) query.Add($"search={Uri.EscapeDataString(currentSearch)}");
+        query.Add($"page={pageValue ?? currentPage}");
+        query.Add($"pageSize={pageSizeValue ?? pageSize}");
+        return "/Admin/Siparis?" + string.Join("&", query);
+    }
+}
+
+<div class="container-fluid ca-fade-in">
+    <!-- Toplu İşlem Formları -->
+    <form id="bulkIptalForm" method="post" action="/Admin/Siparis/TopluIptal" class="d-none">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="siparisIds" id="iptalSiparisIds">
+    </form>
+    
+    <form id="bulkLabelForm" method="post" action="/Admin/Siparis/TopluEtiketYazdir" target="_blank" class="d-none">
+        @Html.AntiForgeryToken()
+        <div id="bulkLabelInputs"></div>
+    </form>
+    
+    <form id="bulkConfirmForm" method="post" action="/Admin/Siparis/TopluOnayla" class="d-none">
+        @Html.AntiForgeryToken()
+        <div id="bulkConfirmInputs"></div>
+    </form>
+    
+    <form id="bulkShipForm" method="post" action="/Admin/Siparis/TopluKargoyaVer" class="d-none">
+        @Html.AntiForgeryToken()
+        <div id="bulkShipInputs"></div>
+        <input type="hidden" name="kargoFirmasiId" id="shipKargoFirmasiId" value="">
+        <input type="hidden" name="kargoNo" id="shipKargoNo" value="">
+    </form>
+
+    <form id="bulkDeliverForm" method="post" action="/Admin/Siparis/TopluTeslimEt" class="d-none">
+        @Html.AntiForgeryToken()
+        <div id="bulkDeliverInputs"></div>
+    </form>
+    
+    <form id="bulkStatusForm" method="post" action="/Admin/Siparis/TopluDurumGuncelle" class="d-none">
+        @Html.AntiForgeryToken()
+        <div id="bulkStatusInputs"></div>
+        <input type="hidden" name="yeniDurum" id="newStatusValue" value="">
+    </form>
+    
+    <form id="bulkCancelForm" method="post" action="/Admin/Siparis/TopluIptal" class="d-none">
+        @Html.AntiForgeryToken()
+        <div id="bulkCancelInputs"></div>
+    </form>
+
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Sipariş Yönetimi</h1>
+            <p class="ca-page-subtitle">Siparişleri operasyon, kargo ve müşteri bilgileriyle tek ekrandan takip edin.</p>
+        </div>
+        <form method="get" asp-action="Index" class="d-flex gap-2 flex-wrap align-items-center justify-content-center" style="margin-right:clamp(24px, 7vw, 140px);">
+            @if (currentDurum.HasValue)
+            {
+                <input type="hidden" name="durum" value="@currentDurum.Value" />
+            }
+            <input type="hidden" name="pageSize" value="@pageSize" />
+            <div class="ca-input-icon-group">
+                <i class="fas fa-search ca-icon-left"></i>
+                <input type="text" name="search" value="@currentSearch" class="ca-input" style="width:280px;" placeholder="Sipariş no, müşteri, telefon veya e-posta ara">
+            </div>
+            <button type="submit" class="ca-btn ca-btn-primary ca-btn-sm"><i class="fas fa-search"></i></button>
+            <a href="/Admin/Siparis/ExcelExport" class="ca-btn ca-btn-sm text-white fw-semibold" style="background:#198754; border-color:#198754; min-height:42px; padding:.65rem 1.15rem; font-size:.92rem;">
+                <i class="fas fa-file-excel"></i> XLSX
+            </a>
+        </form>
+    </div>
+
+    <div class="ca-tabs">
+        <a href="/Admin/Siparis" class="ca-tab @(currentDurum == null ? "active" : "")">
+            Tümü <span class="ca-tab-count">@ViewBag.TumuCount</span>
+        </a>
+        <a href="/Admin/Siparis?durum=0" class="ca-tab @(currentDurum == 0 ? "active" : "")">
+            <i class="fas fa-box-open"></i> Yeni <span class="ca-tab-count">@ViewBag.YeniCount</span>
+        </a>
+        <a href="/Admin/Siparis?durum=1" class="ca-tab @(currentDurum == 1 ? "active" : "")">
+            <i class="fas fa-cog"></i> Hazırlanıyor <span class="ca-tab-count">@ViewBag.HazirlaniyorCount</span>
+        </a>
+        <a href="/Admin/Siparis?durum=@SiparisDurumHelper.Paketleniyor" class="ca-tab @(currentDurum == SiparisDurumHelper.Paketleniyor ? "active" : "")">
+            <i class="fas fa-box"></i> Paketleniyor <span class="ca-tab-count">@ViewBag.PaketleniyorCount</span>
+        </a>
+        <a href="/Admin/Siparis?durum=2" class="ca-tab @(currentDurum == 2 ? "active" : "")">
+            <i class="fas fa-truck"></i> Kargoda <span class="ca-tab-count">@ViewBag.KargodaCount</span>
+        </a>
+        <a href="/Admin/Siparis?durum=@SiparisDurumHelper.TeslimEdildi" class="ca-tab @(currentDurum == SiparisDurumHelper.TeslimEdildi ? "active" : "")">
+            <i class="fas fa-check-circle"></i> Teslim <span class="ca-tab-count">@ViewBag.TeslimCount</span>
+        </a>
+        @{
+            var faturaYuklenmemişCount = ViewBag.FaturaYuklenmemişCount as int? ?? 0;
+        }
+        @if (faturaYuklenmemişCount > 0)
+        {
+            <a href="/Admin/Siparis?fatura=yuklenmemiş" class="ca-tab" style="background:#dc3545; color:white;">
+                <i class="fas fa-file-pdf"></i> Fatura Yok <span class="ca-tab-count">@faturaYuklenmemişCount</span>
+            </a>
+        }
+    </div>
+
+    <div class="ca-card">
+        <div class="ca-filter-bar d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3 flex-wrap">
+                <button id="bulkLabelButton"
+                        type="submit"
+                        form="bulkLabelForm"
+                        class="btn btn-sm text-white fw-semibold"
+                        style="background:#4f7d38; border-radius:999px; padding:.55rem 1rem;"
+                        disabled>
+                    <i class="fas fa-tags me-1"></i> Etiket Yazdır
+                </button>
+                
+                @if (currentDurum == 0)
+                {
+                    <button id="bulkConfirmButton"
+                            type="submit"
+                            form="bulkConfirmForm"
+                            class="btn btn-sm text-white fw-semibold"
+                            style="background:#28a745; border-radius:999px; padding:.55rem 1rem;"
+                            disabled>
+                        <i class="fas fa-check me-1"></i> Onayla
+                    </button>
+                }
+                
+                @if (currentDurum != 2 && currentDurum != 3 && currentDurum != 4)
+                {
+                    <button type="button" class="btn btn-sm text-white fw-semibold" style="background:#0d6efd; border-radius:999px; padding:.55rem 1rem;" onclick="topluKargo()">
+                        <i class="fas fa-truck me-1"></i> Kargoya Ver
+                    </button>
+                }
+
+                @if (currentDurum == SiparisDurumHelper.KargoyaVerildi)
+                {
+                    <button type="button" class="btn btn-sm text-white fw-semibold" style="background:#198754; border-radius:999px; padding:.55rem 1rem;" onclick="topluTeslimEt()">
+                        <i class="fas fa-check-circle me-1"></i> Teslim Et
+                    </button>
+                }
+                
+                @if (currentDurum != SiparisDurumHelper.KargoyaVerildi &&
+                    currentDurum != SiparisDurumHelper.TeslimEdildi &&
+                    currentDurum != SiparisDurumHelper.IptalEdildi)
+                {
+                    <button type="button" class="btn btn-sm text-white fw-semibold" style="background:#6f42c1; border-radius:999px; padding:.55rem 1rem;" onclick="topluPaket()">
+                        <i class="fas fa-box me-1"></i> Paketleniyor Yap
+                    </button>
+                }
+                
+                <button type="button" class="btn btn-sm text-white fw-semibold" style="background:#dc3545; border-radius:999px; padding:.55rem 1rem;" onclick="topluIptal()">
+                    <i class="fas fa-times-circle me-1"></i> İptal Et
+                </button>
+                
+                <input type="hidden" id="siparisIdList" name="siparisIds">
+                <span id="selectedOrderCount" class="small text-muted">Seçili sipariş yok.</span>
+                <span class="small text-muted">@totalCount sipariş içinde @Model.Count() kayıt gösteriliyor.</span>
+            </div>
+            <form method="get" action="/Admin/Siparis" class="d-flex align-items-center gap-2">
+                @if (currentDurum.HasValue)
+                {
+                    <input type="hidden" name="durum" value="@currentDurum.Value" />
+                }
+                @if (!string.IsNullOrWhiteSpace(currentSearch))
+                {
+                    <input type="hidden" name="search" value="@currentSearch" />
+                }
+                <input type="hidden" name="page" value="1" />
+                <label class="small text-muted">Sayfa başına</label>
+                <select name="pageSize" class="ca-select" onchange="this.form.submit()" style="width:96px; min-height:36px;">
+                    @foreach (var option in pageSizeOptions)
+                    {
+                        <option value="@option" selected="@(option == pageSize)">@option</option>
+                    }
+                </select>
+            </form>
+        </div>
+
+        <div class="ca-table-wrapper">
+            <table class="ca-table">
+                <thead>
+                    <tr>
+                        <th class="ps-4">Sipariş</th>
+                        <th>Müşteri</th>
+                        <th>Teslimat</th>
+                        <th>İçerik</th>
+                        <th>Tutar</th>
+                        <th>Durum / Kargo</th>
+                        <th>Fatura</th>
+                        <th class="text-end">İşlemler</th>
+                        <th class="text-center pe-4" style="width:54px;">
+                            <input id="selectAllOrders" type="checkbox" class="form-check-input" title="Bu sayfadaki siparişleri seç">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var firstLetter = !string.IsNullOrEmpty(item.MusteriAdSoyad) ? item.MusteriAdSoyad.Substring(0, 1).ToUpper() : "M";
+                        var siparisNo = string.IsNullOrWhiteSpace(item.SiparisNo) ? $"#{item.Id}" : item.SiparisNo;
+                        var detayOzeti = detayOzetleri.TryGetValue(item.Id, out var ozet) ? ozet : "Ürün detayı yok";
+                        <tr>
+                            <td class="ps-4">
+                                <span class="ca-order-id">@siparisNo</span>
+                                <div class="ca-text-muted" style="font-size:.75rem;">ID: #@item.Id</div>
+                                <div class="ca-text-muted" style="font-size:.75rem;">@FormatTurkeyDateTime(item.OlusturulmaTarihi)</div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="ca-customer-avatar">@firstLetter</div>
+                                    <div>
+                                        <div class="ca-fw-semi" style="font-size:.875rem;">@item.MusteriAdSoyad</div>
+                                        <div class="ca-text-muted" style="font-size:.75rem;">@item.Telefon</div>
+                                        <div class="ca-text-muted" style="font-size:.75rem;">@item.Eposta</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="ca-fw-semi" style="font-size:.85rem;">@item.Sehir / @item.Ilce</div>
+                                <div class="ca-text-muted" style="font-size:.75rem; max-width:220px;">@item.AcikAdres</div>
+                            </td>
+                            <td>
+                                <div class="ca-fw-semi" style="font-size:.85rem;">@detayOzeti</div>
+                                @if (!string.IsNullOrWhiteSpace(item.KuponKodu))
+                                {
+                                    <div class="ca-text-muted" style="font-size:.75rem;">Kupon: @item.KuponKodu (-@item.IndirimTutari.ToString("N2") TL)</div>
+                                }
+                            </td>
+                            <td>
+                                <span class="ca-fw-bold">@item.ToplamTutar.ToString("N2") TL</span>
+                            </td>
+                            <td>
+                                @if (item.Durum == SiparisDurumHelper.SiparisAlindi)
+                                { <span class="ca-badge ca-badge-warning"><i class="fas fa-dot-circle"></i> Sipariş Alındı</span> }
+                                else if (item.Durum == SiparisDurumHelper.UretimHazirlaniyor)
+                                { <span class="ca-badge ca-badge-info"><i class="fas fa-spinner fa-spin"></i> Hazırlanıyor</span> }
+                                else if (item.Durum == SiparisDurumHelper.KargoyaVerildi)
+                                { <span class="ca-badge ca-badge-primary"><i class="fas fa-truck"></i> Kargoda</span> }
+                                else if (item.Durum == SiparisDurumHelper.Paketleniyor)
+                                { <span class="ca-badge ca-badge-info"><i class="fas fa-box"></i> Paketleniyor</span> }
+                                else if (item.Durum == SiparisDurumHelper.TeslimEdildi)
+                                { <span class="ca-badge ca-badge-success"><i class="fas fa-check-circle"></i> Teslim Edildi</span> }
+                                else
+                                { <span class="ca-badge ca-badge-danger"><i class="fas fa-times-circle"></i> İptal / İade</span> }
+                                <div class="ca-text-muted mt-1" style="font-size:.75rem;">
+                                    @(string.IsNullOrWhiteSpace(item.KargoFirmasi) ? "Aras Kargo" : item.KargoFirmasi)
+                                    @(string.IsNullOrWhiteSpace(item.KargoTakipNo) ? " - takip no bekleniyor" : $" - {item.KargoTakipNo}")
+                                </div>
+                            </td>
+                            <td>
+                                @if (item.FaturaYuklendiMi)
+                                {
+                                    <span class="badge bg-success"><i class="fas fa-check"></i> Var</span>
+                                    <div class="mt-1">
+                                        <a href="/Admin/Siparis/FaturaIndir/@item.Id" target="_blank" class="btn btn-sm btn-outline-primary" title="İndir">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">Yok</span>
+                                }
+                            </td>
+                            <td class="text-end pe-4">
+                                <div class="dropdown">
+                                    <button class="ca-btn-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Hızlı işlemler">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end ca-dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="/Admin/Siparis/Detay/@item.Id">
+                                                <i class="fas fa-eye me-2"></i> Detayı Aç
+                                            </a>
+                                        </li>
+                                        @if (item.Durum == SiparisDurumHelper.SiparisAlindi || 
+                                             item.Durum == SiparisDurumHelper.UretimHazirlaniyor || 
+                                             item.Durum == SiparisDurumHelper.Paketleniyor)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" href="/Admin/Siparis/Detay/@item.Id#printableLabel">
+                                                    <i class="fas fa-tag me-2"></i> Kargo Etiketi
+                                                </a>
+                                            </li>
+                                        }
+                                        <li><hr class="dropdown-divider"></li>
+                                        @if (item.Durum == SiparisDurumHelper.UretimHazirlaniyor || item.Durum == SiparisDurumHelper.Paketleniyor)
+                                        {
+                                        <li>
+                                            <form method="post" action="/Admin/Siparis/TopluKargoyaVer" class="m-0">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="siparisIds" value="@item.Id" />
+                                                <input type="hidden" name="kargoFirmasiId" value="" />
+                                                <input type="hidden" name="kargoNo" value="" />
+                                                <button class="dropdown-item" type="submit">
+                                                    <i class="fas fa-truck me-2"></i> Kargoya Ver
+                                                </button>
+                                            </form>
+                                        </li>
+                                        }
+                                        @if (item.Durum != SiparisDurumHelper.KargoyaVerildi && item.Durum != SiparisDurumHelper.TeslimEdildi && item.Durum != SiparisDurumHelper.IptalEdildi)
+                                        {
+                                        <li>
+                                            <form method="post" action="/Admin/Siparis/SiparisIptal" class="m-0" onsubmit="return confirm('Bu sipariş iptal edilecek. Emin misiniz?');">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <button class="dropdown-item text-danger" type="submit">
+                                                    <i class="fas fa-times-circle me-2"></i> İptal Et
+                                                </button>
+                                            </form>
+                                        </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="text-center pe-4">
+                                <input type="checkbox"
+                                       class="form-check-input order-select"
+                                       value="@item.Id"
+                                       data-status="@item.Durum"
+                                       aria-label="@siparisNo siparişini seç">
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ca-card-footer d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <small class="ca-text-muted">Sayfa @currentPage / @Math.Max(totalPages, 1)</small>
+            @if (totalPages > 1)
+            {
+                <div class="ca-pagination p-0">
+                    @if (currentPage > 1)
+                    {
+                        <a href="@BuildUrl(currentPage - 1)" aria-label="Önceki"><i class="fas fa-chevron-left"></i></a>
+                    }
+                    @for (var p = Math.Max(1, currentPage - 2); p <= Math.Min(totalPages, currentPage + 2); p++)
+                    {
+                        if (p == currentPage)
+                        {
+                            <span class="active">@p</span>
+                        }
+                        else
+                        {
+                            <a href="@BuildUrl(p)">@p</a>
+                        }
+                    }
+                    @if (currentPage < totalPages)
+                    {
+                        <a href="@BuildUrl(currentPage + 1)" aria-label="Sonraki"><i class="fas fa-chevron-right"></i></a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    // Toplu işlem fonksiyonları
+    function getSelectedOrders() {
+        var checkboxes = document.querySelectorAll('.order-select:checked');
+        var ids = [];
+        checkboxes.forEach(function(cb) {
+            ids.push(cb.value);
+        });
+        return ids;
+    }
+
+    function topluKargo() {
+        var ids = getSelectedOrders();
+        if (ids.length === 0) {
+            alert('Lütfen en az bir sipariş seçin');
+            return;
+        }
+        if (!confirm(ids.length + ' sipariş "Kargoya Verildi" durumuna alınacak. Devam edilsin mi?')) return;
+        
+        // Create hidden inputs for the form
+        var form = document.createElement('form');
+        form.method = 'post';
+        form.action = '/Admin/Siparis/TopluKargoyaVer';
+        
+        var token = document.createElement('input');
+        token.type = 'hidden';
+        token.name = '__RequestVerificationToken';
+        token.value = document.querySelector('input[name="__RequestVerificationToken"]').value;
+        form.appendChild(token);
+        
+        ids.forEach(function(id) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'siparisIds';
+            input.value = id;
+            form.appendChild(input);
+        });
+        
+        var kargoFirma = document.createElement('input');
+        kargoFirma.type = 'hidden';
+        kargoFirma.name = 'kargoFirmasiId';
+        kargoFirma.value = '';
+        form.appendChild(kargoFirma);
+        
+        var kargoNo = document.createElement('input');
+        kargoNo.type = 'hidden';
+        kargoNo.name = 'kargoNo';
+        kargoNo.value = '';
+        form.appendChild(kargoNo);
+        
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function topluPaket() {
+        var ids = getSelectedOrders();
+        if (ids.length === 0) {
+            alert('Lütfen en az bir sipariş seçin');
+            return;
+        }
+        if (!confirm(ids.length + ' sipariş "Paketleniyor" durumuna alınacak. Devam edilsin mi?')) return;
+        
+        var form = document.createElement('form');
+        form.method = 'post';
+        form.action = '/Admin/Siparis/TopluDurumGuncelle';
+        
+        var token = document.createElement('input');
+        token.type = 'hidden';
+        token.name = '__RequestVerificationToken';
+        token.value = document.querySelector('input[name="__RequestVerificationToken"]').value;
+        form.appendChild(token);
+        
+        ids.forEach(function(id) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'siparisIds';
+            input.value = id;
+            form.appendChild(input);
+        });
+        
+        var durum = document.createElement('input');
+        durum.type = 'hidden';
+        durum.name = 'yeniDurum';
+        durum.value = '8'; // Paketleniyor
+        form.appendChild(durum);
+        
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function topluTeslimEt() {
+        var ids = getSelectedOrders();
+        if (ids.length === 0) {
+            alert('LÃ¼tfen en az bir sipariÅŸ seÃ§in');
+            return;
+        }
+        if (!confirm(ids.length + ' sipariÅŸ "Teslim Edildi" durumuna alÄ±nacak. Devam edilsin mi?')) return;
+
+        var container = document.getElementById('bulkDeliverInputs');
+        container.innerHTML = '';
+
+        ids.forEach(function(id) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'siparisIds';
+            input.value = id;
+            container.appendChild(input);
+        });
+
+        document.getElementById('bulkDeliverForm').submit();
+    }
+
+    function topluIptal() {
+        var ids = getSelectedOrders();
+        if (ids.length === 0) {
+            alert('Lütfen en az bir sipariş seçin');
+            return;
+        }
+        if (!confirm(ids.length + ' sipariş iptal edilecek ve müşteriye e-posta gönderilecek. Devam edilsin mi?')) return;
+        
+        document.getElementById('iptalSiparisIds').value = ids.join(',');
+        document.getElementById('bulkIptalForm').submit();
+    }
+
+    // Toast notification
+    function showToast(message, type) {
+        var container = document.querySelector('.ca-toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'ca-toast-container';
+            document.body.appendChild(container);
+        }
+        var toast = document.createElement('div');
+        toast.className = 'ca-toast ' + (type || 'info');
+        toast.innerHTML = '<span>' + message + '</span>';
+        container.appendChild(toast);
+        setTimeout(function() { toast.remove(); }, 3000);
+    }
+
+    // Check for toast param on load
+    document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var toastMsg = urlParams.get('toast');
+        if (toastMsg) {
+            showToast(decodeURIComponent(toastMsg), urlParams.get('toastType') || 'success');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        
+        // Checkbox change handler
+        document.querySelectorAll('.order-select').forEach(function(cb) {
+            cb.addEventListener('change', updateSelectedCount);
+        });
+        
+        // Select all handler
+        var selectAll = document.getElementById('selectAllOrders');
+        if (selectAll) {
+            selectAll.addEventListener('change', function() {
+                document.querySelectorAll('.order-select').forEach(function(cb) {
+                    cb.checked = selectAll.checked;
+                });
+                updateSelectedCount();
+            });
+        }
+    });
+
+    function updateSelectedCount() {
+        var checkboxes = document.querySelectorAll('.order-select:checked');
+        var count = checkboxes.length;
+        document.getElementById('selectedOrderCount').textContent = count > 0 ? count + ' sipariş seçildi.' : 'Seçili sipariş yok.';
+
+        // Etiket basılabilecek durumlar: 0 (Sipariş Alındı), 1 (Hazırlanıyor), 8 (Paketleniyor)
+        var validLabelStatuses = [0, 1, 8];
+        var validLabelCount = 0;
+
+        var labelContainer = document.getElementById('bulkLabelInputs');
+        if (labelContainer) {
+            labelContainer.innerHTML = '';
+            checkboxes.forEach(function(cb) {
+                var status = parseInt(cb.getAttribute('data-status'));
+                if (validLabelStatuses.includes(status)) {
+                    validLabelCount++;
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'siparisIds';
+                    input.value = cb.value;
+                    labelContainer.appendChild(input);
+                }
+            });
+        }
+
+        var bulkLabelBtn = document.getElementById('bulkLabelButton');
+        if (bulkLabelBtn) {
+            bulkLabelBtn.disabled = (validLabelCount === 0);
+        }
+
+        var bulkConfirmBtn = document.getElementById('bulkConfirmButton');
+        if (bulkConfirmBtn) {
+            bulkConfirmBtn.disabled = (count === 0);
+        }
+
+        // Populate bulkConfirmInputs
+        var confirmContainer = document.getElementById('bulkConfirmInputs');
+        if (confirmContainer) {
+            confirmContainer.innerHTML = '';
+            checkboxes.forEach(function(cb) {
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'siparisIds';
+                input.value = cb.value;
+                confirmContainer.appendChild(input);
+            });
+        }
+    }
+</script>

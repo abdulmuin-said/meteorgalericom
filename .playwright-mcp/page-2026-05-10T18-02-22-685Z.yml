@@ -1,0 +1,616 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Hesabım" [ref=e52] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "1"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo" [ref=e68]:
+              - /url: /Urun?k=30
+          - listitem [ref=e69] [cursor=pointer]:
+            - link "Duvar Kağıdı" [ref=e70]:
+              - /url: /Urun?k=31
+          - listitem [ref=e71] [cursor=pointer]:
+            - link "Cam Kesme Tahtası" [ref=e72]:
+              - /url: /Urun?k=32
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Ayna" [ref=e74]:
+              - /url: /Urun?k=33
+          - listitem [ref=e75] [cursor=pointer]:
+            - link "Baskılı Halı" [ref=e76]:
+              - /url: /Urun?k=34
+          - listitem [ref=e77] [cursor=pointer]:
+            - link "Ahşap Dekorasyon" [ref=e78]:
+              - /url: /Urun?k=35
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Mobilya Aksesuar" [ref=e80]:
+              - /url: /Urun?k=36
+          - listitem [ref=e81] [cursor=pointer]:
+            - link "Lightbox" [ref=e82]:
+              - /url: /Urun?k=37
+          - listitem [ref=e83] [cursor=pointer]:
+            - link "Afiş" [ref=e84]:
+              - /url: /Urun?k=38
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "TÜM ÜRÜNLER" [ref=e86]:
+              - /url: /Urun
+          - listitem [ref=e87] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e88]:
+              - /url: /Kurumsal/Iletisim
+    - text:   
+  - main [ref=e89]:
+    - generic [ref=e91]:
+      - link "Ana Sayfa" [ref=e92] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e93]: /
+      - generic [ref=e94]: Tüm Koleksiyonlar
+    - generic [ref=e96]:
+      - complementary [ref=e97]:
+        - heading "Kategoriler" [level=3] [ref=e98]
+        - list [ref=e99]:
+          - listitem [ref=e100]:
+            - link "Tümü (11991)" [ref=e101] [cursor=pointer]:
+              - /url: /Urun
+          - listitem [ref=e102]:
+            - link "Atatürk Köşesi" [ref=e103] [cursor=pointer]:
+              - /url: /Urun?k=1
+          - listitem [ref=e104]:
+            - link "Kanvas Tablo" [ref=e105] [cursor=pointer]:
+              - /url: /Urun?k=29
+          - listitem [ref=e106]:
+            - link "Cam Tablo" [ref=e107] [cursor=pointer]:
+              - /url: /Urun?k=30
+          - listitem [ref=e108]:
+            - link "İslami Sanat & Hat" [ref=e109] [cursor=pointer]:
+              - /url: /Urun?k=2
+          - listitem [ref=e110]:
+            - link "Duvar Kağıdı" [ref=e111] [cursor=pointer]:
+              - /url: /Urun?k=31
+          - listitem [ref=e112]:
+            - link "Dünya Klasikleri" [ref=e113] [cursor=pointer]:
+              - /url: /Urun?k=3
+          - listitem [ref=e114]:
+            - link "Cam Kesme Tahtası" [ref=e115] [cursor=pointer]:
+              - /url: /Urun?k=32
+          - listitem [ref=e116]:
+            - link "Modern & Soyut" [ref=e117] [cursor=pointer]:
+              - /url: /Urun?k=4
+          - listitem [ref=e118]:
+            - link "Ayna" [ref=e119] [cursor=pointer]:
+              - /url: /Urun?k=33
+          - listitem [ref=e120]:
+            - link "Şehir Manzaraları" [ref=e121] [cursor=pointer]:
+              - /url: /Urun?k=5
+          - listitem [ref=e122]:
+            - link "Baskılı Halı" [ref=e123] [cursor=pointer]:
+              - /url: /Urun?k=34
+          - listitem [ref=e124]:
+            - link "Ahşap Dekorasyon" [ref=e125] [cursor=pointer]:
+              - /url: /Urun?k=35
+          - listitem [ref=e126]:
+            - link "Parçalı Tablolar" [ref=e127] [cursor=pointer]:
+              - /url: /Urun?k=7
+          - listitem [ref=e128]:
+            - link "Dini ve Hat Sanatı" [ref=e129] [cursor=pointer]:
+              - /url: /Urun?k=8
+          - listitem [ref=e130]:
+            - link "Mobilya Aksesuar" [ref=e131] [cursor=pointer]:
+              - /url: /Urun?k=36
+          - listitem [ref=e132]:
+            - link "Lightbox" [ref=e133] [cursor=pointer]:
+              - /url: /Urun?k=37
+          - listitem [ref=e134]:
+            - link "Manzara Temalı" [ref=e135] [cursor=pointer]:
+              - /url: /Urun?k=9
+          - listitem [ref=e136]:
+            - link "Afiş" [ref=e137] [cursor=pointer]:
+              - /url: /Urun?k=38
+          - listitem [ref=e138]:
+            - link "Atatürk ve Türkiye" [ref=e139] [cursor=pointer]:
+              - /url: /Urun?k=10
+          - listitem [ref=e140]:
+            - link "Şehir ve Mimari" [ref=e141] [cursor=pointer]:
+              - /url: /Urun?k=11
+          - listitem [ref=e142]:
+            - link "Soyut ve Sanatsal" [ref=e143] [cursor=pointer]:
+              - /url: /Urun?k=12
+          - listitem [ref=e144]:
+            - link "Osmanlı ve Tuğra" [ref=e145] [cursor=pointer]:
+              - /url: /Urun?k=13
+          - listitem [ref=e146]:
+            - link "Ünlüler ve Sinema" [ref=e147] [cursor=pointer]:
+              - /url: /Urun?k=14
+          - listitem [ref=e148]:
+            - link "Hayvanlar Alemi" [ref=e149] [cursor=pointer]:
+              - /url: /Urun?k=15
+          - listitem [ref=e150]:
+            - link "Araba ve Araçlar" [ref=e151] [cursor=pointer]:
+              - /url: /Urun?k=16
+          - listitem [ref=e152]:
+            - link "Çocuk Odası" [ref=e153] [cursor=pointer]:
+              - /url: /Urun?k=17
+          - listitem [ref=e154]:
+            - link "Nü Sanat" [ref=e155] [cursor=pointer]:
+              - /url: /Urun?k=18
+          - listitem [ref=e156]:
+            - link "Klasik Eserler" [ref=e157] [cursor=pointer]:
+              - /url: /Urun?k=19
+          - listitem [ref=e158]:
+            - link "Yiyecek ve İçecek" [ref=e159] [cursor=pointer]:
+              - /url: /Urun?k=20
+          - listitem [ref=e160]:
+            - link "Farklı Tasarımlar" [ref=e161] [cursor=pointer]:
+              - /url: /Urun?k=21
+          - listitem [ref=e162]:
+            - link "Aşk ve Romantizm" [ref=e163] [cursor=pointer]:
+              - /url: /Urun?k=22
+          - listitem [ref=e164]:
+            - link "Kadın Temalı" [ref=e165] [cursor=pointer]:
+              - /url: /Urun?k=23
+          - listitem [ref=e166]:
+            - link "Taraftar Köşesi" [ref=e167] [cursor=pointer]:
+              - /url: /Urun?k=24
+          - listitem [ref=e168]:
+            - link "Adalet ve Hukuk" [ref=e169] [cursor=pointer]:
+              - /url: /Urun?k=25
+          - listitem [ref=e170]:
+            - link "Çiçekli ve Dekoratif" [ref=e171] [cursor=pointer]:
+              - /url: /Urun?k=26
+          - listitem [ref=e172]:
+            - link "Panoramik Tablolar" [ref=e173] [cursor=pointer]:
+              - /url: /Urun?k=27
+        - heading "Fiyat Aralığı" [level=3] [ref=e174]
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - spinbutton [ref=e177]
+            - generic [ref=e178]: —
+            - spinbutton [ref=e179]
+          - button "Uygula" [ref=e180] [cursor=pointer]
+      - main [ref=e181]:
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - heading "Tüm Koleksiyonlar" [level=1] [ref=e184]
+            - paragraph [ref=e185]: 11991 ürün listeleniyor
+          - combobox [ref=e187]:
+            - option "En Yeniler"
+            - 'option "Fiyat: Düşükten Yükseğe" [selected]'
+            - 'option "Fiyat: Yüksekten Düşüğe"'
+            - option "Çok Satanlar"
+        - generic [ref=e188]:
+          - generic [ref=e189]:
+            - link "Love Yazılı Kanvas Tablo" [ref=e190] [cursor=pointer]:
+              - /url: /Urun/Detay/love-yazili-kanvas-tablo-3
+              - img "Love Yazılı Kanvas Tablo" [ref=e191]
+            - button "" [ref=e192] [cursor=pointer]:
+              - generic [ref=e193]: 
+            - heading "Love Yazılı Kanvas Tablo" [level=3] [ref=e194]:
+              - link "Love Yazılı Kanvas Tablo" [ref=e195] [cursor=pointer]:
+                - /url: /Urun/Detay/love-yazili-kanvas-tablo-3
+            - generic [ref=e197]: 445 TL
+          - generic [ref=e198]:
+            - link "Şömine Dekoratif Kanvas Tablosu" [ref=e199] [cursor=pointer]:
+              - /url: /Urun/Detay/somine-dekoratif-kanvas-tablosu-415
+              - img "Şömine Dekoratif Kanvas Tablosu" [ref=e200]
+            - button "" [ref=e201] [cursor=pointer]:
+              - generic [ref=e202]: 
+            - heading "Şömine Dekoratif Kanvas Tablosu" [level=3] [ref=e203]:
+              - link "Şömine Dekoratif Kanvas Tablosu" [ref=e204] [cursor=pointer]:
+                - /url: /Urun/Detay/somine-dekoratif-kanvas-tablosu-415
+            - generic [ref=e206]: 492 TL
+          - generic [ref=e207]:
+            - link "Sanatsal Kırmızı Vazolar İçinde Dekoratif Çiçekli Kanvas Tablo" [ref=e208] [cursor=pointer]:
+              - /url: /Urun/Detay/sanatsal-kirmizi-vazolar-icinde-dekoratif-cicekli-kanvas-tablo-144
+              - img "Sanatsal Kırmızı Vazolar İçinde Dekoratif Çiçekli Kanvas Tablo" [ref=e209]
+            - button "" [ref=e210] [cursor=pointer]:
+              - generic [ref=e211]: 
+            - heading "Sanatsal Kırmızı Vazolar İçinde Dekoratif Çiçekli Kanvas Tablo" [level=3] [ref=e212]:
+              - link "Sanatsal Kırmızı Vazolar İçinde Dekoratif Çiçekli Kanvas Tablo" [ref=e213] [cursor=pointer]:
+                - /url: /Urun/Detay/sanatsal-kirmizi-vazolar-icinde-dekoratif-cicekli-kanvas-tablo-144
+            - generic [ref=e215]: 528 TL
+          - generic [ref=e216]:
+            - link "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo" [ref=e217] [cursor=pointer]:
+              - /url: /Urun/Detay/boga-resimli-renkli-muhtesem-mimari-dekor-kanvas-tablo-63
+              - img "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo" [ref=e218]
+            - button "" [ref=e219] [cursor=pointer]:
+              - generic [ref=e220]: 
+            - heading "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo" [level=3] [ref=e221]:
+              - link "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo" [ref=e222] [cursor=pointer]:
+                - /url: /Urun/Detay/boga-resimli-renkli-muhtesem-mimari-dekor-kanvas-tablo-63
+            - generic [ref=e224]: 632 TL
+          - generic [ref=e225]:
+            - link "İstabulun Fethi Fatih sultan Mehmet 1453 Tek Parça Kanvas Tablo" [ref=e226] [cursor=pointer]:
+              - /url: /Urun/Detay/istabulun-fethi-fatih-sultan-mehmet-1453-tek-parca-kanvas-tablo-327
+              - img "İstabulun Fethi Fatih sultan Mehmet 1453 Tek Parça Kanvas Tablo" [ref=e227]
+            - button "" [ref=e228] [cursor=pointer]:
+              - generic [ref=e229]: 
+            - heading "İstabulun Fethi Fatih sultan Mehmet 1453 Tek Parça Kanvas Tablo" [level=3] [ref=e230]:
+              - link "İstabulun Fethi Fatih sultan Mehmet 1453 Tek Parça Kanvas Tablo" [ref=e231] [cursor=pointer]:
+                - /url: /Urun/Detay/istabulun-fethi-fatih-sultan-mehmet-1453-tek-parca-kanvas-tablo-327
+            - generic [ref=e233]: 632 TL
+          - generic [ref=e234]:
+            - link "Denizde Koşan Kahverengi Anne At Ve Yavrusu Kanvas Tablo" [ref=e235] [cursor=pointer]:
+              - /url: /Urun/Detay/denizde-kosan-kahverengi-anne-at-ve-yavrusu-kanvas-tablo-339
+              - img "Denizde Koşan Kahverengi Anne At Ve Yavrusu Kanvas Tablo" [ref=e236]
+            - button "" [ref=e237] [cursor=pointer]:
+              - generic [ref=e238]: 
+            - heading "Denizde Koşan Kahverengi Anne At Ve Yavrusu Kanvas Tablo" [level=3] [ref=e239]:
+              - link "Denizde Koşan Kahverengi Anne At Ve Yavrusu Kanvas Tablo" [ref=e240] [cursor=pointer]:
+                - /url: /Urun/Detay/denizde-kosan-kahverengi-anne-at-ve-yavrusu-kanvas-tablo-339
+            - generic [ref=e242]: 632 TL
+          - generic [ref=e243]:
+            - link "Pembe Çiçekli Sanatsal Dekoratif Kanvas Tablo" [ref=e244] [cursor=pointer]:
+              - /url: /Urun/Detay/pembe-cicekli-sanatsal-dekoratif-kanvas-tablo-340
+              - img "Pembe Çiçekli Sanatsal Dekoratif Kanvas Tablo" [ref=e245]
+            - button "" [ref=e246] [cursor=pointer]:
+              - generic [ref=e247]: 
+            - heading "Pembe Çiçekli Sanatsal Dekoratif Kanvas Tablo" [level=3] [ref=e248]:
+              - link "Pembe Çiçekli Sanatsal Dekoratif Kanvas Tablo" [ref=e249] [cursor=pointer]:
+                - /url: /Urun/Detay/pembe-cicekli-sanatsal-dekoratif-kanvas-tablo-340
+            - generic [ref=e251]: 632 TL
+          - generic [ref=e252]:
+            - link "Al Pacino Baba Filmi Kanvas Tablosu" [ref=e253] [cursor=pointer]:
+              - /url: /Urun/Detay/al-pacino-baba-filmi-kanvas-tablosu-341
+              - img "Al Pacino Baba Filmi Kanvas Tablosu" [ref=e254]
+            - button "" [ref=e255] [cursor=pointer]:
+              - generic [ref=e256]: 
+            - heading "Al Pacino Baba Filmi Kanvas Tablosu" [level=3] [ref=e257]:
+              - link "Al Pacino Baba Filmi Kanvas Tablosu" [ref=e258] [cursor=pointer]:
+                - /url: /Urun/Detay/al-pacino-baba-filmi-kanvas-tablosu-341
+            - generic [ref=e260]: 632 TL
+          - generic [ref=e261]:
+            - link "Osmanlı Tuğrası Türk Yazılı Kanvas Tablosu" [ref=e262] [cursor=pointer]:
+              - /url: /Urun/Detay/osmanli-tugrasi-turk-yazili-kanvas-tablosu-343
+              - img "Osmanlı Tuğrası Türk Yazılı Kanvas Tablosu" [ref=e263]
+            - button "" [ref=e264] [cursor=pointer]:
+              - generic [ref=e265]: 
+            - heading "Osmanlı Tuğrası Türk Yazılı Kanvas Tablosu" [level=3] [ref=e266]:
+              - link "Osmanlı Tuğrası Türk Yazılı Kanvas Tablosu" [ref=e267] [cursor=pointer]:
+                - /url: /Urun/Detay/osmanli-tugrasi-turk-yazili-kanvas-tablosu-343
+            - generic [ref=e269]: 632 TL
+          - generic [ref=e270]:
+            - link "Kendi Resimlerinizden kişiye özel kanvas tablo modelleri aile tablosu" [ref=e271] [cursor=pointer]:
+              - /url: /Urun/Detay/kendi-resimlerinizden-kisiye-ozel-kanvas-tablo-modelleri-aile-tablosu-346
+              - img "Kendi Resimlerinizden kişiye özel kanvas tablo modelleri aile tablosu" [ref=e272]
+            - button "" [ref=e273] [cursor=pointer]:
+              - generic [ref=e274]: 
+            - heading "Kendi Resimlerinizden kişiye özel kanvas tablo modelleri aile tablosu" [level=3] [ref=e275]:
+              - link "Kendi Resimlerinizden kişiye özel kanvas tablo modelleri aile tablosu" [ref=e276] [cursor=pointer]:
+                - /url: /Urun/Detay/kendi-resimlerinizden-kisiye-ozel-kanvas-tablo-modelleri-aile-tablosu-346
+            - generic [ref=e278]: 632 TL
+          - generic [ref=e279]:
+            - link "Afrikalı Siyahı Kadın Altın Renkli Kanvas Tablosu" [ref=e280] [cursor=pointer]:
+              - /url: /Urun/Detay/afrikali-siyahi-kadin-altin-renkli-kanvas-tablosu-347
+              - img "Afrikalı Siyahı Kadın Altın Renkli Kanvas Tablosu" [ref=e281]
+            - button "" [ref=e282] [cursor=pointer]:
+              - generic [ref=e283]: 
+            - heading "Afrikalı Siyahı Kadın Altın Renkli Kanvas Tablosu" [level=3] [ref=e284]:
+              - link "Afrikalı Siyahı Kadın Altın Renkli Kanvas Tablosu" [ref=e285] [cursor=pointer]:
+                - /url: /Urun/Detay/afrikali-siyahi-kadin-altin-renkli-kanvas-tablosu-347
+            - generic [ref=e287]: 632 TL
+          - generic [ref=e288]:
+            - link "Osmanlı Arması Kanvas Tablo" [ref=e289] [cursor=pointer]:
+              - /url: /Urun/Detay/osmanli-armasi-kanvas-tablo-353
+              - img "Osmanlı Arması Kanvas Tablo" [ref=e290]
+            - button "" [ref=e291] [cursor=pointer]:
+              - generic [ref=e292]: 
+            - heading "Osmanlı Arması Kanvas Tablo" [level=3] [ref=e293]:
+              - link "Osmanlı Arması Kanvas Tablo" [ref=e294] [cursor=pointer]:
+                - /url: /Urun/Detay/osmanli-armasi-kanvas-tablo-353
+            - generic [ref=e296]: 632 TL
+          - generic [ref=e297]:
+            - link "Enver Paşa Fotoğrafı Kanvas Tablosu" [ref=e298] [cursor=pointer]:
+              - /url: /Urun/Detay/enver-pasa-fotografi-kanvas-tablosu-384
+              - img "Enver Paşa Fotoğrafı Kanvas Tablosu" [ref=e299]
+            - button "" [ref=e300] [cursor=pointer]:
+              - generic [ref=e301]: 
+            - heading "Enver Paşa Fotoğrafı Kanvas Tablosu" [level=3] [ref=e302]:
+              - link "Enver Paşa Fotoğrafı Kanvas Tablosu" [ref=e303] [cursor=pointer]:
+                - /url: /Urun/Detay/enver-pasa-fotografi-kanvas-tablosu-384
+            - generic [ref=e305]: 632 TL
+          - generic [ref=e306]:
+            - link "Pembe Gül Sanatsal Tek Parça Kanvas Tablo" [ref=e307] [cursor=pointer]:
+              - /url: /Urun/Detay/pembe-gul-sanatsal-tek-parca-kanvas-tablo-329
+              - img "Pembe Gül Sanatsal Tek Parça Kanvas Tablo" [ref=e308]
+            - button "" [ref=e309] [cursor=pointer]:
+              - generic [ref=e310]: 
+            - heading "Pembe Gül Sanatsal Tek Parça Kanvas Tablo" [level=3] [ref=e311]:
+              - link "Pembe Gül Sanatsal Tek Parça Kanvas Tablo" [ref=e312] [cursor=pointer]:
+                - /url: /Urun/Detay/pembe-gul-sanatsal-tek-parca-kanvas-tablo-329
+            - generic [ref=e314]: 680 TL
+          - generic [ref=e315]:
+            - link "Açık Pembe Ve Kırmızı Kelebekli Tek Parça Kanvas Tablo" [ref=e316] [cursor=pointer]:
+              - /url: /Urun/Detay/acik-pembe-ve-kirmizi-kelebekli-tek-parca-kanvas-tablo-330
+              - img "Açık Pembe Ve Kırmızı Kelebekli Tek Parça Kanvas Tablo" [ref=e317]
+            - button "" [ref=e318] [cursor=pointer]:
+              - generic [ref=e319]: 
+            - heading "Açık Pembe Ve Kırmızı Kelebekli Tek Parça Kanvas Tablo" [level=3] [ref=e320]:
+              - link "Açık Pembe Ve Kırmızı Kelebekli Tek Parça Kanvas Tablo" [ref=e321] [cursor=pointer]:
+                - /url: /Urun/Detay/acik-pembe-ve-kirmizi-kelebekli-tek-parca-kanvas-tablo-330
+            - generic [ref=e323]: 680 TL
+          - generic [ref=e324]:
+            - link "Pembe Kırmızı Ve Sarı Çiçekli Dekoratif Tek Parça Kanvas Tablosu" [ref=e325] [cursor=pointer]:
+              - /url: /Urun/Detay/pembe-kirmizi-ve-sari-cicekli-dekoratif-tek-parca-kanvas-tablosu-331
+              - img "Pembe Kırmızı Ve Sarı Çiçekli Dekoratif Tek Parça Kanvas Tablosu" [ref=e326]
+            - button "" [ref=e327] [cursor=pointer]:
+              - generic [ref=e328]: 
+            - heading "Pembe Kırmızı Ve Sarı Çiçekli Dekoratif Tek Parça Kanvas Tablosu" [level=3] [ref=e329]:
+              - link "Pembe Kırmızı Ve Sarı Çiçekli Dekoratif Tek Parça Kanvas Tablosu" [ref=e330] [cursor=pointer]:
+                - /url: /Urun/Detay/pembe-kirmizi-ve-sari-cicekli-dekoratif-tek-parca-kanvas-tablosu-331
+            - generic [ref=e332]: 680 TL
+          - generic [ref=e333]:
+            - link "Kırmızı Gri Japon Ev Manzaralı Kanvas Tablo" [ref=e334] [cursor=pointer]:
+              - /url: /Urun/Detay/kirmizi-gri-japon-ev-manzarali-kanvas-tablo-561
+              - img "Kırmızı Gri Japon Ev Manzaralı Kanvas Tablo" [ref=e335]
+            - button "" [ref=e336] [cursor=pointer]:
+              - generic [ref=e337]: 
+            - heading "Kırmızı Gri Japon Ev Manzaralı Kanvas Tablo" [level=3] [ref=e338]:
+              - link "Kırmızı Gri Japon Ev Manzaralı Kanvas Tablo" [ref=e339] [cursor=pointer]:
+                - /url: /Urun/Detay/kirmizi-gri-japon-ev-manzarali-kanvas-tablo-561
+            - generic [ref=e341]: 680 TL
+          - generic [ref=e342]:
+            - link "Soyut Kolaj Resimli Kanvas Tablo" [ref=e343] [cursor=pointer]:
+              - /url: /Urun/Detay/soyut-kolaj-resimli-kanvas-tablo-13
+              - img "Soyut Kolaj Resimli Kanvas Tablo" [ref=e344]
+            - button "" [ref=e345] [cursor=pointer]:
+              - generic [ref=e346]: 
+            - heading "Soyut Kolaj Resimli Kanvas Tablo" [level=3] [ref=e347]:
+              - link "Soyut Kolaj Resimli Kanvas Tablo" [ref=e348] [cursor=pointer]:
+                - /url: /Urun/Detay/soyut-kolaj-resimli-kanvas-tablo-13
+            - generic [ref=e350]: 681 TL
+          - generic [ref=e351]:
+            - link "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [ref=e352] [cursor=pointer]:
+              - /url: /Urun/Detay/sokaktaki-bankta-cicekle-bekleyen-kanvas-tablo-29
+              - img "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [ref=e353]
+            - button "" [ref=e354] [cursor=pointer]:
+              - generic [ref=e355]: 
+            - heading "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [level=3] [ref=e356]:
+              - link "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [ref=e357] [cursor=pointer]:
+                - /url: /Urun/Detay/sokaktaki-bankta-cicekle-bekleyen-kanvas-tablo-29
+            - generic [ref=e359]: 681 TL
+          - generic [ref=e360]:
+            - link "Kırmızı Topuklu Ayakkabı Kanvas Tablo" [ref=e361] [cursor=pointer]:
+              - /url: /Urun/Detay/kirmizi-topuklu-ayakkabi-kanvas-tablo-45
+              - img "Kırmızı Topuklu Ayakkabı Kanvas Tablo" [ref=e362]
+            - button "" [ref=e363] [cursor=pointer]:
+              - generic [ref=e364]: 
+            - heading "Kırmızı Topuklu Ayakkabı Kanvas Tablo" [level=3] [ref=e365]:
+              - link "Kırmızı Topuklu Ayakkabı Kanvas Tablo" [ref=e366] [cursor=pointer]:
+                - /url: /Urun/Detay/kirmizi-topuklu-ayakkabi-kanvas-tablo-45
+            - generic [ref=e368]: 681 TL
+          - generic [ref=e369]:
+            - link "Kişiye özel kare kanvas tablo" [ref=e370] [cursor=pointer]:
+              - /url: /Urun/Detay/kisiye-ozel-kare-kanvas-tablo-53
+              - img "Kişiye özel kare kanvas tablo" [ref=e371]
+            - button "" [ref=e372] [cursor=pointer]:
+              - generic [ref=e373]: 
+            - heading "Kişiye özel kare kanvas tablo" [level=3] [ref=e374]:
+              - link "Kişiye özel kare kanvas tablo" [ref=e375] [cursor=pointer]:
+                - /url: /Urun/Detay/kisiye-ozel-kare-kanvas-tablo-53
+            - generic [ref=e377]: 681 TL
+          - generic [ref=e378]:
+            - link "Vazoda Çiçekler Kanvas Tablo" [ref=e379] [cursor=pointer]:
+              - /url: /Urun/Detay/vazoda-cicekler-kanvas-tablo-84
+              - img "Vazoda Çiçekler Kanvas Tablo" [ref=e380]
+            - button "" [ref=e381] [cursor=pointer]:
+              - generic [ref=e382]: 
+            - heading "Vazoda Çiçekler Kanvas Tablo" [level=3] [ref=e383]:
+              - link "Vazoda Çiçekler Kanvas Tablo" [ref=e384] [cursor=pointer]:
+                - /url: /Urun/Detay/vazoda-cicekler-kanvas-tablo-84
+            - generic [ref=e386]: 681 TL
+          - generic [ref=e387]:
+            - link "Vazoda Mavi Beyaz Papatyalar Kanvas Tablo" [ref=e388] [cursor=pointer]:
+              - /url: /Urun/Detay/vazoda-mavi-beyaz-papatyalar-kanvas-tablo-85
+              - img "Vazoda Mavi Beyaz Papatyalar Kanvas Tablo" [ref=e389]
+            - button "" [ref=e390] [cursor=pointer]:
+              - generic [ref=e391]: 
+            - heading "Vazoda Mavi Beyaz Papatyalar Kanvas Tablo" [level=3] [ref=e392]:
+              - link "Vazoda Mavi Beyaz Papatyalar Kanvas Tablo" [ref=e393] [cursor=pointer]:
+                - /url: /Urun/Detay/vazoda-mavi-beyaz-papatyalar-kanvas-tablo-85
+            - generic [ref=e395]: 681 TL
+          - generic [ref=e396]:
+            - link "Dekoratif Çiçekli Kanvas Tablo" [ref=e397] [cursor=pointer]:
+              - /url: /Urun/Detay/dekoratif-cicekli-kanvas-tablo-86
+              - img "Dekoratif Çiçekli Kanvas Tablo" [ref=e398]
+            - button "" [ref=e399] [cursor=pointer]:
+              - generic [ref=e400]: 
+            - heading "Dekoratif Çiçekli Kanvas Tablo" [level=3] [ref=e401]:
+              - link "Dekoratif Çiçekli Kanvas Tablo" [ref=e402] [cursor=pointer]:
+                - /url: /Urun/Detay/dekoratif-cicekli-kanvas-tablo-86
+            - generic [ref=e404]: 681 TL
+          - generic [ref=e405]:
+            - link "Dekoratif Vazo ve Çiçekler Kanvas Tablo" [ref=e406] [cursor=pointer]:
+              - /url: /Urun/Detay/dekoratif-vazo-ve-cicekler-kanvas-tablo-117
+              - img "Dekoratif Vazo ve Çiçekler Kanvas Tablo" [ref=e407]
+            - button "" [ref=e408] [cursor=pointer]:
+              - generic [ref=e409]: 
+            - heading "Dekoratif Vazo ve Çiçekler Kanvas Tablo" [level=3] [ref=e410]:
+              - link "Dekoratif Vazo ve Çiçekler Kanvas Tablo" [ref=e411] [cursor=pointer]:
+                - /url: /Urun/Detay/dekoratif-vazo-ve-cicekler-kanvas-tablo-117
+            - generic [ref=e413]: 681 TL
+          - generic [ref=e414]:
+            - link "Su Yeşili ve Kahve Sanatsal Çiçekli Kanvas Tablo" [ref=e415] [cursor=pointer]:
+              - /url: /Urun/Detay/su-yesili-ve-kahve-sanatsal-cicekli-kanvas-tablo-121
+              - img "Su Yeşili ve Kahve Sanatsal Çiçekli Kanvas Tablo" [ref=e416]
+            - button "" [ref=e417] [cursor=pointer]:
+              - generic [ref=e418]: 
+            - heading "Su Yeşili ve Kahve Sanatsal Çiçekli Kanvas Tablo" [level=3] [ref=e419]:
+              - link "Su Yeşili ve Kahve Sanatsal Çiçekli Kanvas Tablo" [ref=e420] [cursor=pointer]:
+                - /url: /Urun/Detay/su-yesili-ve-kahve-sanatsal-cicekli-kanvas-tablo-121
+            - generic [ref=e422]: 681 TL
+          - generic [ref=e423]:
+            - link "Papyonlu Tatlı Köpek Kanvas Tablo" [ref=e424] [cursor=pointer]:
+              - /url: /Urun/Detay/papyonlu-tatli-kopek-kanvas-tablo-130
+              - img "Papyonlu Tatlı Köpek Kanvas Tablo" [ref=e425]
+            - button "" [ref=e426] [cursor=pointer]:
+              - generic [ref=e427]: 
+            - heading "Papyonlu Tatlı Köpek Kanvas Tablo" [level=3] [ref=e428]:
+              - link "Papyonlu Tatlı Köpek Kanvas Tablo" [ref=e429] [cursor=pointer]:
+                - /url: /Urun/Detay/papyonlu-tatli-kopek-kanvas-tablo-130
+            - generic [ref=e431]: 681 TL
+          - generic [ref=e432]:
+            - link "Papyonlu Tatlı Köpek Tek Parça Kanvas Tablo" [ref=e433] [cursor=pointer]:
+              - /url: /Urun/Detay/papyonlu-tatli-kopek-tek-parca-kanvas-tablo-131
+              - img "Papyonlu Tatlı Köpek Tek Parça Kanvas Tablo" [ref=e434]
+            - button "" [ref=e435] [cursor=pointer]:
+              - generic [ref=e436]: 
+            - heading "Papyonlu Tatlı Köpek Tek Parça Kanvas Tablo" [level=3] [ref=e437]:
+              - link "Papyonlu Tatlı Köpek Tek Parça Kanvas Tablo" [ref=e438] [cursor=pointer]:
+                - /url: /Urun/Detay/papyonlu-tatli-kopek-tek-parca-kanvas-tablo-131
+            - generic [ref=e440]: 681 TL
+        - generic [ref=e441]:
+          - link "1" [ref=e442] [cursor=pointer]:
+            - /url: /Urun?sort=fiyat_artan&page=1
+          - link "2" [ref=e443] [cursor=pointer]:
+            - /url: /Urun?sort=fiyat_artan&page=2
+          - link "3" [ref=e444] [cursor=pointer]:
+            - /url: /Urun?sort=fiyat_artan&page=3
+          - link "" [ref=e445] [cursor=pointer]:
+            - /url: /Urun?sort=fiyat_artan&page=2
+            - generic [ref=e446]: 
+  - contentinfo [ref=e447]:
+    - generic [ref=e449]:
+      - generic [ref=e450]:
+        - generic [ref=e452]: 
+        - generic [ref=e453]:
+          - generic [ref=e454]: Tüm Türkiye'ye
+          - generic [ref=e455]: Ücretsiz Kargo
+      - generic [ref=e456]:
+        - generic [ref=e458]: 
+        - generic [ref=e459]:
+          - generic [ref=e460]: "%100 Güvenli Alışveriş"
+          - generic [ref=e461]: 256 Bit SSL Sertifikası
+      - generic [ref=e462]:
+        - generic [ref=e464]: 
+        - generic [ref=e465]:
+          - generic [ref=e466]: Tüm Kredi Kartlarına
+          - generic [ref=e467]: 12 Taksit İmkanı
+    - generic [ref=e468]:
+      - generic [ref=e469]:
+        - generic [ref=e470]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e471]
+          - paragraph [ref=e472]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e473]:
+            - textbox "E-posta Adresi" [ref=e474]
+            - button "ABONE OL" [ref=e475] [cursor=pointer]
+        - generic [ref=e476]:
+          - heading "KURUMSAL" [level=4] [ref=e477]
+          - list [ref=e478]:
+            - listitem [ref=e479]:
+              - link "Hakkımızda" [ref=e480] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e481]:
+              - link "İletişim" [ref=e482] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e483]:
+              - link "Koleksiyonlar" [ref=e484] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e485]:
+              - link "Gizlilik Politikası" [ref=e486] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e487]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e488] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e489]:
+            - link "Instagram" [ref=e490] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e491]: 
+            - link "WhatsApp" [ref=e492] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e493]: 
+      - generic [ref=e494]:
+        - paragraph [ref=e496]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e497]:
+          - link "Gizlilik Politikası" [ref=e498] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e499] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e500] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e503]
+  - link "WhatsApp ile iletişim" [ref=e504] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e505]
+    - generic [ref=e507]: WhatsApp

@@ -1,0 +1,148 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:       
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+    - generic [ref=e29]:
+      - text: 
+      - generic [ref=e30]:
+        - button "Harun OK Admin H" [ref=e31] [cursor=pointer]:
+          - generic [ref=e32]:
+            - strong [ref=e33]: Harun OK
+            - text: Admin
+          - generic [ref=e34]: H
+        - text:  
+  - generic [ref=e35]:
+    - main [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - heading "Yeni Bölüm Ekle" [level=1] [ref=e40]
+            - paragraph [ref=e41]: Ana sayfaya yeni bir içerik bölümü ekleyin.
+          - link " Geri Dön" [ref=e42] [cursor=pointer]:
+            - /url: /Admin/HomeSections
+            - generic [ref=e43]: 
+            - text: Geri Dön
+        - generic [ref=e45]:
+          - generic [ref=e47]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: 
+              - text: Bölüm Bilgileri
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - generic [ref=e53]:
+                  - generic [ref=e54]: Bölüm Tipi
+                  - combobox "Bölüm Tipi" [ref=e55]:
+                    - option "Manuel Ürün Seçimi"
+                    - option "Kategori Vitrini"
+                    - option "Özel Banner"
+                    - option "Öne Çıkanlar (Otomatik)" [selected]
+                    - option "Çok Satanlar (Otomatik)"
+                    - option "Fırsat Ürünleri (Otomatik)"
+                    - option "5 Parçalı Tablolar (Otomatik)"
+                - generic [ref=e56]:
+                  - generic [ref=e57]: Sıra
+                  - spinbutton "Sıra" [ref=e58]: "0"
+                - generic [ref=e59]:
+                  - generic [ref=e60]: Aktif
+                  - generic [ref=e61]:
+                    - checkbox "Yayında" [checked] [ref=e62]
+                    - generic [ref=e63]: Yayında
+                - generic [ref=e64]:
+                  - generic [ref=e65]: Başlık
+                  - textbox "Başlık" [ref=e66]:
+                    - /placeholder: Bölüm başlığı
+                - generic [ref=e67]:
+                  - generic [ref=e68]: Alt Başlık
+                  - textbox "Alt Başlık" [ref=e69]:
+                    - /placeholder: Kısa açıklama
+                - generic [ref=e70]:
+                  - generic [ref=e71]: Buton Yazısı
+                  - textbox "Buton Yazısı" [ref=e72]:
+                    - /placeholder: Tümünü Gör
+                - generic [ref=e73]:
+                  - generic [ref=e74]: Buton Linki
+                  - textbox "Buton Linki" [ref=e75]:
+                    - /placeholder: /Urun
+              - separator [ref=e76]
+              - generic [ref=e77]:
+                - heading "Banner Alanları (sadece Custom Banner tipinde geçerli)" [level=6] [ref=e78]
+                - generic [ref=e79]:
+                  - generic [ref=e80]:
+                    - generic [ref=e81]: Görsel URL
+                    - textbox "Görsel URL" [ref=e82]:
+                      - /placeholder: /img/banner.jpg
+                  - generic [ref=e83]:
+                    - generic [ref=e84]: Banner Buton Linki
+                    - textbox "Banner Buton Linki" [ref=e85]:
+                      - /placeholder: /Urun?k=1
+                  - generic [ref=e86]:
+                    - generic [ref=e87]: Banner Buton Yazısı
+                    - textbox "Banner Buton Yazısı" [ref=e88]:
+                      - /placeholder: Hemen İncele
+                  - generic [ref=e89]:
+                    - generic [ref=e90]: Açıklama
+                    - textbox "Açıklama" [ref=e91]:
+                      - /placeholder: Banner açıklama metni...
+          - generic [ref=e93]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: 
+              - text: Bilgi
+            - generic [ref=e97]:
+              - list [ref=e98]:
+                - listitem [ref=e99]:
+                  - generic [ref=e100]: 
+                  - text: "Ürün Bloğu: Seçili ürünleri vitrin olarak gösterir."
+                - listitem [ref=e101]:
+                  - generic [ref=e102]: 
+                  - text: "Kategori Vitrini: Kategori kartlarını listeler."
+                - listitem [ref=e103]:
+                  - generic [ref=e104]: 
+                  - text: "Özel Banner: Görsel + butonlu tam genişlik banner."
+                - listitem [ref=e105]:
+                  - generic [ref=e106]: 
+                  - text: Sıra numarası küçük olan üstte görünür.
+              - generic [ref=e107]:
+                - button " Oluştur" [ref=e108] [cursor=pointer]:
+                  - generic [ref=e109]: 
+                  - text: Oluştur
+                - link "İptal" [ref=e110] [cursor=pointer]:
+                  - /url: /Admin/HomeSections
+    - contentinfo [ref=e111]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

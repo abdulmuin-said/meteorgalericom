@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /Admin/
+Disallow: /Hesap/
+Disallow: /Profil/
+Disallow: /Sepet/
+Disallow: /Siparis/
+
+# Allow static assets
+Allow: /img/
+Allow: /css/
+Allow: /js/

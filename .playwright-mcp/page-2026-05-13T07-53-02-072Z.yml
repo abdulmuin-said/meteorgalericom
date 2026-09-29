@@ -1,0 +1,162 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:      
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - generic [ref=e43]: MAĞAZA YAPILANDIRMASI
+            - heading "Site Ayarları" [level=1] [ref=e44]
+            - paragraph [ref=e45]: Vitrin, iletişim, sosyal medya, SEO, kargo ve mail bildirimlerini tek yerden yönetin.
+          - generic [ref=e46]:
+            - link " Siteyi Görüntüle" [ref=e47] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e48]: 
+              - text: Siteyi Görüntüle
+            - link " Ana Sayfa Ayarları" [ref=e49] [cursor=pointer]:
+              - /url: /Admin/AnaSayfa
+              - generic [ref=e50]: 
+              - text: Ana Sayfa Ayarları
+        - generic [ref=e51]:
+          - tablist "Ayar sekmeleri" [ref=e52]:
+            - button " Marka" [ref=e53] [cursor=pointer]:
+              - generic [ref=e54]: 
+              - text: Marka
+            - button " İletişim" [ref=e55] [cursor=pointer]:
+              - generic [ref=e56]: 
+              - text: İletişim
+            - button " Sosyal" [ref=e57] [cursor=pointer]:
+              - generic [ref=e58]: 
+              - text: Sosyal
+            - button " Satış" [ref=e59] [cursor=pointer]:
+              - generic [ref=e60]: 
+              - text: Satış
+            - button " SEO" [ref=e61] [cursor=pointer]:
+              - generic [ref=e62]: 
+              - text: SEO
+            - button " Mail" [ref=e63] [cursor=pointer]:
+              - generic [ref=e64]: 
+              - text: Mail
+            - button " Bakım" [ref=e65] [cursor=pointer]:
+              - generic [ref=e66]: 
+              - text: Bakım
+          - generic [ref=e67]:
+            - main [ref=e68]:
+              - generic [ref=e71]:
+                - generic [ref=e72]:
+                  - generic [ref=e73]: 
+                  - generic [ref=e74]:
+                    - heading "Marka ve Vitrin Bilgileri" [level=2] [ref=e75]
+                    - paragraph [ref=e76]: Logo, başlık, üst bar ve footer gibi müşterinin gördüğü temel alanlar.
+                - generic [ref=e77]:
+                  - generic [ref=e78]:
+                    - generic [ref=e79]: Site Adı *
+                    - textbox [ref=e80]: Canvasia
+                  - generic [ref=e81]:
+                    - generic [ref=e82]: Marka Adı
+                    - textbox [ref=e83]: Canvasia
+                  - generic [ref=e84]:
+                    - generic [ref=e85]: Site Başlığı
+                    - textbox [ref=e86]: Canvasia - Online Dekorasyon Mağazası
+                  - generic [ref=e87]:
+                    - generic [ref=e88]: Site Adresi
+                    - textbox "https://www.canvasia.com.tr" [ref=e89]
+                  - generic [ref=e90]:
+                    - generic [ref=e91]: Site Açıklaması
+                    - textbox [ref=e92]: Duvar dekorasyonu ve yaşam alanları için premium ürünler.
+                  - generic [ref=e93]:
+                    - generic [ref=e94]: Footer Açıklaması
+                    - textbox [ref=e95]: Premium duvar dekorasyonu ve özel tasarım ürünleri.
+                  - generic [ref=e96]:
+                    - generic [ref=e97]: Logo URL
+                    - textbox "/logo_svg.svg" [ref=e98]
+                  - generic [ref=e99]:
+                    - generic [ref=e100]: Favicon URL
+                    - textbox "/favicon.ico" [ref=e101]
+                  - generic [ref=e102]:
+                    - generic [ref=e103]: Tema Rengi
+                    - textbox "#313511" [ref=e104]
+                  - generic [ref=e105]:
+                    - generic [ref=e106]: Üst Bar Mesajı
+                    - textbox "500 TL üzeri ücretsiz kargo" [ref=e107]
+                  - generic [ref=e108]:
+                    - generic [ref=e109]: Kampanya Mesajı
+                    - textbox "Vade farksız 3 taksit" [ref=e110]
+              - text:        
+            - complementary [ref=e111]:
+              - generic [ref=e112]:
+                - heading "Bu Sayfa Neyi Etkiler?" [level=2] [ref=e114]
+                - list [ref=e116]:
+                  - listitem [ref=e117]:
+                    - generic [ref=e118]: 
+                    - generic [ref=e119]: Logo, marka adı, üst bar ve footer vitrinde görünür.
+                  - listitem [ref=e120]:
+                    - generic [ref=e121]: 
+                    - generic [ref=e122]: İletişim ve sosyal medya bilgileri footer, mail ve iletişim alanlarında kullanılır.
+                  - listitem [ref=e123]:
+                    - generic [ref=e124]: 
+                    - generic [ref=e125]: SEO alanları arama motorları ve sosyal paylaşım bilgilerini besler.
+                  - listitem [ref=e126]:
+                    - generic [ref=e127]: 
+                    - generic [ref=e128]: Mail bildirimleri sipariş ve operasyon süreçlerinde kullanılır.
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - generic [ref=e132]: 
+              - text: Değişiklikler kaydedildikten sonra sitede aktif olur.
+            - button " Tüm Ayarları Kaydet" [ref=e133] [cursor=pointer]:
+              - generic [ref=e134]: 
+              - text: Tüm Ayarları Kaydet
+    - contentinfo [ref=e135]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

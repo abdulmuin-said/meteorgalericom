@@ -1,0 +1,649 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Giriş Yap" [ref=e52] [cursor=pointer]:
+          - /url: /Hesap/GirisYap
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "0"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=e69]: 
+          - listitem [ref=e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=e72]: 
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=e75]: 
+          - listitem [ref=e76] [cursor=pointer]:
+            - link "Ayna " [ref=e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=e78]: 
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=e81]: 
+          - listitem [ref=e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=e84]: 
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=e87]: 
+          - listitem [ref=e88] [cursor=pointer]:
+            - link "Lightbox " [ref=e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=e90]: 
+          - listitem [ref=e91] [cursor=pointer]:
+            - link "Afiş " [ref=e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=e93]: 
+          - listitem [ref=e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=e96]:
+    - generic [ref=e98]:
+      - link "Ana Sayfa" [ref=e99] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e100]: /
+      - generic [ref=e101]: Tüm Koleksiyonlar
+    - generic [ref=e103]:
+      - complementary [ref=e104]:
+        - heading "Kategoriler" [level=3] [ref=e105]
+        - list [ref=e106]:
+          - listitem [ref=e107]:
+            - link "Tüm Koleksiyonlar (12054)" [ref=e108] [cursor=pointer]:
+              - /url: /Urun
+              - generic [ref=e109]: Tüm Koleksiyonlar
+              - generic [ref=e110]: (12054)
+          - listitem [ref=e111]:
+            - group [ref=e112]:
+              - generic "Kanvas Tablo (11988) " [ref=e113] [cursor=pointer]:
+                - generic [ref=e114]: Kanvas Tablo
+                - generic [ref=e115]:
+                  - text: (11988)
+                  - generic [ref=e116]: 
+          - listitem [ref=e117]:
+            - group [ref=e118]:
+              - generic "Cam Tablo (58) " [ref=e119] [cursor=pointer]:
+                - generic [ref=e120]: Cam Tablo
+                - generic [ref=e121]:
+                  - text: (58)
+                  - generic [ref=e122]: 
+          - listitem [ref=e123]:
+            - link "Duvar Kağıdı (0)" [ref=e124] [cursor=pointer]:
+              - /url: /Urun?k=31
+              - generic [ref=e125]: Duvar Kağıdı
+              - generic [ref=e126]: (0)
+          - listitem [ref=e127]:
+            - link "Cam Kesme Tahtası (7)" [ref=e128] [cursor=pointer]:
+              - /url: /Urun?k=32
+              - generic [ref=e129]: Cam Kesme Tahtası
+              - generic [ref=e130]: (7)
+          - listitem [ref=e131]:
+            - link "Ayna (1)" [ref=e132] [cursor=pointer]:
+              - /url: /Urun?k=33
+              - generic [ref=e133]: Ayna
+              - generic [ref=e134]: (1)
+          - listitem [ref=e135]:
+            - link "Baskılı Halı (0)" [ref=e136] [cursor=pointer]:
+              - /url: /Urun?k=34
+              - generic [ref=e137]: Baskılı Halı
+              - generic [ref=e138]: (0)
+          - listitem [ref=e139]:
+            - link "Ahşap Dekorasyon (0)" [ref=e140] [cursor=pointer]:
+              - /url: /Urun?k=35
+              - generic [ref=e141]: Ahşap Dekorasyon
+              - generic [ref=e142]: (0)
+          - listitem [ref=e143]:
+            - link "Mobilya Aksesuar (0)" [ref=e144] [cursor=pointer]:
+              - /url: /Urun?k=36
+              - generic [ref=e145]: Mobilya Aksesuar
+              - generic [ref=e146]: (0)
+          - listitem [ref=e147]:
+            - link "Lightbox (0)" [ref=e148] [cursor=pointer]:
+              - /url: /Urun?k=37
+              - generic [ref=e149]: Lightbox
+              - generic [ref=e150]: (0)
+          - listitem [ref=e151]:
+            - link "Afiş (0)" [ref=e152] [cursor=pointer]:
+              - /url: /Urun?k=38
+              - generic [ref=e153]: Afiş
+              - generic [ref=e154]: (0)
+        - heading "Fiyat Aralığı" [level=3] [ref=e155]
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - spinbutton [ref=e158]
+            - generic [ref=e159]: —
+            - spinbutton [ref=e160]
+          - button "Uygula" [ref=e161] [cursor=pointer]
+      - main [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e164]:
+            - heading "Tüm Koleksiyonlar" [level=1] [ref=e165]
+            - paragraph [ref=e166]: 12054 ürün listeleniyor
+          - combobox [ref=e168]:
+            - option "En Yeniler" [selected]
+            - 'option "Fiyat: Düşükten Yükseğe"'
+            - 'option "Fiyat: Yüksekten Düşüğe"'
+            - option "Çok Satanlar"
+        - generic [ref=e169]:
+          - generic [ref=e170]:
+            - link "Yeni Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e171] [cursor=pointer]:
+              - /url: /Urun/Detay/renkli-kokteyl-ve-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-12611
+              - generic [ref=e172]: Yeni
+              - img "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e173]
+            - button "" [ref=e174] [cursor=pointer]:
+              - generic [ref=e175]: 
+            - heading "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [level=3] [ref=e176]:
+              - link "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e177] [cursor=pointer]:
+                - /url: /Urun/Detay/renkli-kokteyl-ve-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-12611
+            - generic [ref=e179]: 208 TL
+          - generic [ref=e180]:
+            - link "Yeni Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e181] [cursor=pointer]:
+              - /url: /Urun/Detay/canli-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12610
+              - generic [ref=e182]: Yeni
+              - img "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e183]
+            - button "" [ref=e184] [cursor=pointer]:
+              - generic [ref=e185]: 
+            - heading "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e186]:
+              - link "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e187] [cursor=pointer]:
+                - /url: /Urun/Detay/canli-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12610
+            - generic [ref=e189]: 208 TL
+          - generic [ref=e190]:
+            - link "Yeni Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [ref=e191] [cursor=pointer]:
+              - /url: /Urun/Detay/renkli-tropikal-meyve-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-modern-mutfak-aksesuari-12609
+              - generic [ref=e192]: Yeni
+              - img "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [ref=e193]
+            - button "" [ref=e194] [cursor=pointer]:
+              - generic [ref=e195]: 
+            - heading "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [level=3] [ref=e196]:
+              - link "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [ref=e197] [cursor=pointer]:
+                - /url: /Urun/Detay/renkli-tropikal-meyve-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-modern-mutfak-aksesuari-12609
+            - generic [ref=e199]: 208 TL
+          - generic [ref=e200]:
+            - link "Yeni Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e201] [cursor=pointer]:
+              - /url: /Urun/Detay/gri-mermer-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12608
+              - generic [ref=e202]: Yeni
+              - img "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e203]
+            - button "" [ref=e204] [cursor=pointer]:
+              - generic [ref=e205]: 
+            - heading "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e206]:
+              - link "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e207] [cursor=pointer]:
+                - /url: /Urun/Detay/gri-mermer-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12608
+            - generic [ref=e209]: 208 TL
+          - generic [ref=e210]:
+            - link "Yeni Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [ref=e211] [cursor=pointer]:
+              - /url: /Urun/Detay/pastel-mavi-bej-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-sik-mutfak-aksesuari-12607
+              - generic [ref=e212]: Yeni
+              - img "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [ref=e213]
+            - button "" [ref=e214] [cursor=pointer]:
+              - generic [ref=e215]: 
+            - heading "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [level=3] [ref=e216]:
+              - link "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [ref=e217] [cursor=pointer]:
+                - /url: /Urun/Detay/pastel-mavi-bej-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-sik-mutfak-aksesuari-12607
+            - generic [ref=e219]: 208 TL
+          - generic [ref=e220]:
+            - link "Yeni Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e221] [cursor=pointer]:
+              - /url: /Urun/Detay/lila-mavi-altin-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12606
+              - generic [ref=e222]: Yeni
+              - img "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e223]
+            - button "" [ref=e224] [cursor=pointer]:
+              - generic [ref=e225]: 
+            - heading "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e226]:
+              - link "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e227] [cursor=pointer]:
+                - /url: /Urun/Detay/lila-mavi-altin-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12606
+            - generic [ref=e229]: 208 TL
+          - generic [ref=e230]:
+            - link "Yeni Ürgüp Uçan Balon Manzaralı Cam Tablo" [ref=e231] [cursor=pointer]:
+              - /url: /Urun/Detay/urgup-ucan-balon--12605
+              - generic [ref=e232]: Yeni
+              - img "Ürgüp Uçan Balon Manzaralı Cam Tablo" [ref=e233]
+            - button "" [ref=e234] [cursor=pointer]:
+              - generic [ref=e235]: 
+            - heading "Ürgüp Uçan Balon Manzaralı Cam Tablo" [level=3] [ref=e236]:
+              - link "Ürgüp Uçan Balon Manzaralı Cam Tablo" [ref=e237] [cursor=pointer]:
+                - /url: /Urun/Detay/urgup-ucan-balon--12605
+            - generic [ref=e238]:
+              - generic [ref=e239]: 236 TL
+              - generic [ref=e240]: 1.457 TL
+          - generic [ref=e241]:
+            - link "Yeni Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [ref=e242] [cursor=pointer]:
+              - /url: /Urun/Detay/temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-dayanikli-kaymaz-silikon-ayakli-sik-mutfak-sunumu-12604
+              - generic [ref=e243]: Yeni
+              - img "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [ref=e244]
+            - button "" [ref=e245] [cursor=pointer]:
+              - generic [ref=e246]: 
+            - heading "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [level=3] [ref=e247]:
+              - link "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [ref=e248] [cursor=pointer]:
+                - /url: /Urun/Detay/temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-dayanikli-kaymaz-silikon-ayakli-sik-mutfak-sunumu-12604
+            - generic [ref=e250]: 208 TL
+          - generic [ref=e251]:
+            - link "Yeni Kabe Cam Tablo" [ref=e252] [cursor=pointer]:
+              - /url: /Urun/Detay/kabe--12603
+              - generic [ref=e253]: Yeni
+              - img "Kabe Cam Tablo" [ref=e254]
+            - button "" [ref=e255] [cursor=pointer]:
+              - generic [ref=e256]: 
+            - heading "Kabe Cam Tablo" [level=3] [ref=e257]:
+              - link "Kabe Cam Tablo" [ref=e258] [cursor=pointer]:
+                - /url: /Urun/Detay/kabe--12603
+            - generic [ref=e259]:
+              - generic [ref=e260]: 236 TL
+              - generic [ref=e261]: 1.457 TL
+          - generic [ref=e262]:
+            - link "Yeni Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [ref=e263] [cursor=pointer]:
+              - /url: /Urun/Detay/altin-detayli-kugu-yatay-temperli-cam-tablo-luks-floral-duvar-sanati-modern-salon-dekoru-12602
+              - generic [ref=e264]: Yeni
+              - img "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [ref=e265]
+            - button "" [ref=e266] [cursor=pointer]:
+              - generic [ref=e267]: 
+            - heading "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [level=3] [ref=e268]:
+              - link "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [ref=e269] [cursor=pointer]:
+                - /url: /Urun/Detay/altin-detayli-kugu-yatay-temperli-cam-tablo-luks-floral-duvar-sanati-modern-salon-dekoru-12602
+            - generic [ref=e270]:
+              - generic [ref=e271]: 670 TL
+              - generic [ref=e272]: 2.849 TL
+          - generic [ref=e273]:
+            - link "Yeni Çiçekler Arasında Tavus Kuşu Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [ref=e274] [cursor=pointer]:
+              - /url: /Urun/Detay/cicekler-arasinda-tavus-kusu-temperli-cam-tablo-zarif-ve-luks-cam-duvar-sanati-12601
+              - generic [ref=e275]: Yeni
+              - img "Çiçekler Arasında Tavus Kuşu Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [ref=e276]
+            - button "" [ref=e277] [cursor=pointer]:
+              - generic [ref=e278]: 
+            - heading "Çiçekler Arasında Tavus Kuşu Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [level=3] [ref=e279]:
+              - link "Çiçekler Arasında Tavus Kuşu Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [ref=e280] [cursor=pointer]:
+                - /url: /Urun/Detay/cicekler-arasinda-tavus-kusu-temperli-cam-tablo-zarif-ve-luks-cam-duvar-sanati-12601
+            - generic [ref=e281]:
+              - generic [ref=e282]: 670 TL
+              - generic [ref=e283]: 2.849 TL
+          - generic [ref=e284]:
+            - link "Yeni Altın Güneşli Yaşam Ağacı Temperli Cam Tablo | Modern ve Anlamlı Cam Duvar Sanatı" [ref=e285] [cursor=pointer]:
+              - /url: /Urun/Detay/altin-gunesli-yasam-agaci-temperli-cam-tablo-modern-ve-anlamli-cam-duvar-sanati-12600
+              - generic [ref=e286]: Yeni
+              - img "Altın Güneşli Yaşam Ağacı Temperli Cam Tablo | Modern ve Anlamlı Cam Duvar Sanatı" [ref=e287]
+            - button "" [ref=e288] [cursor=pointer]:
+              - generic [ref=e289]: 
+            - heading "Altın Güneşli Yaşam Ağacı Temperli Cam Tablo | Modern ve Anlamlı Cam Duvar Sanatı" [level=3] [ref=e290]:
+              - link "Altın Güneşli Yaşam Ağacı Temperli Cam Tablo | Modern ve Anlamlı Cam Duvar Sanatı" [ref=e291] [cursor=pointer]:
+                - /url: /Urun/Detay/altin-gunesli-yasam-agaci-temperli-cam-tablo-modern-ve-anlamli-cam-duvar-sanati-12600
+            - generic [ref=e292]:
+              - generic [ref=e293]: 670 TL
+              - generic [ref=e294]: 2.849 TL
+          - generic [ref=e295]:
+            - link "Yeni Kış Manzaralı Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Huzur Veren Cam Duvar Sanatı" [ref=e296] [cursor=pointer]:
+              - /url: /Urun/Detay/kis-manzarali-beyaz-cicekler-temperli-cam-tablo-zarif-ve-huzur-veren-cam-duvar-sanati-12599
+              - generic [ref=e297]: Yeni
+              - img "Kış Manzaralı Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Huzur Veren Cam Duvar Sanatı" [ref=e298]
+            - button "" [ref=e299] [cursor=pointer]:
+              - generic [ref=e300]: 
+            - heading "Kış Manzaralı Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Huzur Veren Cam Duvar Sanatı" [level=3] [ref=e301]:
+              - link "Kış Manzaralı Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Huzur Veren Cam Duvar Sanatı" [ref=e302] [cursor=pointer]:
+                - /url: /Urun/Detay/kis-manzarali-beyaz-cicekler-temperli-cam-tablo-zarif-ve-huzur-veren-cam-duvar-sanati-12599
+            - generic [ref=e303]:
+              - generic [ref=e304]: 670 TL
+              - generic [ref=e305]: 2.849 TL
+          - generic [ref=e306]:
+            - link "Yeni Altın Dokunuşlu Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [ref=e307] [cursor=pointer]:
+              - /url: /Urun/Detay/altin-dokunuslu-beyaz-cicekler-temperli-cam-tablo-zarif-ve-luks-cam-duvar-sanati-12598
+              - generic [ref=e308]: Yeni
+              - img "Altın Dokunuşlu Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [ref=e309]
+            - button "" [ref=e310] [cursor=pointer]:
+              - generic [ref=e311]: 
+            - heading "Altın Dokunuşlu Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [level=3] [ref=e312]:
+              - link "Altın Dokunuşlu Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [ref=e313] [cursor=pointer]:
+                - /url: /Urun/Detay/altin-dokunuslu-beyaz-cicekler-temperli-cam-tablo-zarif-ve-luks-cam-duvar-sanati-12598
+            - generic [ref=e314]:
+              - generic [ref=e315]: 670 TL
+              - generic [ref=e316]: 2.849 TL
+          - generic [ref=e317]:
+            - link "Yeni Altın Doku Görünümlü Mavi Ağaç Temperli Cam Tablo | Modern ve Lüks Cam Duvar Sanatı" [ref=e318] [cursor=pointer]:
+              - /url: /Urun/Detay/altin-doku-gorunumlu-mavi-agac-temperli-cam-tablo-modern-ve-luks-cam-duvar-sanati-12597
+              - generic [ref=e319]: Yeni
+              - img "Altın Doku Görünümlü Mavi Ağaç Temperli Cam Tablo | Modern ve Lüks Cam Duvar Sanatı" [ref=e320]
+            - button "" [ref=e321] [cursor=pointer]:
+              - generic [ref=e322]: 
+            - heading "Altın Doku Görünümlü Mavi Ağaç Temperli Cam Tablo | Modern ve Lüks Cam Duvar Sanatı" [level=3] [ref=e323]:
+              - link "Altın Doku Görünümlü Mavi Ağaç Temperli Cam Tablo | Modern ve Lüks Cam Duvar Sanatı" [ref=e324] [cursor=pointer]:
+                - /url: /Urun/Detay/altin-doku-gorunumlu-mavi-agac-temperli-cam-tablo-modern-ve-luks-cam-duvar-sanati-12597
+            - generic [ref=e325]:
+              - generic [ref=e326]: 670 TL
+              - generic [ref=e327]: 2.849 TL
+          - generic [ref=e328]:
+            - link "Yeni Renkli Akdeniz Kasabası Temperli Cam Tablo | Sanatsal ve Canlı Cam Duvar Dekoru" [ref=e329] [cursor=pointer]:
+              - /url: /Urun/Detay/renkli-akdeniz-kasabasi-temperli-cam-tablo-sanatsal-ve-canli-cam-duvar-dekoru-12596
+              - generic [ref=e330]: Yeni
+              - img "Renkli Akdeniz Kasabası Temperli Cam Tablo | Sanatsal ve Canlı Cam Duvar Dekoru" [ref=e331]
+            - button "" [ref=e332] [cursor=pointer]:
+              - generic [ref=e333]: 
+            - heading "Renkli Akdeniz Kasabası Temperli Cam Tablo | Sanatsal ve Canlı Cam Duvar Dekoru" [level=3] [ref=e334]:
+              - link "Renkli Akdeniz Kasabası Temperli Cam Tablo | Sanatsal ve Canlı Cam Duvar Dekoru" [ref=e335] [cursor=pointer]:
+                - /url: /Urun/Detay/renkli-akdeniz-kasabasi-temperli-cam-tablo-sanatsal-ve-canli-cam-duvar-dekoru-12596
+            - generic [ref=e336]:
+              - generic [ref=e337]: 670 TL
+              - generic [ref=e338]: 2.849 TL
+          - generic [ref=e339]:
+            - link "Yeni Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e340] [cursor=pointer]:
+              - /url: /Urun/Detay/kisiye-ozel-instagram-tasarimli-duvar-aynasi-isimli-ve-fotografli-ayna-12595
+              - generic [ref=e341]: Yeni
+              - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna"
+            - button "" [ref=e342] [cursor=pointer]:
+              - generic [ref=e343]: 
+            - heading "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [level=3] [ref=e344]:
+              - link "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e345] [cursor=pointer]:
+                - /url: /Urun/Detay/kisiye-ozel-instagram-tasarimli-duvar-aynasi-isimli-ve-fotografli-ayna-12595
+            - generic [ref=e346]:
+              - generic [ref=e347]: 1.400 TL
+              - generic [ref=e348]: 1.500 TL
+          - generic [ref=e349]:
+            - link "Yeni Monokrom Beyaz Çiçekler Temperli Cam Tablo | Modern Klasik ve Lüks Cam Duvar Sanatı" [ref=e350] [cursor=pointer]:
+              - /url: /Urun/Detay/monokrom-beyaz-cicekler-temperli-cam-tablo-modern-klasik-ve-luks-cam-duvar-sanati-12594
+              - generic [ref=e351]: Yeni
+              - img "Monokrom Beyaz Çiçekler Temperli Cam Tablo | Modern Klasik ve Lüks Cam Duvar Sanatı"
+            - button "" [ref=e352] [cursor=pointer]:
+              - generic [ref=e353]: 
+            - heading "Monokrom Beyaz Çiçekler Temperli Cam Tablo | Modern Klasik ve Lüks Cam Duvar Sanatı" [level=3] [ref=e354]:
+              - link "Monokrom Beyaz Çiçekler Temperli Cam Tablo | Modern Klasik ve Lüks Cam Duvar Sanatı" [ref=e355] [cursor=pointer]:
+                - /url: /Urun/Detay/monokrom-beyaz-cicekler-temperli-cam-tablo-modern-klasik-ve-luks-cam-duvar-sanati-12594
+            - generic [ref=e356]:
+              - generic [ref=e357]: 670 TL
+              - generic [ref=e358]: 2.849 TL
+          - generic [ref=e359]:
+            - link "Yeni Çok Renkli Yapraklı Yaşam Ağacı Yatay Dekoratif Tablo | Modern ve Enerjik Duvar Sanatı" [ref=e360] [cursor=pointer]:
+              - /url: /Urun/Detay/cok-renkli-yaprakli-yasam-agaci-yatay-dekoratif-tablo-modern-ve-enerjik-duvar-sanati-12593
+              - generic [ref=e361]: Yeni
+              - img "Çok Renkli Yapraklı Yaşam Ağacı Yatay Dekoratif Tablo | Modern ve Enerjik Duvar Sanatı"
+            - button "" [ref=e362] [cursor=pointer]:
+              - generic [ref=e363]: 
+            - heading "Çok Renkli Yapraklı Yaşam Ağacı Yatay Dekoratif Tablo | Modern ve Enerjik Duvar Sanatı" [level=3] [ref=e364]:
+              - link "Çok Renkli Yapraklı Yaşam Ağacı Yatay Dekoratif Tablo | Modern ve Enerjik Duvar Sanatı" [ref=e365] [cursor=pointer]:
+                - /url: /Urun/Detay/cok-renkli-yaprakli-yasam-agaci-yatay-dekoratif-tablo-modern-ve-enerjik-duvar-sanati-12593
+            - generic [ref=e366]:
+              - generic [ref=e367]: 670 TL
+              - generic [ref=e368]: 2.849 TL
+          - generic [ref=e369]:
+            - link "Yeni Altın Detaylı Çiçekli Ağaç Yatay Dekoratif Tablo | Modern ve Zarif Duvar Sanatı" [ref=e370] [cursor=pointer]:
+              - /url: /Urun/Detay/altin-detayli-cicekli-agac-yatay-dekoratif-tablo-modern-ve-zarif-duvar-sanati-12592
+              - generic [ref=e371]: Yeni
+              - img "Altın Detaylı Çiçekli Ağaç Yatay Dekoratif Tablo | Modern ve Zarif Duvar Sanatı"
+            - button "" [ref=e372] [cursor=pointer]:
+              - generic [ref=e373]: 
+            - heading "Altın Detaylı Çiçekli Ağaç Yatay Dekoratif Tablo | Modern ve Zarif Duvar Sanatı" [level=3] [ref=e374]:
+              - link "Altın Detaylı Çiçekli Ağaç Yatay Dekoratif Tablo | Modern ve Zarif Duvar Sanatı" [ref=e375] [cursor=pointer]:
+                - /url: /Urun/Detay/altin-detayli-cicekli-agac-yatay-dekoratif-tablo-modern-ve-zarif-duvar-sanati-12592
+            - generic [ref=e376]:
+              - generic [ref=e377]: 670 TL
+              - generic [ref=e378]: 2.849 TL
+          - generic [ref=e379]:
+            - link "Yeni Altın Detaylı Beyaz Çiçekler Yatay Dekoratif Tablo | Zarif ve Lüks Duvar Sanatı" [ref=e380] [cursor=pointer]:
+              - /url: /Urun/Detay/altin-detayli-beyaz-cicekler-yatay-dekoratif-tablo-zarif-ve-luks-duvar-sanati-12591
+              - generic [ref=e381]: Yeni
+              - img "Altın Detaylı Beyaz Çiçekler Yatay Dekoratif Tablo | Zarif ve Lüks Duvar Sanatı"
+            - button "" [ref=e382] [cursor=pointer]:
+              - generic [ref=e383]: 
+            - heading "Altın Detaylı Beyaz Çiçekler Yatay Dekoratif Tablo | Zarif ve Lüks Duvar Sanatı" [level=3] [ref=e384]:
+              - link "Altın Detaylı Beyaz Çiçekler Yatay Dekoratif Tablo | Zarif ve Lüks Duvar Sanatı" [ref=e385] [cursor=pointer]:
+                - /url: /Urun/Detay/altin-detayli-beyaz-cicekler-yatay-dekoratif-tablo-zarif-ve-luks-duvar-sanati-12591
+            - generic [ref=e386]:
+              - generic [ref=e387]: 670 TL
+              - generic [ref=e388]: 2.849 TL
+          - generic [ref=e389]:
+            - link "Yeni Altın Tonlu Soyut Dağ Manzarası Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [ref=e390] [cursor=pointer]:
+              - /url: /Urun/Detay/altin-tonlu-soyut-dag-manzarasi-yatay-dekoratif-tablo-modern-ve-luks-duvar-sanati-12590
+              - generic [ref=e391]: Yeni
+              - img "Altın Tonlu Soyut Dağ Manzarası Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı"
+            - button "" [ref=e392] [cursor=pointer]:
+              - generic [ref=e393]: 
+            - heading "Altın Tonlu Soyut Dağ Manzarası Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [level=3] [ref=e394]:
+              - link "Altın Tonlu Soyut Dağ Manzarası Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [ref=e395] [cursor=pointer]:
+                - /url: /Urun/Detay/altin-tonlu-soyut-dag-manzarasi-yatay-dekoratif-tablo-modern-ve-luks-duvar-sanati-12590
+            - generic [ref=e396]:
+              - generic [ref=e397]: 670 TL
+              - generic [ref=e398]: 2.849 TL
+          - generic [ref=e399]:
+            - link "Yeni Mevsim Geçişli Çiçekli Ağaç Yatay Dekoratif Tablo | Modern ve Sanatsal Duvar Dekoru" [ref=e400] [cursor=pointer]:
+              - /url: /Urun/Detay/mevsim-gecisli-cicekli-agac-yatay-dekoratif-tablo-modern-ve-sanatsal-duvar-dekoru-12589
+              - generic [ref=e401]: Yeni
+              - img "Mevsim Geçişli Çiçekli Ağaç Yatay Dekoratif Tablo | Modern ve Sanatsal Duvar Dekoru"
+            - button "" [ref=e402] [cursor=pointer]:
+              - generic [ref=e403]: 
+            - heading "Mevsim Geçişli Çiçekli Ağaç Yatay Dekoratif Tablo | Modern ve Sanatsal Duvar Dekoru" [level=3] [ref=e404]:
+              - link "Mevsim Geçişli Çiçekli Ağaç Yatay Dekoratif Tablo | Modern ve Sanatsal Duvar Dekoru" [ref=e405] [cursor=pointer]:
+                - /url: /Urun/Detay/mevsim-gecisli-cicekli-agac-yatay-dekoratif-tablo-modern-ve-sanatsal-duvar-dekoru-12589
+            - generic [ref=e406]:
+              - generic [ref=e407]: 670 TL
+              - generic [ref=e408]: 2.849 TL
+          - generic [ref=e409]:
+            - link "Yeni Altın Yapraklı Ağaç Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [ref=e410] [cursor=pointer]:
+              - /url: /Urun/Detay/altin-yaprakli-agac-yatay-dekoratif-tablo-modern-ve-luks-duvar-sanati-12588
+              - generic [ref=e411]: Yeni
+              - img "Altın Yapraklı Ağaç Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı"
+            - button "" [ref=e412] [cursor=pointer]:
+              - generic [ref=e413]: 
+            - heading "Altın Yapraklı Ağaç Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [level=3] [ref=e414]:
+              - link "Altın Yapraklı Ağaç Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [ref=e415] [cursor=pointer]:
+                - /url: /Urun/Detay/altin-yaprakli-agac-yatay-dekoratif-tablo-modern-ve-luks-duvar-sanati-12588
+            - generic [ref=e416]:
+              - generic [ref=e417]: 670 TL
+              - generic [ref=e418]: 2.849 TL
+          - generic [ref=e419]:
+            - link "Yeni Pastel Mor Çiçekli Yatay Dekoratif Tablo | Modern ve Zarif Duvar Sanatı" [ref=e420] [cursor=pointer]:
+              - /url: /Urun/Detay/pastel-mor-cicekli-yatay-dekoratif-tablo-modern-ve-zarif-duvar-sanati-12587
+              - generic [ref=e421]: Yeni
+              - img "Pastel Mor Çiçekli Yatay Dekoratif Tablo | Modern ve Zarif Duvar Sanatı"
+            - button "" [ref=e422] [cursor=pointer]:
+              - generic [ref=e423]: 
+            - heading "Pastel Mor Çiçekli Yatay Dekoratif Tablo | Modern ve Zarif Duvar Sanatı" [level=3] [ref=e424]:
+              - link "Pastel Mor Çiçekli Yatay Dekoratif Tablo | Modern ve Zarif Duvar Sanatı" [ref=e425] [cursor=pointer]:
+                - /url: /Urun/Detay/pastel-mor-cicekli-yatay-dekoratif-tablo-modern-ve-zarif-duvar-sanati-12587
+            - generic [ref=e426]:
+              - generic [ref=e427]: 670 TL
+              - generic [ref=e428]: 2.849 TL
+          - generic [ref=e429]:
+            - link "Yeni Beyaz Gül Desenli Yatay Dekoratif Tablo | Zarif ve Modern Duvar Sanatı" [ref=e430] [cursor=pointer]:
+              - /url: /Urun/Detay/beyaz-gul-desenli-yatay-dekoratif-tablo-zarif-ve-modern-duvar-sanati-12586
+              - generic [ref=e431]: Yeni
+              - img "Beyaz Gül Desenli Yatay Dekoratif Tablo | Zarif ve Modern Duvar Sanatı"
+            - button "" [ref=e432] [cursor=pointer]:
+              - generic [ref=e433]: 
+            - heading "Beyaz Gül Desenli Yatay Dekoratif Tablo | Zarif ve Modern Duvar Sanatı" [level=3] [ref=e434]:
+              - link "Beyaz Gül Desenli Yatay Dekoratif Tablo | Zarif ve Modern Duvar Sanatı" [ref=e435] [cursor=pointer]:
+                - /url: /Urun/Detay/beyaz-gul-desenli-yatay-dekoratif-tablo-zarif-ve-modern-duvar-sanati-12586
+            - generic [ref=e436]:
+              - generic [ref=e437]: 670 TL
+              - generic [ref=e438]: 2.849 TL
+          - generic [ref=e439]:
+            - link "Yeni Lacivert Zemin Üzerinde Beyaz Çiçekler Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [ref=e440] [cursor=pointer]:
+              - /url: /Urun/Detay/lacivert-zemin-uzerinde-beyaz-cicekler-yatay-dekoratif-tablo-modern-ve-luks-duvar-sanati-12585
+              - generic [ref=e441]: Yeni
+              - img "Lacivert Zemin Üzerinde Beyaz Çiçekler Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [ref=e442]
+            - button "" [ref=e443] [cursor=pointer]:
+              - generic [ref=e444]: 
+            - heading "Lacivert Zemin Üzerinde Beyaz Çiçekler Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [level=3] [ref=e445]:
+              - link "Lacivert Zemin Üzerinde Beyaz Çiçekler Yatay Dekoratif Tablo | Modern ve Lüks Duvar Sanatı" [ref=e446] [cursor=pointer]:
+                - /url: /Urun/Detay/lacivert-zemin-uzerinde-beyaz-cicekler-yatay-dekoratif-tablo-modern-ve-luks-duvar-sanati-12585
+            - generic [ref=e447]:
+              - generic [ref=e448]: 670 TL
+              - generic [ref=e449]: 2.849 TL
+          - generic [ref=e450]:
+            - link "Yeni Osmanlı Arması Cam Tablo" [ref=e451] [cursor=pointer]:
+              - /url: /Urun/Detay/osmanli-armasi-cam-tablo-12584
+              - generic [ref=e452]: Yeni
+              - img "Osmanlı Arması Cam Tablo" [ref=e453]
+            - button "" [ref=e454] [cursor=pointer]:
+              - generic [ref=e455]: 
+            - heading "Osmanlı Arması Cam Tablo" [level=3] [ref=e456]:
+              - link "Osmanlı Arması Cam Tablo" [ref=e457] [cursor=pointer]:
+                - /url: /Urun/Detay/osmanli-armasi-cam-tablo-12584
+            - generic [ref=e458]:
+              - generic [ref=e459]: 236 TL
+              - generic [ref=e460]: 1.457 TL
+        - generic [ref=e461]:
+          - link "1" [ref=e462] [cursor=pointer]:
+            - /url: /Urun?sort=yeni&page=1
+          - link "2" [ref=e463] [cursor=pointer]:
+            - /url: /Urun?sort=yeni&page=2
+          - link "3" [ref=e464] [cursor=pointer]:
+            - /url: /Urun?sort=yeni&page=3
+          - link "" [ref=e465] [cursor=pointer]:
+            - /url: /Urun?sort=yeni&page=2
+            - generic [ref=e466]: 
+  - contentinfo [ref=e467]:
+    - generic [ref=e469]:
+      - generic [ref=e470]:
+        - generic [ref=e472]: 
+        - generic [ref=e473]:
+          - generic [ref=e474]: Tüm Türkiye'ye
+          - generic [ref=e475]: Ücretsiz Kargo
+      - generic [ref=e476]:
+        - generic [ref=e478]: 
+        - generic [ref=e479]:
+          - generic [ref=e480]: "%100 Güvenli Alışveriş"
+          - generic [ref=e481]: 256 Bit SSL Sertifikası
+      - generic [ref=e482]:
+        - generic [ref=e484]: 
+        - generic [ref=e485]:
+          - generic [ref=e486]: Tüm Kredi Kartlarına
+          - generic [ref=e487]: 12 Taksit İmkanı
+    - generic [ref=e488]:
+      - generic [ref=e489]:
+        - generic [ref=e490]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e491]
+          - paragraph [ref=e492]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e493]:
+            - textbox "E-posta Adresi" [ref=e494]
+            - button "ABONE OL" [ref=e495] [cursor=pointer]
+        - generic [ref=e496]:
+          - heading "KURUMSAL" [level=4] [ref=e497]
+          - list [ref=e498]:
+            - listitem [ref=e499]:
+              - link "Hakkımızda" [ref=e500] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e501]:
+              - link "İletişim" [ref=e502] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e503]:
+              - link "Koleksiyonlar" [ref=e504] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e505]:
+              - link "Gizlilik Politikası" [ref=e506] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e507]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e508] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e509]:
+            - link "Instagram" [ref=e510] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e511]: 
+            - link "WhatsApp" [ref=e512] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e513]: 
+      - generic [ref=e514]:
+        - paragraph [ref=e516]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e517]:
+          - link "Gizlilik Politikası" [ref=e518] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e519] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e520] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e523]
+  - link "WhatsApp ile iletişim" [ref=e524] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e525]
+    - generic [ref=e527]: WhatsApp

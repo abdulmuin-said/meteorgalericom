@@ -1,0 +1,398 @@
+@model KanvasProje.Core.Models.AdminDashboardViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Yönetim Paneli";
+    var chartLabelsJson = System.Text.Json.JsonSerializer.Serialize(Model.RevenueChartLabels);
+    var chartDataJson = System.Text.Json.JsonSerializer.Serialize(Model.RevenueChartValues);
+}
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Yönetim Paneli</h1>
+            <p class="ca-page-subtitle">Sipariş, stok ve trafik görünümünün tek ekrandaki özeti.</p>
+        </div>
+        <div class="ca-date-pill">
+            <i class="far fa-calendar-alt"></i> @DateTime.Now.ToString("dd MMMM yyyy, dddd")
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-xl-2 col-md-4 col-6">
+            <div class="ca-stat">
+                <div class="ca-stat-label">Toplam Ciro</div>
+                <div class="ca-stat-value ca-text-success">@Model.TotalRevenue.ToString("N2") <small>TL</small></div>
+                <div class="ca-stat-footer">Aylık: @Model.MonthlyRevenue.ToString("N2") TL</div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6">
+            <div class="ca-stat">
+                <div class="ca-stat-label">Bugünkü Ciro</div>
+                <div class="ca-stat-value ca-text-primary">@Model.DailyRevenue.ToString("N2") <small>TL</small></div>
+                <div class="ca-stat-footer">Haftalık: @Model.WeeklyRevenue.ToString("N2") TL</div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6">
+            <div class="ca-stat">
+                <div class="ca-stat-label">Toplam Sipariş</div>
+                <div class="ca-stat-value">@Model.TotalOrders</div>
+                <div class="ca-stat-footer">Bugün: @Model.TodayOrders sipariş</div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6">
+            <div class="ca-stat">
+                <div class="ca-stat-label">Bekleyen</div>
+                <div class="ca-stat-value ca-text-warning">@Model.PendingOrders</div>
+                <div class="ca-stat-footer">Kargoya hazır: @Model.ReadyToShipOrders</div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6">
+            <div class="ca-stat">
+                <div class="ca-stat-label">Kargoda / İade</div>
+                <div class="ca-stat-value ca-text-info">@Model.ShippedOrders / @Model.CancelledOrReturnedOrders</div>
+                <div class="ca-stat-footer">Operasyon özet durumu</div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6">
+            <div class="ca-stat">
+                <div class="ca-stat-label">Mesaj / Aktif Ürün</div>
+                <div class="ca-stat-value">@Model.UnreadContactCount / @Model.ActiveProductCount</div>
+                <div class="ca-stat-footer">Operasyon takibi</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="ca-card mb-4">
+                <div class="ca-card-header">
+                    <h3 class="ca-card-title"><i class="fas fa-chart-area me-2 ca-text-primary"></i>Son 7 Gün Gelir Grafiği</h3>
+                </div>
+                <div class="ca-card-body">
+                    <div class="ca-chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ca-card mb-4">
+                <div class="ca-card-header">
+                    <h3 class="ca-card-title"><i class="fas fa-bolt me-2 ca-text-warning"></i>Hızlı İşlemler</h3>
+                </div>
+                <div class="ca-card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3 col-6">
+                            <a href="/Admin/Urun/Ekle" class="text-decoration-none">
+                                <div class="ca-quick-action">
+                                    <div class="ca-quick-icon ca-text-primary"><i class="fas fa-plus-circle"></i></div>
+                                    <div class="ca-quick-label">Ürün Ekle</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <a href="/Admin/Siparis" class="text-decoration-none">
+                                <div class="ca-quick-action">
+                                    <div class="ca-quick-icon ca-text-success"><i class="fas fa-box"></i></div>
+                                    <div class="ca-quick-label">Siparişler</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <a href="/Admin/UrunOzellik" class="text-decoration-none">
+                                <div class="ca-quick-action">
+                                    <div class="ca-quick-icon ca-text-info"><i class="fas fa-sliders-h"></i></div>
+                                    <div class="ca-quick-label">Özellik Alanları</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <a href="/Admin/Iletisim" class="text-decoration-none">
+                                <div class="ca-quick-action">
+                                    <div class="ca-quick-icon ca-text-warning"><i class="fas fa-inbox"></i></div>
+                                    <div class="ca-quick-label">İletişim Kutusu</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="ca-card h-100">
+                        <div class="ca-card-header">
+                            <h3 class="ca-card-title"><i class="fas fa-fire me-2 ca-text-danger"></i>En Çok Satanlar</h3>
+                        </div>
+                        <div class="ca-card-body p-0">
+                            @if (Model.TopSellingProducts.Any())
+                            {
+                                <div class="list-group list-group-flush">
+                                    @foreach (var item in Model.TopSellingProducts)
+                                    {
+                                        <a href="/Admin/Urun/Duzenle/@item.ProductId" class="list-group-item list-group-item-action d-flex align-items-center gap-3">
+                                            <img src="@item.ProductImageUrl" alt="@item.ProductName" width="48" height="48" loading="lazy" decoding="async" style="object-fit:cover; border-radius:12px; background:#f7f7f7;">
+                                            <div class="flex-grow-1">
+                                                <div class="fw-semibold">@item.ProductName</div>
+                                                <div class="small text-muted">@item.AmountLabel</div>
+                                            </div>
+                                            <i class="fas fa-chevron-right small text-muted"></i>
+                                        </a>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="ca-empty" style="padding:32px;">
+                                    <i class="fas fa-box-open"></i>
+                                    <p>Henüz satış verisi yok.</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ca-card h-100">
+                        <div class="ca-card-header">
+                            <h3 class="ca-card-title"><i class="fas fa-eye me-2 ca-text-primary"></i>En Çok Görüntülenenler</h3>
+                        </div>
+                        <div class="ca-card-body p-0">
+                            @if (Model.MostViewedProducts.Any())
+                            {
+                                <div class="list-group list-group-flush">
+                                    @foreach (var item in Model.MostViewedProducts)
+                                    {
+                                        <a href="/Admin/Urun/Duzenle/@item.ProductId" class="list-group-item list-group-item-action d-flex align-items-center gap-3">
+                                            <img src="@item.ProductImageUrl" alt="@item.ProductName" width="48" height="48" loading="lazy" decoding="async" style="object-fit:cover; border-radius:12px; background:#f7f7f7;">
+                                            <div class="flex-grow-1">
+                                                <div class="fw-semibold">@item.ProductName</div>
+                                                <div class="small text-muted">@item.AmountLabel</div>
+                                            </div>
+                                            <i class="fas fa-chevron-right small text-muted"></i>
+                                        </a>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="ca-empty" style="padding:32px;">
+                                    <i class="fas fa-chart-line"></i>
+                                    <p>Görüntülenme verisi yok.</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-1">
+                <div class="col-md-6">
+                    <div class="ca-card h-100">
+                        <div class="ca-card-header">
+                            <h3 class="ca-card-title"><i class="fas fa-box-open me-2 ca-text-success"></i>Son Eklenen Ürünler</h3>
+                        </div>
+                        <div class="ca-card-body p-0">
+                            <div class="list-group list-group-flush">
+                                @foreach (var item in Model.RecentProducts)
+                                {
+                                    <a href="/Admin/Urun/Duzenle/@item.Id" class="list-group-item list-group-item-action">
+                                        <div class="fw-semibold">@item.Title</div>
+                                        <div class="small text-muted">@item.Subtitle</div>
+                                        <div class="small text-muted mt-1">@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</div>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ca-card h-100">
+                        <div class="ca-card-header">
+                            <h3 class="ca-card-title"><i class="fas fa-comments me-2 ca-text-warning"></i>Son Müşteri Yorumları</h3>
+                        </div>
+                        <div class="ca-card-body p-0">
+                            @if (Model.RecentReviews.Any())
+                            {
+                                <div class="list-group list-group-flush">
+                                    @foreach (var item in Model.RecentReviews.Take(5))
+                                    {
+                                        <a href="/Admin/Yorum" class="list-group-item list-group-item-action">
+                                            <div class="d-flex justify-content-between gap-3">
+                                                <div class="fw-semibold">@item.CustomerName</div>
+                                                <span class="badge @(item.Approved ? "text-bg-success" : "text-bg-warning")">@(item.Approved ? "Onaylı" : "Bekliyor")</span>
+                                            </div>
+                                            <div class="small text-muted">@item.ProductName | @item.Rating / 5</div>
+                                            <div class="small mt-1">@(item.Comment.Length > 90 ? item.Comment[..90] + "..." : item.Comment)</div>
+                                        </a>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="ca-empty" style="padding:32px;">
+                                    <i class="fas fa-comment-slash"></i>
+                                    <p>Henüz yorum yok.</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="ca-card mb-4">
+                <div class="ca-card-header">
+                    <h3 class="ca-card-title"><i class="fas fa-triangle-exclamation me-2 ca-text-warning"></i>Sistem Uyarıları</h3>
+                </div>
+                <div class="ca-card-body">
+                    @if (Model.Alerts.Any())
+                    {
+                        foreach (var alert in Model.Alerts)
+                        {
+                            var alertClass = alert.Severity switch
+                            {
+                                "danger" => "alert-danger",
+                                "warning" => "alert-warning",
+                                "secondary" => "alert-secondary",
+                                _ => "alert-info"
+                            };
+                            <div class="alert @alertClass mb-3">
+                                <div class="fw-semibold">@alert.Title</div>
+                                <div class="small">@alert.Description</div>
+                                <a href="@alert.Link" class="small fw-semibold text-decoration-none">Detaya Git</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="alert alert-success mb-0">
+                            Kritik sistem uyarısı bulunmuyor.
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="ca-card mb-4">
+                <div class="ca-card-header">
+                    <h3 class="ca-card-title"><i class="fas fa-route me-2 ca-text-primary"></i>Operasyon Özeti</h3>
+                </div>
+                <div class="ca-card-body">
+                    <div class="d-flex justify-content-between mb-3"><span>Bekleyen sipariş</span><strong>@Model.PendingOrders</strong></div>
+                    <div class="d-flex justify-content-between mb-3"><span>Kargoya hazır</span><strong>@Model.ReadyToShipOrders</strong></div>
+                    <div class="d-flex justify-content-between mb-3"><span>Kargoda</span><strong>@Model.ShippedOrders</strong></div>
+                    <div class="d-flex justify-content-between"><span>İptal / İade</span><strong>@Model.CancelledOrReturnedOrders</strong></div>
+                </div>
+            </div>
+
+            <div class="ca-card mb-4">
+                <div class="ca-card-header">
+                    <h3 class="ca-card-title"><i class="fas fa-signal me-2 ca-text-success"></i>Trafik Alanı</h3>
+                </div>
+                <div class="ca-card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Son 7 gün ziyaret</span>
+                        <strong>@Model.TotalVisitsLast7Days</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Tekil ziyaretçi</span>
+                        <strong>@Model.UniqueVisitorsLast7Days</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ca-card">
+                <div class="ca-card-header">
+                    <h3 class="ca-card-title"><i class="fas fa-bell me-2 ca-text-warning"></i>Son Aktiviteler</h3>
+                </div>
+                <div class="ca-card-body p-0">
+                    @if (Model.RecentActivities.Any())
+                    {
+                        foreach (var item in Model.RecentActivities)
+                        {
+                            var iconClass = item.Type switch
+                            {
+                                "Siparis" => "fas fa-shopping-cart ca-text-success",
+                                "Mesaj" => "fas fa-envelope ca-text-warning",
+                                _ => "fas fa-box-open ca-text-primary"
+                            };
+                            <div class="ca-activity-item">
+                                <div class="ca-activity-icon">
+                                    <i class="@iconClass"></i>
+                                </div>
+                                <div>
+                                    <div class="ca-activity-title">@item.Title</div>
+                                    <div class="ca-activity-desc">@item.Detail</div>
+                                </div>
+                                <span class="ca-activity-time">@item.OccurredAt.ToString("HH:mm")</span>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="ca-empty" style="padding:32px;">
+                            <i class="fas fa-inbox"></i>
+                            <p>Henüz bir aktivite yok.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    const chartCanvas = document.getElementById('revenueChart');
+    if (chartCanvas) {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const gridColor = isDark ? 'rgba(255,255,255,.08)' : 'rgba(15,23,42,.08)';
+        const textColor = isDark ? '#94a3b8' : '#64748b';
+        const chartLabels = @Html.Raw(chartLabelsJson);
+        const chartData = @Html.Raw(chartDataJson);
+
+        new Chart(chartCanvas, {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Gelir (TL)',
+                    data: chartData,
+                    borderColor: '#ff6b35',
+                    backgroundColor: 'rgba(255,107,53,.12)',
+                    fill: true,
+                    tension: .35,
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: '#ff6b35',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { color: gridColor },
+                        ticks: { color: textColor }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: gridColor },
+                        ticks: {
+                            color: textColor,
+                            callback: function(value) { return value + ' TL'; }
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
+}

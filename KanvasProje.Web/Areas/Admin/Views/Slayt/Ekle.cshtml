@@ -1,0 +1,231 @@
+@model KanvasProje.Core.Varliklar.Slayt
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Yeni Slayt Ekle";
+    var currentTur = Model.Tur;
+    var isVideoTur = currentTur == "Video";
+}
+
+<div class="container-fluid">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Yeni Slayt Ekle</h1>
+            <p class="ca-page-subtitle">Ana sayfa slider'ına yeni resim veya video slayt ekleyin.</p>
+        </div>
+        <div>
+            <a href="@Url.Action("Index", "Slayt")" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-1"></i> Slayt Listesine Dön
+            </a>
+        </div>
+    </div>
+
+    <div class="alert alert-info mb-3">
+        <div class="d-flex align-items-start gap-2">
+            <i class="fas fa-info-circle mt-1"></i>
+            <div>
+                <strong>Slider Boyutları:</strong>
+                <ul class="mb-0 mt-1 small">
+                    <li><strong>Resim:</strong> En az 1920x700 px (yüksek kaliteli için 3840x1400 px önerilir). JPG, PNG veya WEBP formatında yükleyin.</li>
+                    <li><strong>Video:</strong> MP4 formatı önerilir. Maksimum dosya boyutu: 50MB. Önerilen çözünürlük: 1920x700 veya üzeri.</li>
+                    <li>Dosyalar <code>/uploads/slider/</code> klasörüne kaydedilir ve sunucuda kalıcı olarak saklanır.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @if (TempData["Hata"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i> @TempData["Hata"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <form method="post" enctype="multipart/form-data" autocomplete="off">
+        @Html.AntiForgeryToken()
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <strong><i class="fas fa-exclamation-triangle me-2"></i> Lütfen aşağıdaki hataları düzeltin:</strong>
+                @Html.ValidationSummary(false, "", new { @class = "mb-0 mt-2" })
+            </div>
+        }
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <h3 class="ca-card-title"><i class="fas fa-edit me-2 ca-text-primary"></i>Slayt Bilgileri</h3>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Başlık <span class="text-danger">*</span></label>
+                            <input type="text" name="Baslik" value="@Model.Baslik" class="form-control" placeholder="Slayt başlığı" required />
+                            @Html.ValidationMessage("Baslik", "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Alt Başlık</label>
+                            <input type="text" name="AltBaslik" value="@Model.AltBaslik" class="form-control" placeholder="Alt başlık" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Açıklama</label>
+                            <textarea name="Aciklama" class="form-control" rows="2" placeholder="Kısa açıklama">@Model.Aciklama</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <h3 class="ca-card-title"><i class="fas fa-photo-video me-2 ca-text-primary"></i>Görsel / Video</h3>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Slayt Türü <span class="text-danger">*</span></label>
+                            <select name="Tur" id="turSelect" class="form-select" onchange="toggleMediaFields()">
+                                @Html.Raw("<option value=\"Resim\" " + (!isVideoTur ? "selected" : "") + ">Resim</option>")
+                                @Html.Raw("<option value=\"Video\" " + (isVideoTur ? "selected" : "") + ">Video</option>")
+                            </select>
+                        </div>
+
+                        <div id="resimYukleme" class="mb-3">
+                            <label class="form-label">Görsel Yükle</label>
+                            <input type="file" name="Resim" id="resimInput" class="form-control" accept="image/*" onchange="previewResim(this)" />
+                            @Html.ValidationMessage("Resim", "", new { @class = "text-danger small" })
+                            <div class="form-text">Desteklenen formatlar: JPG, PNG, WEBP. Maksimum dosya boyutu: 10MB.</div>
+                            <div id="resimOnizleme" class="mt-2 @(string.IsNullOrEmpty(Model.ResimUrl) ? "d-none" : "")">
+                                <img src="@Model.ResimUrl" id="resimPreviewImg" class="img-thumbnail" style="max-height:200px;" alt="Önizleme" />
+                            </div>
+                        </div>
+
+                        <div id="videoYukleme" class="@(isVideoTur ? "" : "d-none") mb-3">
+                            <label class="form-label">Video Dosyası Yükle</label>
+                            <input type="file" name="Video" id="videoInput" class="form-control" accept="video/mp4,video/webm" onchange="previewVideo(this)" />
+                            @Html.ValidationMessage("Video", "", new { @class = "text-danger small" })
+                            <div class="form-text">Desteklenen formatlar: MP4, WebM. Maksimum dosya boyutu: 50MB.</div>
+                            <div id="videoOnizleme" class="mt-2 @(string.IsNullOrEmpty(Model.VideoUrl) ? "d-none" : "")">
+                                <video src="@Model.VideoUrl" id="videoPreviewTag" controls style="max-height:200px;border-radius:8px;"></video>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">veya Görsel URL</label>
+                                <input type="url" name="ResimUrl" value="@Model.ResimUrl" class="form-control" placeholder="https://..." />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">veya Video URL</label>
+                                <input type="url" name="VideoUrl" value="@Model.VideoUrl" class="form-control" placeholder="https://..." />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <h3 class="ca-card-title"><i class="fas fa-cog me-2 ca-text-primary"></i>Ayarlar</h3>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Sıra</label>
+                            <input type="number" name="Sira" value="@Model.Sira" class="form-control" min="1" />
+                            <div class="form-text">Küçük numara = daha önce gösterilir.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" name="AktifMi" value="true" class="form-check-input" id="aktifMi" @(Model.AktifMi ? "checked" : "") />
+                                <label class="form-check-label" for="aktifMi">Aktif</label>
+                            </div>
+                            <div class="form-text">Pasif yapılırsa slider'da gösterilmez.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <h3 class="ca-card-title"><i class="fas fa-eye me-2 ca-text-primary"></i>Önizleme</h3>
+                    </div>
+                    <div class="ca-card-body">
+                        <div id="livePreview" class="bg-dark rounded p-2 text-center">
+                            @if (!string.IsNullOrEmpty(Model.ResimUrl))
+                            {
+                                <img src="@Model.ResimUrl" class="img-fluid rounded" style="max-height:150px;" alt="Önizleme" />
+                            }
+                            else if (!string.IsNullOrEmpty(Model.VideoUrl))
+                            {
+                                <video src="@Model.VideoUrl" controls style="max-height:150px;border-radius:8px;"></video>
+                            }
+                            else
+                            {
+                                <div class="text-muted py-4">
+                                    <i class="fas fa-image fa-2x mb-2"></i>
+                                    <div class="small">Görsel veya video yüklendiğinde önizleme görünür.</div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save me-1"></i> Kaydet
+            </button>
+            <a href="@Url.Action("Index", "Slayt")" class="btn btn-secondary ms-2">İptal</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+<script>
+function toggleMediaFields() {
+    var tur = document.getElementById('turSelect').value;
+    document.getElementById('resimYukleme').classList.toggle('d-none', tur === 'Video');
+    document.getElementById('videoYukleme').classList.toggle('d-none', tur === 'Resim');
+}
+
+function previewResim(input) {
+    var preview = document.getElementById('resimPreviewImg');
+    var container = document.getElementById('resimOnizleme');
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            container.classList.remove('d-none');
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function previewVideo(input) {
+    var preview = document.getElementById('videoPreviewTag');
+    var container = document.getElementById('videoOnizleme');
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            container.classList.remove('d-none');
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+document.querySelectorAll('input[name="Baslik"], input[name="ResimUrl"]').forEach(function(input) {
+    input.addEventListener('input', updatePreview);
+});
+
+function updatePreview() {
+    var baslik = document.querySelector('input[name="Baslik"]')?.value || '';
+    var url = document.querySelector('input[name="ResimUrl"]')?.value || '';
+    if (url) {
+        var preview = document.querySelector('#livePreview img');
+        if (preview) preview.src = url;
+    }
+}
+</script>
+}

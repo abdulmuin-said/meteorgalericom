@@ -1,0 +1,542 @@
+﻿@model List<KanvasProje.Core.Models.BultenListViewModel>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Bülten Aboneleri";
+
+    var durum = ViewBag.Durum is int d ? d : 1;
+    var search = ViewBag.Search as string ?? string.Empty;
+    var currentPage = ViewBag.Page is int p ? p : 1;
+    var pageSize = ViewBag.PageSize is int ps ? ps : 20;
+    var totalPages = ViewBag.TotalPages is int tp ? tp : 1;
+    var totalCount = ViewBag.TotalCount is int tc ? tc : 0;
+    var activeCount = ViewBag.ActiveCount is int ac ? ac : 0;
+    var passiveCount = ViewBag.PassiveCount is int pc ? pc : 0;
+    var todayCount = ViewBag.TodayCount is int td ? td : 0;
+
+    string StatusUrl(int targetStatus) => $"/Admin/Bulten?durum={targetStatus}&pageSize={pageSize}";
+    string PageUrl(int targetPage) => $"/Admin/Bulten?durum={durum}&q={Uri.EscapeDataString(search)}&page={targetPage}&pageSize={pageSize}";
+    string ExportUrl() => $"/Admin/Bulten/Export?durum={durum}&q={Uri.EscapeDataString(search)}";
+}
+
+<style>
+    .ca-newsletter-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    .ca-newsletter-stat {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .ca-newsletter-stat span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .82rem;
+        margin-bottom: 4px;
+    }
+
+    .ca-newsletter-stat strong {
+        font-size: 1.35rem;
+        color: var(--ca-text);
+    }
+
+    .ca-newsletter-stat i {
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--ca-primary-light);
+        color: var(--ca-primary);
+    }
+
+    .ca-newsletter-toolbar {
+        display: grid;
+        grid-template-columns: minmax(260px, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 16px;
+        border-bottom: 1px solid var(--ca-border);
+    }
+
+    .ca-newsletter-search {
+        position: relative;
+    }
+
+    .ca-newsletter-search i {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--ca-text-muted);
+    }
+
+    .ca-newsletter-search input {
+        padding-left: 40px;
+    }
+
+    .ca-email-cell {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 240px;
+    }
+
+    .ca-email-actions {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .ca-device-cell {
+        min-width: 220px;
+    }
+
+    .ca-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px;
+        border-top: 1px solid var(--ca-border);
+        flex-wrap: wrap;
+    }
+
+    .ca-mail-composer {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+
+    .ca-mail-preview {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .ca-mail-preview-header {
+        padding: 18px;
+        background: #1B2A4A;
+        color: #fff;
+        text-align: center;
+        font-family: Georgia, serif;
+        font-size: 1.35rem;
+    }
+
+    .ca-mail-preview-body {
+        padding: 22px;
+        color: var(--ca-text);
+        font-size: .92rem;
+        line-height: 1.65;
+    }
+
+    .ca-mail-preview-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 12px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: #1B2A4A;
+        color: #fff;
+        font-size: .75rem;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    @@media (max-width: 1100px) {
+        .ca-newsletter-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .ca-newsletter-toolbar {
+            grid-template-columns: 1fr;
+        }
+
+        .ca-mail-composer {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .ca-newsletter-stats {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Bülten Aboneleri</h1>
+            <p class="ca-page-subtitle">E-posta bültenine kayıtlı ziyaretçileri yönetin, filtreleyin ve Excel olarak dışa aktarın.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="@StatusUrl(1)" class="ca-btn @(durum == 1 ? "ca-btn-primary" : "ca-btn-outline")">
+                <i class="fas fa-circle-check"></i> Aktifler (@activeCount)
+            </a>
+            <a href="@StatusUrl(2)" class="ca-btn @(durum == 2 ? "ca-btn-primary" : "ca-btn-outline")">
+                <i class="fas fa-user-slash"></i> Pasifler (@passiveCount)
+            </a>
+            <a href="@StatusUrl(0)" class="ca-btn @(durum == 0 ? "ca-btn-primary" : "ca-btn-outline")">
+                <i class="fas fa-list"></i> Tümü
+            </a>
+        </div>
+    </div>
+
+    <div class="ca-newsletter-stats">
+        <div class="ca-newsletter-stat">
+            <div><span>Aktif Abone</span><strong>@activeCount</strong></div>
+            <i class="fas fa-envelope-circle-check"></i>
+        </div>
+        <div class="ca-newsletter-stat">
+            <div><span>Bugün Gelen</span><strong>@todayCount</strong></div>
+            <i class="fas fa-calendar-day"></i>
+        </div>
+        <div class="ca-newsletter-stat">
+            <div><span>Pasif</span><strong>@passiveCount</strong></div>
+            <i class="fas fa-user-clock"></i>
+        </div>
+        <div class="ca-newsletter-stat">
+            <div><span>Listelenen</span><strong>@totalCount</strong></div>
+            <i class="fas fa-filter"></i>
+        </div>
+    </div>
+
+    <div class="ca-mail-composer">
+        <div class="ca-card">
+            <div class="ca-card-body">
+                <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap mb-3">
+                    <div>
+                        <h2 class="h5 mb-1" style="color:var(--ca-text); font-weight:800;">Bülten Maili Gönder</h2>
+                        <p class="ca-text-muted mb-0">Mesajı düzenleyin, önizleyin ve aktif abonelere toplu gönderin.</p>
+                    </div>
+                    <span class="ca-badge ca-badge-success">@activeCount aktif abone</span>
+                </div>
+                <form id="newsletterMailForm" action="/Admin/Bulten/TopluMailGonder" method="post" onsubmit="return confirm('Bülten maili seçilen hedef kitleye gönderilecek. Devam edilsin mi?');">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="durum" value="@durum" />
+                    <input type="hidden" name="q" value="@search" />
+                    <input type="hidden" name="page" value="@currentPage" />
+                    <input type="hidden" name="pageSize" value="@pageSize" />
+                    <div id="selectedMailIds"></div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="ca-label">Hedef Kitle</label>
+                            <select class="ca-input" name="hedef" id="newsletterTarget">
+                                <option value="aktif">Tüm aktif aboneler</option>
+                                <option value="filtre">Mevcut filtredeki aktif aboneler</option>
+                                <option value="secili">Tablodan seçili aboneler</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="ca-label">Mail Başlığı</label>
+                            <input class="ca-input" name="baslik" id="newsletterSubject" maxlength="140" required value="METEORGALERİ’da yaşam alanınızı yenileyecek seçili tablolar" />
+                        </div>
+                        <div class="col-12">
+                            <label class="ca-label">Mesaj İçeriği</label>
+                            <textarea class="ca-textarea" name="icerik" id="newsletterContent" rows="6" required>METEORGALERİ koleksiyonunda evinizin atmosferini değiştirecek özel kanvas tablo, cam tablo ve çok parçalı tablo seçeneklerini sizin için öne çıkardık.
+
+Salon, ofis, yatak odası ve hediye seçimleri için en çok beğenilen tasarımları keşfedebilir; güvenli ödeme ve özenli paketleme avantajıyla siparişinizi kolayca oluşturabilirsiniz.
+
+Yeni sezonun dikkat çeken dekorasyon ürünlerini incelemek için mağazamızı ziyaret edin.</textarea>
+                        </div>
+                        <div class="col-md-7">
+                            <label class="ca-label">Buton Linki</label>
+                            <input class="ca-input" name="butonLink" id="newsletterButtonLink" placeholder="https://www.METEORGALERİ.com.tr/Urun" value="/Urun" />
+                        </div>
+                        <div class="col-md-5">
+                            <label class="ca-label">Buton Yazısı</label>
+                            <input class="ca-input" name="butonYazi" id="newsletterButtonText" maxlength="40" value="Koleksiyonu İncele" />
+                        </div>
+                    </div>
+                    <div class="mt-3 d-flex justify-content-end">
+                        <button type="submit" class="ca-btn ca-btn-primary">
+                            <i class="fas fa-paper-plane"></i> Toplu Mail Gönder
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="ca-mail-preview">
+            <div class="ca-mail-preview-header">METEORGALERİ</div>
+            <div class="ca-mail-preview-body">
+                <h3 id="newsletterPreviewSubject" style="font-family:Georgia,serif; color:#1B2A4A; margin-bottom:14px;">METEORGALERİ’da yaşam alanınızı yenileyecek seçili tablolar</h3>
+                <div id="newsletterPreviewContent"></div>
+                <span id="newsletterPreviewButton" class="ca-mail-preview-button">Koleksiyonu İncele</span>
+            </div>
+        </div>
+    </div>
+
+    <form id="bulkPassiveForm" action="/Admin/Bulten/TopluPasifYap" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="durum" value="@durum" />
+        <input type="hidden" name="q" value="@search" />
+        <input type="hidden" name="page" value="@currentPage" />
+        <input type="hidden" name="pageSize" value="@pageSize" />
+    </form>
+
+    <div class="ca-card">
+        <div class="ca-newsletter-toolbar">
+            <form action="/Admin/Bulten" method="get" class="ca-newsletter-search">
+                <i class="fas fa-search"></i>
+                <input type="hidden" name="durum" value="@durum" />
+                <input type="hidden" name="pageSize" value="@pageSize" />
+                <input class="ca-input" type="search" name="q" value="@search" placeholder="E-posta veya IP adresi içinde ara" />
+            </form>
+            <div class="d-flex gap-2 flex-wrap justify-content-end">
+                <button type="submit" form="bulkPassiveForm" class="ca-btn ca-btn-outline">
+                    <i class="fas fa-user-slash"></i> Seçilenleri Pasif Yap
+                </button>
+                <a href="@ExportUrl()" class="ca-btn ca-btn-success">
+                    <i class="fas fa-file-excel"></i> Excel İndir
+                </a>
+            </div>
+        </div>
+
+        <div class="ca-table-wrapper">
+            <table class="ca-table">
+                <thead>
+                    <tr>
+                        <th class="ps-4" style="width:44px;">
+                            <input type="checkbox" class="form-check-input" data-select-all-subscribers />
+                        </th>
+                        <th>Tarih</th>
+                        <th>E-Posta</th>
+                        <th>Durum</th>
+                        <th>IP Adresi</th>
+                        <th>Lokasyon</th>
+                        <th>Cihaz Bilgisi</th>
+                        <th class="text-end pe-4">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="ps-4">
+                                <input type="checkbox" class="form-check-input" name="aboneIds" value="@item.Id" form="bulkPassiveForm" data-subscriber-checkbox />
+                            </td>
+                            <td class="ca-text-muted" style="font-size:.85rem;">@item.KayitTarihi.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>
+                                <div class="ca-email-cell">
+                                    <a href="mailto:@item.Email" class="ca-fw-bold" style="text-decoration:none; color:var(--ca-text);">@item.Email</a>
+                                    <div class="ca-email-actions">
+                                        <button type="button" class="btn btn-sm btn-light border" data-copy-email="@item.Email">
+                                            <i class="fas fa-copy"></i> Kopyala
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                @if (item.AktifMi)
+                                {
+                                    <span class="ca-badge ca-badge-success">Aktif</span>
+                                }
+                                else
+                                {
+                                    <span class="ca-badge ca-badge-neutral">Pasif</span>
+                                }
+                            </td>
+                            <td><span class="ca-badge ca-badge-neutral">@item.IpAdresi</span></td>
+                            <td>
+                                @if (item.Ulke != "-")
+                                {
+                                    <div><i class="fas fa-city ca-text-primary me-1"></i> @item.Sehir</div>
+                                    <small class="ca-text-muted">@item.Ulke</small>
+                                }
+                                else
+                                {
+                                    <span class="ca-text-muted">-</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="ca-device-cell">
+                                    <span class="ca-fw-semi" style="font-size:.85rem;">
+                                        @if (item.IsletimSistemi.Contains("Windows"))
+                                        {
+                                            <i class="fab fa-windows ca-text-primary"></i>
+                                        }
+                                        else if (item.IsletimSistemi.Contains("Android"))
+                                        {
+                                            <i class="fab fa-android ca-text-success"></i>
+                                        }
+                                        else if (item.IsletimSistemi.Contains("iOS") || item.IsletimSistemi.Contains("Mac"))
+                                        {
+                                            <i class="fab fa-apple"></i>
+                                        }
+                                        @item.Cihaz
+                                    </span>
+                                    <div><small class="ca-text-muted">@item.Tarayici / @item.IsletimSistemi</small></div>
+                                </div>
+                            </td>
+                            <td class="text-end pe-4">
+                                @if (item.AktifMi)
+                                {
+                                    <form action="/Admin/Bulten/PasifYap" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <input type="hidden" name="durum" value="@durum" />
+                                        <input type="hidden" name="q" value="@search" />
+                                        <input type="hidden" name="page" value="@currentPage" />
+                                        <input type="hidden" name="pageSize" value="@pageSize" />
+                                        <button type="submit" class="ca-btn ca-btn-outline btn-sm">
+                                            <i class="fas fa-user-slash"></i> Pasif Yap
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form action="/Admin/Bulten/AktifYap" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <input type="hidden" name="durum" value="@durum" />
+                                        <input type="hidden" name="q" value="@search" />
+                                        <input type="hidden" name="page" value="@currentPage" />
+                                        <input type="hidden" name="pageSize" value="@pageSize" />
+                                        <button type="submit" class="ca-btn ca-btn-primary btn-sm">
+                                            <i class="fas fa-rotate-left"></i> Aktif Yap
+                                        </button>
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @if (Model.Count == 0)
+        {
+            <div class="ca-empty">
+                <i class="fas fa-envelope-open-text"></i>
+                <p>Bu filtreye uygun bülten abonesi bulunamadı.</p>
+            </div>
+        }
+
+        <div class="ca-pagination">
+            <div class="ca-text-muted">
+                Sayfa <strong>@currentPage</strong> / @totalPages - @totalCount kayıt
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <form action="/Admin/Bulten" method="get" class="d-flex align-items-center gap-2">
+                    <input type="hidden" name="durum" value="@durum" />
+                    <input type="hidden" name="q" value="@search" />
+                    <label class="ca-text-muted small">Sayfa başı</label>
+                    <select name="pageSize" class="ca-input" style="width:90px;" onchange="this.form.submit()">
+                        <option value="20" selected="@(pageSize == 20)">20</option>
+                        <option value="50" selected="@(pageSize == 50)">50</option>
+                        <option value="100" selected="@(pageSize == 100)">100</option>
+                    </select>
+                </form>
+                <a class="ca-btn ca-btn-outline @(currentPage <= 1 ? "disabled" : "")" href="@(currentPage <= 1 ? "#" : PageUrl(currentPage - 1))">
+                    <i class="fas fa-chevron-left"></i> Önceki
+                </a>
+                <a class="ca-btn ca-btn-outline @(currentPage >= totalPages ? "disabled" : "")" href="@(currentPage >= totalPages ? "#" : PageUrl(currentPage + 1))">
+                    Sonraki <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.querySelector('[data-select-all-subscribers]')?.addEventListener('change', function (event) {
+            document.querySelectorAll('[data-subscriber-checkbox]').forEach(function (checkbox) {
+                checkbox.checked = event.target.checked;
+            });
+        });
+
+        document.querySelectorAll('[data-copy-email]').forEach(function (button) {
+            button.addEventListener('click', async function () {
+                const email = button.getAttribute('data-copy-email');
+                try {
+                    await navigator.clipboard.writeText(email);
+                    if (window.showAdminToast) {
+                        window.showAdminToast('E-posta adresi kopyalandı.', 'success');
+                    } else if (window.showToast) {
+                        window.showToast('E-posta adresi kopyalandı.', 'success');
+                    }
+                } catch {
+                    if (window.showAdminToast) {
+                        window.showAdminToast('E-posta adresi kopyalanamadı.', 'error');
+                    } else if (window.showToast) {
+                        window.showToast('E-posta adresi kopyalanamadı.', 'error');
+                    }
+                }
+            });
+        });
+
+        const subjectInput = document.getElementById('newsletterSubject');
+        const contentInput = document.getElementById('newsletterContent');
+        const buttonTextInput = document.getElementById('newsletterButtonText');
+        const buttonLinkInput = document.getElementById('newsletterButtonLink');
+        const previewSubject = document.getElementById('newsletterPreviewSubject');
+        const previewContent = document.getElementById('newsletterPreviewContent');
+        const previewButton = document.getElementById('newsletterPreviewButton');
+        const newsletterForm = document.getElementById('newsletterMailForm');
+        const selectedMailIds = document.getElementById('selectedMailIds');
+
+        function updateNewsletterPreview() {
+            if (previewSubject) {
+                previewSubject.textContent = subjectInput?.value?.trim() || 'Bülten başlığı';
+            }
+
+            if (previewContent) {
+                const lines = (contentInput?.value || '')
+                    .split(/\r?\n/)
+                    .map(x => x.trim())
+                    .filter(Boolean);
+
+                previewContent.innerHTML = '';
+                lines.forEach(function (line) {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = line;
+                    previewContent.appendChild(paragraph);
+                });
+            }
+
+            if (previewButton) {
+                const buttonText = buttonTextInput?.value?.trim();
+                const buttonLink = buttonLinkInput?.value?.trim();
+                previewButton.textContent = buttonText || 'Siteyi İncele';
+                previewButton.style.display = buttonLink ? 'inline-flex' : 'none';
+            }
+        }
+
+        [subjectInput, contentInput, buttonTextInput, buttonLinkInput].forEach(function (input) {
+            input?.addEventListener('input', updateNewsletterPreview);
+        });
+
+        newsletterForm?.addEventListener('submit', function () {
+            if (!selectedMailIds) return;
+            selectedMailIds.innerHTML = '';
+            document.querySelectorAll('[data-subscriber-checkbox]:checked').forEach(function (checkbox) {
+                const hidden = document.createElement('input');
+                hidden.type = 'hidden';
+                hidden.name = 'mailAboneIds';
+                hidden.value = checkbox.value;
+                selectedMailIds.appendChild(hidden);
+            });
+        });
+
+        updateNewsletterPreview();
+    </script>
+}
+

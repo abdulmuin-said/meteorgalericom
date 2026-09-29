@@ -1,0 +1,802 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:      
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Sipariş Yönetimi" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Siparişleri operasyon, kargo ve müşteri bilgileriyle tek ekrandan takip edin.
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: 
+              - textbox "Sipariş no, müşteri, telefon veya e-posta ara" [ref=e47]
+            - button "" [ref=e48] [cursor=pointer]:
+              - generic [ref=e49]: 
+            - link " XLSX" [ref=e50] [cursor=pointer]:
+              - /url: /Admin/Siparis/ExcelExport
+              - generic [ref=e51]: 
+              - text: XLSX
+        - generic [ref=e52]:
+          - link "Tümü 50" [ref=e53] [cursor=pointer]:
+            - /url: /Admin/Siparis
+            - text: Tümü
+            - generic [ref=e54]: "50"
+          - link " Yeni 4" [ref=e55] [cursor=pointer]:
+            - /url: /Admin/Siparis?durum=0
+            - generic [ref=e56]: 
+            - text: Yeni
+            - generic [ref=e57]: "4"
+          - link " Hazırlanıyor 0" [ref=e58] [cursor=pointer]:
+            - /url: /Admin/Siparis?durum=1
+            - generic [ref=e59]: 
+            - text: Hazırlanıyor
+            - generic [ref=e60]: "0"
+          - link " Paketleniyor 0" [ref=e61] [cursor=pointer]:
+            - /url: /Admin/Siparis?durum=8
+            - generic [ref=e62]: 
+            - text: Paketleniyor
+            - generic [ref=e63]: "0"
+          - link " Kargoda 0" [ref=e64] [cursor=pointer]:
+            - /url: /Admin/Siparis?durum=2
+            - generic [ref=e65]: 
+            - text: Kargoda
+            - generic [ref=e66]: "0"
+          - link " Teslim 39" [ref=e67] [cursor=pointer]:
+            - /url: /Admin/Siparis?durum=3
+            - generic [ref=e68]: 
+            - text: Teslim
+            - generic [ref=e69]: "39"
+          - link " Fatura Yok 49" [ref=e70] [cursor=pointer]:
+            - /url: /Admin/Siparis?fatura=yuklenmemiş
+            - generic [ref=e71]: 
+            - text: Fatura Yok
+            - generic [ref=e72]: "49"
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]:
+              - button " Etiket Yazdır" [disabled]:
+                - generic: 
+                - text: Etiket Yazdır
+              - button " Kargoya Ver" [ref=e76] [cursor=pointer]:
+                - generic [ref=e77]: 
+                - text: Kargoya Ver
+              - button " Paketleniyor Yap" [ref=e78] [cursor=pointer]:
+                - generic [ref=e79]: 
+                - text: Paketleniyor Yap
+              - button " İptal Et" [ref=e80] [cursor=pointer]:
+                - generic [ref=e81]: 
+                - text: İptal Et
+              - generic [ref=e82]: Seçili sipariş yok.
+              - generic [ref=e83]: 50 sipariş içinde 20 kayıt gösteriliyor.
+            - generic [ref=e84]:
+              - generic [ref=e85]: Sayfa başına
+              - combobox [ref=e86]:
+                - option "20" [selected]
+                - option "50"
+                - option "100"
+          - table [ref=e88]:
+            - rowgroup [ref=e89]:
+              - row "Sipariş Müşteri Teslimat İçerik Tutar Durum / Kargo Fatura İşlemler Bu sayfadaki siparişleri seç" [ref=e90]:
+                - columnheader "Sipariş" [ref=e91]
+                - columnheader "Müşteri" [ref=e92]
+                - columnheader "Teslimat" [ref=e93]
+                - columnheader "İçerik" [ref=e94]
+                - columnheader "Tutar" [ref=e95]
+                - columnheader "Durum / Kargo" [ref=e96]
+                - columnheader "Fatura" [ref=e97]
+                - columnheader "İşlemler" [ref=e98]
+                - columnheader "Bu sayfadaki siparişleri seç" [ref=e99]:
+                  - checkbox "Bu sayfadaki siparişleri seç" [ref=e100]
+            - rowgroup [ref=e101]:
+              - 'row "20260510180820251367 ID: #52 10.05.2026 21:08 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 1 ürün / 1 adet Kupon: MERHABA20 (-339,80 TL) 1.359,20 TL  Sipariş Alındı Aras Kargo - takip no bekleniyor Yok  20260510180820251367 siparişini seç" [ref=e102]':
+                - 'cell "20260510180820251367 ID: #52 10.05.2026 21:08" [ref=e103]':
+                  - text: "20260510180820251367"
+                  - generic [ref=e104]: "ID: #52"
+                  - generic [ref=e105]: 10.05.2026 21:08
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e106]:
+                  - generic [ref=e107]:
+                    - generic [ref=e108]: A
+                    - generic [ref=e109]:
+                      - generic [ref=e110]: abdulmuin said
+                      - generic [ref=e111]: "05313919428"
+                      - generic [ref=e112]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e113]':
+                  - generic [ref=e114]: Kastamonu / merkez
+                  - generic [ref=e115]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - 'cell "1 ürün / 1 adet Kupon: MERHABA20 (-339,80 TL)" [ref=e116]':
+                  - generic [ref=e117]: 1 ürün / 1 adet
+                  - generic [ref=e118]: "Kupon: MERHABA20 (-339,80 TL)"
+                - cell "1.359,20 TL" [ref=e119]
+                - cell " Sipariş Alındı Aras Kargo - takip no bekleniyor" [ref=e120]:
+                  - generic [ref=e121]:
+                    - generic [ref=e122]: 
+                    - text: Sipariş Alındı
+                  - generic [ref=e123]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e124]:
+                  - generic [ref=e125]: Yok
+                - cell "" [ref=e126]:
+                  - generic [ref=e127]:
+                    - button "" [ref=e128] [cursor=pointer]:
+                      - generic [ref=e129]: 
+                    - text:   
+                - cell "20260510180820251367 siparişini seç" [ref=e130]:
+                  - checkbox "20260510180820251367 siparişini seç" [ref=e131]
+              - 'row "20260510150546953267 ID: #51 10.05.2026 18:05 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 1 ürün / 1 adet 1.699,00 TL  Sipariş Alındı Aras Kargo - takip no bekleniyor Yok  20260510150546953267 siparişini seç" [ref=e132]':
+                - 'cell "20260510150546953267 ID: #51 10.05.2026 18:05" [ref=e133]':
+                  - text: "20260510150546953267"
+                  - generic [ref=e134]: "ID: #51"
+                  - generic [ref=e135]: 10.05.2026 18:05
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e136]:
+                  - generic [ref=e137]:
+                    - generic [ref=e138]: A
+                    - generic [ref=e139]:
+                      - generic [ref=e140]: abdulmuin said
+                      - generic [ref=e141]: "05313919428"
+                      - generic [ref=e142]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e143]':
+                  - generic [ref=e144]: Kastamonu / merkez
+                  - generic [ref=e145]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "1 ürün / 1 adet" [ref=e146]:
+                  - generic [ref=e147]: 1 ürün / 1 adet
+                - cell "1.699,00 TL" [ref=e148]
+                - cell " Sipariş Alındı Aras Kargo - takip no bekleniyor" [ref=e149]:
+                  - generic [ref=e150]:
+                    - generic [ref=e151]: 
+                    - text: Sipariş Alındı
+                  - generic [ref=e152]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e153]:
+                  - generic [ref=e154]: Yok
+                - cell "" [ref=e155]:
+                  - generic [ref=e156]:
+                    - button "" [ref=e157] [cursor=pointer]:
+                      - generic [ref=e158]: 
+                    - text:   
+                - cell "20260510150546953267 siparişini seç" [ref=e159]:
+                  - checkbox "20260510150546953267 siparişini seç" [ref=e160]
+              - 'row "20260510144651462814 ID: #50 10.05.2026 17:46 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 1 ürün / 2 adet 1.998,00 TL  Sipariş Alındı Aras Kargo - takip no bekleniyor Yok  20260510144651462814 siparişini seç" [ref=e161]':
+                - 'cell "20260510144651462814 ID: #50 10.05.2026 17:46" [ref=e162]':
+                  - text: "20260510144651462814"
+                  - generic [ref=e163]: "ID: #50"
+                  - generic [ref=e164]: 10.05.2026 17:46
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e165]:
+                  - generic [ref=e166]:
+                    - generic [ref=e167]: A
+                    - generic [ref=e168]:
+                      - generic [ref=e169]: abdulmuin said
+                      - generic [ref=e170]: "05313919428"
+                      - generic [ref=e171]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e172]':
+                  - generic [ref=e173]: Kastamonu / merkez
+                  - generic [ref=e174]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "1 ürün / 2 adet" [ref=e175]:
+                  - generic [ref=e176]: 1 ürün / 2 adet
+                - cell "1.998,00 TL" [ref=e177]
+                - cell " Sipariş Alındı Aras Kargo - takip no bekleniyor" [ref=e178]:
+                  - generic [ref=e179]:
+                    - generic [ref=e180]: 
+                    - text: Sipariş Alındı
+                  - generic [ref=e181]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e182]:
+                  - generic [ref=e183]: Yok
+                - cell "" [ref=e184]:
+                  - generic [ref=e185]:
+                    - button "" [ref=e186] [cursor=pointer]:
+                      - generic [ref=e187]: 
+                    - text:   
+                - cell "20260510144651462814 siparişini seç" [ref=e188]:
+                  - checkbox "20260510144651462814 siparişini seç" [ref=e189]
+              - 'row "20260510092353669690 ID: #49 10.05.2026 12:23 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 3 ürün / 3 adet 4.283,00 TL  Sipariş Alındı Aras Kargo - takip no bekleniyor Yok  20260510092353669690 siparişini seç" [ref=e190]':
+                - 'cell "20260510092353669690 ID: #49 10.05.2026 12:23" [ref=e191]':
+                  - text: "20260510092353669690"
+                  - generic [ref=e192]: "ID: #49"
+                  - generic [ref=e193]: 10.05.2026 12:23
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e194]:
+                  - generic [ref=e195]:
+                    - generic [ref=e196]: A
+                    - generic [ref=e197]:
+                      - generic [ref=e198]: abdulmuin said
+                      - generic [ref=e199]: "05313919428"
+                      - generic [ref=e200]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e201]':
+                  - generic [ref=e202]: Kastamonu / merkez
+                  - generic [ref=e203]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "3 ürün / 3 adet" [ref=e204]:
+                  - generic [ref=e205]: 3 ürün / 3 adet
+                - cell "4.283,00 TL" [ref=e206]
+                - cell " Sipariş Alındı Aras Kargo - takip no bekleniyor" [ref=e207]:
+                  - generic [ref=e208]:
+                    - generic [ref=e209]: 
+                    - text: Sipariş Alındı
+                  - generic [ref=e210]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e211]:
+                  - generic [ref=e212]: Yok
+                - cell "" [ref=e213]:
+                  - generic [ref=e214]:
+                    - button "" [ref=e215] [cursor=pointer]:
+                      - generic [ref=e216]: 
+                    - text:   
+                - cell "20260510092353669690 siparişini seç" [ref=e217]:
+                  - checkbox "20260510092353669690 siparişini seç" [ref=e218]
+              - 'row "20260509073632615170 ID: #48 09.05.2026 10:36 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 1 ürün / 1 adet 1.642,00 TL  Teslim Edildi Aras Kargo - takip no bekleniyor  Var   20260509073632615170 siparişini seç" [ref=e219]':
+                - 'cell "20260509073632615170 ID: #48 09.05.2026 10:36" [ref=e220]':
+                  - text: "20260509073632615170"
+                  - generic [ref=e221]: "ID: #48"
+                  - generic [ref=e222]: 09.05.2026 10:36
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e223]:
+                  - generic [ref=e224]:
+                    - generic [ref=e225]: A
+                    - generic [ref=e226]:
+                      - generic [ref=e227]: abdulmuin said
+                      - generic [ref=e228]: "05313919428"
+                      - generic [ref=e229]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e230]':
+                  - generic [ref=e231]: Kastamonu / merkez
+                  - generic [ref=e232]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "1 ürün / 1 adet" [ref=e233]:
+                  - generic [ref=e234]: 1 ürün / 1 adet
+                - cell "1.642,00 TL" [ref=e235]
+                - cell " Teslim Edildi Aras Kargo - takip no bekleniyor" [ref=e236]:
+                  - generic [ref=e237]:
+                    - generic [ref=e238]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e239]: Aras Kargo - takip no bekleniyor
+                - cell " Var " [ref=e240]:
+                  - generic [ref=e241]:
+                    - generic [ref=e242]: 
+                    - text: Var
+                  - link "" [ref=e244] [cursor=pointer]:
+                    - /url: /Admin/Siparis/FaturaIndir/48
+                    - generic [ref=e245]: 
+                - cell "" [ref=e246]:
+                  - generic [ref=e247]:
+                    - button "" [ref=e248] [cursor=pointer]:
+                      - generic [ref=e249]: 
+                    - text:  
+                - cell "20260509073632615170 siparişini seç" [ref=e250]:
+                  - checkbox "20260509073632615170 siparişini seç" [ref=e251]
+              - 'row "20260508180106844 ID: #47 08.05.2026 21:01 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 1 ürün / 2 adet 3.598,00 TL  Teslim Edildi Aras Kargo - takip no bekleniyor Yok  20260508180106844 siparişini seç" [ref=e252]':
+                - 'cell "20260508180106844 ID: #47 08.05.2026 21:01" [ref=e253]':
+                  - text: "20260508180106844"
+                  - generic [ref=e254]: "ID: #47"
+                  - generic [ref=e255]: 08.05.2026 21:01
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e256]:
+                  - generic [ref=e257]:
+                    - generic [ref=e258]: A
+                    - generic [ref=e259]:
+                      - generic [ref=e260]: abdulmuin said
+                      - generic [ref=e261]: "05313919428"
+                      - generic [ref=e262]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e263]':
+                  - generic [ref=e264]: Kastamonu / merkez
+                  - generic [ref=e265]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "1 ürün / 2 adet" [ref=e266]:
+                  - generic [ref=e267]: 1 ürün / 2 adet
+                - cell "3.598,00 TL" [ref=e268]
+                - cell " Teslim Edildi Aras Kargo - takip no bekleniyor" [ref=e269]:
+                  - generic [ref=e270]:
+                    - generic [ref=e271]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e272]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e273]:
+                  - generic [ref=e274]: Yok
+                - cell "" [ref=e275]:
+                  - generic [ref=e276]:
+                    - button "" [ref=e277] [cursor=pointer]:
+                      - generic [ref=e278]: 
+                    - text:  
+                - cell "20260508180106844 siparişini seç" [ref=e279]:
+                  - checkbox "20260508180106844 siparişini seç" [ref=e280]
+              - 'row "20260506200723171 ID: #45 06.05.2026 23:07 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 2 ürün / 2 adet 2.798,00 TL  İptal / İade Aras Kargo - takip no bekleniyor Yok  20260506200723171 siparişini seç" [ref=e281]':
+                - 'cell "20260506200723171 ID: #45 06.05.2026 23:07" [ref=e282]':
+                  - text: "20260506200723171"
+                  - generic [ref=e283]: "ID: #45"
+                  - generic [ref=e284]: 06.05.2026 23:07
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e285]:
+                  - generic [ref=e286]:
+                    - generic [ref=e287]: A
+                    - generic [ref=e288]:
+                      - generic [ref=e289]: abdulmuin said
+                      - generic [ref=e290]: "05313919428"
+                      - generic [ref=e291]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e292]':
+                  - generic [ref=e293]: Kastamonu / merkez
+                  - generic [ref=e294]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "2 ürün / 2 adet" [ref=e295]:
+                  - generic [ref=e296]: 2 ürün / 2 adet
+                - cell "2.798,00 TL" [ref=e297]
+                - cell " İptal / İade Aras Kargo - takip no bekleniyor" [ref=e298]:
+                  - generic [ref=e299]:
+                    - generic [ref=e300]: 
+                    - text: İptal / İade
+                  - generic [ref=e301]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e302]:
+                  - generic [ref=e303]: Yok
+                - cell "" [ref=e304]:
+                  - generic [ref=e305]:
+                    - button "" [ref=e306] [cursor=pointer]:
+                      - generic [ref=e307]: 
+                    - text:  
+                - cell "20260506200723171 siparişini seç" [ref=e308]:
+                  - checkbox "20260506200723171 siparişini seç" [ref=e309]
+              - 'row "20260504224632173 ID: #44 05.05.2026 01:46 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 1 ürün / 1 adet 1.799,00 TL  İptal / İade Aras Kargo - takip no bekleniyor Yok  20260504224632173 siparişini seç" [ref=e310]':
+                - 'cell "20260504224632173 ID: #44 05.05.2026 01:46" [ref=e311]':
+                  - text: "20260504224632173"
+                  - generic [ref=e312]: "ID: #44"
+                  - generic [ref=e313]: 05.05.2026 01:46
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e314]:
+                  - generic [ref=e315]:
+                    - generic [ref=e316]: A
+                    - generic [ref=e317]:
+                      - generic [ref=e318]: abdulmuin said
+                      - generic [ref=e319]: "05313919428"
+                      - generic [ref=e320]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e321]':
+                  - generic [ref=e322]: Kastamonu / merkez
+                  - generic [ref=e323]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "1 ürün / 1 adet" [ref=e324]:
+                  - generic [ref=e325]: 1 ürün / 1 adet
+                - cell "1.799,00 TL" [ref=e326]
+                - cell " İptal / İade Aras Kargo - takip no bekleniyor" [ref=e327]:
+                  - generic [ref=e328]:
+                    - generic [ref=e329]: 
+                    - text: İptal / İade
+                  - generic [ref=e330]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e331]:
+                  - generic [ref=e332]: Yok
+                - cell "" [ref=e333]:
+                  - generic [ref=e334]:
+                    - button "" [ref=e335] [cursor=pointer]:
+                      - generic [ref=e336]: 
+                    - text:  
+                - cell "20260504224632173 siparişini seç" [ref=e337]:
+                  - checkbox "20260504224632173 siparişini seç" [ref=e338]
+              - 'row "20260504193234725 ID: #43 04.05.2026 22:32 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 1 ürün / 2 adet 6.966,38 TL  İptal / İade Aras Kargo - takip no bekleniyor Yok  20260504193234725 siparişini seç" [ref=e339]':
+                - 'cell "20260504193234725 ID: #43 04.05.2026 22:32" [ref=e340]':
+                  - text: "20260504193234725"
+                  - generic [ref=e341]: "ID: #43"
+                  - generic [ref=e342]: 04.05.2026 22:32
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e343]:
+                  - generic [ref=e344]:
+                    - generic [ref=e345]: A
+                    - generic [ref=e346]:
+                      - generic [ref=e347]: abdulmuin said
+                      - generic [ref=e348]: "05313919428"
+                      - generic [ref=e349]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e350]':
+                  - generic [ref=e351]: Kastamonu / merkez
+                  - generic [ref=e352]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "1 ürün / 2 adet" [ref=e353]:
+                  - generic [ref=e354]: 1 ürün / 2 adet
+                - cell "6.966,38 TL" [ref=e355]
+                - cell " İptal / İade Aras Kargo - takip no bekleniyor" [ref=e356]:
+                  - generic [ref=e357]:
+                    - generic [ref=e358]: 
+                    - text: İptal / İade
+                  - generic [ref=e359]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e360]:
+                  - generic [ref=e361]: Yok
+                - cell "" [ref=e362]:
+                  - generic [ref=e363]:
+                    - button "" [ref=e364] [cursor=pointer]:
+                      - generic [ref=e365]: 
+                    - text:   
+                - cell "20260504193234725 siparişini seç" [ref=e366]:
+                  - checkbox "20260504193234725 siparişini seç" [ref=e367]
+              - 'row "20260504141958907 ID: #42 04.05.2026 17:19 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 1 ürün / 2 adet 4.758,00 TL  Teslim Edildi Aras Kargo - takip no bekleniyor Yok  20260504141958907 siparişini seç" [ref=e368]':
+                - 'cell "20260504141958907 ID: #42 04.05.2026 17:19" [ref=e369]':
+                  - text: "20260504141958907"
+                  - generic [ref=e370]: "ID: #42"
+                  - generic [ref=e371]: 04.05.2026 17:19
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e372]:
+                  - generic [ref=e373]:
+                    - generic [ref=e374]: A
+                    - generic [ref=e375]:
+                      - generic [ref=e376]: abdulmuin said
+                      - generic [ref=e377]: "05313919428"
+                      - generic [ref=e378]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e379]':
+                  - generic [ref=e380]: Kastamonu / merkez
+                  - generic [ref=e381]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "1 ürün / 2 adet" [ref=e382]:
+                  - generic [ref=e383]: 1 ürün / 2 adet
+                - cell "4.758,00 TL" [ref=e384]
+                - cell " Teslim Edildi Aras Kargo - takip no bekleniyor" [ref=e385]:
+                  - generic [ref=e386]:
+                    - generic [ref=e387]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e388]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e389]:
+                  - generic [ref=e390]: Yok
+                - cell "" [ref=e391]:
+                  - generic [ref=e392]:
+                    - button "" [ref=e393] [cursor=pointer]:
+                      - generic [ref=e394]: 
+                    - text:  
+                - cell "20260504141958907 siparişini seç" [ref=e395]:
+                  - checkbox "20260504141958907 siparişini seç" [ref=e396]
+              - 'row "20260425214601159 ID: #41 26.04.2026 00:46 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez 2 ürün / 5 adet 8.218,15 TL  Teslim Edildi Aras Kargo - takip no bekleniyor Yok  20260425214601159 siparişini seç" [ref=e397]':
+                - 'cell "20260425214601159 ID: #41 26.04.2026 00:46" [ref=e398]':
+                  - text: "20260425214601159"
+                  - generic [ref=e399]: "ID: #41"
+                  - generic [ref=e400]: 26.04.2026 00:46
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e401]:
+                  - generic [ref=e402]:
+                    - generic [ref=e403]: A
+                    - generic [ref=e404]:
+                      - generic [ref=e405]: abdulmuin said
+                      - generic [ref=e406]: "05313919428"
+                      - generic [ref=e407]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e408]':
+                  - generic [ref=e409]: Kastamonu / merkez
+                  - generic [ref=e410]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "2 ürün / 5 adet" [ref=e411]:
+                  - generic [ref=e412]: 2 ürün / 5 adet
+                - cell "8.218,15 TL" [ref=e413]
+                - cell " Teslim Edildi Aras Kargo - takip no bekleniyor" [ref=e414]:
+                  - generic [ref=e415]:
+                    - generic [ref=e416]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e417]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e418]:
+                  - generic [ref=e419]: Yok
+                - cell "" [ref=e420]:
+                  - generic [ref=e421]:
+                    - button "" [ref=e422] [cursor=pointer]:
+                      - generic [ref=e423]: 
+                    - text:  
+                - cell "20260425214601159 siparişini seç" [ref=e424]:
+                  - checkbox "20260425214601159 siparişini seç" [ref=e425]
+              - 'row "20260424235920287 ID: #40 25.04.2026 02:59 A abdulmuin said 05313919428 abdulmuinsaid255@gmail.com Iğdır / merkez ığdır merkez 2 ürün / 4 adet 6.574,52 TL  Teslim Edildi Aras Kargo - takip no bekleniyor Yok  20260424235920287 siparişini seç" [ref=e426]':
+                - 'cell "20260424235920287 ID: #40 25.04.2026 02:59" [ref=e427]':
+                  - text: "20260424235920287"
+                  - generic [ref=e428]: "ID: #40"
+                  - generic [ref=e429]: 25.04.2026 02:59
+                - cell "A abdulmuin said 05313919428 abdulmuinsaid255@gmail.com" [ref=e430]:
+                  - generic [ref=e431]:
+                    - generic [ref=e432]: A
+                    - generic [ref=e433]:
+                      - generic [ref=e434]: abdulmuin said
+                      - generic [ref=e435]: "05313919428"
+                      - generic [ref=e436]: abdulmuinsaid255@gmail.com
+                - cell "Iğdır / merkez ığdır merkez" [ref=e437]:
+                  - generic [ref=e438]: Iğdır / merkez
+                  - generic [ref=e439]: ığdır merkez
+                - cell "2 ürün / 4 adet" [ref=e440]:
+                  - generic [ref=e441]: 2 ürün / 4 adet
+                - cell "6.574,52 TL" [ref=e442]
+                - cell " Teslim Edildi Aras Kargo - takip no bekleniyor" [ref=e443]:
+                  - generic [ref=e444]:
+                    - generic [ref=e445]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e446]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e447]:
+                  - generic [ref=e448]: Yok
+                - cell "" [ref=e449]:
+                  - generic [ref=e450]:
+                    - button "" [ref=e451] [cursor=pointer]:
+                      - generic [ref=e452]: 
+                    - text:  
+                - cell "20260424235920287 siparişini seç" [ref=e453]:
+                  - checkbox "20260424235920287 siparişini seç" [ref=e454]
+              - 'row "20260405172646649 ID: #39 05.04.2026 17:26 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez Ürün detayı yok 3.315,36 TL  Teslim Edildi Aras Kargo - takip no bekleniyor Yok  20260405172646649 siparişini seç" [ref=e455]':
+                - 'cell "20260405172646649 ID: #39 05.04.2026 17:26" [ref=e456]':
+                  - text: "20260405172646649"
+                  - generic [ref=e457]: "ID: #39"
+                  - generic [ref=e458]: 05.04.2026 17:26
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e459]:
+                  - generic [ref=e460]:
+                    - generic [ref=e461]: A
+                    - generic [ref=e462]:
+                      - generic [ref=e463]: abdulmuin said
+                      - generic [ref=e464]: "05313919428"
+                      - generic [ref=e465]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e466]':
+                  - generic [ref=e467]: Kastamonu / merkez
+                  - generic [ref=e468]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "Ürün detayı yok" [ref=e469]:
+                  - generic [ref=e470]: Ürün detayı yok
+                - cell "3.315,36 TL" [ref=e471]
+                - cell " Teslim Edildi Aras Kargo - takip no bekleniyor" [ref=e472]:
+                  - generic [ref=e473]:
+                    - generic [ref=e474]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e475]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e476]:
+                  - generic [ref=e477]: Yok
+                - cell "" [ref=e478]:
+                  - generic [ref=e479]:
+                    - button "" [ref=e480] [cursor=pointer]:
+                      - generic [ref=e481]: 
+                    - text:  
+                - cell "20260405172646649 siparişini seç" [ref=e482]:
+                  - checkbox "20260405172646649 siparişini seç" [ref=e483]
+              - 'row "20260223210623252 ID: #38 23.02.2026 21:06 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez Ürün detayı yok 1.671,73 TL  Teslim Edildi Aras Kargo - KP15151554525465655 Yok  20260223210623252 siparişini seç" [ref=e484]':
+                - 'cell "20260223210623252 ID: #38 23.02.2026 21:06" [ref=e485]':
+                  - text: "20260223210623252"
+                  - generic [ref=e486]: "ID: #38"
+                  - generic [ref=e487]: 23.02.2026 21:06
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e488]:
+                  - generic [ref=e489]:
+                    - generic [ref=e490]: A
+                    - generic [ref=e491]:
+                      - generic [ref=e492]: abdulmuin said
+                      - generic [ref=e493]: "05313919428"
+                      - generic [ref=e494]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e495]':
+                  - generic [ref=e496]: Kastamonu / merkez
+                  - generic [ref=e497]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "Ürün detayı yok" [ref=e498]:
+                  - generic [ref=e499]: Ürün detayı yok
+                - cell "1.671,73 TL" [ref=e500]
+                - cell " Teslim Edildi Aras Kargo - KP15151554525465655" [ref=e501]:
+                  - generic [ref=e502]:
+                    - generic [ref=e503]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e504]: Aras Kargo - KP15151554525465655
+                - cell "Yok" [ref=e505]:
+                  - generic [ref=e506]: Yok
+                - cell "" [ref=e507]:
+                  - generic [ref=e508]:
+                    - button "" [ref=e509] [cursor=pointer]:
+                      - generic [ref=e510]: 
+                    - text:  
+                - cell "20260223210623252 siparişini seç" [ref=e511]:
+                  - checkbox "20260223210623252 siparişini seç" [ref=e512]
+              - 'row "20260223195212853 ID: #37 23.02.2026 19:52 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez Ürün detayı yok 5.015,19 TL  İptal / İade Aras Kargo - takip no bekleniyor Yok  20260223195212853 siparişini seç" [ref=e513]':
+                - 'cell "20260223195212853 ID: #37 23.02.2026 19:52" [ref=e514]':
+                  - text: "20260223195212853"
+                  - generic [ref=e515]: "ID: #37"
+                  - generic [ref=e516]: 23.02.2026 19:52
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e517]:
+                  - generic [ref=e518]:
+                    - generic [ref=e519]: A
+                    - generic [ref=e520]:
+                      - generic [ref=e521]: abdulmuin said
+                      - generic [ref=e522]: "05313919428"
+                      - generic [ref=e523]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e524]':
+                  - generic [ref=e525]: Kastamonu / merkez
+                  - generic [ref=e526]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "Ürün detayı yok" [ref=e527]:
+                  - generic [ref=e528]: Ürün detayı yok
+                - cell "5.015,19 TL" [ref=e529]
+                - cell " İptal / İade Aras Kargo - takip no bekleniyor" [ref=e530]:
+                  - generic [ref=e531]:
+                    - generic [ref=e532]: 
+                    - text: İptal / İade
+                  - generic [ref=e533]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e534]:
+                  - generic [ref=e535]: Yok
+                - cell "" [ref=e536]:
+                  - generic [ref=e537]:
+                    - button "" [ref=e538] [cursor=pointer]:
+                      - generic [ref=e539]: 
+                    - text:  
+                - cell "20260223195212853 siparişini seç" [ref=e540]:
+                  - checkbox "20260223195212853 siparişini seç" [ref=e541]
+              - 'row "20260221165600398 ID: #36 21.02.2026 16:56 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez Ürün detayı yok 1.671,73 TL  İptal / İade Aras Kargo - takip no bekleniyor Yok  20260221165600398 siparişini seç" [ref=e542]':
+                - 'cell "20260221165600398 ID: #36 21.02.2026 16:56" [ref=e543]':
+                  - text: "20260221165600398"
+                  - generic [ref=e544]: "ID: #36"
+                  - generic [ref=e545]: 21.02.2026 16:56
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e546]:
+                  - generic [ref=e547]:
+                    - generic [ref=e548]: A
+                    - generic [ref=e549]:
+                      - generic [ref=e550]: abdulmuin said
+                      - generic [ref=e551]: "05313919428"
+                      - generic [ref=e552]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e553]':
+                  - generic [ref=e554]: Kastamonu / merkez
+                  - generic [ref=e555]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "Ürün detayı yok" [ref=e556]:
+                  - generic [ref=e557]: Ürün detayı yok
+                - cell "1.671,73 TL" [ref=e558]
+                - cell " İptal / İade Aras Kargo - takip no bekleniyor" [ref=e559]:
+                  - generic [ref=e560]:
+                    - generic [ref=e561]: 
+                    - text: İptal / İade
+                  - generic [ref=e562]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e563]:
+                  - generic [ref=e564]: Yok
+                - cell "" [ref=e565]:
+                  - generic [ref=e566]:
+                    - button "" [ref=e567] [cursor=pointer]:
+                      - generic [ref=e568]: 
+                    - text:  
+                - cell "20260221165600398 siparişini seç" [ref=e569]:
+                  - checkbox "20260221165600398 siparişini seç" [ref=e570]
+              - 'row "20260221163837800 ID: #35 21.02.2026 16:38 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez Ürün detayı yok 5.015,19 TL  Teslim Edildi Aras Kargo - KP15151554525465655 Yok  20260221163837800 siparişini seç" [ref=e571]':
+                - 'cell "20260221163837800 ID: #35 21.02.2026 16:38" [ref=e572]':
+                  - text: "20260221163837800"
+                  - generic [ref=e573]: "ID: #35"
+                  - generic [ref=e574]: 21.02.2026 16:38
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e575]:
+                  - generic [ref=e576]:
+                    - generic [ref=e577]: A
+                    - generic [ref=e578]:
+                      - generic [ref=e579]: abdulmuin said
+                      - generic [ref=e580]: "05313919428"
+                      - generic [ref=e581]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e582]':
+                  - generic [ref=e583]: Kastamonu / merkez
+                  - generic [ref=e584]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "Ürün detayı yok" [ref=e585]:
+                  - generic [ref=e586]: Ürün detayı yok
+                - cell "5.015,19 TL" [ref=e587]
+                - cell " Teslim Edildi Aras Kargo - KP15151554525465655" [ref=e588]:
+                  - generic [ref=e589]:
+                    - generic [ref=e590]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e591]: Aras Kargo - KP15151554525465655
+                - cell "Yok" [ref=e592]:
+                  - generic [ref=e593]: Yok
+                - cell "" [ref=e594]:
+                  - generic [ref=e595]:
+                    - button "" [ref=e596] [cursor=pointer]:
+                      - generic [ref=e597]: 
+                    - text:  
+                - cell "20260221163837800 siparişini seç" [ref=e598]:
+                  - checkbox "20260221163837800 siparişini seç" [ref=e599]
+              - 'row "20260215112427575 ID: #34 15.02.2026 11:24 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez Ürün detayı yok 1.671,73 TL  Teslim Edildi Aras Kargo - KP15151554525465655 Yok  20260215112427575 siparişini seç" [ref=e600]':
+                - 'cell "20260215112427575 ID: #34 15.02.2026 11:24" [ref=e601]':
+                  - text: "20260215112427575"
+                  - generic [ref=e602]: "ID: #34"
+                  - generic [ref=e603]: 15.02.2026 11:24
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e604]:
+                  - generic [ref=e605]:
+                    - generic [ref=e606]: A
+                    - generic [ref=e607]:
+                      - generic [ref=e608]: abdulmuin said
+                      - generic [ref=e609]: "05313919428"
+                      - generic [ref=e610]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e611]':
+                  - generic [ref=e612]: Kastamonu / merkez
+                  - generic [ref=e613]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "Ürün detayı yok" [ref=e614]:
+                  - generic [ref=e615]: Ürün detayı yok
+                - cell "1.671,73 TL" [ref=e616]
+                - cell " Teslim Edildi Aras Kargo - KP15151554525465655" [ref=e617]:
+                  - generic [ref=e618]:
+                    - generic [ref=e619]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e620]: Aras Kargo - KP15151554525465655
+                - cell "Yok" [ref=e621]:
+                  - generic [ref=e622]: Yok
+                - cell "" [ref=e623]:
+                  - generic [ref=e624]:
+                    - button "" [ref=e625] [cursor=pointer]:
+                      - generic [ref=e626]: 
+                    - text:  
+                - cell "20260215112427575 siparişini seç" [ref=e627]:
+                  - checkbox "20260215112427575 siparişini seç" [ref=e628]
+              - 'row "20260215111951807 ID: #33 15.02.2026 11:19 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez Ürün detayı yok 2.374,13 TL  Teslim Edildi Aras Kargo - takip no bekleniyor Yok  20260215111951807 siparişini seç" [ref=e629]':
+                - 'cell "20260215111951807 ID: #33 15.02.2026 11:19" [ref=e630]':
+                  - text: "20260215111951807"
+                  - generic [ref=e631]: "ID: #33"
+                  - generic [ref=e632]: 15.02.2026 11:19
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e633]:
+                  - generic [ref=e634]:
+                    - generic [ref=e635]: A
+                    - generic [ref=e636]:
+                      - generic [ref=e637]: abdulmuin said
+                      - generic [ref=e638]: "05313919428"
+                      - generic [ref=e639]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e640]':
+                  - generic [ref=e641]: Kastamonu / merkez
+                  - generic [ref=e642]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "Ürün detayı yok" [ref=e643]:
+                  - generic [ref=e644]: Ürün detayı yok
+                - cell "2.374,13 TL" [ref=e645]
+                - cell " Teslim Edildi Aras Kargo - takip no bekleniyor" [ref=e646]:
+                  - generic [ref=e647]:
+                    - generic [ref=e648]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e649]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e650]:
+                  - generic [ref=e651]: Yok
+                - cell "" [ref=e652]:
+                  - generic [ref=e653]:
+                    - button "" [ref=e654] [cursor=pointer]:
+                      - generic [ref=e655]: 
+                    - text:  
+                - cell "20260215111951807 siparişini seç" [ref=e656]:
+                  - checkbox "20260215111951807 siparişini seç" [ref=e657]
+              - 'row "20260213215150734 ID: #32 13.02.2026 21:51 A abdulmuin said 05313919428 admin@canvasia.com Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez Ürün detayı yok 1.671,73 TL  Teslim Edildi Aras Kargo - takip no bekleniyor Yok  20260213215150734 siparişini seç" [ref=e658]':
+                - 'cell "20260213215150734 ID: #32 13.02.2026 21:51" [ref=e659]':
+                  - text: "20260213215150734"
+                  - generic [ref=e660]: "ID: #32"
+                  - generic [ref=e661]: 13.02.2026 21:51
+                - cell "A abdulmuin said 05313919428 admin@canvasia.com" [ref=e662]:
+                  - generic [ref=e663]:
+                    - generic [ref=e664]: A
+                    - generic [ref=e665]:
+                      - generic [ref=e666]: abdulmuin said
+                      - generic [ref=e667]: "05313919428"
+                      - generic [ref=e668]: admin@canvasia.com
+                - 'cell "Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e669]':
+                  - generic [ref=e670]: Kastamonu / merkez
+                  - generic [ref=e671]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                - cell "Ürün detayı yok" [ref=e672]:
+                  - generic [ref=e673]: Ürün detayı yok
+                - cell "1.671,73 TL" [ref=e674]
+                - cell " Teslim Edildi Aras Kargo - takip no bekleniyor" [ref=e675]:
+                  - generic [ref=e676]:
+                    - generic [ref=e677]: 
+                    - text: Teslim Edildi
+                  - generic [ref=e678]: Aras Kargo - takip no bekleniyor
+                - cell "Yok" [ref=e679]:
+                  - generic [ref=e680]: Yok
+                - cell "" [ref=e681]:
+                  - generic [ref=e682]:
+                    - button "" [ref=e683] [cursor=pointer]:
+                      - generic [ref=e684]: 
+                    - text:  
+                - cell "20260213215150734 siparişini seç" [ref=e685]:
+                  - checkbox "20260213215150734 siparişini seç" [ref=e686]
+          - generic [ref=e687]:
+            - generic [ref=e688]: Sayfa 1 / 3
+            - generic [ref=e689]:
+              - generic [ref=e690]: "1"
+              - link "2" [ref=e691] [cursor=pointer]:
+                - /url: /Admin/Siparis?page=2&pageSize=20
+              - link "3" [ref=e692] [cursor=pointer]:
+                - /url: /Admin/Siparis?page=3&pageSize=20
+              - link "Sonraki" [ref=e693] [cursor=pointer]:
+                - /url: /Admin/Siparis?page=2&pageSize=20
+                - generic [ref=e694]: 
+    - contentinfo [ref=e695]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

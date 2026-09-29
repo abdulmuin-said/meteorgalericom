@@ -1,0 +1,191 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Menüyü aç" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - button "Arama" [ref=e52] [cursor=pointer]:
+          - img [ref=e53]
+      - generic [ref=e55]:
+        - link "Hesabım" [ref=e56] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e57]
+        - link "Favoriler" [ref=e59] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e60]
+        - link "Sepet" [ref=e62] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e63]
+          - generic [ref=e65]: "1"
+      - text: 
+    - text:   
+  - main [ref=e66]:
+    - generic [ref=e68]:
+      - link "Ana Sayfa" [ref=e69] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e70]: /
+      - link "Hesabım" [ref=e71] [cursor=pointer]:
+        - /url: /Profil
+      - generic [ref=e72]: /
+      - generic [ref=e73]: Favorilerim
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - heading "Favori Koleksiyonum" [level=1] [ref=e76]
+        - paragraph [ref=e77]: Beğendiğiniz eserler burada sizi bekliyor.
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - link "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e81] [cursor=pointer]:
+              - /url: /Urun/Detay/ataturk-kalpakli-ataturk-resmi-istiklal-marsi-ve-genclige-hitabe-5-parcali-kanvas-tablo-1356
+              - img "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e82]
+            - button "" [ref=e83] [cursor=pointer]:
+              - generic [ref=e84]: 
+          - generic [ref=e85]:
+            - heading "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [level=6] [ref=e86]:
+              - link "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e87] [cursor=pointer]:
+                - /url: /Urun/Detay/ataturk-kalpakli-ataturk-resmi-istiklal-marsi-ve-genclige-hitabe-5-parcali-kanvas-tablo-1356
+            - paragraph [ref=e88]: 1.671,73 TL
+            - button "Sepete Ekle" [ref=e89] [cursor=pointer]
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - link "Rene Magritte - Bird Tablosu" [ref=e92] [cursor=pointer]:
+              - /url: /Urun/Detay/12537
+              - img "Rene Magritte - Bird Tablosu" [ref=e93]
+            - button "" [ref=e94] [cursor=pointer]:
+              - generic [ref=e95]: 
+          - generic [ref=e96]:
+            - heading "Rene Magritte - Bird Tablosu" [level=6] [ref=e97]:
+              - link "Rene Magritte - Bird Tablosu" [ref=e98] [cursor=pointer]:
+                - /url: /Urun/Detay/12537
+            - paragraph [ref=e99]: 999,00 TL
+            - button "Sepete Ekle" [ref=e100] [cursor=pointer]
+  - contentinfo [ref=e101]:
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e106]: 
+        - generic [ref=e107]:
+          - generic [ref=e108]: Tüm Türkiye'ye
+          - generic [ref=e109]: Ücretsiz Kargo
+      - generic [ref=e110]:
+        - generic [ref=e112]: 
+        - generic [ref=e113]:
+          - generic [ref=e114]: "%100 Güvenli Alışveriş"
+          - generic [ref=e115]: 256 Bit SSL Sertifikası
+      - generic [ref=e116]:
+        - generic [ref=e118]: 
+        - generic [ref=e119]:
+          - generic [ref=e120]: Tüm Kredi Kartlarına
+          - generic [ref=e121]: 12 Taksit İmkanı
+    - generic [ref=e122]:
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e125]
+          - paragraph [ref=e126]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e127]:
+            - textbox "E-posta Adresi" [ref=e128]
+            - button "ABONE OL" [ref=e129] [cursor=pointer]
+        - generic [ref=e130]:
+          - heading "KURUMSAL" [level=4] [ref=e131]
+          - list [ref=e132]:
+            - listitem [ref=e133]:
+              - link "Hakkımızda" [ref=e134] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e135]:
+              - link "İletişim" [ref=e136] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e137]:
+              - link "Koleksiyonlar" [ref=e138] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e139]:
+              - link "Gizlilik Politikası" [ref=e140] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e141]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e142] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e143]:
+            - link "Instagram" [ref=e144] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e145]: 
+            - link "WhatsApp" [ref=e146] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e147]: 
+      - generic [ref=e148]:
+        - paragraph [ref=e150]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e151]:
+          - link "Gizlilik Politikası" [ref=e152] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e153] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e154] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e157]
+  - link "WhatsApp ile iletişim" [ref=e158] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e159]
+    - generic [ref=e161]: WhatsApp

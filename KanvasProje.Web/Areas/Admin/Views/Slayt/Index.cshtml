@@ -1,0 +1,261 @@
+@model IEnumerable<KanvasProje.Core.Varliklar.Slayt>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Slayt Yönetimi";
+}
+
+<div class="container-fluid">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Slayt Yönetimi</h1>
+            <p class="ca-page-subtitle">Ana sayfa slider slaytlarını yönetin. Resim veya video slayt ekleyebilirsiniz.</p>
+        </div>
+        <div>
+            <a href="@Url.Action("Ekle", "Slayt")" class="btn btn-primary">
+                <i class="fas fa-plus me-1"></i> Yeni Slayt Ekle
+            </a>
+            @if (!Model.Any())
+            {
+                <form method="post" action="@Url.Action("JSONdanAl", "Slayt")" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <i class="fas fa-file-import me-1"></i> JSON'dan Al
+                    </button>
+                </form>
+            }
+        </div>
+    </div>
+
+    @if (TempData["Basari"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @TempData["Basari"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Hata"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i> @TempData["Hata"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="ca-card">
+        <div class="ca-card-header">
+            <h3 class="ca-card-title"><i class="fas fa-images me-2 ca-text-primary"></i>Slayt Listesi</h3>
+            <p class="small text-muted mb-0">Sıralamayı değiştirmek için slaytları sürükleyebilirsiniz.</p>
+        </div>
+        <div class="ca-card-body p-0">
+            @if (!Model.Any())
+            {
+                <div class="ca-empty" style="padding:48px;">
+                    <i class="fas fa-image"></i>
+                    <p>Henüz slayt eklenmemiş. Yeni slayt eklemek için yukarıdaki butonu kullanın.</p>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0" id="slaytTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width:40px;">Sıra</th>
+                                <th style="width:120px;">Önizleme</th>
+                                <th>Başlık</th>
+                                <th>Alt Başlık</th>
+                                <th style="width:100px;">Tür</th>
+                                <th style="width:80px;">Durum</th>
+                                <th style="width:140px;">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sortable" data-url="@Url.Action("Siralama", "Slayt")">
+                            @foreach (var item in Model)
+                            {
+                                <tr data-id="@item.Id" class=" @(item.AktifMi ? "" : "table-secondary opacity-75")">
+                                    <td class="text-center" style="cursor:move;">
+                                        <i class="fas fa-arrows-alt text-muted"></i>
+                                        <span class="badge bg-dark ms-1">@item.Sira</span>
+                                    </td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.VideoUrl))
+                                        {
+                                            <div class="position-relative" style="width:100px;height:60px;">
+                                                <video src="@item.VideoUrl" muted style="width:100%;height:100%;object-fit:cover;border-radius:6px;" preload="metadata"></video>
+                                                <span class="position-absolute bottom-0 start-0 badge bg-danger" style="font-size:8px;">VIDEO</span>
+                                            </div>
+                                        }
+                                        else if (!string.IsNullOrEmpty(item.ResimUrl))
+                                        {
+                                            <img src="@item.ResimUrl" alt="@item.Baslik" style="width:100px;height:60px;object-fit:cover;border-radius:6px;" />
+                                        }
+                                        else
+                                        {
+                                            <div class="bg-light text-center" style="width:100px;height:60px;border-radius:6px;line-height:60px;">
+                                                <i class="fas fa-image text-muted"></i>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <strong>@item.Baslik</strong>
+                                        @if (!string.IsNullOrEmpty(item.Aciklama))
+                                        {
+                                            <div class="small text-muted">@item.Aciklama</div>
+                                        }
+                                    </td>
+                                    <td class="text-muted small">@(string.IsNullOrEmpty(item.AltBaslik) ? "-" : item.AltBaslik)</td>
+                                    <td>
+                                        @if (item.Tur == "Video")
+                                        {
+                                            <span class="badge bg-danger"><i class="fas fa-video me-1"></i>Video</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-info"><i class="fas fa-image me-1"></i>Resim</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.AktifMi)
+                                        {
+                                            <span class="badge bg-success">Aktif</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Pasif</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <form method="post" action="@Url.Action("AktiflikDegistir", "Slayt", new { id = item.Id })" style="display:inline;">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-sm btn-outline-@(item.AktifMi ? "warning" : "success")" title="@(item.AktifMi ? "Pasif Yap" : "Aktif Yap")">
+                                                <i class="fas @(item.AktifMi ? "fa-eye-slash" : "fa-eye")"></i>
+                                            </button>
+                                        </form>
+                                        <a href="@Url.Action("Duzenle", "Slayt", new { id = item.Id })" class="btn btn-sm btn-outline-primary" title="Düzenle">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-outline-danger btn-sil" data-id="@item.Id" title="Sil">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="silModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-exclamation-triangle text-danger me-2"></i>Slaytı Sil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bu slaytı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-danger" id="btnSilOnay">
+                    <i class="fas fa-trash me-1"></i> Sil
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+(function() {
+    let silId = null;
+    var modalEl = document.getElementById('silModal');
+    if (modalEl) { document.body.appendChild(modalEl); }
+    var silModal = new bootstrap.Modal(modalEl);
+
+    document.querySelectorAll('.btn-sil').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            silId = this.getAttribute('data-id');
+            silModal.show();
+        });
+    });
+
+    document.getElementById('btnSilOnay').addEventListener('click', function() {
+        if (!silId) return;
+        fetch('@Url.Action("Sil", "Slayt")/' + silId, {
+            method: 'POST',
+            headers: {
+                'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+            }
+        })
+        .then(r => r.json())
+        .then(data => {
+            silModal.hide();
+            if (data.success) {
+                document.querySelector('tr[data-id="' + silId + '"]')?.remove();
+                showToast('Slayt silindi.', 'success');
+            } else {
+                showToast(data.message || 'Silme işlemi başarısız.', 'error');
+            }
+        })
+        .catch(() => {
+            silModal.hide();
+            showToast('Bir hata oluştu.', 'error');
+        });
+    });
+
+    function showToast(message, type) {
+        var container = document.querySelector('.toast-container') || (function() {
+            var c = document.createElement('div');
+            c.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+            document.body.appendChild(c);
+            return c;
+        })();
+        var toast = document.createElement('div');
+        toast.className = 'toast align-items-center text-white bg-' + (type === 'success' ? 'success' : 'danger') + ' border-0';
+        toast.setAttribute('role', 'alert');
+        toast.innerHTML = '<div class="d-flex"><div class="toast-body">' + message + '</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>';
+        container.appendChild(toast);
+        var bs = new bootstrap.Toast(toast);
+        bs.show();
+        toast.addEventListener('hidden.bs.toast', function() { toast.remove(); });
+    }
+
+    if (typeof Sortable !== 'undefined' && document.querySelector('#slaytTable tbody')) {
+        new Sortable(document.querySelector('#slaytTable tbody'), {
+            animation: 150,
+            handle: 'td:first-child',
+            onEnd: function(evt) {
+                var ids = [];
+                document.querySelectorAll('#slaytTable tbody tr[data-id]').forEach(function(row) {
+                    ids.push(parseInt(row.getAttribute('data-id')));
+                });
+                fetch('@Url.Action("Siralama", "Slayt")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                    },
+                    body: JSON.stringify(ids)
+                })
+                .then(r => r.json())
+                .then(function(data) {
+                    if (data.success) {
+                        var rows = document.querySelectorAll('#slaytTable tbody tr');
+                        rows.forEach(function(row, i) {
+                            var badge = row.querySelector('.badge.bg-dark');
+                            if (badge) badge.textContent = i + 1;
+                        });
+                        showToast('Sıralama kaydedildi.', 'success');
+                    }
+                })
+                .catch(function() { showToast('Sıralama kaydedilemedi.', 'error'); });
+            }
+        });
+    }
+})();
+</script>
+}

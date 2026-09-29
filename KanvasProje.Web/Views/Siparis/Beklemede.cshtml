@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Siparişiniz Alındı";
+    var siparisNo = ViewBag.SiparisNo as string ?? string.Empty;
+}
+
+<section class="min-h-[70vh] bg-[#f8f4ec] py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto bg-white rounded-[2rem] shadow-xl border border-[#e8dfd0] overflow-hidden">
+            <div class="p-8 md:p-12 text-center">
+                <div class="w-20 h-20 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-clock text-3xl"></i>
+                </div>
+
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 text-amber-800 text-sm font-semibold mb-4">
+                    <i class="fas fa-circle-info"></i>
+                    Ödeme / Onay Bekleniyor
+                </span>
+
+                <h1 class="text-3xl md:text-4xl font-serif font-bold text-[#1B2A4A] mb-4">Siparişiniz Alındı</h1>
+                <p class="text-[#6f6a5e] text-lg mb-8">
+                    Siparişiniz başarıyla oluşturuldu. Ödeme ve onay süreci tamamlandığında sizi bilgilendireceğiz.
+                </p>
+
+                @if (!string.IsNullOrWhiteSpace(siparisNo))
+                {
+                    <div class="bg-[#faf7ef] border border-[#e8dfd0] rounded-2xl p-5 mb-8">
+                        <div class="text-sm uppercase tracking-[0.2em] text-[#9a8f78] mb-2">Sipariş No</div>
+                        <div class="text-2xl font-bold text-[#1B2A4A]">@siparisNo</div>
+                    </div>
+                }
+
+                <div class="grid gap-3 sm:grid-cols-2">
+                    <a href="/Urun" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#1B2A4A] text-white font-semibold hover:bg-[#25280d] transition">
+                        <i class="fas fa-arrow-left"></i>
+                        Alışverişe Devam Et
+                    </a>
+                    <a href="/Kurumsal/Iletisim" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-[#1B2A4A] text-[#1B2A4A] font-semibold hover:bg-[#1B2A4A] hover:text-white transition">
+                        <i class="fas fa-headset"></i>
+                        İletişime Geç
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

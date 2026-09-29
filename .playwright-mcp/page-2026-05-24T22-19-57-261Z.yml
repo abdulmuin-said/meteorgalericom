@@ -1,0 +1,115 @@
+- generic [active] [ref=e1]:
+  - heading "An unhandled exception occurred while processing the request." [level=1] [ref=e2]
+  - generic [ref=e3]: "TimeoutException: Timeout during reading attempt"
+  - paragraph [ref=e4]: Unknown location
+  - generic [ref=e5]: "NpgsqlException: Exception while reading from stream"
+  - paragraph [ref=e6]: Npgsql.Internal.NpgsqlReadBuffer.<Ensure>g__EnsureLong|55_0(NpgsqlReadBuffer buffer, int count, bool async, bool readingNotifications)
+  - generic [ref=e7]: "InvalidOperationException: An exception has been raised that is likely due to a transient failure."
+  - paragraph [ref=e8]: Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute<TState, TResult>(TState state, Func<DbContext, TState, TResult> operation, Func<DbContext, TState, ExecutionResult<TResult>> verifySucceeded)
+  - list [ref=e9]:
+    - listitem [ref=e10] [cursor=pointer]: Stack
+    - listitem [ref=e11] [cursor=pointer]: Query
+    - listitem [ref=e12] [cursor=pointer]: Cookies
+    - listitem [ref=e13] [cursor=pointer]: Headers
+    - listitem [ref=e14] [cursor=pointer]: Routing
+  - list [ref=e16]:
+    - listitem [ref=e17]:
+      - 'heading "TimeoutException: Timeout during reading attempt" [level=2] [ref=e18]'
+      - list
+    - listitem [ref=e19]:
+      - button "Show raw exception details" [ref=e21] [cursor=pointer]
+    - listitem [ref=e22]:
+      - 'heading "NpgsqlException: Exception while reading from stream" [level=2] [ref=e23]'
+      - list [ref=e24]:
+        - listitem [ref=e25]:
+          - heading "Npgsql.Internal.NpgsqlReadBuffer.<Ensure>g__EnsureLong|55_0(NpgsqlReadBuffer buffer, int count, bool async, bool readingNotifications)" [level=3] [ref=e26]
+        - listitem [ref=e27]:
+          - heading "System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder<TResult>+StateMachineBox<TStateMachine>.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(short token)" [level=3] [ref=e28]
+        - listitem [ref=e29]:
+          - heading "Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, bool async, CancellationToken cancellationToken, bool isFirstAttempt)" [level=3] [ref=e30]
+        - listitem [ref=e31]:
+          - heading "Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, bool async, CancellationToken cancellationToken, bool isFirstAttempt)" [level=3] [ref=e32]
+        - listitem [ref=e33]:
+          - heading "Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, bool async, CancellationToken cancellationToken)" [level=3] [ref=e34]
+        - listitem [ref=e35]:
+          - heading "Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, bool async, CancellationToken cancellationToken)" [level=3] [ref=e36]
+        - listitem [ref=e37]:
+          - heading "Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, bool async, CancellationToken cancellationToken)" [level=3] [ref=e38]
+        - listitem [ref=e39]:
+          - heading "Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(bool async, CancellationToken cancellationToken)" [level=3] [ref=e40]
+        - listitem [ref=e41]:
+          - heading "Npgsql.NpgsqlConnection.Open()" [level=3] [ref=e42]
+        - listitem [ref=e43]:
+          - heading "Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(bool errorsExpected)" [level=3] [ref=e44]
+        - listitem [ref=e45]:
+          - heading "Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(bool errorsExpected)" [level=3] [ref=e46]
+        - listitem [ref=e47]:
+          - heading "Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(bool errorsExpected)" [level=3] [ref=e48]
+        - listitem [ref=e49]:
+          - heading "Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)" [level=3] [ref=e50]
+        - listitem [ref=e51]:
+          - heading "Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable<T>+Enumerator.InitializeReader(Enumerator enumerator)" [level=3] [ref=e52]
+        - listitem [ref=e53]:
+          - heading "Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable<T>+Enumerator+<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)" [level=3] [ref=e54]
+        - listitem [ref=e55]:
+          - heading "Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute<TState, TResult>(TState state, Func<DbContext, TState, TResult> operation, Func<DbContext, TState, ExecutionResult<TResult>> verifySucceeded)" [level=3] [ref=e56]
+    - listitem [ref=e57]:
+      - button "Show raw exception details" [ref=e59] [cursor=pointer]
+    - listitem [ref=e60]:
+      - 'heading "InvalidOperationException: An exception has been raised that is likely due to a transient failure." [level=2] [ref=e61]'
+      - list [ref=e62]:
+        - listitem [ref=e63]:
+          - heading "Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute<TState, TResult>(TState state, Func<DbContext, TState, TResult> operation, Func<DbContext, TState, ExecutionResult<TResult>> verifySucceeded)" [level=3] [ref=e64]
+        - listitem [ref=e65]:
+          - heading "Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable<T>+Enumerator.MoveNext()" [level=3] [ref=e66]
+        - listitem [ref=e67]:
+          - heading "System.Linq.Enumerable.TryGetSingle<TSource>(IEnumerable<TSource> source, out bool found)" [level=3] [ref=e68]
+        - listitem [ref=e69]:
+          - heading "lambda_method440(Closure , QueryContext )" [level=3] [ref=e70]
+        - listitem [ref=e71]:
+          - heading "Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute<TResult>(Expression query)" [level=3] [ref=e72]
+        - listitem [ref=e73]:
+          - heading "Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute<TResult>(Expression expression)" [level=3] [ref=e74]
+        - listitem [ref=e75]:
+          - heading "KanvasProje.Service.Services.SiteSettingsService.LoadSettings() in SiteSettingsService.cs" [level=3] [ref=e76]:
+            - text: KanvasProje.Service.Services.SiteSettingsService.LoadSettings() in
+            - code [ref=e77]: SiteSettingsService.cs
+          - button "+" [ref=e78] [cursor=pointer]
+          - list [ref=e80]:
+            - listitem [ref=e81]: var settings = _context.SiteAyarlari.FirstOrDefault();
+        - listitem [ref=e82]:
+          - heading "KanvasProje.Service.Services.SiteSettingsService.<GetSettings>b__7_0(ICacheEntry entry) in SiteSettingsService.cs" [level=3] [ref=e83]:
+            - text: KanvasProje.Service.Services.SiteSettingsService.<GetSettings>b__7_0(ICacheEntry entry) in
+            - code [ref=e84]: SiteSettingsService.cs
+          - button "+" [ref=e85] [cursor=pointer]
+          - list [ref=e87]:
+            - listitem [ref=e88]: return LoadSettings();
+        - listitem [ref=e89]:
+          - heading "Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate<TItem>(IMemoryCache cache, object key, Func<ICacheEntry, TItem> factory)" [level=3] [ref=e90]
+        - listitem [ref=e91]:
+          - heading "KanvasProje.Service.Services.SiteSettingsService.GetSettings() in SiteSettingsService.cs" [level=3] [ref=e92]:
+            - text: KanvasProje.Service.Services.SiteSettingsService.GetSettings() in
+            - code [ref=e93]: SiteSettingsService.cs
+          - button "+" [ref=e94] [cursor=pointer]
+          - list [ref=e96]:
+            - listitem [ref=e97]: return _cache.GetOrCreate(CacheKey, entry =>
+        - listitem [ref=e98]:
+          - heading "Program+<>c+<<<Main>$>b__0_12>d.MoveNext() in Program.cs" [level=3] [ref=e99]:
+            - text: Program+<>c+<<<Main>$>b__0_12>d.MoveNext() in
+            - code [ref=e100]: Program.cs
+          - button "+" [ref=e101] [cursor=pointer]
+          - list [ref=e103]:
+            - listitem [ref=e104]: var siteSettings = siteSettingsService.GetSettings();
+        - listitem [ref=e105]:
+          - heading "Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)" [level=3] [ref=e106]
+        - listitem [ref=e107]:
+          - heading "Program+<>c+<<<Main>$>b__0_11>d.MoveNext() in Program.cs" [level=3] [ref=e108]:
+            - text: Program+<>c+<<<Main>$>b__0_11>d.MoveNext() in
+            - code [ref=e109]: Program.cs
+          - button "+" [ref=e110] [cursor=pointer]
+          - list [ref=e112]:
+            - listitem [ref=e113]: await next();
+        - listitem [ref=e114]:
+          - heading "Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)" [level=3] [ref=e115]
+    - listitem [ref=e116]:
+      - button "Show raw exception details" [ref=e118] [cursor=pointer]

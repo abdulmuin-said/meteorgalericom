@@ -1,0 +1,126 @@
+- generic [active] [ref=e1]:
+  - heading "An unhandled exception occurred while processing the request." [level=1] [ref=e2]
+  - generic [ref=e3]:
+    - text: "PostgresException: 23502: null value in column \"GondericiAdres\" of relation \"KargoFirmalari\" violates not-null constraint"
+    - text: "DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information."
+  - paragraph [ref=e4]: Npgsql.Internal.NpgsqlConnector.ReadMessageLong(bool async, DataRowLoadingMode dataRowLoadingMode, bool readingNotifications, bool isReadingPrependedMessage)
+  - generic [ref=e5]: "DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details."
+  - paragraph [ref=e6]: Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  - list [ref=e7]:
+    - listitem [ref=e8] [cursor=pointer]: Stack
+    - listitem [ref=e9] [cursor=pointer]: Query
+    - listitem [ref=e10] [cursor=pointer]: Cookies
+    - listitem [ref=e11] [cursor=pointer]: Headers
+    - listitem [ref=e12] [cursor=pointer]: Routing
+  - list [ref=e14]:
+    - listitem [ref=e15]:
+      - 'heading "PostgresException: 23502: null value in column \"GondericiAdres\" of relation \"KargoFirmalari\" violates not-null constraint DETAIL: Detail redacted as it may contain sensitive data. Specify ''Include Error Detail'' in the connection string to include this information." [level=2] [ref=e16]'
+      - list [ref=e17]:
+        - listitem [ref=e18]:
+          - heading "Npgsql.Internal.NpgsqlConnector.ReadMessageLong(bool async, DataRowLoadingMode dataRowLoadingMode, bool readingNotifications, bool isReadingPrependedMessage)" [level=3] [ref=e19]
+        - listitem [ref=e20]:
+          - heading "System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder<TResult>+StateMachineBox<TStateMachine>.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(short token)" [level=3] [ref=e21]
+        - listitem [ref=e22]:
+          - heading "Npgsql.NpgsqlDataReader.NextResult(bool async, bool isConsuming, CancellationToken cancellationToken)" [level=3] [ref=e23]
+        - listitem [ref=e24]:
+          - heading "Npgsql.NpgsqlDataReader.NextResult(bool async, bool isConsuming, CancellationToken cancellationToken)" [level=3] [ref=e25]
+        - listitem [ref=e26]:
+          - heading "Npgsql.NpgsqlCommand.ExecuteReader(bool async, CommandBehavior behavior, CancellationToken cancellationToken)" [level=3] [ref=e27]
+        - listitem [ref=e28]:
+          - heading "Npgsql.NpgsqlCommand.ExecuteReader(bool async, CommandBehavior behavior, CancellationToken cancellationToken)" [level=3] [ref=e29]
+        - listitem [ref=e30]:
+          - heading "Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)" [level=3] [ref=e31]
+        - listitem [ref=e32]:
+          - heading "Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)" [level=3] [ref=e33]
+        - listitem [ref=e34]:
+          - heading "Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)" [level=3] [ref=e35]
+        - listitem [ref=e36]:
+          - heading "Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)" [level=3] [ref=e37]
+    - listitem [ref=e38]:
+      - button "Show raw exception details" [ref=e40] [cursor=pointer]
+    - listitem [ref=e41]:
+      - 'heading "DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details." [level=2] [ref=e42]'
+      - list [ref=e43]:
+        - listitem [ref=e44]:
+          - heading "Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)" [level=3] [ref=e45]
+        - listitem [ref=e46]:
+          - heading "Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable<ModificationCommandBatch> commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)" [level=3] [ref=e47]
+        - listitem [ref=e48]:
+          - heading "Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable<ModificationCommandBatch> commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)" [level=3] [ref=e49]
+        - listitem [ref=e50]:
+          - heading "Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable<ModificationCommandBatch> commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)" [level=3] [ref=e51]
+        - listitem [ref=e52]:
+          - heading "Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList<IUpdateEntry> entriesToSave, CancellationToken cancellationToken)" [level=3] [ref=e53]
+        - listitem [ref=e54]:
+          - heading "Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, bool acceptAllChangesOnSuccess, CancellationToken cancellationToken)" [level=3] [ref=e55]
+        - listitem [ref=e56]:
+          - heading "Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync<TState, TResult>(TState state, Func<DbContext, TState, CancellationToken, Task<TResult>> operation, Func<DbContext, TState, CancellationToken, Task<ExecutionResult<TResult>>> verifySucceeded, CancellationToken cancellationToken)" [level=3] [ref=e57]
+        - listitem [ref=e58]:
+          - heading "Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken)" [level=3] [ref=e59]
+        - listitem [ref=e60]:
+          - heading "Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken)" [level=3] [ref=e61]
+        - listitem [ref=e62]:
+          - heading "KanvasProje.Web.Areas.Admin.Controllers.KargoController.Kaydet(KargoFirmasi model) in KargoController.cs" [level=3] [ref=e63]:
+            - text: KanvasProje.Web.Areas.Admin.Controllers.KargoController.Kaydet(KargoFirmasi model) in
+            - code [ref=e64]: KargoController.cs
+          - button "+" [ref=e65] [cursor=pointer]
+          - list [ref=e67]:
+            - listitem [ref=e68]: await _context.SaveChangesAsync();
+        - listitem [ref=e69]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor+TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, object controller, object[] arguments)" [level=3] [ref=e70]
+        - listitem [ref=e71]:
+          - heading "System.Threading.Tasks.ValueTask<TResult>.get_Result()" [level=3] [ref=e72]
+        - listitem [ref=e73]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask<IActionResult> actionResultValueTask)" [level=3] [ref=e74]
+        - listitem [ref=e75]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, object state, bool isCompleted)" [level=3] [ref=e76]
+        - listitem [ref=e77]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)" [level=3] [ref=e78]
+        - listitem [ref=e79]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)" [level=3] [ref=e80]
+        - listitem [ref=e81]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, object state, bool isCompleted)" [level=3] [ref=e82]
+        - listitem [ref=e83]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, object state, bool isCompleted)" [level=3] [ref=e84]
+        - listitem [ref=e85]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)" [level=3] [ref=e86]
+        - listitem [ref=e87]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)" [level=3] [ref=e88]
+        - listitem [ref=e89]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, object state, bool isCompleted)" [level=3] [ref=e90]
+        - listitem [ref=e91]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)" [level=3] [ref=e92]
+        - listitem [ref=e93]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)" [level=3] [ref=e94]
+        - listitem [ref=e95]:
+          - heading "Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)" [level=3] [ref=e96]
+        - listitem [ref=e97]:
+          - heading "Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)" [level=3] [ref=e98]
+        - listitem [ref=e99]:
+          - heading "Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)" [level=3] [ref=e100]
+        - listitem [ref=e101]:
+          - heading "Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)" [level=3] [ref=e102]
+        - listitem [ref=e103]:
+          - heading "Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)" [level=3] [ref=e104]
+        - listitem [ref=e105]:
+          - heading "Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)" [level=3] [ref=e106]
+        - listitem [ref=e107]:
+          - heading "Program+<>c+<<<Main>$>b__0_12>d.MoveNext() in Program.cs" [level=3] [ref=e108]:
+            - text: Program+<>c+<<<Main>$>b__0_12>d.MoveNext() in
+            - code [ref=e109]: Program.cs
+          - button "+" [ref=e110] [cursor=pointer]
+          - list [ref=e112]:
+            - listitem [ref=e113]: await next();
+        - listitem [ref=e114]:
+          - heading "Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)" [level=3] [ref=e115]
+        - listitem [ref=e116]:
+          - heading "Program+<>c+<<<Main>$>b__0_11>d.MoveNext() in Program.cs" [level=3] [ref=e117]:
+            - text: Program+<>c+<<<Main>$>b__0_11>d.MoveNext() in
+            - code [ref=e118]: Program.cs
+          - button "+" [ref=e119] [cursor=pointer]
+          - list [ref=e121]:
+            - listitem [ref=e122]: await next();
+        - listitem [ref=e123]:
+          - heading "Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)" [level=3] [ref=e124]
+    - listitem [ref=e125]:
+      - button "Show raw exception details" [ref=e127] [cursor=pointer]

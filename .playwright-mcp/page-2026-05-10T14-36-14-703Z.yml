@@ -1,0 +1,210 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 1" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "1"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:     
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Yeni Ürün Ekle" [level=1] [ref=e42]
+            - paragraph [ref=e43]: İlk kayıt için sadece gerekli bilgileri girin. Detaylı özellikler ürünü kaydettikten sonra düzenlenir.
+          - link " Ürünlere Dön" [ref=e44] [cursor=pointer]:
+            - /url: /Admin/Urun
+            - generic [ref=e45]: 
+            - text: Ürünlere Dön
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]: Satış fiyatı ve varyasyon fiyatı nasıl çalışır?
+            - generic [ref=e49]:
+              - text: Bu ekrandaki
+              - strong [ref=e50]: Satış Fiyatı
+              - text: ürünün ana fiyatıdır. Ürün kaydedilirken sistem bu fiyatla otomatik bir varsayılan varyasyon oluşturur. Farklı ölçü, çerçeve veya varyasyonlara özel fiyat girmek isterseniz ürünü kaydettikten sonra düzenleme ekranından ekleyebilirsiniz.
+          - generic [ref=e51]:
+            - generic [ref=e52]:
+              - generic [ref=e54]:
+                - generic [ref=e55]: 
+                - text: Ürün Bilgileri
+              - generic [ref=e56]:
+                - generic [ref=e57]: Bu ekranda ürünü hızlıca oluşturuyoruz. Kaydettikten sonra ürün düzenleme sayfasında varyasyon, galeri, mockup, video ve SEO detaylarını ekleyebilirsiniz.
+                - generic [ref=e58]:
+                  - generic [ref=e59]:
+                    - generic [ref=e60]: "* Ürün Adı"
+                    - 'textbox "Örn: Modern Soyut Kanvas Tablo" [ref=e61]'
+                  - generic [ref=e62]:
+                    - generic [ref=e63]:
+                      - generic [ref=e64]:
+                        - generic [ref=e65]: Slug
+                        - textbox "urun-adi-otomatik-olusturulur" [ref=e66]
+                      - generic [ref=e67]:
+                        - generic [ref=e68]: SEO URL
+                        - textbox "urun-adi-otomatik-olusturulur" [ref=e69]
+                    - generic [ref=e70]: Ürün adı yazıldıkça bu alanlar otomatik oluşur. Gerekirse kayıt sonrası düzenleme ekranından değiştirilebilir.
+                  - generic [ref=e71]:
+                    - generic [ref=e72]: "* Kategori"
+                    - combobox [ref=e73]:
+                      - option "Kategori seçin" [selected]
+                      - option "Kanvas Tablo"
+                      - option "-- Atatürk Köşesi"
+                      - option "-- İslami Sanat & Hat"
+                      - option "-- Dünya Klasikleri"
+                      - option "-- Modern & Soyut"
+                      - option "-- Şehir Manzaraları"
+                      - option "-- Parçalı Tablolar"
+                      - option "-- Dini ve Hat Sanatı"
+                      - option "-- Manzara Temalı"
+                      - option "-- Atatürk ve Türkiye"
+                      - option "-- Şehir ve Mimari"
+                      - option "-- Soyut ve Sanatsal"
+                      - option "-- Osmanlı ve Tuğra"
+                      - option "-- Ünlüler ve Sinema"
+                      - option "-- Hayvanlar Alemi"
+                      - option "-- Araba ve Araçlar"
+                      - option "-- Çocuk Odası"
+                      - option "-- Nü Sanat"
+                      - option "-- Klasik Eserler"
+                      - option "-- Yiyecek ve İçecek"
+                      - option "-- Farklı Tasarımlar"
+                      - option "-- Aşk ve Romantizm"
+                      - option "-- Kadın Temalı"
+                      - option "-- Taraftar Köşesi"
+                      - option "-- Adalet ve Hukuk"
+                      - option "-- Çiçekli ve Dekoratif"
+                      - option "-- Panoramik Tablolar"
+                      - option "Cam Tablo"
+                      - option "Duvar Kağıdı"
+                      - option "Cam Kesme Tahtası"
+                      - option "Ayna"
+                      - option "Baskılı Halı"
+                      - option "Ahşap Dekorasyon"
+                      - option "Mobilya Aksesuar"
+                      - option "Lightbox"
+                      - option "Afiş"
+                  - generic [ref=e74]:
+                    - generic [ref=e75]: "* Satış Fiyatı"
+                    - spinbutton [ref=e76]: "0"
+                  - generic [ref=e77]:
+                    - generic [ref=e78]: İndirimli Fiyat
+                    - spinbutton [ref=e79]
+                  - generic [ref=e80]:
+                    - generic [ref=e81]: "* Ana Görsel Dosyası"
+                    - button "Choose File" [ref=e82]
+                  - generic [ref=e83]:
+                    - generic [ref=e84]: Ana Görsel URL
+                    - textbox "/img/products/ornek.webp" [ref=e85]
+                    - generic [ref=e86]: Dosya yüklemezseniz mevcut bir görsel URL girebilirsiniz. İkisinden biri yeterlidir.
+                  - generic [ref=e87]:
+                    - generic [ref=e88]: Ek Ürün Görselleri
+                    - button "Choose File" [ref=e89]
+                    - generic [ref=e90]: Birden fazla görsel seçebilirsiniz. Bu görseller ürün galerisine eklenir.
+                  - generic [ref=e91]:
+                    - generic [ref=e92]: Kısa Açıklama
+                    - textbox "Ürün kartında veya detayda kısa satış cümlesi olarak kullanılabilir." [ref=e93]
+                  - generic [ref=e94]:
+                    - generic [ref=e95]: Detaylı Açıklama
+                    - textbox "Ürün hakkında kısa bilgi, kullanım alanı veya kalite açıklaması yazabilirsiniz." [ref=e96]
+                  - generic [ref=e98]:
+                    - generic [ref=e100]:
+                      - generic [ref=e101]: 
+                      - text: SEO Bilgileri
+                    - generic [ref=e102]:
+                      - generic [ref=e103]: Arama motorları için özelleştirilmiş meta etiketleri. Boş bırakırsanız otomatik ürün bilgileri kullanılır.
+                      - generic [ref=e104]:
+                        - generic [ref=e105]:
+                          - generic [ref=e106]: SEO Başlığı
+                          - 'textbox "Örn: Modern Soyut Kanvas Tablo - Canvasia" [ref=e107]'
+                          - generic [ref=e108]: Kalın metin olarak görünür. 60-70 karakter önerilir.
+                        - generic [ref=e109]:
+                          - generic [ref=e110]: SEO Açıklaması
+                          - 'textbox "Örn: Premium kalite modern soyut kanvas tablo. Salon ve ofis dekorasyonu için ideal seçim. Hızlı kargo." [ref=e111]'
+                          - generic [ref=e112]: Arama sonuçlarında görünür. 150-160 karakter önerilir.
+                        - generic [ref=e113]:
+                          - generic [ref=e114]: SEO Anahtar Kelimeler
+                          - textbox "kanvas tablo, modern dekorasyon, duvar sanatı, soyut tablo" [ref=e115]
+                          - generic [ref=e116]: "Virgülle ayırarak yazın. Örn: kanvas tablo, dekorasyon, duvar sanatı"
+                  - generic [ref=e118]:
+                    - checkbox "Ürün yayında olsun" [checked] [ref=e119]
+                    - generic [ref=e120]: Ürün yayında olsun
+                - generic [ref=e121]:
+                  - generic [ref=e122]: Varyasyon ve ölçü bilgileri kayıt sonrası düzenlenir.
+                  - generic [ref=e123]: İlk kayıt tamamlandıktan sonra ölçü, çerçeve, stok ve varyasyon fiyatlarını ürün düzenleme ekranından yönetebilirsiniz.
+                - generic [ref=e124]:
+                  - link "İptal" [ref=e125] [cursor=pointer]:
+                    - /url: /Admin/Urun
+                  - button " Ürünü Kaydet" [ref=e126] [cursor=pointer]:
+                    - generic [ref=e127]: 
+                    - text: Ürünü Kaydet
+            - complementary [ref=e128]:
+              - generic [ref=e129]:
+                - generic [ref=e131]: Önizleme
+                - generic [ref=e132]:
+                  - img "Yeni ürün ana görsel önizlemesi" [ref=e134]
+                  - generic [ref=e135]: Ürün adı henüz girilmedi
+                  - generic [ref=e136]: Kaydedildikten sonra detayları genişletebilirsiniz.
+              - generic [ref=e137]:
+                - generic [ref=e139]: Zorunlu Alanlar
+                - generic [ref=e140]:
+                  - generic [ref=e141]:
+                    - generic [ref=e142]: 
+                    - text: Ürün adı
+                  - generic [ref=e143]:
+                    - generic [ref=e144]: 
+                    - text: Kategori
+                  - generic [ref=e145]:
+                    - generic [ref=e146]: 
+                    - text: Satış fiyatı
+                  - generic [ref=e147]:
+                    - generic [ref=e148]: 
+                    - text: Ana görsel dosyası veya URL
+    - contentinfo [ref=e149]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

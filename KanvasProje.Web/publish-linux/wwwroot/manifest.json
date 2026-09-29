@@ -1,0 +1,21 @@
+{
+  "name": "E-Ticaret Uygulamasi",
+  "short_name": "Magaza",
+  "description": "Markaya gore uyarlanabilir e-ticaret vitrini",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1565C0",
+  "icons": [
+    {
+      "src": "/img/canvasia-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/canvasia-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

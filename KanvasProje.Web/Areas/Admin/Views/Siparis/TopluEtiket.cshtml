@@ -1,0 +1,290 @@
+﻿@using KanvasProje.Core.Varliklar
+@model IReadOnlyList<Siparis>
+@{
+    Layout = null;
+    var kargoFirmalari = ViewBag.KargoFirmalari as List<KargoFirmasi> ?? new List<KargoFirmasi>();
+    var varsayilanKargo = kargoFirmalari.FirstOrDefault(x => x.VarsayilanMi) ?? kargoFirmalari.FirstOrDefault();
+    var siteSettings = ViewBag.SiteSettings as KanvasProje.Core.Models.SiteAyarlari;
+    var logoUrl = siteSettings?.SiteLogoUrl ?? "/logo_svg.svg";
+
+    KargoFirmasi? FirmaBul(Siparis siparis)
+    {
+        if (siparis.KargoFirmasiId.HasValue)
+        {
+            var secili = kargoFirmalari.FirstOrDefault(x => x.Id == siparis.KargoFirmasiId.Value);
+            if (secili != null)
+            {
+                return secili;
+            }
+        }
+
+        if (!string.IsNullOrWhiteSpace(siparis.KargoFirmasi))
+        {
+            var adIleBulunan = kargoFirmalari.FirstOrDefault(x => x.Ad.Equals(siparis.KargoFirmasi, StringComparison.OrdinalIgnoreCase));
+            if (adIleBulunan != null)
+            {
+                return adIleBulunan;
+            }
+        }
+
+        return varsayilanKargo;
+    }
+}
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toplu Kargo Etiketleri</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f1ea;
+            color: #111;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .toolbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 22px;
+            background: #1B2A4A;
+            color: #fff;
+            box-shadow: 0 12px 32px rgba(28, 28, 24, .18);
+        }
+
+        .toolbar h1 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .toolbar p {
+            margin: 3px 0 0;
+            color: #d8d9bd;
+            font-size: 12px;
+        }
+
+        .print-button {
+            border: 0;
+            border-radius: 999px;
+            background: #4f7d38;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            padding: 10px 18px;
+        }
+
+        .labels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 18px;
+            padding: 24px;
+        }
+
+        .label {
+            width: 100mm;
+            min-height: 150mm;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #111;
+            padding: 6mm;
+            page-break-after: always;
+        }
+
+        .label-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 2px solid #111;
+            padding-bottom: 8px;
+        }
+
+        .label-logo {
+            max-width: 120px;
+            max-height: 46px;
+            object-fit: contain;
+        }
+
+        .label-title {
+            margin: 12px 0 4px;
+            font-size: 20px;
+        }
+
+        .label-meta {
+            font-size: 12px;
+        }
+
+        .label-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .label-box {
+            border: 1px solid #111;
+            padding: 8px;
+            min-height: 52px;
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .recipient-name {
+            margin: 6px 0;
+            font-size: 18px;
+        }
+
+        .product-table {
+            width: 100%;
+            margin-top: 6px;
+            font-size: 12px;
+            border-collapse: collapse;
+        }
+
+        .product-table td {
+            border-top: 1px solid #ddd;
+            padding: 4px 0;
+            vertical-align: top;
+        }
+
+        .barcode {
+            margin-top: 16px;
+            text-align: center;
+            border: 1px solid #111;
+            padding: 10px;
+            font-family: "Courier New", monospace;
+            font-size: 26px;
+            letter-spacing: 2px;
+        }
+
+        @@media print {
+            @@page {
+                size: 100mm 150mm;
+                margin: 0;
+            }
+
+            body {
+                background: #fff;
+            }
+
+            .toolbar {
+                display: none;
+            }
+
+            .labels {
+                display: block;
+                padding: 0;
+            }
+
+            .label {
+                width: 100mm;
+                min-height: 150mm;
+                margin: 0;
+                border: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <div>
+            <h1>Toplu Kargo Etiketleri</h1>
+            <p>@Model.Count sipariş etiketi yazdırmaya hazır.</p>
+        </div>
+        <button type="button" class="print-button" onclick="window.print()">Etiketleri Yazdır</button>
+    </div>
+
+    <main class="labels">
+        @foreach (var siparis in Model)
+        {
+            var firma = FirmaBul(siparis);
+            var siparisNo = string.IsNullOrWhiteSpace(siparis.SiparisNo) ? $"#{siparis.Id}" : siparis.SiparisNo;
+            var urunler = siparis.SiparisDetaylari?.OrderBy(x => x.Id).ToList() ?? new List<SiparisDetay>();
+
+            <section class="label">
+                <div class="label-header">
+                    <img src="@logoUrl" alt="METEORGALERİ" class="label-logo" />
+                    @if (!string.IsNullOrWhiteSpace(firma?.LogoUrl))
+                    {
+                        <img src="@firma.LogoUrl" alt="@firma.Ad" class="label-logo" />
+                    }
+                </div>
+
+                <h2 class="label-title">KARGO ETİKETİ</h2>
+                <div class="label-meta">Sipariş No: <strong>@siparisNo</strong> | Tarih: @siparis.OlusturulmaTarihi.ToTurkeyString()</div>
+
+                <div class="label-row">
+                    <div class="label-box">
+                        <strong>GÖNDEREN</strong><br />
+                        @(firma?.GondericiUnvan ?? siteSettings?.MarkaAdi ?? "METEORGALERİ")<br />
+                        @(string.IsNullOrWhiteSpace(firma?.GondericiAdres) ? siteSettings?.Adres : firma?.GondericiAdres)<br />
+                        Tel: @(string.IsNullOrWhiteSpace(firma?.GondericiTelefon) ? siteSettings?.Telefon : firma?.GondericiTelefon)
+                    </div>
+                    <div class="label-box">
+                        <strong>KARGO</strong><br />
+                        @(firma?.Ad ?? "Aras Kargo")<br />
+                        Takip No: @(string.IsNullOrWhiteSpace(siparis.KargoTakipNo) ? "Henüz girilmedi" : siparis.KargoTakipNo)<br />
+                        Tel: @(firma?.Telefon ?? "-")
+                    </div>
+                </div>
+
+                <div class="label-box" style="margin-top:10px;">
+                    <strong>ALICI</strong>
+                    <h3 class="recipient-name">@siparis.MusteriAdSoyad</h3>
+                    <div>@siparis.AcikAdres</div>
+                    <strong>@siparis.Ilce / @siparis.Sehir</strong><br />
+                    Tel: @siparis.Telefon
+                </div>
+
+                <div class="label-box" style="margin-top:10px;">
+                    <strong>ÜRÜNLER</strong>
+                    <table class="product-table">
+                        @foreach (var item in urunler)
+                        {
+                            var urunAdi = item.Urun?.Baslik ?? "Ürün bilgisi yok";
+                            var varyasyon = item.UrunSecenek?.VaryantBasligi ?? item.UrunSecenek?.Olcu;
+                            <tr>
+                                <td>
+                                    @urunAdi
+                                    @if (!string.IsNullOrWhiteSpace(varyasyon))
+                                    {
+                                        <br /><small>@varyasyon</small>
+                                    }
+                                    @if (!string.IsNullOrWhiteSpace(item.CerceveModeli))
+                                    {
+                                        <br /><small>Çerçeve: @item.CerceveModeli</small>
+                                    }
+                                    @if (!string.IsNullOrWhiteSpace(item.MusteriNotu))
+                                    {
+                                        <br /><small style="color:#92400e;"><em>Not: @item.MusteriNotu</em></small>
+                                    }
+                                </td>
+                                <td style="text-align:right; width:54px;">@item.Adet adet</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+
+                <div class="barcode">*@siparis.Id*</div>
+            </section>
+        }
+    </main>
+
+    <script>
+        window.addEventListener('load', function () {
+            setTimeout(function () { window.print(); }, 450);
+        });
+    </script>
+</body>
+</html>

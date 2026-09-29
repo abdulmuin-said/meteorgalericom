@@ -1,0 +1,186 @@
+@model KanvasProje.Core.Varliklar.HomePageSection
+@using KanvasProje.Core.Varliklar
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Bölüm Düzenle";
+    var tumUrunler = ViewBag.TumUrunler as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
+    var seciliUrunIdler = Model.SectionProducts?.Select(sp => sp.UrunId).ToHashSet() ?? new HashSet<int>();
+}
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="ca-page-title">Bölüm Düzenle <span class="badge bg-secondary ms-2 fs-6">#@Model.Id</span></h1>
+            <p class="ca-page-subtitle">@Model.SectionType tipindeki bölümü düzenleyin.</p>
+        </div>
+        <a href="@Url.Action("Index", "HomeSections")" class="ca-btn ca-btn-outline">
+            <i class="fas fa-arrow-left"></i> Geri Dön
+        </a>
+    </div>
+
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title"><i class="fas fa-layer-group me-2"></i>Bölüm Bilgileri</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label asp-for="SectionType" class="ca-label">Bölüm Tipi</label>
+                                <select asp-for="SectionType" class="ca-input">
+                                    <option value="@HomePageSectionType.ProductBlock">Manuel Ürün Seçimi</option>
+                                    <option value="@HomePageSectionType.CategoryShowcase">Kategori Vitrini</option>
+                                    <option value="@HomePageSectionType.CustomBanner">Özel Banner</option>
+                                    <option value="@HomePageSectionType.AutoVitrin">Öne Çıkanlar (Otomatik)</option>
+                                    <option value="@HomePageSectionType.AutoCokSatanlar">Çok Satanlar (Otomatik)</option>
+                                    <option value="@HomePageSectionType.AutoFirsatUrunleri">Fırsat Ürünleri (Otomatik)</option>
+                                    <option value="@HomePageSectionType.AutoBesParcali">5 Parçalı Tablolar (Otomatik)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label asp-for="SortOrder" class="ca-label">Sıra</label>
+                                <input asp-for="SortOrder" class="ca-input" type="number" min="0" />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ca-label">Aktif</label>
+                                <div class="form-check form-switch mt-2">
+                                    <input asp-for="Enabled" class="form-check-input" type="checkbox" />
+                                    <label class="form-check-label" asp-for="Enabled">Yayında</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Title" class="ca-label">Başlık</label>
+                                <input asp-for="Title" class="ca-input" placeholder="Bölüm başlığı" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Subtitle" class="ca-label">Alt Başlık</label>
+                                <input asp-for="Subtitle" class="ca-input" placeholder="Kısa açıklama" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="ViewAllText" class="ca-label">Buton Yazısı</label>
+                                <input asp-for="ViewAllText" class="ca-input" placeholder="Tümünü Gör" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="ViewAllUrl" class="ca-label">Buton Linki</label>
+                                <input asp-for="ViewAllUrl" class="ca-input" placeholder="/Urun" />
+                            </div>
+                        </div>
+
+                        @if (Model.SectionType == HomePageSectionType.CustomBanner)
+                        {
+                            <hr class="my-4">
+                            <h6 class="fw-semibold mb-3 text-muted">Banner Alanları</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label asp-for="ImageUrl" class="ca-label">Görsel URL</label>
+                                    <input asp-for="ImageUrl" class="ca-input" placeholder="/img/banner.jpg" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="ButtonUrl" class="ca-label">Banner Buton Linki</label>
+                                    <input asp-for="ButtonUrl" class="ca-input" placeholder="/Urun?k=1" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="ButtonText" class="ca-label">Banner Buton Yazısı</label>
+                                    <input asp-for="ButtonText" class="ca-input" placeholder="Hemen İncele" />
+                                </div>
+                                <div class="col-12">
+                                    <label asp-for="Description" class="ca-label">Açıklama</label>
+                                    <textarea asp-for="Description" class="ca-input" rows="3"></textarea>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <input type="hidden" asp-for="ImageUrl" />
+                            <input type="hidden" asp-for="ButtonUrl" />
+                            <input type="hidden" asp-for="ButtonText" />
+                            <input type="hidden" asp-for="Description" />
+                        }
+                    </div>
+                </div>
+
+                @if (Model.SectionType == HomePageSectionType.ProductBlock)
+                {
+                    <div class="ca-card mt-4">
+                        <div class="ca-card-header">
+                            <span class="ca-card-title"><i class="fas fa-box-open me-2"></i>Bu Bölümde Gösterilecek Ürünler</span>
+                        </div>
+                        <div class="ca-card-body">
+                            <p class="text-muted small mb-3">Seçtiğiniz ürünler bu bölümde sırasıyla gösterilir. Seçmek için kutucuklara tıklayın.</p>
+                            <div class="row g-2" style="max-height:400px;overflow-y:auto;">
+                                @foreach (var urun in tumUrunler)
+                                {
+                                    var isSelected = seciliUrunIdler.Contains((int)urun.Id);
+                                    <div class="col-md-6">
+                                        <div class="form-check border rounded p-2 @(isSelected ? "border-success bg-success bg-opacity-10" : "")">
+                                            <input class="form-check-input" type="checkbox"
+                                                   name="selectedProducts"
+                                                   value="@urun.Id"
+                                                   id="urun_@urun.Id"
+                                                   @(isSelected ? "checked" : "") />
+                                            <label class="form-check-label small" for="urun_@urun.Id">
+                                                @urun.Baslik
+                                            </label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col-lg-4">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title"><i class="fas fa-save me-2"></i>Kaydet</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="ca-btn ca-btn-primary">
+                                <i class="fas fa-save"></i> Değişiklikleri Kaydet
+                            </button>
+                            <a href="@Url.Action("Index", "HomeSections")" class="ca-btn ca-btn-outline">İptal</a>
+                            <a href="@Url.Action("Delete", "HomeSections", new { id = Model.Id })"
+                               class="ca-btn ca-btn-danger mt-2"
+                               onclick="return confirm('Bu bölümü silmek istediğinize emin misiniz?');">
+                                <i class="fas fa-trash"></i> Bölümü Sil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card mt-3">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title"><i class="fas fa-circle-info me-2"></i>Mevcut Durum</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <ul class="list-unstyled small mb-0">
+                            <li class="mb-2"><b>Tip:</b> <span class="badge bg-primary">@Model.SectionType</span></li>
+                            <li class="mb-2"><b>Durum:</b>
+                                @if (Model.Enabled)
+                                {
+                                    <span class="badge bg-success">Aktif</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Pasif</span>
+                                }
+                            </li>
+                            <li><b>Sıra:</b> @Model.SortOrder</li>
+                            @if (Model.SectionType == HomePageSectionType.ProductBlock)
+                            {
+                                <li class="mt-2"><b>Seçili ürün:</b> @(Model.SectionProducts?.Count ?? 0) adet</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

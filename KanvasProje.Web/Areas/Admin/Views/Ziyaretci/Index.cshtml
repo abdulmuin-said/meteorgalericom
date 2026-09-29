@@ -1,0 +1,496 @@
+@model KanvasProje.Core.Models.ZiyaretciIndexViewModel
+@{
+    ViewData["Title"] = "Ziyaretçi Trafiği";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    string BuildUrl(int? page = null, int? pageSize = null)
+    {
+        var query = new List<string>();
+        if (!string.IsNullOrWhiteSpace(Model.Arama)) query.Add($"q={Uri.EscapeDataString(Model.Arama)}");
+        if (!string.IsNullOrWhiteSpace(Model.Metod)) query.Add($"metod={Uri.EscapeDataString(Model.Metod)}");
+        if (!string.IsNullOrWhiteSpace(Model.Cihaz)) query.Add($"cihaz={Uri.EscapeDataString(Model.Cihaz)}");
+        if (Model.Baslangic.HasValue) query.Add($"baslangic={Model.Baslangic.Value:yyyy-MM-dd}");
+        if (Model.Bitis.HasValue) query.Add($"bitis={Model.Bitis.Value:yyyy-MM-dd}");
+        query.Add($"page={page ?? Model.Page}");
+        query.Add($"pageSize={pageSize ?? Model.PageSize}");
+        return "/Admin/Ziyaretci?" + string.Join("&", query);
+    }
+
+    string ExportUrl()
+    {
+        var query = new List<string>();
+        if (!string.IsNullOrWhiteSpace(Model.Arama)) query.Add($"q={Uri.EscapeDataString(Model.Arama)}");
+        if (!string.IsNullOrWhiteSpace(Model.Metod)) query.Add($"metod={Uri.EscapeDataString(Model.Metod)}");
+        if (!string.IsNullOrWhiteSpace(Model.Cihaz)) query.Add($"cihaz={Uri.EscapeDataString(Model.Cihaz)}");
+        if (Model.Baslangic.HasValue) query.Add($"baslangic={Model.Baslangic.Value:yyyy-MM-dd}");
+        if (Model.Bitis.HasValue) query.Add($"bitis={Model.Bitis.Value:yyyy-MM-dd}");
+        return "/Admin/Ziyaretci/Export" + (query.Count > 0 ? "?" + string.Join("&", query) : string.Empty);
+    }
+}
+
+<style>
+    .ca-traffic-shell {
+        max-width: 1480px;
+        margin: 0 auto;
+    }
+
+    .ca-traffic-kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 16px;
+    }
+
+    .ca-traffic-kpi {
+        background: #fff;
+        border: 1px solid var(--ca-border);
+        border-radius: 12px;
+        padding: 16px;
+        min-height: 118px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        box-shadow: 0 8px 24px rgba(49, 53, 17, .045);
+    }
+
+    .ca-traffic-kpi span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .02em;
+    }
+
+    .ca-traffic-kpi strong {
+        display: block;
+        margin-top: 8px;
+        color: var(--ca-text);
+        font-size: 1.55rem;
+        line-height: 1.1;
+    }
+
+    .ca-traffic-kpi small {
+        display: block;
+        margin-top: 8px;
+        color: var(--ca-text-muted);
+        font-size: .78rem;
+    }
+
+    .ca-traffic-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background: var(--ca-primary);
+        flex: 0 0 auto;
+    }
+
+    .ca-traffic-filter {
+        display: grid;
+        grid-template-columns: minmax(220px, 1.3fr) 140px 150px 150px 150px auto;
+        gap: 10px;
+        align-items: end;
+    }
+
+    .ca-stat-list {
+        display: grid;
+        gap: 10px;
+    }
+
+    .ca-stat-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--ca-border);
+    }
+
+    .ca-stat-row:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .ca-stat-row strong {
+        max-width: 230px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: .82rem;
+    }
+
+    .ca-stat-row span {
+        color: var(--ca-text-muted);
+        font-size: .78rem;
+        white-space: nowrap;
+    }
+
+    .ca-traffic-url {
+        display: inline-block;
+        max-width: 280px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: middle;
+        text-decoration: none;
+        color: var(--ca-text);
+        font-weight: 700;
+        font-size: .82rem;
+    }
+
+    .ca-traffic-url:hover {
+        color: var(--ca-primary);
+    }
+
+    .ca-traffic-device {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .ca-traffic-device-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--ca-bg);
+        color: var(--ca-primary);
+        flex: 0 0 auto;
+    }
+
+    .ca-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 18px;
+        border-top: 1px solid var(--ca-border);
+        flex-wrap: wrap;
+    }
+
+    .ca-pagination-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .ca-page-number {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        border: 1px solid var(--ca-border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ca-text);
+        text-decoration: none;
+        font-weight: 800;
+        font-size: .82rem;
+    }
+
+    .ca-page-number.active {
+        background: var(--ca-primary);
+        border-color: var(--ca-primary);
+        color: #fff;
+    }
+
+    @@media (max-width: 1200px) {
+        .ca-traffic-kpis {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .ca-traffic-filter {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @@media (max-width: 720px) {
+        .ca-traffic-kpis,
+        .ca-traffic-filter {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-traffic-shell">
+        <div class="ca-page-header">
+            <div>
+                <div class="ca-page-kicker">TRAFİK ANALİTİĞİ</div>
+                <h1 class="ca-page-title">Ziyaretçi Trafiği</h1>
+                <p class="ca-page-subtitle">Canlı ziyaretçi, kaynak, cihaz, sayfa ve kullanıcı hareketlerini filtreleyin.</p>
+            </div>
+            <div class="d-flex gap-2 flex-wrap justify-content-end">
+                <a href="@ExportUrl()" class="ca-btn ca-btn-excel">
+                    <i class="fas fa-file-excel"></i> Excel Aktar
+                </a>
+                <form method="post" action="/Admin/Ziyaretci/Temizle" class="m-0" onsubmit="return confirm('Tüm ziyaretçi trafik geçmişi kalıcı olarak silinecek. Emin misiniz?');">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="ca-btn ca-btn-danger">
+                        <i class="fas fa-trash"></i> Geçmişi Temizle
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="ca-traffic-kpis">
+            <div class="ca-traffic-kpi">
+                <div>
+                    <span>Şu An Sitede</span>
+                    <strong>@Model.OnlineSayisi</strong>
+                    <small>Son 5 dakikadaki tekil ziyaretçi</small>
+                </div>
+                <i class="fas fa-satellite-dish ca-traffic-icon" style="background:#16a34a;"></i>
+            </div>
+            <div class="ca-traffic-kpi">
+                <div>
+                    <span>Bugün Tekil</span>
+                    <strong>@Model.BugunTekil</strong>
+                    <small>Bugünkü farklı IP sayısı</small>
+                </div>
+                <i class="fas fa-users ca-traffic-icon" style="background:#2563eb;"></i>
+            </div>
+            <div class="ca-traffic-kpi">
+                <div>
+                    <span>Bugün Ziyaret</span>
+                    <strong>@Model.BugunZiyaret</strong>
+                    <small>Tüm sayfa ve işlem kayıtları</small>
+                </div>
+                <i class="fas fa-chart-line ca-traffic-icon" style="background:#7c6f2f;"></i>
+            </div>
+            <div class="ca-traffic-kpi">
+                <div>
+                    <span>Filtrelenen Kayıt</span>
+                    <strong>@Model.TotalCount</strong>
+                    <small>@Model.ToplamTekil tekil ziyaretçi</small>
+                </div>
+                <i class="fas fa-filter ca-traffic-icon" style="background:#f59e0b;"></i>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-3">
+            <div class="col-lg-8">
+                <div class="ca-card h-100">
+                    <div class="ca-card-header">
+                        <h2 class="ca-card-title mb-0">Filtreler</h2>
+                    </div>
+                    <div class="ca-card-body">
+                        <form method="get" class="ca-traffic-filter">
+                            <div>
+                                <label class="ca-label">Arama</label>
+                                <input type="search" name="q" value="@Model.Arama" class="ca-input" placeholder="IP, URL, şehir, kullanıcı, tarayıcı ara" />
+                            </div>
+                            <div>
+                                <label class="ca-label">Metod</label>
+                                <select name="metod" class="ca-select">
+                                    <option value="">Tümü</option>
+                                    <option value="GET" selected="@(Model.Metod == "GET")">GET</option>
+                                    <option value="POST" selected="@(Model.Metod == "POST")">POST</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="ca-label">Cihaz</label>
+                                <select name="cihaz" class="ca-select">
+                                    <option value="">Tümü</option>
+                                    <option value="Mobil" selected="@(Model.Cihaz == "Mobil")">Mobil</option>
+                                    <option value="Masaustu" selected="@(Model.Cihaz == "Masaustu")">Masaüstü</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="ca-label">Başlangıç</label>
+                                <input type="date" name="baslangic" value="@(Model.Baslangic?.ToString("yyyy-MM-dd"))" class="ca-input" />
+                            </div>
+                            <div>
+                                <label class="ca-label">Bitiş</label>
+                                <input type="date" name="bitis" value="@(Model.Bitis?.ToString("yyyy-MM-dd"))" class="ca-input" />
+                            </div>
+                            <div class="d-flex gap-2">
+                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                <button type="submit" class="ca-btn ca-btn-primary"><i class="fas fa-search"></i> Ara</button>
+                                <a href="/Admin/Ziyaretci" class="ca-btn ca-btn-outline"><i class="fas fa-rotate-left"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ca-card h-100">
+                    <div class="ca-card-header">
+                        <h2 class="ca-card-title mb-0">Öne Çıkanlar</h2>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-stat-list">
+                            <div class="ca-stat-row"><strong>En çok gezilen</strong><span title="@Model.EnCokGezilenSayfa">@Model.EnCokGezilenSayfa</span></div>
+                            <div class="ca-stat-row"><strong>En güçlü kaynak</strong><span title="@Model.EnGucluKaynak">@Model.EnGucluKaynak</span></div>
+                            <div class="ca-stat-row"><strong>Mobil / Masaüstü</strong><span>@Model.MobilZiyaret / @Model.MasaustuZiyaret</span></div>
+                            <div class="ca-stat-row"><strong>Sayfa</strong><span>@Model.Page / @Model.TotalPages</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-3">
+            <div class="col-lg-6">
+                <div class="ca-card h-100">
+                    <div class="ca-card-header"><h2 class="ca-card-title mb-0">En Çok Gezilen Sayfalar</h2></div>
+                    <div class="ca-card-body">
+                        <div class="ca-stat-list">
+                            @foreach (var item in Model.TopSayfalar)
+                            {
+                                <div class="ca-stat-row">
+                                    <strong title="@item.Etiket">@item.Etiket</strong>
+                                    <span>@item.Adet ziyaret / @item.Tekil tekil</span>
+                                </div>
+                            }
+                            @if (!Model.TopSayfalar.Any())
+                            {
+                                <div class="text-muted small">Bu filtre için sayfa verisi yok.</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ca-card h-100">
+                    <div class="ca-card-header"><h2 class="ca-card-title mb-0">Trafik Kaynakları</h2></div>
+                    <div class="ca-card-body">
+                        <div class="ca-stat-list">
+                            @foreach (var item in Model.TopKaynaklar)
+                            {
+                                <div class="ca-stat-row">
+                                    <strong title="@item.Etiket">@item.Etiket</strong>
+                                    <span>@item.Adet ziyaret / @item.Tekil tekil</span>
+                                </div>
+                            }
+                            @if (!Model.TopKaynaklar.Any())
+                            {
+                                <div class="text-muted small">Bu filtre için kaynak verisi yok.</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ca-card">
+            <div class="ca-card-header d-flex justify-content-between align-items-center gap-3 flex-wrap">
+                <h2 class="ca-card-title mb-0">Trafik Kayıtları</h2>
+                <form method="get" class="d-flex align-items-center gap-2">
+                    <input type="hidden" name="q" value="@Model.Arama" />
+                    <input type="hidden" name="metod" value="@Model.Metod" />
+                    <input type="hidden" name="cihaz" value="@Model.Cihaz" />
+                    @if (Model.Baslangic.HasValue)
+                    {
+                        <input type="hidden" name="baslangic" value="@Model.Baslangic.Value.ToString("yyyy-MM-dd")" />
+                    }
+                    @if (Model.Bitis.HasValue)
+                    {
+                        <input type="hidden" name="bitis" value="@Model.Bitis.Value.ToString("yyyy-MM-dd")" />
+                    }
+                    <label class="small text-muted">Sayfa başına</label>
+                    <select name="pageSize" class="ca-select" style="width:96px; min-height:36px;" onchange="this.form.submit()">
+                        @foreach (var option in Model.PageSizeOptions)
+                        {
+                            <option value="@option" selected="@(option == Model.PageSize)">@option</option>
+                        }
+                    </select>
+                </form>
+            </div>
+
+            <div class="ca-table-wrapper">
+                <table class="ca-table">
+                    <thead>
+                        <tr>
+                            <th>Konum</th>
+                            <th>Cihaz</th>
+                            <th>Kullanıcı</th>
+                            <th>Sayfa</th>
+                            <th>Kaynak</th>
+                            <th>Tarih</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Kayitlar)
+                        {
+                            var osIcon = "fa-desktop";
+                            if ((item.IsletimSistemi ?? string.Empty).Contains("Android", StringComparison.OrdinalIgnoreCase)) { osIcon = "fa-android"; }
+                            else if ((item.IsletimSistemi ?? string.Empty).Contains("iOS", StringComparison.OrdinalIgnoreCase) || (item.CihazModeli ?? string.Empty).Contains("iPhone", StringComparison.OrdinalIgnoreCase)) { osIcon = "fa-apple"; }
+                            else if ((item.IsletimSistemi ?? string.Empty).Contains("Windows", StringComparison.OrdinalIgnoreCase)) { osIcon = "fa-windows"; }
+                            var methodClass = string.Equals(item.Metod, "POST", StringComparison.OrdinalIgnoreCase) ? "ca-badge-success" : "ca-badge-info";
+
+                            <tr>
+                                <td>
+                                    <strong>@item.IpAdresi</strong><br>
+                                    <small class="text-muted">@(!string.IsNullOrWhiteSpace(item.Sehir) ? item.Sehir : "-") / @(!string.IsNullOrWhiteSpace(item.Ulke) ? item.Ulke : "-")</small>
+                                </td>
+                                <td>
+                                    <div class="ca-traffic-device">
+                                        <span class="ca-traffic-device-icon"><i class="fab @osIcon"></i></span>
+                                        <span>
+                                            <strong class="d-block" style="font-size:.84rem;">@(item.CihazModeli ?? "Bilinmiyor")</strong>
+                                            <small class="text-muted">@(!string.IsNullOrWhiteSpace(item.Tarayici) ? item.Tarayici : "-") / @(!string.IsNullOrWhiteSpace(item.IsletimSistemi) ? item.IsletimSistemi : "-")</small>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrWhiteSpace(item.KullaniciAdi) && item.KullaniciAdi != "Misafir")
+                                    {
+                                        <span class="ca-badge ca-badge-primary"><i class="far fa-user"></i> @item.KullaniciAdi</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="ca-badge ca-badge-neutral">Misafir</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="ca-badge @methodClass" style="font-size:.65rem; padding:2px 6px;">@item.Metod</span>
+                                    <a href="@item.Url" target="_blank" class="ca-traffic-url" title="@item.Url">@item.Url</a>
+                                </td>
+                                <td>
+                                    <span class="text-muted small" title="@item.ReferansUrl">@(!string.IsNullOrWhiteSpace(item.ReferansUrl) ? item.ReferansUrl : "Direkt / Bilinmiyor")</span>
+                                </td>
+                                <td>
+                                    <strong>@item.OlusturulmaTarihi.ToTurkeyString("HH:mm:ss")</strong><br>
+                                    <small class="text-muted">@item.OlusturulmaTarihi.ToTurkeyString("dd.MM.yyyy")</small>
+                                </td>
+                            </tr>
+                        }
+                        @if (!Model.Kayitlar.Any())
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-5">Seçilen filtrelere uygun trafik kaydı bulunamadı.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ca-pagination">
+                <div class="small text-muted">
+                    @Model.TotalCount kayıt içinde sayfa <strong>@Model.Page</strong> / @Model.TotalPages
+                </div>
+                <div class="ca-pagination-links">
+                    @if (Model.Page > 1)
+                    {
+                        <a href="@BuildUrl(Model.Page - 1)" class="ca-btn ca-btn-outline ca-btn-sm"><i class="fas fa-chevron-left"></i> Önceki</a>
+                    }
+                    @for (var p = Math.Max(1, Model.Page - 2); p <= Math.Min(Model.TotalPages, Model.Page + 2); p++)
+                    {
+                        <a href="@BuildUrl(p)" class="ca-page-number @(p == Model.Page ? "active" : "")">@p</a>
+                    }
+                    @if (Model.Page < Model.TotalPages)
+                    {
+                        <a href="@BuildUrl(Model.Page + 1)" class="ca-btn ca-btn-outline ca-btn-sm">Sonraki <i class="fas fa-chevron-right"></i></a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

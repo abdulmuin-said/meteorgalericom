@@ -1,0 +1,1099 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@using KanvasProje.Core.Helpers
+@using KanvasProje.Core.Varliklar
+@using KanvasProje.Web.Extensions
+@using KanvasProje.Web.Models
+@using System.Globalization
+@using System.Text
+@inject SignInManager<KanvasProje.Core.Varliklar.AppUser> SignInManager
+@inject UserManager<KanvasProje.Core.Varliklar.AppUser> UserManager
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject KanvasProje.Core.Interfaces.ISepetService SepetService
+@inject KanvasProje.Data.KanvasDbContext DbContext
+@inject KanvasProje.Service.Services.ISiteSettingsService SiteSettingsService
+
+@{
+    var userId = UserManager.GetUserId(User);
+    var sessionId = HttpContextAccessor.HttpContext?.Session.Id ?? string.Empty;
+    var sepetCount = await SepetService.GetSepetUrunSayisiAsync(userId, sessionId);
+    var siteSettings = SiteSettingsService.GetSettings();
+    var brandName = string.IsNullOrWhiteSpace(siteSettings.MarkaAdi) ? siteSettings.SiteAdi : siteSettings.MarkaAdi;
+    var pageTitle = ViewData["Title"]?.ToString();
+    var seoTitle = ViewData["SeoTitle"]?.ToString();
+    var layoutTitle = !string.IsNullOrWhiteSpace(seoTitle)
+        ? seoTitle
+        : (string.IsNullOrWhiteSpace(pageTitle) ? brandName : $"{pageTitle} - {brandName}");
+    var metaDescription = ViewData["MetaDescription"]?.ToString();
+    if (string.IsNullOrWhiteSpace(metaDescription))
+    {
+        metaDescription = string.IsNullOrWhiteSpace(siteSettings.MetaDescription)
+            ? (string.IsNullOrWhiteSpace(siteSettings.SiteAciklamasi) ? "Profesyonel premium dekorasyon ürünleri." : siteSettings.SiteAciklamasi)
+            : siteSettings.MetaDescription;
+    }
+    var metaKeywords = ViewData["MetaKeywords"]?.ToString();
+    var logoUrl = string.IsNullOrWhiteSpace(siteSettings.SiteLogoUrl) ? "/logo_svg.svg" : siteSettings.SiteLogoUrl;
+var touchIconUrl = "/favicon.svg";
+    var faviconUrl = string.IsNullOrWhiteSpace(siteSettings.FaviconUrl) ? "/favicon.svg" : siteSettings.FaviconUrl;
+    var siteUrl = SiteSettingsService.BuildAbsoluteUrl(string.Empty);
+    var viewOgImage = ViewData["OgImage"]?.ToString();
+    var ogImage = !string.IsNullOrWhiteSpace(viewOgImage)
+        ? SiteSettingsService.BuildAbsoluteUrl(viewOgImage)
+        : (string.IsNullOrWhiteSpace(siteSettings.VarsayilanSosyalPaylasimGorseliUrl)
+            ? SiteSettingsService.BuildAbsoluteUrl(logoUrl)
+            : SiteSettingsService.BuildAbsoluteUrl(siteSettings.VarsayilanSosyalPaylasimGorseliUrl));
+    var currentPath = HttpContextAccessor.HttpContext?.Request.Path.Value ?? "/";
+    var currentQuery = HttpContextAccessor.HttpContext?.Request.QueryString.Value ?? string.Empty;
+    var currentUrl = SiteSettingsService.BuildAbsoluteUrl($"{currentPath}{currentQuery}");
+    var canonicalUrl = ViewData["CanonicalUrl"]?.ToString();
+    canonicalUrl = string.IsNullOrWhiteSpace(canonicalUrl)
+        ? currentUrl
+        : SiteSettingsService.BuildAbsoluteUrl(canonicalUrl);
+    var ogType = string.IsNullOrWhiteSpace(ViewData["OgType"]?.ToString()) ? "website" : ViewData["OgType"]!.ToString();
+    var topBarPrimary = string.IsNullOrWhiteSpace(siteSettings.UstBarMesaji)
+        ? $"{siteSettings.UcretsizKargoLimiti:N0} {siteSettings.ParaBirimi} ÜZERİ ÜCRETSİZ KARGO"
+        : siteSettings.UstBarMesaji.ToUpper();
+    var trustMessages = new List<string>
+    {
+        topBarPrimary,
+        "GÜVENLİ ÖDEME",
+        "KREDİ KARTI İLE ÖDEME",
+        "HIZLI ÜRETİM",
+        "ÖZENLİ PAKETLEME",
+        "TÜRKİYE GENELİ KARGO",
+        $"{siteSettings.IadeHakkiGun} GÜN KOLAY İADE",
+        "ÜRETİCİ FİRMA GÜVENCESİ"
+    };
+
+    if (!string.IsNullOrWhiteSpace(siteSettings.KampanyaMesaji))
+    {
+        trustMessages.Insert(1, siteSettings.KampanyaMesaji.ToUpper());
+    }
+
+    if (!string.IsNullOrWhiteSpace(siteSettings.WhatsappNumarasi))
+    {
+        trustMessages.Add("WHATSAPP DESTEK");
+    }
+
+    trustMessages = trustMessages
+        .Where(message => !string.IsNullOrWhiteSpace(message))
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .ToList();
+
+    var tumKategoriler = await DbContext.Kategoriler
+        .Where(k => k.AktifMi && !k.SilindiMi)
+        .OrderBy(k => k.Sira)
+        .ThenBy(k => k.Ad)
+        .ToListAsync();
+
+    string NormalizeCategoryKey(string? value)
+    {
+        var normalized = (value ?? string.Empty)
+            .Trim()
+            .ToLowerInvariant()
+            .Replace("ı", "i")
+            .Replace("İ", "i")
+            .Replace("&", "and")
+            .Normalize(NormalizationForm.FormD);
+
+        var builder = new StringBuilder(normalized.Length);
+        foreach (var character in normalized)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(character) != UnicodeCategory.NonSpacingMark)
+            {
+                builder.Append(character);
+            }
+        }
+
+        return builder.ToString().Normalize(NormalizationForm.FormC);
+    }
+
+    string GetCategoryMenuImage(Kategori category)
+    {
+        var configured = !string.IsNullOrWhiteSpace(category.GorselUrl) ? category.GorselUrl : category.BannerUrl;
+        if (!string.IsNullOrWhiteSpace(configured))
+        {
+            var keyForOverride = NormalizeCategoryKey(category.Ad);
+            if (keyForOverride != "ataturk kosesi")
+            {
+                return configured;
+            }
+        }
+
+        return NormalizeCategoryKey(category.Ad) switch
+        {
+            "ataturk kosesi" or "ataturk ve turkiye" => "/img/products/7-parcali-kanvas-tablo-tarihi-liderler-mustafa-kemal-ataturk-portre-serisi-ana.webp",
+            "islami sanat and hat" or "dini ve hat sanati" => "/img/products/35-besmele-lila-allah-ve-muhammed-yazili-kanvas-tablo-ana.webp",
+            "osmanli ve tugra" => "/img/products/5-parca-tugra-allah-muhammed-kanvas-tablo-ana.webp",
+            "dunya klasikleri" or "klasik eserler" => "/img/products/ademin-yaratilisi-the-creation-of-adam-kanvas-tablosu-ana.webp",
+            "modern and soyut" or "soyut ve sanatsal" or "farkli tasarimlar" => "/img/products/3-parcali-renkli-gokkusagi-kanvas-tablo-ana.webp",
+            "sehir manzaralari" or "sehir ve mimari" => "/img/products/i-stanbul-bogazici-koprusu-kanvas-tablosu-ana.webp",
+            "parcali tablolar" or "panoramik tablolar" => "/img/products/5-parcali-manzarali-sisli-orman-kanvas-tablo-ana.webp",
+            "manzara temali" => "/img/products/5-parcali-manzarali-sisli-orman-kanvas-tablo-ana.webp",
+            "hayvanlar alemi" => "/img/products/2-beyaz-kurt-ve-ay-manzarali-5-parca-kanvas-tablo-ana.webp",
+            "araba ve araclar" => "/img/products/bmw-e30-araba-5-parca-kanvas-tablo-ana.webp",
+            "cocuk odasi" => "/img/products/cocuk-odasi-i-cin-dekoratif-zebra-ve-fil-resimli-kanvas-tablo-ana.webp",
+            "nu sanat" or "kadin temali" => "/img/products/3-lu-afrikali-kadin-kanvas-tablo-ana.webp",
+            "unluler ve sinema" => "/img/products/gitar-ve-sehir-sliuetli-kanvas-tablo-ana.webp",
+            "yiyecek ve icecek" => "/img/products/cicekli-vintage-fincan-ve-kahve-temali-5-parcali-kanvas-tablo-ana.webp",
+            "ask ve romantizm" => "/img/products/acik-pembe-renkli-romantik-guller-kanvas-tablo-ana.webp",
+            "taraftar kosesi" => "/img/products_yeni/dalgalanan-turk-bayragi-5-parca-kanvas-t-bc6a.jpg",
+            "adalet ve hukuk" => "/img/products/adalet-ve-hukuk-resimli-kanvas-tablo-ana.webp",
+            "cicekli ve dekoratif" => "/img/products/3-parca-orkide-cicekli-kanvas-tablo-ana.webp",
+            _ => configured ?? "/img/banner/slider-1.webp"
+        };
+    }
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@layoutTitle</title>
+<link rel="icon" href="@faviconUrl" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="@touchIconUrl">
+    <link rel="canonical" href="@canonicalUrl">
+    <meta name="description" content="@metaDescription">
+    @if (!string.IsNullOrWhiteSpace(metaKeywords))
+    {
+        <meta name="keywords" content="@metaKeywords">
+    }
+    <meta property="og:site_name" content="@brandName">
+    <meta property="og:title" content="@layoutTitle">
+    <meta property="og:description" content="@metaDescription">
+    <meta property="og:type" content="@ogType">
+    <meta property="og:url" content="@canonicalUrl">
+    <meta property="og:image" content="@ogImage">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@layoutTitle">
+    <meta name="twitter:description" content="@metaDescription">
+    <meta name="twitter:image" content="@ogImage">
+    <meta name="google-site-verification" content="lp3CR7os7YE1Ow3TF8fJXcGIMjuxQHEq_GVJW2IsvvM" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style data-purpose="custom-fonts">
+        body { font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif; color: #1B2A4A; padding: 0 !important; margin: 0 !important; background: #FFFBF0 !important; font-size: 14px; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+        .text-xxs { font-size: 0.65rem; }
+        nav a, button, .tracking-widest { letter-spacing: 0.1em; }
+    </style>
+    <style data-purpose="custom-utilities">
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .custom-scrollbar::-webkit-scrollbar { display: none; }
+        .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .trust-ticker-track { width: max-content; animation: trustTicker 34s linear infinite; }
+        .trust-ticker:hover .trust-ticker-track { animation-play-state: paused; }
+        @@keyframes trustTicker {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+@@media (prefers-reduced-motion: reduce) {
+            .trust-ticker-track { animation: none; transform: translateX(0); }
+        }
+        
+        /* Cart bounce animation */
+        @@keyframes cartBounce {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+        .bounce-animation {
+            animation: cartBounce 0.4s ease-out;
+        }
+        
+        @@media (max-width: 767px) {
+            /* Mobil alt navigasyon barı (mobile-bottom-nav) görünür ise WhatsApp butonunu yukarı kaydır */
+            body:has(.mobile-bottom-nav:not([style*="display: none"])) .whatsapp-btn,
+            body.has-bottom-nav .whatsapp-btn {
+                bottom: 80px !important;
+            }
+        }
+        
+        /* Kategori menü geçişlerindeki titremenin/kapanmanın gecikme süresi ile önlenmesi */
+        [data-category-dropdown] {
+            transition: opacity 0.25s ease, visibility 0.25s ease !important;
+            transition-delay: 0.15s !important;
+        }
+        .group:hover [data-category-dropdown] {
+            transition-delay: 0s !important;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="bg-[#FFFBF0] overflow-x-hidden antialiased flex flex-col min-h-screen">
+    <form id="globalAntiForgeryForm" class="hidden">
+        @Html.AntiForgeryToken()
+    </form>
+
+<!-- BEGIN: AnnouncementBar -->
+    @if (siteSettings.UstBarEtkin)
+    {
+        var tickerSpeed = siteSettings.UstBarHizi > 0 ? siteSettings.UstBarHizi : 34;
+        <div class="trust-ticker relative z-50 overflow-hidden bg-[#C0392B] py-2 text-xs font-light tracking-wider text-white">
+            <div class="trust-ticker-track flex items-center" style="animation-duration: @tickerSpeed.ToString("0", System.Globalization.CultureInfo.InvariantCulture)s;">
+                @for (var repeat = 0; repeat < 2; repeat++)
+                {
+                    foreach (var message in trustMessages)
+                    {
+                        <span class="mx-5 flex shrink-0 items-center gap-2 whitespace-nowrap">
+                            <i class="fas fa-check text-[10px] text-[#f7ead8]"></i>
+                            @message
+                        </span>
+                    }
+                }
+            </div>
+        </div>
+    }
+    <!-- END: AnnouncementBar -->
+
+<!-- BEGIN: MainHeader -->
+    <header class="sticky top-0 bg-[#FFFBF0] z-[100] border-b border-[#F5E6C8]">
+        <div class="w-full max-w-[1360px] mx-auto px-4 py-2 flex flex-col items-center relative">
+            <!-- Logo -->
+            <a class="mb-1 mt-1 inline-block leading-none" href="/" aria-label="@brandName" id="siteLogo">
+                @if (!string.IsNullOrEmpty(logoUrl)) {
+                    <img src="@logoUrl" asp-append-version="true" alt="@siteSettings.MarkaAdi" class="block h-auto w-[130px] object-contain md:w-[180px]" width="180" height="78" decoding="async" fetchpriority="high" />
+                } else {
+                    <h1 class="font-serif text-2xl md:text-3xl tracking-widest text-[#1B2A4A] font-medium text-center">@siteSettings.MarkaAdi</h1>
+                }
+            </a>
+
+            <!-- Desktop Nav Right Side: Search + Account/Favorites/Cart -->
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-4 text-[#1B2A4A]">
+                <!-- Desktop Search Bar (inline, replaces button when active) -->
+                <div id="desktopSearchBar" class="hidden items-center">
+                    <form action="/Urun" method="get" class="relative flex items-center">
+                        <input type="text" name="s" id="desktopSearchInput" placeholder="Ürün ara..." autocomplete="off"
+                               class="w-[260px] bg-white border border-[#F5E6C8] rounded-full px-4 pr-9 py-2 text-sm text-[#1B2A4A] placeholder-[#a09e99] focus:outline-none focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] shadow-md" />
+                        <button type="submit" aria-label="Ara" class="absolute right-3 top-1/2 -translate-y-1/2 text-[#a09e99] hover:text-[#C0392B] transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </button>
+                    </form>
+                    <button type="button" id="desktopSearchCloseBtn" class="ml-2 text-[#333333] hover:text-[#1B2A4A]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Search Button (shown when search is closed) -->
+                <button type="button" aria-label="Arama" onclick="window.toggleSearchBar()" class="hover:text-[#C0392B] transition-colors" id="desktopSearchBtn">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+
+                <!-- Account -->
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a href="/Profil" aria-label="Hesabım" title="Hesabım" class="hover:text-[#C0392B] transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </a>
+                }
+                else
+                {
+                    <a href="/Hesap/GirisYap" aria-label="Giriş Yap" title="Giriş Yap" class="hover:text-[#C0392B] transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </a>
+                }
+
+                <!-- Favoriler -->
+                <a href="/Favori" aria-label="Favoriler" class="hover:text-red-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+                </a>
+
+                <!-- Sepet -->
+                <a href="/Sepet" aria-label="Sepet" class="relative hover:text-[#C0392B] transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span id="cartItemCount" class="absolute -top-1 -right-2 bg-[#C0392B] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center transition-transform duration-300">@sepetCount</span>
+                </a>
+            </div>
+
+            <!-- Mobile Left: Hamburger + Search Toggle -->
+            <div class="absolute left-4 top-1/2 -translate-y-1/2 flex md:hidden items-center gap-3 text-[#1B2A4A]">
+                <button aria-label="Menüyü aç" onclick="window.toggleMobileNav(true)" class="hover:text-[#C0392B]" id="mobileMenuBtn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.75 6h16.5m-16.5 6h16.5m-16.5 6h16.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+                <button type="button" aria-label="Arama" onclick="window.toggleSearchBar()" class="hover:text-[#C0392B]" id="mobileSearchBtn">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+            </div>
+
+            <!-- Mobile Right: Account/Favorites/Cart -->
+            <div id="mobileIcons" class="absolute right-4 top-1/2 -translate-y-1/2 flex md:hidden items-center gap-3 text-[#1B2A4A]">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a href="/Profil" aria-label="Hesabım" title="Hesabım" class="hover:text-[#C0392B]">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </a>
+                }
+                else
+                {
+                    <a href="/Hesap/GirisYap" aria-label="Giriş Yap" title="Giriş Yap" class="hover:text-[#C0392B]">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </a>
+                }
+                <a href="/Favori" aria-label="Favoriler" class="hover:text-red-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+                </a>
+                <a href="/Sepet" aria-label="Sepet" class="relative hover:text-[#C0392B]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span id="cartItemCountMobile" class="absolute -top-1 -right-2 bg-[#C0392B] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">@sepetCount</span>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="w-full hidden md:block z-50" data-desktop-nav>
+                <ul class="flex justify-center space-x-4 text-xs tracking-widest text-[#333333] font-light uppercase" data-desktop-nav-list>
+                    @foreach (var kategori in tumKategoriler.Where(x => x.ParentKategoriId == null).OrderBy(x => x.Sira).ThenBy(x => x.Ad))
+                    {
+                        var altKategoriler = tumKategoriler.Where(x => x.ParentKategoriId == kategori.Id).OrderBy(x => x.Sira).ToList();
+                        var kategoriPreviewGorsel = GetCategoryMenuImage(kategori);
+                        var kategoriPreviewMetin = !string.IsNullOrWhiteSpace(kategori.KisaAciklama)
+                            ? kategori.KisaAciklama
+                            : "Seçili koleksiyondaki ürünleri keşfedin.";
+                        
+                        <li class="relative group cursor-pointer hover:text-[#1B2A4A] transition-colors py-2" data-category-menu-item>
+                            <a href="/Urun?k=@kategori.Id" class="flex items-center gap-1 whitespace-nowrap">
+                                @kategori.Ad
+                                <i class="fas fa-chevron-down text-[10px] opacity-70 group-hover:rotate-180 transition-transform"></i>
+                            </a>
+                            
+                            <!-- Dropdown Menü -->
+                            <div class="absolute left-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 w-[min(820px,calc(100vw-32px))] z-[9999]" style="transform:translateX(-50%) translateZ(1px);isolation:isolate" data-category-dropdown>
+                                <div class="bg-[#f7f1e6] border border-[#c9b58a]/60 shadow-xl rounded-sm p-5 ring-1 ring-[#1B2A4A]/5">
+                                    <div class="mb-4 flex items-center justify-between border-b border-[#d8c9aa] pb-3">
+                                        <div>
+                                            <div class="font-serif text-lg normal-case tracking-normal text-[#1B2A4A]">@kategori.Ad</div>
+                                            <div class="mt-1 text-[11px] font-light normal-case tracking-normal text-[#6f6a5e]">@(altKategoriler.Any() ? "Alt kategoriler" : "Kategori detayı")</div>
+                                        </div>
+                                        <a href="/Urun?k=@kategori.Id" class="text-[11px] font-medium tracking-widest text-[#C0392B] hover:text-[#1B2A4A]">TÜMÜNÜ GÖR</a>
+                                    </div>
+
+                                    @if (altKategoriler.Any())
+                                    {
+                                        <div class="grid gap-5 lg:grid-cols-[1.35fr_0.65fr]">
+                                            <div class="grid grid-cols-2 gap-x-5 gap-y-1 sm:grid-cols-3">
+                                                @foreach (var alt in altKategoriler)
+                                                {
+                                                    var altGorsel = GetCategoryMenuImage(alt);
+                                                    var altPreviewMetin = !string.IsNullOrWhiteSpace(alt.KisaAciklama)
+                                                        ? alt.KisaAciklama
+                                                        : (!string.IsNullOrWhiteSpace(alt.SeoDescription) ? alt.SeoDescription : "Bu koleksiyondaki öne çıkan tasarımları inceleyin.");
+                                                    <a href="/Urun?k=@alt.Id"
+                                                       class="flex items-center gap-3 border-b border-[#dfd3ba]/70 px-1 py-2 text-left text-[11px] leading-snug text-[#333333] transition-colors hover:text-[#C0392B]"
+                                                       data-category-preview-src="@altGorsel"
+                                                       data-category-preview-title="@alt.Ad"
+                                                       data-category-preview-text="@altPreviewMetin">
+                                                        <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden bg-[#efe4cf] text-[#C0392B]">
+                                                            @if (!string.IsNullOrWhiteSpace(altGorsel))
+                                                            {
+                                                                <img src="@altGorsel" alt="@alt.Ad" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <i class="fas fa-layer-group text-xs"></i>
+                                                            }
+                                                        </span>
+                                                        <span>@alt.Ad</span>
+                                                    </a>
+                                                }
+                                            </div>
+                                            <div class="category-preview-panel hidden overflow-hidden bg-[#efe4cf] lg:block" data-category-preview-panel>
+                                                <div class="category-preview-media aspect-[4/5] bg-[#e5d6ba]">
+                                                    @if (!string.IsNullOrWhiteSpace(kategoriPreviewGorsel))
+                                                    {
+                                                        <img src="@kategoriPreviewGorsel" alt="@kategori.Ad" class="h-full w-full object-cover" data-category-preview-image loading="lazy" decoding="async" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="flex h-full w-full items-center justify-center text-[#C0392B]" data-category-preview-placeholder>
+                                                            <i class="fas fa-layer-group text-xl"></i>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="px-4 py-4">
+                                                    <p class="mb-1 text-[10px] uppercase tracking-[0.22em] text-[#C0392B]">Koleksiyon</p>
+                                                    <h4 class="category-preview-title font-serif text-xl normal-case tracking-normal text-[#1B2A4A]" data-category-preview-title>@kategori.Ad</h4>
+                                                    <p class="category-preview-text mt-2 line-clamp-3 text-xs normal-case leading-5 tracking-normal text-[#6f6a5e]" data-category-preview-text>@kategoriPreviewMetin</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+                                            <div class="overflow-hidden bg-[#efe4cf]">
+                                                <div class="aspect-[4/3] bg-[#e5d6ba]">
+                                                    @if (!string.IsNullOrWhiteSpace(kategoriPreviewGorsel))
+                                                    {
+                                                        <img src="@kategoriPreviewGorsel" alt="@kategori.Ad" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="flex h-full w-full items-center justify-center text-[#C0392B]">
+                                                            <i class="fas fa-layer-group text-xl"></i>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col justify-center text-left normal-case tracking-normal">
+                                                <p class="mb-3 text-[10px] uppercase tracking-[0.22em] text-[#C0392B]">Kategori</p>
+                                                <h4 class="font-serif text-2xl text-[#1B2A4A]">@kategori.Ad</h4>
+                                                <p class="mt-3 text-sm leading-6 text-[#6f6a5e]">@kategoriPreviewMetin</p>
+                                                <a href="/Urun?k=@kategori.Id" class="mt-5 inline-flex w-fit items-center gap-2 border-b border-[#1B2A4A] pb-1 text-[11px] font-medium uppercase tracking-widest text-[#1B2A4A] transition-colors hover:text-[#C0392B]">
+                                                    Kategoriyi İncele
+                                                    <i class="fas fa-arrow-right text-[10px]"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    <li class="cursor-pointer hover:text-[#1B2A4A] transition-colors py-2 whitespace-nowrap"><a href="/Kurumsal/Iletisim">İLETİŞİM</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileNavBackdrop" class="mobile-nav-backdrop fixed inset-0 z-[80] hidden bg-[#1B2A4A]/45 md:hidden" onclick="window.toggleMobileNav(false)"></div>
+        <div id="mobileNav" class="mobile-nav-panel fixed left-0 top-0 z-[90] hidden h-dvh w-[88vw] max-w-[380px] overflow-y-auto overscroll-contain border-r border-[#d8c9aa] bg-[#f7f1e6] px-5 py-5 shadow-2xl md:hidden">
+            <div class="mb-5 flex items-center justify-between border-b border-[#d8c9aa] pb-4">
+                <a href="/" class="font-serif text-xl tracking-widest text-[#1B2A4A]">@brandName</a>
+                <button type="button" aria-label="Menüyü kapat" onclick="window.toggleMobileNav(false)" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#c9b58a] text-[#1B2A4A]">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <ul class="space-y-3 text-sm tracking-widest text-[#333333] font-light uppercase" data-mobile-nav-list>
+                <li class="border-b border-[#d8c9aa] pb-3" data-mobile-nav-item><a href="/Urun" class="block w-full">TÜM ÜRÜNLER</a></li>
+                @foreach (var kategori in tumKategoriler.Where(x => x.ParentKategoriId == null).OrderBy(x => x.Sira).ThenBy(x => x.Ad))
+                {
+                    var altKategoriler = tumKategoriler.Where(x => x.ParentKategoriId == kategori.Id).OrderBy(x => x.Sira).ToList();
+                    <li class="border-b border-[#d8c9aa] pb-3" data-mobile-nav-item>
+                        @if (altKategoriler.Any())
+                        {
+                            <details class="group" data-mobile-category>
+                                <summary class="flex justify-between items-center cursor-pointer list-none w-full py-1">
+                                    <span class="hover:text-[#1B2A4A]">@kategori.Ad</span>
+                                    <span class="transition group-open:rotate-180 p-1 text-[#C0392B]"><i class="fas fa-chevron-down"></i></span>
+                                </summary>
+                                <ul class="mt-3 max-h-[52vh] space-y-1 overflow-y-auto border-l-2 border-[#c9b58a] pl-4 pr-1 text-xs normal-case tracking-normal">
+                                    <li data-mobile-subitem>
+                                        <a href="/Urun?k=@kategori.Id" class="mb-2 block rounded-sm bg-[#1B2A4A] px-3 py-2 text-center font-medium tracking-widest text-white">
+                                            Tümünü Gör
+                                        </a>
+                                    </li>
+                                    @foreach (var alt in altKategoriler)
+                                    {
+                                        <li data-mobile-subitem><a href="/Urun?k=@alt.Id" class="block w-full rounded-sm px-2 py-2 text-[#5f594e] hover:bg-[#efe4cf] hover:text-[#1B2A4A]">@alt.Ad</a></li>
+                                    }
+                                </ul>
+                            </details>
+                        }
+                        else
+                        {
+                            <a href="/Urun?k=@kategori.Id" class="block w-full">@kategori.Ad</a>
+                        }
+                    </li>
+                }
+                <li class="border-b border-[#d8c9aa] pb-3" data-mobile-nav-item><a href="/Kurumsal/Iletisim" class="block w-full">İLETİŞİM</a></li>
+                <li class="border-b border-[#d8c9aa] pb-3" data-mobile-nav-item><a href="/Favori" class="block w-full flex items-center gap-2"><i class="far fa-heart text-red-400"></i> FAVORİLERİM</a></li>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li data-mobile-nav-item><a href="/Profil" class="block w-full">HESABIM</a></li>
+                }
+                else
+                {
+                    <li data-mobile-nav-item><a href="/Hesap/GirisYap" class="block w-full">GİRİŞ YAP / KAYIT OL</a></li>
+                }
+            </ul>
+        </div>
+
+        <!-- Mobile Search Bar (full width overlay) -->
+        <form id="mobileSearchBar" action="/Urun" method="get" style="display:none;" class="absolute left-0 right-0 top-0 z-[95] bg-[#FFFBF0] px-4 py-3 flex items-center gap-3 border-b border-[#F5E6C8] md:hidden">
+            <button type="button" id="mobileSearchCloseBtn" class="shrink-0 text-[#333333] hover:text-[#1B2A4A]">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+            <div class="flex-1 relative">
+                <input type="text" name="s" id="mobileSearchInput" placeholder="Ürün ara..." autocomplete="off"
+                       class="w-full bg-white border border-[#F5E6C8] rounded-full px-4 pr-10 py-2.5 text-sm text-[#1B2A4A] placeholder-[#a09e99] focus:outline-none focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B]" />
+                <svg class="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#a09e99] pointer-events-none" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <button type="submit" id="mobileSearchSubmit" class="shrink-0 text-[#C0392B] hover:text-[#1B2A4A] text-xs font-medium uppercase tracking-wider">Ara</button>
+        </form>
+    </header>
+    <!-- END: MainHeader -->
+
+    <main class="flex-grow">
+        @RenderBody()
+    </main>
+
+    <!-- BEGIN: Footer -->
+    <footer class="bg-[#1B2A4A] text-[#f4f0ea] pt-0 pb-8 mt-auto">
+        <div class="border-b border-white/10 bg-[#25280c]">
+            <div class="container mx-auto grid grid-cols-1 gap-4 px-8 py-5 text-center md:grid-cols-3">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#c6ca99]/35 text-[#c6ca99]">
+                        <i class="fas fa-truck-fast"></i>
+                    </span>
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-[#c6ca99]">Tüm Türkiye'ye</div>
+                        <div class="text-sm font-semibold text-white">Ücretsiz Kargo</div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#c6ca99]/35 text-[#c6ca99]">
+                        <i class="fas fa-shield-halved"></i>
+                    </span>
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-[#c6ca99]">%100 Güvenli Alışveriş</div>
+                        <div class="text-sm font-semibold text-white">256 Bit SSL Sertifikası</div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#c6ca99]/35 text-[#c6ca99]">
+                        <i class="fas fa-credit-card"></i>
+                    </span>
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-[#c6ca99]">Tüm Kredi Kartlarına</div>
+                        <div class="text-sm font-semibold text-white">12 Taksit İmkanı</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-8 pt-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <!-- Newsletter Signup -->
+                <div>
+                    <h3 class="font-serif text-2xl mb-4 text-[#c6ca99]">BÜLTENE ABONE OLUN</h3>
+                    <p class="text-sm font-light mb-6 text-gray-300 leading-relaxed max-w-md">
+                        Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere @brandName'dan en son haberleri almak için bültenimize abone olun.
+                    </p>
+                    <form id="newsletterForm" action="/Home/BulteneAboneOl" method="post" class="flex border-b border-gray-500 pb-2 max-w-md relative">
+                        @Html.AntiForgeryToken()
+                        <input name="email" id="newsletterEmail" class="bg-transparent border-none w-full focus:ring-0 text-sm px-0 text-white placeholder-gray-400 outline-none" placeholder="E-posta Adresi" required="" type="email"/>
+                        <button type="submit" class="text-xs tracking-widest uppercase hover:text-[#c6ca99] transition-colors ml-4 whitespace-nowrap">ABONE OL</button>
+                    </form>
+                    <div id="newsletterMessage" class="text-xs mt-2 hidden"></div>
+                </div>
+                <!-- Footer Links & Socials -->
+                <div class="flex flex-col md:items-end">
+                    <h4 class="font-bold text-sm tracking-widest mb-4 uppercase text-[#c6ca99]">KURUMSAL</h4>
+                    <ul class="space-y-2 text-sm font-light text-gray-300 text-left md:text-right">
+                        <li><a class="hover:text-white transition-colors" href="/Kurumsal/Hakkimizda">Hakkımızda</a></li>
+                        <li><a class="hover:text-white transition-colors" href="/Kurumsal/Iletisim">İletişim</a></li>
+                        <li><a class="hover:text-white transition-colors" href="/Urun">Koleksiyonlar</a></li>
+                        <li><a class="hover:text-white transition-colors" href="/Sozlesmeler/Gizlilik">Gizlilik Politikası</a></li>
+                        <li><a class="hover:text-white transition-colors" href="/Sozlesmeler/MesafeliSatis">Mesafeli Satış Sözleşmesi</a></li>
+                    </ul>
+                    <div class="mt-6 flex gap-4 text-gray-400">
+                        @if(!string.IsNullOrEmpty(siteSettings.InstagramUrl)) {
+                            <a href="@siteSettings.InstagramUrl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                        }
+                        @if(!string.IsNullOrEmpty(siteSettings.FacebookUrl)) {
+                            <a href="@siteSettings.FacebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                        }
+                        @if(!string.IsNullOrEmpty(siteSettings.WhatsappNumarasi)) {
+                            <a href="https://wa.me/@siteSettings.WhatsappNumarasi.Replace(" ", "").Replace("+", "")" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="hover:text-white transition-colors"><i class="fab fa-whatsapp text-xl"></i></a>
+                        }
+                        @if(!string.IsNullOrEmpty(siteSettings.YoutubeUrl)) {
+                            <a href="@siteSettings.YoutubeUrl" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="hover:text-white transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+                        }
+                        @if(!string.IsNullOrEmpty(siteSettings.TiktokUrl)) {
+                            <a href="@siteSettings.TiktokUrl" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-white transition-colors"><i class="fab fa-tiktok text-xl"></i></a>
+                        }
+                        @if(!string.IsNullOrEmpty(siteSettings.PinterestUrl)) {
+                            <a href="@siteSettings.PinterestUrl" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="hover:text-white transition-colors"><i class="fab fa-pinterest text-xl"></i></a>
+                        }
+                        @if(!string.IsNullOrEmpty(siteSettings.TwitterUrl)) {
+                            <a href="@siteSettings.TwitterUrl" target="_blank" rel="noopener noreferrer" aria-label="X" class="hover:text-white transition-colors"><i class="fab fa-x-twitter text-xl"></i></a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Bar -->
+            <div class="border-t border-[#333333] pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+                <div class="mb-4 md:mb-0 text-center md:text-left order-2 md:order-1">
+                    <p class="text-[11px] tracking-wide">© @DateTime.Now.Year <span class="text-[#f4f0ea] font-medium">METEORGALERİ</span> — Tüm hakları saklıdır.</p>
+                </div>
+                <div class="mb-4 md:mb-0 order-1 md:order-2">
+                    <a href="/Kurumsal/Gizlilik" class="text-[11px] text-gray-400 hover:text-[#f4f0ea] transition-colors mx-2">Gizlilik Politikası</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="/Kurumsal/KullaniciSozlesmesi" class="text-[11px] text-gray-400 hover:text-[#f4f0ea] transition-colors mx-2">Kullanım Koşulları</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="/Kurumsal/IadeKosullari" class="text-[11px] text-gray-400 hover:text-[#f4f0ea] transition-colors mx-2">İade ve Değişim</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banka Logoları -->
+        <div class="border-t border-[#333333] mt-6 pt-6 pb-4">
+            <div class="flex justify-center items-center">
+                <img src="/bankalogolari.svg" alt="Ödeme Yöntemleri" class="h-8 md:h-10 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+            </div>
+        </div>
+    </footer>
+    <!-- END: Footer -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        window.toggleMobileNav = function(open) {
+            const drawer = document.getElementById('mobileNav');
+            const backdrop = document.getElementById('mobileNavBackdrop');
+            if (!drawer || !backdrop) return;
+
+            const shouldOpen = typeof open === 'boolean' ? open : drawer.classList.contains('hidden');
+            if (shouldOpen) {
+                drawer.classList.remove('hidden');
+                backdrop.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    drawer.classList.add('is-open');
+                    backdrop.classList.add('is-open');
+                });
+            } else {
+                drawer.classList.remove('is-open');
+                backdrop.classList.remove('is-open');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                    backdrop.classList.add('hidden');
+                }, 430);
+            }
+            document.documentElement.classList.toggle('overflow-hidden', shouldOpen);
+            document.body.classList.toggle('overflow-hidden', shouldOpen);
+        };
+
+        (function() {
+            const edgePadding = 16;
+
+function alignCategoryDropdown(menuItem) {
+                const dropdown = menuItem.querySelector('[data-category-dropdown]');
+                if (!dropdown || window.innerWidth < 768) return;
+                const mobileBar = document.getElementById('mobileSearchBar');
+                const desktopBar = document.getElementById('desktopSearchBar');
+                if ((mobileBar && mobileBar.style.display === 'flex') || (desktopBar && !desktopBar.classList.contains('hidden'))) return;
+
+                dropdown.style.left = '50%';
+                dropdown.style.right = 'auto';
+                dropdown.style.transform = 'translateX(-50%)';
+
+                const itemRect = menuItem.getBoundingClientRect();
+                const width = Math.min(dropdown.offsetWidth, window.innerWidth - (edgePadding * 2));
+                const preferredLeft = itemRect.left + (itemRect.width / 2) - (width / 2);
+                const boundedLeft = Math.min(
+                    Math.max(preferredLeft, edgePadding),
+                    window.innerWidth - edgePadding - width
+                );
+
+                dropdown.style.left = `${boundedLeft - itemRect.left}px`;
+                dropdown.style.transform = 'none';
+            }
+
+            function initCategoryDropdownAlignment() {
+                const menuItems = document.querySelectorAll('[data-category-menu-item]');
+
+                menuItems.forEach(menuItem => {
+                    menuItem.addEventListener('mouseenter', () => alignCategoryDropdown(menuItem));
+                    menuItem.addEventListener('focusin', () => alignCategoryDropdown(menuItem));
+                });
+
+                window.addEventListener('resize', () => {
+                    menuItems.forEach(menuItem => alignCategoryDropdown(menuItem));
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCategoryDropdownAlignment);
+            } else {
+                initCategoryDropdownAlignment();
+            }
+        })();
+
+document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                window.toggleMobileNav(false);
+                window.toggleSearchBar(false);
+            }
+        });
+
+        $(document).ready(function() {
+            // Newsletter AJAX Submission
+            $('#newsletterForm').on('submit', function(e) {
+                e.preventDefault();
+                var form = $(this);
+                var messageDiv = $('#newsletterMessage');
+                var btn = form.find('button[type="submit"]');
+                var originalBtnText = btn.text();
+                
+                btn.text('BEKLEYİN...').prop('disabled', true);
+                
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serialize(),
+                    success: function(response) {
+                        if (response.success) {
+                            window.showToast(response.message || 'Başarıyla abone oldunuz.', 'success');
+                            $('#newsletterEmail').val('');
+                        } else {
+                            window.showToast(response.message || 'Bir hata oluştu.', 'error');
+                        }
+                        btn.text(originalBtnText).prop('disabled', false);
+                    },
+                    error: function(xhr) {
+                        const responseMessage = xhr.responseJSON && xhr.responseJSON.message
+                            ? xhr.responseJSON.message
+                            : 'İşlem tamamlanamadı. Lütfen kısa bir süre sonra tekrar deneyin.';
+                        window.showToast(responseMessage, 'error');
+                        btn.text(originalBtnText).prop('disabled', false);
+                    }
+                });
+            });
+
+
+        });
+
+        window.showToast = function(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = 'transform translate-y-10 opacity-0 transition-all duration-500 ease-out flex items-center gap-3 px-6 py-4 rounded shadow-lg backdrop-blur-md min-w-[300px] border-l-4';
+            
+            let iconHtml = '';
+            const safeMessage = String(message || '').replace(/[&<>"']/g, function(char) {
+                return ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                })[char];
+            });
+
+            if (type === 'success') {
+                toast.classList.add('bg-[#FFFBF0]', 'bg-opacity-95', 'text-[#1B2A4A]', 'border-[#1B2A4A]');
+                iconHtml = '<i class="fas fa-check-circle text-xl text-[#1B2A4A]"></i>';
+            } else if (type === 'error') {
+                toast.classList.add('bg-white', 'bg-opacity-95', 'text-red-800', 'border-red-600');
+                iconHtml = '<i class="fas fa-exclamation-circle text-xl text-red-600"></i>';
+            } else {
+                toast.classList.add('bg-white', 'bg-opacity-95', 'text-blue-800', 'border-blue-600');
+                iconHtml = '<i class="fas fa-info-circle text-xl text-blue-600"></i>';
+            }
+
+            toast.innerHTML = `
+                ${iconHtml}
+                <div class="flex-1">
+                    <p class="font-medium text-sm tracking-wide font-sans">${safeMessage}</p>
+                </div>
+                <button onclick="this.parentElement.remove()" class="text-gray-400 hover:text-[#1B2A4A] transition-colors ml-4">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+            container.appendChild(toast);
+
+            // Trigger animation
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    toast.classList.remove('translate-y-10', 'opacity-0');
+                    toast.classList.add('translate-y-0', 'opacity-100');
+                });
+            });
+
+            // Auto remove
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 500);
+            }, 4000);
+        };
+
+    </script>
+    <script src="~/js/premium-motion.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-4 left-4 z-[110] flex flex-col gap-3"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const successMessage = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["Basari"]?.ToString()));
+            const errorMessage = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["Hata"]?.ToString()));
+            const infoMessage = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["Mesaj"]?.ToString()));
+
+            if (successMessage && window.showToast) {
+                window.showToast(successMessage, 'success');
+            }
+
+            if (errorMessage && window.showToast) {
+                window.showToast(errorMessage, 'error');
+            }
+
+            if (infoMessage && window.showToast) {
+                window.showToast(infoMessage, 'info');
+            }
+        });
+</script>
+
+    <!-- Search Results Dropdown -->
+    <div id="searchResultsDropdown" class="fixed bg-white border border-[#F5E6C8] rounded-xl shadow-xl z-[200] hidden overflow-y-auto" style="max-height: 420px; min-width: 280px;"></div>
+
+    <script>
+        window.toggleSearchBar = function(open) {
+            const mobileBar = document.getElementById('mobileSearchBar');
+            const desktopBar = document.getElementById('desktopSearchBar');
+            const logo = document.getElementById('siteLogo');
+            const nav = document.querySelector('nav');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+            const mobileIcons = document.getElementById('mobileIcons');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileBackdrop = document.getElementById('mobileNavBackdrop');
+            const isMobile = window.innerWidth < 768;
+
+            if (mobileNav && !mobileNav.classList.contains('hidden')) window.toggleMobileNav(false);
+
+            let shouldOpen;
+            if (typeof open === 'boolean') {
+                shouldOpen = open;
+            } else {
+                shouldOpen = isMobile
+                    ? mobileBar.style.display !== 'flex'
+                    : desktopBar.classList.contains('hidden') || desktopBar.style.display !== 'flex';
+            }
+
+            if (isMobile) {
+                if (shouldOpen) {
+                    mobileBar.style.display = 'flex';
+                    mobileBar.classList.remove('hidden');
+                    const msb = document.getElementById('mobileSearchBtn');
+                    if (msb) msb.style.display = 'none';
+                    setTimeout(() => document.getElementById('mobileSearchInput')?.focus(), 50);
+                } else {
+                    mobileBar.style.display = 'none';
+                    mobileBar.classList.add('hidden');
+                    const msb = document.getElementById('mobileSearchBtn');
+                    if (msb) msb.style.display = 'inline-flex';
+                    const inp = document.getElementById('mobileSearchInput');
+                    if (inp) inp.value = '';
+                    document.getElementById('searchResultsDropdown')?.classList.add('hidden');
+                }
+            } else {
+                if (shouldOpen) {
+                    desktopBar.style.display = 'flex';
+                    desktopBar.classList.remove('hidden');
+                    const dsb = document.getElementById('desktopSearchBtn');
+                    if (dsb) dsb.style.display = 'none';
+                    setTimeout(() => document.getElementById('desktopSearchInput')?.focus(), 50);
+                } else {
+                    desktopBar.style.display = 'none';
+                    desktopBar.classList.add('hidden');
+                    const dsb = document.getElementById('desktopSearchBtn');
+                    if (dsb) dsb.style.display = 'block';
+                    const inp = document.getElementById('desktopSearchInput');
+                    if (inp) inp.value = '';
+                    document.getElementById('searchResultsDropdown')?.classList.add('hidden');
+                }
+            }
+        };
+
+        document.getElementById('mobileSearchCloseBtn')?.addEventListener('click', () => window.toggleSearchBar(false));
+        document.getElementById('desktopSearchCloseBtn')?.addEventListener('click', () => window.toggleSearchBar(false));
+        document.getElementById('mobileSearchBtn')?.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.toggleSearchBar(true);
+        });
+        document.getElementById('desktopSearchBtn')?.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.toggleSearchBar(true);
+        });
+        document.getElementById('mobileSearchSubmit')?.addEventListener('click', function (e) {
+            e.preventDefault();
+            const term = document.getElementById('mobileSearchInput')?.value.trim() || '';
+            window.location.href = '/Urun' + (term ? '?s=' + encodeURIComponent(term) : '');
+        });
+
+        (function () {
+            const desktopInput = document.getElementById('desktopSearchInput');
+            const mobileInput = document.getElementById('mobileSearchInput');
+            const resultsDropdown = document.getElementById('searchResultsDropdown');
+            let searchTimer = null, abortController = null;
+
+            function escapeHtml(value) {
+                return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+            }
+
+            function positionResults() {
+                if (!resultsDropdown || resultsDropdown.classList.contains('hidden')) return;
+                const isMobile = window.innerWidth < 768;
+                const input = isMobile ? mobileInput : desktopInput;
+                if (!input) return;
+                const rect = input.getBoundingClientRect();
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const width = Math.max(rect.width, 280);
+                resultsDropdown.style.width = width + 'px';
+                if (isMobile) {
+                    resultsDropdown.style.top = (rect.bottom + scrollTop + 6) + 'px';
+                    resultsDropdown.style.left = '16px';
+                    resultsDropdown.style.right = '16px';
+                    resultsDropdown.style.minWidth = 'unset';
+                } else {
+                    resultsDropdown.style.top = (rect.bottom + scrollTop + 8) + 'px';
+                    resultsDropdown.style.left = rect.left + 'px';
+                    resultsDropdown.style.right = 'auto';
+                    resultsDropdown.style.minWidth = '320px';
+                }
+            }
+
+            function showResults(html) {
+                if (!resultsDropdown || !html) { resultsDropdown?.classList.add('hidden'); return; }
+                resultsDropdown.innerHTML = html;
+                resultsDropdown.classList.remove('hidden');
+                positionResults();
+            }
+
+            function hideResults() { resultsDropdown?.classList.add('hidden'); }
+
+            function runSearch(term) {
+                if (term.length < 2) { hideResults(); return; }
+                if (abortController) abortController.abort();
+                abortController = new AbortController();
+                fetch('/Urun/CanliAra?q=' + encodeURIComponent(term), { signal: abortController.signal })
+                    .then(response => response.ok ? response.json() : [])
+                    .then(items => {
+                        if (!Array.isArray(items) || items.length === 0) {
+                            showResults('<div class="px-4 py-5 text-center text-sm text-[#6f6a5e]"><i class="fas fa-search mr-1"></i>Sonuç bulunamadı</div>');
+                            return;
+                        }
+                        const html = '<div class="p-2"><div class="text-[10px] uppercase tracking-widest text-[#a09e99] px-2 pb-2">' + items.length + ' sonuç bulundu</div>' +
+                            items.slice(0, 8).map(item => {
+                                const title = escapeHtml(item.baslik || '');
+                                const price = item.fiyat ? escapeHtml(item.fiyat) : '';
+                                const image = item.gorsel ? `<img src="${escapeHtml(item.gorsel)}" alt="${title}" class="w-12 h-12 object-cover rounded" loading="lazy">` : `<div class="w-12 h-12 rounded bg-[#FDF6E3] flex items-center justify-center"><i class="fas fa-image text-[#C0392B]"></i></div>`;
+                                return `<a href="/Urun/Detay/${encodeURIComponent(item.id)}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors hover:bg-[#f7f1e6] group">
+                                    ${image}
+                                    <div class="flex-1 min-w-0">
+                                        <div class="text-sm font-medium text-[#1B2A4A] truncate group-hover:text-[#C0392B] transition-colors">${title}</div>
+                                        ${price ? `<div class="text-xs text-[#C0392B] mt-0.5 font-semibold">${price}</div>` : ''}
+                                    </div>
+                                    <i class="fas fa-arrow-right text-[10px] text-[#C0392B] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                </a>`;
+                            }).join('') +
+                            (items.length > 8 ? `<a href="/Urun?s=${encodeURIComponent(term)}" class="block text-center text-xs text-[#C0392B] font-semibold py-2.5 border-t border-[#F5E6C8] hover:bg-[#f7f1e6] transition-colors rounded-b-lg">Tüm sonuçları gör <i class="fas fa-arrow-right ml-1 text-[10px]"></i></a>` : '') +
+                            '</div>';
+                        showResults(html);
+                    })
+                    .catch(error => {
+                        if (error.name !== 'AbortError') showResults('<div class="px-4 py-5 text-center text-sm text-red-600"><i class="fas fa-exclamation-circle mr-1"></i>Arama şu anda çalıştırılamadı</div>');
+                    });
+            }
+
+            [desktopInput, mobileInput].forEach(input => {
+                if (!input) return;
+                input.addEventListener('input', function () {
+                    clearTimeout(searchTimer);
+                    const term = this.value.trim();
+                    if (term.length < 2) { hideResults(); return; }
+                    searchTimer = setTimeout(() => runSearch(term), 220);
+                });
+                input.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const form = this.closest('form');
+                        if (form) {
+                            form.submit();
+                        } else {
+                            window.location.href = '/Urun' + (this.value.trim() ? '?s=' + encodeURIComponent(this.value.trim()) : '');
+                        }
+                    }
+                });
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!resultsDropdown?.contains(e.target) && !e.target.closest('#desktopSearchInput') && !e.target.closest('#mobileSearchInput')) hideResults();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') { hideResults(); window.toggleSearchBar(false); }
+            });
+            window.addEventListener('resize', positionResults);
+            window.addEventListener('scroll', positionResults, true);
+        })();
+    </script>
+
+<script>
+        window.toggleFavori = function(btn, urunId) {
+            const evt = window.event;
+            if (evt) {
+                evt.preventDefault();
+                evt.stopPropagation();
+            }
+            
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin text-sm text-[#333333]"></i>';
+            btn.disabled = true;
+
+            let token = document.querySelector('#globalAntiForgeryForm input[name="__RequestVerificationToken"]')?.value;
+            
+            fetch('/Favori/Toggle?urunId=' + urunId, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token || ''
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success) {
+                    if(data.isAdded) {
+                        btn.innerHTML = '<i class="fas fa-heart text-sm text-red-500"></i>';
+                        if(window.showToast) window.showToast('Ürün favorilerinize eklendi.', 'success');
+                    } else {
+                        btn.innerHTML = '<i class="far fa-heart text-sm text-[#333333] group-hover/btn:text-red-500 transition-colors"></i>';
+                        if(window.showToast) window.showToast('Ürün favorilerinizden çıkarıldı.', 'info');
+                    }
+                } else {
+                    if (data.message === "Lütfen önce giriş yapınız.") {
+                        window.location.href = '/Hesap/GirisYap?ReturnUrl=' + window.location.pathname;
+                    } else {
+                        if(window.showToast) window.showToast(data.message || 'Bir hata oluştu.', 'error');
+                        btn.innerHTML = originalHtml;
+                    }
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                if(window.showToast) window.showToast('Bağlantı hatası.', 'error');
+                btn.innerHTML = originalHtml;
+            })
+            .finally(() => {
+                btn.disabled = false;
+            });
+        };
+    </script>
+
+    <!-- Floating WhatsApp Button -->
+    @if (!string.IsNullOrWhiteSpace(siteSettings.WhatsappNumarasi))
+    {
+        var waNumber = siteSettings.WhatsappNumarasi.Replace(" ", "").Replace("+", "").TrimStart('0');
+        if (!waNumber.StartsWith("9")) waNumber = "9" + waNumber;
+        <a href="https://wa.me/@waNumber" target="_blank" rel="noopener noreferrer"
+           class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#20BD5A] hover:scale-110 transition-all duration-300 group whatsapp-btn"
+           aria-label="WhatsApp ile iletişim">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.162-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white text-[#25D366] px-3 py-1.5 rounded-lg text-xs font-medium shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                WhatsApp
+            </span>
+        </a>
+    }
+</body>
+</html>

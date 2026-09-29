@@ -1,0 +1,214 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Hesabım" [ref=e52] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "17"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo" [ref=e68]:
+              - /url: /Urun?k=30
+          - listitem [ref=e69] [cursor=pointer]:
+            - link "Duvar Kağıdı" [ref=e70]:
+              - /url: /Urun?k=31
+          - listitem [ref=e71] [cursor=pointer]:
+            - link "Cam Kesme Tahtası" [ref=e72]:
+              - /url: /Urun?k=32
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Ayna" [ref=e74]:
+              - /url: /Urun?k=33
+          - listitem [ref=e75] [cursor=pointer]:
+            - link "Baskılı Halı" [ref=e76]:
+              - /url: /Urun?k=34
+          - listitem [ref=e77] [cursor=pointer]:
+            - link "Ahşap Dekorasyon" [ref=e78]:
+              - /url: /Urun?k=35
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Mobilya Aksesuar" [ref=e80]:
+              - /url: /Urun?k=36
+          - listitem [ref=e81] [cursor=pointer]:
+            - link "Lightbox" [ref=e82]:
+              - /url: /Urun?k=37
+          - listitem [ref=e83] [cursor=pointer]:
+            - link "Afiş" [ref=e84]:
+              - /url: /Urun?k=38
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "TÜM ÜRÜNLER" [ref=e86]:
+              - /url: /Urun
+          - listitem [ref=e87] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e88]:
+              - /url: /Kurumsal/Iletisim
+    - text:   
+  - main [ref=e89]:
+    - generic [ref=e92]:
+      - heading "Mesafeli Satış Sözleşmesi" [level=1] [ref=e93]
+      - generic [ref=e94]:
+        - paragraph [ref=e95]: Bu sözleşme, Canvasia üzerinden verilen siparişlerde alıcı ile satıcı arasındaki mesafeli satış koşullarını açıklar. Sipariş veren müşteri, ödeme adımını tamamladığında bu sözleşmede yer alan temel koşulları kabul etmiş sayılır.
+        - heading "1. Taraflar" [level=2] [ref=e96]
+        - paragraph [ref=e97]:
+          - text: "Satıcı: Canvasia. Alıcı: Web sitesi üzerinden ürün veya hizmet satın alan gerçek ya da tüzel kişi. Satıcıya ait güncel iletişim bilgilerine"
+          - link "İletişim" [ref=e98] [cursor=pointer]:
+            - /url: /Kurumsal/Iletisim
+          - text: sayfasından ulaşılabilir.
+        - heading "2. Sözleşmenin Konusu" [level=2] [ref=e99]
+        - paragraph [ref=e100]: İşbu sözleşmenin konusu, alıcının elektronik ortamda sipariş verdiği ürünlerin satışı, teslimi, cayma hakkı, iade koşulları ve tarafların karşılıklı hak ve yükümlülüklerinin belirlenmesidir.
+        - heading "3. Ürün ve Sipariş Bilgileri" [level=2] [ref=e101]
+        - paragraph [ref=e102]: Ürünün adı, adedi, varyasyon seçimi, satış bedeli, ödeme şekli, teslimat adresi ve sipariş tarihi sipariş özeti ekranında ve sipariş kayıtlarında yer alır. Kişiye özel ölçü, tasarım veya üretim tercihi içeren ürünlerde üretim süreci sipariş onayından sonra başlar.
+        - heading "4. Teslimat" [level=2] [ref=e103]
+        - paragraph [ref=e104]: Siparişler, ürün tipine ve üretim yoğunluğuna göre belirtilen hazırlık süresi içinde kargoya teslim edilir. Türkiye geneli gönderimlerde kargo firmasından kaynaklanan gecikmeler satıcının doğrudan kontrolü dışında olabilir.
+        - heading "5. Cayma Hakkı ve İade" [level=2] [ref=e105]
+        - paragraph [ref=e106]:
+          - text: Standart ürünlerde cayma ve iade talepleri ilgili mevzuat çerçevesinde değerlendirilir. Müşterinin özel ölçü, özel tasarım, kişiselleştirme veya siparişe özel üretim tercihiyle hazırlanan ürünlerde cayma hakkı sınırlı olabilir. Detaylı bilgi için
+          - link "İade Koşulları" [ref=e107] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+          - text: sayfası incelenmelidir.
+        - heading "6. Ödeme ve Güvenlik" [level=2] [ref=e108]
+        - paragraph [ref=e109]: Ödeme işlemleri güvenli ödeme altyapısı üzerinden gerçekleştirilir. Kart bilgileri Canvasia sunucularında saklanmaz. Ödeme sırasında kullanılan güvenlik doğrulamaları bankanız veya ödeme sağlayıcınız tarafından yürütülür.
+        - heading "7. Uyuşmazlık" [level=2] [ref=e110]
+        - paragraph [ref=e111]: Taraflar arasında doğabilecek uyuşmazlıklarda, yürürlükteki tüketici mevzuatı kapsamında yetkili tüketici hakem heyetleri ve tüketici mahkemeleri yetkilidir.
+  - contentinfo [ref=e112]:
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - generic [ref=e117]: 
+        - generic [ref=e118]:
+          - generic [ref=e119]: Tüm Türkiye'ye
+          - generic [ref=e120]: Ücretsiz Kargo
+      - generic [ref=e121]:
+        - generic [ref=e123]: 
+        - generic [ref=e124]:
+          - generic [ref=e125]: "%100 Güvenli Alışveriş"
+          - generic [ref=e126]: 256 Bit SSL Sertifikası
+      - generic [ref=e127]:
+        - generic [ref=e129]: 
+        - generic [ref=e130]:
+          - generic [ref=e131]: Tüm Kredi Kartlarına
+          - generic [ref=e132]: 12 Taksit İmkanı
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - generic [ref=e135]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e136]
+          - paragraph [ref=e137]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e138]:
+            - textbox "E-posta Adresi" [ref=e139]
+            - button "ABONE OL" [ref=e140] [cursor=pointer]
+        - generic [ref=e141]:
+          - heading "KURUMSAL" [level=4] [ref=e142]
+          - list [ref=e143]:
+            - listitem [ref=e144]:
+              - link "Hakkımızda" [ref=e145] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e146]:
+              - link "İletişim" [ref=e147] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e148]:
+              - link "Koleksiyonlar" [ref=e149] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e150]:
+              - link "Gizlilik Politikası" [ref=e151] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e152]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e153] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e154]:
+            - link "Instagram" [ref=e155] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e156]: 
+            - link "WhatsApp" [ref=e157] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e158]: 
+      - generic [ref=e159]:
+        - paragraph [ref=e161]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e162]:
+          - link "Gizlilik Politikası" [ref=e163] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e164] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e165] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e168]
+  - link "WhatsApp ile iletişim" [ref=e169] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e170]
+    - generic [ref=e172]: WhatsApp

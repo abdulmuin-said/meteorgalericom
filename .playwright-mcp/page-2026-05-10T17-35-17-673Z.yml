@@ -1,0 +1,355 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Menüyü aç" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - button "Arama" [ref=e52] [cursor=pointer]:
+          - img [ref=e53]
+      - generic [ref=e55]:
+        - link "Hesabım" [ref=e56] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e57]
+        - link "Favoriler" [ref=e59] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e60]
+        - link "Sepet" [ref=e62] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e63]
+          - generic [ref=e65]: "1"
+      - text: 
+    - text:   
+  - main [ref=e66]:
+    - generic [ref=e68]:
+      - link "1 Sepet" [ref=e69] [cursor=pointer]:
+        - /url: /Sepet
+        - generic [ref=e70]: "1"
+        - text: Sepet
+      - generic [ref=e71]: /
+      - generic [ref=e72]:
+        - generic [ref=e73]: "2"
+        - text: Ödeme & Teslimat
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - heading "Güvenli Ödeme" [level=1] [ref=e76]
+        - paragraph [ref=e77]: Teslimat bilgilerinizi doğrulayın ve siparişinizi güvenle tamamlayın.
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - heading " Kayıtlı Adresleriniz" [level=2] [ref=e81]:
+              - generic [ref=e82]: 
+              - text: Kayıtlı Adresleriniz
+            - generic [ref=e84] [cursor=pointer]:
+              - 'radio "ev abdulmuin said 0531 391 94 28 Kastamonu / merkez inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez" [ref=e85]'
+              - generic [ref=e88]:
+                - generic [ref=e89]: ev
+                - generic [ref=e90]: abdulmuin said
+                - generic [ref=e91]: 0531 391 94 28
+                - generic [ref=e92]: Kastamonu / merkez
+                - generic [ref=e93]: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+          - generic [ref=e94]:
+            - heading " Teslimat Bilgileri" [level=2] [ref=e95]:
+              - generic [ref=e96]: 
+              - text: Teslimat Bilgileri
+            - generic [ref=e97]:
+              - generic [ref=e98]:
+                - generic [ref=e99]:
+                  - generic [ref=e100]: Ad Soyad
+                  - textbox "Ad Soyad" [ref=e101]:
+                    - /placeholder: Adınız ve soyadınız
+                    - text: Harun OK
+                - generic [ref=e102]:
+                  - generic [ref=e103]: E-posta
+                  - textbox [ref=e104]: admin@canvasia.com
+                  - generic [ref=e105]: Kayıtlı e-posta adresiniz kullanılacak.
+                - generic [ref=e106]:
+                  - generic [ref=e107]: Telefon
+                  - textbox "Telefon" [ref=e108]:
+                    - /placeholder: 5XX XXX XX XX
+                - generic [ref=e109]:
+                  - generic [ref=e110]: Şehir
+                  - combobox "Şehir" [ref=e111]:
+                    - option "Şehir seçiniz"
+                    - option "Adana"
+                    - option "Adıyaman"
+                    - option "Afyonkarahisar"
+                    - option "Ağrı"
+                    - option "Aksaray"
+                    - option "Amasya"
+                    - option "Ankara"
+                    - option "Antalya"
+                    - option "Ardahan"
+                    - option "Artvin"
+                    - option "Aydın"
+                    - option "Balıkesir"
+                    - option "Bartın"
+                    - option "Batman"
+                    - option "Bayburt"
+                    - option "Bilecik"
+                    - option "Bingöl"
+                    - option "Bitlis"
+                    - option "Bolu"
+                    - option "Burdur"
+                    - option "Bursa"
+                    - option "Çanakkale"
+                    - option "Çankırı"
+                    - option "Çorum"
+                    - option "Denizli"
+                    - option "Diyarbakır"
+                    - option "Düzce"
+                    - option "Edirne"
+                    - option "Elazığ"
+                    - option "Erzincan"
+                    - option "Erzurum"
+                    - option "Eskişehir"
+                    - option "Gaziantep"
+                    - option "Giresun"
+                    - option "Gümüşhane"
+                    - option "Hakkari"
+                    - option "Hatay"
+                    - option "Iğdır"
+                    - option "Isparta"
+                    - option "İstanbul" [selected]
+                    - option "İzmir"
+                    - option "Kahramanmaraş"
+                    - option "Karabük"
+                    - option "Karaman"
+                    - option "Kars"
+                    - option "Kastamonu"
+                    - option "Kayseri"
+                    - option "Kırıkkale"
+                    - option "Kırklareli"
+                    - option "Kırşehir"
+                    - option "Kilis"
+                    - option "Kocaeli"
+                    - option "Konya"
+                    - option "Kütahya"
+                    - option "Malatya"
+                    - option "Manisa"
+                    - option "Mardin"
+                    - option "Mersin"
+                    - option "Muğla"
+                    - option "Muş"
+                    - option "Nevşehir"
+                    - option "Niğde"
+                    - option "Ordu"
+                    - option "Osmaniye"
+                    - option "Rize"
+                    - option "Sakarya"
+                    - option "Samsun"
+                    - option "Siirt"
+                    - option "Sinop"
+                    - option "Sivas"
+                    - option "Şanlıurfa"
+                    - option "Şırnak"
+                    - option "Tekirdağ"
+                    - option "Tokat"
+                    - option "Trabzon"
+                    - option "Tunceli"
+                    - option "Uşak"
+                    - option "Van"
+                    - option "Yalova"
+                    - option "Yozgat"
+                    - option "Zonguldak"
+                - generic [ref=e112]:
+                  - generic [ref=e113]: İlçe
+                  - textbox "İlçe" [ref=e114]:
+                    - /placeholder: İlçe adı
+                - generic [ref=e115]:
+                  - generic [ref=e116]: Açık Adres
+                  - textbox "Açık Adres" [ref=e117]:
+                    - /placeholder: Mahalle, sokak, apartman, daire numarası ve ek adres bilgileri
+                - generic [ref=e119] [cursor=pointer]:
+                  - checkbox "Bu adresi hesabıma kaydetmek istiyorum" [ref=e120]
+                  - generic [ref=e121]: Bu adresi hesabıma kaydetmek istiyorum
+              - generic [ref=e122]:
+                - heading " Ödeme Yöntemi" [level=2] [ref=e123]:
+                  - generic [ref=e124]: 
+                  - text: Ödeme Yöntemi
+                - generic [ref=e125]:
+                  - generic [ref=e126]: 256-Bit SSL
+                  - generic [ref=e127]:
+                    - generic [ref=e128]: 
+                    - generic [ref=e129]:
+                      - heading "Kredi veya Banka Kartı" [level=6] [ref=e130]
+                      - paragraph [ref=e131]: İyzico güvenli ödeme altyapısı kullanılmaktadır.
+                  - paragraph [ref=e132]:
+                    - text: Siparişi tamamla butonuna tıkladıktan sonra
+                    - strong [ref=e133]: 3D Secure Güvenli Ödeme
+                    - text: ekranına yönlendirileceksiniz. Kart bilgileriniz kesinlikle sistemimizde saklanmamaktadır.
+                  - generic [ref=e134] [cursor=pointer]:
+                    - checkbox "Gizlilik Politikası ve Kullanıcı Sözleşmesi şartlarını okudum, onaylıyorum." [ref=e135]
+                    - generic [ref=e136]:
+                      - link "Gizlilik Politikası" [ref=e137]:
+                        - /url: /Kurumsal/Gizlilik
+                      - text: ve
+                      - link "Kullanıcı Sözleşmesi" [ref=e138]:
+                        - /url: /Kurumsal/KullaniciSozlesmesi
+                      - text: şartlarını okudum, onaylıyorum.
+              - button " Siparişi Tamamla - 1.699,00 TL" [ref=e139] [cursor=pointer]:
+                - generic [ref=e140]: 
+                - text: Siparişi Tamamla - 1.699,00 TL
+        - generic [ref=e142]:
+          - heading "Sipariş Özeti" [level=3] [ref=e143]
+          - generic [ref=e145]:
+            - img "Kabe Kapısı Tablosu - Model 3" [ref=e147]
+            - generic [ref=e148]:
+              - generic [ref=e149]: Kabe Kapısı Tablosu - Model 3
+              - generic [ref=e150]: "70cm x 70cm | SKU: URN-009170-VAR-034366 | Çerçeve: Beyaz"
+              - generic [ref=e151]:
+                - generic [ref=e152]: x 1
+                - generic [ref=e153]: 1.699,00 TL
+          - generic [ref=e154]:
+            - generic [ref=e155]:
+              - generic [ref=e156]: Ara Toplam
+              - generic [ref=e157]: 1.699,00 TL
+            - generic [ref=e158]:
+              - generic [ref=e159]: Kargo Ücreti
+              - generic [ref=e160]: Ücretsiz
+          - generic [ref=e161]:
+            - generic [ref=e162]: Genel Toplam
+            - generic [ref=e163]: 1.699 TL
+          - generic [ref=e164]:
+            - generic [ref=e166]:
+              - paragraph [ref=e167]: 256-Bit SSL Şifreleme
+              - paragraph [ref=e168]: Tüm bilgileriniz uçtan uca şifrelenir ve bankaya iletilir.
+            - generic [ref=e169]:
+              - generic [ref=e170]: 
+              - generic [ref=e171]:
+                - paragraph [ref=e172]: Hasarsız Teslimat
+                - paragraph [ref=e173]: Özel korumalı ambalajlarla ürününüz güvenle kapınıza ulaşır.
+            - generic [ref=e174]:
+              - generic [ref=e175]: 
+              - generic [ref=e176]:
+                - paragraph [ref=e177]: Kolay İade
+                - paragraph [ref=e178]: 14 gün içinde koşulsuz iade hakkınız bulunmaktadır.
+  - contentinfo [ref=e179]:
+    - generic [ref=e181]:
+      - generic [ref=e182]:
+        - generic [ref=e184]: 
+        - generic [ref=e185]:
+          - generic [ref=e186]: Tüm Türkiye'ye
+          - generic [ref=e187]: Ücretsiz Kargo
+      - generic [ref=e188]:
+        - generic [ref=e190]: 
+        - generic [ref=e191]:
+          - generic [ref=e192]: "%100 Güvenli Alışveriş"
+          - generic [ref=e193]: 256 Bit SSL Sertifikası
+      - generic [ref=e194]:
+        - generic [ref=e196]: 
+        - generic [ref=e197]:
+          - generic [ref=e198]: Tüm Kredi Kartlarına
+          - generic [ref=e199]: 12 Taksit İmkanı
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e203]
+          - paragraph [ref=e204]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e205]:
+            - textbox "E-posta Adresi" [ref=e206]
+            - button "ABONE OL" [ref=e207] [cursor=pointer]
+        - generic [ref=e208]:
+          - heading "KURUMSAL" [level=4] [ref=e209]
+          - list [ref=e210]:
+            - listitem [ref=e211]:
+              - link "Hakkımızda" [ref=e212] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e213]:
+              - link "İletişim" [ref=e214] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e215]:
+              - link "Koleksiyonlar" [ref=e216] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e217]:
+              - link "Gizlilik Politikası" [ref=e218] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e219]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e220] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e221]:
+            - link "Instagram" [ref=e222] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e223]: 
+            - link "WhatsApp" [ref=e224] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e225]: 
+      - generic [ref=e226]:
+        - paragraph [ref=e228]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e229]:
+          - link "Gizlilik Politikası" [ref=e230] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e231] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e232] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e235]
+  - link "WhatsApp ile iletişim" [ref=e236] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e237]
+    - generic [ref=e239]: WhatsApp

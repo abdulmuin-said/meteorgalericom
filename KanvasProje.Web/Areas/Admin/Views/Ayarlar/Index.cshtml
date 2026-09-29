@@ -1,0 +1,668 @@
+﻿@model KanvasProje.Core.Models.SiteAyarlari
+@using KanvasProje.Core.Varliklar
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Site Ayarları";
+    var kargoFirmalari = ViewBag.KargoFirmalari as List<KargoFirmasi> ?? new List<KargoFirmasi>();
+    var paytrMerchantKeyKayitli = ViewBag.PaytrMerchantKeyKayitli as bool? ?? false;
+    var paytrMerchantSaltKayitli = ViewBag.PaytrMerchantSaltKayitli as bool? ?? false;
+}
+
+<style>
+    .ca-settings-shell {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .ca-settings-hero {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: flex-start;
+        margin-bottom: 18px;
+    }
+
+    .ca-settings-tabs {
+        position: sticky;
+        top: 84px;
+        z-index: 8;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        padding: 12px;
+        margin-bottom: 16px;
+        background: rgba(252, 249, 243, .94);
+        border: 1px solid var(--ca-border);
+        border-radius: 14px;
+        backdrop-filter: blur(12px);
+    }
+
+    .ca-settings-tab {
+        border: 1px solid transparent;
+        background: #fff;
+        color: var(--ca-text);
+        border-radius: 10px;
+        padding: 10px 13px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: .82rem;
+        font-weight: 800;
+        transition: .18s ease;
+    }
+
+    .ca-settings-tab:hover,
+    .ca-settings-tab.active {
+        background: var(--ca-primary);
+        border-color: var(--ca-primary);
+        color: #fff;
+    }
+
+    .ca-settings-panel {
+        display: none;
+    }
+
+    .ca-settings-panel.active {
+        display: block;
+    }
+
+    .ca-settings-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 16px;
+        align-items: start;
+    }
+
+    .ca-settings-side {
+        position: sticky;
+        top: 164px;
+    }
+
+    .ca-section-heading {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .ca-section-heading i {
+        width: 42px;
+        height: 42px;
+        border-radius: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(var(--ca-primary-rgb), .08);
+        color: var(--ca-primary);
+        flex: 0 0 auto;
+    }
+
+    .ca-section-heading h2 {
+        margin: 0;
+        color: var(--ca-text);
+        font-size: 1rem;
+        font-weight: 800;
+    }
+
+    .ca-section-heading p {
+        margin: 3px 0 0;
+        color: var(--ca-text-muted);
+        font-size: .82rem;
+    }
+
+    .ca-help-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+    }
+
+    .ca-help-list li {
+        display: flex;
+        gap: 9px;
+        color: var(--ca-text-muted);
+        font-size: .82rem;
+        line-height: 1.45;
+    }
+
+    .ca-help-list i {
+        color: var(--ca-accent);
+        margin-top: 3px;
+    }
+
+    .ca-toggle-box {
+        padding: 14px;
+        background: var(--ca-bg);
+        border: 1px solid var(--ca-border);
+        border-radius: 12px;
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+    }
+
+    .ca-settings-save-bar {
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+        margin-top: 18px;
+        padding: 14px 0 2px;
+        background: linear-gradient(180deg, rgba(252,249,243,0), var(--ca-bg) 30%);
+    }
+
+    .ca-settings-save-inner {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        border: 1px solid var(--ca-border);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 -8px 24px rgba(49, 53, 17, .045);
+    }
+
+    @@media (max-width: 1100px) {
+        .ca-settings-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .ca-settings-side {
+            position: static;
+        }
+    }
+
+    @@media (max-width: 760px) {
+        .ca-settings-hero {
+            flex-direction: column;
+        }
+
+        .ca-settings-tabs {
+            position: static;
+        }
+
+        .ca-settings-tab {
+            flex: 1 1 45%;
+            justify-content: center;
+        }
+
+        .ca-settings-save-inner {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-settings-shell">
+        <div class="ca-settings-hero">
+            <div>
+                <div class="ca-page-kicker">MAĞAZA YAPILANDIRMASI</div>
+                <h1 class="ca-page-title">Site Ayarları</h1>
+                <p class="ca-page-subtitle">Vitrin, iletişim, sosyal medya, SEO, kargo ve mail bildirimlerini tek yerden yönetin.</p>
+            </div>
+            <div class="d-flex gap-2 flex-wrap justify-content-end">
+                <a href="/" target="_blank" class="ca-btn ca-btn-outline">
+                    <i class="fas fa-arrow-up-right-from-square"></i> Siteyi Görüntüle
+                </a>
+                <a href="/Admin/AnaSayfa" class="ca-btn ca-btn-outline">
+                    <i class="fas fa-images"></i> Ana Sayfa Ayarları
+                </a>
+            </div>
+        </div>
+
+        <form method="post" asp-antiforgery="true">
+            <div class="ca-settings-tabs" role="tablist" aria-label="Ayar sekmeleri">
+                <button type="button" class="ca-settings-tab active" data-target="genel"><i class="fas fa-store"></i> Marka</button>
+                <button type="button" class="ca-settings-tab" data-target="iletisim"><i class="fas fa-address-card"></i> İletişim</button>
+                <button type="button" class="ca-settings-tab" data-target="sosyal"><i class="fas fa-share-nodes"></i> Sosyal</button>
+                <button type="button" class="ca-settings-tab" data-target="satis"><i class="fas fa-cart-shopping"></i> Satış</button>
+                <button type="button" class="ca-settings-tab" data-target="odeme"><i class="fas fa-credit-card"></i> Ödeme</button>
+                <button type="button" class="ca-settings-tab" data-target="seo"><i class="fas fa-magnifying-glass-chart"></i> SEO</button>
+                <button type="button" class="ca-settings-tab" data-target="mail"><i class="fas fa-envelope"></i> Mail</button>
+                <button type="button" class="ca-settings-tab" data-target="bakim"><i class="fas fa-screwdriver-wrench"></i> Bakım</button>
+            </div>
+
+            <div class="ca-settings-layout">
+                <main>
+                    <section class="ca-settings-panel active" id="panel-genel">
+                        <div class="ca-card">
+                            <div class="ca-card-body">
+                                <div class="ca-section-heading">
+                                    <i class="fas fa-store"></i>
+                                    <div>
+                                        <h2>Marka ve Vitrin Bilgileri</h2>
+                                        <p>Logo, başlık, üst bar ve footer gibi müşterinin gördüğü temel alanlar.</p>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Site Adı <span class="required">*</span></label>
+                                        <input asp-for="SiteAdi" class="ca-input" required />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Marka Adı</label>
+                                        <input asp-for="MarkaAdi" class="ca-input" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Site Başlığı</label>
+                                        <input asp-for="SiteBasligi" class="ca-input" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Site Adresi</label>
+                                        <input asp-for="BaseUrl" class="ca-input" placeholder="https://www.METEORGALERİ.com.tr" />
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="ca-label">Site Açıklaması</label>
+                                        <textarea asp-for="SiteAciklamasi" class="ca-textarea" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="ca-label">Footer Açıklaması</label>
+                                        <textarea asp-for="FooterAciklamasi" class="ca-textarea" rows="2"></textarea>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Logo URL</label>
+                                        <input asp-for="SiteLogoUrl" class="ca-input" placeholder="/logo_svg.svg" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Favicon URL</label>
+                                        <input asp-for="FaviconUrl" class="ca-input" placeholder="/favicon.ico" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Tema Rengi</label>
+                                        <input asp-for="TemaRengi" class="ca-input" placeholder="#1B2A4A" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Üst Bar Mesajı</label>
+                                        <input asp-for="UstBarMesaji" class="ca-input" placeholder="500 TL üzeri ücretsiz kargo" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Kampanya Mesajı</label>
+                                        <input asp-for="KampanyaMesaji" class="ca-input" placeholder="Vade farksız 3 taksit" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Üst Bar Etkin</label>
+                                        <select asp-for="UstBarEtkin" class="ca-input">
+                                            <option value="True">Aktif</option>
+                                            <option value="False">Pasif</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Kayma Hızı (saniye)</label>
+                                        <input asp-for="UstBarHizi" class="ca-input" type="number" step="1" min="10" max="100" placeholder="34" />
+                                        <small class="text-muted">Animasyon süresi (10-100 arası)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ca-settings-panel" id="panel-iletisim">
+                        <div class="ca-card">
+                            <div class="ca-card-body">
+                                <div class="ca-section-heading">
+                                    <i class="fas fa-address-card"></i>
+                                    <div>
+                                        <h2>İletişim Bilgileri</h2>
+                                        <p>Footer, iletişim sayfası, mail şablonları ve kargo etiketi için kullanılır.</p>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Telefon</label>
+                                        <input asp-for="Telefon" class="ca-input" placeholder="+90 5XX XXX XX XX" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">E-posta</label>
+                                        <input asp-for="Email" class="ca-input" type="email" placeholder="info@METEORGALERİ.com.tr" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">WhatsApp Numarası</label>
+                                        <input asp-for="WhatsappNumarasi" class="ca-input" placeholder="905XXXXXXXXX" />
+                                        <small class="text-muted">Ülke kodu ile, boşluksuz yazın.</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Çalışma Saatleri</label>
+                                        <input asp-for="CalismaSaatleri" class="ca-input" placeholder="Pzt-Cmt 09:00 - 18:00" />
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="ca-label">Adres</label>
+                                        <textarea asp-for="Adres" class="ca-textarea" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ca-settings-panel" id="panel-sosyal">
+                        <div class="ca-card">
+                            <div class="ca-card-body">
+                                <div class="ca-section-heading">
+                                    <i class="fas fa-share-nodes"></i>
+                                    <div>
+                                        <h2>Sosyal Medya Bağlantıları</h2>
+                                        <p>Footer ve sosyal bağlantı alanlarında görünür.</p>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6"><label class="ca-label">Instagram</label><input asp-for="InstagramUrl" class="ca-input" placeholder="https://instagram.com/METEORGALERİ" /></div>
+                                    <div class="col-md-6"><label class="ca-label">Facebook</label><input asp-for="FacebookUrl" class="ca-input" placeholder="https://facebook.com/METEORGALERİ" /></div>
+                                    <div class="col-md-6"><label class="ca-label">TikTok</label><input asp-for="TiktokUrl" class="ca-input" placeholder="https://tiktok.com/@@METEORGALERİ" /></div>
+                                    <div class="col-md-6"><label class="ca-label">YouTube</label><input asp-for="YoutubeUrl" class="ca-input" placeholder="https://youtube.com/..." /></div>
+                                    <div class="col-md-6"><label class="ca-label">Pinterest</label><input asp-for="PinterestUrl" class="ca-input" placeholder="https://pinterest.com/METEORGALERİ" /></div>
+                                    <div class="col-md-6"><label class="ca-label">X / Twitter</label><input asp-for="TwitterUrl" class="ca-input" placeholder="https://x.com/METEORGALERİ" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ca-settings-panel" id="panel-satis">
+                        <div class="ca-card">
+                            <div class="ca-card-body">
+                                <div class="ca-section-heading">
+                                    <i class="fas fa-cart-shopping"></i>
+                                    <div>
+                                        <h2>Satış, Kargo ve Operasyon</h2>
+                                        <p>Sepet, ürün detay, güven alanları ve sipariş operasyonlarında kullanılan ayarlar.</p>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Para Birimi</label>
+                                        <input asp-for="ParaBirimi" class="ca-input" placeholder="TL" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Kargo Bedeli</label>
+                                        <input asp-for="KargoBedeli" type="number" step="0.01" class="ca-input" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Ücretsiz Kargo Limiti</label>
+                                        <input asp-for="UcretsizKargoLimiti" type="number" step="0.01" class="ca-input" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="ca-label">Stok Uyarı Limiti</label>
+                                        <input asp-for="StokUyariLimiti" type="number" class="ca-input" />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="ca-label">Sipariş Üzerine Satış</label>
+                                        <div class="ca-toggle-box">
+                                            <div class="form-check form-switch d-flex align-items-center w-100 ps-0">
+                                                <span>
+                                                    <strong>Stokta yokken satın almaya izin ver</strong><br>
+                                                    <small class="text-muted">Sipariş üzerine üretilen ürünlerde kullanılabilir.</small>
+                                                </span>
+                                                <input asp-for="StoktaYokSatisIzni" class="form-check-input ms-auto" type="checkbox" style="width:3em; height:1.5em;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Varsayılan Kargo Firması</label>
+                                        <select asp-for="KargoFirmasi" class="ca-select" id="kargoFirmasiSelect">
+                                            @foreach (var firma in kargoFirmalari)
+                                            {
+                                                <option value="@firma.Ad" data-takip-url="@firma.TakipUrl">@firma.Ad</option>
+                                            }
+                                        </select>
+                                        <small class="text-muted d-block mt-1">
+                                            Listeyi /Admin/Kargo sayfasından genişletebilir, aktif/pasif ve varsayılan firma ayarını yönetebilirsiniz.
+                                        </small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Kargo Takip URL</label>
+                                        <input asp-for="KargoTakipUrl" class="ca-input" placeholder="https://www.araskargo.com.tr/..." />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Tahmini Teslim Süresi (Gün)</label>
+                                        <input asp-for="SiparisTeslimSuresiGun" type="number" class="ca-input" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">İade Hakkı Süresi (Gün)</label>
+                                        <input asp-for="IadeHakkiGun" type="number" class="ca-input" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ca-settings-panel" id="panel-odeme">
+                        <div class="ca-card">
+                            <div class="ca-card-body">
+                                <div class="ca-section-heading">
+                                    <i class="fas fa-credit-card"></i>
+                                    <div>
+                                        <h2>PayTR Ödeme Ayarları</h2>
+                                        <p>PayTR POS bilgileri ve dönüş adresleri burada yönetilir.</p>
+                                    </div>
+                                </div>
+                                <div class="ca-alert ca-alert-warning mb-3">
+                                    <i class="fas fa-shield-halved"></i>
+                                    <span>Merchant Key ve Merchant Salt güvenlik nedeniyle görüntülenmez. Boş bırakırsanız mevcut kayıtlı değer korunur.</span>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="ca-label">PayTR Durumu</label>
+                                        <div class="ca-toggle-box">
+                                            <div class="form-check form-switch d-flex align-items-center w-100 ps-0">
+                                                <span>
+                                                    <strong>PayTR ile ödeme al</strong><br>
+                                                    <small class="text-muted">Aktif olduğunda ödeme akışı PayTR bilgilerini kullanacak şekilde hazırlanır.</small>
+                                                </span>
+                                                <input asp-for="PaytrAktifMi" class="form-check-input ms-auto" type="checkbox" style="width:3em; height:1.5em;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Test Modu</label>
+                                        <div class="ca-toggle-box">
+                                            <div class="form-check form-switch d-flex align-items-center w-100 ps-0">
+                                                <span>
+                                                    <strong>PayTR test modunda çalışsın</strong><br>
+                                                    <small class="text-muted">Canlıya geçmeden önce açık kalmalıdır.</small>
+                                                </span>
+                                                <input asp-for="PaytrTestModu" class="form-check-input ms-auto" type="checkbox" style="width:3em; height:1.5em;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Merchant ID</label>
+                                        <input asp-for="PaytrMerchantId" class="ca-input" autocomplete="off" placeholder="PayTR mağaza numarası" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Merchant Key</label>
+                                        <input name="paytrMerchantKey" class="ca-input" type="password" autocomplete="new-password" placeholder="@(paytrMerchantKeyKayitli ? "Kayıtlı değeri korumak için boş bırakın" : "PayTR Merchant Key")" />
+                                        <small class="text-muted">@(paytrMerchantKeyKayitli ? "Merchant Key kayıtlı." : "Merchant Key henüz kayıtlı değil.")</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Merchant Salt</label>
+                                        <input name="paytrMerchantSalt" class="ca-input" type="password" autocomplete="new-password" placeholder="@(paytrMerchantSaltKayitli ? "Kayıtlı değeri korumak için boş bırakın" : "PayTR Merchant Salt")" />
+                                        <small class="text-muted">@(paytrMerchantSaltKayitli ? "Merchant Salt kayıtlı." : "Merchant Salt henüz kayıtlı değil.")</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Callback URL</label>
+                                        <input asp-for="PaytrCallbackUrl" class="ca-input" placeholder="https://www.METEORGALERİ.com.tr/Siparis/PaytrBildirim" />
+                                        <small class="text-muted">PayTR Mağaza Paneli Bildirim URL alanına da bu adresi aynen girin.</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Başarılı Dönüş URL</label>
+                                        <input asp-for="PaytrBasariliDonusUrl" class="ca-input" placeholder="https://www.METEORGALERİ.com.tr/Siparis/PaytrBasarili" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Başarısız Dönüş URL</label>
+                                        <input asp-for="PaytrBasarisizDonusUrl" class="ca-input" placeholder="https://www.METEORGALERİ.com.tr/Siparis/PaytrBasarisiz" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ca-settings-panel" id="panel-seo">
+                        <div class="ca-card">
+                            <div class="ca-card-body">
+                                <div class="ca-section-heading">
+                                    <i class="fas fa-magnifying-glass-chart"></i>
+                                    <div>
+                                        <h2>SEO ve Analitik</h2>
+                                        <p>Ana sayfa SEO bilgileri, sosyal paylaşım görseli ve ölçüm kodları.</p>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6"><label class="ca-label">Meta Title</label><input asp-for="MetaTitle" class="ca-input" /></div>
+                                    <div class="col-md-6"><label class="ca-label">Meta Keywords</label><input asp-for="MetaKeywords" class="ca-input" /></div>
+                                    <div class="col-12"><label class="ca-label">Meta Description</label><textarea asp-for="MetaDescription" class="ca-textarea" rows="3"></textarea></div>
+                                    <div class="col-md-6"><label class="ca-label">Google Analytics ID</label><input asp-for="GoogleAnalyticsId" class="ca-input" placeholder="G-XXXXXXXXXX" /></div>
+                                    <div class="col-md-6"><label class="ca-label">Facebook Pixel ID</label><input asp-for="FacebookPixelId" class="ca-input" /></div>
+                                    <div class="col-md-6"><label class="ca-label">Varsayılan Sosyal Paylaşım Görseli</label><input asp-for="VarsayilanSosyalPaylasimGorseliUrl" class="ca-input" placeholder="/img/share-default.jpg" /></div>
+                                    <div class="col-md-6"><label class="ca-label">Çerez Bilgilendirme Metni</label><input asp-for="CookieMetni" class="ca-input" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ca-settings-panel" id="panel-mail">
+                        <div class="ca-card">
+                            <div class="ca-card-body">
+                                <div class="ca-section-heading">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h2>Mail Bildirimleri</h2>
+                                        <p>Sipariş, iletişim, kargo ve sistem bildirimlerinde kullanılacak ayarlar.</p>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Bildirim Alıcı E-posta</label>
+                                        <input asp-for="BildirimAliciEmail" class="ca-input" type="email" placeholder="operasyon@METEORGALERİ.com.tr" />
+                                        <small class="text-muted">Boş bırakılırsa site e-postası kullanılır.</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ca-label">Mail Altyapısı Testi</label>
+                                        <div class="ca-toggle-box">
+                                            <div class="d-flex align-items-center justify-content-between gap-3 w-100">
+                                                <span><strong>Brevo SMTP Testi</strong><br><small class="text-muted">Seçili alıcıya test maili gönderir.</small></span>
+                                                <button type="submit" formaction="/Admin/Ayarlar/TestMail" formmethod="post" class="ca-btn ca-btn-outline">
+                                                    <i class="fas fa-paper-plane"></i> Test Et
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ca-toggle-box">
+                                            <div class="form-check form-switch d-flex align-items-center w-100 ps-0">
+                                                <label class="form-check-label fw-semibold">Yeni sipariş bildirimi</label>
+                                                <input asp-for="YeniSiparisMailBildirimi" class="form-check-input ms-auto" type="checkbox" style="width:3em; height:1.5em;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ca-toggle-box">
+                                            <div class="form-check form-switch d-flex align-items-center w-100 ps-0">
+                                                <label class="form-check-label fw-semibold">Stok uyarısı bildirimi</label>
+                                                <input asp-for="StokUyarisiMailBildirimi" class="form-check-input ms-auto" type="checkbox" style="width:3em; height:1.5em;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ca-toggle-box">
+                                            <div class="form-check form-switch d-flex align-items-center w-100 ps-0">
+                                                <label class="form-check-label fw-semibold">İade talebi bildirimi</label>
+                                                <input asp-for="IadeTalebiMailBildirimi" class="form-check-input ms-auto" type="checkbox" style="width:3em; height:1.5em;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ca-settings-panel" id="panel-bakim">
+                        <div class="ca-card">
+                            <div class="ca-card-body">
+                                <div class="ca-section-heading">
+                                    <i class="fas fa-screwdriver-wrench"></i>
+                                    <div>
+                                        <h2>Bakım Modu</h2>
+                                        <p>Vitrini geçici olarak kapatıp ziyaretçilere bilgilendirme göstermek için kullanılır.</p>
+                                    </div>
+                                </div>
+                                <div class="ca-alert ca-alert-warning mb-3">
+                                    <i class="fas fa-triangle-exclamation"></i>
+                                    <span>Bakım modu aktif olursa vitrin geçici olarak kapanır; admin paneli açık kalır.</span>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="ca-toggle-box" style="background:var(--ca-danger-light); border-color:#fecaca;">
+                                            <div class="form-check form-switch d-flex align-items-center w-100 ps-0">
+                                                <label class="form-check-label fw-bold text-danger">Bakım modunu aktif et</label>
+                                                <input asp-for="BakimModuAktif" class="form-check-input ms-auto" type="checkbox" style="width:3em; height:1.5em;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="ca-label">Bakım Modu Mesajı</label>
+                                        <textarea asp-for="BakimModuMesaji" class="ca-textarea" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <aside class="ca-settings-side">
+                    <div class="ca-card">
+                        <div class="ca-card-header">
+                            <h2 class="ca-card-title mb-0">Bu Sayfa Neyi Etkiler?</h2>
+                        </div>
+                        <div class="ca-card-body">
+                            <ul class="ca-help-list">
+                                <li><i class="fas fa-check-circle"></i><span>Logo, marka adı, üst bar ve footer vitrinde görünür.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>İletişim ve sosyal medya bilgileri footer, mail ve iletişim alanlarında kullanılır.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>SEO alanları arama motorları ve sosyal paylaşım bilgilerini besler.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>PayTR ayarları ödeme altyapısı yapılandırmasında kullanılır.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Mail bildirimleri sipariş ve operasyon süreçlerinde kullanılır.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="ca-settings-save-bar">
+                <div class="ca-settings-save-inner">
+                    <small class="text-muted"><i class="fas fa-circle-info me-1"></i> Değişiklikler kaydedildikten sonra sitede aktif olur.</small>
+                    <button type="submit" class="ca-btn ca-btn-success ca-btn-lg">
+                        <i class="fas fa-save"></i> Tüm Ayarları Kaydet
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.ca-settings-tab');
+            const panels = document.querySelectorAll('.ca-settings-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    tabs.forEach(item => item.classList.remove('active'));
+                    panels.forEach(panel => panel.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('panel-' + this.dataset.target)?.classList.add('active');
+                });
+            });
+
+            const kargoSelect = document.getElementById('kargoFirmasiSelect');
+            const takipInput = document.querySelector('[name="KargoTakipUrl"]');
+
+            kargoSelect?.addEventListener('change', function () {
+                const selectedOption = this.options[this.selectedIndex];
+                const takipUrl = selectedOption?.dataset?.takipUrl;
+
+                if (takipInput && takipUrl && !takipInput.value.trim()) {
+                    takipInput.value = takipUrl;
+                }
+            });
+        });
+    </script>
+}

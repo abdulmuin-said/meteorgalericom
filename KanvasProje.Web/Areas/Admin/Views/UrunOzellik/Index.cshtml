@@ -1,0 +1,91 @@
+@model IEnumerable<KanvasProje.Core.Varliklar.UrunOzellikTanimi>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Ürün Özellik Alanları";
+    var currentType = ViewBag.CurrentUrunTipi?.ToString() ?? string.Empty;
+}
+
+<div class="container-fluid ca-fade-in">
+    @if (TempData["Mesaj"] != null)
+    {
+        <div class="alert alert-success">@TempData["Mesaj"]</div>
+    }
+
+    <div class="ca-card">
+        <div class="ca-form-header">
+            <div class="d-flex align-items-center position-relative" style="z-index:2;">
+                <div class="bg-white bg-opacity-25 rounded-3 p-3 me-3">
+                    <i class="fas fa-sliders-h fa-2x"></i>
+                </div>
+                <div>
+                    <h4 class="mb-1 fw-bold">Ürün Özellik Alanları</h4>
+                    <p class="mb-0 small" style="opacity:.7;">Ürün tipine göre dinamik alan setlerini bu ekrandan yönetin.</p>
+                </div>
+            </div>
+            <i class="fas fa-layer-group ca-form-header-icon"></i>
+        </div>
+
+        <div class="ca-card-body">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                <form method="get" class="d-flex flex-wrap gap-2">
+                    <select name="urunTipi" class="ca-select" style="min-width:220px;">
+                        <option value="">Tüm ürün tipleri</option>
+                        @foreach (var item in (IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>)ViewBag.UrunTipleri)
+                        {
+                            <option value="@item.Value" selected="@(item.Value == currentType)">@item.Text</option>
+                        }
+                    </select>
+                    <button type="submit" class="ca-btn ca-btn-outline">Filtrele</button>
+                </form>
+
+                <a href="/Admin/UrunOzellik/Ekle" class="ca-btn ca-btn-success">
+                    <i class="fas fa-plus"></i> Yeni Alan
+                </a>
+            </div>
+
+            <div class="ca-table-wrapper">
+                <table class="ca-table">
+                    <thead>
+                        <tr>
+                            <th>Alan</th>
+                            <th>Ürün Tipi</th>
+                            <th>Alan Tipi</th>
+                            <th>Filtre</th>
+                            <th>Detay</th>
+                            <th>Aktif</th>
+                            <th>Sıra</th>
+                            <th style="width:180px;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="fw-semibold">@item.Ad</div>
+                                    <div class="small text-muted">@item.Kod</div>
+                                </td>
+                                <td>@item.UrunTipi</td>
+                                <td>@item.AlanTipi</td>
+                                <td>@(item.FiltredeGoster ? "Evet" : "Hayır")</td>
+                                <td>@(item.DetaySayfasindaGoster ? "Evet" : "Hayır")</td>
+                                <td>@(item.AktifMi ? "Aktif" : "Pasif")</td>
+                                <td>@item.Sira</td>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <a href="/Admin/UrunOzellik/Duzenle/@item.Id" class="ca-btn ca-btn-primary ca-btn-sm">Düzenle</a>
+                                        <form asp-action="Sil" method="post" onsubmit="return confirm('Bu alan arşive alınsın mı?');">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="ca-btn ca-btn-outline ca-btn-sm text-danger">Arşivle</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+﻿@model KanvasProje.Core.Varliklar.AppUser
+@{
+    ViewData["Title"] = "Hesabım";
+    var firstLetter = !string.IsNullOrEmpty(Model.AdSoyad) ? Model.AdSoyad.Substring(0, 1).ToUpperInvariant() : "U";
+}
+
+<!-- Breadcrumb -->
+<div class="bg-[#FDF6E3] border-b border-[#F5E6C8] py-3">
+    <div class="container mx-auto px-4 flex items-center gap-2 text-xs text-[#333333]">
+        <a href="/" class="hover:text-[#1B2A4A] transition-colors">Ana Sayfa</a>
+        <span>/</span>
+        <span class="text-[#1B2A4A] font-medium">Hesabım</span>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+        <!-- Yan Menü -->
+        <aside class="lg:w-56 flex-shrink-0">
+            <div class="bg-white border border-[#F5E6C8] rounded-lg overflow-hidden">
+                <!-- Avatar -->
+                <div class="bg-[#1B2A4A] p-6 text-center">
+                    <div class="w-16 h-16 rounded-full bg-[#C0392B] flex items-center justify-center text-white font-serif text-2xl mx-auto mb-3">
+                        @firstLetter
+                    </div>
+                    <p class="text-white text-sm font-medium">@Model.AdSoyad</p>
+                    <p class="text-[#c6ca99] text-xs mt-0.5">@Model.Email</p>
+                </div>
+                <!-- Menü -->
+                <nav class="p-2">
+                    <a href="/Profil" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#1B2A4A] bg-[#FDF6E3] font-medium mb-1">
+                        <i class="fas fa-user w-4"></i> Hesabım
+                    </a>
+                    <a href="/Profil/Siparislerim" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-box w-4"></i> Siparişlerim
+                    </a>
+                    <a href="/Profil/Adreslerim" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-location-dot w-4"></i> Adreslerim
+                    </a>
+                    <a href="/Favori" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-heart w-4"></i> Favorilerim
+                    </a>
+                    <hr class="border-[#F5E6C8] my-2" />
+                    <form action="/Hesap/CikisYap" method="post" class="m-0">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm text-red-500 hover:bg-red-50 transition-colors text-left">
+                            <i class="fas fa-right-from-bracket w-4"></i> Çıkış Yap
+                        </button>
+                    </form>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Ana İçerik -->
+        <main class="flex-1 space-y-6">
+            <!-- Hoş Geldin Kartı -->
+            <div class="bg-white border border-[#F5E6C8] rounded-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="font-serif text-2xl text-[#1B2A4A] mb-1">Merhaba, @Model.AdSoyad</h1>
+                        <p class="text-xs text-[#333333]">Hesabınıza hoş geldiniz.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/Profil/Siparislerim" class="border border-[#1B2A4A] text-[#1B2A4A] text-xs tracking-widest uppercase px-4 py-2 rounded hover:bg-[#1B2A4A] hover:text-white transition-colors">
+                            Siparişler
+                        </a>
+                        <a href="/Profil/Adreslerim" class="bg-[#1B2A4A] text-white text-xs tracking-widest uppercase px-4 py-2 rounded hover:bg-[#1c2001] transition-colors">
+                            Adresler
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İstatistikler -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white border border-[#F5E6C8] rounded-lg p-5 text-center">
+                    <div class="font-serif text-4xl text-[#1B2A4A] mb-1">@ViewBag.SiparisSayisi</div>
+                    <div class="text-xs text-[#333333] uppercase tracking-wide">Toplam Sipariş</div>
+                </div>
+                <div class="bg-white border border-[#F5E6C8] rounded-lg p-5 text-center">
+                    <div class="font-serif text-3xl text-[#1B2A4A] mb-1">@ViewBag.ToplamHarcama <span class="text-lg">₺</span></div>
+                    <div class="text-xs text-[#333333] uppercase tracking-wide">Toplam Harcama</div>
+                </div>
+            </div>
+
+            <!-- Hesap Bilgileri -->
+            <div class="bg-white border border-[#F5E6C8] rounded-lg p-6">
+                <h2 class="font-serif text-xl text-[#1B2A4A] mb-5 pb-3 border-b border-[#F5E6C8]">Hesap Bilgileri</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 py-3 border-b border-[#FDF6E3]">
+                        <div class="w-9 h-9 rounded-full bg-[#e2e6b3] flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user text-[#1B2A4A] text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-[#333333] uppercase tracking-wide mb-0.5">Ad Soyad</div>
+                            <div class="text-sm font-medium text-[#1B2A4A]">@Model.AdSoyad</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 py-3 border-b border-[#FDF6E3]">
+                        <div class="w-9 h-9 rounded-full bg-[#e2e6b3] flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-[#1B2A4A] text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-[#333333] uppercase tracking-wide mb-0.5">E-posta</div>
+                            <div class="text-sm font-medium text-[#1B2A4A]">@Model.Email</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 py-3 border-b border-[#FDF6E3]">
+                        <div class="w-9 h-9 rounded-full bg-[#e2e6b3] flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-location-dot text-[#1B2A4A] text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-[#333333] uppercase tracking-wide mb-0.5">Şehir</div>
+                            <div class="text-sm font-medium text-[#1B2A4A]">@(!string.IsNullOrEmpty(Model.Sehir) ? Model.Sehir : "Belirtilmedi")</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 py-3">
+                        <div class="w-9 h-9 rounded-full bg-[#e2e6b3] flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-shield-halved text-[#1B2A4A] text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-[#333333] uppercase tracking-wide mb-0.5">Durum</div>
+                            <span class="inline-flex items-center gap-1.5 text-xs bg-green-50 text-green-700 border border-green-200 px-2.5 py-1 rounded-full">
+                                <i class="fas fa-circle text-[6px]"></i> Aktif Üye
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

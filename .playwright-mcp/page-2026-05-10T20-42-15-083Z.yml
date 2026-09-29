@@ -1,0 +1,627 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+  - banner [ref=e40]:
+    - generic [ref=e41]:
+      - link "Canvasia" [ref=e42] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e43]
+      - generic [ref=e44]:
+        - button "Arama" [ref=e45] [cursor=pointer]:
+          - img [ref=e46]
+        - link "Giriş Yap" [ref=e48] [cursor=pointer]:
+          - /url: /Hesap/GirisYap
+          - img [ref=e49]
+        - link "Favoriler" [ref=e51] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e52]
+        - link "Sepet" [ref=e54] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e55]
+          - generic [ref=e57]: "0"
+      - navigation [ref=e58]:
+        - list [ref=e59]:
+          - listitem [ref=e60] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e61]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e62]: 
+          - listitem [ref=e63] [cursor=pointer]:
+            - link "Cam Tablo" [ref=e64]:
+              - /url: /Urun?k=30
+          - listitem [ref=e65] [cursor=pointer]:
+            - link "Duvar Kağıdı" [ref=e66]:
+              - /url: /Urun?k=31
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Kesme Tahtası" [ref=e68]:
+              - /url: /Urun?k=32
+          - listitem [ref=e69] [cursor=pointer]:
+            - link "Ayna" [ref=e70]:
+              - /url: /Urun?k=33
+          - listitem [ref=e71] [cursor=pointer]:
+            - link "Baskılı Halı" [ref=e72]:
+              - /url: /Urun?k=34
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Ahşap Dekorasyon" [ref=e74]:
+              - /url: /Urun?k=35
+          - listitem [ref=e75] [cursor=pointer]:
+            - link "Mobilya Aksesuar" [ref=e76]:
+              - /url: /Urun?k=36
+          - listitem [ref=e77] [cursor=pointer]:
+            - link "Lightbox" [ref=e78]:
+              - /url: /Urun?k=37
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Afiş" [ref=e80]:
+              - /url: /Urun?k=38
+          - listitem [ref=e81] [cursor=pointer]:
+            - link "TÜM ÜRÜNLER" [ref=e82]:
+              - /url: /Urun
+          - listitem [ref=e83] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e84]:
+              - /url: /Kurumsal/Iletisim
+    - text:   
+  - main [ref=e85]:
+    - generic [ref=e87]:
+      - link "Ana Sayfa" [ref=e88] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e89]: /
+      - generic [ref=e90]: Tüm Koleksiyonlar
+    - generic [ref=e92]:
+      - complementary [ref=e93]:
+        - heading "Kategoriler" [level=3] [ref=e94]
+        - list [ref=e95]:
+          - listitem [ref=e96]:
+            - link "Tümü (11991)" [ref=e97] [cursor=pointer]:
+              - /url: /Urun
+          - listitem [ref=e98]:
+            - link "Atatürk Köşesi" [ref=e99] [cursor=pointer]:
+              - /url: /Urun?k=1
+          - listitem [ref=e100]:
+            - link "Kanvas Tablo" [ref=e101] [cursor=pointer]:
+              - /url: /Urun?k=29
+          - listitem [ref=e102]:
+            - link "Cam Tablo" [ref=e103] [cursor=pointer]:
+              - /url: /Urun?k=30
+          - listitem [ref=e104]:
+            - link "İslami Sanat & Hat" [ref=e105] [cursor=pointer]:
+              - /url: /Urun?k=2
+          - listitem [ref=e106]:
+            - link "Duvar Kağıdı" [ref=e107] [cursor=pointer]:
+              - /url: /Urun?k=31
+          - listitem [ref=e108]:
+            - link "Dünya Klasikleri" [ref=e109] [cursor=pointer]:
+              - /url: /Urun?k=3
+          - listitem [ref=e110]:
+            - link "Cam Kesme Tahtası" [ref=e111] [cursor=pointer]:
+              - /url: /Urun?k=32
+          - listitem [ref=e112]:
+            - link "Modern & Soyut" [ref=e113] [cursor=pointer]:
+              - /url: /Urun?k=4
+          - listitem [ref=e114]:
+            - link "Ayna" [ref=e115] [cursor=pointer]:
+              - /url: /Urun?k=33
+          - listitem [ref=e116]:
+            - link "Şehir Manzaraları" [ref=e117] [cursor=pointer]:
+              - /url: /Urun?k=5
+          - listitem [ref=e118]:
+            - link "Baskılı Halı" [ref=e119] [cursor=pointer]:
+              - /url: /Urun?k=34
+          - listitem [ref=e120]:
+            - link "Ahşap Dekorasyon" [ref=e121] [cursor=pointer]:
+              - /url: /Urun?k=35
+          - listitem [ref=e122]:
+            - link "Parçalı Tablolar" [ref=e123] [cursor=pointer]:
+              - /url: /Urun?k=7
+          - listitem [ref=e124]:
+            - link "Dini ve Hat Sanatı" [ref=e125] [cursor=pointer]:
+              - /url: /Urun?k=8
+          - listitem [ref=e126]:
+            - link "Mobilya Aksesuar" [ref=e127] [cursor=pointer]:
+              - /url: /Urun?k=36
+          - listitem [ref=e128]:
+            - link "Lightbox" [ref=e129] [cursor=pointer]:
+              - /url: /Urun?k=37
+          - listitem [ref=e130]:
+            - link "Manzara Temalı" [ref=e131] [cursor=pointer]:
+              - /url: /Urun?k=9
+          - listitem [ref=e132]:
+            - link "Afiş" [ref=e133] [cursor=pointer]:
+              - /url: /Urun?k=38
+          - listitem [ref=e134]:
+            - link "Atatürk ve Türkiye" [ref=e135] [cursor=pointer]:
+              - /url: /Urun?k=10
+          - listitem [ref=e136]:
+            - link "Şehir ve Mimari" [ref=e137] [cursor=pointer]:
+              - /url: /Urun?k=11
+          - listitem [ref=e138]:
+            - link "Soyut ve Sanatsal" [ref=e139] [cursor=pointer]:
+              - /url: /Urun?k=12
+          - listitem [ref=e140]:
+            - link "Osmanlı ve Tuğra" [ref=e141] [cursor=pointer]:
+              - /url: /Urun?k=13
+          - listitem [ref=e142]:
+            - link "Ünlüler ve Sinema" [ref=e143] [cursor=pointer]:
+              - /url: /Urun?k=14
+          - listitem [ref=e144]:
+            - link "Hayvanlar Alemi" [ref=e145] [cursor=pointer]:
+              - /url: /Urun?k=15
+          - listitem [ref=e146]:
+            - link "Araba ve Araçlar" [ref=e147] [cursor=pointer]:
+              - /url: /Urun?k=16
+          - listitem [ref=e148]:
+            - link "Çocuk Odası" [ref=e149] [cursor=pointer]:
+              - /url: /Urun?k=17
+          - listitem [ref=e150]:
+            - link "Nü Sanat" [ref=e151] [cursor=pointer]:
+              - /url: /Urun?k=18
+          - listitem [ref=e152]:
+            - link "Klasik Eserler" [ref=e153] [cursor=pointer]:
+              - /url: /Urun?k=19
+          - listitem [ref=e154]:
+            - link "Yiyecek ve İçecek" [ref=e155] [cursor=pointer]:
+              - /url: /Urun?k=20
+          - listitem [ref=e156]:
+            - link "Farklı Tasarımlar" [ref=e157] [cursor=pointer]:
+              - /url: /Urun?k=21
+          - listitem [ref=e158]:
+            - link "Aşk ve Romantizm" [ref=e159] [cursor=pointer]:
+              - /url: /Urun?k=22
+          - listitem [ref=e160]:
+            - link "Kadın Temalı" [ref=e161] [cursor=pointer]:
+              - /url: /Urun?k=23
+          - listitem [ref=e162]:
+            - link "Taraftar Köşesi" [ref=e163] [cursor=pointer]:
+              - /url: /Urun?k=24
+          - listitem [ref=e164]:
+            - link "Adalet ve Hukuk" [ref=e165] [cursor=pointer]:
+              - /url: /Urun?k=25
+          - listitem [ref=e166]:
+            - link "Çiçekli ve Dekoratif" [ref=e167] [cursor=pointer]:
+              - /url: /Urun?k=26
+          - listitem [ref=e168]:
+            - link "Panoramik Tablolar" [ref=e169] [cursor=pointer]:
+              - /url: /Urun?k=27
+        - heading "Fiyat Aralığı" [level=3] [ref=e170]
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - spinbutton [ref=e173]
+            - generic [ref=e174]: —
+            - spinbutton [ref=e175]
+          - button "Uygula" [ref=e176] [cursor=pointer]
+      - main [ref=e177]:
+        - generic [ref=e178]:
+          - generic [ref=e179]:
+            - heading "Tüm Koleksiyonlar" [level=1] [ref=e180]
+            - paragraph [ref=e181]: 11991 ürün listeleniyor
+          - combobox [ref=e183]:
+            - option "En Yeniler" [selected]
+            - 'option "Fiyat: Düşükten Yükseğe"'
+            - 'option "Fiyat: Yüksekten Düşüğe"'
+            - option "Çok Satanlar"
+        - generic [ref=e184]:
+          - generic [ref=e185]:
+            - link "Yeni Salvador Dali - Masturbator Tablosu" [ref=e186] [cursor=pointer]:
+              - /url: /Urun/Detay/12539
+              - generic [ref=e187]: Yeni
+              - img "Salvador Dali - Masturbator Tablosu" [ref=e188]
+            - button "" [ref=e189] [cursor=pointer]:
+              - generic [ref=e190]: 
+            - heading "Salvador Dali - Masturbator Tablosu" [level=3] [ref=e191]:
+              - link "Salvador Dali - Masturbator Tablosu" [ref=e192] [cursor=pointer]:
+                - /url: /Urun/Detay/12539
+            - generic [ref=e194]: 999 TL
+          - generic [ref=e195]:
+            - link "Yeni Salvador Dali - Le Sommeil Tablosu" [ref=e196] [cursor=pointer]:
+              - /url: /Urun/Detay/12538
+              - generic [ref=e197]: Yeni
+              - img "Salvador Dali - Le Sommeil Tablosu" [ref=e198]
+            - button "" [ref=e199] [cursor=pointer]:
+              - generic [ref=e200]: 
+            - heading "Salvador Dali - Le Sommeil Tablosu" [level=3] [ref=e201]:
+              - link "Salvador Dali - Le Sommeil Tablosu" [ref=e202] [cursor=pointer]:
+                - /url: /Urun/Detay/12538
+            - generic [ref=e204]: 999 TL
+          - generic [ref=e205]:
+            - link "Yeni Rene Magritte - Bird Tablosu" [ref=e206] [cursor=pointer]:
+              - /url: /Urun/Detay/12537
+              - generic [ref=e207]: Yeni
+              - img "Rene Magritte - Bird Tablosu" [ref=e208]
+            - button "" [ref=e209] [cursor=pointer]:
+              - generic [ref=e210]: 
+            - heading "Rene Magritte - Bird Tablosu" [level=3] [ref=e211]:
+              - link "Rene Magritte - Bird Tablosu" [ref=e212] [cursor=pointer]:
+                - /url: /Urun/Detay/12537
+            - generic [ref=e214]: 999 TL
+          - generic [ref=e215]:
+            - link "Yeni Dominique Appia - Les Quatre Saisons Tablosu" [ref=e216] [cursor=pointer]:
+              - /url: /Urun/Detay/12536
+              - generic [ref=e217]: Yeni
+              - img "Dominique Appia - Les Quatre Saisons Tablosu" [ref=e218]
+            - button "" [ref=e219] [cursor=pointer]:
+              - generic [ref=e220]: 
+            - heading "Dominique Appia - Les Quatre Saisons Tablosu" [level=3] [ref=e221]:
+              - link "Dominique Appia - Les Quatre Saisons Tablosu" [ref=e222] [cursor=pointer]:
+                - /url: /Urun/Detay/12536
+            - generic [ref=e224]: 999 TL
+          - generic [ref=e225]:
+            - link "Yeni Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e226] [cursor=pointer]:
+              - /url: /Urun/Detay/12534
+              - generic [ref=e227]: Yeni
+              - img "Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e228]
+            - button "" [ref=e229] [cursor=pointer]:
+              - generic [ref=e230]: 
+            - heading "Rene Magritte - The False Mirror Tablosu - Model 5" [level=3] [ref=e231]:
+              - link "Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e232] [cursor=pointer]:
+                - /url: /Urun/Detay/12534
+            - generic [ref=e234]: 2.149 TL
+          - generic [ref=e235]:
+            - link "Yeni Rene Magritte - The False Mirror Tablosu - Model 3" [ref=e236] [cursor=pointer]:
+              - /url: /Urun/Detay/12533
+              - generic [ref=e237]: Yeni
+              - img "Rene Magritte - The False Mirror Tablosu - Model 3" [ref=e238]
+            - button "" [ref=e239] [cursor=pointer]:
+              - generic [ref=e240]: 
+            - heading "Rene Magritte - The False Mirror Tablosu - Model 3" [level=3] [ref=e241]:
+              - link "Rene Magritte - The False Mirror Tablosu - Model 3" [ref=e242] [cursor=pointer]:
+                - /url: /Urun/Detay/12533
+            - generic [ref=e244]: 849 TL
+          - generic [ref=e245]:
+            - link "Yeni Rene Magritte - The False Mirror Tablosu - Model 1" [ref=e246] [cursor=pointer]:
+              - /url: /Urun/Detay/12532
+              - generic [ref=e247]: Yeni
+              - img "Rene Magritte - The False Mirror Tablosu - Model 1" [ref=e248]
+            - button "" [ref=e249] [cursor=pointer]:
+              - generic [ref=e250]: 
+            - heading "Rene Magritte - The False Mirror Tablosu - Model 1" [level=3] [ref=e251]:
+              - link "Rene Magritte - The False Mirror Tablosu - Model 1" [ref=e252] [cursor=pointer]:
+                - /url: /Urun/Detay/12532
+            - generic [ref=e254]: 999 TL
+          - generic [ref=e255]:
+            - link "Yeni Rene Magritte - Personal Values Tablosu - Model 1" [ref=e256] [cursor=pointer]:
+              - /url: /Urun/Detay/12531
+              - generic [ref=e257]: Yeni
+              - img "Rene Magritte - Personal Values Tablosu - Model 1" [ref=e258]
+            - button "" [ref=e259] [cursor=pointer]:
+              - generic [ref=e260]: 
+            - heading "Rene Magritte - Personal Values Tablosu - Model 1" [level=3] [ref=e261]:
+              - link "Rene Magritte - Personal Values Tablosu - Model 1" [ref=e262] [cursor=pointer]:
+                - /url: /Urun/Detay/12531
+            - generic [ref=e264]: 999 TL
+          - generic [ref=e265]:
+            - link "Yeni Salvador Dali - Dream Caused Tablosu - Model 2" [ref=e266] [cursor=pointer]:
+              - /url: /Urun/Detay/12530
+              - generic [ref=e267]: Yeni
+              - img "Salvador Dali - Dream Caused Tablosu - Model 2" [ref=e268]
+            - button "" [ref=e269] [cursor=pointer]:
+              - generic [ref=e270]: 
+            - heading "Salvador Dali - Dream Caused Tablosu - Model 2" [level=3] [ref=e271]:
+              - link "Salvador Dali - Dream Caused Tablosu - Model 2" [ref=e272] [cursor=pointer]:
+                - /url: /Urun/Detay/12530
+            - generic [ref=e274]: 999 TL
+          - generic [ref=e275]:
+            - link "Yeni Salvador Dali - Hallucinogenic Tablosu - Model 2" [ref=e276] [cursor=pointer]:
+              - /url: /Urun/Detay/12529
+              - generic [ref=e277]: Yeni
+              - img "Salvador Dali - Hallucinogenic Tablosu - Model 2" [ref=e278]
+            - button "" [ref=e279] [cursor=pointer]:
+              - generic [ref=e280]: 
+            - heading "Salvador Dali - Hallucinogenic Tablosu - Model 2" [level=3] [ref=e281]:
+              - link "Salvador Dali - Hallucinogenic Tablosu - Model 2" [ref=e282] [cursor=pointer]:
+                - /url: /Urun/Detay/12529
+            - generic [ref=e284]: 999 TL
+          - generic [ref=e285]:
+            - link "Yeni Rene Magritte - The Face Of Genius‏ Tablosu - Model 2" [ref=e286] [cursor=pointer]:
+              - /url: /Urun/Detay/12528
+              - generic [ref=e287]: Yeni
+              - img "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2" [ref=e288]
+            - button "" [ref=e289] [cursor=pointer]:
+              - generic [ref=e290]: 
+            - heading "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2" [level=3] [ref=e291]:
+              - link "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2" [ref=e292] [cursor=pointer]:
+                - /url: /Urun/Detay/12528
+            - generic [ref=e294]: 999 TL
+          - generic [ref=e295]:
+            - link "Yeni Rene Magritte - The Son Of Man‏ Tablosu - Model 7" [ref=e296] [cursor=pointer]:
+              - /url: /Urun/Detay/12527
+              - generic [ref=e297]: Yeni
+              - img "Rene Magritte - The Son Of Man‏ Tablosu - Model 7" [ref=e298]
+            - button "" [ref=e299] [cursor=pointer]:
+              - generic [ref=e300]: 
+            - heading "Rene Magritte - The Son Of Man‏ Tablosu - Model 7" [level=3] [ref=e301]:
+              - link "Rene Magritte - The Son Of Man‏ Tablosu - Model 7" [ref=e302] [cursor=pointer]:
+                - /url: /Urun/Detay/12527
+            - generic [ref=e304]: 2.149 TL
+          - generic [ref=e305]:
+            - link "Yeni Rene Magritte - The Son Of Man‏ Tablosu - Model 2" [ref=e306] [cursor=pointer]:
+              - /url: /Urun/Detay/12526
+              - generic [ref=e307]: Yeni
+              - img "Rene Magritte - The Son Of Man‏ Tablosu - Model 2" [ref=e308]
+            - button "" [ref=e309] [cursor=pointer]:
+              - generic [ref=e310]: 
+            - heading "Rene Magritte - The Son Of Man‏ Tablosu - Model 2" [level=3] [ref=e311]:
+              - link "Rene Magritte - The Son Of Man‏ Tablosu - Model 2" [ref=e312] [cursor=pointer]:
+                - /url: /Urun/Detay/12526
+            - generic [ref=e314]: 999 TL
+          - generic [ref=e315]:
+            - link "Yeni Rene Magritte - La Magie Noire‏ Tablosu - Model 2" [ref=e316] [cursor=pointer]:
+              - /url: /Urun/Detay/12525
+              - generic [ref=e317]: Yeni
+              - img "Rene Magritte - La Magie Noire‏ Tablosu - Model 2" [ref=e318]
+            - button "" [ref=e319] [cursor=pointer]:
+              - generic [ref=e320]: 
+            - heading "Rene Magritte - La Magie Noire‏ Tablosu - Model 2" [level=3] [ref=e321]:
+              - link "Rene Magritte - La Magie Noire‏ Tablosu - Model 2" [ref=e322] [cursor=pointer]:
+                - /url: /Urun/Detay/12525
+            - generic [ref=e324]: 999 TL
+          - generic [ref=e325]:
+            - link "Yeni Giuseppe Arcimboldo - Figure II Tablosu - Model 2" [ref=e326] [cursor=pointer]:
+              - /url: /Urun/Detay/12524
+              - generic [ref=e327]: Yeni
+              - img "Giuseppe Arcimboldo - Figure II Tablosu - Model 2" [ref=e328]
+            - button "" [ref=e329] [cursor=pointer]:
+              - generic [ref=e330]: 
+            - heading "Giuseppe Arcimboldo - Figure II Tablosu - Model 2" [level=3] [ref=e331]:
+              - link "Giuseppe Arcimboldo - Figure II Tablosu - Model 2" [ref=e332] [cursor=pointer]:
+                - /url: /Urun/Detay/12524
+            - generic [ref=e334]: 999 TL
+          - generic [ref=e335]:
+            - link "Yeni Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2" [ref=e336] [cursor=pointer]:
+              - /url: /Urun/Detay/12523
+              - generic [ref=e337]: Yeni
+              - img "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2" [ref=e338]
+            - button "" [ref=e339] [cursor=pointer]:
+              - generic [ref=e340]: 
+            - heading "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2" [level=3] [ref=e341]:
+              - link "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2" [ref=e342] [cursor=pointer]:
+                - /url: /Urun/Detay/12523
+            - generic [ref=e344]: 999 TL
+          - generic [ref=e345]:
+            - link "Yeni Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2" [ref=e346] [cursor=pointer]:
+              - /url: /Urun/Detay/12522
+              - generic [ref=e347]: Yeni
+              - img "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2" [ref=e348]
+            - button "" [ref=e349] [cursor=pointer]:
+              - generic [ref=e350]: 
+            - heading "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2" [level=3] [ref=e351]:
+              - link "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2" [ref=e352] [cursor=pointer]:
+                - /url: /Urun/Detay/12522
+            - generic [ref=e354]: 999 TL
+          - generic [ref=e355]:
+            - link "Yeni Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3" [ref=e356] [cursor=pointer]:
+              - /url: /Urun/Detay/12521
+              - generic [ref=e357]: Yeni
+              - img "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3" [ref=e358]
+            - button "" [ref=e359] [cursor=pointer]:
+              - generic [ref=e360]: 
+            - heading "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3" [level=3] [ref=e361]:
+              - link "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3" [ref=e362] [cursor=pointer]:
+                - /url: /Urun/Detay/12521
+            - generic [ref=e364]: 849 TL
+          - generic [ref=e365]:
+            - link "Yeni Salvador Dali - Tiger Tablosu - Model 7" [ref=e366] [cursor=pointer]:
+              - /url: /Urun/Detay/12520
+              - generic [ref=e367]: Yeni
+              - img "Salvador Dali - Tiger Tablosu - Model 7" [ref=e368]
+            - button "" [ref=e369] [cursor=pointer]:
+              - generic [ref=e370]: 
+            - heading "Salvador Dali - Tiger Tablosu - Model 7" [level=3] [ref=e371]:
+              - link "Salvador Dali - Tiger Tablosu - Model 7" [ref=e372] [cursor=pointer]:
+                - /url: /Urun/Detay/12520
+            - generic [ref=e374]: 2.149 TL
+          - generic [ref=e375]:
+            - link "Yeni Salvador Dali - Tiger Tablosu - Model 3" [ref=e376] [cursor=pointer]:
+              - /url: /Urun/Detay/12519
+              - generic [ref=e377]: Yeni
+              - img "Salvador Dali - Tiger Tablosu - Model 3" [ref=e378]
+            - button "" [ref=e379] [cursor=pointer]:
+              - generic [ref=e380]: 
+            - heading "Salvador Dali - Tiger Tablosu - Model 3" [level=3] [ref=e381]:
+              - link "Salvador Dali - Tiger Tablosu - Model 3" [ref=e382] [cursor=pointer]:
+                - /url: /Urun/Detay/12519
+            - generic [ref=e384]: 849 TL
+          - generic [ref=e385]:
+            - link "Yeni Salvador Dali - Tiger Tablosu - Model 2" [ref=e386] [cursor=pointer]:
+              - /url: /Urun/Detay/12518
+              - generic [ref=e387]: Yeni
+              - img "Salvador Dali - Tiger Tablosu - Model 2" [ref=e388]
+            - button "" [ref=e389] [cursor=pointer]:
+              - generic [ref=e390]: 
+            - heading "Salvador Dali - Tiger Tablosu - Model 2" [level=3] [ref=e391]:
+              - link "Salvador Dali - Tiger Tablosu - Model 2" [ref=e392] [cursor=pointer]:
+                - /url: /Urun/Detay/12518
+            - generic [ref=e394]: 999 TL
+          - generic [ref=e395]:
+            - link "Yeni İnsanlar Düşünür Tablosu - Model 7" [ref=e396] [cursor=pointer]:
+              - /url: /Urun/Detay/12517
+              - generic [ref=e397]: Yeni
+              - img "İnsanlar Düşünür Tablosu - Model 7" [ref=e398]
+            - button "" [ref=e399] [cursor=pointer]:
+              - generic [ref=e400]: 
+            - heading "İnsanlar Düşünür Tablosu - Model 7" [level=3] [ref=e401]:
+              - link "İnsanlar Düşünür Tablosu - Model 7" [ref=e402] [cursor=pointer]:
+                - /url: /Urun/Detay/12517
+            - generic [ref=e404]: 2.149 TL
+          - generic [ref=e405]:
+            - link "Yeni İnsanlar Düşünür Tablosu - Model 2" [ref=e406] [cursor=pointer]:
+              - /url: /Urun/Detay/12516
+              - generic [ref=e407]: Yeni
+              - img "İnsanlar Düşünür Tablosu - Model 2" [ref=e408]
+            - button "" [ref=e409] [cursor=pointer]:
+              - generic [ref=e410]: 
+            - heading "İnsanlar Düşünür Tablosu - Model 2" [level=3] [ref=e411]:
+              - link "İnsanlar Düşünür Tablosu - Model 2" [ref=e412] [cursor=pointer]:
+                - /url: /Urun/Detay/12516
+            - generic [ref=e414]: 999 TL
+          - generic [ref=e415]:
+            - link "Yeni Dominique Appia - Hafızanın Boşluklarında Tablosu" [ref=e416] [cursor=pointer]:
+              - /url: /Urun/Detay/12515
+              - generic [ref=e417]: Yeni
+              - img "Dominique Appia - Hafızanın Boşluklarında Tablosu" [ref=e418]
+            - button "" [ref=e419] [cursor=pointer]:
+              - generic [ref=e420]: 
+            - heading "Dominique Appia - Hafızanın Boşluklarında Tablosu" [level=3] [ref=e421]:
+              - link "Dominique Appia - Hafızanın Boşluklarında Tablosu" [ref=e422] [cursor=pointer]:
+                - /url: /Urun/Detay/12515
+            - generic [ref=e424]: 2.149 TL
+          - generic [ref=e425]:
+            - link "Yeni Salvador Dali - Raphaelesque Tablosu - Model 7" [ref=e426] [cursor=pointer]:
+              - /url: /Urun/Detay/12514
+              - generic [ref=e427]: Yeni
+              - img "Salvador Dali - Raphaelesque Tablosu - Model 7" [ref=e428]
+            - button "" [ref=e429] [cursor=pointer]:
+              - generic [ref=e430]: 
+            - heading "Salvador Dali - Raphaelesque Tablosu - Model 7" [level=3] [ref=e431]:
+              - link "Salvador Dali - Raphaelesque Tablosu - Model 7" [ref=e432] [cursor=pointer]:
+                - /url: /Urun/Detay/12514
+            - generic [ref=e434]: 2.149 TL
+          - generic [ref=e435]:
+            - link "Yeni Salvador Dali - Raphaelesque Tablosu - Model 2" [ref=e436] [cursor=pointer]:
+              - /url: /Urun/Detay/12513
+              - generic [ref=e437]: Yeni
+              - img "Salvador Dali - Raphaelesque Tablosu - Model 2" [ref=e438]
+            - button "" [ref=e439] [cursor=pointer]:
+              - generic [ref=e440]: 
+            - heading "Salvador Dali - Raphaelesque Tablosu - Model 2" [level=3] [ref=e441]:
+              - link "Salvador Dali - Raphaelesque Tablosu - Model 2" [ref=e442] [cursor=pointer]:
+                - /url: /Urun/Detay/12513
+            - generic [ref=e444]: 999 TL
+          - generic [ref=e445]:
+            - link "Yeni Sürreal Ağaç Ev Tablosu - Model 3" [ref=e446] [cursor=pointer]:
+              - /url: /Urun/Detay/12512
+              - generic [ref=e447]: Yeni
+              - img "Sürreal Ağaç Ev Tablosu - Model 3" [ref=e448]
+            - button "" [ref=e449] [cursor=pointer]:
+              - generic [ref=e450]: 
+            - heading "Sürreal Ağaç Ev Tablosu - Model 3" [level=3] [ref=e451]:
+              - link "Sürreal Ağaç Ev Tablosu - Model 3" [ref=e452] [cursor=pointer]:
+                - /url: /Urun/Detay/12512
+            - generic [ref=e454]: 849 TL
+          - generic [ref=e455]:
+            - link "Yeni Uçan Gemiler Tablosu - Model 5" [ref=e456] [cursor=pointer]:
+              - /url: /Urun/Detay/12511
+              - generic [ref=e457]: Yeni
+              - img "Uçan Gemiler Tablosu - Model 5" [ref=e458]
+            - button "" [ref=e459] [cursor=pointer]:
+              - generic [ref=e460]: 
+            - heading "Uçan Gemiler Tablosu - Model 5" [level=3] [ref=e461]:
+              - link "Uçan Gemiler Tablosu - Model 5" [ref=e462] [cursor=pointer]:
+                - /url: /Urun/Detay/12511
+            - generic [ref=e464]: 2.149 TL
+        - generic [ref=e465]:
+          - link "1" [ref=e466] [cursor=pointer]:
+            - /url: /Urun?sort=yeni&page=1
+          - link "2" [ref=e467] [cursor=pointer]:
+            - /url: /Urun?sort=yeni&page=2
+          - link "3" [ref=e468] [cursor=pointer]:
+            - /url: /Urun?sort=yeni&page=3
+          - link "" [ref=e469] [cursor=pointer]:
+            - /url: /Urun?sort=yeni&page=2
+            - generic [ref=e470]: 
+  - contentinfo [ref=e471]:
+    - generic [ref=e473]:
+      - generic [ref=e474]:
+        - generic [ref=e476]: 
+        - generic [ref=e477]:
+          - generic [ref=e478]: Tüm Türkiye'ye
+          - generic [ref=e479]: Ücretsiz Kargo
+      - generic [ref=e480]:
+        - generic [ref=e482]: 
+        - generic [ref=e483]:
+          - generic [ref=e484]: "%100 Güvenli Alışveriş"
+          - generic [ref=e485]: 256 Bit SSL Sertifikası
+      - generic [ref=e486]:
+        - generic [ref=e488]: 
+        - generic [ref=e489]:
+          - generic [ref=e490]: Tüm Kredi Kartlarına
+          - generic [ref=e491]: 12 Taksit İmkanı
+    - generic [ref=e492]:
+      - generic [ref=e493]:
+        - generic [ref=e494]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e495]
+          - paragraph [ref=e496]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e497]:
+            - textbox "E-posta Adresi" [ref=e498]
+            - button "ABONE OL" [ref=e499] [cursor=pointer]
+        - generic [ref=e500]:
+          - heading "KURUMSAL" [level=4] [ref=e501]
+          - list [ref=e502]:
+            - listitem [ref=e503]:
+              - link "Hakkımızda" [ref=e504] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e505]:
+              - link "İletişim" [ref=e506] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e507]:
+              - link "Koleksiyonlar" [ref=e508] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e509]:
+              - link "Gizlilik Politikası" [ref=e510] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e511]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e512] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+      - generic [ref=e513]:
+        - paragraph [ref=e515]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e516]:
+          - link "Gizlilik Politikası" [ref=e517] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e518] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e519] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e522]

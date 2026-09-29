@@ -1,0 +1,652 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:     
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "İletişim Mesajları" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Müşteri taleplerini okuyun, hızlı yanıtlayın ve okunma durumunu yönetin.
+          - generic [ref=e44]:
+            - link " Tüm Mesajlar" [ref=e45] [cursor=pointer]:
+              - /url: /Admin/Iletisim
+              - generic [ref=e46]: 
+              - text: Tüm Mesajlar
+            - link " Okunmamışlar (10)" [ref=e47] [cursor=pointer]:
+              - /url: /Admin/Iletisim?unreadOnly=true
+              - generic [ref=e48]: 
+              - text: Okunmamışlar (10)
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - generic [ref=e51]:
+              - generic [ref=e52]: Toplam Mesaj
+              - strong [ref=e53]: "18"
+            - generic [ref=e54]: 
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: Okunmamış
+              - strong [ref=e58]: "10"
+            - generic [ref=e59]: 
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - generic [ref=e62]: Okundu
+              - strong [ref=e63]: "8"
+            - generic [ref=e64]: 
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: Bugün Gelen
+              - strong [ref=e68]: "0"
+            - generic [ref=e69]: 
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]:
+              - generic [ref=e73]: 
+              - searchbox "Ad, e-posta, konu veya mesaj içinde ara" [ref=e74]
+            - button " Seçilenleri Okundu Yap" [disabled] [ref=e76] [cursor=pointer]:
+              - generic [ref=e77]: 
+              - text: Seçilenleri Okundu Yap
+          - table [ref=e79]:
+            - rowgroup [ref=e80]:
+              - row "Gönderen Konu ve Mesaj Tarih Durum İşlemler" [ref=e81]:
+                - columnheader [ref=e82]:
+                  - checkbox [ref=e83]
+                - columnheader "Gönderen" [ref=e84]
+                - columnheader "Konu ve Mesaj" [ref=e85]
+                - columnheader "Tarih" [ref=e86]
+                - columnheader "Durum" [ref=e87]
+                - columnheader "İşlemler" [ref=e88]
+            - rowgroup [ref=e89]:
+              - row "A abdulmuin said abdulmuinsaid55@gmail.com merhaba test maili 09.05.2026 15:14 Yeni    " [ref=e90]:
+                - cell [ref=e91]:
+                  - checkbox [ref=e92]
+                - cell "A abdulmuin said abdulmuinsaid55@gmail.com" [ref=e93]:
+                  - generic [ref=e94]:
+                    - generic [ref=e95]: A
+                    - generic [ref=e96]:
+                      - generic [ref=e97]: abdulmuin said
+                      - link "abdulmuinsaid55@gmail.com" [ref=e98] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "merhaba test maili" [ref=e99]:
+                  - generic [ref=e100]: merhaba
+                  - generic [ref=e101]: test maili
+                - cell "09.05.2026 15:14" [ref=e102]:
+                  - generic [ref=e103]: 09.05.2026
+                  - generic [ref=e104]: 15:14
+                - cell "Yeni" [ref=e105]:
+                  - generic [ref=e106]: Yeni
+                - cell "   " [ref=e107]:
+                  - generic [ref=e108]:
+                    - link "" [ref=e109] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/21
+                      - generic [ref=e110]: 
+                    - link "" [ref=e111] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e112]: 
+                    - button "" [ref=e114] [cursor=pointer]:
+                      - generic [ref=e115]: 
+                    - button "" [ref=e117] [cursor=pointer]:
+                      - generic [ref=e118]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com Kanvas tablo test 09.05.2026 15:01 Yeni    " [ref=e119]:
+                - cell [ref=e120]:
+                  - checkbox [ref=e121]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e122]:
+                  - generic [ref=e123]:
+                    - generic [ref=e124]: A
+                    - generic [ref=e125]:
+                      - generic [ref=e126]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e127] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo test" [ref=e128]:
+                  - generic [ref=e129]: Kanvas tablo
+                  - generic [ref=e130]: test
+                - cell "09.05.2026 15:01" [ref=e131]:
+                  - generic [ref=e132]: 09.05.2026
+                  - generic [ref=e133]: 15:01
+                - cell "Yeni" [ref=e134]:
+                  - generic [ref=e135]: Yeni
+                - cell "   " [ref=e136]:
+                  - generic [ref=e137]:
+                    - link "" [ref=e138] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/20
+                      - generic [ref=e139]: 
+                    - link "" [ref=e140] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e141]: 
+                    - button "" [ref=e143] [cursor=pointer]:
+                      - generic [ref=e144]: 
+                    - button "" [ref=e146] [cursor=pointer]:
+                      - generic [ref=e147]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com Kanvas tablo test 09.05.2026 14:51 Yeni    " [ref=e148]:
+                - cell [ref=e149]:
+                  - checkbox [ref=e150]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e151]:
+                  - generic [ref=e152]:
+                    - generic [ref=e153]: A
+                    - generic [ref=e154]:
+                      - generic [ref=e155]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e156] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo test" [ref=e157]:
+                  - generic [ref=e158]: Kanvas tablo
+                  - generic [ref=e159]: test
+                - cell "09.05.2026 14:51" [ref=e160]:
+                  - generic [ref=e161]: 09.05.2026
+                  - generic [ref=e162]: 14:51
+                - cell "Yeni" [ref=e163]:
+                  - generic [ref=e164]: Yeni
+                - cell "   " [ref=e165]:
+                  - generic [ref=e166]:
+                    - link "" [ref=e167] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/19
+                      - generic [ref=e168]: 
+                    - link "" [ref=e169] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e170]: 
+                    - button "" [ref=e172] [cursor=pointer]:
+                      - generic [ref=e173]: 
+                    - button "" [ref=e175] [cursor=pointer]:
+                      - generic [ref=e176]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com Kanvas tablo merhaba test 09.05.2026 14:51 Yeni    " [ref=e177]:
+                - cell [ref=e178]:
+                  - checkbox [ref=e179]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e180]:
+                  - generic [ref=e181]:
+                    - generic [ref=e182]: A
+                    - generic [ref=e183]:
+                      - generic [ref=e184]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e185] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo merhaba test" [ref=e186]:
+                  - generic [ref=e187]: Kanvas tablo
+                  - generic [ref=e188]: merhaba test
+                - cell "09.05.2026 14:51" [ref=e189]:
+                  - generic [ref=e190]: 09.05.2026
+                  - generic [ref=e191]: 14:51
+                - cell "Yeni" [ref=e192]:
+                  - generic [ref=e193]: Yeni
+                - cell "   " [ref=e194]:
+                  - generic [ref=e195]:
+                    - link "" [ref=e196] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/18
+                      - generic [ref=e197]: 
+                    - link "" [ref=e198] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e199]: 
+                    - button "" [ref=e201] [cursor=pointer]:
+                      - generic [ref=e202]: 
+                    - button "" [ref=e204] [cursor=pointer]:
+                      - generic [ref=e205]: 
+              - row "T Test Kullanici canvasia.com.tr@gmail.com Codex iletisim test Iletisim formu test mesajidir. 09.05.2026 14:24 Yeni    " [ref=e206]:
+                - cell [ref=e207]:
+                  - checkbox [ref=e208]
+                - cell "T Test Kullanici canvasia.com.tr@gmail.com" [ref=e209]:
+                  - generic [ref=e210]:
+                    - generic [ref=e211]: T
+                    - generic [ref=e212]:
+                      - generic [ref=e213]: Test Kullanici
+                      - link "canvasia.com.tr@gmail.com" [ref=e214] [cursor=pointer]:
+                        - /url: mailto:canvasia.com.tr@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Codex iletisim test Iletisim formu test mesajidir." [ref=e215]:
+                  - generic [ref=e216]: Codex iletisim test
+                  - generic [ref=e217]: Iletisim formu test mesajidir.
+                - cell "09.05.2026 14:24" [ref=e218]:
+                  - generic [ref=e219]: 09.05.2026
+                  - generic [ref=e220]: 14:24
+                - cell "Yeni" [ref=e221]:
+                  - generic [ref=e222]: Yeni
+                - cell "   " [ref=e223]:
+                  - generic [ref=e224]:
+                    - link "" [ref=e225] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/17
+                      - generic [ref=e226]: 
+                    - link "" [ref=e227] [cursor=pointer]:
+                      - /url: mailto:canvasia.com.tr@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e228]: 
+                    - button "" [ref=e230] [cursor=pointer]:
+                      - generic [ref=e231]: 
+                    - button "" [ref=e233] [cursor=pointer]:
+                      - generic [ref=e234]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com Kanvas tablo mmmm 09.05.2026 14:24 Yeni    " [ref=e235]:
+                - cell [ref=e236]:
+                  - checkbox [ref=e237]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e238]:
+                  - generic [ref=e239]:
+                    - generic [ref=e240]: A
+                    - generic [ref=e241]:
+                      - generic [ref=e242]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e243] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo mmmm" [ref=e244]:
+                  - generic [ref=e245]: Kanvas tablo
+                  - generic [ref=e246]: mmmm
+                - cell "09.05.2026 14:24" [ref=e247]:
+                  - generic [ref=e248]: 09.05.2026
+                  - generic [ref=e249]: 14:24
+                - cell "Yeni" [ref=e250]:
+                  - generic [ref=e251]: Yeni
+                - cell "   " [ref=e252]:
+                  - generic [ref=e253]:
+                    - link "" [ref=e254] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/16
+                      - generic [ref=e255]: 
+                    - link "" [ref=e256] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e257]: 
+                    - button "" [ref=e259] [cursor=pointer]:
+                      - generic [ref=e260]: 
+                    - button "" [ref=e262] [cursor=pointer]:
+                      - generic [ref=e263]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com sipariş merhaba test maili 09.05.2026 14:20 Yeni    " [ref=e264]:
+                - cell [ref=e265]:
+                  - checkbox [ref=e266]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e267]:
+                  - generic [ref=e268]:
+                    - generic [ref=e269]: A
+                    - generic [ref=e270]:
+                      - generic [ref=e271]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e272] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "sipariş merhaba test maili" [ref=e273]:
+                  - generic [ref=e274]: sipariş
+                  - generic [ref=e275]: merhaba test maili
+                - cell "09.05.2026 14:20" [ref=e276]:
+                  - generic [ref=e277]: 09.05.2026
+                  - generic [ref=e278]: 14:20
+                - cell "Yeni" [ref=e279]:
+                  - generic [ref=e280]: Yeni
+                - cell "   " [ref=e281]:
+                  - generic [ref=e282]:
+                    - link "" [ref=e283] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/15
+                      - generic [ref=e284]: 
+                    - link "" [ref=e285] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e286]: 
+                    - button "" [ref=e288] [cursor=pointer]:
+                      - generic [ref=e289]: 
+                    - button "" [ref=e291] [cursor=pointer]:
+                      - generic [ref=e292]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com sipariş merhaba test maili 09.05.2026 14:19 Yeni    " [ref=e293]:
+                - cell [ref=e294]:
+                  - checkbox [ref=e295]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e296]:
+                  - generic [ref=e297]:
+                    - generic [ref=e298]: A
+                    - generic [ref=e299]:
+                      - generic [ref=e300]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e301] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "sipariş merhaba test maili" [ref=e302]:
+                  - generic [ref=e303]: sipariş
+                  - generic [ref=e304]: merhaba test maili
+                - cell "09.05.2026 14:19" [ref=e305]:
+                  - generic [ref=e306]: 09.05.2026
+                  - generic [ref=e307]: 14:19
+                - cell "Yeni" [ref=e308]:
+                  - generic [ref=e309]: Yeni
+                - cell "   " [ref=e310]:
+                  - generic [ref=e311]:
+                    - link "" [ref=e312] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/14
+                      - generic [ref=e313]: 
+                    - link "" [ref=e314] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e315]: 
+                    - button "" [ref=e317] [cursor=pointer]:
+                      - generic [ref=e318]: 
+                    - button "" [ref=e320] [cursor=pointer]:
+                      - generic [ref=e321]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com Kanvas tablo siparişim ne durumda 09.05.2026 13:36 Yeni    " [ref=e322]:
+                - cell [ref=e323]:
+                  - checkbox [ref=e324]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e325]:
+                  - generic [ref=e326]:
+                    - generic [ref=e327]: A
+                    - generic [ref=e328]:
+                      - generic [ref=e329]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e330] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo siparişim ne durumda" [ref=e331]:
+                  - generic [ref=e332]: Kanvas tablo
+                  - generic [ref=e333]: siparişim ne durumda
+                - cell "09.05.2026 13:36" [ref=e334]:
+                  - generic [ref=e335]: 09.05.2026
+                  - generic [ref=e336]: 13:36
+                - cell "Yeni" [ref=e337]:
+                  - generic [ref=e338]: Yeni
+                - cell "   " [ref=e339]:
+                  - generic [ref=e340]:
+                    - link "" [ref=e341] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/13
+                      - generic [ref=e342]: 
+                    - link "" [ref=e343] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e344]: 
+                    - button "" [ref=e346] [cursor=pointer]:
+                      - generic [ref=e347]: 
+                    - button "" [ref=e349] [cursor=pointer]:
+                      - generic [ref=e350]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com Kanvas tablo merhaba 07.05.2026 02:07 Yeni    " [ref=e351]:
+                - cell [ref=e352]:
+                  - checkbox [ref=e353]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e354]:
+                  - generic [ref=e355]:
+                    - generic [ref=e356]: A
+                    - generic [ref=e357]:
+                      - generic [ref=e358]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e359] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo merhaba" [ref=e360]:
+                  - generic [ref=e361]: Kanvas tablo
+                  - generic [ref=e362]: merhaba
+                - cell "07.05.2026 02:07" [ref=e363]:
+                  - generic [ref=e364]: 07.05.2026
+                  - generic [ref=e365]: 02:07
+                - cell "Yeni" [ref=e366]:
+                  - generic [ref=e367]: Yeni
+                - cell "   " [ref=e368]:
+                  - generic [ref=e369]:
+                    - link "" [ref=e370] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/12
+                      - generic [ref=e371]: 
+                    - link "" [ref=e372] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e373]: 
+                    - button "" [ref=e375] [cursor=pointer]:
+                      - generic [ref=e376]: 
+                    - button "" [ref=e378] [cursor=pointer]:
+                      - generic [ref=e379]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com Kanvas tablo merhaba test mesajı 28.04.2026 20:24 Okundu    " [ref=e380]:
+                - cell [ref=e381]:
+                  - checkbox [ref=e382]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e383]:
+                  - generic [ref=e384]:
+                    - generic [ref=e385]: A
+                    - generic [ref=e386]:
+                      - generic [ref=e387]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e388] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo merhaba test mesajı" [ref=e389]:
+                  - generic [ref=e390]: Kanvas tablo
+                  - generic [ref=e391]: merhaba test mesajı
+                - cell "28.04.2026 20:24" [ref=e392]:
+                  - generic [ref=e393]: 28.04.2026
+                  - generic [ref=e394]: 20:24
+                - cell "Okundu" [ref=e395]:
+                  - generic [ref=e396]: Okundu
+                - cell "   " [ref=e397]:
+                  - generic [ref=e398]:
+                    - link "" [ref=e399] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/10
+                      - generic [ref=e400]: 
+                    - link "" [ref=e401] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e402]: 
+                    - button "" [ref=e404] [cursor=pointer]:
+                      - generic [ref=e405]: 
+                    - button "" [ref=e407] [cursor=pointer]:
+                      - generic [ref=e408]: 
+              - row "A abdulmuin said abdulmuinsaid55@gmail.com Kanvas tablo aaaa 01.02.2026 22:56 Okundu    " [ref=e409]:
+                - cell [ref=e410]:
+                  - checkbox [ref=e411]
+                - cell "A abdulmuin said abdulmuinsaid55@gmail.com" [ref=e412]:
+                  - generic [ref=e413]:
+                    - generic [ref=e414]: A
+                    - generic [ref=e415]:
+                      - generic [ref=e416]: abdulmuin said
+                      - link "abdulmuinsaid55@gmail.com" [ref=e417] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo aaaa" [ref=e418]:
+                  - generic [ref=e419]: Kanvas tablo
+                  - generic [ref=e420]: aaaa
+                - cell "01.02.2026 22:56" [ref=e421]:
+                  - generic [ref=e422]: 01.02.2026
+                  - generic [ref=e423]: 22:56
+                - cell "Okundu" [ref=e424]:
+                  - generic [ref=e425]: Okundu
+                - cell "   " [ref=e426]:
+                  - generic [ref=e427]:
+                    - link "" [ref=e428] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/8
+                      - generic [ref=e429]: 
+                    - link "" [ref=e430] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e431]: 
+                    - button "" [ref=e433] [cursor=pointer]:
+                      - generic [ref=e434]: 
+                    - button "" [ref=e436] [cursor=pointer]:
+                      - generic [ref=e437]: 
+              - row "A abdulmuin said abdulmuinsaid55@gmail.com Kanvas tablo aaaa 01.02.2026 22:46 Okundu    " [ref=e438]:
+                - cell [ref=e439]:
+                  - checkbox [ref=e440]
+                - cell "A abdulmuin said abdulmuinsaid55@gmail.com" [ref=e441]:
+                  - generic [ref=e442]:
+                    - generic [ref=e443]: A
+                    - generic [ref=e444]:
+                      - generic [ref=e445]: abdulmuin said
+                      - link "abdulmuinsaid55@gmail.com" [ref=e446] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo aaaa" [ref=e447]:
+                  - generic [ref=e448]: Kanvas tablo
+                  - generic [ref=e449]: aaaa
+                - cell "01.02.2026 22:46" [ref=e450]:
+                  - generic [ref=e451]: 01.02.2026
+                  - generic [ref=e452]: 22:46
+                - cell "Okundu" [ref=e453]:
+                  - generic [ref=e454]: Okundu
+                - cell "   " [ref=e455]:
+                  - generic [ref=e456]:
+                    - link "" [ref=e457] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/7
+                      - generic [ref=e458]: 
+                    - link "" [ref=e459] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e460]: 
+                    - button "" [ref=e462] [cursor=pointer]:
+                      - generic [ref=e463]: 
+                    - button "" [ref=e465] [cursor=pointer]:
+                      - generic [ref=e466]: 
+              - row "A abdulmuin said abdulmuinsaid55@gmail.com Kanvas tablo ... 01.02.2026 22:18 Okundu    " [ref=e467]:
+                - cell [ref=e468]:
+                  - checkbox [ref=e469]
+                - cell "A abdulmuin said abdulmuinsaid55@gmail.com" [ref=e470]:
+                  - generic [ref=e471]:
+                    - generic [ref=e472]: A
+                    - generic [ref=e473]:
+                      - generic [ref=e474]: abdulmuin said
+                      - link "abdulmuinsaid55@gmail.com" [ref=e475] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo ..." [ref=e476]:
+                  - generic [ref=e477]: Kanvas tablo
+                  - generic [ref=e478]: ...
+                - cell "01.02.2026 22:18" [ref=e479]:
+                  - generic [ref=e480]: 01.02.2026
+                  - generic [ref=e481]: 22:18
+                - cell "Okundu" [ref=e482]:
+                  - generic [ref=e483]: Okundu
+                - cell "   " [ref=e484]:
+                  - generic [ref=e485]:
+                    - link "" [ref=e486] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/6
+                      - generic [ref=e487]: 
+                    - link "" [ref=e488] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e489]: 
+                    - button "" [ref=e491] [cursor=pointer]:
+                      - generic [ref=e492]: 
+                    - button "" [ref=e494] [cursor=pointer]:
+                      - generic [ref=e495]: 
+              - row "A abdulmuin said abdulmuinsaid55@gmail.com Kanvas tablo .... 01.02.2026 22:06 Okundu    " [ref=e496]:
+                - cell [ref=e497]:
+                  - checkbox [ref=e498]
+                - cell "A abdulmuin said abdulmuinsaid55@gmail.com" [ref=e499]:
+                  - generic [ref=e500]:
+                    - generic [ref=e501]: A
+                    - generic [ref=e502]:
+                      - generic [ref=e503]: abdulmuin said
+                      - link "abdulmuinsaid55@gmail.com" [ref=e504] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo ...." [ref=e505]:
+                  - generic [ref=e506]: Kanvas tablo
+                  - generic [ref=e507]: ....
+                - cell "01.02.2026 22:06" [ref=e508]:
+                  - generic [ref=e509]: 01.02.2026
+                  - generic [ref=e510]: 22:06
+                - cell "Okundu" [ref=e511]:
+                  - generic [ref=e512]: Okundu
+                - cell "   " [ref=e513]:
+                  - generic [ref=e514]:
+                    - link "" [ref=e515] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/5
+                      - generic [ref=e516]: 
+                    - link "" [ref=e517] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e518]: 
+                    - button "" [ref=e520] [cursor=pointer]:
+                      - generic [ref=e521]: 
+                    - button "" [ref=e523] [cursor=pointer]:
+                      - generic [ref=e524]: 
+              - row "V viyam said abdulmuinsaid55@gmail.com sipariş merhaba 01.02.2026 21:15 Okundu    " [ref=e525]:
+                - cell [ref=e526]:
+                  - checkbox [ref=e527]
+                - cell "V viyam said abdulmuinsaid55@gmail.com" [ref=e528]:
+                  - generic [ref=e529]:
+                    - generic [ref=e530]: V
+                    - generic [ref=e531]:
+                      - generic [ref=e532]: viyam said
+                      - link "abdulmuinsaid55@gmail.com" [ref=e533] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "sipariş merhaba" [ref=e534]:
+                  - generic [ref=e535]: sipariş
+                  - generic [ref=e536]: merhaba
+                - cell "01.02.2026 21:15" [ref=e537]:
+                  - generic [ref=e538]: 01.02.2026
+                  - generic [ref=e539]: 21:15
+                - cell "Okundu" [ref=e540]:
+                  - generic [ref=e541]: Okundu
+                - cell "   " [ref=e542]:
+                  - generic [ref=e543]:
+                    - link "" [ref=e544] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/3
+                      - generic [ref=e545]: 
+                    - link "" [ref=e546] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e547]: 
+                    - button "" [ref=e549] [cursor=pointer]:
+                      - generic [ref=e550]: 
+                    - button "" [ref=e552] [cursor=pointer]:
+                      - generic [ref=e553]: 
+              - row "A abdulmuin said abdulmuinsaid255@gmail.com Kanvas tablo kanvas tablom ne zaman elime ulaşır acaba ? 01.02.2026 20:16 Okundu    " [ref=e554]:
+                - cell [ref=e555]:
+                  - checkbox [ref=e556]
+                - cell "A abdulmuin said abdulmuinsaid255@gmail.com" [ref=e557]:
+                  - generic [ref=e558]:
+                    - generic [ref=e559]: A
+                    - generic [ref=e560]:
+                      - generic [ref=e561]: abdulmuin said
+                      - link "abdulmuinsaid255@gmail.com" [ref=e562] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo kanvas tablom ne zaman elime ulaşır acaba ?" [ref=e563]:
+                  - generic [ref=e564]: Kanvas tablo
+                  - generic [ref=e565]: kanvas tablom ne zaman elime ulaşır acaba ?
+                - cell "01.02.2026 20:16" [ref=e566]:
+                  - generic [ref=e567]: 01.02.2026
+                  - generic [ref=e568]: 20:16
+                - cell "Okundu" [ref=e569]:
+                  - generic [ref=e570]: Okundu
+                - cell "   " [ref=e571]:
+                  - generic [ref=e572]:
+                    - link "" [ref=e573] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/2
+                      - generic [ref=e574]: 
+                    - link "" [ref=e575] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid255@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e576]: 
+                    - button "" [ref=e578] [cursor=pointer]:
+                      - generic [ref=e579]: 
+                    - button "" [ref=e581] [cursor=pointer]:
+                      - generic [ref=e582]: 
+              - row "A abdulmuin said abdulmuinsaid55@gmail.com Kanvas tablo ne zaman elime ulaşır acaba ? 01.02.2026 03:57 Okundu    " [ref=e583]:
+                - cell [ref=e584]:
+                  - checkbox [ref=e585]
+                - cell "A abdulmuin said abdulmuinsaid55@gmail.com" [ref=e586]:
+                  - generic [ref=e587]:
+                    - generic [ref=e588]: A
+                    - generic [ref=e589]:
+                      - generic [ref=e590]: abdulmuin said
+                      - link "abdulmuinsaid55@gmail.com" [ref=e591] [cursor=pointer]:
+                        - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                - cell "Kanvas tablo ne zaman elime ulaşır acaba ?" [ref=e592]:
+                  - generic [ref=e593]: Kanvas tablo
+                  - generic [ref=e594]: ne zaman elime ulaşır acaba ?
+                - cell "01.02.2026 03:57" [ref=e595]:
+                  - generic [ref=e596]: 01.02.2026
+                  - generic [ref=e597]: 03:57
+                - cell "Okundu" [ref=e598]:
+                  - generic [ref=e599]: Okundu
+                - cell "   " [ref=e600]:
+                  - generic [ref=e601]:
+                    - link "" [ref=e602] [cursor=pointer]:
+                      - /url: /Admin/Iletisim/Detay/1
+                      - generic [ref=e603]: 
+                    - link "" [ref=e604] [cursor=pointer]:
+                      - /url: mailto:abdulmuinsaid55@gmail.com?subject=%C4%B0leti%C5%9Fim%20talebiniz%20hakk%C4%B1nda
+                      - generic [ref=e605]: 
+                    - button "" [ref=e607] [cursor=pointer]:
+                      - generic [ref=e608]: 
+                    - button "" [ref=e610] [cursor=pointer]:
+                      - generic [ref=e611]: 
+    - contentinfo [ref=e612]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

@@ -1,0 +1,311 @@
+@model KanvasProje.Core.Varliklar.Urun
+@using KanvasProje.Service.Helpers
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    var variantOptions = ViewBag.MedyaVaryantlari as List<SelectListItem> ?? new List<SelectListItem>();
+    var medyaListesi = (Model.UrunResimleri ?? Enumerable.Empty<KanvasProje.Core.Varliklar.UrunResim>())
+        .Where(x => !x.SilindiMi)
+        .OrderByDescending(x => x.VarsayilanMi)
+        .ThenBy(x => x.Sira)
+        .ThenBy(x => x.Id)
+        .ToList();
+}
+
+<div class="ca-card mt-4">
+    <div class="ca-card-body">
+        <form asp-action="MedyaEkle" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="UrunId" value="@Model.Id" />
+
+            <div class="row g-3">
+                <div class="col-lg-2 col-md-4">
+                    <label class="ca-label">Medya Tipi</label>
+                    <select name="MedyaTipi" class="ca-select" asp-items="UrunMedyaCatalog.GetTypeSelectList()"></select>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <label class="ca-label">Kullanım Alanı</label>
+                    <select name="MedyaAlani" class="ca-select" asp-items="UrunMedyaCatalog.GetAreaSelectList()"></select>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <label class="ca-label">Bağlı Varyasyon</label>
+                    <select name="UrunSecenekId" class="ca-select">
+                        <option value="">Tüm varyasyonlar</option>
+                        @foreach (var option in variantOptions)
+                        {
+                            <option value="@option.Value">@option.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <label class="ca-label">Sıra</label>
+                    <input name="Sira" class="ca-input" type="number" min="0" value="0" />
+                </div>
+                <div class="col-lg-2 col-md-4 d-flex align-items-end">
+                    <label class="form-check form-switch mb-0">
+                        <input type="hidden" name="VarsayilanMi" value="false" />
+                        <input class="form-check-input" type="checkbox" name="VarsayilanMi" value="true" />
+                        <span class="form-check-label">Varsayılan medya</span>
+                    </label>
+                </div>
+
+                <div class="col-lg-4">
+                    <label class="ca-label">Başlık</label>
+                    <input name="Baslik" class="ca-input" placeholder="Salon mockup 1" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="ca-label">Alt Metin</label>
+                    <input name="AltMetin" class="ca-input" placeholder="Ürünün salon mockup görüntüsü" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="ca-label">Etiketler</label>
+                    <input name="Etiketler" class="ca-input" placeholder="salon, mockup, modern" />
+                </div>
+
+                <div class="col-lg-4">
+                    <label class="ca-label">Dosya Yükle</label>
+                    <input type="file" name="medyaDosyasi" class="ca-input" accept=".jpg,.jpeg,.png,.webp,.mp4,.webm,.mov" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="ca-label">Video URL</label>
+                    <input name="VideoUrl" class="ca-input" placeholder="https://..." />
+                </div>
+                <div class="col-lg-4">
+                    <label class="ca-label">Önizleme / Poster</label>
+                    <input type="file" name="onizlemeDosyasi" class="ca-input" accept=".jpg,.jpeg,.png,.webp" />
+                </div>
+
+                <div class="col-lg-4">
+                    <label class="ca-label">Mobil Optimizasyon Görseli</label>
+                    <input type="file" name="mobilGorselDosyasi" class="ca-input" accept=".jpg,.jpeg,.png,.webp" />
+                </div>
+                <div class="col-lg-8 d-flex align-items-end justify-content-end">
+                    <button type="submit" class="ca-btn ca-btn-primary">
+                        <i class="fas fa-plus"></i> Medya Ekle
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <hr style="border-color:var(--ca-border); margin:24px 0;">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <div class="fw-semibold">Mevcut medya kayıtları</div>
+                <div class="small text-muted">Galeri, mockup, video ve kullanıcı görsellerini tek listeden yönet.</div>
+            </div>
+            <span class="ca-badge ca-badge-neutral">@medyaListesi.Count kayıt</span>
+        </div>
+
+        @if (!medyaListesi.Any())
+        {
+            <div class="alert alert-light border mb-0">
+                Henüz gelişmiş medya kaydı yok. Ana görsel ve klasik galeri yüklemeleri hâlâ üst formdan çalışır.
+            </div>
+        }
+        else
+        {
+            <div class="ca-media-list">
+                @foreach (var medya in medyaListesi)
+                {
+                    var temizBaslik = TurkishTextRepairHelper.RepairKnownBrokenTurkish(medya.Baslik);
+                    var temizAltMetin = TurkishTextRepairHelper.RepairKnownBrokenTurkish(medya.AltMetin);
+                    var temizEtiketler = TurkishTextRepairHelper.RepairKnownBrokenTurkish(medya.Etiketler);
+                    var medyaVaryantOptions = variantOptions
+                        .Select(x => new SelectListItem
+                        {
+                            Value = x.Value,
+                            Text = x.Text,
+                            Selected = x.Value == medya.UrunSecenekId?.ToString()
+                        })
+                        .ToList();
+
+                    <form asp-action="MedyaGuncelle" method="post" enctype="multipart/form-data" class="ca-media-card">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="Id" value="@medya.Id" />
+                        <input type="hidden" name="UrunId" value="@Model.Id" />
+
+                        <div class="ca-media-preview">
+                            @if (medya.VideoMu)
+                            {
+                                @if (!string.IsNullOrWhiteSpace(medya.EtkinPosterYolu))
+                                {
+                                    <img src="@medya.EtkinPosterYolu" alt="@temizAltMetin" loading="lazy" decoding="async" />
+                                }
+                                else
+                                {
+                                    <div class="ca-media-video-placeholder">
+                                        <i class="fas fa-circle-play"></i>
+                                    </div>
+                                }
+                                <span class="ca-media-chip">Video</span>
+                            }
+                            else if (!string.IsNullOrWhiteSpace(medya.EtkinPosterYolu))
+                            {
+                                <img src="@medya.EtkinPosterYolu" alt="@temizAltMetin" loading="lazy" decoding="async" />
+                            }
+                            else
+                            {
+                                <div class="ca-media-video-placeholder">
+                                    <i class="fas fa-image"></i>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="ca-media-fields">
+                            <div class="row g-3">
+                                <div class="col-lg-2 col-md-4">
+                                    <label class="ca-label">Tip</label>
+                                    <select name="MedyaTipi" class="ca-select" asp-items="UrunMedyaCatalog.GetTypeSelectList(medya.MedyaTipi)"></select>
+                                </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <label class="ca-label">Alan</label>
+                                    <select name="MedyaAlani" class="ca-select" asp-items="UrunMedyaCatalog.GetAreaSelectList(medya.MedyaAlani)"></select>
+                                </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <label class="ca-label">Varyasyon</label>
+                                    <select name="UrunSecenekId" class="ca-select">
+                                        <option value="">Tüm varyasyonlar</option>
+                                        @foreach (var option in medyaVaryantOptions)
+                                        {
+                                            if (option.Selected)
+                                            {
+                                                <option value="@option.Value" selected>@option.Text</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@option.Value">@option.Text</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-lg-2 col-md-4">
+                                    <label class="ca-label">Sıra</label>
+                                    <input name="Sira" class="ca-input" type="number" min="0" value="@medya.Sira" />
+                                </div>
+                                <div class="col-lg-2 col-md-4 d-flex align-items-end">
+                                    <label class="form-check form-switch mb-0">
+                                        <input type="hidden" name="VarsayilanMi" value="false" />
+                                        <input class="form-check-input" type="checkbox" name="VarsayilanMi" value="true" @(medya.VarsayilanMi ? "checked" : string.Empty) />
+                                        <span class="form-check-label">Varsayılan</span>
+                                    </label>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Başlık</label>
+                                    <input name="Baslik" class="ca-input" value="@temizBaslik" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Alt Metin</label>
+                                    <input name="AltMetin" class="ca-input" value="@temizAltMetin" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Etiketler</label>
+                                    <input name="Etiketler" class="ca-input" value="@temizEtiketler" />
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Dosyayı Değiştir</label>
+                                    <input type="file" name="medyaDosyasi" class="ca-input" accept=".jpg,.jpeg,.png,.webp,.mp4,.webm,.mov" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Video URL</label>
+                                    <input name="VideoUrl" class="ca-input" value="@medya.VideoUrl" placeholder="https://..." />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Poster / Önizleme</label>
+                                    <input type="file" name="onizlemeDosyasi" class="ca-input" accept=".jpg,.jpeg,.png,.webp" />
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Mobil Görsel</label>
+                                    <input type="file" name="mobilGorselDosyasi" class="ca-input" accept=".jpg,.jpeg,.png,.webp" />
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="small text-muted pt-4">
+                                        <div><strong>Kaynak:</strong> @(string.IsNullOrWhiteSpace(medya.ResimYolu) ? "-" : medya.ResimYolu)</div>
+                                        <div><strong>Poster:</strong> @(string.IsNullOrWhiteSpace(medya.ThumbnailYolu) ? "-" : medya.ThumbnailYolu)</div>
+                                        <div><strong>Mobil:</strong> @(string.IsNullOrWhiteSpace(medya.MobilResimYolu) ? "-" : medya.MobilResimYolu)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2 mt-3">
+                                <a href="/Admin/Urun/MedyaSil/@medya.Id" class="ca-btn ca-btn-outline text-danger">Sil</a>
+                                <button type="submit" class="ca-btn ca-btn-success">
+                                    <i class="fas fa-save"></i> Medyayı Güncelle
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .ca-media-list {
+        display: grid;
+        gap: 18px;
+    }
+
+    .ca-media-card {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 18px;
+        padding: 18px;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .ca-media-preview {
+        position: relative;
+        min-height: 220px;
+        border-radius: var(--ca-radius);
+        overflow: hidden;
+        background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+        border: 1px solid var(--ca-border);
+    }
+
+    .ca-media-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .ca-media-chip {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.82);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+
+    .ca-media-video-placeholder {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #0f766e;
+    }
+
+    @@media (max-width: 991px) {
+        .ca-media-card {
+            grid-template-columns: 1fr;
+        }
+
+        .ca-media-preview {
+            min-height: 180px;
+        }
+    }
+</style>

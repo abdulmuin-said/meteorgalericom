@@ -1,0 +1,82 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+      - /url: /Admin/Home
+      - img "Canvasia" [ref=e6]
+    - navigation "Admin ana menü" [ref=e7]:
+      - link " Panel" [ref=e8] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e9]: 
+        - text: Panel
+      - generic [ref=e10]:
+        - button " Sipariş Yönetimi 4" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e13]: "4"
+        - text:     
+      - generic [ref=e14]:
+        - button " Ürün Yönetimi" [ref=e15] [cursor=pointer]:
+          - generic [ref=e16]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e17]:
+        - button " Mağaza İçeriği 10" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e20]: "10"
+        - text:       
+      - link " Üyeler" [ref=e21] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e22]: 
+        - text: Üyeler
+      - generic [ref=e23]:
+        - button " Raporlar" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e26] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e27]: 
+        - text: Ayarlar
+    - generic [ref=e28]:
+      - text: 
+      - generic [ref=e29]:
+        - button "H" [ref=e30] [cursor=pointer]:
+          - generic [ref=e31]: H
+        - text:  
+  - generic [ref=e32]:
+    - main [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - heading "Ana Sayfa Bölüm Yönetimi" [level=1] [ref=e36]
+          - link "+ Yeni Bölüm Ekle" [ref=e37] [cursor=pointer]:
+            - /url: /Admin/HomeSections/Create
+            - generic [ref=e38]: +
+            - text: Yeni Bölüm Ekle
+        - table [ref=e39]:
+          - rowgroup [ref=e40]:
+            - row "# Tip Başlık Alt Başlık Aktif Sıra İşlemler" [ref=e41]:
+              - columnheader "#" [ref=e42]
+              - columnheader "Tip" [ref=e43]
+              - columnheader "Başlık" [ref=e44]
+              - columnheader "Alt Başlık" [ref=e45]
+              - columnheader "Aktif" [ref=e46]
+              - columnheader "Sıra" [ref=e47]
+              - columnheader "İşlemler" [ref=e48]
+          - rowgroup [ref=e49]:
+            - row "1 ProductBlock Öne Çıkan Ürünler En popüler kanvas tablolarımız 0  " [ref=e50]:
+              - cell "1" [ref=e51]
+              - cell "ProductBlock" [ref=e52]
+              - cell "Öne Çıkan Ürünler" [ref=e53]
+              - cell "En popüler kanvas tablolarımız" [ref=e54]
+              - cell [ref=e55]:
+                - checkbox [checked] [disabled]
+              - cell "0" [ref=e56]
+              - cell " " [ref=e57]:
+                - link "" [ref=e58] [cursor=pointer]:
+                  - /url: /Admin/HomeSections/Edit/1
+                  - generic [ref=e59]: 
+                - link "" [ref=e60] [cursor=pointer]:
+                  - /url: /Admin/HomeSections/Delete/1
+                  - generic [ref=e61]: 
+    - contentinfo [ref=e62]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

@@ -1,0 +1,232 @@
+@model KanvasProje.Core.Varliklar.Kupon
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var isEdit = Model?.Id > 0;
+    ViewData["Title"] = isEdit ? "Kupon Düzenle" : "Yeni Kupon";
+    var actionName = isEdit ? "Duzenle" : "Ekle";
+    var formAction = isEdit ? $"/Admin/Kupon/Duzenle/{Model!.Id}" : "/Admin/Kupon/Ekle";
+    var expiryValue = (Model?.SonKullanmaTarihi == default ? DateTime.UtcNow.AddMonths(1) : Model!.SonKullanmaTarihi).ToString("yyyy-MM-dd");
+}
+
+<style>
+    .ca-coupon-form-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    .ca-coupon-preview {
+        border: 1px dashed rgba(var(--ca-primary-rgb), .32);
+        border-radius: var(--ca-radius);
+        background: var(--ca-primary-light);
+        padding: 18px;
+    }
+
+    .ca-preview-code {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--ca-primary);
+        font-family: Consolas, monospace;
+        font-size: 1.15rem;
+        font-weight: 900;
+        letter-spacing: .08em;
+        margin-bottom: 10px;
+    }
+
+    .ca-form-help {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: var(--ca-text-muted);
+        font-size: .9rem;
+    }
+
+    .ca-form-help li {
+        display: flex;
+        gap: 9px;
+    }
+
+    .ca-form-help i {
+        color: var(--ca-primary);
+        margin-top: 3px;
+    }
+
+    @@media (max-width: 1080px) {
+        .ca-coupon-form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">@(isEdit ? "Kupon Düzenle" : "Yeni Kupon")</h1>
+            <p class="ca-page-subtitle">Sepette uygulanacak indirim kodunu, limitini ve geçerlilik tarihini belirleyin.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="/Admin/Kupon" class="ca-btn ca-btn-outline">
+                <i class="fas fa-arrow-left"></i> Kuponlara Dön
+            </a>
+            <button type="submit" form="couponForm" class="ca-btn ca-btn-primary">
+                <i class="fas fa-save"></i> @(isEdit ? "Güncelle" : "Oluştur")
+            </button>
+        </div>
+    </div>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="ca-alert ca-alert-danger mb-3">
+            <i class="fas fa-triangle-exclamation"></i>
+            <div>
+                <strong>Kupon kaydedilemedi.</strong>
+                <ul class="mb-0 mt-1 ps-3">
+                    @foreach (var modelState in ViewData.ModelState.Values)
+                    {
+                        foreach (var error in modelState.Errors)
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+    <form id="couponForm" action="@formAction" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="KullanilanMiktar" />
+        <input type="hidden" asp-for="OlusturulmaTarihi" />
+
+        <div class="ca-coupon-form-grid">
+            <div class="ca-card">
+                <div class="ca-card-header">
+                    <span class="ca-card-title"><i class="fas fa-ticket me-2"></i>Kupon Bilgileri</span>
+                </div>
+                <div class="ca-card-body">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="ca-form-group">
+                                <label class="ca-label">Kupon Kodu <span class="required">*</span></label>
+                                <input asp-for="Kod" class="ca-input" maxlength="20" required placeholder="Örn: YAZ50" style="text-transform:uppercase; letter-spacing:.08em; font-family:Consolas, monospace;" />
+                                <span asp-validation-for="Kod" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ca-form-group">
+                                <label class="ca-label">İndirim Tipi <span class="required">*</span></label>
+                                <select asp-for="Tip" class="ca-select">
+                                    <option value="0">Yüzde indirim (%)</option>
+                                    <option value="1">Sabit tutar indirimi (TL)</option>
+                                </select>
+                                <span asp-validation-for="Tip" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ca-form-group">
+                                <label class="ca-label">İndirim Değeri <span class="required">*</span></label>
+                                <input asp-for="Deger" class="ca-input" type="number" step="0.01" min="0.01" required placeholder="Örn: 10" />
+                                <span asp-validation-for="Deger" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ca-form-group">
+                                <label class="ca-label">Minimum Sepet Tutarı</label>
+                                <input asp-for="MinSepetTutari" class="ca-input" type="number" step="0.01" min="0" placeholder="0" />
+                                <span asp-validation-for="MinSepetTutari" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ca-form-group">
+                                <label class="ca-label">Kullanım Limiti</label>
+                                <input asp-for="KullanimLimiti" class="ca-input" type="number" min="0" placeholder="100" />
+                                <div class="small text-muted mt-1">Sınırsız kullanım için 0 yazın.</div>
+                                <span asp-validation-for="KullanimLimiti" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ca-form-group">
+                                <label class="ca-label">Son Kullanma Tarihi <span class="required">*</span></label>
+                                <input name="SonKullanmaTarihi" value="@expiryValue" class="ca-input" type="date" required />
+                                <span asp-validation-for="SonKullanmaTarihi" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="p-3 rounded" style="background:var(--ca-bg); border:1px solid var(--ca-border);">
+                                <div class="form-check form-switch d-flex align-items-center gap-2 m-0">
+                                    <input asp-for="AktifMi" class="form-check-input" />
+                                    <label asp-for="AktifMi" class="form-check-label ca-fw-semi">Kupon aktif olsun</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="ca-card">
+                <div class="ca-card-header">
+                    <span class="ca-card-title"><i class="fas fa-circle-info me-2"></i>Özet</span>
+                </div>
+                <div class="ca-card-body">
+                    <div class="ca-coupon-preview mb-4">
+                        <div class="ca-preview-code"><i class="fas fa-tag"></i><span id="previewCode">@(string.IsNullOrWhiteSpace(Model?.Kod) ? "KUPONKODU" : Model.Kod)</span></div>
+                        <div class="ca-fw-bold" id="previewDiscount">@(Model?.Tip == 1 ? $"{Model.Deger:N2} TL indirim" : $"%{Model?.Deger ?? 0:N0} indirim")</div>
+                        <div class="small text-muted mt-1" id="previewMin">@(Model?.MinSepetTutari > 0 ? $"{Model.MinSepetTutari:N2} TL ve üzeri sepetlerde" : "Alt limit olmadan kullanılabilir")</div>
+                    </div>
+
+                    <ul class="ca-form-help">
+                        <li><i class="fas fa-check"></i><span>Kupon kodu sepette girildiğinde kontrol edilir.</span></li>
+                        <li><i class="fas fa-check"></i><span>Ödeme alınana kadar kullanım sayısı artmaz.</span></li>
+                        <li><i class="fas fa-check"></i><span>Sabit tutar indirimi sepet toplamını aşarsa indirim sepet toplamı ile sınırlandırılır.</span></li>
+                        <li><i class="fas fa-check"></i><span>Pasife alınan kupon sepette uygulanamaz.</span></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function () {
+            const code = document.getElementById('Kod');
+            const type = document.getElementById('Tip');
+            const value = document.getElementById('Deger');
+            const min = document.getElementById('MinSepetTutari');
+            const previewCode = document.getElementById('previewCode');
+            const previewDiscount = document.getElementById('previewDiscount');
+            const previewMin = document.getElementById('previewMin');
+
+            function money(input) {
+                const n = Number(String(input || '0').replace(',', '.'));
+                return n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            function refreshPreview() {
+                const normalizedCode = (code.value || 'KUPONKODU').toUpperCase().replace(/\s+/g, '');
+                code.value = normalizedCode === 'KUPONKODU' ? code.value.toUpperCase().replace(/\s+/g, '') : normalizedCode;
+                previewCode.textContent = normalizedCode;
+
+                if (type.value === '1') {
+                    previewDiscount.textContent = `${money(value.value)} TL indirim`;
+                } else {
+                    previewDiscount.textContent = `%${Number(value.value || 0).toLocaleString('tr-TR', { maximumFractionDigits: 0 })} indirim`;
+                }
+
+                const minValue = Number(String(min.value || '0').replace(',', '.'));
+                previewMin.textContent = minValue > 0
+                    ? `${money(min.value)} TL ve üzeri sepetlerde`
+                    : 'Alt limit olmadan kullanılabilir';
+            }
+
+            [code, type, value, min].forEach(el => el && el.addEventListener('input', refreshPreview));
+            refreshPreview();
+        })();
+    </script>
+}

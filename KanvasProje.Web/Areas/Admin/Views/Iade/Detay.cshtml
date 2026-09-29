@@ -1,0 +1,264 @@
+﻿@model KanvasProje.Core.Varliklar.IadeTalebi
+@using KanvasProje.Core.Helpers
+@{
+    ViewData["Title"] = "İade Talebi İncele";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    var siparis = Model.Siparis;
+    var detaylar = siparis?.SiparisDetaylari?.Where(x => !x.SilindiMi).ToList() ?? new List<KanvasProje.Core.Varliklar.SiparisDetay>();
+    var iadeHakkiGun = ViewBag.IadeHakkiGun is int gun ? gun : 14;
+    var iadeSonTarih = ViewBag.IadeSonTarih is DateTime sonTarih ? sonTarih : (siparis?.OlusturulmaTarihi.ToUniversalTime().AddDays(iadeHakkiGun) ?? DateTime.UtcNow.AddDays(iadeHakkiGun));
+    var talepZamanindaMi = ViewBag.IadeTalepZamanindaMi is bool zamanindaMi && zamanindaMi;
+}
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">İade Talebi İncele</h1>
+            <p class="ca-page-subtitle">Onay veya ret vermeden önce müşteri, sipariş ve ürün detaylarını kontrol edin.</p>
+        </div>
+        <a href="/Admin/Iade" class="ca-btn ca-btn-light">
+            <i class="fas fa-arrow-left"></i> Listeye Dön
+        </a>
+    </div>
+
+    @if (TempData["Mesaj"] != null)
+    {
+        <div class="alert alert-success">@TempData["Mesaj"]</div>
+    }
+    @if (TempData["Hata"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Hata"]</div>
+    }
+
+    <div class="row g-4">
+        <div class="col-xl-8">
+            <div class="ca-card mb-4">
+                <div class="ca-card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="ca-card-title mb-1">Sipariş Bilgileri</h2>
+                        <div class="ca-text-muted">@(string.IsNullOrWhiteSpace(siparis?.SiparisNo) ? $"#{siparis?.Id}" : siparis?.SiparisNo)</div>
+                    </div>
+                    <span class="ca-badge ca-badge-info">@SiparisDurumHelper.GetShortLabel(siparis?.Durum ?? 0)</span>
+                </div>
+                <div class="ca-card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="ca-text-muted small">Sipariş Tarihi</div>
+                            <div class="ca-fw-semi">@siparis?.OlusturulmaTarihi.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="ca-text-muted small">Toplam Tutar</div>
+                            <div class="ca-fw-semi">@(siparis?.ToplamTutar.ToString("N2") ?? "0,00") TL</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="ca-text-muted small">Kargo</div>
+                            <div class="ca-fw-semi">@(string.IsNullOrWhiteSpace(siparis?.KargoFirmasi) ? "-" : siparis.KargoFirmasi)</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="ca-text-muted small">Takip No</div>
+                            <div class="ca-fw-semi">@(string.IsNullOrWhiteSpace(siparis?.KargoTakipNo) ? "-" : siparis.KargoTakipNo)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ca-card">
+                <div class="ca-card-header">
+                    <h2 class="ca-card-title mb-1">Ürün Bilgileri</h2>
+                    <div class="ca-text-muted">@detaylar.Count kalem ürün</div>
+                </div>
+                <div class="ca-card-body p-0">
+                    <div class="table-responsive">
+                        <table class="ca-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="ps-4">Ürün</th>
+                                    <th>Varyasyon</th>
+                                    <th>Adet</th>
+                                    <th>Birim Fiyat</th>
+                                    <th>Toplam</th>
+                                    <th class="pe-4">Müşteri Notu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var detay in detaylar)
+                                {
+                                    var gorsel = GetProductImage(detay);
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="@gorsel" alt="@detay.Urun?.Baslik" style="width:56px;height:56px;object-fit:cover;border-radius:8px;border:1px solid var(--ca-border);" />
+                                                <div>
+                                                    <div class="ca-fw-semi">@(detay.Urun?.Baslik ?? "Ürün bilgisi yok")</div>
+                                                    <small class="ca-text-muted">SKU: @(detay.Urun?.SKU ?? "-")</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>@GetVariantText(detay)</td>
+                                        <td>@detay.Adet</td>
+                                        <td>@detay.BirimFiyat.ToString("N2") TL</td>
+                                        <td>@((detay.Adet * detay.BirimFiyat).ToString("N2")) TL</td>
+                                        <td class="pe-4">@(string.IsNullOrWhiteSpace(detay.MusteriNotu) ? "-" : detay.MusteriNotu)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4">
+            <div class="ca-card mb-4">
+                <div class="ca-card-header">
+                    <h2 class="ca-card-title mb-1">Müşteri Bilgileri</h2>
+                </div>
+                <div class="ca-card-body">
+                    <dl class="row mb-0 gy-3">
+                        <dt class="col-4 ca-text-muted">Ad Soyad</dt>
+                        <dd class="col-8 ca-fw-semi">@siparis?.MusteriAdSoyad</dd>
+                        <dt class="col-4 ca-text-muted">Telefon</dt>
+                        <dd class="col-8">@siparis?.Telefon</dd>
+                        <dt class="col-4 ca-text-muted">E-posta</dt>
+                        <dd class="col-8">@siparis?.Eposta</dd>
+                        <dt class="col-4 ca-text-muted">Adres</dt>
+                        <dd class="col-8">@(siparis?.AcikAdres) @(siparis?.Ilce) / @(siparis?.Sehir)</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="ca-card mb-4">
+                <div class="ca-card-header d-flex justify-content-between align-items-center">
+                    <h2 class="ca-card-title mb-0">İade Talebi</h2>
+                    @IadeDurumBadge(Model.Durum)
+                </div>
+                <div class="ca-card-body">
+                    <div class="mb-3">
+                        <div class="ca-text-muted small">Talep Tarihi</div>
+                        <div class="ca-fw-semi">@Model.OlusturulmaTarihi.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="ca-text-muted small">14 Gün Kontrolü</div>
+                        @if (talepZamanindaMi)
+                        {
+                            <span class="ca-badge ca-badge-success"><i class="fas fa-check"></i> Süre içinde</span>
+                        }
+                        else
+                        {
+                            <span class="ca-badge ca-badge-danger"><i class="fas fa-triangle-exclamation"></i> Süre dışında</span>
+                        }
+                        <div class="ca-text-muted small mt-1">Son talep tarihi: @iadeSonTarih.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="ca-text-muted small">Müşteri Nedeni</div>
+                        <div class="ca-fw-semi">@Model.Neden</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="ca-text-muted small">Açıklama</div>
+                        <div>@(string.IsNullOrWhiteSpace(Model.Aciklama) ? "-" : Model.Aciklama)</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="ca-text-muted small">IBAN</div>
+                        <code>@(string.IsNullOrWhiteSpace(Model.IBAN) ? "-" : Model.IBAN)</code>
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(Model.AdminNotu))
+                    {
+                        <div class="mb-3">
+                            <div class="ca-text-muted small">Admin Notu</div>
+                            <div>@Model.AdminNotu</div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="ca-card">
+                <div class="ca-card-header">
+                    <h2 class="ca-card-title mb-1">İşlem</h2>
+                    <div class="ca-text-muted">Karar vermeden önce yukarıdaki sipariş ve ürün bilgilerini kontrol edin.</div>
+                </div>
+                <div class="ca-card-body">
+                    <form action="/Admin/Iade/DurumGuncelle" method="post" class="d-grid gap-3">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <div>
+                            <label class="ca-label">Admin Notu</label>
+                            <textarea name="adminNotu" class="ca-textarea" rows="4" placeholder="Müşterinin görebileceği not...">@Model.AdminNotu</textarea>
+                        </div>
+
+                        @if (Model.Durum == 0)
+                        {
+                            <button type="submit" name="durum" value="1" class="ca-btn ca-btn-success" @(talepZamanindaMi ? null : "disabled")>
+                                <i class="fas fa-check"></i> İadeyi Onayla
+                            </button>
+                            <button type="submit" name="durum" value="3" class="ca-btn ca-btn-danger">
+                                <i class="fas fa-times"></i> İadeyi Reddet
+                            </button>
+                        }
+                        else if (Model.Durum == 1)
+                        {
+                            <button type="submit" name="durum" value="2" class="ca-btn ca-btn-primary">
+                                <i class="fas fa-check-double"></i> İadeyi Tamamla
+                            </button>
+                            <button type="submit" name="durum" value="3" class="ca-btn ca-btn-danger">
+                                <i class="fas fa-times"></i> Reddet
+                            </button>
+                        }
+                        else
+                        {
+                            <div class="alert alert-secondary mb-0">Bu iade talebi için işlem tamamlanmış.</div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    private static string GetProductImage(KanvasProje.Core.Varliklar.SiparisDetay detay)
+    {
+        var image = detay.Urun?.UrunResimleri?
+            .Where(x => !x.SilindiMi && !string.IsNullOrWhiteSpace(x.ResimYolu))
+            .OrderByDescending(x => x.VarsayilanMi)
+            .ThenBy(x => x.Sira)
+            .Select(x => x.ResimYolu)
+            .FirstOrDefault();
+
+        if (string.IsNullOrWhiteSpace(image))
+        {
+            image = detay.Urun?.AnaGorselUrl;
+        }
+
+        return string.IsNullOrWhiteSpace(image) ? "/yeni_METEORGALERİ_logo.svg" : image;
+    }
+
+    private static string GetVariantText(KanvasProje.Core.Varliklar.SiparisDetay detay)
+    {
+        var secenek = detay.UrunSecenek?.VaryantOzeti;
+        var cerceve = detay.CerceveModeli;
+
+        if (!string.IsNullOrWhiteSpace(secenek) && !string.IsNullOrWhiteSpace(cerceve))
+        {
+            return $"{secenek} / {cerceve}";
+        }
+
+        return !string.IsNullOrWhiteSpace(secenek)
+            ? secenek
+            : (!string.IsNullOrWhiteSpace(cerceve) ? cerceve : "-");
+    }
+
+    private static Microsoft.AspNetCore.Html.IHtmlContent IadeDurumBadge(int durum)
+    {
+        var html = durum switch
+        {
+            0 => "<span class=\"ca-badge ca-badge-warning\"><i class=\"fas fa-clock\"></i> Bekliyor</span>",
+            1 => "<span class=\"ca-badge ca-badge-info\"><i class=\"fas fa-check\"></i> Onaylandı</span>",
+            2 => "<span class=\"ca-badge ca-badge-success\"><i class=\"fas fa-check-double\"></i> Tamamlandı</span>",
+            3 => "<span class=\"ca-badge ca-badge-danger\"><i class=\"fas fa-times\"></i> Reddedildi</span>",
+            _ => "<span class=\"ca-badge ca-badge-secondary\">Bilinmiyor</span>"
+        };
+
+        return new Microsoft.AspNetCore.Html.HtmlString(html);
+    }
+}

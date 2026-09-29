@@ -1,0 +1,63 @@
+@model KanvasProje.Core.Varliklar.KurumsalSayfa
+@{
+    ViewData["Title"] = "Sayfa Düzenle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid ca-fade-in">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="ca-card">
+                <div class="ca-form-header">
+                    <div class="d-flex align-items-center position-relative" style="z-index:2;">
+                        <div class="bg-white bg-opacity-25 rounded-3 p-3 me-3">
+                            <i class="fas fa-file-alt fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-1 fw-bold">@(Model.Id == 0 ? "Yeni Sayfa Ekle" : "Sayfayı Düzenle")</h4>
+                            <p class="mb-0 small" style="opacity:.7;">Kurumsal sayfa içeriğini buradan yönetin.</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-edit ca-form-header-icon"></i>
+                </div>
+
+                <div class="ca-card-body">
+                    <form method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-9">
+                                <div class="ca-form-group">
+                                    <label class="ca-label">Sayfa Başlığı</label>
+                                    <input asp-for="Baslik" class="ca-input" placeholder="Örn: İade Koşulları" required />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="ca-form-group">
+                                    <label class="ca-label">Sıralama</label>
+                                    <input asp-for="Sira" type="number" class="ca-input" value="@(Model.Id==0 ? 1 : Model.Sira)" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ca-form-group">
+                            <label class="ca-label">İçerik (HTML)</label>
+                            <textarea asp-for="Icerik" class="ca-textarea" rows="15" placeholder="Sayfa içeriğini buraya yazın..."></textarea>
+                            <small class="ca-text-muted" style="font-size:.8rem;">
+                                <i class="fas fa-info-circle me-1"></i> İsterseniz HTML etiketleri (h1, p, b, br) kullanabilirsiniz.
+                            </small>
+                        </div>
+
+                        <hr style="border-color:var(--ca-border); margin:24px 0;">
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="/Admin/Sayfa" class="ca-btn ca-btn-outline">İptal</a>
+                            <button type="submit" class="ca-btn ca-btn-success"><i class="fas fa-save"></i> Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

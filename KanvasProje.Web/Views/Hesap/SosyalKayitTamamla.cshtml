@@ -1,0 +1,73 @@
+﻿@model KanvasProje.Web.Models.SosyalKayitTamamlaViewModel
+@{
+    ViewData["Title"] = "Hesabınızı Tamamlayın";
+}
+
+<div class="min-h-[80vh] flex items-center justify-center py-16 px-4 bg-[#FFFBF0]">
+    <div class="w-full max-w-md">
+        <div class="text-center mb-10">
+            <a href="/" class="font-serif text-3xl tracking-widest text-[#1B2A4A]">METEORGALERİ</a>
+            <p class="text-xs text-[#333333] mt-2 tracking-wide">Hesabınız oluşturuldu, son adım kaldı</p>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded mb-6 hidden [&:not(:empty)]:block"></div>
+
+        <div class="bg-white border border-[#F5E6C8] rounded-lg p-8 shadow-sm">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 rounded-full bg-[#FDF6E3] flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check-circle text-2xl text-[#C0392B]"></i>
+                </div>
+                <h1 class="font-serif text-xl text-[#1B2A4A] mb-1">Hoş Geldiniz, @Model.AdSoyad</h1>
+                <p class="text-sm text-[#333333]">@Model.Eposta</p>
+            </div>
+
+            <form asp-action="SosyalKayitTamamla" method="post" class="space-y-5">
+                <div>
+                    <label asp-for="Sehir" class="block text-xs font-medium text-[#1B2A4A] tracking-wide mb-1.5 uppercase">Şehir</label>
+                    <select asp-for="Sehir" class="w-full border border-[#F5E6C8] rounded px-4 py-3 text-sm focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] outline-none bg-[#FFFBF0]">
+                        <option value="">Şehir seçin</option>
+                        <option>Adana</option><option>Adıyaman</option><option>Afyonkarahisar</option>
+                        <option>Ağrı</option><option>Aksaray</option><option>Amasya</option>
+                        <option>Ankara</option><option>Antalya</option><option>Ardahan</option>
+                        <option>Artvin</option><option>Aydın</option><option>Balıkesir</option>
+                        <option>Bartın</option><option>Batman</option><option>Bayburt</option>
+                        <option>Bilecik</option><option>Bingöl</option><option>Bitlis</option>
+                        <option>Bolu</option><option>Burdur</option><option>Bursa</option>
+                        <option>Çanakkale</option><option>Çankırı</option><option>Çorum</option>
+                        <option>Denizli</option><option>Diyarbakır</option><option>Düzce</option>
+                        <option>Edirne</option><option>Elazığ</option><option>Erzincan</option>
+                        <option>Erzurum</option><option>Eskişehir</option><option>Gaziantep</option>
+                        <option>Giresun</option><option>Gümüşhane</option><option>Hakkari</option>
+                        <option>Hatay</option><option>Iğdır</option><option>Isparta</option>
+                        <option>İstanbul</option><option>İzmir</option><option>Kahramanmaraş</option>
+                        <option>Karabük</option><option>Karaman</option><option>Kars</option>
+                        <option>Kastamonu</option><option>Kayseri</option><option>Kırıkkale</option>
+                        <option>Kırklareli</option><option>Kırşehir</option><option>Kilis</option>
+                        <option>Kocaeli</option><option>Konya</option><option>Kütahya</option>
+                        <option>Malatya</option><option>Manisa</option><option>Mardin</option>
+                        <option>Mersin</option><option>Muğla</option><option>Muş</option>
+                        <option>Nevşehir</option><option>Niğde</option><option>Ordu</option>
+                        <option>Osmaniye</option><option>Rize</option><option>Sakarya</option>
+                        <option>Samsun</option><option>Siirt</option><option>Sinop</option>
+                        <option>Sivas</option><option>Şanlıurfa</option><option>Şırnak</option>
+                        <option>Tekirdağ</option><option>Tokat</option><option>Trabzon</option>
+                        <option>Tunceli</option><option>Uşak</option><option>Van</option>
+                        <option>Yalova</option><option>Yozgat</option><option>Zonguldak</option>
+                    </select>
+                    <span asp-validation-for="Sehir" class="text-red-600 text-xs mt-1 block"></span>
+                </div>
+
+                <button type="submit" class="w-full bg-[#1B2A4A] text-white py-3 text-xs tracking-widest uppercase rounded hover:bg-[#1c2001] transition-colors font-medium">
+                    Hesabımı Tamamla
+                </button>
+            </form>
+
+            <form asp-action="CikisYap" method="post" class="mt-4">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="w-full text-center text-xs text-[#333333] hover:text-red-600 transition-colors">
+                    İptal et ve çıkış yap
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+Önce CLAUDE.md dosyasını oku ve içindeki proje kurallarını dikkate al. Gerekirse PROJE_DOKUMANTASYONU.txt dosyasını da referans al.
+
+ÖNEMLİ MALİYET KURALI:
+Şu an Opus 4.7 kullanıyorum. Token maliyetini düşük tut. Gereksiz dosya okuma. Önce sadece proje yapısını ve gerekli model/view/controller dosyalarını incele. Kod değiştirme. Büyük dosyaları tamamen okumadan önce benden onay iste. Bu aşamada sadece analiz yap.
+
+GÖREV:
+Mevcut ASP.NET Core 8.0 MVC + PostgreSQL e-ticaret projemi analiz etmeni istiyorum.
+
+Proje:
+CANVASİA — Türkiye içi satış yapacak, premium görünümlü, SEO uyumlu, mobil uyumlu, çok kategorili ve varyasyon destekli dekorasyon/e-ticaret sitesi.
+
+Amaç:
+Projeyi basit bir kanvas tablo sitesinden; kanvas tablo, cam tablo, duvar kağıdı, cam kesme tahtası, ayna, baskılı halı, ahşap dekorasyon ürünleri, sehpa tarzı aksesuarlar, lightbox, afiş ve ileride eklenecek yeni kategorileri destekleyen profesyonel bir e-ticaret sistemine dönüştürmek.
+
+Lütfen sistemi aşağıdaki alanlarda teknik olarak analiz et:
+
+1. Veritabanı yapısı / Entity modelleri
+2. ASP.NET Core MVC backend mimarisi
+3. Admin panel yetenekleri
+4. Kategori / alt kategori sistemi
+5. Ürün modeli ve ürün ekleme/düzenleme sistemi
+6. Ürün varyasyon sistemi
+7. Ürün görselleri, video ve mockup görsel altyapısı
+8. Ana sayfa yapısı
+9. Ürün listeleme ve kategori sayfaları
+10. Ürün detay sayfası
+11. Sepet ve sipariş akışı
+12. Kargo / üretim süresi / sipariş durumu yönetimi
+13. Otomatik mail / bildirim altyapısı
+14. SEO altyapısı
+15. Sosyal medya ve site ayarları
+16. Müşteri yorumları / değerlendirme sistemi
+17. Mobil uyumluluk
+18. Performans
+19. Güvenlik
+20. Ölçeklenebilirlik ve bakım kolaylığı
+
+Her madde için şu formatı kullan:
+
+## [Madde adı]
+
+- Durum: VAR / VAR AMA EKSİK / YOK
+- Kanıt: Hangi dosya, model, controller, view veya servis üzerinden bunu anladın?
+- Mevcut durum:
+- Eksik veya risk:
+- Ne yapılmalı:
+- Teknik öneri:
+
+Özellikle şu sorulara dikkat et:
+
+- Ürün özelinde SEO alanları var mı? Örneğin SeoTitle, SeoDescription, SeoKeywords.
+- Kategori özelinde SEO alanları var mı?
+- Ürün varyasyonları Etsy tarzı ayrı ayrı seçilebilir mi? Örneğin önce ölçü, sonra çerçeve, sonra malzeme gibi.
+- Admin panelden ana kategori, alt kategori, ürün, varyasyon, görsel, video, mockup, sipariş, kargo durumu, site ayarları ve sosyal medya linkleri yönetilebiliyor mu?
+- Ürün detay sayfasında büyük galeri, mockup görselleri, video, varyasyon seçimi, fiyat değişimi, benzer ürünler, müşteri yorumları, güven unsurları ve sosyal paylaşım alanları var mı?
+- Ana sayfada premium hero, öne çıkan kategoriler, çok satanlar, yeni gelenler, üretim süreci, malzeme kalitesi, güven unsurları, müşteri yorumları, marka hikayesi ve sosyal medya bağlantıları var mı?
+- Mobilde slider/görsel kesilme problemi var mı?
+- Türkiye içi satış için sipariş durumu, kargo süreci, otomatik mail, ödeme ve müşteri bilgilendirme akışı yeterli mi?
+- PostgreSQL tarafında tablolar profesyonel e-ticaret sistemi için yeterli mi?
+- Clean Architecture yapısı korunmuş mu?
+- Program.cs içindeki EnsureMissingMarch2026SchemaAsync drift-fixer yapısı yeni alanlar eklenirse güncellenmeli mi?
+- Tailwind/storefront CSS tarafında tasarım sürdürülebilir mi?
+- Performans için görsel optimizasyonu, lazy loading, cache, sorgu optimizasyonu gibi eksikler var mı?
+
+Analiz sonunda şu çıktıyı ver:
+
+# SONUÇ RAPORU
+
+## 1. Kritik Eksikler
+Öncelik sırasına göre listele. Her madde için:
+- Neden kritik?
+- Hangi dosyalar etkilenir?
+- Ne yapılmalı?
+- Tahmini zorluk: Kolay / Orta / Zor
+- Bu işi Opus ile mi planlamalıyım, Sonnet ile mi uygulatmalıyım?
+
+## 2. Orta Seviye Eksikler
+Öncelik sırasına göre listele.
+
+## 3. Nice-to-have İyileştirmeler
+Satış dönüşümünü, profesyonelliği ve kullanıcı deneyimini artıracak önerileri yaz.
+
+## 4. İlk Yapılması Gereken 5 Görev
+Bana doğrudan uygulanabilir sırayla ver.
+
+## 5. Sonnet’e Verilecek Uygulama Promptları
+Her kritik eksik için Sonnet’e gönderebileceğim kısa ve net uygulama promptu hazırla.
+
+KURALLAR:
+- Kod değiştirme.
+- Dosya silme.
+- Migration oluşturma.
+- Sadece analiz yap.
+- Emin olmadığın yerde “emin değilim, şu dosyaya bakmak gerekir” diye belirt.
+- Gereksiz uzun açıklama yapma ama teknik olarak yeterli detay ver.
+- Cevabı Türkçe ver.

@@ -1,0 +1,40 @@
+@{
+    string? action = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<aside class="account-card account-sidebar-card">
+    <div class="account-menu">
+        <a href="/Profil/Index" class="account-menu-link @(action == "Index" ? "active" : "")">
+            <i class="fas fa-user-circle"></i>
+            <span>Hesabım</span>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <a href="/Profil/Siparislerim" class="account-menu-link @((action == "Siparislerim" || action == "SiparisDetay") ? "active" : "")">
+            <i class="fas fa-box"></i>
+            <span>Siparişlerim</span>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <a href="/Profil/Adreslerim" class="account-menu-link @(action == "Adreslerim" ? "active" : "")">
+            <i class="fas fa-location-dot"></i>
+            <span>Adreslerim</span>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <form action="/Hesap/CikisYap" method="post" class="m-0">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="account-menu-link w-100 border-0 bg-transparent text-start">
+                <i class="fas fa-arrow-right-from-bracket"></i>
+                <span>Çıkış Yap</span>
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </form>
+
+        <a href="/Profil/HesabiSil" class="account-menu-link danger @(action == "HesabiSil" ? "active" : "")">
+            <i class="fas fa-trash"></i>
+            <span>Hesabı Sil</span>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+</aside>

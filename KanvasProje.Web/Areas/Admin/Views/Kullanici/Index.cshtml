@@ -1,0 +1,290 @@
+@model KanvasProje.Core.Models.KullaniciIndexViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Kullanıcı Yönetimi";
+}
+
+@functions {
+    private static string FormatDate(DateTime? value)
+    {
+        return value.HasValue ? value.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm") : "-";
+    }
+}
+
+<style>
+    .ca-user-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 8px;
+        min-width: 280px;
+        justify-content: end;
+    }
+
+    .ca-user-actions form {
+        margin: 0;
+    }
+
+    .ca-user-action {
+        width: 100%;
+        min-height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: .78rem;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--ca-border);
+        background: #fff;
+        color: var(--ca-text);
+        transition: .18s ease;
+        white-space: nowrap;
+    }
+
+    .ca-user-action:hover {
+        background: var(--ca-bg);
+        color: var(--ca-primary);
+        border-color: var(--ca-primary);
+    }
+
+    .ca-user-action.is-primary {
+        background: var(--ca-primary);
+        border-color: var(--ca-primary);
+        color: #fff;
+    }
+
+    .ca-user-action.is-primary:hover {
+        background: var(--ca-primary-dark);
+        color: #fff;
+    }
+
+    .ca-user-action.is-warning {
+        border-color: #f59e0b;
+        color: #92400e;
+        background: #fffbeb;
+    }
+
+    .ca-user-action.is-danger {
+        border-color: #fecaca;
+        color: #b91c1c;
+        background: #fff5f5;
+    }
+
+    .ca-user-action:disabled {
+        opacity: .45;
+        cursor: not-allowed;
+        background: #f8fafc;
+        color: #94a3b8;
+        border-color: var(--ca-border);
+    }
+
+    .ca-action-note {
+        display: block;
+        margin-top: 8px;
+        color: var(--ca-text-muted);
+        font-size: .75rem;
+        text-align: right;
+    }
+
+    @@media (max-width: 1200px) {
+        .ca-user-actions {
+            grid-template-columns: 1fr;
+            min-width: 180px;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    @if (TempData["Basari"] != null)
+    {
+        <div class="alert alert-success">@TempData["Basari"]</div>
+    }
+
+    @if (TempData["Hata"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Hata"]</div>
+    }
+
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Kullanıcı Yönetimi</h1>
+            <p class="ca-page-subtitle">Rolleri, oturum durumunu ve temel müşteri bilgilerini tek ekrandan yönetin.</p>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap justify-content-end">
+            <div class="ca-badge ca-badge-neutral" style="padding:8px 16px; font-size:.9rem;">
+                <i class="fas fa-shield-alt me-1"></i> @Model.AdminCount Admin
+            </div>
+            <div class="ca-badge ca-badge-success" style="padding:8px 16px; font-size:.9rem;">
+                <i class="fas fa-user me-1"></i> @Model.CustomerCount Müşteri
+            </div>
+            <a href="/Admin/Kullanici/ExcelExport" class="ca-btn ca-btn-outline ca-btn-sm">
+                <i class="fas fa-file-export"></i> CSV Dışa Aktar
+            </a>
+        </div>
+    </div>
+
+    <div class="ca-card">
+        <div class="ca-filter-bar d-flex flex-wrap justify-content-between gap-3">
+            <form asp-action="Index" method="get" class="d-flex" style="max-width:340px; width:100%;">
+                <div class="ca-input-icon-group" style="flex:1;">
+                    <i class="fas fa-search ca-icon-left"></i>
+                    <input type="text" name="search" value="@Model.Search" class="ca-input" placeholder="İsim, e-posta veya telefon ara">
+                </div>
+            </form>
+
+            <div class="small text-muted d-flex align-items-center">
+                Toplam @Model.TotalCount kayıt listeleniyor.
+            </div>
+        </div>
+
+        <div class="ca-table-wrapper">
+            <table class="ca-table">
+                <thead>
+                    <tr>
+                        <th class="ps-4">Kullanıcı</th>
+                        <th>İletişim</th>
+                        <th>Konum</th>
+                        <th>Rol</th>
+                        <th>Son Admin Girişi</th>
+                        <th class="text-end pe-4">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Kullanicilar)
+                    {
+                        var firstLetter = !string.IsNullOrWhiteSpace(user.AdSoyad)
+                            ? user.AdSoyad.Substring(0, 1).ToUpperInvariant()
+                            : "U";
+
+                        <tr>
+                            <td class="ps-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="ca-avatar">@firstLetter</div>
+                                    <div>
+                                        <div class="ca-fw-bold">@user.AdSoyad</div>
+                                        <small class="ca-text-muted">ID: #@user.Id.Substring(0, Math.Min(8, user.Id.Length))</small>
+                                        @if (user.IsCurrentUser)
+                                        {
+                                            <div><small class="text-primary">Bu hesap aktif oturumunuz.</small></div>
+                                        }
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="ca-text-muted" style="font-size:.85rem;">
+                                    <i class="far fa-envelope me-1"></i> @(string.IsNullOrWhiteSpace(user.Email) ? "-" : user.Email)
+                                </div>
+                                <div class="ca-text-muted" style="font-size:.8rem; margin-top:2px;">
+                                    <i class="fas fa-phone me-1"></i> @(string.IsNullOrWhiteSpace(user.PhoneNumber) ? "-" : user.PhoneNumber)
+                                </div>
+                            </td>
+
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(user.Sehir))
+                                {
+                                    <span class="ca-fw-semi"><i class="fas fa-map-marker-alt ca-text-danger me-1"></i>@user.Sehir</span>
+                                }
+                                else
+                                {
+                                    <span class="ca-text-muted">-</span>
+                                }
+                            </td>
+
+                            <td>
+                                @if (user.IsAdmin)
+                                {
+                                    <span class="ca-badge ca-badge-danger"><i class="fas fa-shield-alt"></i> @user.RoleLabel</span>
+                                }
+                                else
+                                {
+                                    <span class="ca-badge ca-badge-success"><i class="fas fa-user"></i> @user.RoleLabel</span>
+                                }
+
+                                @if (user.IsBanned)
+                                {
+                                    <div class="mt-2"><span class="badge text-bg-danger">Engelli</span></div>
+                                }
+                            </td>
+
+                            <td>
+                                <div class="small">@FormatDate(user.LastAdminLoginUtc)</div>
+                                @if (user.PreviousAdminLoginUtc.HasValue)
+                                {
+                                    <div class="small text-muted">Önceki: @FormatDate(user.PreviousAdminLoginUtc)</div>
+                                }
+                            </td>
+
+                            <td class="text-end pe-4">
+                                <div class="ca-user-actions ms-auto">
+                                    <a href="/Admin/Kullanici/Duzenle/@user.Id" class="ca-user-action is-primary" title="Kullanıcının ad, telefon, şehir ve rol bilgisini düzenler.">
+                                        <i class="fas fa-pen"></i>
+                                        <span>Bilgileri Düzenle</span>
+                                    </a>
+                                    <a href="/Admin/Kullanici/SifreSifirla/@user.Id" class="ca-user-action" title="Kullanıcı için yeni şifre belirleme ekranını açar.">
+                                        <i class="fas fa-key"></i>
+                                        <span>Şifre Değiştir</span>
+                                    </a>
+
+                                    <form asp-action="DurumDegistir" asp-route-id="@user.Id" method="post">
+                                        @Html.AntiForgeryToken()
+                                        @if (user.IsCurrentUser)
+                                        {
+                                            <button type="submit"
+                                                    class="ca-user-action @(user.IsBanned ? string.Empty : "is-warning")"
+                                                    title="Kendi hesabınızın giriş durumunu buradan değiştiremezsiniz."
+                                                    disabled>
+                                                <i class="fas @(user.IsBanned ? "fa-unlock" : "fa-ban")"></i>
+                                                <span>@(user.IsBanned ? "Engeli Kaldır" : "Girişi Engelle")</span>
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit"
+                                                    class="ca-user-action @(user.IsBanned ? string.Empty : "is-warning")"
+                                                    title="@(user.IsBanned ? "Kullanıcının tekrar giriş yapmasına izin verir." : "Kullanıcının hesaba giriş yapmasını engeller.")"
+                                                    onclick="return confirm('@(user.IsBanned ? "Bu kullanıcının engelini kaldırmak istiyor musunuz?" : "Bu kullanıcının girişini engellemek istiyor musunuz?")');">
+                                                <i class="fas @(user.IsBanned ? "fa-unlock" : "fa-ban")"></i>
+                                                <span>@(user.IsBanned ? "Engeli Kaldır" : "Girişi Engelle")</span>
+                                            </button>
+                                        }
+                                    </form>
+
+                                    <form asp-action="Sil" asp-route-id="@user.Id" method="post">
+                                        @Html.AntiForgeryToken()
+                                        @if (user.IsCurrentUser)
+                                        {
+                                            <button type="submit"
+                                                    class="ca-user-action is-danger"
+                                                    title="Kendi hesabınızı silemezsiniz."
+                                                    disabled>
+                                                <i class="fas fa-trash"></i>
+                                                <span>Hesabı Sil</span>
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit"
+                                                    class="ca-user-action is-danger"
+                                                    title="Kullanıcı kaydını kalıcı olarak siler."
+                                                    onclick="return confirm('Bu kullanıcı kaydını silmek istediğinize emin misiniz?');">
+                                                <i class="fas fa-trash"></i>
+                                                <span>Hesabı Sil</span>
+                                            </button>
+                                        }
+                                    </form>
+                                </div>
+                                @if (user.IsCurrentUser)
+                                {
+                                    <small class="ca-action-note">Kendi hesabınızda engelleme ve silme kapalıdır.</small>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

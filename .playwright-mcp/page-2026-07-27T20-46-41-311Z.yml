@@ -1,0 +1,429 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - generic [ref=f2e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=f2e6]:
+      - generic [ref=f2e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=f2e8]:
+      - generic [ref=f2e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f2e10]:
+      - generic [ref=f2e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f2e12]:
+      - generic [ref=f2e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f2e14]:
+      - generic [ref=f2e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f2e16]:
+      - generic [ref=f2e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f2e18]:
+      - generic [ref=f2e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f2e20]:
+      - generic [ref=f2e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f2e22]:
+      - generic [ref=f2e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=f2e24]:
+      - generic [ref=f2e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=f2e26]:
+      - generic [ref=f2e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=f2e28]:
+      - generic [ref=f2e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f2e30]:
+      - generic [ref=f2e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f2e32]:
+      - generic [ref=f2e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f2e34]:
+      - generic [ref=f2e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f2e36]:
+      - generic [ref=f2e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f2e38]:
+      - generic [ref=f2e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f2e40]:
+      - generic [ref=f2e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f2e42]:
+      - generic [ref=f2e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=f2e44]:
+    - generic [ref=f2e45]:
+      - link "Canvasia" [ref=f2e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=f2e47]
+      - generic [ref=f2e48]:
+        - button "Arama" [ref=f2e49] [cursor=pointer]
+        - link "Hesabım" [ref=f2e52] [cursor=pointer]:
+          - /url: /Profil
+        - link "Favoriler" [ref=f2e55] [cursor=pointer]:
+          - /url: /Favori
+        - link "Sepet" [ref=f2e58] [cursor=pointer]:
+          - /url: /Sepet
+          - generic [ref=f2e61]: "1"
+      - navigation [ref=f2e62]:
+        - list [ref=f2e63]:
+          - listitem [ref=f2e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=f2e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=f2e66]: 
+          - listitem [ref=f2e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=f2e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=f2e69]: 
+          - listitem [ref=f2e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=f2e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=f2e72]: 
+          - listitem [ref=f2e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=f2e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=f2e75]: 
+          - listitem [ref=f2e76] [cursor=pointer]:
+            - link "Ayna " [ref=f2e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=f2e78]: 
+          - listitem [ref=f2e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=f2e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=f2e81]: 
+          - listitem [ref=f2e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=f2e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=f2e84]: 
+          - listitem [ref=f2e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=f2e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=f2e87]: 
+          - listitem [ref=f2e88] [cursor=pointer]:
+            - link "Lightbox " [ref=f2e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=f2e90]: 
+          - listitem [ref=f2e91] [cursor=pointer]:
+            - link "Afiş " [ref=f2e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=f2e93]: 
+          - listitem [ref=f2e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=f2e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=f2e96]:
+    - text:      
+    - generic [ref=f2e98]:
+      - link "Ana Sayfa" [ref=f2e99] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f2e100]: /
+      - link "Koleksiyon" [ref=f2e101] [cursor=pointer]:
+        - /url: /Urun
+      - generic [ref=f2e102]: /
+      - generic [ref=f2e103]: Atatürk - Makam Odası Deri Çerçeveli Tablo
+    - generic [ref=f2e104]:
+      - generic [ref=f2e105]:
+        - generic [ref=f2e106]:
+          - generic [ref=f2e107]:
+            - img "Atatürk - Makam Odası Deri Çerçeveli Tablo" [ref=f2e108]
+            - button "" [ref=f2e109] [cursor=pointer]
+            - button "" [ref=f2e111] [cursor=pointer]
+            - generic [ref=f2e113]: 
+          - button [ref=f2e116] [cursor=pointer]:
+            - img "Atatürk - Makam Odası Deri Çerçeveli Tablo" [ref=f2e117]
+        - generic [ref=f2e118]:
+          - heading "Atatürk - Makam Odası Deri Çerçeveli Tablo" [level=1] [ref=f2e119]
+          - generic [ref=f2e120]:
+            - generic [ref=f2e121]:
+              - generic [ref=f2e122]: 
+              - generic [ref=f2e123]: 
+              - generic [ref=f2e124]: 
+              - generic [ref=f2e125]: 
+              - generic [ref=f2e126]: 
+            - generic [ref=f2e127]: (0 değerlendirme)
+          - generic [ref=f2e128]: 2.158,55 TL
+          - generic [ref=f2e130]:
+            - generic [ref=f2e131]:
+              - generic [ref=f2e132]: 
+              - text: Siparişe özel hazırlanır
+            - generic [ref=f2e133]:
+              - generic [ref=f2e134]: 
+              - text: 3 iş günü içinde kargo
+            - generic [ref=f2e135]:
+              - generic [ref=f2e136]: 
+              - text: 3 iş günü üretim
+          - generic [ref=f2e137]:
+            - generic [ref=f2e138]: 
+            - text: 150cm x 70cm
+          - paragraph [ref=f2e139]: Türkiye Cumhuriyeti'nin kurucusu Mustafa Kemal Atatürk'ü anmak ve ona olan saygımızı ifade etmek için tasarlanmış olan bu özel makam odası tablosu, liderliğin ve tarihin simgesi olarak her mekana değer katar. Canvasia'nın ustalıkla ürettiği bu eser,
+          - generic [ref=f2e140]:
+            - generic [ref=f2e141]: Ebat Seçiniz
+            - generic [ref=f2e142]:
+              - generic [ref=f2e143] [cursor=pointer]:
+                - radio "150cm x 70cm" [checked] [ref=f2e144]
+                - text: 150cm x 70cm
+              - generic [ref=f2e145] [cursor=pointer]:
+                - radio "200cm x 100cm" [ref=f2e146]
+                - text: 200cm x 100cm
+          - generic [ref=f2e147]:
+            - generic [ref=f2e148]: Çerçeve Rengi Seçiniz
+            - generic [ref=f2e149]:
+              - generic "Çerçevesiz" [ref=f2e150] [cursor=pointer]:
+                - radio "Çerçevesiz Çerçevesiz" [ref=f2e151]
+                - img "Çerçevesiz" [ref=f2e153]
+                - text: Çerçevesiz
+              - generic "Siyah" [ref=f2e154] [cursor=pointer]:
+                - radio "Siyah Siyah" [ref=f2e155]
+                - img "Siyah" [ref=f2e157]
+                - text: Siyah
+              - generic "Beyaz" [ref=f2e158] [cursor=pointer]:
+                - radio "Beyaz Beyaz" [ref=f2e159]
+                - img "Beyaz" [ref=f2e161]
+                - text: Beyaz
+              - generic "Altın" [ref=f2e162] [cursor=pointer]:
+                - radio "Altın Altın" [ref=f2e163]
+                - img "Altın" [ref=f2e165]
+                - text: Altın
+              - generic "Gümüş" [ref=f2e166] [cursor=pointer]:
+                - radio "Gümüş Gümüş" [ref=f2e167]
+                - img "Gümüş" [ref=f2e169]
+                - text: Gümüş
+              - generic "Naturel" [ref=f2e170] [cursor=pointer]:
+                - radio "Naturel Naturel" [ref=f2e171]
+                - img "Naturel" [ref=f2e173]
+                - text: Naturel
+              - generic "Ceviz" [ref=f2e174] [cursor=pointer]:
+                - radio "Ceviz Ceviz" [ref=f2e175]
+                - img "Ceviz" [ref=f2e177]
+                - text: Ceviz
+          - generic [ref=f2e178]:
+            - generic [ref=f2e179]:
+              - generic [ref=f2e180]: Adet
+              - generic [ref=f2e181]:
+                - button "-" [ref=f2e182] [cursor=pointer]
+                - spinbutton [ref=f2e183]: "1"
+                - button "+" [ref=f2e184] [cursor=pointer]
+            - generic [ref=f2e186]:
+              - button " Sepete Ekle" [ref=f2e187] [cursor=pointer]:
+                - generic [ref=f2e188]: 
+                - generic [ref=f2e189]: Sepete Ekle
+              - link "Sepete Git" [ref=f2e190] [cursor=pointer]:
+                - /url: /Sepet
+                - generic [ref=f2e191]: 
+            - button "" [ref=f2e193] [cursor=pointer]
+          - generic [ref=f2e196]:
+            - generic [ref=f2e197]:
+              - generic [ref=f2e198]: 
+              - generic [ref=f2e199]: 150cm x 70cm
+            - generic [ref=f2e200]: "|"
+            - generic [ref=f2e201]: Çerçeve seçiniz
+            - generic [ref=f2e203]: "|"
+            - generic [ref=f2e204]: 2.158,55 TL
+          - generic [ref=f2e206]:
+            - generic [ref=f2e207]: Paylaş
+            - link "Facebook'ta paylaş" [ref=f2e208] [cursor=pointer]:
+              - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.canvasia.com.tr%2FUrun%2FDetay%2Fataturk-makam-odasi-deri-cerceveli-tablo-9464
+              - generic [ref=f2e209]: 
+            - link "Instagram'da aç" [ref=f2e210] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=f2e211]: 
+            - link "WhatsApp ile paylaş" [ref=f2e212] [cursor=pointer]:
+              - /url: https://wa.me/?text=Atat%C3%BCrk%20-%20Makam%20Odas%C4%B1%20Deri%20%C3%87er%C3%A7eveli%20Tablo%20@encodedProductUrl
+              - generic [ref=f2e213]: 
+            - button " Linki Kopyala" [ref=f2e214] [cursor=pointer]:
+              - generic [ref=f2e215]: 
+              - text: Linki Kopyala
+          - generic [ref=f2e216]:
+            - generic [ref=f2e217]:
+              - paragraph [ref=f2e218]:
+                - generic [ref=f2e219]: 
+                - text: Üretim
+              - paragraph [ref=f2e220]: 3 iş günü
+            - generic [ref=f2e221]:
+              - paragraph [ref=f2e222]:
+                - generic [ref=f2e223]: 
+                - text: Paketleme
+              - paragraph [ref=f2e224]: Özenli ve korunaklı teslimat
+            - generic [ref=f2e225]:
+              - paragraph [ref=f2e226]:
+                - generic [ref=f2e227]: 
+                - text: Teslimat
+              - paragraph [ref=f2e228]: Tahmini 6 iş günü
+          - generic [ref=f2e229]:
+            - generic [ref=f2e230]:
+              - generic [ref=f2e231]: 
+              - paragraph [ref=f2e232]: Güvenli Ödeme
+              - paragraph [ref=f2e233]: 256-bit SSL
+            - generic [ref=f2e234]:
+              - generic [ref=f2e235]: 
+              - paragraph [ref=f2e236]: Ücretsiz Kargo
+              - paragraph [ref=f2e237]: 3 iş günü
+            - generic [ref=f2e238]:
+              - generic [ref=f2e239]: 
+              - paragraph [ref=f2e240]: İade Garantisi
+              - paragraph [ref=f2e241]: 14 gün içinde
+      - generic [ref=f2e243]:
+        - generic [ref=f2e245]:
+          - heading " Ürün Açıklaması" [level=2] [ref=f2e246]:
+            - generic [ref=f2e247]: 
+            - text: Ürün Açıklaması
+          - generic [ref=f2e249]:
+            - heading "Atatürk - Makam Odası Deri Çerçeveli Tablo" [level=2] [ref=f2e250]
+            - paragraph [ref=f2e251]: Türkiye Cumhuriyeti'nin kurucusu Mustafa Kemal Atatürk'ü anmak ve ona olan saygımızı ifade etmek için tasarlanmış olan bu özel makam odası tablosu, liderliğin ve tarihin simgesi olarak her mekana değer katar. Canvasia'nın ustalıkla ürettiği bu eser, kaliteli malzemeler ve üstün işçilikle bezenmiştir.
+            - heading "Ürün Özellikleri" [level=3] [ref=f2e252]
+            - paragraph [ref=f2e253]:
+              - strong [ref=f2e254]: "Farklı Boyutlar:"
+              - text: Bu tablo, farklı mekan ihtiyaçlarına uygun olarak 100x55 cm, 150x70 cm ve 200x100 cm olmak üzere üç farklı boyutta sunulmaktadır. Her boyut, ofisler, belediye binaları, okullar ve diğer resmi mekanlar için idealdir.
+            - paragraph [ref=f2e255]:
+              - strong [ref=f2e256]: "Yüksek Kaliteli Dijital Baskı:"
+              - text: Atatürk'ün etkileyici portresi, yazı yazarken en modern dijital baskı teknolojisi kullanılarak detaylı bir şekilde işlenmiştir. Bu sayede, tablo uzun yıllar boyunca orijinal renklerini ve canlılığını koruyacak şekilde üretilmiştir.
+            - paragraph [ref=f2e257]:
+              - strong [ref=f2e258]: "Siyah Deri Çerçeve:"
+              - text: Şıklığı ve resmiyeti simgeleyen siyah deri çerçeve, tablonun görünümünü zenginleştirir ve her türlü dekorasyona asil bir uyum sağlar.
+            - paragraph [ref=f2e259]:
+              - strong [ref=f2e260]: "Kolay Montaj:"
+              - text: Tablo, duvara montaj için gerekli olan askı şablonu, askı aparatı, dübel ve vidalar ile birlikte gönderilmektedir. Bu aksesuarlar sayesinde montaj işlemi basit ve hızlıdır.
+            - paragraph [ref=f2e261]:
+              - strong [ref=f2e262]: "Güçlü ve Sağlam Paketleme:"
+              - text: Tablonuz, özel tasarlanmış koruyucu bir paket içinde gönderilir. Bu paketleme, tablonun taşınma ve teslimat sürecinde herhangi bir zarar görmemesini garantiler.
+            - paragraph [ref=f2e263]:
+              - strong [ref=f2e264]: "Ücretsiz Kargo ve Hızlı Üretim:"
+              - text: Siparişiniz Canvasia tarafından hızla işleme alınır ve ücretsiz kargo seçeneği ile en kısa sürede size ulaştırılır. Bu hizmet, alışveriş deneyiminizi daha da memnuniyet verici hale getirir.
+            - paragraph [ref=f2e265]:
+              - strong [ref=f2e266]: "%100 Müşteri Memnuniyeti:"
+              - text: Canvasia, müşteri memnuniyetini en ön planda tutar ve satın alma işleminizden itibaren size en iyi hizmeti sunmayı taahhüt eder.
+            - heading "Neden Atatürk - Makam Odası Deri Çerçeveli Tabloyu Seçmelisiniz?" [level=3] [ref=f2e267]
+            - paragraph [ref=f2e268]: Atatürk'ün vizyonunu ve Türkiye Cumhuriyeti'nin temellerini her gün hatırlamak ve bu büyük liderin mirasını yaşatmak için bu tablo mükemmel bir seçimdir. Resmi ve özel mekanlarınızda, Atatürk'ün ilham verici liderliğini ve tarihi önemini vurgulayan bu tablo, ziyaretçilerinizi etkileyecek ve onlara ilham verecektir.
+            - paragraph [ref=f2e269]: Şimdi sipariş vererek, Atatürk - Makam Odası Deri Çerçeveli Tabloyu ofisinize veya kurumunuza taşıyın ve bu tarihi anı ölümsüzleştirin!
+            - heading [level=4] [ref=f2e270]:
+              - strong [ref=f2e271]: "\"Herkes ulusal görevini ve sorumluluğunu bilmeli, memleket meseleleri üzerinde o düşünceyle, düşünüp çalışmayı görev edinmelidir.\""
+        - generic [ref=f2e272]:
+          - heading " Yorumlar" [level=2] [ref=f2e273]:
+            - generic [ref=f2e274]: 
+            - text: Yorumlar
+          - generic [ref=f2e275]:
+            - generic [ref=f2e276]: 
+            - heading "Henüz yorum yapılmamış" [level=5] [ref=f2e277]
+            - paragraph [ref=f2e278]: Bu ürün için ilk yorumu siz yapın!
+            - button "İlk Yorumu Yap" [ref=f2e279] [cursor=pointer]
+    - generic [ref=f2e281]:
+      - generic [ref=f2e282]:
+        - separator [ref=f2e283]
+        - heading "Benzer Ürünler" [level=2] [ref=f2e284]
+        - separator [ref=f2e285]
+      - generic [ref=f2e286]:
+        - link "Çanakkale Makam Odası Tablosu Çanakkale Makam Odası Tablosu 2.158,55 TL" [ref=f2e287] [cursor=pointer]:
+          - /url: /Urun/Detay/canakkale-makam-odasi-tablosu-9462
+          - img "Çanakkale Makam Odası Tablosu" [ref=f2e289]
+          - heading "Çanakkale Makam Odası Tablosu" [level=3] [ref=f2e290]
+          - generic [ref=f2e291]: 2.158,55 TL
+        - link "Atatürk Makam Panosu - Vatanını En Çok Seven Atatürk Makam Panosu - Vatanını En Çok Seven 2.158,55 TL" [ref=f2e293] [cursor=pointer]:
+          - /url: /Urun/Detay/ataturk-makam-panosu-vatanini-en-cok-seven-9411
+          - img "Atatürk Makam Panosu - Vatanını En Çok Seven" [ref=f2e295]
+          - heading "Atatürk Makam Panosu - Vatanını En Çok Seven" [level=3] [ref=f2e296]
+          - generic [ref=f2e297]: 2.158,55 TL
+        - link "Türk Bayraklı Atatürk Makam Fonu Türk Bayraklı Atatürk Makam Fonu 2.158,55 TL" [ref=f2e299] [cursor=pointer]:
+          - /url: /Urun/Detay/turk-bayrakli-ataturk-makam-fonu-9422
+          - img "Türk Bayraklı Atatürk Makam Fonu" [ref=f2e301]
+          - heading "Türk Bayraklı Atatürk Makam Fonu" [level=3] [ref=f2e302]
+          - generic [ref=f2e303]: 2.158,55 TL
+        - link "Atatürk Çiftlik Tablosu - Model 2 Atatürk Çiftlik Tablosu - Model 2 864,98 TL" [ref=f2e305] [cursor=pointer]:
+          - /url: /Urun/Detay/ataturk-ciftlik-tablosu-model-2-9536
+          - img "Atatürk Çiftlik Tablosu - Model 2" [ref=f2e307]
+          - heading "Atatürk Çiftlik Tablosu - Model 2" [level=3] [ref=f2e308]
+          - generic [ref=f2e309]: 864,98 TL
+        - link "Atatürk ve Pehlivan Deve Tablosu - Model 2 Atatürk ve Pehlivan Deve Tablosu - Model 2 864,98 TL" [ref=f2e311] [cursor=pointer]:
+          - /url: /Urun/Detay/ataturk-ve-pehlivan-deve-tablosu-model-2-9543
+          - img "Atatürk ve Pehlivan Deve Tablosu - Model 2" [ref=f2e313]
+          - heading "Atatürk ve Pehlivan Deve Tablosu - Model 2" [level=3] [ref=f2e314]
+          - generic [ref=f2e315]: 864,98 TL
+        - link "Atatürk Orman Çiftliği Tablosu - Model 2 Atatürk Orman Çiftliği Tablosu - Model 2 864,98 TL" [ref=f2e317] [cursor=pointer]:
+          - /url: /Urun/Detay/ataturk-orman-ciftligi-tablosu-model-2-9551
+          - img "Atatürk Orman Çiftliği Tablosu - Model 2" [ref=f2e319]
+          - heading "Atatürk Orman Çiftliği Tablosu - Model 2" [level=3] [ref=f2e320]
+          - generic [ref=f2e321]: 864,98 TL
+  - contentinfo [ref=f2e323]:
+    - generic [ref=f2e325]:
+      - generic [ref=f2e326]:
+        - generic [ref=f2e327]: 
+        - generic [ref=f2e329]:
+          - generic [ref=f2e330]: Tüm Türkiye'ye
+          - generic [ref=f2e331]: Ücretsiz Kargo
+      - generic [ref=f2e332]:
+        - generic [ref=f2e333]: 
+        - generic [ref=f2e335]:
+          - generic [ref=f2e336]: "%100 Güvenli Alışveriş"
+          - generic [ref=f2e337]: 256 Bit SSL Sertifikası
+      - generic [ref=f2e338]:
+        - generic [ref=f2e339]: 
+        - generic [ref=f2e341]:
+          - generic [ref=f2e342]: Tüm Kredi Kartlarına
+          - generic [ref=f2e343]: 12 Taksit İmkanı
+    - generic [ref=f2e344]:
+      - generic [ref=f2e345]:
+        - generic [ref=f2e346]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=f2e347]
+          - paragraph [ref=f2e348]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=f2e349]:
+            - textbox "E-posta Adresi" [ref=f2e350]
+            - button "ABONE OL" [ref=f2e351] [cursor=pointer]
+        - generic [ref=f2e352]:
+          - heading "KURUMSAL" [level=4] [ref=f2e353]
+          - list [ref=f2e354]:
+            - listitem [ref=f2e355]:
+              - link "Hakkımızda" [ref=f2e356] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=f2e357]:
+              - link "İletişim" [ref=f2e358] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=f2e359]:
+              - link "Koleksiyonlar" [ref=f2e360] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=f2e361]:
+              - link "Gizlilik Politikası" [ref=f2e362] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=f2e363]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=f2e364] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=f2e365]:
+            - link "Instagram" [ref=f2e366] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=f2e367]: 
+            - link "WhatsApp" [ref=f2e368] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=f2e369]: 
+      - generic [ref=f2e370]:
+        - paragraph [ref=f2e372]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=f2e373]:
+          - link "Gizlilik Politikası" [ref=f2e374] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=f2e375] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=f2e376] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=f2e379]
+  - link "WhatsApp ile iletişim" [ref=f2e380] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - generic [ref=f2e383]: WhatsApp
+  - text:        

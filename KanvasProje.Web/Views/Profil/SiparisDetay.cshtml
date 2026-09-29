@@ -1,0 +1,344 @@
+﻿@model KanvasProje.Core.Varliklar.Siparis
+@using KanvasProje.Core.Helpers
+@{
+    ViewData["Title"] = "Sipariş Detayı #" + Model.Id;
+    var urunler = ViewBag.Urunler as List<dynamic>;
+    var statusStep = Model.Durum;
+    var isCancelled = Model.Durum == 4;
+    var isReturn = Model.Durum >= 5;
+    var araToplam = Model.ToplamTutar + Model.IndirimTutari - Model.KargoUcreti;
+}
+
+<!-- Breadcrumb -->
+<div class="bg-[#FDF6E3] border-b border-[#F5E6C8] py-3">
+    <div class="container mx-auto px-4 flex items-center gap-2 text-xs text-[#333333]">
+        <a href="/" class="hover:text-[#1B2A4A] transition-colors">Ana Sayfa</a>
+        <span>/</span>
+        <a href="/Profil" class="hover:text-[#1B2A4A] transition-colors">Hesabım</a>
+        <span>/</span>
+        <a href="/Profil/Siparislerim" class="hover:text-[#1B2A4A] transition-colors">Siparişlerim</a>
+        <span>/</span>
+        <span class="text-[#1B2A4A] font-medium">#@Model.Id</span>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+        
+        <!-- Yan Menü -->
+        <aside class="lg:w-56 flex-shrink-0">
+            <div class="bg-white border border-[#F5E6C8] rounded-lg overflow-hidden">
+                <div class="bg-[#1B2A4A] p-4 text-center">
+                    <p class="text-white text-sm font-medium">Hesabım</p>
+                </div>
+                <nav class="p-2">
+                    <a href="/Profil" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-user w-4"></i> Genel Bakış
+                    </a>
+                    <a href="/Profil/Siparislerim" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#1B2A4A] bg-[#FDF6E3] font-semibold mb-1">
+                        <i class="fas fa-box w-4"></i> Siparişlerim
+                    </a>
+                    <a href="/Profil/Adreslerim" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-location-dot w-4"></i> Adreslerim
+                    </a>
+                    <a href="/Favori" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-heart w-4"></i> Favorilerim
+                    </a>
+                    <hr class="border-[#F5E6C8] my-2" />
+                    <form action="/Hesap/CikisYap" method="post" class="m-0">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm text-red-500 hover:bg-red-50 transition-colors text-left">
+                            <i class="fas fa-right-from-bracket w-4"></i> Çıkış Yap
+                        </button>
+                    </form>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="flex-1 min-w-0">
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-[#C0392B] font-medium block mb-1">Sipariş Detayı</span>
+                    <h1 class="font-serif text-3xl text-[#1B2A4A]">Sipariş #@Model.Id</h1>
+                    <p class="text-xs text-[#333333] mt-2">@Model.OlusturulmaTarihi.ToTurkeyString() tarihinde oluşturuldu.</p>
+                </div>
+                <div class="flex gap-3">
+                    @if (Model.Durum == 3)
+                    {
+                        <a href="/Profil/IadeOlustur?siparisId=@Model.Id" class="border border-red-200 text-red-600 bg-red-50 hover:bg-red-100 text-xs tracking-widest uppercase px-4 py-2 rounded transition-colors flex items-center gap-2">
+                            <i class="fas fa-rotate-left"></i> İade Talebi
+                        </a>
+                    }
+                    <a href="/Profil/Siparislerim" class="border border-[#F5E6C8] text-[#333333] text-xs tracking-widest uppercase px-4 py-2 rounded hover:bg-[#FDF6E3] transition-colors flex items-center gap-2">
+                        <i class="fas fa-arrow-left"></i> Listeye Dön
+                    </a>
+                </div>
+            </div>
+
+            @if (ViewBag.IadeDurumu != null)
+            {
+                <div class="bg-amber-50 border border-amber-200 text-amber-700 p-4 rounded mb-8 text-sm flex items-center gap-3">
+                    <i class="fas fa-clock-rotate-left"></i>
+                    <div>Bu sipariş için iade süreci aktif: <strong>@ViewBag.IadeDurumu</strong></div>
+                </div>
+            }
+
+            <!-- Takip Adımları -->
+            <div class="bg-white border border-[#F5E6C8] rounded-lg p-6 mb-8">
+                <h3 class="font-serif text-xl text-[#1B2A4A] mb-6 border-b border-[#F5E6C8] pb-4">
+                    @(isReturn ? "İade Süreci" : "Sipariş Takibi")
+                </h3>
+                
+                <div class="flex flex-col md:flex-row gap-6 relative">
+                    <!-- Progress Line -->
+                    <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-[#F5E6C8] -z-10 mx-12"></div>
+                    
+                    @if (isCancelled)
+                    {
+                        <div class="text-sm text-red-600 bg-red-50 p-4 rounded border border-red-100 w-full">
+                            <strong>İptal edilen sipariş:</strong> Bu sipariş işleme alınmadı veya daha sonra iptal edildi. Ayrıntılar için destek ekibiyle iletişime geçebilirsiniz.
+                        </div>
+                    }
+                    else if (isReturn)
+                    {
+                        var iadeAdimlari = new[] {
+                            new { Icon = "fas fa-file-signature", Baslik = "Talep alındı", Puan = 5 },
+                            new { Icon = "fas fa-clipboard-check", Baslik = "Onay verildi", Puan = 6 },
+                            new { Icon = "fas fa-coins", Baslik = "İade tamamlandı", Puan = 7 },
+                            new { Icon = "fas fa-circle-check", Baslik = "Süreç kapandı", Puan = 7 }
+                        };
+                        
+                        foreach (var adim in iadeAdimlari)
+                        {
+                            var isActive = isReturn
+                                ? statusStep >= adim.Puan
+                                : SiparisDurumHelper.GetProgressStep(Model.Durum) >= SiparisDurumHelper.GetProgressStep(adim.Puan);
+                            <div class="flex-1 text-center relative z-10">
+                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 transition-colors @(isActive ? "bg-[#1B2A4A] text-white" : "bg-[#FDF6E3] text-[#a09e99] border-2 border-white")">
+                                    <i class="@adim.Icon"></i>
+                                </div>
+                                <h4 class="text-xs font-semibold uppercase tracking-wider @(isActive ? "text-[#1B2A4A]" : "text-[#a09e99]")">@adim.Baslik</h4>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        var adimlar = new[] {
+                            new { Icon = "fas fa-clipboard-check", Baslik = "Sipariş alındı", Puan = 0 },
+                            new { Icon = "fas fa-box-open", Baslik = "Üretim hazırlanıyor", Puan = 1 },
+                            new { Icon = "fas fa-box", Baslik = "Paketleniyor", Puan = 8 },
+                            new { Icon = "fas fa-truck", Baslik = "Kargoda", Puan = 2 },
+                            new { Icon = "fas fa-circle-check", Baslik = "Teslim edildi", Puan = 3 }
+                        };
+                        
+                        foreach (var adim in adimlar)
+                        {
+                            var isActive = isReturn
+                                ? statusStep >= adim.Puan
+                                : SiparisDurumHelper.GetProgressStep(Model.Durum) >= SiparisDurumHelper.GetProgressStep(adim.Puan);
+                            <div class="flex-1 text-center relative z-10">
+                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 transition-colors @(isActive ? "bg-[#1B2A4A] text-white" : "bg-[#FDF6E3] text-[#a09e99] border-2 border-white")">
+                                    <i class="@adim.Icon"></i>
+                                </div>
+                                <h4 class="text-xs font-semibold uppercase tracking-wider @(isActive ? "text-[#1B2A4A]" : "text-[#a09e99]")">@adim.Baslik</h4>
+                            </div>
+                        }
+                    }
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.KargoTakipNo) && !isCancelled)
+                {
+                    <div class="mt-8 bg-[#f8f9fa] border border-[#F5E6C8] rounded p-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-[#333333] mb-1">Kargo Takip Numarası</p>
+                            <p class="font-mono text-lg font-medium text-[#1B2A4A]" id="trackingNo">@Model.KargoTakipNo</p>
+                        </div>
+                        <button type="button" class="border border-[#F5E6C8] bg-white text-[#333333] text-xs px-3 py-1.5 rounded hover:bg-[#FDF6E3] transition-colors flex items-center gap-2" onclick="copyTracking(this)">
+                            <i class="far fa-copy"></i> Kopyala
+                        </button>
+                    </div>
+                }
+            </div>
+
+            <!-- Ürünler Tablosu -->
+            <div class="bg-white border border-[#F5E6C8] rounded-lg overflow-hidden mb-8">
+                <div class="p-6 border-b border-[#F5E6C8]">
+                    <h3 class="font-serif text-xl text-[#1B2A4A]">Satın Alınan Ürünler</h3>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-[#FDF6E3] text-[#333333] text-xs uppercase tracking-widest">
+                            <tr>
+                                <th class="px-6 py-4 font-medium">Ürün</th>
+                                <th class="px-6 py-4 font-medium">Özellikler</th>
+                                <th class="px-6 py-4 font-medium text-center">Adet</th>
+                                <th class="px-6 py-4 font-medium text-right">Toplam</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#F5E6C8]">
+                            @if (urunler != null)
+                            {
+                                foreach (var item in urunler)
+                                {
+                                    <tr class="hover:bg-[#FFFBF0] transition-colors">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center gap-4">
+                                            <img src="@item.Resim" alt="@item.Baslik" class="w-16 h-16 object-cover rounded border border-[#F5E6C8]" loading="lazy" decoding="async" />
+                                                <div>
+                                                    <a href="/Urun/Detay/@(KanvasProje.Core.Helpers.SlugHelper.GenerateSlug(item.Baslik))-@item.UrunId" class="font-semibold text-[#1B2A4A] hover:text-[#C0392B] transition-colors block mb-1">@item.Baslik</a>
+                                                    <div class="text-xs text-[#333333]">Birim: @item.Fiyat.ToString("N2") TL</div>
+                                                    @if (Model.Durum == 3)
+                                                    {
+                                                        <a href="/Urun/Detay/@(KanvasProje.Core.Helpers.SlugHelper.GenerateSlug(item.Baslik))-@item.UrunId#reviews-section" class="text-[10px] text-[#C0392B] hover:text-[#1B2A4A] uppercase tracking-wider mt-2 inline-block">
+                                                            <i class="fas fa-star mr-1"></i>Değerlendir
+                                                        </a>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span class="inline-block border border-[#F5E6C8] rounded bg-white px-2 py-1 text-xs">@item.Secenek</span>
+                                            @if (!string.IsNullOrEmpty(item.SecenekDetay))
+                                            {
+                                                <div class="text-xs text-[#333333] mt-2">@item.SecenekDetay</div>
+                                            }
+                                            @if (!string.IsNullOrWhiteSpace(item.CerceveModeli))
+                                            {
+                                                <div class="text-xs text-[#333333] mt-2">Çerçeve: @item.CerceveModeli</div>
+                                            }
+                                            @if (!string.IsNullOrWhiteSpace(item.MusteriNotu))
+                                            {
+                                                <div class="mt-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1">
+                                                    <i class="fas fa-sticky-note mr-1"></i><strong>Not:</strong> @item.MusteriNotu
+                                                </div>
+                                            }
+                                        </td>
+                                        <td class="px-6 py-4 text-center font-medium">x @item.Adet</td>
+                                        <td class="px-6 py-4 text-right font-medium">@item.Toplam.ToString("N2") TL</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot class="bg-[#FFFBF0]">
+                            <tr>
+                                <td colspan="3" class="px-6 py-4 text-right text-[#333333]">
+                                    <div class="text-xs mb-1">Ara Toplam</div>
+                                    <div class="font-medium text-[#1B2A4A]">@araToplam.ToString("N2") TL</div>
+                                    @if (Model.IndirimTutari > 0)
+                                    {
+                                        <div class="text-green-600 text-xs mt-2">
+                                            <i class="fas fa-tag mr-1"></i>İndirim (@Model.KuponKodu): -@Model.IndirimTutari.ToString("N2") TL
+                                        </div>
+                                    }
+                                    <div class="text-xs mt-2">Kargo: @(Model.KargoUcreti == 0 ? "Ücretsiz" : $"{Model.KargoUcreti.ToString("N2")} TL")</div>
+                                </td>
+                                <td class="px-6 py-4 text-right border-l border-[#F5E6C8]">
+                                    <div class="text-[10px] uppercase tracking-widest text-[#333333] mb-1">Genel Toplam</div>
+                                    <div class="font-serif text-2xl text-[#1B2A4A]">@Model.ToplamTutar.ToString("N2") TL</div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Adres ve Ödeme Bilgileri -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Teslimat Adresi -->
+                <div class="bg-white border border-[#F5E6C8] rounded-lg p-6">
+                    <h3 class="font-serif text-lg text-[#1B2A4A] mb-6 flex items-center gap-2 border-b border-[#F5E6C8] pb-3">
+                        <i class="fas fa-location-dot text-[#C0392B]"></i> Teslimat Adresi
+                    </h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex gap-3">
+                            <i class="fas fa-user text-[#a09e99] mt-1 w-4"></i>
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-[#a09e99] mb-0.5">Ad Soyad</div>
+                                <div class="font-medium text-[#1B2A4A]">@Model.MusteriAdSoyad</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-phone text-[#a09e99] mt-1 w-4"></i>
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-[#a09e99] mb-0.5">Telefon</div>
+                                <div class="font-medium text-[#1B2A4A]">@Model.Telefon</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-map text-[#a09e99] mt-1 w-4"></i>
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-[#a09e99] mb-0.5">Adres</div>
+                                <div class="text-[#1B2A4A]">@Model.AcikAdres</div>
+                                <div class="text-xs text-[#333333] mt-1">@Model.Ilce / @Model.Sehir</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ödeme Bilgisi -->
+                <div class="bg-white border border-[#F5E6C8] rounded-lg p-6">
+                    <h3 class="font-serif text-lg text-[#1B2A4A] mb-6 flex items-center gap-2 border-b border-[#F5E6C8] pb-3">
+                        <i class="fas fa-credit-card text-[#C0392B]"></i> Ödeme Bilgisi
+                    </h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex gap-3">
+                            <i class="fas fa-shield-halved text-[#a09e99] mt-1 w-4"></i>
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-[#a09e99] mb-0.5">Ödeme Durumu</div>
+                                <div class="font-medium text-green-600">Ödeme başarıyla alındı</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-file-invoice text-[#a09e99] mt-1 w-4"></i>
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-[#a09e99] mb-0.5">Fatura</div>
+                                @if (Model.FaturaYuklendiMi)
+                                {
+                                    <a href="/Siparis/FaturaIndir?id=@Model.Id" target="_blank" class="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-medium">
+                                        <i class="fas fa-file-pdf"></i> Faturayı İndir
+                                    </a>
+                                    @if (Model.FaturaMailGonderildiMi)
+                                    {
+                                        <div class="text-xs text-green-600 mt-1">
+                                            <i class="fas fa-check-circle mr-1"></i>E-posta ile gönderildi (@Model.FaturaMailGonderimTarihi?.ToString("dd.MM.yyyy"))
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="text-[#333333]">Henüz fatura oluşturulmadı</div>
+                                }
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-history text-[#a09e99] mt-1 w-4"></i>
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-[#a09e99] mb-0.5">Belge ve Kayıt</div>
+                                <div class="text-[#1B2A4A]">Sipariş kaydı sisteme eklendi</div>
+                                <div class="text-xs text-[#333333] mt-1">Destek talepleri için müşteri hizmetleriyle iletişime geçebilirsiniz.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    function copyTracking(btn) {
+        var copyText = document.getElementById('trackingNo');
+        if (!copyText) return;
+
+        navigator.clipboard.writeText(copyText.innerText);
+
+        var originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Kopyalandı';
+
+        setTimeout(function () {
+            btn.innerHTML = originalHtml;
+        }, 1800);
+    }
+</script>

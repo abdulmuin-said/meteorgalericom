@@ -1,0 +1,1 @@
+UPDATE "AspNetUsers" SET "AdSoyad" = 'Harun OK' WHERE LOWER("UserName") = 'admin' OR LOWER("Email") = 'admin@canvasia.com';

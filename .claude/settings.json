@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "MCP(filesystem *)",
+      "MCP(fetch *)",
+      "MCP(playwright *)",
+      "MCP(puppeteer-browser *)",
+      "MCP(postgresql-readonly *)",
+      "MCP(sequential-thinking *)"
+    ]
+  }
+}

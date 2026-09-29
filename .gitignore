@@ -1,0 +1,49 @@
+# Build outputs
+**/bin/
+**/obj/
+**/node_modules/
+
+# Secrets & local config
+**/secrets.json
+.env
+**/.env.local
+
+# Logs
+logs/
+*.log
+
+# IDE / OS
+.vs/
+**/.vs/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+
+# dotnet runtime artifacts
+.dotnet-cli/
+.dotnet-home/
+.dotnet_home/
+.dotnetcli/
+
+# Uploads (büyük, repo'ya girmez)
+**/wwwroot/img/products/
+**/wwwroot/media/products/
+**/wwwroot/uploads/
+
+# Geçici scriptler
+dump_railway*.py
+check_tables.py
+meteorgaleri_data.sql
+meteorgaleri_schema.sql
+scratch/
+App_Data/
+
+# Analiz/dökümantasyon md'leri (orijinal projeden)
+repomix-*.md
+repomix-*.txt
+*.md
+
+# Session dosyaları
+session-*.md
+sonkonuşma.md

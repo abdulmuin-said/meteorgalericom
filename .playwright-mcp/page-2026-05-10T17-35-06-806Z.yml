@@ -1,0 +1,412 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Menüyü aç" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - button "Arama" [ref=e52] [cursor=pointer]:
+          - img [ref=e53]
+      - generic [ref=e55]:
+        - link "Hesabım" [ref=e56] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e57]
+        - link "Favoriler" [ref=e59] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e60]
+        - link "Sepet" [ref=e62] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e63]
+          - generic [ref=e65]: "1"
+      - text: 
+    - text:   
+  - main [ref=e66]:
+    - text:             
+    - generic [ref=e68]:
+      - link "Ana Sayfa" [ref=e69] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e70]: /
+      - link "Koleksiyon" [ref=e71] [cursor=pointer]:
+        - /url: /Urun
+      - generic [ref=e72]: /
+      - generic [ref=e73]: Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - img "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [ref=e78]
+            - button "" [ref=e79] [cursor=pointer]:
+              - generic [ref=e80]: 
+            - button "" [ref=e81] [cursor=pointer]:
+              - generic [ref=e82]: 
+            - generic [ref=e84]: 
+          - button "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [ref=e86] [cursor=pointer]:
+            - img "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [ref=e87]
+        - generic [ref=e88]:
+          - heading "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [level=1] [ref=e89]
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: 
+              - generic [ref=e93]: 
+              - generic [ref=e94]: 
+              - generic [ref=e95]: 
+              - generic [ref=e96]: 
+            - generic [ref=e97]: (2 değerlendirme)
+          - generic [ref=e98]:
+            - generic [ref=e99]: 491,68 TL
+            - generic [ref=e100]: 681,47 TL
+            - generic [ref=e101]: "%28 İndirim"
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - generic [ref=e104]: 
+              - text: Siparişe özel hazırlanır
+            - generic [ref=e105]:
+              - generic [ref=e106]: 
+              - text: 2 iş günü içinde kargo
+            - generic [ref=e107]:
+              - generic [ref=e108]: 
+              - text: 3 iş günü üretim
+          - generic [ref=e109]:
+            - generic [ref=e110]: 
+            - text: 25cm x 25cm
+          - paragraph [ref=e111]: Özel ölçü seçenekleriyle hazırlanan dekoratif kanvas tablo.
+          - generic [ref=e112]:
+            - generic [ref=e113]: Paylaş
+            - link "Facebook'ta paylaş" [ref=e114] [cursor=pointer]:
+              - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.canvasia.com.tr%2FUrun%2FDetay%2Fsokaktaki-bankta-cicekle-bekleyen-kanvas-tablo-29
+              - generic [ref=e115]: 
+            - link "Instagram'da aç" [ref=e116] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e117]: 
+            - link "WhatsApp ile paylaş" [ref=e118] [cursor=pointer]:
+              - /url: https://wa.me/?text=Sokaktaki%20Bankta%20%C3%87i%C3%A7ekle%20Bekleyen%20Kanvas%20Tablo%20@encodedProductUrl
+              - generic [ref=e119]: 
+            - button " Linki Kopyala" [ref=e120] [cursor=pointer]:
+              - generic [ref=e121]: 
+              - text: Linki Kopyala
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - paragraph [ref=e124]:
+                - generic [ref=e125]: 
+                - text: Üretim
+              - paragraph [ref=e126]: 3 iş günü
+            - generic [ref=e127]:
+              - paragraph [ref=e128]:
+                - generic [ref=e129]: 
+                - text: Paketleme
+              - paragraph [ref=e130]: Özenli ve korunaklı teslimat
+            - generic [ref=e131]:
+              - paragraph [ref=e132]:
+                - generic [ref=e133]: 
+                - text: Teslimat
+              - paragraph [ref=e134]: Tahmini 5 iş günü
+          - generic [ref=e135]:
+            - paragraph [ref=e136]: "Malzeme: Yüksek kaliteli kanvas kumaş ve dayanıklı şase malzemesi kullanılır."
+            - paragraph [ref=e137]: "Paketleme: Ürün koruyucu ambalaj ile paketlenerek gönderilir."
+          - generic [ref=e138]:
+            - generic [ref=e139]: Ebat Seçiniz
+            - generic [ref=e140]:
+              - generic [ref=e141] [cursor=pointer]:
+                - radio "25cm x 25cm" [checked] [ref=e142]
+                - text: 25cm x 25cm
+              - generic [ref=e143] [cursor=pointer]:
+                - radio "35cm x 35cm" [ref=e144]
+                - text: 35cm x 35cm
+              - generic [ref=e145] [cursor=pointer]:
+                - radio "40cm x 40cm" [ref=e146]
+                - text: 40cm x 40cm
+              - generic [ref=e147] [cursor=pointer]:
+                - radio "50cm x 50cm" [ref=e148]
+                - text: 50cm x 50cm
+              - generic [ref=e149] [cursor=pointer]:
+                - radio "60cm x 60cm" [ref=e150]
+                - text: 60cm x 60cm
+              - generic [ref=e151] [cursor=pointer]:
+                - radio "70cm x 70cm" [ref=e152]
+                - text: 70cm x 70cm
+              - generic [ref=e153] [cursor=pointer]:
+                - radio "100cm x 100cm" [ref=e154]
+                - text: 100cm x 100cm
+          - generic [ref=e155]:
+            - generic [ref=e156]: Çerçeve Modeli Seçiniz
+            - generic [ref=e157]:
+              - generic "Çerçevesiz" [ref=e158] [cursor=pointer]:
+                - radio "Çerçevesiz Çerçevesiz" [ref=e159]
+                - img "Çerçevesiz" [ref=e161]
+                - text: Çerçevesiz
+              - generic "Siyah" [ref=e162] [cursor=pointer]:
+                - radio "Siyah Siyah" [ref=e163]
+                - img "Siyah" [ref=e165]
+                - text: Siyah
+              - generic "Beyaz" [ref=e166] [cursor=pointer]:
+                - radio "Beyaz Beyaz" [ref=e167]
+                - img "Beyaz" [ref=e169]
+                - text: Beyaz
+              - generic "Altın" [ref=e170] [cursor=pointer]:
+                - radio "Altın Altın" [ref=e171]
+                - img "Altın" [ref=e173]
+                - text: Altın
+              - generic "Gümüş" [ref=e174] [cursor=pointer]:
+                - radio "Gümüş Gümüş" [ref=e175]
+                - img "Gümüş" [ref=e177]
+                - text: Gümüş
+              - generic "Naturel" [ref=e178] [cursor=pointer]:
+                - radio "Naturel Naturel" [ref=e179]
+                - img "Naturel" [ref=e181]
+                - text: Naturel
+              - generic "Ceviz" [ref=e182] [cursor=pointer]:
+                - radio "Ceviz Ceviz" [ref=e183]
+                - img "Ceviz" [ref=e185]
+                - text: Ceviz
+          - generic [ref=e186]:
+            - generic [ref=e187]:
+              - generic [ref=e188]: Adet
+              - generic [ref=e189]:
+                - button "-" [ref=e190] [cursor=pointer]
+                - spinbutton [ref=e191]: "1"
+                - button "+" [ref=e192] [cursor=pointer]
+            - button " Sepete Ekle" [ref=e194] [cursor=pointer]:
+              - generic [ref=e195]: 
+              - text: Sepete Ekle
+            - button "" [ref=e196] [cursor=pointer]:
+              - generic [ref=e197]: 
+          - generic [ref=e198]:
+            - generic [ref=e199]:
+              - generic [ref=e200]: 
+              - paragraph [ref=e201]: Güvenli Ödeme
+              - paragraph [ref=e202]: 256-bit SSL
+            - generic [ref=e203]:
+              - generic [ref=e204]: 
+              - paragraph [ref=e205]: Ücretsiz Kargo
+              - paragraph [ref=e206]: 2 iş günü
+            - generic [ref=e207]:
+              - generic [ref=e208]: 
+              - paragraph [ref=e209]: İade Garantisi
+              - paragraph [ref=e210]: 14 gün içinde
+      - generic [ref=e212]:
+        - generic [ref=e213]:
+          - generic [ref=e214]:
+            - heading " Ürün Açıklaması" [level=2] [ref=e215]:
+              - generic [ref=e216]: 
+              - text: Ürün Açıklaması
+            - generic [ref=e217]: Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo ürünü, yaşam alanlarında dekoratif kullanım için hazırlanan premium kanvas tablo koleksiyonunun parçasıdır.
+          - generic [ref=e218]:
+            - heading " Teknik Özellikler" [level=2] [ref=e219]:
+              - generic [ref=e220]: 
+              - text: Teknik Özellikler
+            - table [ref=e222]:
+              - rowgroup [ref=e223]:
+                - row "Detay Yüksek çözünürlüklü baskı" [ref=e224]:
+                  - rowheader "Detay" [ref=e225]
+                  - cell "Yüksek çözünürlüklü baskı" [ref=e226]
+                - row "Detay Kanvas yüzey" [ref=e227]:
+                  - rowheader "Detay" [ref=e228]
+                  - cell "Kanvas yüzey" [ref=e229]
+                - row "Detay Farklı ölçü seçenekleri" [ref=e230]:
+                  - rowheader "Detay" [ref=e231]
+                  - cell "Farklı ölçü seçenekleri" [ref=e232]
+        - generic [ref=e233]:
+          - heading " Yorumlar" [level=2] [ref=e234]:
+            - generic [ref=e235]: 
+            - text: Yorumlar
+          - generic [ref=e236]:
+            - heading "5,0" [level=3] [ref=e237]
+            - generic [ref=e238]:
+              - generic [ref=e239]: 
+              - generic [ref=e240]: 
+              - generic [ref=e241]: 
+              - generic [ref=e242]: 
+              - generic [ref=e243]: 
+            - paragraph [ref=e244]: Toplam 2 değerlendirme
+            - button "Yorum Yap" [ref=e245] [cursor=pointer]
+          - generic [ref=e246]:
+            - generic [ref=e247]:
+              - generic [ref=e248]:
+                - generic [ref=e249]:
+                  - generic [ref=e250]: AÇ
+                  - generic [ref=e251]:
+                    - heading "Arda Ç." [level=5] [ref=e252]
+                    - generic [ref=e253]:
+                      - generic [ref=e254]: 
+                      - generic [ref=e255]: 
+                      - generic [ref=e256]: 
+                      - generic [ref=e257]: 
+                      - generic [ref=e258]: 
+                - generic [ref=e259]: 25 Oca 2026
+              - paragraph [ref=e260]: Kargo çok hızlıydı. Renkleri gerçekten çok canlı. Çok memnun kaldım.
+            - generic [ref=e261]:
+              - generic [ref=e262]:
+                - generic [ref=e263]:
+                  - generic [ref=e264]: SN
+                  - generic [ref=e265]:
+                    - heading "Süleyman N." [level=5] [ref=e266]
+                    - generic [ref=e267]:
+                      - generic [ref=e268]: 
+                      - generic [ref=e269]: 
+                      - generic [ref=e270]: 
+                      - generic [ref=e271]: 
+                      - generic [ref=e272]: 
+                - generic [ref=e273]: 08 Oca 2026
+              - paragraph [ref=e274]: Açıkçası tereddüt etmiştim ama, Baskı kalitesi beni şaşırttı. Parasını sonuna kadar hak ediyor.
+    - generic [ref=e276]:
+      - heading "Benzer Ürünler" [level=2] [ref=e278]
+      - generic [ref=e279]:
+        - link "İstanbul Hasret Tablosu - Model 5 İstanbul Hasret Tablosu - Model 5 2.149,00 TL" [ref=e280] [cursor=pointer]:
+          - /url: /Urun/Detay/3449
+          - img "İstanbul Hasret Tablosu - Model 5" [ref=e282]
+          - heading "İstanbul Hasret Tablosu - Model 5" [level=3] [ref=e283]
+          - generic [ref=e285]: 2.149,00 TL
+        - link "Akarsu Doğa Tablosu Akarsu Doğa Tablosu 2.149,00 TL" [ref=e286] [cursor=pointer]:
+          - /url: /Urun/Detay/2808
+          - img "Akarsu Doğa Tablosu" [ref=e288]
+          - heading "Akarsu Doğa Tablosu" [level=3] [ref=e289]
+          - generic [ref=e291]: 2.149,00 TL
+        - link "Manzara Dere Tablosu - Model 3 Manzara Dere Tablosu - Model 3 849,00 TL" [ref=e292] [cursor=pointer]:
+          - /url: /Urun/Detay/3421
+          - img "Manzara Dere Tablosu - Model 3" [ref=e294]
+          - heading "Manzara Dere Tablosu - Model 3" [level=3] [ref=e295]
+          - generic [ref=e297]: 849,00 TL
+        - link "İskele Altı Tablosu İskele Altı Tablosu 2.149,00 TL" [ref=e298] [cursor=pointer]:
+          - /url: /Urun/Detay/2520
+          - img "İskele Altı Tablosu" [ref=e300]
+          - heading "İskele Altı Tablosu" [level=3] [ref=e301]
+          - generic [ref=e303]: 2.149,00 TL
+        - link "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo 632,16 TL" [ref=e304] [cursor=pointer]:
+          - /url: /Urun/Detay/boga-resimli-renkli-muhtesem-mimari-dekor-kanvas-tablo-63
+          - img "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo" [ref=e306]
+          - heading "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo" [level=3] [ref=e307]
+          - generic [ref=e309]: 632,16 TL
+        - link "Nehir Kıyısında Sonbahar Tablosu Nehir Kıyısında Sonbahar Tablosu 999,00 TL" [ref=e310] [cursor=pointer]:
+          - /url: /Urun/Detay/2360
+          - img "Nehir Kıyısında Sonbahar Tablosu" [ref=e312]
+          - heading "Nehir Kıyısında Sonbahar Tablosu" [level=3] [ref=e313]
+          - generic [ref=e315]: 999,00 TL
+  - contentinfo [ref=e316]:
+    - generic [ref=e318]:
+      - generic [ref=e319]:
+        - generic [ref=e321]: 
+        - generic [ref=e322]:
+          - generic [ref=e323]: Tüm Türkiye'ye
+          - generic [ref=e324]: Ücretsiz Kargo
+      - generic [ref=e325]:
+        - generic [ref=e327]: 
+        - generic [ref=e328]:
+          - generic [ref=e329]: "%100 Güvenli Alışveriş"
+          - generic [ref=e330]: 256 Bit SSL Sertifikası
+      - generic [ref=e331]:
+        - generic [ref=e333]: 
+        - generic [ref=e334]:
+          - generic [ref=e335]: Tüm Kredi Kartlarına
+          - generic [ref=e336]: 12 Taksit İmkanı
+    - generic [ref=e337]:
+      - generic [ref=e338]:
+        - generic [ref=e339]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e340]
+          - paragraph [ref=e341]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e342]:
+            - textbox "E-posta Adresi" [ref=e343]
+            - button "ABONE OL" [ref=e344] [cursor=pointer]
+        - generic [ref=e345]:
+          - heading "KURUMSAL" [level=4] [ref=e346]
+          - list [ref=e347]:
+            - listitem [ref=e348]:
+              - link "Hakkımızda" [ref=e349] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e350]:
+              - link "İletişim" [ref=e351] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e352]:
+              - link "Koleksiyonlar" [ref=e353] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e354]:
+              - link "Gizlilik Politikası" [ref=e355] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e356]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e357] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e358]:
+            - link "Instagram" [ref=e359] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e360]: 
+            - link "WhatsApp" [ref=e361] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e362]: 
+      - generic [ref=e363]:
+        - paragraph [ref=e365]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e366]:
+          - link "Gizlilik Politikası" [ref=e367] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e368] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e369] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e372]
+  - link "WhatsApp ile iletişim" [ref=e373] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e374]
+    - generic [ref=e376]: WhatsApp

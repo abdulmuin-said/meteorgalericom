@@ -1,0 +1,215 @@
+﻿@model List<KanvasProje.Core.Varliklar.Adres>
+@{
+    ViewData["Title"] = "Adreslerim";
+    var sehirler = new[] {
+        "Adana","Adıyaman","Afyonkarahisar","Ağrı","Aksaray","Amasya","Ankara","Antalya","Ardahan","Artvin",
+        "Aydın","Balıkesir","Bartın","Batman","Bayburt","Bilecik","Bingöl","Bitlis","Bolu","Burdur",
+        "Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Düzce","Edirne","Elazığ","Erzincan",
+        "Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Iğdır","Isparta","İstanbul",
+        "İzmir","Kahramanmaraş","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kırıkkale","Kırklareli","Kırşehir",
+        "Kilis","Kocaeli","Konya","Kütahya","Malatya","Manisa","Mardin","Mersin","Muğla","Muş",
+        "Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas",
+        "Şanlıurfa","Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak"
+    };
+}
+
+<!-- Breadcrumb -->
+<div class="bg-[#FDF6E3] border-b border-[#F5E6C8] py-3">
+    <div class="container mx-auto px-4 flex items-center gap-2 text-xs text-[#333333]">
+        <a href="/" class="hover:text-[#1B2A4A] transition-colors">Ana Sayfa</a>
+        <span>/</span>
+        <a href="/Profil" class="hover:text-[#1B2A4A] transition-colors">Hesabım</a>
+        <span>/</span>
+        <span class="text-[#1B2A4A] font-medium">Adreslerim</span>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+        <!-- Yan Menü -->
+        <aside class="lg:w-56 flex-shrink-0">
+            <div class="bg-white border border-[#F5E6C8] rounded-lg overflow-hidden">
+                <div class="bg-[#1B2A4A] p-4 text-center">
+                    <p class="text-white text-sm font-medium">Hesabım</p>
+                </div>
+                <nav class="p-2">
+                    <a href="/Profil" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-user w-4"></i> Genel Bakış
+                    </a>
+                    <a href="/Profil/Siparislerim" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-box w-4"></i> Siparişlerim
+                    </a>
+                    <a href="/Profil/Adreslerim" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#1B2A4A] bg-[#FDF6E3] font-semibold mb-1">
+                        <i class="fas fa-location-dot w-4"></i> Adreslerim
+                    </a>
+                    <a href="/Favori" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-heart w-4"></i> Favorilerim
+                    </a>
+                    <hr class="border-[#F5E6C8] my-2" />
+                    <form action="/Hesap/CikisYap" method="post" class="m-0">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm text-red-500 hover:bg-red-50 transition-colors text-left">
+                            <i class="fas fa-right-from-bracket w-4"></i> Çıkış Yap
+                        </button>
+                    </form>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Ana İçerik -->
+        <main class="flex-1 min-w-0">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="font-serif text-3xl text-[#1B2A4A]">Adreslerim</h1>
+                    <p class="text-xs text-[#333333] mt-1">Teslimat adreslerinizi yönetin</p>
+                </div>
+                <button type="button" id="adresEkleBtn"
+                        class="bg-[#1B2A4A] text-white text-xs tracking-widest uppercase px-4 py-2.5 rounded hover:bg-[#1c2001] transition-colors">
+                    <i class="fas fa-plus mr-1"></i> Yeni Adres
+                </button>
+            </div>
+
+            @if (TempData["Mesaj"] != null)
+            {
+                <div class="bg-green-50 border border-green-200 text-green-700 text-sm px-4 py-3 rounded mb-6">
+                    <i class="fas fa-circle-check mr-2"></i>@TempData["Mesaj"]
+                </div>
+            }
+
+            @if (!Model.Any())
+            {
+                <div class="text-center py-24 bg-white border border-[#F5E6C8] rounded-lg">
+                    <i class="fas fa-location-dot fa-4x text-[#F5E6C8] mb-6"></i>
+                    <h3 class="font-serif text-2xl text-[#1B2A4A] mb-3">Kayıtlı adresiniz bulunmuyor</h3>
+                    <p class="text-sm text-[#333333] mb-6 max-w-sm mx-auto">Siparişleri hızlandırmak için adresinizi şimdi ekleyin.</p>
+                    <button type="button" id="adresEkleBtnEmpty"
+                            class="inline-block bg-[#1B2A4A] text-white px-6 py-3 text-xs tracking-widest uppercase rounded-full hover:bg-[#1c2001] transition-colors">
+                        <i class="fas fa-plus mr-1"></i> Adres Ekle
+                    </button>
+                </div>
+            }
+            else
+            {
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    @foreach (var item in Model)
+                    {
+                        <div class="bg-white border border-[#F5E6C8] rounded-lg p-5 hover:border-[#c5c0b8] transition-colors">
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <span class="text-xs uppercase tracking-widest text-[#C0392B] font-medium">@item.Baslik</span>
+                                    <h3 class="font-semibold text-[#1B2A4A] mt-0.5">@item.Sehir / @item.Ilce</h3>
+                                </div>
+                                <form action="/Profil/AdresSil" method="post" onsubmit="return confirm('Bu adresi silmek istediğinize emin misiniz?')">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors rounded-full hover:bg-red-50" title="Adresi sil">
+                                        <i class="fas fa-trash text-xs"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-2 text-[#333333]">
+                                    <i class="fas fa-user w-4 text-[#1B2A4A] opacity-50 text-xs"></i>
+                                    <span>@item.AdSoyad</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-[#333333]">
+                                    <i class="fas fa-phone w-4 text-[#1B2A4A] opacity-50 text-xs"></i>
+                                    <span>@item.Telefon</span>
+                                </div>
+                                <div class="flex items-start gap-2 text-[#333333]">
+                                    <i class="fas fa-location-dot w-4 text-[#1B2A4A] opacity-50 text-xs mt-0.5"></i>
+                                    <span class="leading-relaxed">@item.AcikAdres</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </main>
+    </div>
+</div>
+
+<!-- Adres Ekleme Modal -->
+<div id="adresModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 p-4">
+    <div class="bg-white rounded-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="flex items-center justify-between p-6 border-b border-[#F5E6C8]">
+            <h2 class="font-serif text-xl text-[#1B2A4A]">Yeni Adres Ekle</h2>
+            <button id="modalKapat" class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-[#1B2A4A] transition-colors rounded-full hover:bg-[#FDF6E3]">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form action="/Profil/AdresEkle" method="post" class="p-6">
+            @Html.AntiForgeryToken()
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-medium text-[#1B2A4A] tracking-wide uppercase mb-1.5">Adres Başlığı</label>
+                    <input type="text" name="Baslik" required placeholder="Ev, Ofis, vb."
+                           class="w-full border border-[#F5E6C8] rounded px-4 py-3 text-sm focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] outline-none bg-[#FFFBF0]" />
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-[#1B2A4A] tracking-wide uppercase mb-1.5">Ad Soyad</label>
+                    <input type="text" name="AdSoyad" required placeholder="Teslim alacak kişi"
+                           class="w-full border border-[#F5E6C8] rounded px-4 py-3 text-sm focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] outline-none bg-[#FFFBF0]" />
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-[#1B2A4A] tracking-wide uppercase mb-1.5">Telefon</label>
+                    <input type="text" name="Telefon" required placeholder="0555 123 45 67"
+                           class="w-full border border-[#F5E6C8] rounded px-4 py-3 text-sm focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] outline-none bg-[#FFFBF0]" />
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-[#1B2A4A] tracking-wide uppercase mb-1.5">İlçe</label>
+                    <input type="text" name="Ilce" required placeholder="İlçe bilgisi"
+                           class="w-full border border-[#F5E6C8] rounded px-4 py-3 text-sm focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] outline-none bg-[#FFFBF0]" />
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-[#1B2A4A] tracking-wide uppercase mb-1.5">Şehir</label>
+                    <select name="Sehir" required
+                            class="w-full border border-[#F5E6C8] rounded px-4 py-3 text-sm focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] outline-none bg-[#FFFBF0]">
+                        <option value="">Şehir seçin</option>
+                        @foreach (var sehir in sehirler)
+                        {
+                            <option value="@sehir">@sehir</option>
+                        }
+                    </select>
+                </div>
+                <div class="sm:col-span-2">
+                    <label class="block text-xs font-medium text-[#1B2A4A] tracking-wide uppercase mb-1.5">Açık Adres</label>
+                    <textarea name="AcikAdres" required rows="3" placeholder="Mahalle, sokak, bina ve daire bilgileri"
+                              class="w-full border border-[#F5E6C8] rounded px-4 py-3 text-sm focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] outline-none resize-none bg-[#FFFBF0]"></textarea>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button type="button" id="modalKapat2"
+                        class="border border-[#F5E6C8] text-[#333333] text-xs tracking-widest uppercase px-5 py-2.5 rounded hover:bg-[#FDF6E3] transition-colors">
+                    Vazgeç
+                </button>
+                <button type="submit"
+                        class="bg-[#1B2A4A] text-white text-xs tracking-widest uppercase px-5 py-2.5 rounded hover:bg-[#1c2001] transition-colors">
+                    Adresi Kaydet
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('adresModal');
+    const openBtns = [document.getElementById('adresEkleBtn'), document.getElementById('adresEkleBtnEmpty')];
+    const closeBtns = [document.getElementById('modalKapat'), document.getElementById('modalKapat2')];
+
+    openBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }));
+    closeBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }));
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    });
+</script>

@@ -1,0 +1,11 @@
+{
+  "name": "canvasia-storefront",
+  "private": true,
+  "scripts": {
+    "build:storefront-css": "tailwindcss -i ./Styles/storefront.css -o ./wwwroot/css/storefront.css --minify",
+    "watch:storefront-css": "tailwindcss -i ./Styles/storefront.css -o ./wwwroot/css/storefront.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

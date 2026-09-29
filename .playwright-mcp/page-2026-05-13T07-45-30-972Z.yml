@@ -1,0 +1,535 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Hesabım" [ref=e52] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "17"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo" [ref=e68]:
+              - /url: /Urun?k=30
+          - listitem [ref=e69] [cursor=pointer]:
+            - link "Duvar Kağıdı" [ref=e70]:
+              - /url: /Urun?k=31
+          - listitem [ref=e71] [cursor=pointer]:
+            - link "Cam Kesme Tahtası" [ref=e72]:
+              - /url: /Urun?k=32
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Ayna" [ref=e74]:
+              - /url: /Urun?k=33
+          - listitem [ref=e75] [cursor=pointer]:
+            - link "Baskılı Halı" [ref=e76]:
+              - /url: /Urun?k=34
+          - listitem [ref=e77] [cursor=pointer]:
+            - link "Ahşap Dekorasyon" [ref=e78]:
+              - /url: /Urun?k=35
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Mobilya Aksesuar" [ref=e80]:
+              - /url: /Urun?k=36
+          - listitem [ref=e81] [cursor=pointer]:
+            - link "Lightbox" [ref=e82]:
+              - /url: /Urun?k=37
+          - listitem [ref=e83] [cursor=pointer]:
+            - link "Afiş" [ref=e84]:
+              - /url: /Urun?k=38
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "TÜM ÜRÜNLER" [ref=e86]:
+              - /url: /Urun
+          - listitem [ref=e87] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e88]:
+              - /url: /Kurumsal/Iletisim
+    - text:   
+  - main [ref=e89]:
+    - generic [ref=e91]:
+      - link "Ana Sayfa" [ref=e92] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e93]: /
+      - generic [ref=e94]: Sepetim
+    - generic [ref=e95]:
+      - heading "Sepetim" [level=1] [ref=e96]
+      - paragraph [ref=e97]: 12 ürün
+      - generic [ref=e98]:
+        - generic [ref=e99]:
+          - article [ref=e100]:
+            - button "" [ref=e102] [cursor=pointer]:
+              - generic [ref=e103]: 
+            - link "Kabe Kapısı Tablosu - Model 3" [ref=e104] [cursor=pointer]:
+              - /url: /Urun/Detay/9170
+              - img "Kabe Kapısı Tablosu - Model 3" [ref=e105]
+            - generic [ref=e106]:
+              - link "Kabe Kapısı Tablosu - Model 3" [ref=e107] [cursor=pointer]:
+                - /url: /Urun/Detay/9170
+              - text: "70cm x 70cm | SKU: URN-009170-VAR-034366 | Çerçeve: Beyaz"
+              - generic [ref=e109]:
+                - generic [ref=e110]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e111]: test ürün notu
+                - generic [ref=e112]: "Kaydedilen not: test ürün notu"
+                - generic [ref=e113]:
+                  - generic [ref=e114]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e115] [cursor=pointer]:
+                    - generic [ref=e116]: 
+                    - text: Kaydet
+              - generic [ref=e117]:
+                - generic [ref=e118]:
+                  - button "" [ref=e120] [cursor=pointer]:
+                    - generic [ref=e121]: 
+                  - generic [ref=e122]: "1"
+                  - button "+" [ref=e124] [cursor=pointer]:
+                    - generic [ref=e125]: +
+                - generic [ref=e126]: ₺1.699,00
+          - article [ref=e127]:
+            - button "" [ref=e129] [cursor=pointer]:
+              - generic [ref=e130]: 
+            - link "Mor Gelincik Çiçek Kanvas Tablo" [ref=e131] [cursor=pointer]:
+              - /url: /Urun/Detay/2
+              - img "Mor Gelincik Çiçek Kanvas Tablo" [ref=e132]
+            - generic [ref=e133]:
+              - link "Mor Gelincik Çiçek Kanvas Tablo" [ref=e134] [cursor=pointer]:
+                - /url: /Urun/Detay/2
+              - text: "25cm x 25cm / Kanvas Baskı | SKU: URN-000002-VAR-001366 | Çerçeve: Siyah"
+              - generic [ref=e136]:
+                - generic [ref=e137]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e138]
+                - generic [ref=e139]:
+                  - generic [ref=e140]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e141] [cursor=pointer]:
+                    - generic [ref=e142]: 
+                    - text: Kaydet
+              - generic [ref=e143]:
+                - generic [ref=e144]:
+                  - button "" [ref=e146] [cursor=pointer]:
+                    - generic [ref=e147]: 
+                  - generic [ref=e148]: "1"
+                  - button "+" [ref=e150] [cursor=pointer]:
+                    - generic [ref=e151]: +
+                - generic [ref=e152]: ₺491,68
+          - article [ref=e153]:
+            - button "" [ref=e155] [cursor=pointer]:
+              - generic [ref=e156]: 
+            - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e157] [cursor=pointer]:
+              - /url: /Urun/Detay/1357
+              - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e158]
+            - generic [ref=e159]:
+              - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e160] [cursor=pointer]:
+                - /url: /Urun/Detay/1357
+              - text: "130cm x 85cm / Kanvas Baskı | SKU: URN-001357-VAR-009013 | Çerçeve: Beyaz"
+              - generic [ref=e162]:
+                - generic [ref=e163]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e164]
+                - generic [ref=e165]:
+                  - generic [ref=e166]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e167] [cursor=pointer]:
+                    - generic [ref=e168]: 
+                    - text: Kaydet
+              - generic [ref=e169]:
+                - generic [ref=e170]:
+                  - button "" [ref=e172] [cursor=pointer]:
+                    - generic [ref=e173]: 
+                  - generic [ref=e174]: "3"
+                  - button "+" [ref=e176] [cursor=pointer]:
+                    - generic [ref=e177]: +
+                - generic [ref=e178]: ₺7.137,00
+          - article [ref=e179]:
+            - button "" [ref=e181] [cursor=pointer]:
+              - generic [ref=e182]: 
+            - link "Salvador Dali - Le Sommeil Tablosu" [ref=e183] [cursor=pointer]:
+              - /url: /Urun/Detay/12538
+              - img "Salvador Dali - Le Sommeil Tablosu" [ref=e184]
+            - generic [ref=e185]:
+              - link "Salvador Dali - Le Sommeil Tablosu" [ref=e186] [cursor=pointer]:
+                - /url: /Urun/Detay/12538
+              - text: "60cm x 40cm | SKU: URN-012538-VAR-044987 | Çerçeve: Beyaz"
+              - generic [ref=e188]:
+                - generic [ref=e189]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e190]
+                - generic [ref=e191]:
+                  - generic [ref=e192]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e193] [cursor=pointer]:
+                    - generic [ref=e194]: 
+                    - text: Kaydet
+              - generic [ref=e195]:
+                - generic [ref=e196]:
+                  - button "" [ref=e198] [cursor=pointer]:
+                    - generic [ref=e199]: 
+                  - generic [ref=e200]: "1"
+                  - button "+" [ref=e202] [cursor=pointer]:
+                    - generic [ref=e203]: +
+                - generic [ref=e204]: ₺999,00
+          - article [ref=e205]:
+            - button "" [ref=e207] [cursor=pointer]:
+              - generic [ref=e208]: 
+            - link "Modern Soyut Kanvas Tablo Test" [ref=e209] [cursor=pointer]:
+              - /url: /Urun/Detay/12543
+              - img "Modern Soyut Kanvas Tablo Test" [ref=e210]
+            - generic [ref=e211]:
+              - link "Modern Soyut Kanvas Tablo Test" [ref=e212] [cursor=pointer]:
+                - /url: /Urun/Detay/12543
+              - text: "60cm x 40cm / Kanvas | SKU: SKU-001-60X40 | Çerçeve: Siyah"
+              - generic [ref=e214]:
+                - generic [ref=e215]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e216]
+                - generic [ref=e217]:
+                  - generic [ref=e218]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e219] [cursor=pointer]:
+                    - generic [ref=e220]: 
+                    - text: Kaydet
+              - generic [ref=e221]:
+                - generic [ref=e222]:
+                  - button "" [ref=e224] [cursor=pointer]:
+                    - generic [ref=e225]: 
+                  - generic [ref=e226]: "3"
+                  - button "+" [ref=e228] [cursor=pointer]:
+                    - generic [ref=e229]: +
+                - generic [ref=e230]: ₺2.399,70
+          - article [ref=e231]:
+            - button "" [ref=e233] [cursor=pointer]:
+              - generic [ref=e234]: 
+            - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e235] [cursor=pointer]:
+              - /url: /Urun/Detay/1357
+              - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e236]
+            - generic [ref=e237]:
+              - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e238] [cursor=pointer]:
+                - /url: /Urun/Detay/1357
+              - text: "150cm x 100cm / Kanvas Baskı | SKU: URN-001357-VAR-009014 | Çerçeve: Ceviz"
+              - generic [ref=e240]:
+                - generic [ref=e241]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e242]
+                - generic [ref=e243]:
+                  - generic [ref=e244]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e245] [cursor=pointer]:
+                    - generic [ref=e246]: 
+                    - text: Kaydet
+              - generic [ref=e247]:
+                - generic [ref=e248]:
+                  - button "" [ref=e250] [cursor=pointer]:
+                    - generic [ref=e251]: 
+                  - generic [ref=e252]: "1"
+                  - button "+" [ref=e254] [cursor=pointer]:
+                    - generic [ref=e255]: +
+                - generic [ref=e256]: ₺2.909,00
+          - article [ref=e257]:
+            - button "" [ref=e259] [cursor=pointer]:
+              - generic [ref=e260]: 
+            - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e261] [cursor=pointer]:
+              - /url: /Urun/Detay/1357
+              - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e262]
+            - generic [ref=e263]:
+              - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e264] [cursor=pointer]:
+                - /url: /Urun/Detay/1357
+              - text: "130cm x 85cm / Kanvas Baskı | SKU: URN-001357-VAR-009013 | Çerçeve: Gold"
+              - generic [ref=e266]:
+                - generic [ref=e267]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e268]
+                - generic [ref=e269]:
+                  - generic [ref=e270]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e271] [cursor=pointer]:
+                    - generic [ref=e272]: 
+                    - text: Kaydet
+              - generic [ref=e273]:
+                - generic [ref=e274]:
+                  - button "" [ref=e276] [cursor=pointer]:
+                    - generic [ref=e277]: 
+                  - generic [ref=e278]: "1"
+                  - button "+" [ref=e280] [cursor=pointer]:
+                    - generic [ref=e281]: +
+                - generic [ref=e282]: ₺3.454,00
+          - article [ref=e283]:
+            - button "" [ref=e285] [cursor=pointer]:
+              - generic [ref=e286]: 
+            - link "Modern Soyut Kanvas Tablo Test" [ref=e287] [cursor=pointer]:
+              - /url: /Urun/Detay/12543
+              - img "Modern Soyut Kanvas Tablo Test" [ref=e288]
+            - generic [ref=e289]:
+              - link "Modern Soyut Kanvas Tablo Test" [ref=e290] [cursor=pointer]:
+                - /url: /Urun/Detay/12543
+              - text: "60cm x 40cm / Kanvas | SKU: SKU-001-60X40 | Çerçeve: Gold"
+              - generic [ref=e292]:
+                - generic [ref=e293]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e294]
+                - generic [ref=e295]:
+                  - generic [ref=e296]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e297] [cursor=pointer]:
+                    - generic [ref=e298]: 
+                    - text: Kaydet
+              - generic [ref=e299]:
+                - generic [ref=e300]:
+                  - button "" [ref=e302] [cursor=pointer]:
+                    - generic [ref=e303]: 
+                  - generic [ref=e304]: "1"
+                  - button "+" [ref=e306] [cursor=pointer]:
+                    - generic [ref=e307]: +
+                - generic [ref=e308]: ₺1.299,90
+          - article [ref=e309]:
+            - button "" [ref=e311] [cursor=pointer]:
+              - generic [ref=e312]: 
+            - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e313] [cursor=pointer]:
+              - /url: /Urun/Detay/1357
+              - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e314]
+            - generic [ref=e315]:
+              - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e316] [cursor=pointer]:
+                - /url: /Urun/Detay/1357
+              - text: "100cm x 65cm / Kanvas Baskı | SKU: URN-001357-VAR-009012 | Çerçeve: Ceviz"
+              - generic [ref=e318]:
+                - generic [ref=e319]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e320]
+                - generic [ref=e321]:
+                  - generic [ref=e322]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e323] [cursor=pointer]:
+                    - generic [ref=e324]: 
+                    - text: Kaydet
+              - generic [ref=e325]:
+                - generic [ref=e326]:
+                  - button "" [ref=e328] [cursor=pointer]:
+                    - generic [ref=e329]: 
+                  - generic [ref=e330]: "1"
+                  - button "+" [ref=e332] [cursor=pointer]:
+                    - generic [ref=e333]: +
+                - generic [ref=e334]: ₺2.467,00
+          - article [ref=e335]:
+            - button "" [ref=e337] [cursor=pointer]:
+              - generic [ref=e338]: 
+            - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e339] [cursor=pointer]:
+              - /url: /Urun/Detay/1357
+              - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e340]
+            - generic [ref=e341]:
+              - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e342] [cursor=pointer]:
+                - /url: /Urun/Detay/1357
+              - text: "150cm x 100cm / Kanvas Baskı | SKU: URN-001357-VAR-009014 | Çerçeve: Beyaz"
+              - generic [ref=e344]:
+                - generic [ref=e345]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e346]
+                - generic [ref=e347]:
+                  - generic [ref=e348]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e349] [cursor=pointer]:
+                    - generic [ref=e350]: 
+                    - text: Kaydet
+              - generic [ref=e351]:
+                - generic [ref=e352]:
+                  - button "" [ref=e354] [cursor=pointer]:
+                    - generic [ref=e355]: 
+                  - generic [ref=e356]: "2"
+                  - button "+" [ref=e358] [cursor=pointer]:
+                    - generic [ref=e359]: +
+                - generic [ref=e360]: ₺5.818,00
+          - article [ref=e361]:
+            - button "" [ref=e363] [cursor=pointer]:
+              - generic [ref=e364]: 
+            - link "test ürün" [ref=e365] [cursor=pointer]:
+              - /url: /Urun/Detay/12541
+              - img "test ürün" [ref=e366]
+            - generic [ref=e367]:
+              - link "test ürün" [ref=e368] [cursor=pointer]:
+                - /url: /Urun/Detay/12541
+              - text: "190 × 120 cm / kanvas | SKU: URN-012541-VAR-044994 | Çerçeve: Beyaz"
+              - generic [ref=e370]:
+                - generic [ref=e371]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e372]
+                - generic [ref=e373]:
+                  - generic [ref=e374]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e375] [cursor=pointer]:
+                    - generic [ref=e376]: 
+                    - text: Kaydet
+              - generic [ref=e377]:
+                - generic [ref=e378]:
+                  - button "" [ref=e380] [cursor=pointer]:
+                    - generic [ref=e381]: 
+                  - generic [ref=e382]: "1"
+                  - button "+" [ref=e384] [cursor=pointer]:
+                    - generic [ref=e385]: +
+                - generic [ref=e386]: ₺3.050,00
+          - article [ref=e387]:
+            - button "" [ref=e389] [cursor=pointer]:
+              - generic [ref=e390]: 
+            - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e391] [cursor=pointer]:
+              - /url: /Urun/Detay/1357
+              - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e392]
+            - generic [ref=e393]:
+              - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e394] [cursor=pointer]:
+                - /url: /Urun/Detay/1357
+              - text: "100cm x 65cm / Kanvas Baskı | SKU: URN-001357-VAR-009012 | Çerçeve: Beyaz"
+              - generic [ref=e396]:
+                - generic [ref=e397]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=e398]
+                - generic [ref=e399]:
+                  - generic [ref=e400]: En fazla 500 karakter
+                  - button " Kaydet" [ref=e401] [cursor=pointer]:
+                    - generic [ref=e402]: 
+                    - text: Kaydet
+              - generic [ref=e403]:
+                - generic [ref=e404]:
+                  - button "" [ref=e406] [cursor=pointer]:
+                    - generic [ref=e407]: 
+                  - generic [ref=e408]: "1"
+                  - button "+" [ref=e410] [cursor=pointer]:
+                    - generic [ref=e411]: +
+                - generic [ref=e412]: ₺2.467,00
+        - complementary [ref=e413]:
+          - generic [ref=e414]:
+            - heading "Sipariş Özeti" [level=2] [ref=e415]
+            - generic [ref=e416]:
+              - generic [ref=e417]:
+                - generic [ref=e418]: Ara Toplam
+                - generic [ref=e419]: ₺34.191,28
+              - generic [ref=e420]:
+                - generic [ref=e421]: Kargo
+                - generic [ref=e422]: Ücretsiz
+              - generic [ref=e423]:
+                - generic [ref=e424]: Toplam
+                - generic [ref=e425]: ₺34.191,28
+            - generic [ref=e426]:
+              - textbox "İndirim kodu" [ref=e427]
+              - button "Uygula" [ref=e428] [cursor=pointer]
+            - link " Ödemeye Geç" [ref=e429] [cursor=pointer]:
+              - /url: /Siparis/Odeme
+              - generic [ref=e430]: 
+              - text: Ödemeye Geç
+            - paragraph [ref=e431]:
+              - generic [ref=e432]: 
+              - text: 256-bit SSL ile güvenli ödeme
+      - text: 
+  - contentinfo [ref=e433]:
+    - generic [ref=e435]:
+      - generic [ref=e436]:
+        - generic [ref=e438]: 
+        - generic [ref=e439]:
+          - generic [ref=e440]: Tüm Türkiye'ye
+          - generic [ref=e441]: Ücretsiz Kargo
+      - generic [ref=e442]:
+        - generic [ref=e444]: 
+        - generic [ref=e445]:
+          - generic [ref=e446]: "%100 Güvenli Alışveriş"
+          - generic [ref=e447]: 256 Bit SSL Sertifikası
+      - generic [ref=e448]:
+        - generic [ref=e450]: 
+        - generic [ref=e451]:
+          - generic [ref=e452]: Tüm Kredi Kartlarına
+          - generic [ref=e453]: 12 Taksit İmkanı
+    - generic [ref=e454]:
+      - generic [ref=e455]:
+        - generic [ref=e456]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e457]
+          - paragraph [ref=e458]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e459]:
+            - textbox "E-posta Adresi" [ref=e460]
+            - button "ABONE OL" [ref=e461] [cursor=pointer]
+        - generic [ref=e462]:
+          - heading "KURUMSAL" [level=4] [ref=e463]
+          - list [ref=e464]:
+            - listitem [ref=e465]:
+              - link "Hakkımızda" [ref=e466] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e467]:
+              - link "İletişim" [ref=e468] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e469]:
+              - link "Koleksiyonlar" [ref=e470] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e471]:
+              - link "Gizlilik Politikası" [ref=e472] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e473]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e474] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e475]:
+            - link "Instagram" [ref=e476] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e477]: 
+            - link "WhatsApp" [ref=e478] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e479]: 
+      - generic [ref=e480]:
+        - paragraph [ref=e482]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e483]:
+          - link "Gizlilik Politikası" [ref=e484] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e485] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e486] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e489]
+  - link "WhatsApp ile iletişim" [ref=e490] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e491]
+    - generic [ref=e493]: WhatsApp

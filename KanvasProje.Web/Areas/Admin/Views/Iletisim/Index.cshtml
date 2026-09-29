@@ -1,0 +1,334 @@
+@model IEnumerable<KanvasProje.Core.Varliklar.IletisimMesaj>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "İletişim Mesajları";
+
+    var messages = Model.ToList();
+    var unreadOnly = ViewBag.UnreadOnly is bool onlyUnread && onlyUnread;
+    var unreadCount = ViewBag.UnreadCount is int totalUnread ? totalUnread : 0;
+    var totalCount = ViewBag.TotalCount is int total ? total : 0;
+    var readCount = ViewBag.ReadCount is int read ? read : 0;
+    var todayCount = ViewBag.TodayCount is int today ? today : 0;
+    var search = ViewBag.Search as string ?? string.Empty;
+
+    static string Shorten(string? value, int max)
+    {
+        value = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
+        return value.Length <= max ? value : value[..max] + "...";
+    }
+}
+
+<style>
+    .ca-message-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    .ca-message-stat {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .ca-message-stat span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .82rem;
+        margin-bottom: 4px;
+    }
+
+    .ca-message-stat strong {
+        font-size: 1.35rem;
+        color: var(--ca-text);
+    }
+
+    .ca-message-stat i {
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--ca-primary-light);
+        color: var(--ca-primary);
+    }
+
+    .ca-message-toolbar {
+        display: grid;
+        grid-template-columns: minmax(260px, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 16px;
+        border-bottom: 1px solid var(--ca-border);
+    }
+
+    .ca-message-search {
+        position: relative;
+    }
+
+    .ca-message-search i {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--ca-text-muted);
+    }
+
+    .ca-message-search input {
+        padding-left: 40px;
+    }
+
+    .ca-message-sender {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .ca-message-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        background: var(--ca-primary-light);
+        color: var(--ca-primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        flex: 0 0 auto;
+    }
+
+    .ca-message-preview {
+        min-width: 340px;
+        max-width: 540px;
+        color: var(--ca-text-muted);
+        line-height: 1.45;
+    }
+
+    .ca-message-actions {
+        display: inline-flex;
+        justify-content: flex-end;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    @@media (max-width: 1100px) {
+        .ca-message-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .ca-message-toolbar {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .ca-message-stats {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">İletişim Mesajları</h1>
+            <p class="ca-page-subtitle">Müşteri taleplerini okuyun, hızlı yanıtlayın ve okunma durumunu yönetin.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="/Admin/Iletisim" class="ca-btn @(unreadOnly ? "ca-btn-outline" : "ca-btn-primary")">
+                <i class="fas fa-inbox"></i> Tüm Mesajlar
+            </a>
+            <a href="/Admin/Iletisim?unreadOnly=true" class="ca-btn @(unreadOnly ? "ca-btn-primary" : "ca-btn-outline")">
+                <i class="fas fa-envelope"></i> Okunmamışlar (@unreadCount)
+            </a>
+        </div>
+    </div>
+
+    <div class="ca-message-stats">
+        <div class="ca-message-stat">
+            <div><span>Toplam Mesaj</span><strong>@totalCount</strong></div>
+            <i class="fas fa-message"></i>
+        </div>
+        <div class="ca-message-stat">
+            <div><span>Okunmamış</span><strong>@unreadCount</strong></div>
+            <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <div class="ca-message-stat">
+            <div><span>Okundu</span><strong>@readCount</strong></div>
+            <i class="fas fa-circle-check"></i>
+        </div>
+        <div class="ca-message-stat">
+            <div><span>Bugün Gelen</span><strong>@todayCount</strong></div>
+            <i class="fas fa-calendar-day"></i>
+        </div>
+    </div>
+
+    <form id="bulkReadForm" action="/Admin/Iletisim/TopluOkunduYap" method="post">
+        @Html.AntiForgeryToken()
+    </form>
+
+    <div class="ca-card">
+        <div class="ca-message-toolbar">
+            <form action="/Admin/Iletisim" method="get" class="ca-message-search">
+                <i class="fas fa-search"></i>
+                <input type="hidden" name="unreadOnly" value="@unreadOnly.ToString().ToLowerInvariant()" />
+                <input class="ca-input" type="search" name="q" value="@search" placeholder="Ad, e-posta, konu veya mesaj içinde ara" />
+            </form>
+            <div class="d-flex gap-2 justify-content-end flex-wrap">
+                @if (!string.IsNullOrWhiteSpace(search))
+                {
+                    <a href="/Admin/Iletisim@(unreadOnly ? "?unreadOnly=true" : "")" class="ca-btn ca-btn-outline">
+                        <i class="fas fa-xmark"></i> Aramayı Temizle
+                    </a>
+                }
+                <button type="submit" form="bulkReadForm" class="ca-btn ca-btn-primary" id="bulkReadButton" disabled>
+                    <i class="fas fa-check-double"></i> Seçilenleri Okundu Yap
+                </button>
+            </div>
+        </div>
+
+        @if (!messages.Any())
+        {
+            <div class="ca-empty" style="padding:44px;">
+                <i class="fas fa-inbox"></i>
+                <p>Gösterilecek mesaj bulunmuyor.</p>
+            </div>
+        }
+        else
+        {
+            <div class="ca-table-wrapper">
+                <table class="ca-table align-middle">
+                    <thead>
+                        <tr>
+                            <th style="width:48px;" class="ps-4">
+                                <input type="checkbox" class="form-check-input" id="selectAllMessages" />
+                            </th>
+                            <th>Gönderen</th>
+                            <th>Konu ve Mesaj</th>
+                            <th>Tarih</th>
+                            <th>Durum</th>
+                            <th class="text-end pe-4">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in messages)
+                        {
+                            var subject = string.IsNullOrWhiteSpace(item.Konu) ? "Genel Talep" : item.Konu;
+                            var initial = string.IsNullOrWhiteSpace(item.AdSoyad) ? "?" : item.AdSoyad.Trim()[0].ToString().ToUpperInvariant();
+                            var replySubject = Uri.EscapeDataString("İletişim talebiniz hakkında");
+                            <tr class="@(!item.OkunduMu ? "table-warning" : "")">
+                                <td class="ps-4">
+                                    <input type="checkbox" form="bulkReadForm" name="mesajIds" value="@item.Id" class="form-check-input ca-message-checkbox" />
+                                </td>
+                                <td>
+                                    <div class="ca-message-sender">
+                                        <span class="ca-message-avatar">@initial</span>
+                                        <div>
+                                            <div class="ca-fw-semi">@item.AdSoyad</div>
+                                            <a href="mailto:@item.Email?subject=@replySubject" class="small text-muted">@item.Email</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="ca-fw-semi">@subject</div>
+                                    <div class="ca-message-preview">@Shorten(item.Mesaj, 170)</div>
+                                </td>
+                                <td>
+                                    <div class="ca-fw-semi">@item.Tarih.ToLocalTime().ToString("dd.MM.yyyy")</div>
+                                    <div class="small text-muted">@item.Tarih.ToLocalTime().ToString("HH:mm")</div>
+                                </td>
+                                <td>
+                                    @if (item.OkunduMu)
+                                    {
+                                        <span class="ca-badge ca-badge-success">Okundu</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="ca-badge ca-badge-warning">Yeni</span>
+                                    }
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="ca-message-actions">
+                                        <a href="/Admin/Iletisim/Detay/@item.Id" class="ca-btn-icon" title="Mesajı görüntüle">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="mailto:@item.Email?subject=@replySubject" class="ca-btn-icon" title="E-posta ile yanıtla">
+                                            <i class="fas fa-reply"></i>
+                                        </a>
+                                        @if (item.OkunduMu)
+                                        {
+                                            <form method="post" action="/Admin/Iletisim/OkunmadiYap" class="d-inline">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <button type="submit" class="ca-btn-icon" title="Okunmamış yap">
+                                                    <i class="fas fa-envelope"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form method="post" action="/Admin/Iletisim/OkunduYap" class="d-inline">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <button type="submit" class="ca-btn-icon" title="Okundu yap">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                        <form method="post" action="/Admin/Iletisim/Sil" class="d-inline" onsubmit="return confirm('Bu iletişim mesajı silinsin mi?')">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="ca-btn-icon delete" title="Sil">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            const selectAll = document.getElementById('selectAllMessages');
+            const checkboxes = Array.from(document.querySelectorAll('.ca-message-checkbox'));
+            const bulkButton = document.getElementById('bulkReadButton');
+
+            function refreshBulkState() {
+                const selected = checkboxes.filter(x => x.checked).length;
+                if (bulkButton) {
+                    bulkButton.disabled = selected === 0;
+                    bulkButton.innerHTML = selected === 0
+                        ? '<i class="fas fa-check-double"></i> Seçilenleri Okundu Yap'
+                        : `<i class="fas fa-check-double"></i> ${selected} Mesajı Okundu Yap`;
+                }
+
+                if (selectAll) {
+                    selectAll.checked = selected > 0 && selected === checkboxes.length;
+                    selectAll.indeterminate = selected > 0 && selected < checkboxes.length;
+                }
+            }
+
+            selectAll?.addEventListener('change', function () {
+                checkboxes.forEach(x => x.checked = selectAll.checked);
+                refreshBulkState();
+            });
+
+            checkboxes.forEach(x => x.addEventListener('change', refreshBulkState));
+            refreshBulkState();
+        })();
+    </script>
+}

@@ -1,0 +1,83 @@
+@model KanvasProje.Core.Varliklar.UrunOzellikTanimi
+
+<div class="row g-3">
+    <div class="col-lg-6">
+        <div class="ca-form-group">
+            <label class="ca-label">Alan Basligi</label>
+            <input asp-for="Ad" class="ca-input" />
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ca-form-group">
+            <label class="ca-label">Kod</label>
+            <input asp-for="Kod" class="ca-input" />
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ca-form-group">
+            <label class="ca-label">Urun Tipi</label>
+            <select asp-for="UrunTipi" asp-items="ViewBag.UrunTipleri" class="ca-select"></select>
+        </div>
+    </div>
+
+    <div class="col-lg-3">
+        <div class="ca-form-group">
+            <label class="ca-label">Alan Tipi</label>
+            <select asp-for="AlanTipi" class="ca-select">
+                <option value="text">Metin</option>
+                <option value="textarea">Uzun Metin</option>
+                <option value="number">Sayi</option>
+                <option value="select">Secimli Liste</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ca-form-group">
+            <label class="ca-label">Sira</label>
+            <input asp-for="Sira" class="ca-input" type="number" min="0" />
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="ca-form-group">
+            <label class="ca-label">Yardim Metni</label>
+            <input asp-for="YardimMetni" class="ca-input" placeholder="Alan altinda kullaniciya gosterilecek aciklama" />
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="ca-form-group">
+            <label class="ca-label">Secenekler</label>
+            <textarea asp-for="Secenekler" class="ca-textarea" rows="5" placeholder="Her satira bir secenek yazin. Ornek: Modern&#10;Minimal&#10;Klasik"></textarea>
+            <div class="small text-muted mt-2">Sadece `Secimli Liste` alan tipinde kullanilir. `true` ve `false` degerleri detay sayfasinda otomatik `Evet/Hayir` gorunur.</div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="form-check form-switch">
+                    <input asp-for="AktifMi" class="form-check-input" type="checkbox">
+                    <label asp-for="AktifMi" class="form-check-label">Aktif</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check form-switch">
+                    <input asp-for="FiltredeGoster" class="form-check-input" type="checkbox">
+                    <label asp-for="FiltredeGoster" class="form-check-label">Filtrede Kullan</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check form-switch">
+                    <input asp-for="DetaySayfasindaGoster" class="form-check-input" type="checkbox">
+                    <label asp-for="DetaySayfasindaGoster" class="form-check-label">Detay Sayfasinda</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check form-switch">
+                    <input asp-for="TeknikTablodaGoster" class="form-check-input" type="checkbox">
+                    <label asp-for="TeknikTablodaGoster" class="form-check-label">Teknik Tabloda</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

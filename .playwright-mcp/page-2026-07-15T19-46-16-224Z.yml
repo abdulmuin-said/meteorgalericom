@@ -1,0 +1,471 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - generic [ref=f3e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=f3e6]:
+      - generic [ref=f3e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=f3e8]:
+      - generic [ref=f3e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f3e10]:
+      - generic [ref=f3e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f3e12]:
+      - generic [ref=f3e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f3e14]:
+      - generic [ref=f3e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f3e16]:
+      - generic [ref=f3e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f3e18]:
+      - generic [ref=f3e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f3e20]:
+      - generic [ref=f3e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f3e22]:
+      - generic [ref=f3e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=f3e24]:
+      - generic [ref=f3e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=f3e26]:
+      - generic [ref=f3e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=f3e28]:
+      - generic [ref=f3e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f3e30]:
+      - generic [ref=f3e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f3e32]:
+      - generic [ref=f3e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f3e34]:
+      - generic [ref=f3e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f3e36]:
+      - generic [ref=f3e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f3e38]:
+      - generic [ref=f3e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f3e40]:
+      - generic [ref=f3e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f3e42]:
+      - generic [ref=f3e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=f3e44]:
+    - generic [ref=f3e45]:
+      - link "Canvasia" [ref=f3e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=f3e47]
+      - generic [ref=f3e48]:
+        - button "Arama" [ref=f3e49] [cursor=pointer]
+        - link "Giriş Yap" [ref=f3e52] [cursor=pointer]:
+          - /url: /Hesap/GirisYap
+        - link "Favoriler" [ref=f3e55] [cursor=pointer]:
+          - /url: /Favori
+        - link "Sepet" [ref=f3e58] [cursor=pointer]:
+          - /url: /Sepet
+          - generic [ref=f3e61]: "0"
+      - navigation [ref=f3e62]:
+        - list [ref=f3e63]:
+          - listitem [ref=f3e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=f3e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=f3e66]: 
+          - listitem [ref=f3e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=f3e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=f3e69]: 
+          - listitem [ref=f3e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=f3e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=f3e72]: 
+          - listitem [ref=f3e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=f3e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=f3e75]: 
+          - listitem [ref=f3e76] [cursor=pointer]:
+            - link "Ayna " [ref=f3e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=f3e78]: 
+          - listitem [ref=f3e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=f3e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=f3e81]: 
+          - listitem [ref=f3e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=f3e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=f3e84]: 
+          - listitem [ref=f3e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=f3e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=f3e87]: 
+          - listitem [ref=f3e88] [cursor=pointer]:
+            - link "Lightbox " [ref=f3e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=f3e90]: 
+          - listitem [ref=f3e91] [cursor=pointer]:
+            - link "Afiş " [ref=f3e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=f3e93]: 
+          - listitem [ref=f3e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=f3e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=f3e96]:
+    - text:      
+    - generic [ref=f3e98]:
+      - link "Ana Sayfa" [ref=f3e99] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e100]: /
+      - link "Koleksiyon" [ref=f3e101] [cursor=pointer]:
+        - /url: /Urun
+      - generic [ref=f3e102]: /
+      - generic [ref=f3e103]: Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo
+    - generic [ref=f3e104]:
+      - generic [ref=f3e105]:
+        - generic [ref=f3e106]:
+          - generic [ref=f3e107]:
+            - img "Osmanlı Tuğras?? Ve Armas?? 5 Parça Kanvas Tablo" [ref=f3e108]
+            - button "" [ref=f3e109] [cursor=pointer]
+            - button "" [ref=f3e111] [cursor=pointer]
+            - generic [ref=f3e113]: 
+          - generic [ref=f3e115]:
+            - button [ref=f3e116] [cursor=pointer]:
+              - img "Osmanlı Tuğras?? Ve Armas?? 5 Parça Kanvas Tablo" [ref=f3e117]
+            - button [ref=f3e118] [cursor=pointer]:
+              - img "Osmanlı Tuğras?? Ve Armas?? 5 Parça Kanvas Tablo" [ref=f3e119]
+            - button [ref=f3e120] [cursor=pointer]:
+              - img "Osmanlı Tuğras?? Ve Armas?? 5 Parça Kanvas Tablo" [ref=f3e121]
+        - generic [ref=f3e122]:
+          - heading "Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo" [level=1] [ref=f3e123]
+          - generic [ref=f3e124]:
+            - generic [ref=f3e125]:
+              - generic [ref=f3e126]: 
+              - generic [ref=f3e127]: 
+              - generic [ref=f3e128]: 
+              - generic [ref=f3e129]: 
+              - generic [ref=f3e130]: 
+            - generic [ref=f3e131]: (4 değerlendirme)
+          - generic [ref=f3e132]: 1.334,57 TL
+          - generic [ref=f3e134]:
+            - generic [ref=f3e135]:
+              - generic [ref=f3e136]: 
+              - text: Siparişe özel hazırlanır
+            - generic [ref=f3e137]:
+              - generic [ref=f3e138]: 
+              - text: 2 iş günü içinde kargo
+            - generic [ref=f3e139]:
+              - generic [ref=f3e140]: 
+              - text: 3 iş günü üretim
+          - generic [ref=f3e141]:
+            - generic [ref=f3e142]: 
+            - text: 80cm x 45cm
+          - paragraph [ref=f3e143]: Özel ölçü seçenekleriyle hazırlanan dekoratif kanvas tablo.
+          - generic [ref=f3e144]:
+            - generic [ref=f3e145]: Ebat Seçiniz
+            - generic [ref=f3e146]:
+              - generic [ref=f3e147] [cursor=pointer]:
+                - radio "80cm x 45cm" [checked] [ref=f3e148]
+                - text: 80cm x 45cm
+              - generic [ref=f3e149] [cursor=pointer]:
+                - radio "100cm x 65cm" [ref=f3e150]
+                - text: 100cm x 65cm
+              - generic [ref=f3e151] [cursor=pointer]:
+                - radio "130cm x 85cm" [ref=f3e152]
+                - text: 130cm x 85cm
+              - generic [ref=f3e153] [cursor=pointer]:
+                - radio "150cm x 100cm" [ref=f3e154]
+                - text: 150cm x 100cm
+          - generic [ref=f3e155]:
+            - generic [ref=f3e156]: Çerçeve Modeli Seçiniz
+            - generic [ref=f3e157]:
+              - generic "Çerçevesiz" [ref=f3e158] [cursor=pointer]:
+                - radio "Çerçevesiz Çerçevesiz" [ref=f3e159]
+                - img "Çerçevesiz" [ref=f3e161]
+                - text: Çerçevesiz
+              - generic "Siyah" [ref=f3e162] [cursor=pointer]:
+                - radio "Siyah Siyah" [ref=f3e163]
+                - img "Siyah" [ref=f3e165]
+                - text: Siyah
+              - generic "Beyaz" [ref=f3e166] [cursor=pointer]:
+                - radio "Beyaz Beyaz" [ref=f3e167]
+                - img "Beyaz" [ref=f3e169]
+                - text: Beyaz
+              - generic "Altın" [ref=f3e170] [cursor=pointer]:
+                - radio "Altın Altın" [ref=f3e171]
+                - img "Altın" [ref=f3e173]
+                - text: Altın
+              - generic "Gümüş" [ref=f3e174] [cursor=pointer]:
+                - radio "Gümüş Gümüş" [ref=f3e175]
+                - img "Gümüş" [ref=f3e177]
+                - text: Gümüş
+              - generic "Naturel" [ref=f3e178] [cursor=pointer]:
+                - radio "Naturel Naturel" [ref=f3e179]
+                - img "Naturel" [ref=f3e181]
+                - text: Naturel
+              - generic "Ceviz" [ref=f3e182] [cursor=pointer]:
+                - radio "Ceviz Ceviz" [ref=f3e183]
+                - img "Ceviz" [ref=f3e185]
+                - text: Ceviz
+          - generic [ref=f3e186]:
+            - generic [ref=f3e187]:
+              - generic [ref=f3e188]: Adet
+              - generic [ref=f3e189]:
+                - button "-" [ref=f3e190] [cursor=pointer]
+                - spinbutton [ref=f3e191]: "1"
+                - button "+" [ref=f3e192] [cursor=pointer]
+            - generic [ref=f3e194]:
+              - button " Sepete Ekle" [ref=f3e195] [cursor=pointer]:
+                - generic [ref=f3e196]: 
+                - generic [ref=f3e197]: Sepete Ekle
+              - link "Sepete Git" [ref=f3e198] [cursor=pointer]:
+                - /url: /Sepet
+                - generic [ref=f3e199]: 
+            - button "" [ref=f3e201] [cursor=pointer]
+          - text: 
+          - generic [ref=f3e203]:
+            - generic [ref=f3e204]: Paylaş
+            - link "Facebook'ta paylaş" [ref=f3e205] [cursor=pointer]:
+              - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.canvasia.com.tr%2FUrun%2FDetay%2Fosmanli-tugrasi-ve-armasi-5-parca-kanvas-tablo-1065
+              - generic [ref=f3e206]: 
+            - link "Instagram'da aç" [ref=f3e207] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=f3e208]: 
+            - link "WhatsApp ile paylaş" [ref=f3e209] [cursor=pointer]:
+              - /url: https://wa.me/?text=Osmanl%C4%B1%20Tu%C4%9Fras%C4%B1%20Ve%20Armas%C4%B1%205%20Par%C3%A7a%20Kanvas%20Tablo%20@encodedProductUrl
+              - generic [ref=f3e210]: 
+            - button " Linki Kopyala" [ref=f3e211] [cursor=pointer]:
+              - generic [ref=f3e212]: 
+              - text: Linki Kopyala
+          - generic [ref=f3e213]:
+            - paragraph [ref=f3e214]: "Malzeme: Yüksek kaliteli kanvas kumaş ve dayanıklı şase malzemesi kullanılır."
+            - paragraph [ref=f3e215]: "Paketleme: Ürün koruyucu ambalaj ile paketlenerek gönderilir."
+          - generic [ref=f3e216]:
+            - generic [ref=f3e217]:
+              - paragraph [ref=f3e218]:
+                - generic [ref=f3e219]: 
+                - text: Üretim
+              - paragraph [ref=f3e220]: 3 iş günü
+            - generic [ref=f3e221]:
+              - paragraph [ref=f3e222]:
+                - generic [ref=f3e223]: 
+                - text: Paketleme
+              - paragraph [ref=f3e224]: Özenli ve korunaklı teslimat
+            - generic [ref=f3e225]:
+              - paragraph [ref=f3e226]:
+                - generic [ref=f3e227]: 
+                - text: Teslimat
+              - paragraph [ref=f3e228]: Tahmini 5 iş günü
+          - generic [ref=f3e229]:
+            - generic [ref=f3e230]:
+              - generic [ref=f3e231]: 
+              - paragraph [ref=f3e232]: Güvenli Ödeme
+              - paragraph [ref=f3e233]: 256-bit SSL
+            - generic [ref=f3e234]:
+              - generic [ref=f3e235]: 
+              - paragraph [ref=f3e236]: Ücretsiz Kargo
+              - paragraph [ref=f3e237]: 2 iş günü
+            - generic [ref=f3e238]:
+              - generic [ref=f3e239]: 
+              - paragraph [ref=f3e240]: İade Garantisi
+              - paragraph [ref=f3e241]: 14 gün içinde
+      - generic [ref=f3e243]:
+        - generic [ref=f3e244]:
+          - generic [ref=f3e245]:
+            - heading " Ürün Açıklaması" [level=2] [ref=f3e246]:
+              - generic [ref=f3e247]: 
+              - text: Ürün Açıklaması
+            - generic [ref=f3e248]: Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo ürünü, yaşam alanlarında dekoratif kullanım için hazırlanan premium kanvas tablo koleksiyonunun parçasıdır.
+          - generic [ref=f3e249]:
+            - heading " Teknik Özellikler" [level=2] [ref=f3e250]:
+              - generic [ref=f3e251]: 
+              - text: Teknik Özellikler
+            - table [ref=f3e253]:
+              - rowgroup [ref=f3e254]:
+                - row [ref=f3e255]:
+                  - rowheader "Detay" [ref=f3e256]
+                  - cell "Yüksek çözünürlüklü baskı" [ref=f3e257]
+                - row [ref=f3e258]:
+                  - rowheader "Detay" [ref=f3e259]
+                  - cell "Kanvas yüzey" [ref=f3e260]
+                - row [ref=f3e261]:
+                  - rowheader "Detay" [ref=f3e262]
+                  - cell "Farklı ölçü seçenekleri" [ref=f3e263]
+        - generic [ref=f3e264]:
+          - heading " Yorumlar" [level=2] [ref=f3e265]:
+            - generic [ref=f3e266]: 
+            - text: Yorumlar
+          - generic [ref=f3e267]:
+            - heading "4,8" [level=3] [ref=f3e268]
+            - generic [ref=f3e269]:
+              - generic [ref=f3e270]: 
+              - generic [ref=f3e271]: 
+              - generic [ref=f3e272]: 
+              - generic [ref=f3e273]: 
+              - generic [ref=f3e274]: 
+            - paragraph [ref=f3e275]: Toplam 4 değerlendirme
+            - button "Yorum Yap" [ref=f3e276] [cursor=pointer]
+          - generic [ref=f3e277]:
+            - generic [ref=f3e278]:
+              - generic [ref=f3e279]:
+                - generic [ref=f3e280]:
+                  - generic [ref=f3e281]: HZ
+                  - generic [ref=f3e282]:
+                    - heading "Halil Z." [level=5] [ref=f3e283]
+                    - generic [ref=f3e284]:
+                      - generic [ref=f3e285]: 
+                      - generic [ref=f3e286]: 
+                      - generic [ref=f3e287]: 
+                      - generic [ref=f3e288]: 
+                      - generic [ref=f3e289]: 
+                - generic [ref=f3e290]: 25 Oca 2026
+              - paragraph [ref=f3e291]: Bayıldım! Kumaş kalitesi ve baskı netliği harika. 10 numara 5 yıldız. 👌
+            - generic [ref=f3e292]:
+              - generic [ref=f3e293]:
+                - generic [ref=f3e294]:
+                  - generic [ref=f3e295]: İY
+                  - generic [ref=f3e296]:
+                    - heading "İbrahim Y." [level=5] [ref=f3e297]
+                    - generic [ref=f3e298]:
+                      - generic [ref=f3e299]: 
+                      - generic [ref=f3e300]: 
+                      - generic [ref=f3e301]: 
+                      - generic [ref=f3e302]: 
+                      - generic [ref=f3e303]: 
+                - generic [ref=f3e304]: 23 Oca 2026
+              - paragraph [ref=f3e305]: Kargo çok hızlıydı. Osmanlı Tuğrası Ve detayları muazzam görünüyor. Parasını sonuna kadar hak ediyor.
+            - generic [ref=f3e306]:
+              - generic [ref=f3e307]:
+                - generic [ref=f3e308]:
+                  - generic [ref=f3e309]: AV
+                  - generic [ref=f3e310]:
+                    - heading "Ayşe V." [level=5] [ref=f3e311]
+                    - generic [ref=f3e312]:
+                      - generic [ref=f3e313]: 
+                      - generic [ref=f3e314]: 
+                      - generic [ref=f3e315]: 
+                      - generic [ref=f3e316]: 
+                      - generic [ref=f3e317]: 
+                - generic [ref=f3e318]: 02 Ara 2025
+              - paragraph [ref=f3e319]: Harika bir tablo. Osmanlı Tuğrası Ve detayları muazzam görünüyor. Kesinlikle tavsiye ederim.
+    - generic [ref=f3e321]:
+      - generic [ref=f3e322]:
+        - separator [ref=f3e323]
+        - heading "Benzer Ürünler" [level=2] [ref=f3e324]
+        - separator [ref=f3e325]
+      - generic [ref=f3e326]:
+        - link "Çift Renk Amerikan Araba Tablosu - Model 1 Çift Renk Amerikan Araba Tablosu - Model 1 864,98 TL" [ref=f3e327] [cursor=pointer]:
+          - /url: /Urun/Detay/cift-renk-amerikan-araba-tablosu-model-1-8726
+          - img "Çift Renk Amerikan Araba Tablosu - Model 1" [ref=f3e329]
+          - heading "Çift Renk Amerikan Araba Tablosu - Model 1" [level=3] [ref=f3e330]
+          - generic [ref=f3e331]: 864,98 TL
+        - link "Eyfel ve Kırmızı Araba Tablosu - Model 35 Eyfel ve Kırmızı Araba Tablosu - Model 35 1.460,05 TL" [ref=f3e333] [cursor=pointer]:
+          - /url: /Urun/Detay/eyfel-ve-kirmizi-araba-tablosu-model-35-8660
+          - img "Eyfel ve Kırmızı Araba Tablosu - Model 35" [ref=f3e335]
+          - heading "Eyfel ve Kırmızı Araba Tablosu - Model 35" [level=3] [ref=f3e336]
+          - generic [ref=f3e337]: 1.460,05 TL
+        - link "Mavi Mustang Tablosu - Model 3 Mavi Mustang Tablosu - Model 3 710,69 TL" [ref=f3e339] [cursor=pointer]:
+          - /url: /Urun/Detay/mavi-mustang-tablosu-model-3-8778
+          - img "Mavi Mustang Tablosu - Model 3" [ref=f3e341]
+          - heading "Mavi Mustang Tablosu - Model 3" [level=3] [ref=f3e342]
+          - generic [ref=f3e343]: 710,69 TL
+        - link "Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo 1.671,73 TL" [ref=f3e345] [cursor=pointer]:
+          - /url: /Urun/Detay/allah-muhammed-yazili-islami-tugrali-5-parcali-kanvas-tablo-1325
+          - img "Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo" [ref=f3e347]
+          - heading "Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo" [level=3] [ref=f3e348]
+          - generic [ref=f3e349]: 1.671,73 TL
+        - link "Mavi Mustang Tablosu - Model 2 Mavi Mustang Tablosu - Model 2 864,98 TL" [ref=f3e351] [cursor=pointer]:
+          - /url: /Urun/Detay/mavi-mustang-tablosu-model-2-8777
+          - img "Mavi Mustang Tablosu - Model 2" [ref=f3e353]
+          - heading "Mavi Mustang Tablosu - Model 2" [level=3] [ref=f3e354]
+          - generic [ref=f3e355]: 864,98 TL
+        - link "Şömine Dekoratif Kanvas Tablosu Şömine Dekoratif Kanvas Tablosu 491,68 TL" [ref=f3e357] [cursor=pointer]:
+          - /url: /Urun/Detay/somine-dekoratif-kanvas-tablosu-415
+          - img "Şömine Dekoratif Kanvas Tablosu" [ref=f3e359]
+          - heading "Şömine Dekoratif Kanvas Tablosu" [level=3] [ref=f3e360]
+          - generic [ref=f3e361]: 491,68 TL
+  - contentinfo [ref=f3e363]:
+    - generic [ref=f3e365]:
+      - generic [ref=f3e366]:
+        - generic [ref=f3e367]: 
+        - generic [ref=f3e369]:
+          - generic [ref=f3e370]: Tüm Türkiye'ye
+          - generic [ref=f3e371]: Ücretsiz Kargo
+      - generic [ref=f3e372]:
+        - generic [ref=f3e373]: 
+        - generic [ref=f3e375]:
+          - generic [ref=f3e376]: "%100 Güvenli Alışveriş"
+          - generic [ref=f3e377]: 256 Bit SSL Sertifikası
+      - generic [ref=f3e378]:
+        - generic [ref=f3e379]: 
+        - generic [ref=f3e381]:
+          - generic [ref=f3e382]: Tüm Kredi Kartlarına
+          - generic [ref=f3e383]: 12 Taksit İmkanı
+    - generic [ref=f3e384]:
+      - generic [ref=f3e385]:
+        - generic [ref=f3e386]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=f3e387]
+          - paragraph [ref=f3e388]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=f3e389]:
+            - textbox "E-posta Adresi" [ref=f3e390]
+            - button "ABONE OL" [ref=f3e391] [cursor=pointer]
+        - generic [ref=f3e392]:
+          - heading "KURUMSAL" [level=4] [ref=f3e393]
+          - list [ref=f3e394]:
+            - listitem [ref=f3e395]:
+              - link "Hakkımızda" [ref=f3e396] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=f3e397]:
+              - link "İletişim" [ref=f3e398] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=f3e399]:
+              - link "Koleksiyonlar" [ref=f3e400] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=f3e401]:
+              - link "Gizlilik Politikası" [ref=f3e402] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=f3e403]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=f3e404] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=f3e405]:
+            - link "Instagram" [ref=f3e406] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=f3e407]: 
+            - link "WhatsApp" [ref=f3e408] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=f3e409]: 
+      - generic [ref=f3e410]:
+        - paragraph [ref=f3e412]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=f3e413]:
+          - link "Gizlilik Politikası" [ref=f3e414] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=f3e415] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=f3e416] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=f3e419]
+  - link "WhatsApp ile iletişim" [ref=f3e420] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - generic [ref=f3e423]: WhatsApp
+  - text:        

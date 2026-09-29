@@ -1,0 +1,323 @@
+﻿@model IEnumerable<KanvasProje.Core.Varliklar.Urun>
+@inject KanvasProje.Service.Services.ISiteSettingsService SiteSettingsService
+@using KanvasProje.Core.Helpers
+
+@{
+    ViewData["Title"] = "Koleksiyonlar";
+    var siteSettings = SiteSettingsService.GetSettings();
+    var currencySymbol = string.IsNullOrWhiteSpace(siteSettings.ParaBirimi) ? "TL" : siteSettings.ParaBirimi;
+
+    int currentPage = ViewBag.CurrentPage != null ? (int)ViewBag.CurrentPage : 1;
+    int totalPages = ViewBag.TotalPages != null ? (int)ViewBag.TotalPages : 1;
+    int totalItems = ViewBag.TotalItems != null ? (int)ViewBag.TotalItems : 0;
+
+    int? aktifKategori = ViewBag.KategoriId;
+    string aktifArama = ViewBag.Search ?? "";
+    string aktifSort = ViewBag.Sort ?? "yeni";
+    decimal? aktifMin = ViewBag.Min;
+    decimal? aktifMax = ViewBag.Max;
+    var ozellikFiltreleri = ViewBag.OzellikFiltreleri as List<KanvasProje.Web.Models.ProductFeatureFilterViewModel> ?? new List<KanvasProje.Web.Models.ProductFeatureFilterViewModel>();
+    var seciliOzellikler = ViewBag.SeciliOzellikler as Dictionary<int, string> ?? new Dictionary<int, string>();
+
+    var kategoriler = ViewBag.Kategoriler as List<KanvasProje.Core.Varliklar.Kategori>;
+    var kategoriUrunSayilari = ViewBag.KategoriUrunSayilari as Dictionary<int, int> ?? new Dictionary<int, int>();
+    int toplamAktifUrunSayisi = ViewBag.ToplamAktifUrunSayisi != null ? (int)ViewBag.ToplamAktifUrunSayisi : totalItems;
+    var kategoriIdSet = kategoriler?.Select(x => x.Id).ToHashSet() ?? new HashSet<int>();
+    var anaKategoriler = kategoriler?
+        .Where(x => !x.SilindiMi && x.AktifMi && (!x.ParentKategoriId.HasValue || !kategoriIdSet.Contains(x.ParentKategoriId.Value)))
+        .OrderBy(x => x.Sira)
+        .ThenBy(x => x.Ad)
+        .ToList() ?? new List<KanvasProje.Core.Varliklar.Kategori>();
+    var kategoriLookup = kategoriler?.ToDictionary(x => x.Id) ?? new Dictionary<int, KanvasProje.Core.Varliklar.Kategori>();
+
+    var sortOptions = new Dictionary<string, string>
+    {
+        { "yeni", "En Yeniler" },
+        { "fiyat_artan", "Fiyat: Düşükten Yükseğe" },
+        { "fiyat_azalan", "Fiyat: Yüksekten Düşüğe" },
+        { "cok_satan", "Çok Satanlar" }
+    };
+
+    string aktifKategoriAd = "Tüm Koleksiyonlar";
+    if (aktifKategori.HasValue && kategoriler != null)
+    {
+        var kat = kategoriler.FirstOrDefault(x => x.Id == aktifKategori.Value);
+        if (kat != null) aktifKategoriAd = kat.Ad;
+    }
+
+    string BuildProductUrl(KanvasProje.Core.Varliklar.Urun urun)
+        => "/Urun/Detay/" + (string.IsNullOrEmpty(urun.Slug) ? (KanvasProje.Core.Helpers.SlugHelper.GenerateSlug(urun.Baslik) + "-" + urun.Id) : urun.Slug + "-" + urun.Id);
+
+    int GetKategoriUrunSayisi(int kategoriId)
+        => kategoriUrunSayilari.TryGetValue(kategoriId, out var count) ? count : 0;
+
+    bool AktifKategoriDalindaMi(KanvasProje.Core.Varliklar.Kategori kategori)
+    {
+        var currentId = aktifKategori;
+        while (currentId.HasValue && kategoriLookup.TryGetValue(currentId.Value, out var current))
+        {
+            if (current.Id == kategori.Id)
+            {
+                return true;
+            }
+
+            currentId = current.ParentKategoriId;
+        }
+
+        return false;
+    }
+
+    string BuildFilterUrl(string key, string val)
+    {
+        var values = new List<(string Key, string Value)>();
+
+        void AddQueryValue(string queryKey, string? queryValue)
+        {
+            if (!string.IsNullOrWhiteSpace(queryValue))
+            {
+                values.Add((queryKey, queryValue));
+            }
+        }
+
+        if (aktifKategori.HasValue) AddQueryValue("k", aktifKategori.Value.ToString());
+        AddQueryValue("s", aktifArama);
+        if (aktifMin.HasValue) AddQueryValue("min", aktifMin.Value.ToString());
+        if (aktifMax.HasValue) AddQueryValue("max", aktifMax.Value.ToString());
+        if (!string.Equals(key, "sort", StringComparison.OrdinalIgnoreCase)) AddQueryValue("sort", aktifSort);
+
+        AddQueryValue(key, val);
+
+        var parts = values
+            .Select(x => $"{System.Uri.EscapeDataString(x.Key)}={System.Uri.EscapeDataString(x.Value)}")
+            .ToList();
+
+        return parts.Count == 0 ? "/Urun" : "/Urun?" + string.Join("&", parts);
+    }
+}
+
+<!-- Breadcrumb -->
+<div class="bg-[#FDF6E3] border-b border-[#F5E6C8] py-3">
+    <div class="container mx-auto px-4 flex items-center gap-2 text-xs text-[#333333]">
+        <a href="/" class="hover:text-[#1B2A4A] transition-colors">Ana Sayfa</a>
+        <span>/</span>
+        <span class="text-[#1B2A4A] font-medium">@aktifKategoriAd</span>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-10">
+    <div class="flex gap-8">
+
+        <!-- Sidebar Filtreler -->
+        <aside class="hidden lg:block w-56 flex-shrink-0">
+            <h3 class="font-serif text-lg text-[#1B2A4A] mb-4 border-b border-[#F5E6C8] pb-2">Kategoriler</h3>
+            <ul class="space-y-2 text-sm mb-8">
+                <li>
+                    <a href="/Urun" class="flex items-center justify-between rounded-lg px-3 py-2 @(!aktifKategori.HasValue ? "bg-[#1B2A4A] text-white font-semibold" : "text-[#333333] hover:bg-[#FDF6E3] hover:text-[#1B2A4A]") transition-colors">
+                        <span>Tüm Koleksiyonlar</span>
+                        <span class="text-xs @(!aktifKategori.HasValue ? "text-white/75" : "text-[#9a958c]")">(@toplamAktifUrunSayisi)</span>
+                    </a>
+                </li>
+                @foreach (var anaKategori in anaKategoriler)
+                {
+                    var altKategoriler = kategoriler?
+                        .Where(x => !x.SilindiMi && x.AktifMi && x.ParentKategoriId == anaKategori.Id)
+                        .OrderBy(x => x.Sira)
+                        .ThenBy(x => x.Ad)
+                        .ToList() ?? new List<KanvasProje.Core.Varliklar.Kategori>();
+                    var anaAktif = aktifKategori.HasValue && aktifKategori.Value == anaKategori.Id;
+                    var grupAcik = anaAktif || AktifKategoriDalindaMi(anaKategori);
+                    var anaUrunSayisi = GetKategoriUrunSayisi(anaKategori.Id);
+
+                    <li>
+                    @if (altKategoriler.Count == 0)
+                    {
+                            <a href="/Urun?k=@anaKategori.Id" class="flex items-center justify-between rounded-lg px-3 py-2 @(anaAktif ? "bg-[#f6efe3] text-[#C0392B] font-semibold" : "text-[#333333] hover:bg-[#FDF6E3] hover:text-[#1B2A4A]") transition-colors">
+                                <span>@anaKategori.Ad</span>
+                                <span class="text-xs @(anaUrunSayisi == 0 ? "text-red-400" : "text-[#9a958c]")">(@anaUrunSayisi)</span>
+                            </a>
+                    }
+                    else
+                    {
+                            <details class="group rounded-xl border border-[#F5E6C8] bg-white/70" open="@grupAcik">
+                                <summary class="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-[#1B2A4A] transition-colors group-open:border-b group-open:border-[#eee8df] [&::-webkit-details-marker]:hidden">
+                                    <span class="font-medium">@anaKategori.Ad</span>
+                                    <span class="flex items-center gap-2 text-xs text-[#9a958c]">
+                                        (@anaUrunSayisi)
+                                        <i class="fas fa-chevron-down text-[10px] transition-transform group-open:rotate-180"></i>
+                                    </span>
+                                </summary>
+                                <div class="space-y-1 px-2 py-2">
+                                    <a href="/Urun?k=@anaKategori.Id" class="flex items-center justify-between rounded-lg px-2 py-1.5 text-xs @(anaAktif ? "bg-[#1B2A4A] text-white font-semibold" : "text-[#6a665e] hover:bg-[#FDF6E3] hover:text-[#1B2A4A]") transition-colors">
+                                        <span>Tüm @anaKategori.Ad</span>
+                                        <span class="@(anaAktif ? "text-white/75" : "text-[#9a958c]")">(@anaUrunSayisi)</span>
+                                    </a>
+                                    @foreach (var altKategori in altKategoriler)
+                                    {
+                                        var altAktif = aktifKategori.HasValue && aktifKategori.Value == altKategori.Id;
+                                        var altUrunSayisi = GetKategoriUrunSayisi(altKategori.Id);
+                                        <a href="/Urun?k=@altKategori.Id" class="flex items-center justify-between gap-3 rounded-lg px-2 py-1.5 text-xs @(altAktif ? "bg-[#f6efe3] text-[#C0392B] font-semibold" : "text-[#333333] hover:bg-[#FDF6E3] hover:text-[#1B2A4A]") transition-colors">
+                                            <span class="truncate">@altKategori.Ad</span>
+                                            <span class="shrink-0 @(altUrunSayisi == 0 ? "text-red-400" : "text-[#9a958c]")">(@altUrunSayisi)</span>
+                                        </a>
+                                    }
+                                </div>
+                            </details>
+                    }
+                    </li>
+                }
+            </ul>
+
+            <!-- Fiyat Filtresi -->
+            <h3 class="font-serif text-lg text-[#1B2A4A] mb-4 border-b border-[#F5E6C8] pb-2">Fiyat Aralığı</h3>
+            <form method="get" action="/Urun" class="space-y-2">
+                @if (aktifKategori.HasValue)
+                {
+                    <input type="hidden" name="k" value="@aktifKategori" />
+                }
+                @if (!string.IsNullOrWhiteSpace(aktifArama))
+                {
+                    <input type="hidden" name="s" value="@aktifArama" />
+                }
+                <input type="hidden" name="sort" value="@aktifSort" />
+                <div class="flex gap-2 items-center">
+                    <input name="min" type="number" placeholder="Min ₺" value="@aktifMin" class="w-full border border-[#F5E6C8] rounded px-2 py-1.5 text-xs focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] bg-white" />
+                    <span class="text-gray-400 text-xs">—</span>
+                    <input name="max" type="number" placeholder="Max ₺" value="@aktifMax" class="w-full border border-[#F5E6C8] rounded px-2 py-1.5 text-xs focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] bg-white" />
+                </div>
+                <button type="submit" class="w-full bg-[#1B2A4A] text-white text-xs py-2 rounded hover:bg-[#1c2001] transition-colors tracking-widest uppercase">
+                    Uygula
+                </button>
+            </form>
+        </aside>
+
+        <!-- Ana İçerik -->
+        <main class="flex-1 min-w-0">
+            <!-- Başlık + Sıralama -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="font-serif text-3xl text-[#1B2A4A]">@aktifKategoriAd</h1>
+                    <p class="text-xs text-[#333333] mt-1">@totalItems ürün listeleniyor</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    @if (!string.IsNullOrWhiteSpace(aktifArama))
+                    {
+                        <span class="bg-[#1B2A4A] text-white text-xs px-3 py-1 rounded-full flex items-center gap-1">
+                            "<span>@aktifArama</span>"
+                            <a href="/Urun@(aktifKategori.HasValue ? "?k=" + aktifKategori : "")" class="ml-1 opacity-70 hover:opacity-100">×</a>
+                        </span>
+                    }
+                    <select id="sortSelect" onchange="window.location.href=this.value" class="border border-[#F5E6C8] text-xs rounded px-3 py-2 focus:ring-1 focus:ring-[#C0392B] bg-white text-[#333333]">
+                        @foreach (var opt in sortOptions)
+                        {
+                            <option value="@BuildFilterUrl("sort", opt.Key)" selected="@(aktifSort == opt.Key)">@opt.Value</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <!-- Mobile Kategori Chips -->
+            <div class="hidden md:flex lg:hidden flex gap-2 overflow-x-auto pb-3 mb-6 custom-scrollbar">
+                <a href="/Urun" class="whitespace-nowrap text-xs border @(!aktifKategori.HasValue ? "bg-[#1B2A4A] text-white border-[#1B2A4A]" : "border-[#F5E6C8] text-[#333333]") rounded-full px-3 py-1.5">Tümü</a>
+                @if (kategoriler != null)
+                {
+                    foreach (var kat in kategoriler.Where(x => !x.SilindiMi && x.AktifMi))
+                    {
+                        bool isActive = aktifKategori.HasValue && aktifKategori.Value == kat.Id;
+                        <a href="/Urun?k=@kat.Id" class="whitespace-nowrap text-xs border @(isActive ? "bg-[#1B2A4A] text-white border-[#1B2A4A]" : "border-[#F5E6C8] text-[#333333]") rounded-full px-3 py-1.5">@kat.Ad</a>
+                    }
+                }
+            </div>
+
+            <!-- Ürün Grid -->
+            @if (Model != null && Model.Any())
+            {
+                <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                    @foreach (var urun in Model)
+                    {
+                        var anaResim = urun.AnaGorselUrl;
+                        if (string.IsNullOrWhiteSpace(anaResim))
+                        {
+                            anaResim = urun.UrunResimleri?.OrderBy(r => r.Sira).FirstOrDefault()?.ResimYolu ?? "";
+                        }
+                        <div class="group relative">
+                            <a href="@BuildProductUrl(urun)" class="block relative overflow-hidden aspect-square bg-[#f8f6f2] mb-3 shadow-[inset_0_0_8px_rgba(0,0,0,0.03)] flex items-center justify-center p-2">
+                                @if (urun.YeniUrunMu)
+                                {
+                                    <span class="absolute top-2 left-2 z-10 bg-[#1B2A4A] text-white text-[9px] tracking-widest px-2 py-0.5 uppercase">Yeni</span>
+                                }
+                                else if (urun.IndirimVarMi)
+                                {
+                                    <span class="absolute top-2 left-2 z-10 bg-[#C0392B] text-white text-[9px] tracking-widest px-2 py-0.5 uppercase">İndirim</span>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(anaResim))
+                                {
+                                    <img src="@anaResim" alt="@urun.Baslik" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+                                }
+                                else
+                                {
+                                    <div class="w-full h-full flex items-center justify-center text-[#c5c0b8]">
+                                        <i class="fas fa-image fa-3x"></i>
+                                    </div>
+                                }
+                            </a>
+                            <!-- Kalp / Favori Butonu -->
+                            <button type="button" onclick="window.toggleFavori(this, @urun.Id)" class="group/btn absolute top-2 right-2 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 shadow-sm z-20 hover:scale-110" title="Favorilere Ekle">
+                                <i class="far fa-heart text-sm text-[#333333] group-hover/btn:text-red-500 transition-colors"></i>
+                            </button>
+                            <h3 class="text-xs font-medium text-[#1B2A4A] line-clamp-2 mb-1 leading-relaxed">
+                                <a href="@BuildProductUrl(urun)" class="hover:text-[#C0392B] transition-colors">@urun.Baslik</a>
+                            </h3>
+                            <div class="flex items-center gap-2">
+                                @if (urun.IndirimVarMi)
+                                {
+                                    <span class="text-sm font-semibold text-[#C0392B]">@urun.IndirimliFiyat?.ToString("N0") @currencySymbol</span>
+                                    <span class="text-xs text-gray-400 line-through">@urun.Fiyat.ToString("N0") @currencySymbol</span>
+                                }
+                                else
+                                {
+                                    <span class="text-sm font-semibold text-[#1B2A4A]">@urun.Fiyat.ToString("N0") @currencySymbol</span>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Sayfalama -->
+                @if (totalPages > 1)
+                {
+                    <div class="flex justify-center items-center gap-2 mt-16">
+                        @if (currentPage > 1)
+                        {
+                            <a href="@BuildFilterUrl("page", (currentPage - 1).ToString())" class="w-9 h-9 border border-[#F5E6C8] rounded flex items-center justify-center text-[#333333] hover:bg-[#1B2A4A] hover:text-white hover:border-[#1B2A4A] transition-colors text-xs">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        }
+                        @for (int i = Math.Max(1, currentPage - 2); i <= Math.Min(totalPages, currentPage + 2); i++)
+                        {
+                            <a href="@BuildFilterUrl("page", i.ToString())" class="w-9 h-9 border @(i == currentPage ? "bg-[#1B2A4A] text-white border-[#1B2A4A]" : "border-[#F5E6C8] text-[#333333] hover:bg-[#FDF6E3]") rounded flex items-center justify-center text-xs transition-colors">
+                                @i
+                            </a>
+                        }
+                        @if (currentPage < totalPages)
+                        {
+                            <a href="@BuildFilterUrl("page", (currentPage + 1).ToString())" class="w-9 h-9 border border-[#F5E6C8] rounded flex items-center justify-center text-[#333333] hover:bg-[#1B2A4A] hover:text-white hover:border-[#1B2A4A] transition-colors text-xs">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="text-center py-24 text-[#333333]">
+                    <i class="fas fa-search fa-3x mb-6 opacity-30"></i>
+                    <h3 class="font-serif text-2xl text-[#1B2A4A] mb-2">Ürün Bulunamadı</h3>
+                    <p class="text-sm mb-6">Farklı bir kategori veya arama terimi deneyin.</p>
+                    <a href="/Urun" class="inline-block border border-[#1B2A4A] text-[#1B2A4A] px-6 py-2 text-xs uppercase tracking-widest hover:bg-[#1B2A4A] hover:text-white transition-colors rounded-full">
+                        Tüm Ürünleri Gör
+                    </a>
+                </div>
+            }
+        </main>
+    </div>
+</div>

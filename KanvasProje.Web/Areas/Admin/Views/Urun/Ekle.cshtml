@@ -1,0 +1,387 @@
+﻿@model KanvasProje.Core.Varliklar.Urun
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Yeni Ürün Ekle";
+
+    var previewUrl = string.IsNullOrWhiteSpace(Model.AnaGorselUrl)
+        ? "https://placehold.co/800x800/f1ede7/8a8880?text=Yeni+Urun"
+        : Model.AnaGorselUrl;
+
+    var validationErrors = ViewData.ModelState.Values
+        .SelectMany(x => x.Errors)
+        .Select(x => x.ErrorMessage)
+        .Where(x => !string.IsNullOrWhiteSpace(x))
+        .Distinct()
+        .ToList();
+}
+
+<style>
+    .ca-simple-product {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    .ca-product-preview {
+        aspect-ratio: 1 / 1;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .ca-product-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .ca-help-box {
+        border: 1px solid var(--ca-border);
+        border-left: 3px solid var(--ca-accent);
+        border-radius: var(--ca-radius);
+        padding: 12px 14px;
+        background: #fffaf0;
+        color: var(--ca-text-secondary);
+        font-size: .86rem;
+    }
+
+    .ca-required {
+        color: #b42318;
+        font-weight: 800;
+    }
+
+    .ca-seo-preview-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .ca-save-rail {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding-top: 18px;
+        margin-top: 18px;
+        border-top: 1px solid var(--ca-border);
+    }
+
+    .ca-side-card {
+        position: sticky;
+        top: 84px;
+        display: grid;
+        gap: 16px;
+    }
+
+    @@media (max-width: 1100px) {
+        .ca-simple-product {
+            grid-template-columns: 1fr;
+        }
+
+        .ca-side-card {
+            position: static;
+            grid-row: 1;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .ca-seo-preview-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Yeni Ürün Ekle</h1>
+            <p class="ca-page-subtitle">İlk kayıt için sadece gerekli bilgileri girin. Detaylı özellikler ürünü kaydettikten sonra düzenlenir.</p>
+        </div>
+        <a href="/Admin/Urun" class="ca-btn ca-btn-outline">
+            <i class="fas fa-arrow-left"></i> Ürünlere Dön
+        </a>
+    </div>
+
+    <form asp-action="Ekle" method="post" enctype="multipart/form-data" id="productCreateForm">
+        @Html.AntiForgeryToken()
+
+        @if (validationErrors.Any())
+        {
+            <div class="alert alert-danger border-0 shadow-sm">
+                <div class="fw-bold mb-2">Ürün kaydedilemedi. Lütfen aşağıdaki alanları kontrol edin:</div>
+                <ul class="mb-0 ps-3">
+                    @foreach (var error in validationErrors)
+                    {
+                        <li>@error</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="alert alert-info border-0 shadow-sm mb-4">
+            <div class="fw-semibold mb-1">Satış fiyatı ve varyasyon fiyatı nasıl çalışır?</div>
+            <div class="small">
+                Bu ekrandaki <strong>Satış Fiyatı</strong> ürünün ana fiyatıdır. Ürün kaydedilirken sistem bu fiyatla otomatik bir varsayılan varyasyon oluşturur.
+                Farklı ölçü, çerçeve veya varyasyonlara özel fiyat girmek isterseniz ürünü kaydettikten sonra düzenleme ekranından ekleyebilirsiniz.
+            </div>
+        </div>
+
+        <div class="ca-simple-product">
+            <div class="ca-card">
+                <div class="ca-card-header">
+                    <span class="ca-card-title"><i class="fas fa-box-open me-2"></i>Ürün Bilgileri</span>
+                </div>
+                <div class="ca-card-body">
+                    <div class="ca-help-box mb-4">
+                        Bu ekranda ürünü hızlıca oluşturuyoruz. Kaydettikten sonra ürün düzenleme sayfasında varyasyon, galeri, mockup, video ve SEO detaylarını ekleyebilirsiniz.
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="ca-label"><span class="ca-required">*</span> Ürün Adı</label>
+                            <input asp-for="Baslik" id="createTitle" class="ca-input" placeholder="Örn: Modern Soyut Kanvas Tablo" />
+                            <span asp-validation-for="Baslik" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="ca-seo-preview-grid">
+                                <div>
+                                    <label class="ca-label">Slug</label>
+                                    <input asp-for="Slug" id="slugInput" class="ca-input" placeholder="urun-adi-otomatik-olusturulur" readonly />
+                                </div>
+                                <div>
+                                    <label class="ca-label">SEO URL</label>
+                                    <input asp-for="UrlYolu" id="seoUrlInput" class="ca-input" placeholder="urun-adi-otomatik-olusturulur" readonly />
+                                </div>
+                            </div>
+                            <div class="small text-muted mt-1">Ürün adı yazıldıkça bu alanlar otomatik oluşur. Gerekirse kayıt sonrası düzenleme ekranından değiştirilebilir.</div>
+                        </div>
+
+                        <div class="col-md-7">
+                            <label class="ca-label"><span class="ca-required">*</span> Kategori</label>
+                            <select asp-for="KategoriId" asp-items="ViewBag.Kategoriler" class="ca-select">
+                                <option value="">Kategori seçin</option>
+                            </select>
+                            <span asp-validation-for="KategoriId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="ca-label"><span class="ca-required">*</span> Satış Fiyatı</label>
+                            <input asp-for="Fiyat" id="createPrice" class="ca-input" type="number" step="0.01" min="0" placeholder="0,00" />
+                            <span asp-validation-for="Fiyat" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="ca-label">İndirimli Fiyat</label>
+                            <input asp-for="IndirimliFiyat" class="ca-input" type="number" step="0.01" min="0" placeholder="Boş bırakılabilir" />
+                            <span asp-validation-for="IndirimliFiyat" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-7">
+                            <label class="ca-label"><span class="ca-required">*</span> Ana Görsel Dosyası</label>
+                            <input type="file" name="resimDosyasi" class="ca-input" accept=".jpg,.jpeg,.png,.webp" onchange="previewFile(event,'mainImgPreview')" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="ca-label">Ana Görsel URL</label>
+                            <input asp-for="AnaGorselUrl" id="mainImgUrl" class="ca-input" placeholder="/img/products/ornek.webp" onchange="updatePreviewFromUrl('mainImgUrl','mainImgPreview')" />
+                            <span asp-validation-for="AnaGorselUrl" class="text-danger small"></span>
+                            <div class="small text-muted mt-1">Dosya yüklemezseniz mevcut bir görsel URL girebilirsiniz. İkisinden biri yeterlidir.</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="ca-label">Ek Ürün Görselleri</label>
+                            <input type="file" name="galeriDosyalari" id="galleryFiles" class="ca-input" accept=".jpg,.jpeg,.png,.webp" multiple />
+                            <div id="galleryFileInfo" class="small text-muted mt-1">Birden fazla görsel seçebilirsiniz. Bu görseller ürün galerisine eklenir.</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="ca-label">Kısa Açıklama</label>
+                            <textarea asp-for="KisaAciklama" class="ca-textarea" rows="3" placeholder="Ürün kartında veya detayda kısa satış cümlesi olarak kullanılabilir."></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="ca-label">Detaylı Açıklama</label>
+                            <textarea asp-for="Aciklama" class="ca-textarea" rows="5" placeholder="Ürün hakkında kısa bilgi, kullanım alanı veya kalite açıklaması yazabilirsiniz."></textarea>
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <div class="ca-card" style="background:#fafaf8;">
+                                <div class="ca-card-header" style="background:transparent;border-bottom:1px solid var(--ca-border);">
+                                    <span class="ca-card-title"><i class="fas fa-search me-2"></i>SEO Bilgileri</span>
+                                </div>
+                                <div class="ca-card-body">
+                                    <div class="small text-muted mb-3">Arama motorları için özelleştirilmiş meta etiketleri. Boş bırakırsanız otomatik ürün bilgileri kullanılır.</div>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="ca-label">SEO Başlığı</label>
+                                            <input asp-for="SeoTitle" class="ca-input" placeholder="Örn: Modern Soyut Kanvas Tablo - METEORGALERİ" maxlength="70" />
+                                            <div class="small text-muted mt-1">Kalın metin olarak görünür. 60-70 karakter önerilir.</div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="ca-label">SEO Açıklaması</label>
+                                            <textarea asp-for="SeoDescription" class="ca-textarea" rows="2" placeholder="Örn: Premium kalite modern soyut kanvas tablo. Salon ve ofis dekorasyonu için ideal seçim. Hızlı kargo." maxlength="160"></textarea>
+                                            <div class="small text-muted mt-1">Arama sonuçlarında görünür. 150-160 karakter önerilir.</div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="ca-label">SEO Anahtar Kelimeler</label>
+                                            <input asp-for="SeoKeywords" class="ca-input" placeholder="kanvas tablo, modern dekorasyon, duvar sanatı, soyut tablo" />
+                                            <div class="small text-muted mt-1">Virgülle ayırarak yazın. Örn: kanvas tablo, dekorasyon, duvar sanatı</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check form-switch">
+                                <input asp-for="AktifMi" class="form-check-input" type="checkbox" value="true">
+                                <label asp-for="AktifMi" class="form-check-label fw-semibold">Ürün yayında olsun</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light border mt-4 mb-0">
+                        <div class="fw-semibold mb-1">Varyasyon ve ölçü bilgileri kayıt sonrası düzenlenir.</div>
+                        <div class="small text-muted">
+                            İlk kayıt tamamlandıktan sonra ölçü, çerçeve, stok ve varyasyon fiyatlarını ürün düzenleme ekranından yönetebilirsiniz.
+                        </div>
+                    </div>
+
+                    <input asp-for="KisaAd" type="hidden" />
+                    <input asp-for="SKU" type="hidden" />
+                    <input asp-for="Barkod" type="hidden" />
+                    <input asp-for="Marka" type="hidden" />
+                    <input asp-for="UrunTipi" type="hidden" />
+                    <input asp-for="Etiketler" type="hidden" />
+                    <input asp-for="TeknikOzellikler" type="hidden" />
+                    <input asp-for="MalzemeBilgisi" type="hidden" />
+                    <input asp-for="BakimTalimati" type="hidden" />
+                    <input asp-for="PaketlemeBilgisi" type="hidden" />
+                    <input asp-for="StokDurumu" type="hidden" />
+                    <input asp-for="Maliyet" type="hidden" />
+                    <input asp-for="KdvOrani" type="hidden" />
+                    <input asp-for="UretimSuresiGun" type="hidden" />
+                    <input asp-for="KargoyaVerilisSuresiGun" type="hidden" />
+                    <input asp-for="TahminiTeslimSuresiGun" type="hidden" />
+                    <input asp-for="OneCikanMi" type="hidden" />
+                    <input asp-for="YeniUrunMu" type="hidden" />
+                    <input asp-for="KampanyaliMi" type="hidden" />
+                    <input asp-for="AnaSayfadaGoster" type="hidden" />
+                    <input asp-for="Sira" type="hidden" />
+                    <input asp-for="MinSiparisAdedi" type="hidden" />
+                    <input asp-for="MaxSiparisAdedi" type="hidden" />
+
+                    <div class="ca-save-rail">
+                        <a href="/Admin/Urun" class="ca-btn ca-btn-outline">İptal</a>
+                        <button type="submit" class="ca-btn ca-btn-primary">
+                            <i class="fas fa-save"></i> Ürünü Kaydet
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="ca-side-card">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Önizleme</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-product-preview mb-3">
+                            <img src="@previewUrl" id="mainImgPreview" alt="Yeni ürün ana görsel önizlemesi" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/800x800/f1ede7/8a8880?text=Gorsel';">
+                        </div>
+                        <div id="liveTitle" class="fw-bold">@(string.IsNullOrWhiteSpace(Model.Baslik) ? "Ürün adı henüz girilmedi" : Model.Baslik)</div>
+                        <div class="small text-muted">Kaydedildikten sonra detayları genişletebilirsiniz.</div>
+                    </div>
+                </div>
+
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Zorunlu Alanlar</span>
+                    </div>
+                    <div class="ca-card-body small text-muted">
+                        <div class="mb-2"><i class="fas fa-check text-success me-1"></i> Ürün adı</div>
+                        <div class="mb-2"><i class="fas fa-check text-success me-1"></i> Kategori</div>
+                        <div class="mb-2"><i class="fas fa-check text-success me-1"></i> Satış fiyatı</div>
+                        <div><i class="fas fa-check text-success me-1"></i> Ana görsel dosyası veya URL</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </form>
+</div>
+
+<script>
+    (function () {
+        const titleInput = document.getElementById('createTitle');
+        const liveTitle = document.getElementById('liveTitle');
+        const slugInput = document.getElementById('slugInput');
+        const seoUrlInput = document.getElementById('seoUrlInput');
+        const mainImgUrl = document.getElementById('mainImgUrl');
+        const galleryFiles = document.getElementById('galleryFiles');
+        const galleryFileInfo = document.getElementById('galleryFileInfo');
+
+        if (mainImgUrl && mainImgUrl.value.startsWith('Kayıt sonrası otomatik oluşturulacak:')) {
+            mainImgUrl.value = '';
+        }
+
+        function createSlug(value) {
+            const map = {
+                'ç': 'c', 'Ç': 'c',
+                'ğ': 'g', 'Ğ': 'g',
+                'ı': 'i', 'I': 'i',
+                'İ': 'i', 'i': 'i',
+                'ö': 'o', 'Ö': 'o',
+                'ş': 's', 'Ş': 's',
+                'ü': 'u', 'Ü': 'u'
+            };
+
+            return (value || '')
+                .split('')
+                .map((char) => map[char] || char)
+                .join('')
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                .replace(/-{2,}/g, '-');
+        }
+
+        titleInput?.addEventListener('input', function () {
+            const title = titleInput.value.trim();
+            const slug = createSlug(title);
+            liveTitle.textContent = title || 'Ürün adı henüz girilmedi';
+            if (slugInput) slugInput.value = slug;
+            if (seoUrlInput) seoUrlInput.value = slug;
+        });
+
+        galleryFiles?.addEventListener('change', function () {
+            const count = galleryFiles.files ? galleryFiles.files.length : 0;
+            galleryFileInfo.textContent = count > 0
+                ? count + ' ek görsel seçildi. Kayıt sonrası ürün galerisine eklenecek.'
+                : 'Birden fazla görsel seçebilirsiniz. Bu görseller ürün galerisine eklenir.';
+        });
+    })();
+
+    function previewFile(event, id) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        const urlInput = document.getElementById('mainImgUrl');
+        if (urlInput) {
+            urlInput.value = '';
+            urlInput.placeholder = 'Kayıt sonrası otomatik oluşturulacak: ' + file.name;
+        }
+        const reader = new FileReader();
+        reader.onload = () => document.getElementById(id).src = reader.result;
+        reader.readAsDataURL(file);
+    }
+
+    function updatePreviewFromUrl(inputId, previewId) {
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(previewId);
+        if (input && preview && input.value.trim()) {
+            preview.src = input.value.trim();
+        }
+    }
+</script>

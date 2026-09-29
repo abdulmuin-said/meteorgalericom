@@ -1,0 +1,90 @@
+@model IEnumerable<KanvasProje.Core.Varliklar.IadeTalebi>
+@using KanvasProje.Core.Helpers
+@{
+    ViewData["Title"] = "İade Talepleri";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">İade Talepleri</h1>
+            <p class="ca-page-subtitle">Müşteri, sipariş ve ürün bilgileriyle iade taleplerini inceleyin.</p>
+        </div>
+    </div>
+
+    <div class="ca-card">
+        <div class="ca-table-wrapper">
+            <table class="ca-table">
+                <thead>
+                    <tr>
+                        <th class="ps-4">Talep</th>
+                        <th>Sipariş</th>
+                        <th>Müşteri</th>
+                        <th>Ürünler</th>
+                        <th>İade Nedeni</th>
+                        <th>Durum</th>
+                        <th class="text-end pe-4">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var siparis = item.Siparis;
+                        var urunler = siparis?.SiparisDetaylari?.Where(x => !x.SilindiMi).ToList() ?? new List<KanvasProje.Core.Varliklar.SiparisDetay>();
+                        var ilkUrun = urunler.FirstOrDefault();
+                        var toplamAdet = urunler.Sum(x => x.Adet);
+                        <tr>
+                            <td class="ps-4">
+                                <div class="ca-fw-semi">#@item.Id</div>
+                                <small class="ca-text-muted">@item.OlusturulmaTarihi.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</small>
+                            </td>
+                            <td>
+                                <div class="ca-fw-semi">@(string.IsNullOrWhiteSpace(siparis?.SiparisNo) ? $"#{item.SiparisId}" : siparis.SiparisNo)</div>
+                                <small class="ca-text-muted">@siparis?.OlusturulmaTarihi.ToLocalTime().ToString("dd.MM.yyyy") - @((siparis?.ToplamTutar ?? 0).ToString("N2")) TL</small>
+                            </td>
+                            <td>
+                                <div class="ca-fw-semi">@(siparis?.MusteriAdSoyad ?? "-")</div>
+                                <small class="ca-text-muted d-block">@(siparis?.Telefon ?? "-")</small>
+                                <small class="ca-text-muted">@(siparis?.Eposta ?? "-")</small>
+                            </td>
+                            <td>
+                                <div class="ca-fw-semi">@(ilkUrun?.Urun?.Baslik ?? "Ürün bilgisi yok")</div>
+                                <small class="ca-text-muted">@urunler.Count kalem / @toplamAdet adet</small>
+                            </td>
+                            <td>
+                                <div class="ca-fw-semi">@item.Neden</div>
+                                @if (!string.IsNullOrWhiteSpace(item.Aciklama))
+                                {
+                                    <small class="ca-text-muted">@item.Aciklama</small>
+                                }
+                            </td>
+                            <td>@IadeDurumBadge(item.Durum)</td>
+                            <td class="text-end pe-4">
+                                <a href="/Admin/Iade/Detay/@item.Id" class="ca-btn ca-btn-primary ca-btn-sm">
+                                    <i class="fas fa-eye"></i> İncele
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@functions {
+    private static Microsoft.AspNetCore.Html.IHtmlContent IadeDurumBadge(int durum)
+    {
+        var html = durum switch
+        {
+            0 => "<span class=\"ca-badge ca-badge-warning\"><i class=\"fas fa-clock\"></i> Bekliyor</span>",
+            1 => "<span class=\"ca-badge ca-badge-info\"><i class=\"fas fa-check\"></i> Onaylandı</span>",
+            2 => "<span class=\"ca-badge ca-badge-success\"><i class=\"fas fa-check-double\"></i> Tamamlandı</span>",
+            3 => "<span class=\"ca-badge ca-badge-danger\"><i class=\"fas fa-times\"></i> Reddedildi</span>",
+            _ => "<span class=\"ca-badge ca-badge-secondary\">Bilinmiyor</span>"
+        };
+
+        return new Microsoft.AspNetCore.Html.HtmlString(html);
+    }
+}

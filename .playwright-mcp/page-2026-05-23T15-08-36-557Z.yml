@@ -1,0 +1,674 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Hesabım" [ref=e52] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "0"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=e69]: 
+          - listitem [ref=e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=e72]: 
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=e75]: 
+          - listitem [ref=e76] [cursor=pointer]:
+            - link "Ayna " [ref=e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=e78]: 
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=e81]: 
+          - listitem [ref=e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=e84]: 
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=e87]: 
+          - listitem [ref=e88] [cursor=pointer]:
+            - link "Lightbox " [ref=e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=e90]: 
+          - listitem [ref=e91] [cursor=pointer]:
+            - link "Afiş " [ref=e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=e93]: 
+          - listitem [ref=e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:   
+  - main [ref=e96]:
+    - generic [ref=e97]:
+      - button "Önceki slayt" [ref=e103] [cursor=pointer]:
+        - img [ref=e104]
+      - button "Sonraki slayt" [ref=e106] [cursor=pointer]:
+        - img [ref=e107]
+      - generic [ref=e109]:
+        - button "Slayt 1" [ref=e110] [cursor=pointer]
+        - button "Slayt 2" [ref=e111] [cursor=pointer]
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - generic [ref=e116]:
+          - heading "Öne Çıkan Ürünler" [level=2] [ref=e117]
+          - paragraph [ref=e118]: Yaşam alanlarına güçlü bir karakter kazandıran seçili çok parçalı kanvas tablo koleksiyonu.
+        - link "Tüm 5 Parçalıları Gör " [ref=e119] [cursor=pointer]:
+          - /url: /Urun?s=5%20Par%C3%A7a
+          - text: Tüm 5 Parçalıları Gör
+          - generic [ref=e120]: 
+      - generic [ref=e121]:
+        - article [ref=e122]:
+          - link "5 Parça Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e123] [cursor=pointer]:
+            - /url: /Urun/Detay/allah-muhammed-yazili-islami-tugrali-5-parcali-kanvas-tablo-1325
+            - generic [ref=e124]:
+              - generic [ref=e125]: 5 Parça
+              - img "Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo" [ref=e126]
+            - heading "Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo" [level=3] [ref=e127]
+            - paragraph [ref=e128]: 1.672 TL
+        - article [ref=e129]:
+          - link "5 Parça Osmanlı Devlet Arması ve Ay Yıldız 5 Parça Kanvas Tablo Osmanlı Devlet Arması ve Ay Yıldız 5 Parça Kanvas Tablo 1.672 TL" [ref=e130] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-devlet-armasi-ve-ay-yildiz-5-parca-kanvas-tablo-1257
+            - generic [ref=e131]:
+              - generic [ref=e132]: 5 Parça
+              - img "Osmanlı Devlet Arması ve Ay Yıldız 5 Parça Kanvas Tablo" [ref=e133]
+            - heading "Osmanlı Devlet Arması ve Ay Yıldız 5 Parça Kanvas Tablo" [level=3] [ref=e134]
+            - paragraph [ref=e135]: 1.672 TL
+        - article [ref=e136]:
+          - link "5 Parça Kayı Boyu Bayrağı ve Osmanlı Devlet Arması 5 Parça Kanvas Tablo Kayı Boyu Bayrağı ve Osmanlı Devlet Arması 5 Parça Kanvas Tablo 1.672 TL" [ref=e137] [cursor=pointer]:
+            - /url: /Urun/Detay/kayi-boyu-bayragi-ve-osmanli-devlet-armasi-5-parca-kanvas-tablo-1251
+            - generic [ref=e138]:
+              - generic [ref=e139]: 5 Parça
+              - img "Kayı Boyu Bayrağı ve Osmanlı Devlet Arması 5 Parça Kanvas Tablo" [ref=e140]
+            - heading "Kayı Boyu Bayrağı ve Osmanlı Devlet Arması 5 Parça Kanvas Tablo" [level=3] [ref=e141]
+            - paragraph [ref=e142]: 1.672 TL
+        - article [ref=e143]:
+          - link "5 Parça Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo 1.377 TL" [ref=e144] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-tugrasi-ve-armasi-5-parca-kanvas-tablo-1065
+            - generic [ref=e145]:
+              - generic [ref=e146]: 5 Parça
+              - img "Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo" [ref=e147]
+            - heading "Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo" [level=3] [ref=e148]
+            - paragraph [ref=e149]: 1.377 TL
+        - article [ref=e150]:
+          - link "5 Parça Osmanlı Arması Ve Tuğrası 5 Parça Kanvas Tablosu Osmanlı Arması Ve Tuğrası 5 Parça Kanvas Tablosu 1.530 TL" [ref=e151] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-armasi-ve-tugrasi-5-parca-kanvas-tablosu-1064
+            - generic [ref=e152]:
+              - generic [ref=e153]: 5 Parça
+              - img "Osmanlı Arması Ve Tuğrası 5 Parça Kanvas Tablosu" [ref=e154]
+            - heading "Osmanlı Arması Ve Tuğrası 5 Parça Kanvas Tablosu" [level=3] [ref=e155]
+            - paragraph [ref=e156]: 1.530 TL
+        - article [ref=e157]:
+          - link "5 Parça Osmanlı Logolu Ay Yıldız Saatli 5 Parça Kanvas Tablo Osmanlı Logolu Ay Yıldız Saatli 5 Parça Kanvas Tablo 1.672 TL" [ref=e158] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-logolu-ay-yildiz-saatli-5-parca-kanvas-tablo-961
+            - generic [ref=e159]:
+              - generic [ref=e160]: 5 Parça
+              - img "Osmanlı Logolu Ay Yıldız Saatli 5 Parça Kanvas Tablo" [ref=e161]
+            - heading "Osmanlı Logolu Ay Yıldız Saatli 5 Parça Kanvas Tablo" [level=3] [ref=e162]
+            - paragraph [ref=e163]: 1.672 TL
+        - article [ref=e164]:
+          - link "5 Parça Turguaz Renkli Osmanlı Tuğra Saatli 5 Parça Kanvas Tablo Turguaz Renkli Osmanlı Tuğra Saatli 5 Parça Kanvas Tablo 1.672 TL" [ref=e165] [cursor=pointer]:
+            - /url: /Urun/Detay/turguaz-renkli-osmanli-tugra-saatli-5-parca-kanvas-tablo-933
+            - generic [ref=e166]:
+              - generic [ref=e167]: 5 Parça
+              - img "Turguaz Renkli Osmanlı Tuğra Saatli 5 Parça Kanvas Tablo" [ref=e168]
+            - heading "Turguaz Renkli Osmanlı Tuğra Saatli 5 Parça Kanvas Tablo" [level=3] [ref=e169]
+            - paragraph [ref=e170]: 1.672 TL
+        - article [ref=e171]:
+          - link "5 Parça Osmanlı Tuğrası ve Hz Muhammed Mührü Şerifi 5 Parçalı Kanvas Tablo Osmanlı Tuğrası ve Hz Muhammed Mührü Şerifi 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e172] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-tugrasi-ve-hz-muhammed-muhru-serifi-5-parcali-kanvas-tablo-924
+            - generic [ref=e173]:
+              - generic [ref=e174]: 5 Parça
+              - img "Osmanlı Tuğrası ve Hz Muhammed Mührü Şerifi 5 Parçalı Kanvas Tablo" [ref=e175]
+            - heading "Osmanlı Tuğrası ve Hz Muhammed Mührü Şerifi 5 Parçalı Kanvas Tablo" [level=3] [ref=e176]
+            - paragraph [ref=e177]: 1.672 TL
+        - article [ref=e178]:
+          - link "5 Parça Osmanlı Tuğrası Saatli 5 Parçalı Kanvas Tablo Osmanlı Tuğrası Saatli 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e179] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-tugrasi-saatli-5-parcali-kanvas-tablo-914
+            - generic [ref=e180]:
+              - generic [ref=e181]: 5 Parça
+              - img "Osmanlı Tuğrası Saatli 5 Parçalı Kanvas Tablo" [ref=e182]
+            - heading "Osmanlı Tuğrası Saatli 5 Parçalı Kanvas Tablo" [level=3] [ref=e183]
+            - paragraph [ref=e184]: 1.672 TL
+        - article [ref=e185]:
+          - link "5 Parça Turkuaz renkli Osmanlı Tuğralı 5 Parça Saatli Kanvas Tablo Turkuaz renkli Osmanlı Tuğralı 5 Parça Saatli Kanvas Tablo 843 TL" [ref=e186] [cursor=pointer]:
+            - /url: /Urun/Detay/turkuaz-renkli-osmanli-tugrali-5-parca-saatli-kanvas-tablo-570
+            - generic [ref=e187]:
+              - generic [ref=e188]: 5 Parça
+              - img "Turkuaz renkli Osmanlı Tuğralı 5 Parça Saatli Kanvas Tablo" [ref=e189]
+            - heading "Turkuaz renkli Osmanlı Tuğralı 5 Parça Saatli Kanvas Tablo" [level=3] [ref=e190]
+            - paragraph [ref=e191]: 843 TL
+        - article [ref=e192]:
+          - link "5 Parça Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e193] [cursor=pointer]:
+            - /url: /Urun/Detay/ataturk-turk-bayragi-istiklal-marsi-ve-genclige-hitabe-5-parcali-kanvas-tablo-1357
+            - generic [ref=e194]:
+              - generic [ref=e195]: 5 Parça
+              - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e196]
+            - heading "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [level=3] [ref=e197]
+            - paragraph [ref=e198]: 1.672 TL
+        - article [ref=e199]:
+          - link "5 Parça Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e200] [cursor=pointer]:
+            - /url: /Urun/Detay/ataturk-kalpakli-ataturk-resmi-istiklal-marsi-ve-genclige-hitabe-5-parcali-kanvas-tablo-1356
+            - generic [ref=e201]:
+              - generic [ref=e202]: 5 Parça
+              - img "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e203]
+            - heading "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [level=3] [ref=e204]
+            - paragraph [ref=e205]: 1.672 TL
+        - article [ref=e206]:
+          - link "5 Parça Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo 1.530 TL" [ref=e207] [cursor=pointer]:
+            - /url: /Urun/Detay/dalgalanan-turk-bayragi-5-parca-kanvas-tablo-1066
+            - generic [ref=e208]:
+              - generic [ref=e209]: 5 Parça
+              - img "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo" [ref=e210]
+            - heading "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo" [level=3] [ref=e211]
+            - paragraph [ref=e212]: 1.530 TL
+        - article [ref=e213]:
+          - link "5 Parça Kırmızı Menekşeli Dekoratif Saatli 5 Parça Kanvas Tablosu Kırmızı Menekşeli Dekoratif Saatli 5 Parça Kanvas Tablosu 1.377 TL" [ref=e214] [cursor=pointer]:
+            - /url: /Urun/Detay/kirmizi-menekseli-dekoratif-saatli-5-parca-kanvas-tablosu-1070
+            - generic [ref=e215]:
+              - generic [ref=e216]: 5 Parça
+              - img "Kırmızı Menekşeli Dekoratif Saatli 5 Parça Kanvas Tablosu" [ref=e217]
+            - heading "Kırmızı Menekşeli Dekoratif Saatli 5 Parça Kanvas Tablosu" [level=3] [ref=e218]
+            - paragraph [ref=e219]: 1.377 TL
+        - article [ref=e220]:
+          - link "5 Parça Cemal Paşa, Enver Paşa, ATATÜRK, Fahrettin Paşa, Talat Paşa 5 Parça Kanvas Tablo Cemal Paşa, Enver Paşa, ATATÜRK, Fahrettin Paşa, Talat Paşa 5 Parça Kanvas Tablo 1.672 TL" [ref=e221] [cursor=pointer]:
+            - /url: /Urun/Detay/cemal-pasa-enver-pasa-ataturk-fahrettin-pasa-talat-pasa-5-parca-kanvas-tablo-1352
+            - generic [ref=e222]:
+              - generic [ref=e223]: 5 Parça
+              - img "Cemal Paşa, Enver Paşa, ATATÜRK, Fahrettin Paşa, Talat Paşa 5 Parça Kanvas Tablo" [ref=e224]
+            - heading "Cemal Paşa, Enver Paşa, ATATÜRK, Fahrettin Paşa, Talat Paşa 5 Parça Kanvas Tablo" [level=3] [ref=e225]
+            - paragraph [ref=e226]: 1.672 TL
+    - generic [ref=e227]:
+      - generic [ref=e228]:
+        - separator [ref=e229]
+        - heading "Öne Çıkan Eserler" [level=2] [ref=e230]
+        - separator [ref=e231]
+      - generic [ref=e232]:
+        - generic [ref=e233] [cursor=pointer]:
+          - generic [ref=e234]:
+            - link "Yeni Salvador Dali - Masturbator Tablosu" [ref=e235]:
+              - /url: /Urun/Detay/12539
+              - generic [ref=e236]: Yeni
+              - img "Salvador Dali - Masturbator Tablosu" [ref=e237]
+            - button "" [ref=e238]:
+              - generic [ref=e239]: 
+          - heading "Salvador Dali - Masturbator Tablosu" [level=3] [ref=e240]:
+            - link "Salvador Dali - Masturbator Tablosu" [ref=e241]:
+              - /url: /Urun/Detay/12539
+          - paragraph [ref=e242]: 999 TL
+        - generic [ref=e243] [cursor=pointer]:
+          - generic [ref=e244]:
+            - link "Yeni Salvador Dali - Le Sommeil Tablosu" [ref=e245]:
+              - /url: /Urun/Detay/12538
+              - generic [ref=e246]: Yeni
+              - img "Salvador Dali - Le Sommeil Tablosu" [ref=e247]
+            - button "" [ref=e248]:
+              - generic [ref=e249]: 
+          - heading "Salvador Dali - Le Sommeil Tablosu" [level=3] [ref=e250]:
+            - link "Salvador Dali - Le Sommeil Tablosu" [ref=e251]:
+              - /url: /Urun/Detay/12538
+          - paragraph [ref=e252]: 999 TL
+        - generic [ref=e253] [cursor=pointer]:
+          - generic [ref=e254]:
+            - link "Yeni Rene Magritte - Bird Tablosu" [ref=e255]:
+              - /url: /Urun/Detay/12537
+              - generic [ref=e256]: Yeni
+              - img "Rene Magritte - Bird Tablosu" [ref=e257]
+            - button "" [ref=e258]:
+              - generic [ref=e259]: 
+          - heading "Rene Magritte - Bird Tablosu" [level=3] [ref=e260]:
+            - link "Rene Magritte - Bird Tablosu" [ref=e261]:
+              - /url: /Urun/Detay/12537
+          - paragraph [ref=e262]: 999 TL
+        - generic [ref=e263] [cursor=pointer]:
+          - generic [ref=e264]:
+            - link "Yeni Dominique Appia - Les Quatre Saisons Tablosu" [ref=e265]:
+              - /url: /Urun/Detay/12536
+              - generic [ref=e266]: Yeni
+              - img "Dominique Appia - Les Quatre Saisons Tablosu" [ref=e267]
+            - button "" [ref=e268]:
+              - generic [ref=e269]: 
+          - heading "Dominique Appia - Les Quatre Saisons Tablosu" [level=3] [ref=e270]:
+            - link "Dominique Appia - Les Quatre Saisons Tablosu" [ref=e271]:
+              - /url: /Urun/Detay/12536
+          - paragraph [ref=e272]: 999 TL
+        - generic [ref=e273] [cursor=pointer]:
+          - generic [ref=e274]:
+            - link "Yeni Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e275]:
+              - /url: /Urun/Detay/12534
+              - generic [ref=e276]: Yeni
+              - img "Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e277]
+            - button "" [ref=e278]:
+              - generic [ref=e279]: 
+          - heading "Rene Magritte - The False Mirror Tablosu - Model 5" [level=3] [ref=e280]:
+            - link "Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e281]:
+              - /url: /Urun/Detay/12534
+          - paragraph [ref=e282]: 2.149 TL
+        - generic [ref=e283] [cursor=pointer]:
+          - generic [ref=e284]:
+            - link "Yeni Rene Magritte - The False Mirror Tablosu - Model 3" [ref=e285]:
+              - /url: /Urun/Detay/12533
+              - generic [ref=e286]: Yeni
+              - img "Rene Magritte - The False Mirror Tablosu - Model 3" [ref=e287]
+            - button "" [ref=e288]:
+              - generic [ref=e289]: 
+          - heading "Rene Magritte - The False Mirror Tablosu - Model 3" [level=3] [ref=e290]:
+            - link "Rene Magritte - The False Mirror Tablosu - Model 3" [ref=e291]:
+              - /url: /Urun/Detay/12533
+          - paragraph [ref=e292]: 849 TL
+        - generic [ref=e293] [cursor=pointer]:
+          - generic [ref=e294]:
+            - link "Yeni Rene Magritte - The False Mirror Tablosu - Model 1" [ref=e295]:
+              - /url: /Urun/Detay/12532
+              - generic [ref=e296]: Yeni
+              - img "Rene Magritte - The False Mirror Tablosu - Model 1" [ref=e297]
+            - button "" [ref=e298]:
+              - generic [ref=e299]: 
+          - heading "Rene Magritte - The False Mirror Tablosu - Model 1" [level=3] [ref=e300]:
+            - link "Rene Magritte - The False Mirror Tablosu - Model 1" [ref=e301]:
+              - /url: /Urun/Detay/12532
+          - paragraph [ref=e302]: 999 TL
+        - generic [ref=e303] [cursor=pointer]:
+          - generic [ref=e304]:
+            - link "Yeni Rene Magritte - Personal Values Tablosu - Model 1" [ref=e305]:
+              - /url: /Urun/Detay/12531
+              - generic [ref=e306]: Yeni
+              - img "Rene Magritte - Personal Values Tablosu - Model 1" [ref=e307]
+            - button "" [ref=e308]:
+              - generic [ref=e309]: 
+          - heading "Rene Magritte - Personal Values Tablosu - Model 1" [level=3] [ref=e310]:
+            - link "Rene Magritte - Personal Values Tablosu - Model 1" [ref=e311]:
+              - /url: /Urun/Detay/12531
+          - paragraph [ref=e312]: 999 TL
+        - generic [ref=e313] [cursor=pointer]:
+          - generic [ref=e314]:
+            - link "Yeni Salvador Dali - Dream Caused Tablosu - Model 2" [ref=e315]:
+              - /url: /Urun/Detay/12530
+              - generic [ref=e316]: Yeni
+              - img "Salvador Dali - Dream Caused Tablosu - Model 2" [ref=e317]
+            - button "" [ref=e318]:
+              - generic [ref=e319]: 
+          - heading "Salvador Dali - Dream Caused Tablosu - Model 2" [level=3] [ref=e320]:
+            - link "Salvador Dali - Dream Caused Tablosu - Model 2" [ref=e321]:
+              - /url: /Urun/Detay/12530
+          - paragraph [ref=e322]: 999 TL
+        - generic [ref=e323] [cursor=pointer]:
+          - generic [ref=e324]:
+            - link "Yeni Salvador Dali - Hallucinogenic Tablosu - Model 2" [ref=e325]:
+              - /url: /Urun/Detay/12529
+              - generic [ref=e326]: Yeni
+              - img "Salvador Dali - Hallucinogenic Tablosu - Model 2" [ref=e327]
+            - button "" [ref=e328]:
+              - generic [ref=e329]: 
+          - heading "Salvador Dali - Hallucinogenic Tablosu - Model 2" [level=3] [ref=e330]:
+            - link "Salvador Dali - Hallucinogenic Tablosu - Model 2" [ref=e331]:
+              - /url: /Urun/Detay/12529
+          - paragraph [ref=e332]: 999 TL
+      - link "Tümünü Gör" [ref=e334] [cursor=pointer]:
+        - /url: /Urun
+    - generic [ref=e335]:
+      - generic [ref=e336]:
+        - generic [ref=e337]:
+          - paragraph [ref=e338]: Çok satanlar
+          - heading "En çok tercih edilenler" [level=2] [ref=e339]
+        - link "Tümünü Gör " [ref=e340] [cursor=pointer]:
+          - /url: /Urun?sort=popularity
+          - text: Tümünü Gör
+          - generic [ref=e341]: 
+      - generic [ref=e342]:
+        - article [ref=e343]:
+          - link "Çok satan Mor Gelincik Çiçek Kanvas Tablo Mor Gelincik Çiçek Kanvas Tablo 681 TL" [ref=e344] [cursor=pointer]:
+            - /url: /Urun/Detay/mor-gelincik-cicek-kanvas-tablo-2
+            - generic [ref=e345]:
+              - generic [ref=e346]: Çok satan
+              - img "Mor Gelincik Çiçek Kanvas Tablo" [ref=e347]
+            - heading "Mor Gelincik Çiçek Kanvas Tablo" [level=3] [ref=e348]
+            - paragraph [ref=e349]: 681 TL
+        - article [ref=e350]:
+          - link "Çok satan Love Yazılı Kanvas Tablo Love Yazılı Kanvas Tablo 445 TL" [ref=e351] [cursor=pointer]:
+            - /url: /Urun/Detay/love-yazili-kanvas-tablo-3
+            - generic [ref=e352]:
+              - generic [ref=e353]: Çok satan
+              - img "Love Yazılı Kanvas Tablo" [ref=e354]
+            - heading "Love Yazılı Kanvas Tablo" [level=3] [ref=e355]
+            - paragraph [ref=e356]: 445 TL
+        - article [ref=e357]:
+          - link "Çok satan Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo 681 TL" [ref=e358] [cursor=pointer]:
+            - /url: /Urun/Detay/sokaktaki-bankta-cicekle-bekleyen-kanvas-tablo-29
+            - generic [ref=e359]:
+              - generic [ref=e360]: Çok satan
+              - img "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [ref=e361]
+            - heading "Sokaktaki Bankta Çiçekle Bekleyen Kanvas Tablo" [level=3] [ref=e362]
+            - paragraph [ref=e363]: 681 TL
+        - article [ref=e364]:
+          - link "Çok satan Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo 632 TL" [ref=e365] [cursor=pointer]:
+            - /url: /Urun/Detay/boga-resimli-renkli-muhtesem-mimari-dekor-kanvas-tablo-63
+            - generic [ref=e366]:
+              - generic [ref=e367]: Çok satan
+              - img "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo" [ref=e368]
+            - heading "Boğa Resimli Renkli Muhteşem Mimari Dekor Kanvas Tablo" [level=3] [ref=e369]
+            - paragraph [ref=e370]: 632 TL
+        - article [ref=e371]:
+          - link "Çok satan Sanatsal Kırmızı Vazolar İçinde Dekoratif Çiçekli Kanvas Tablo Sanatsal Kırmızı Vazolar İçinde Dekoratif Çiçekli Kanvas Tablo 528 TL" [ref=e372] [cursor=pointer]:
+            - /url: /Urun/Detay/sanatsal-kirmizi-vazolar-icinde-dekoratif-cicekli-kanvas-tablo-144
+            - generic [ref=e373]:
+              - generic [ref=e374]: Çok satan
+              - img "Sanatsal Kırmızı Vazolar İçinde Dekoratif Çiçekli Kanvas Tablo" [ref=e375]
+            - heading "Sanatsal Kırmızı Vazolar İçinde Dekoratif Çiçekli Kanvas Tablo" [level=3] [ref=e376]
+            - paragraph [ref=e377]: 528 TL
+        - article [ref=e378]:
+          - link "Çok satan İskele Altı Tablosu İskele Altı Tablosu 2.149 TL" [ref=e379] [cursor=pointer]:
+            - /url: /Urun/Detay/2520
+            - generic [ref=e380]:
+              - generic [ref=e381]: Çok satan
+              - img "İskele Altı Tablosu" [ref=e382]
+            - heading "İskele Altı Tablosu" [level=3] [ref=e383]
+            - paragraph [ref=e384]: 2.149 TL
+        - article [ref=e385]:
+          - link "Çok satan Akarsu Doğa Tablosu Akarsu Doğa Tablosu 2.149 TL" [ref=e386] [cursor=pointer]:
+            - /url: /Urun/Detay/2808
+            - generic [ref=e387]:
+              - generic [ref=e388]: Çok satan
+              - img "Akarsu Doğa Tablosu" [ref=e389]
+            - heading "Akarsu Doğa Tablosu" [level=3] [ref=e390]
+            - paragraph [ref=e391]: 2.149 TL
+        - article [ref=e392]:
+          - link "Çok satan Kabe Kapısı Tablosu - Model 3 Kabe Kapısı Tablosu - Model 3 849 TL" [ref=e393] [cursor=pointer]:
+            - /url: /Urun/Detay/9170
+            - generic [ref=e394]:
+              - generic [ref=e395]: Çok satan
+              - img "Kabe Kapısı Tablosu - Model 3" [ref=e396]
+            - heading "Kabe Kapısı Tablosu - Model 3" [level=3] [ref=e397]
+            - paragraph [ref=e398]: 849 TL
+    - generic [ref=e400]:
+      - generic [ref=e401]:
+        - generic [ref=e402]:
+          - paragraph [ref=e403]: Fırsat ürünleri
+          - heading "Kampanyalı seçimler" [level=2] [ref=e404]
+        - link "Fırsatları Gör " [ref=e405] [cursor=pointer]:
+          - /url: /Urun?sort=price_asc
+          - text: Fırsatları Gör
+          - generic [ref=e406]: 
+      - generic [ref=e407]:
+        - article [ref=e408]:
+          - link "Fırsat Şömine Dekoratif Kanvas Tablosu Şömine Dekoratif Kanvas Tablosu 492 TL" [ref=e409] [cursor=pointer]:
+            - /url: /Urun/Detay/somine-dekoratif-kanvas-tablosu-415
+            - generic [ref=e410]:
+              - generic [ref=e411]: Fırsat
+              - img "Şömine Dekoratif Kanvas Tablosu" [ref=e412]
+            - heading "Şömine Dekoratif Kanvas Tablosu" [level=3] [ref=e413]
+            - paragraph [ref=e415]: 492 TL
+        - article [ref=e416]:
+          - link "Fırsat İstabulun Fethi Fatih sultan Mehmet 1453 Tek Parça Kanvas Tablo İstabulun Fethi Fatih sultan Mehmet 1453 Tek Parça Kanvas Tablo 632 TL" [ref=e417] [cursor=pointer]:
+            - /url: /Urun/Detay/istabulun-fethi-fatih-sultan-mehmet-1453-tek-parca-kanvas-tablo-327
+            - generic [ref=e418]:
+              - generic [ref=e419]: Fırsat
+              - img "İstabulun Fethi Fatih sultan Mehmet 1453 Tek Parça Kanvas Tablo" [ref=e420]
+            - heading "İstabulun Fethi Fatih sultan Mehmet 1453 Tek Parça Kanvas Tablo" [level=3] [ref=e421]
+            - paragraph [ref=e423]: 632 TL
+        - article [ref=e424]:
+          - link "Fırsat Denizde Koşan Kahverengi Anne At Ve Yavrusu Kanvas Tablo Denizde Koşan Kahverengi Anne At Ve Yavrusu Kanvas Tablo 632 TL" [ref=e425] [cursor=pointer]:
+            - /url: /Urun/Detay/denizde-kosan-kahverengi-anne-at-ve-yavrusu-kanvas-tablo-339
+            - generic [ref=e426]:
+              - generic [ref=e427]: Fırsat
+              - img "Denizde Koşan Kahverengi Anne At Ve Yavrusu Kanvas Tablo" [ref=e428]
+            - heading "Denizde Koşan Kahverengi Anne At Ve Yavrusu Kanvas Tablo" [level=3] [ref=e429]
+            - paragraph [ref=e431]: 632 TL
+        - article [ref=e432]:
+          - link "Fırsat Pembe Çiçekli Sanatsal Dekoratif Kanvas Tablo Pembe Çiçekli Sanatsal Dekoratif Kanvas Tablo 632 TL" [ref=e433] [cursor=pointer]:
+            - /url: /Urun/Detay/pembe-cicekli-sanatsal-dekoratif-kanvas-tablo-340
+            - generic [ref=e434]:
+              - generic [ref=e435]: Fırsat
+              - img "Pembe Çiçekli Sanatsal Dekoratif Kanvas Tablo" [ref=e436]
+            - heading "Pembe Çiçekli Sanatsal Dekoratif Kanvas Tablo" [level=3] [ref=e437]
+            - paragraph [ref=e439]: 632 TL
+        - article [ref=e440]:
+          - link "Fırsat Al Pacino Baba Filmi Kanvas Tablosu Al Pacino Baba Filmi Kanvas Tablosu 632 TL" [ref=e441] [cursor=pointer]:
+            - /url: /Urun/Detay/al-pacino-baba-filmi-kanvas-tablosu-341
+            - generic [ref=e442]:
+              - generic [ref=e443]: Fırsat
+              - img "Al Pacino Baba Filmi Kanvas Tablosu" [ref=e444]
+            - heading "Al Pacino Baba Filmi Kanvas Tablosu" [level=3] [ref=e445]
+            - paragraph [ref=e447]: 632 TL
+        - article [ref=e448]:
+          - link "Fırsat Osmanlı Tuğrası Türk Yazılı Kanvas Tablosu Osmanlı Tuğrası Türk Yazılı Kanvas Tablosu 632 TL" [ref=e449] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-tugrasi-turk-yazili-kanvas-tablosu-343
+            - generic [ref=e450]:
+              - generic [ref=e451]: Fırsat
+              - img "Osmanlı Tuğrası Türk Yazılı Kanvas Tablosu" [ref=e452]
+            - heading "Osmanlı Tuğrası Türk Yazılı Kanvas Tablosu" [level=3] [ref=e453]
+            - paragraph [ref=e455]: 632 TL
+        - article [ref=e456]:
+          - link "Fırsat Kendi Resimlerinizden kişiye özel kanvas tablo modelleri aile tablosu Kendi Resimlerinizden kişiye özel kanvas tablo modelleri aile tablosu 632 TL" [ref=e457] [cursor=pointer]:
+            - /url: /Urun/Detay/kendi-resimlerinizden-kisiye-ozel-kanvas-tablo-modelleri-aile-tablosu-346
+            - generic [ref=e458]:
+              - generic [ref=e459]: Fırsat
+              - img "Kendi Resimlerinizden kişiye özel kanvas tablo modelleri aile tablosu" [ref=e460]
+            - heading "Kendi Resimlerinizden kişiye özel kanvas tablo modelleri aile tablosu" [level=3] [ref=e461]
+            - paragraph [ref=e463]: 632 TL
+        - article [ref=e464]:
+          - link "Fırsat Osmanlı Arması Kanvas Tablo Osmanlı Arması Kanvas Tablo 632 TL" [ref=e465] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-armasi-kanvas-tablo-353
+            - generic [ref=e466]:
+              - generic [ref=e467]: Fırsat
+              - img "Osmanlı Arması Kanvas Tablo" [ref=e468]
+            - heading "Osmanlı Arması Kanvas Tablo" [level=3] [ref=e469]
+            - paragraph [ref=e471]: 632 TL
+    - generic [ref=e474]:
+      - generic [ref=e475]:
+        - generic [ref=e477]: 
+        - heading "Güvenli Ödeme" [level=4] [ref=e478]
+        - paragraph [ref=e479]: 256-bit SSL ile %100 güvenli alışveriş deneyimi.
+      - generic [ref=e480]:
+        - generic [ref=e482]: 
+        - heading "Hızlı Teslimat" [level=4] [ref=e483]
+        - paragraph [ref=e484]: Özel kutusunda, hasarsız ve hızlı teslimat garantisi.
+      - generic [ref=e485]:
+        - generic [ref=e487]: 
+        - heading "Müşteri Memnuniyeti" [level=4] [ref=e488]
+        - paragraph [ref=e489]: Her türlü sorunuzda 7/24 yanınızdayız.
+    - generic [ref=e491]:
+      - generic [ref=e492]:
+        - generic [ref=e493]:
+          - paragraph [ref=e494]: Üretimden teslimata
+          - heading "Siparişiniz özenle hazırlanır" [level=2] [ref=e495]
+        - paragraph [ref=e496]: Canvasia, dekorasyon ürünlerini siparişe özel üretim yaklaşımıyla hazırlar; baskı, hazırlık ve paketleme süreci kalite kontrolünden geçer.
+      - generic [ref=e497]:
+        - generic [ref=e498]:
+          - generic [ref=e499]: "01"
+          - heading "Tasarım hazırlanır" [level=3] [ref=e500]
+          - paragraph [ref=e501]: Görsel ve ürün bilgisi üretime uygun şekilde kontrol edilir.
+        - generic [ref=e502]:
+          - generic [ref=e503]: "02"
+          - heading "Kaliteli baskı alınır" [level=3] [ref=e504]
+          - paragraph [ref=e505]: Renk canlılığı ve detay netliği korunacak şekilde baskı yapılır.
+        - generic [ref=e506]:
+          - generic [ref=e507]: "03"
+          - heading "Ürün hazırlanır" [level=3] [ref=e508]
+          - paragraph [ref=e509]: Ürün grubu ve seçilen ölçüye göre üretim tamamlanır.
+        - generic [ref=e510]:
+          - generic [ref=e511]: "04"
+          - heading "Özenle paketlenir" [level=3] [ref=e512]
+          - paragraph [ref=e513]: Kargoda hasar riskini azaltacak korunaklı paketleme uygulanır.
+        - generic [ref=e514]:
+          - generic [ref=e515]: "05"
+          - heading "Kargoya teslim edilir" [level=3] [ref=e516]
+          - paragraph [ref=e517]: Türkiye içi gönderim için siparişiniz takip edilebilir şekilde yola çıkar.
+    - generic [ref=e519]:
+      - img "Canvasia üretim ve dekorasyon kalitesi" [ref=e598]
+      - generic [ref=e520]:
+        - paragraph [ref=e521]: Malzeme ve baskı kalitesi
+        - heading "Yaşam alanlarına uzun ömürlü bir dokunuş" [level=2] [ref=e522]
+        - paragraph [ref=e523]: Kanvas tablo, cam tablo, duvar kağıdı ve dekorasyon ürünlerinde kullanılan yüzey, baskı ve paketleme tercihleri ürünün kullanım alanına göre planlanır.
+        - paragraph [ref=e524]: Amaç yalnızca güzel görünen bir ürün göndermek değil; müşterinin evinde, ofisinde veya yaşam alanında güvenle kullanabileceği premium bir dekorasyon deneyimi sunmaktır.
+        - generic [ref=e525]:
+          - generic [ref=e526]:
+            - generic [ref=e527]: 
+            - paragraph [ref=e528]: Canlı renkler
+          - generic [ref=e529]:
+            - generic [ref=e530]: 
+            - paragraph [ref=e531]: Ölçü seçenekleri
+          - generic [ref=e532]:
+            - generic [ref=e533]: 
+            - paragraph [ref=e534]: Korunaklı paket
+  - contentinfo [ref=e535]:
+    - generic [ref=e537]:
+      - generic [ref=e538]:
+        - generic [ref=e540]: 
+        - generic [ref=e541]:
+          - generic [ref=e542]: Tüm Türkiye'ye
+          - generic [ref=e543]: Ücretsiz Kargo
+      - generic [ref=e544]:
+        - generic [ref=e546]: 
+        - generic [ref=e547]:
+          - generic [ref=e548]: "%100 Güvenli Alışveriş"
+          - generic [ref=e549]: 256 Bit SSL Sertifikası
+      - generic [ref=e550]:
+        - generic [ref=e552]: 
+        - generic [ref=e553]:
+          - generic [ref=e554]: Tüm Kredi Kartlarına
+          - generic [ref=e555]: 12 Taksit İmkanı
+    - generic [ref=e556]:
+      - generic [ref=e557]:
+        - generic [ref=e558]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e559]
+          - paragraph [ref=e560]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e561]:
+            - textbox "E-posta Adresi" [ref=e562]
+            - button "ABONE OL" [ref=e563] [cursor=pointer]
+        - generic [ref=e564]:
+          - heading "KURUMSAL" [level=4] [ref=e565]
+          - list [ref=e566]:
+            - listitem [ref=e567]:
+              - link "Hakkımızda" [ref=e568] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e569]:
+              - link "İletişim" [ref=e570] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e571]:
+              - link "Koleksiyonlar" [ref=e572] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e573]:
+              - link "Gizlilik Politikası" [ref=e574] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e575]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e576] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e577]:
+            - link "Instagram" [ref=e578] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e579]: 
+            - link "WhatsApp" [ref=e580] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e581]: 
+      - generic [ref=e582]:
+        - paragraph [ref=e584]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e585]:
+          - link "Gizlilik Politikası" [ref=e586] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e587] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e588] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e591]
+  - link "WhatsApp ile iletişim" [ref=e592] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e593]
+    - generic [ref=e595]: WhatsApp

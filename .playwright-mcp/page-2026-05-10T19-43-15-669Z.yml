@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - link "Hangfire Dashboard" [ref=e6] [cursor=pointer]:
+        - /url: /Admin/Hangfire/
+      - generic [ref=e7]:
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "İşler 0" [ref=e10] [cursor=pointer]:
+              - /url: /Admin/Hangfire/jobs/enqueued
+              - text: İşler
+              - generic [ref=e11]: "0"
+          - listitem [ref=e12]:
+            - link "Yeniden Denenenler 0" [ref=e13] [cursor=pointer]:
+              - /url: /Admin/Hangfire/retries
+              - text: Yeniden Denenenler
+              - generic [ref=e14]: "0"
+          - listitem [ref=e15]:
+            - link "Tekrarlayan İşler 0" [ref=e16] [cursor=pointer]:
+              - /url: /Admin/Hangfire/recurring
+              - text: Tekrarlayan İşler
+              - generic [ref=e17]: "0"
+          - listitem [ref=e18]:
+            - link "Sunucular 1" [ref=e19] [cursor=pointer]:
+              - /url: /Admin/Hangfire/servers
+              - text: Sunucular
+              - generic [ref=e20]: "1"
+        - list [ref=e21]:
+          - listitem [ref=e22]:
+            - link " Siteye geri dön" [ref=e23] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e24]: 
+              - text: Siteye geri dön
+    - generic [ref=e27]:
+      - heading "Genel Bakış" [level=1] [ref=e28]
+      - heading "Canlı Grafik" [level=3] [ref=e29]
+      - heading "Gün Hafta Geçmiş Grafiği" [level=3] [ref=e31]:
+        - generic [ref=e32]:
+          - link "Gün" [ref=e33] [cursor=pointer]:
+            - /url: "?period=day"
+          - link "Hafta" [ref=e34] [cursor=pointer]:
+            - /url: "?period=week"
+        - text: Geçmiş Grafiği
+  - list [ref=e38]:
+    - listitem [ref=e39]:
+      - link "Hangfire 1.8.12" [ref=e40] [cursor=pointer]:
+        - /url: https://www.hangfire.io/
+    - listitem [ref=e41]: "PostgreSQL Server: Host: localhost, DB: kanvasdb, Schema: hangfire 1.20.8"
+    - listitem [ref=e42]:
+      - generic [ref=e43]: "Zaman: 10.5.2026 22:43:15"
+    - listitem [ref=e44]: "Oluşturuldu: 61,33ms"

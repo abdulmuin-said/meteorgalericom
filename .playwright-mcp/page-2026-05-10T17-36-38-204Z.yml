@@ -1,0 +1,1603 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+      - /url: /Admin/Home
+      - img "Canvasia" [ref=e6]
+    - navigation "Admin ana menü" [ref=e7]:
+      - link " Panel" [ref=e8] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e9]: 
+        - text: Panel
+      - generic [ref=e10]:
+        - button " Sipariş Yönetimi 3" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e13]: "3"
+        - text:     
+      - generic [ref=e14]:
+        - button " Ürün Yönetimi" [ref=e15] [cursor=pointer]:
+          - generic [ref=e16]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e17]:
+        - button " Mağaza İçeriği 10" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e20]: "10"
+        - text:     
+      - link " Üyeler" [ref=e21] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e22]: 
+        - text: Üyeler
+      - generic [ref=e23]:
+        - button " Raporlar" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e26] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e27]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e28] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e29]: 
+        - text: Yardım
+    - generic [ref=e30]:
+      - text: 
+      - generic [ref=e31]:
+        - button "H" [ref=e32] [cursor=pointer]:
+          - generic [ref=e33]: H
+        - text:  
+  - generic [ref=e34]:
+    - main [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - heading "Kategori Yönetimi" [level=1] [ref=e39]
+            - paragraph [ref=e40]: Ana kategori, alt kategori, SEO ve mağaza görünürlüğünü tek ekrandan yönetin.
+          - generic [ref=e41]:
+            - link " PDF" [ref=e42] [cursor=pointer]:
+              - /url: /Admin/Kategori/PdfExport
+              - generic [ref=e43]: 
+              - text: PDF
+            - link " XLSX" [ref=e44] [cursor=pointer]:
+              - /url: /Admin/Kategori/ExcelExport
+              - generic [ref=e45]: 
+              - text: XLSX
+            - link "+ Yeni Kategori" [ref=e46] [cursor=pointer]:
+              - /url: /Admin/Kategori/Ekle
+              - generic [ref=e47]: +
+              - text: Yeni Kategori
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e51]: 
+            - generic [ref=e52]:
+              - generic [ref=e53]: Toplam Kategori
+              - strong [ref=e54]: "36"
+          - generic [ref=e55]:
+            - generic [ref=e57]: 
+            - generic [ref=e58]:
+              - generic [ref=e59]: Aktif Kategori
+              - strong [ref=e60]: "36"
+          - generic [ref=e61]:
+            - generic [ref=e63]: 
+            - generic [ref=e64]:
+              - generic [ref=e65]: Ana Kategori
+              - strong [ref=e66]: "10"
+          - generic [ref=e67]:
+            - generic [ref=e69]: 
+            - generic [ref=e70]:
+              - generic [ref=e71]: Alt Kategori
+              - strong [ref=e72]: "26"
+        - generic [ref=e73]:
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - generic [ref=e77]: Arama
+              - textbox "Kategori adı, slug veya SEO başlığı" [ref=e78]
+            - generic [ref=e79]:
+              - generic [ref=e80]: Durum
+              - combobox [ref=e81]:
+                - option "Tüm durumlar" [selected]
+                - option "Aktif"
+                - option "Pasif"
+            - generic [ref=e82]:
+              - generic [ref=e83]: Kategori Tipi
+              - combobox [ref=e84]:
+                - option "Tüm tipler" [selected]
+                - option "Ana kategori"
+                - option "Alt kategori"
+            - generic [ref=e85]:
+              - button " Filtrele" [ref=e86] [cursor=pointer]:
+                - generic [ref=e87]: 
+                - text: Filtrele
+              - link "" [ref=e88] [cursor=pointer]:
+                - /url: /Admin/Kategori
+                - generic [ref=e89]: 
+          - generic [ref=e91]:
+            - text: Listelenen
+            - strong [ref=e92]: "36"
+            - text: kategori
+          - table [ref=e94]:
+            - rowgroup [ref=e95]:
+              - row "Kategori Üst Kategori Mağaza Verisi SEO Sıra Durum İşlemler" [ref=e96]:
+                - columnheader "Kategori" [ref=e97]
+                - columnheader "Üst Kategori" [ref=e98]
+                - columnheader "Mağaza Verisi" [ref=e99]
+                - columnheader "SEO" [ref=e100]
+                - columnheader "Sıra" [ref=e101]
+                - columnheader "Durum" [ref=e102]
+                - columnheader "İşlemler" [ref=e103]
+            - rowgroup [ref=e104]:
+              - 'row "A Atatürk Köşesi Kanvas Tablo > Atatürk Köşesi  /ataturk-kosesi  Seçili Koleksiyon Kanvas Tablo  61 ürün  0 alt kategori Hazır Atatürk Köşesi | Canvasia #1  Aktif   " [ref=e105]':
+                - cell "A Atatürk Köşesi Kanvas Tablo > Atatürk Köşesi  /ataturk-kosesi  Seçili Koleksiyon" [ref=e106]:
+                  - generic [ref=e107]:
+                    - generic [ref=e108]: A
+                    - generic [ref=e109]:
+                      - generic [ref=e110]: Atatürk Köşesi
+                      - generic [ref=e111]: Kanvas Tablo > Atatürk Köşesi
+                      - generic [ref=e112]:
+                        - generic [ref=e113]:
+                          - generic [ref=e114]: 
+                          - text: /ataturk-kosesi
+                        - generic [ref=e115]:
+                          - generic [ref=e116]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e117]
+                - cell " 61 ürün  0 alt kategori" [ref=e118]:
+                  - generic [ref=e119]:
+                    - generic [ref=e120]:
+                      - generic [ref=e121]: 
+                      - text: 61 ürün
+                    - generic [ref=e122]:
+                      - generic [ref=e123]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Atatürk Köşesi | Canvasia" [ref=e124]:
+                  - generic [ref=e125]: Hazır
+                  - generic [ref=e126]: Atatürk Köşesi | Canvasia
+                - cell "#1" [ref=e127]
+                - cell " Aktif" [ref=e128]:
+                  - generic [ref=e129]:
+                    - generic [ref=e130]: 
+                    - text: Aktif
+                - cell "  " [ref=e131]:
+                  - generic [ref=e132]:
+                    - link "" [ref=e133] [cursor=pointer]:
+                      - /url: /Urun?k=1
+                      - generic [ref=e134]: 
+                    - link "" [ref=e135] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/1
+                      - generic [ref=e136]: 
+                    - button "" [ref=e138] [cursor=pointer]:
+                      - generic [ref=e139]: 
+              - 'row "K Kanvas Tablo Salon, ofis ve ya?am alanlar? i?in premium kanvas tablo modelleri.  /kanvas-tablo Ana kategori  1 ürün  26 alt kategori Hazır Kanvas Tablo Modelleri | Modern ve Premium Duvar Tablolar? #1  Aktif   " [ref=e140]':
+                - cell "K Kanvas Tablo Salon, ofis ve ya?am alanlar? i?in premium kanvas tablo modelleri.  /kanvas-tablo" [ref=e141]:
+                  - generic [ref=e142]:
+                    - generic [ref=e143]: K
+                    - generic [ref=e144]:
+                      - generic [ref=e145]: Kanvas Tablo
+                      - text: Salon, ofis ve ya?am alanlar? i?in premium kanvas tablo modelleri.
+                      - generic [ref=e147]:
+                        - generic [ref=e148]: 
+                        - text: /kanvas-tablo
+                - cell "Ana kategori" [ref=e149]
+                - cell " 1 ürün  26 alt kategori" [ref=e150]:
+                  - generic [ref=e151]:
+                    - generic [ref=e152]:
+                      - generic [ref=e153]: 
+                      - text: 1 ürün
+                    - generic [ref=e154]:
+                      - generic [ref=e155]: 
+                      - text: 26 alt kategori
+                - cell "Hazır Kanvas Tablo Modelleri | Modern ve Premium Duvar Tablolar?" [ref=e156]:
+                  - generic [ref=e157]: Hazır
+                  - generic [ref=e158]: Kanvas Tablo Modelleri | Modern ve Premium Duvar Tablolar?
+                - cell "#1" [ref=e159]
+                - cell " Aktif" [ref=e160]:
+                  - generic [ref=e161]:
+                    - generic [ref=e162]: 
+                    - text: Aktif
+                - cell "  " [ref=e163]:
+                  - generic [ref=e164]:
+                    - link "" [ref=e165] [cursor=pointer]:
+                      - /url: /Urun?k=29
+                      - generic [ref=e166]: 
+                    - link "" [ref=e167] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/29
+                      - generic [ref=e168]: 
+                    - button "" [ref=e170] [cursor=pointer]:
+                      - generic [ref=e171]: 
+              - 'row "C Cam Tablo Modern dekorasyon için parlak yüzeyli, şık ve kaliteli cam tablo modelleri.  /cam-tablo  Modern Dekorasyon Ana kategori  0 ürün  0 alt kategori Hazır Cam Tablo Modelleri ve Fiyatları | CANVASİA #2  Aktif   " [ref=e172]':
+                - cell "C Cam Tablo Modern dekorasyon için parlak yüzeyli, şık ve kaliteli cam tablo modelleri.  /cam-tablo  Modern Dekorasyon" [ref=e173]:
+                  - generic [ref=e174]:
+                    - generic [ref=e175]: C
+                    - generic [ref=e176]:
+                      - generic [ref=e177]: Cam Tablo
+                      - text: Modern dekorasyon için parlak yüzeyli, şık ve kaliteli cam tablo modelleri.
+                      - generic [ref=e178]:
+                        - generic [ref=e179]:
+                          - generic [ref=e180]: 
+                          - text: /cam-tablo
+                        - generic [ref=e181]:
+                          - generic [ref=e182]: 
+                          - text: Modern Dekorasyon
+                - cell "Ana kategori" [ref=e183]
+                - cell " 0 ürün  0 alt kategori" [ref=e184]:
+                  - generic [ref=e185]:
+                    - generic [ref=e186]:
+                      - generic [ref=e187]: 
+                      - text: 0 ürün
+                    - generic [ref=e188]:
+                      - generic [ref=e189]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Cam Tablo Modelleri ve Fiyatları | CANVASİA" [ref=e190]:
+                  - generic [ref=e191]: Hazır
+                  - generic [ref=e192]: Cam Tablo Modelleri ve Fiyatları | CANVASİA
+                - cell "#2" [ref=e193]
+                - cell " Aktif" [ref=e194]:
+                  - generic [ref=e195]:
+                    - generic [ref=e196]: 
+                    - text: Aktif
+                - cell "  " [ref=e197]:
+                  - generic [ref=e198]:
+                    - link "" [ref=e199] [cursor=pointer]:
+                      - /url: /Urun?k=30
+                      - generic [ref=e200]: 
+                    - link "" [ref=e201] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/30
+                      - generic [ref=e202]: 
+                    - button "" [ref=e204] [cursor=pointer]:
+                      - generic [ref=e205]: 
+              - 'row "İ İslami Sanat & Hat Kanvas Tablo > İslami Sanat & Hat  /islami-sanat-hat  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır İslami Sanat & Hat | Canvasia #2  Aktif   " [ref=e206]':
+                - cell "İ İslami Sanat & Hat Kanvas Tablo > İslami Sanat & Hat  /islami-sanat-hat  Seçili Koleksiyon" [ref=e207]:
+                  - generic [ref=e208]:
+                    - generic [ref=e209]: İ
+                    - generic [ref=e210]:
+                      - generic [ref=e211]: İslami Sanat & Hat
+                      - generic [ref=e212]: Kanvas Tablo > İslami Sanat & Hat
+                      - generic [ref=e213]:
+                        - generic [ref=e214]:
+                          - generic [ref=e215]: 
+                          - text: /islami-sanat-hat
+                        - generic [ref=e216]:
+                          - generic [ref=e217]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e218]
+                - cell " 0 ürün  0 alt kategori" [ref=e219]:
+                  - generic [ref=e220]:
+                    - generic [ref=e221]:
+                      - generic [ref=e222]: 
+                      - text: 0 ürün
+                    - generic [ref=e223]:
+                      - generic [ref=e224]: 
+                      - text: 0 alt kategori
+                - cell "Hazır İslami Sanat & Hat | Canvasia" [ref=e225]:
+                  - generic [ref=e226]: Hazır
+                  - generic [ref=e227]: İslami Sanat & Hat | Canvasia
+                - cell "#2" [ref=e228]
+                - cell " Aktif" [ref=e229]:
+                  - generic [ref=e230]:
+                    - generic [ref=e231]: 
+                    - text: Aktif
+                - cell "  " [ref=e232]:
+                  - generic [ref=e233]:
+                    - link "" [ref=e234] [cursor=pointer]:
+                      - /url: /Urun?k=2
+                      - generic [ref=e235]: 
+                    - link "" [ref=e236] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/2
+                      - generic [ref=e237]: 
+                    - button "" [ref=e239] [cursor=pointer]:
+                      - generic [ref=e240]: 
+              - 'row "D Duvar Kağıdı Ev ve iş yerleri için modern, dekoratif ve şık duvar kağıdı modelleri.  /duvar-kagidi  Dekoratif Seçimler Ana kategori  0 ürün  0 alt kategori Hazır Duvar Kağıdı Modelleri ve Fiyatları | CANVASİA #3  Aktif   " [ref=e241]':
+                - cell "D Duvar Kağıdı Ev ve iş yerleri için modern, dekoratif ve şık duvar kağıdı modelleri.  /duvar-kagidi  Dekoratif Seçimler" [ref=e242]:
+                  - generic [ref=e243]:
+                    - generic [ref=e244]: D
+                    - generic [ref=e245]:
+                      - generic [ref=e246]: Duvar Kağıdı
+                      - text: Ev ve iş yerleri için modern, dekoratif ve şık duvar kağıdı modelleri.
+                      - generic [ref=e247]:
+                        - generic [ref=e248]:
+                          - generic [ref=e249]: 
+                          - text: /duvar-kagidi
+                        - generic [ref=e250]:
+                          - generic [ref=e251]: 
+                          - text: Dekoratif Seçimler
+                - cell "Ana kategori" [ref=e252]
+                - cell " 0 ürün  0 alt kategori" [ref=e253]:
+                  - generic [ref=e254]:
+                    - generic [ref=e255]:
+                      - generic [ref=e256]: 
+                      - text: 0 ürün
+                    - generic [ref=e257]:
+                      - generic [ref=e258]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Duvar Kağıdı Modelleri ve Fiyatları | CANVASİA" [ref=e259]:
+                  - generic [ref=e260]: Hazır
+                  - generic [ref=e261]: Duvar Kağıdı Modelleri ve Fiyatları | CANVASİA
+                - cell "#3" [ref=e262]
+                - cell " Aktif" [ref=e263]:
+                  - generic [ref=e264]:
+                    - generic [ref=e265]: 
+                    - text: Aktif
+                - cell "  " [ref=e266]:
+                  - generic [ref=e267]:
+                    - link "" [ref=e268] [cursor=pointer]:
+                      - /url: /Urun?k=31
+                      - generic [ref=e269]: 
+                    - link "" [ref=e270] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/31
+                      - generic [ref=e271]: 
+                    - button "" [ref=e273] [cursor=pointer]:
+                      - generic [ref=e274]: 
+              - 'row "D Dünya Klasikleri Kanvas Tablo > Dünya Klasikleri  /dunya-klasikleri  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır Dünya Klasikleri | Canvasia #3  Aktif   " [ref=e275]':
+                - cell "D Dünya Klasikleri Kanvas Tablo > Dünya Klasikleri  /dunya-klasikleri  Seçili Koleksiyon" [ref=e276]:
+                  - generic [ref=e277]:
+                    - generic [ref=e278]: D
+                    - generic [ref=e279]:
+                      - generic [ref=e280]: Dünya Klasikleri
+                      - generic [ref=e281]: Kanvas Tablo > Dünya Klasikleri
+                      - generic [ref=e282]:
+                        - generic [ref=e283]:
+                          - generic [ref=e284]: 
+                          - text: /dunya-klasikleri
+                        - generic [ref=e285]:
+                          - generic [ref=e286]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e287]
+                - cell " 0 ürün  0 alt kategori" [ref=e288]:
+                  - generic [ref=e289]:
+                    - generic [ref=e290]:
+                      - generic [ref=e291]: 
+                      - text: 0 ürün
+                    - generic [ref=e292]:
+                      - generic [ref=e293]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Dünya Klasikleri | Canvasia" [ref=e294]:
+                  - generic [ref=e295]: Hazır
+                  - generic [ref=e296]: Dünya Klasikleri | Canvasia
+                - cell "#3" [ref=e297]
+                - cell " Aktif" [ref=e298]:
+                  - generic [ref=e299]:
+                    - generic [ref=e300]: 
+                    - text: Aktif
+                - cell "  " [ref=e301]:
+                  - generic [ref=e302]:
+                    - link "" [ref=e303] [cursor=pointer]:
+                      - /url: /Urun?k=3
+                      - generic [ref=e304]: 
+                    - link "" [ref=e305] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/3
+                      - generic [ref=e306]: 
+                    - button "" [ref=e308] [cursor=pointer]:
+                      - generic [ref=e309]: 
+              - 'row "C Cam Kesme Tahtası Mutfaklar için şık, kullanışlı ve baskılı cam kesme tahtası modelleri.  /cam-kesme-tahtasi  Mutfak Dekorasyonu Ana kategori  0 ürün  0 alt kategori Hazır Cam Kesme Tahtası Modelleri #4  Aktif   " [ref=e310]':
+                - cell "C Cam Kesme Tahtası Mutfaklar için şık, kullanışlı ve baskılı cam kesme tahtası modelleri.  /cam-kesme-tahtasi  Mutfak Dekorasyonu" [ref=e311]:
+                  - generic [ref=e312]:
+                    - generic [ref=e313]: C
+                    - generic [ref=e314]:
+                      - generic [ref=e315]: Cam Kesme Tahtası
+                      - text: Mutfaklar için şık, kullanışlı ve baskılı cam kesme tahtası modelleri.
+                      - generic [ref=e316]:
+                        - generic [ref=e317]:
+                          - generic [ref=e318]: 
+                          - text: /cam-kesme-tahtasi
+                        - generic [ref=e319]:
+                          - generic [ref=e320]: 
+                          - text: Mutfak Dekorasyonu
+                - cell "Ana kategori" [ref=e321]
+                - cell " 0 ürün  0 alt kategori" [ref=e322]:
+                  - generic [ref=e323]:
+                    - generic [ref=e324]:
+                      - generic [ref=e325]: 
+                      - text: 0 ürün
+                    - generic [ref=e326]:
+                      - generic [ref=e327]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Cam Kesme Tahtası Modelleri" [ref=e328]:
+                  - generic [ref=e329]: Hazır
+                  - generic [ref=e330]: Cam Kesme Tahtası Modelleri
+                - cell "#4" [ref=e331]
+                - cell " Aktif" [ref=e332]:
+                  - generic [ref=e333]:
+                    - generic [ref=e334]: 
+                    - text: Aktif
+                - cell "  " [ref=e335]:
+                  - generic [ref=e336]:
+                    - link "" [ref=e337] [cursor=pointer]:
+                      - /url: /Urun?k=32
+                      - generic [ref=e338]: 
+                    - link "" [ref=e339] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/32
+                      - generic [ref=e340]: 
+                    - button "" [ref=e342] [cursor=pointer]:
+                      - generic [ref=e343]: 
+              - 'row "M Modern & Soyut Kanvas Tablo > Modern & Soyut  /modern-soyut  Seçili Koleksiyon Kanvas Tablo  1778 ürün  0 alt kategori Hazır Modern & Soyut | Canvasia #4  Aktif   " [ref=e344]':
+                - cell "M Modern & Soyut Kanvas Tablo > Modern & Soyut  /modern-soyut  Seçili Koleksiyon" [ref=e345]:
+                  - generic [ref=e346]:
+                    - generic [ref=e347]: M
+                    - generic [ref=e348]:
+                      - generic [ref=e349]: Modern & Soyut
+                      - generic [ref=e350]: Kanvas Tablo > Modern & Soyut
+                      - generic [ref=e351]:
+                        - generic [ref=e352]:
+                          - generic [ref=e353]: 
+                          - text: /modern-soyut
+                        - generic [ref=e354]:
+                          - generic [ref=e355]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e356]
+                - cell " 1778 ürün  0 alt kategori" [ref=e357]:
+                  - generic [ref=e358]:
+                    - generic [ref=e359]:
+                      - generic [ref=e360]: 
+                      - text: 1778 ürün
+                    - generic [ref=e361]:
+                      - generic [ref=e362]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Modern & Soyut | Canvasia" [ref=e363]:
+                  - generic [ref=e364]: Hazır
+                  - generic [ref=e365]: Modern & Soyut | Canvasia
+                - cell "#4" [ref=e366]
+                - cell " Aktif" [ref=e367]:
+                  - generic [ref=e368]:
+                    - generic [ref=e369]: 
+                    - text: Aktif
+                - cell "  " [ref=e370]:
+                  - generic [ref=e371]:
+                    - link "" [ref=e372] [cursor=pointer]:
+                      - /url: /Urun?k=4
+                      - generic [ref=e373]: 
+                    - link "" [ref=e374] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/4
+                      - generic [ref=e375]: 
+                    - button "" [ref=e377] [cursor=pointer]:
+                      - generic [ref=e378]: 
+              - 'row "A Ayna Ev ve ofis dekorasyonu için modern, şık ve dekoratif ayna modelleri.  /ayna  Şık Dekorasyon Ana kategori  0 ürün  0 alt kategori Hazır Dekoratif Ayna Modelleri ve Fiyatları | CANVASİA #5  Aktif   " [ref=e379]':
+                - cell "A Ayna Ev ve ofis dekorasyonu için modern, şık ve dekoratif ayna modelleri.  /ayna  Şık Dekorasyon" [ref=e380]:
+                  - generic [ref=e381]:
+                    - generic [ref=e382]: A
+                    - generic [ref=e383]:
+                      - generic [ref=e384]: Ayna
+                      - text: Ev ve ofis dekorasyonu için modern, şık ve dekoratif ayna modelleri.
+                      - generic [ref=e385]:
+                        - generic [ref=e386]:
+                          - generic [ref=e387]: 
+                          - text: /ayna
+                        - generic [ref=e388]:
+                          - generic [ref=e389]: 
+                          - text: Şık Dekorasyon
+                - cell "Ana kategori" [ref=e390]
+                - cell " 0 ürün  0 alt kategori" [ref=e391]:
+                  - generic [ref=e392]:
+                    - generic [ref=e393]:
+                      - generic [ref=e394]: 
+                      - text: 0 ürün
+                    - generic [ref=e395]:
+                      - generic [ref=e396]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Dekoratif Ayna Modelleri ve Fiyatları | CANVASİA" [ref=e397]:
+                  - generic [ref=e398]: Hazır
+                  - generic [ref=e399]: Dekoratif Ayna Modelleri ve Fiyatları | CANVASİA
+                - cell "#5" [ref=e400]
+                - cell " Aktif" [ref=e401]:
+                  - generic [ref=e402]:
+                    - generic [ref=e403]: 
+                    - text: Aktif
+                - cell "  " [ref=e404]:
+                  - generic [ref=e405]:
+                    - link "" [ref=e406] [cursor=pointer]:
+                      - /url: /Urun?k=33
+                      - generic [ref=e407]: 
+                    - link "" [ref=e408] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/33
+                      - generic [ref=e409]: 
+                    - button "" [ref=e411] [cursor=pointer]:
+                      - generic [ref=e412]: 
+              - 'row "Ş Şehir Manzaraları Kanvas Tablo > Şehir Manzaraları  /sehir-manzaralari  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır Şehir Manzaraları | Canvasia #5  Aktif   " [ref=e413]':
+                - cell "Ş Şehir Manzaraları Kanvas Tablo > Şehir Manzaraları  /sehir-manzaralari  Seçili Koleksiyon" [ref=e414]:
+                  - generic [ref=e415]:
+                    - generic [ref=e416]: Ş
+                    - generic [ref=e417]:
+                      - generic [ref=e418]: Şehir Manzaraları
+                      - generic [ref=e419]: Kanvas Tablo > Şehir Manzaraları
+                      - generic [ref=e420]:
+                        - generic [ref=e421]:
+                          - generic [ref=e422]: 
+                          - text: /sehir-manzaralari
+                        - generic [ref=e423]:
+                          - generic [ref=e424]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e425]
+                - cell " 0 ürün  0 alt kategori" [ref=e426]:
+                  - generic [ref=e427]:
+                    - generic [ref=e428]:
+                      - generic [ref=e429]: 
+                      - text: 0 ürün
+                    - generic [ref=e430]:
+                      - generic [ref=e431]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Şehir Manzaraları | Canvasia" [ref=e432]:
+                  - generic [ref=e433]: Hazır
+                  - generic [ref=e434]: Şehir Manzaraları | Canvasia
+                - cell "#5" [ref=e435]
+                - cell " Aktif" [ref=e436]:
+                  - generic [ref=e437]:
+                    - generic [ref=e438]: 
+                    - text: Aktif
+                - cell "  " [ref=e439]:
+                  - generic [ref=e440]:
+                    - link "" [ref=e441] [cursor=pointer]:
+                      - /url: /Urun?k=5
+                      - generic [ref=e442]: 
+                    - link "" [ref=e443] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/5
+                      - generic [ref=e444]: 
+                    - button "" [ref=e446] [cursor=pointer]:
+                      - generic [ref=e447]: 
+              - 'row "B Baskılı Halı Ev ve yaşam alanları için özel tasarımlı, dekoratif baskılı halı modelleri.  /baskili-hali  Yeni Sezon Ana kategori  0 ürün  0 alt kategori Hazır Baskılı Halı Modelleri ve Fiyatları #6  Aktif   " [ref=e448]':
+                - cell "B Baskılı Halı Ev ve yaşam alanları için özel tasarımlı, dekoratif baskılı halı modelleri.  /baskili-hali  Yeni Sezon" [ref=e449]:
+                  - generic [ref=e450]:
+                    - generic [ref=e451]: B
+                    - generic [ref=e452]:
+                      - generic [ref=e453]: Baskılı Halı
+                      - text: Ev ve yaşam alanları için özel tasarımlı, dekoratif baskılı halı modelleri.
+                      - generic [ref=e454]:
+                        - generic [ref=e455]:
+                          - generic [ref=e456]: 
+                          - text: /baskili-hali
+                        - generic [ref=e457]:
+                          - generic [ref=e458]: 
+                          - text: Yeni Sezon
+                - cell "Ana kategori" [ref=e459]
+                - cell " 0 ürün  0 alt kategori" [ref=e460]:
+                  - generic [ref=e461]:
+                    - generic [ref=e462]:
+                      - generic [ref=e463]: 
+                      - text: 0 ürün
+                    - generic [ref=e464]:
+                      - generic [ref=e465]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Baskılı Halı Modelleri ve Fiyatları" [ref=e466]:
+                  - generic [ref=e467]: Hazır
+                  - generic [ref=e468]: Baskılı Halı Modelleri ve Fiyatları
+                - cell "#6" [ref=e469]
+                - cell " Aktif" [ref=e470]:
+                  - generic [ref=e471]:
+                    - generic [ref=e472]: 
+                    - text: Aktif
+                - cell "  " [ref=e473]:
+                  - generic [ref=e474]:
+                    - link "" [ref=e475] [cursor=pointer]:
+                      - /url: /Urun?k=34
+                      - generic [ref=e476]: 
+                    - link "" [ref=e477] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/34
+                      - generic [ref=e478]: 
+                    - button "" [ref=e480] [cursor=pointer]:
+                      - generic [ref=e481]: 
+              - 'row "A Ahşap Dekorasyon Doğal ve sıcak görünümlü ahşap dekorasyon ürünleriyle yaşam alanlarınıza tarz katın.  /ahsap-dekorasyon-urunleri  Doğal Tasarım Ana kategori  0 ürün  0 alt kategori Hazır Ahşap Dekorasyon Ürünleri #7  Aktif   " [ref=e482]':
+                - cell "A Ahşap Dekorasyon Doğal ve sıcak görünümlü ahşap dekorasyon ürünleriyle yaşam alanlarınıza tarz katın.  /ahsap-dekorasyon-urunleri  Doğal Tasarım" [ref=e483]:
+                  - generic [ref=e484]:
+                    - generic [ref=e485]: A
+                    - generic [ref=e486]:
+                      - generic [ref=e487]: Ahşap Dekorasyon
+                      - text: Doğal ve sıcak görünümlü ahşap dekorasyon ürünleriyle yaşam alanlarınıza tarz katın.
+                      - generic [ref=e488]:
+                        - generic [ref=e489]:
+                          - generic [ref=e490]: 
+                          - text: /ahsap-dekorasyon-urunleri
+                        - generic [ref=e491]:
+                          - generic [ref=e492]: 
+                          - text: Doğal Tasarım
+                - cell "Ana kategori" [ref=e493]
+                - cell " 0 ürün  0 alt kategori" [ref=e494]:
+                  - generic [ref=e495]:
+                    - generic [ref=e496]:
+                      - generic [ref=e497]: 
+                      - text: 0 ürün
+                    - generic [ref=e498]:
+                      - generic [ref=e499]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Ahşap Dekorasyon Ürünleri" [ref=e500]:
+                  - generic [ref=e501]: Hazır
+                  - generic [ref=e502]: Ahşap Dekorasyon Ürünleri
+                - cell "#7" [ref=e503]
+                - cell " Aktif" [ref=e504]:
+                  - generic [ref=e505]:
+                    - generic [ref=e506]: 
+                    - text: Aktif
+                - cell "  " [ref=e507]:
+                  - generic [ref=e508]:
+                    - link "" [ref=e509] [cursor=pointer]:
+                      - /url: /Urun?k=35
+                      - generic [ref=e510]: 
+                    - link "" [ref=e511] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/35
+                      - generic [ref=e512]: 
+                    - button "" [ref=e514] [cursor=pointer]:
+                      - generic [ref=e515]: 
+              - 'row "P Parçalı Tablolar Kanvas Tablo > Parçalı Tablolar  /parcali-tablolar  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır Parçalı Tablolar | Canvasia #7  Aktif   " [ref=e516]':
+                - cell "P Parçalı Tablolar Kanvas Tablo > Parçalı Tablolar  /parcali-tablolar  Seçili Koleksiyon" [ref=e517]:
+                  - generic [ref=e518]:
+                    - generic [ref=e519]: P
+                    - generic [ref=e520]:
+                      - generic [ref=e521]: Parçalı Tablolar
+                      - generic [ref=e522]: Kanvas Tablo > Parçalı Tablolar
+                      - generic [ref=e523]:
+                        - generic [ref=e524]:
+                          - generic [ref=e525]: 
+                          - text: /parcali-tablolar
+                        - generic [ref=e526]:
+                          - generic [ref=e527]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e528]
+                - cell " 0 ürün  0 alt kategori" [ref=e529]:
+                  - generic [ref=e530]:
+                    - generic [ref=e531]:
+                      - generic [ref=e532]: 
+                      - text: 0 ürün
+                    - generic [ref=e533]:
+                      - generic [ref=e534]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Parçalı Tablolar | Canvasia" [ref=e535]:
+                  - generic [ref=e536]: Hazır
+                  - generic [ref=e537]: Parçalı Tablolar | Canvasia
+                - cell "#7" [ref=e538]
+                - cell " Aktif" [ref=e539]:
+                  - generic [ref=e540]:
+                    - generic [ref=e541]: 
+                    - text: Aktif
+                - cell "  " [ref=e542]:
+                  - generic [ref=e543]:
+                    - link "" [ref=e544] [cursor=pointer]:
+                      - /url: /Urun?k=7
+                      - generic [ref=e545]: 
+                    - link "" [ref=e546] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/7
+                      - generic [ref=e547]: 
+                    - button "" [ref=e549] [cursor=pointer]:
+                      - generic [ref=e550]: 
+              - 'row "D Dini ve Hat Sanatı Kanvas Tablo > Dini ve Hat Sanatı  /dini-ve-hat-sanati  Seçili Koleksiyon Kanvas Tablo  296 ürün  0 alt kategori Hazır Dini ve Hat Sanatı | Canvasia #8  Aktif   " [ref=e551]':
+                - cell "D Dini ve Hat Sanatı Kanvas Tablo > Dini ve Hat Sanatı  /dini-ve-hat-sanati  Seçili Koleksiyon" [ref=e552]:
+                  - generic [ref=e553]:
+                    - generic [ref=e554]: D
+                    - generic [ref=e555]:
+                      - generic [ref=e556]: Dini ve Hat Sanatı
+                      - generic [ref=e557]: Kanvas Tablo > Dini ve Hat Sanatı
+                      - generic [ref=e558]:
+                        - generic [ref=e559]:
+                          - generic [ref=e560]: 
+                          - text: /dini-ve-hat-sanati
+                        - generic [ref=e561]:
+                          - generic [ref=e562]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e563]
+                - cell " 296 ürün  0 alt kategori" [ref=e564]:
+                  - generic [ref=e565]:
+                    - generic [ref=e566]:
+                      - generic [ref=e567]: 
+                      - text: 296 ürün
+                    - generic [ref=e568]:
+                      - generic [ref=e569]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Dini ve Hat Sanatı | Canvasia" [ref=e570]:
+                  - generic [ref=e571]: Hazır
+                  - generic [ref=e572]: Dini ve Hat Sanatı | Canvasia
+                - cell "#8" [ref=e573]
+                - cell " Aktif" [ref=e574]:
+                  - generic [ref=e575]:
+                    - generic [ref=e576]: 
+                    - text: Aktif
+                - cell "  " [ref=e577]:
+                  - generic [ref=e578]:
+                    - link "" [ref=e579] [cursor=pointer]:
+                      - /url: /Urun?k=8
+                      - generic [ref=e580]: 
+                    - link "" [ref=e581] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/8
+                      - generic [ref=e582]: 
+                    - button "" [ref=e584] [cursor=pointer]:
+                      - generic [ref=e585]: 
+              - 'row "M Mobilya Aksesuar Salon ve yaşam alanları için dekoratif sehpa tarzı mobilya aksesuarları.  /mobilya-aksesuar  Modern Yaşam Ana kategori  0 ürün  0 alt kategori Hazır Sehpa Tarzı Mobilya Aksesuarları #8  Aktif   " [ref=e586]':
+                - cell "M Mobilya Aksesuar Salon ve yaşam alanları için dekoratif sehpa tarzı mobilya aksesuarları.  /mobilya-aksesuar  Modern Yaşam" [ref=e587]:
+                  - generic [ref=e588]:
+                    - generic [ref=e589]: M
+                    - generic [ref=e590]:
+                      - generic [ref=e591]: Mobilya Aksesuar
+                      - text: Salon ve yaşam alanları için dekoratif sehpa tarzı mobilya aksesuarları.
+                      - generic [ref=e592]:
+                        - generic [ref=e593]:
+                          - generic [ref=e594]: 
+                          - text: /mobilya-aksesuar
+                        - generic [ref=e595]:
+                          - generic [ref=e596]: 
+                          - text: Modern Yaşam
+                - cell "Ana kategori" [ref=e597]
+                - cell " 0 ürün  0 alt kategori" [ref=e598]:
+                  - generic [ref=e599]:
+                    - generic [ref=e600]:
+                      - generic [ref=e601]: 
+                      - text: 0 ürün
+                    - generic [ref=e602]:
+                      - generic [ref=e603]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Sehpa Tarzı Mobilya Aksesuarları" [ref=e604]:
+                  - generic [ref=e605]: Hazır
+                  - generic [ref=e606]: Sehpa Tarzı Mobilya Aksesuarları
+                - cell "#8" [ref=e607]
+                - cell " Aktif" [ref=e608]:
+                  - generic [ref=e609]:
+                    - generic [ref=e610]: 
+                    - text: Aktif
+                - cell "  " [ref=e611]:
+                  - generic [ref=e612]:
+                    - link "" [ref=e613] [cursor=pointer]:
+                      - /url: /Urun?k=36
+                      - generic [ref=e614]: 
+                    - link "" [ref=e615] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/36
+                      - generic [ref=e616]: 
+                    - button "" [ref=e618] [cursor=pointer]:
+                      - generic [ref=e619]: 
+              - 'row "L Lightbox Işıklı dekorasyon ve dikkat çekici görsel sunumlar için modern lightbox modelleri.  /lightbox  Işıklı Tasarım Ana kategori  0 ürün  0 alt kategori Hazır Lightbox Modelleri ve Fiyatları #9  Aktif   " [ref=e620]':
+                - cell "L Lightbox Işıklı dekorasyon ve dikkat çekici görsel sunumlar için modern lightbox modelleri.  /lightbox  Işıklı Tasarım" [ref=e621]:
+                  - generic [ref=e622]:
+                    - generic [ref=e623]: L
+                    - generic [ref=e624]:
+                      - generic [ref=e625]: Lightbox
+                      - text: Işıklı dekorasyon ve dikkat çekici görsel sunumlar için modern lightbox modelleri.
+                      - generic [ref=e626]:
+                        - generic [ref=e627]:
+                          - generic [ref=e628]: 
+                          - text: /lightbox
+                        - generic [ref=e629]:
+                          - generic [ref=e630]: 
+                          - text: Işıklı Tasarım
+                - cell "Ana kategori" [ref=e631]
+                - cell " 0 ürün  0 alt kategori" [ref=e632]:
+                  - generic [ref=e633]:
+                    - generic [ref=e634]:
+                      - generic [ref=e635]: 
+                      - text: 0 ürün
+                    - generic [ref=e636]:
+                      - generic [ref=e637]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Lightbox Modelleri ve Fiyatları" [ref=e638]:
+                  - generic [ref=e639]: Hazır
+                  - generic [ref=e640]: Lightbox Modelleri ve Fiyatları
+                - cell "#9" [ref=e641]
+                - cell " Aktif" [ref=e642]:
+                  - generic [ref=e643]:
+                    - generic [ref=e644]: 
+                    - text: Aktif
+                - cell "  " [ref=e645]:
+                  - generic [ref=e646]:
+                    - link "" [ref=e647] [cursor=pointer]:
+                      - /url: /Urun?k=37
+                      - generic [ref=e648]: 
+                    - link "" [ref=e649] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/37
+                      - generic [ref=e650]: 
+                    - button "" [ref=e652] [cursor=pointer]:
+                      - generic [ref=e653]: 
+              - 'row "M Manzara Temalı Kanvas Tablo > Manzara Temalı  /manzara-temali  Seçili Koleksiyon Kanvas Tablo  1269 ürün  0 alt kategori Hazır Manzara Temalı | Canvasia #9  Aktif   " [ref=e654]':
+                - cell "M Manzara Temalı Kanvas Tablo > Manzara Temalı  /manzara-temali  Seçili Koleksiyon" [ref=e655]:
+                  - generic [ref=e656]:
+                    - generic [ref=e657]: M
+                    - generic [ref=e658]:
+                      - generic [ref=e659]: Manzara Temalı
+                      - generic [ref=e660]: Kanvas Tablo > Manzara Temalı
+                      - generic [ref=e661]:
+                        - generic [ref=e662]:
+                          - generic [ref=e663]: 
+                          - text: /manzara-temali
+                        - generic [ref=e664]:
+                          - generic [ref=e665]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e666]
+                - cell " 1269 ürün  0 alt kategori" [ref=e667]:
+                  - generic [ref=e668]:
+                    - generic [ref=e669]:
+                      - generic [ref=e670]: 
+                      - text: 1269 ürün
+                    - generic [ref=e671]:
+                      - generic [ref=e672]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Manzara Temalı | Canvasia" [ref=e673]:
+                  - generic [ref=e674]: Hazır
+                  - generic [ref=e675]: Manzara Temalı | Canvasia
+                - cell "#9" [ref=e676]
+                - cell " Aktif" [ref=e677]:
+                  - generic [ref=e678]:
+                    - generic [ref=e679]: 
+                    - text: Aktif
+                - cell "  " [ref=e680]:
+                  - generic [ref=e681]:
+                    - link "" [ref=e682] [cursor=pointer]:
+                      - /url: /Urun?k=9
+                      - generic [ref=e683]: 
+                    - link "" [ref=e684] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/9
+                      - generic [ref=e685]: 
+                    - button "" [ref=e687] [cursor=pointer]:
+                      - generic [ref=e688]: 
+              - 'row "A Afiş Tanıtım, kampanya ve dekorasyon için kaliteli baskılı afiş modelleri.  /afis  Tanıtım Ürünleri Ana kategori  0 ürün  0 alt kategori Hazır Afiş Baskı ve Afiş Modelleri #10  Aktif   " [ref=e689]':
+                - cell "A Afiş Tanıtım, kampanya ve dekorasyon için kaliteli baskılı afiş modelleri.  /afis  Tanıtım Ürünleri" [ref=e690]:
+                  - generic [ref=e691]:
+                    - generic [ref=e692]: A
+                    - generic [ref=e693]:
+                      - generic [ref=e694]: Afiş
+                      - text: Tanıtım, kampanya ve dekorasyon için kaliteli baskılı afiş modelleri.
+                      - generic [ref=e695]:
+                        - generic [ref=e696]:
+                          - generic [ref=e697]: 
+                          - text: /afis
+                        - generic [ref=e698]:
+                          - generic [ref=e699]: 
+                          - text: Tanıtım Ürünleri
+                - cell "Ana kategori" [ref=e700]
+                - cell " 0 ürün  0 alt kategori" [ref=e701]:
+                  - generic [ref=e702]:
+                    - generic [ref=e703]:
+                      - generic [ref=e704]: 
+                      - text: 0 ürün
+                    - generic [ref=e705]:
+                      - generic [ref=e706]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Afiş Baskı ve Afiş Modelleri" [ref=e707]:
+                  - generic [ref=e708]: Hazır
+                  - generic [ref=e709]: Afiş Baskı ve Afiş Modelleri
+                - cell "#10" [ref=e710]
+                - cell " Aktif" [ref=e711]:
+                  - generic [ref=e712]:
+                    - generic [ref=e713]: 
+                    - text: Aktif
+                - cell "  " [ref=e714]:
+                  - generic [ref=e715]:
+                    - link "" [ref=e716] [cursor=pointer]:
+                      - /url: /Urun?k=38
+                      - generic [ref=e717]: 
+                    - link "" [ref=e718] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/38
+                      - generic [ref=e719]: 
+                    - button "" [ref=e721] [cursor=pointer]:
+                      - generic [ref=e722]: 
+              - 'row "A Atatürk ve Türkiye Kanvas Tablo > Atatürk ve Türkiye  /ataturk-ve-turkiye  Seçili Koleksiyon Kanvas Tablo  194 ürün  0 alt kategori Hazır Atatürk ve Türkiye | Canvasia #10  Aktif   " [ref=e723]':
+                - cell "A Atatürk ve Türkiye Kanvas Tablo > Atatürk ve Türkiye  /ataturk-ve-turkiye  Seçili Koleksiyon" [ref=e724]:
+                  - generic [ref=e725]:
+                    - generic [ref=e726]: A
+                    - generic [ref=e727]:
+                      - generic [ref=e728]: Atatürk ve Türkiye
+                      - generic [ref=e729]: Kanvas Tablo > Atatürk ve Türkiye
+                      - generic [ref=e730]:
+                        - generic [ref=e731]:
+                          - generic [ref=e732]: 
+                          - text: /ataturk-ve-turkiye
+                        - generic [ref=e733]:
+                          - generic [ref=e734]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e735]
+                - cell " 194 ürün  0 alt kategori" [ref=e736]:
+                  - generic [ref=e737]:
+                    - generic [ref=e738]:
+                      - generic [ref=e739]: 
+                      - text: 194 ürün
+                    - generic [ref=e740]:
+                      - generic [ref=e741]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Atatürk ve Türkiye | Canvasia" [ref=e742]:
+                  - generic [ref=e743]: Hazır
+                  - generic [ref=e744]: Atatürk ve Türkiye | Canvasia
+                - cell "#10" [ref=e745]
+                - cell " Aktif" [ref=e746]:
+                  - generic [ref=e747]:
+                    - generic [ref=e748]: 
+                    - text: Aktif
+                - cell "  " [ref=e749]:
+                  - generic [ref=e750]:
+                    - link "" [ref=e751] [cursor=pointer]:
+                      - /url: /Urun?k=10
+                      - generic [ref=e752]: 
+                    - link "" [ref=e753] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/10
+                      - generic [ref=e754]: 
+                    - button "" [ref=e756] [cursor=pointer]:
+                      - generic [ref=e757]: 
+              - 'row "Ş Şehir ve Mimari Kanvas Tablo > Şehir ve Mimari  /sehir-ve-mimari  Seçili Koleksiyon Kanvas Tablo  670 ürün  0 alt kategori Hazır Şehir ve Mimari | Canvasia #11  Aktif   " [ref=e758]':
+                - cell "Ş Şehir ve Mimari Kanvas Tablo > Şehir ve Mimari  /sehir-ve-mimari  Seçili Koleksiyon" [ref=e759]:
+                  - generic [ref=e760]:
+                    - generic [ref=e761]: Ş
+                    - generic [ref=e762]:
+                      - generic [ref=e763]: Şehir ve Mimari
+                      - generic [ref=e764]: Kanvas Tablo > Şehir ve Mimari
+                      - generic [ref=e765]:
+                        - generic [ref=e766]:
+                          - generic [ref=e767]: 
+                          - text: /sehir-ve-mimari
+                        - generic [ref=e768]:
+                          - generic [ref=e769]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e770]
+                - cell " 670 ürün  0 alt kategori" [ref=e771]:
+                  - generic [ref=e772]:
+                    - generic [ref=e773]:
+                      - generic [ref=e774]: 
+                      - text: 670 ürün
+                    - generic [ref=e775]:
+                      - generic [ref=e776]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Şehir ve Mimari | Canvasia" [ref=e777]:
+                  - generic [ref=e778]: Hazır
+                  - generic [ref=e779]: Şehir ve Mimari | Canvasia
+                - cell "#11" [ref=e780]
+                - cell " Aktif" [ref=e781]:
+                  - generic [ref=e782]:
+                    - generic [ref=e783]: 
+                    - text: Aktif
+                - cell "  " [ref=e784]:
+                  - generic [ref=e785]:
+                    - link "" [ref=e786] [cursor=pointer]:
+                      - /url: /Urun?k=11
+                      - generic [ref=e787]: 
+                    - link "" [ref=e788] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/11
+                      - generic [ref=e789]: 
+                    - button "" [ref=e791] [cursor=pointer]:
+                      - generic [ref=e792]: 
+              - 'row "S Soyut ve Sanatsal Kanvas Tablo > Soyut ve Sanatsal  /soyut-ve-sanatsal  Seçili Koleksiyon Kanvas Tablo  1716 ürün  0 alt kategori Hazır Soyut ve Sanatsal | Canvasia #12  Aktif   " [ref=e793]':
+                - cell "S Soyut ve Sanatsal Kanvas Tablo > Soyut ve Sanatsal  /soyut-ve-sanatsal  Seçili Koleksiyon" [ref=e794]:
+                  - generic [ref=e795]:
+                    - generic [ref=e796]: S
+                    - generic [ref=e797]:
+                      - generic [ref=e798]: Soyut ve Sanatsal
+                      - generic [ref=e799]: Kanvas Tablo > Soyut ve Sanatsal
+                      - generic [ref=e800]:
+                        - generic [ref=e801]:
+                          - generic [ref=e802]: 
+                          - text: /soyut-ve-sanatsal
+                        - generic [ref=e803]:
+                          - generic [ref=e804]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e805]
+                - cell " 1716 ürün  0 alt kategori" [ref=e806]:
+                  - generic [ref=e807]:
+                    - generic [ref=e808]:
+                      - generic [ref=e809]: 
+                      - text: 1716 ürün
+                    - generic [ref=e810]:
+                      - generic [ref=e811]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Soyut ve Sanatsal | Canvasia" [ref=e812]:
+                  - generic [ref=e813]: Hazır
+                  - generic [ref=e814]: Soyut ve Sanatsal | Canvasia
+                - cell "#12" [ref=e815]
+                - cell " Aktif" [ref=e816]:
+                  - generic [ref=e817]:
+                    - generic [ref=e818]: 
+                    - text: Aktif
+                - cell "  " [ref=e819]:
+                  - generic [ref=e820]:
+                    - link "" [ref=e821] [cursor=pointer]:
+                      - /url: /Urun?k=12
+                      - generic [ref=e822]: 
+                    - link "" [ref=e823] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/12
+                      - generic [ref=e824]: 
+                    - button "" [ref=e826] [cursor=pointer]:
+                      - generic [ref=e827]: 
+              - 'row "O Osmanlı ve Tuğra Kanvas Tablo > Osmanlı ve Tuğra  /osmanli-ve-tugra  Seçili Koleksiyon Kanvas Tablo  226 ürün  0 alt kategori Hazır Osmanlı ve Tuğra | Canvasia #13  Aktif   " [ref=e828]':
+                - cell "O Osmanlı ve Tuğra Kanvas Tablo > Osmanlı ve Tuğra  /osmanli-ve-tugra  Seçili Koleksiyon" [ref=e829]:
+                  - generic [ref=e830]:
+                    - generic [ref=e831]: O
+                    - generic [ref=e832]:
+                      - generic [ref=e833]: Osmanlı ve Tuğra
+                      - generic [ref=e834]: Kanvas Tablo > Osmanlı ve Tuğra
+                      - generic [ref=e835]:
+                        - generic [ref=e836]:
+                          - generic [ref=e837]: 
+                          - text: /osmanli-ve-tugra
+                        - generic [ref=e838]:
+                          - generic [ref=e839]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e840]
+                - cell " 226 ürün  0 alt kategori" [ref=e841]:
+                  - generic [ref=e842]:
+                    - generic [ref=e843]:
+                      - generic [ref=e844]: 
+                      - text: 226 ürün
+                    - generic [ref=e845]:
+                      - generic [ref=e846]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Osmanlı ve Tuğra | Canvasia" [ref=e847]:
+                  - generic [ref=e848]: Hazır
+                  - generic [ref=e849]: Osmanlı ve Tuğra | Canvasia
+                - cell "#13" [ref=e850]
+                - cell " Aktif" [ref=e851]:
+                  - generic [ref=e852]:
+                    - generic [ref=e853]: 
+                    - text: Aktif
+                - cell "  " [ref=e854]:
+                  - generic [ref=e855]:
+                    - link "" [ref=e856] [cursor=pointer]:
+                      - /url: /Urun?k=13
+                      - generic [ref=e857]: 
+                    - link "" [ref=e858] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/13
+                      - generic [ref=e859]: 
+                    - button "" [ref=e861] [cursor=pointer]:
+                      - generic [ref=e862]: 
+              - 'row "Ü Ünlüler ve Sinema Kanvas Tablo > Ünlüler ve Sinema  /unluler-ve-sinema  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır Ünlüler ve Sinema | Canvasia #14  Aktif   " [ref=e863]':
+                - cell "Ü Ünlüler ve Sinema Kanvas Tablo > Ünlüler ve Sinema  /unluler-ve-sinema  Seçili Koleksiyon" [ref=e864]:
+                  - generic [ref=e865]:
+                    - generic [ref=e866]: Ü
+                    - generic [ref=e867]:
+                      - generic [ref=e868]: Ünlüler ve Sinema
+                      - generic [ref=e869]: Kanvas Tablo > Ünlüler ve Sinema
+                      - generic [ref=e870]:
+                        - generic [ref=e871]:
+                          - generic [ref=e872]: 
+                          - text: /unluler-ve-sinema
+                        - generic [ref=e873]:
+                          - generic [ref=e874]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e875]
+                - cell " 0 ürün  0 alt kategori" [ref=e876]:
+                  - generic [ref=e877]:
+                    - generic [ref=e878]:
+                      - generic [ref=e879]: 
+                      - text: 0 ürün
+                    - generic [ref=e880]:
+                      - generic [ref=e881]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Ünlüler ve Sinema | Canvasia" [ref=e882]:
+                  - generic [ref=e883]: Hazır
+                  - generic [ref=e884]: Ünlüler ve Sinema | Canvasia
+                - cell "#14" [ref=e885]
+                - cell " Aktif" [ref=e886]:
+                  - generic [ref=e887]:
+                    - generic [ref=e888]: 
+                    - text: Aktif
+                - cell "  " [ref=e889]:
+                  - generic [ref=e890]:
+                    - link "" [ref=e891] [cursor=pointer]:
+                      - /url: /Urun?k=14
+                      - generic [ref=e892]: 
+                    - link "" [ref=e893] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/14
+                      - generic [ref=e894]: 
+                    - button "" [ref=e896] [cursor=pointer]:
+                      - generic [ref=e897]: 
+              - 'row "H Hayvanlar Alemi Kanvas Tablo > Hayvanlar Alemi  /hayvanlar-alemi  Seçili Koleksiyon Kanvas Tablo  896 ürün  0 alt kategori Hazır Hayvanlar Alemi | Canvasia #15  Aktif   " [ref=e898]':
+                - cell "H Hayvanlar Alemi Kanvas Tablo > Hayvanlar Alemi  /hayvanlar-alemi  Seçili Koleksiyon" [ref=e899]:
+                  - generic [ref=e900]:
+                    - generic [ref=e901]: H
+                    - generic [ref=e902]:
+                      - generic [ref=e903]: Hayvanlar Alemi
+                      - generic [ref=e904]: Kanvas Tablo > Hayvanlar Alemi
+                      - generic [ref=e905]:
+                        - generic [ref=e906]:
+                          - generic [ref=e907]: 
+                          - text: /hayvanlar-alemi
+                        - generic [ref=e908]:
+                          - generic [ref=e909]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e910]
+                - cell " 896 ürün  0 alt kategori" [ref=e911]:
+                  - generic [ref=e912]:
+                    - generic [ref=e913]:
+                      - generic [ref=e914]: 
+                      - text: 896 ürün
+                    - generic [ref=e915]:
+                      - generic [ref=e916]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Hayvanlar Alemi | Canvasia" [ref=e917]:
+                  - generic [ref=e918]: Hazır
+                  - generic [ref=e919]: Hayvanlar Alemi | Canvasia
+                - cell "#15" [ref=e920]
+                - cell " Aktif" [ref=e921]:
+                  - generic [ref=e922]:
+                    - generic [ref=e923]: 
+                    - text: Aktif
+                - cell "  " [ref=e924]:
+                  - generic [ref=e925]:
+                    - link "" [ref=e926] [cursor=pointer]:
+                      - /url: /Urun?k=15
+                      - generic [ref=e927]: 
+                    - link "" [ref=e928] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/15
+                      - generic [ref=e929]: 
+                    - button "" [ref=e931] [cursor=pointer]:
+                      - generic [ref=e932]: 
+              - 'row "A Araba ve Araçlar Kanvas Tablo > Araba ve Araçlar  /araba-ve-araclar  Seçili Koleksiyon Kanvas Tablo  16 ürün  0 alt kategori Hazır Araba ve Araçlar | Canvasia #16  Aktif   " [ref=e933]':
+                - cell "A Araba ve Araçlar Kanvas Tablo > Araba ve Araçlar  /araba-ve-araclar  Seçili Koleksiyon" [ref=e934]:
+                  - generic [ref=e935]:
+                    - generic [ref=e936]: A
+                    - generic [ref=e937]:
+                      - generic [ref=e938]: Araba ve Araçlar
+                      - generic [ref=e939]: Kanvas Tablo > Araba ve Araçlar
+                      - generic [ref=e940]:
+                        - generic [ref=e941]:
+                          - generic [ref=e942]: 
+                          - text: /araba-ve-araclar
+                        - generic [ref=e943]:
+                          - generic [ref=e944]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e945]
+                - cell " 16 ürün  0 alt kategori" [ref=e946]:
+                  - generic [ref=e947]:
+                    - generic [ref=e948]:
+                      - generic [ref=e949]: 
+                      - text: 16 ürün
+                    - generic [ref=e950]:
+                      - generic [ref=e951]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Araba ve Araçlar | Canvasia" [ref=e952]:
+                  - generic [ref=e953]: Hazır
+                  - generic [ref=e954]: Araba ve Araçlar | Canvasia
+                - cell "#16" [ref=e955]
+                - cell " Aktif" [ref=e956]:
+                  - generic [ref=e957]:
+                    - generic [ref=e958]: 
+                    - text: Aktif
+                - cell "  " [ref=e959]:
+                  - generic [ref=e960]:
+                    - link "" [ref=e961] [cursor=pointer]:
+                      - /url: /Urun?k=16
+                      - generic [ref=e962]: 
+                    - link "" [ref=e963] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/16
+                      - generic [ref=e964]: 
+                    - button "" [ref=e966] [cursor=pointer]:
+                      - generic [ref=e967]: 
+              - 'row "Ç Çocuk Odası Kanvas Tablo > Çocuk Odası  /cocuk-odasi  Seçili Koleksiyon Kanvas Tablo  312 ürün  0 alt kategori Hazır Çocuk Odası | Canvasia #17  Aktif   " [ref=e968]':
+                - cell "Ç Çocuk Odası Kanvas Tablo > Çocuk Odası  /cocuk-odasi  Seçili Koleksiyon" [ref=e969]:
+                  - generic [ref=e970]:
+                    - generic [ref=e971]: Ç
+                    - generic [ref=e972]:
+                      - generic [ref=e973]: Çocuk Odası
+                      - generic [ref=e974]: Kanvas Tablo > Çocuk Odası
+                      - generic [ref=e975]:
+                        - generic [ref=e976]:
+                          - generic [ref=e977]: 
+                          - text: /cocuk-odasi
+                        - generic [ref=e978]:
+                          - generic [ref=e979]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e980]
+                - cell " 312 ürün  0 alt kategori" [ref=e981]:
+                  - generic [ref=e982]:
+                    - generic [ref=e983]:
+                      - generic [ref=e984]: 
+                      - text: 312 ürün
+                    - generic [ref=e985]:
+                      - generic [ref=e986]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Çocuk Odası | Canvasia" [ref=e987]:
+                  - generic [ref=e988]: Hazır
+                  - generic [ref=e989]: Çocuk Odası | Canvasia
+                - cell "#17" [ref=e990]
+                - cell " Aktif" [ref=e991]:
+                  - generic [ref=e992]:
+                    - generic [ref=e993]: 
+                    - text: Aktif
+                - cell "  " [ref=e994]:
+                  - generic [ref=e995]:
+                    - link "" [ref=e996] [cursor=pointer]:
+                      - /url: /Urun?k=17
+                      - generic [ref=e997]: 
+                    - link "" [ref=e998] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/17
+                      - generic [ref=e999]: 
+                    - button "" [ref=e1001] [cursor=pointer]:
+                      - generic [ref=e1002]: 
+              - 'row "N Nü Sanat Kanvas Tablo > Nü Sanat  /nu-sanat  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır Nü Sanat | Canvasia #18  Aktif   " [ref=e1003]':
+                - cell "N Nü Sanat Kanvas Tablo > Nü Sanat  /nu-sanat  Seçili Koleksiyon" [ref=e1004]:
+                  - generic [ref=e1005]:
+                    - generic [ref=e1006]: "N"
+                    - generic [ref=e1007]:
+                      - generic [ref=e1008]: Nü Sanat
+                      - generic [ref=e1009]: Kanvas Tablo > Nü Sanat
+                      - generic [ref=e1010]:
+                        - generic [ref=e1011]:
+                          - generic [ref=e1012]: 
+                          - text: /nu-sanat
+                        - generic [ref=e1013]:
+                          - generic [ref=e1014]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1015]
+                - cell " 0 ürün  0 alt kategori" [ref=e1016]:
+                  - generic [ref=e1017]:
+                    - generic [ref=e1018]:
+                      - generic [ref=e1019]: 
+                      - text: 0 ürün
+                    - generic [ref=e1020]:
+                      - generic [ref=e1021]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Nü Sanat | Canvasia" [ref=e1022]:
+                  - generic [ref=e1023]: Hazır
+                  - generic [ref=e1024]: Nü Sanat | Canvasia
+                - cell "#18" [ref=e1025]
+                - cell " Aktif" [ref=e1026]:
+                  - generic [ref=e1027]:
+                    - generic [ref=e1028]: 
+                    - text: Aktif
+                - cell "  " [ref=e1029]:
+                  - generic [ref=e1030]:
+                    - link "" [ref=e1031] [cursor=pointer]:
+                      - /url: /Urun?k=18
+                      - generic [ref=e1032]: 
+                    - link "" [ref=e1033] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/18
+                      - generic [ref=e1034]: 
+                    - button "" [ref=e1036] [cursor=pointer]:
+                      - generic [ref=e1037]: 
+              - 'row "K Klasik Eserler Kanvas Tablo > Klasik Eserler  /klasik-eserler  Seçili Koleksiyon Kanvas Tablo  193 ürün  0 alt kategori Hazır Klasik Eserler | Canvasia #19  Aktif   " [ref=e1038]':
+                - cell "K Klasik Eserler Kanvas Tablo > Klasik Eserler  /klasik-eserler  Seçili Koleksiyon" [ref=e1039]:
+                  - generic [ref=e1040]:
+                    - generic [ref=e1041]: K
+                    - generic [ref=e1042]:
+                      - generic [ref=e1043]: Klasik Eserler
+                      - generic [ref=e1044]: Kanvas Tablo > Klasik Eserler
+                      - generic [ref=e1045]:
+                        - generic [ref=e1046]:
+                          - generic [ref=e1047]: 
+                          - text: /klasik-eserler
+                        - generic [ref=e1048]:
+                          - generic [ref=e1049]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1050]
+                - cell " 193 ürün  0 alt kategori" [ref=e1051]:
+                  - generic [ref=e1052]:
+                    - generic [ref=e1053]:
+                      - generic [ref=e1054]: 
+                      - text: 193 ürün
+                    - generic [ref=e1055]:
+                      - generic [ref=e1056]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Klasik Eserler | Canvasia" [ref=e1057]:
+                  - generic [ref=e1058]: Hazır
+                  - generic [ref=e1059]: Klasik Eserler | Canvasia
+                - cell "#19" [ref=e1060]
+                - cell " Aktif" [ref=e1061]:
+                  - generic [ref=e1062]:
+                    - generic [ref=e1063]: 
+                    - text: Aktif
+                - cell "  " [ref=e1064]:
+                  - generic [ref=e1065]:
+                    - link "" [ref=e1066] [cursor=pointer]:
+                      - /url: /Urun?k=19
+                      - generic [ref=e1067]: 
+                    - link "" [ref=e1068] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/19
+                      - generic [ref=e1069]: 
+                    - button "" [ref=e1071] [cursor=pointer]:
+                      - generic [ref=e1072]: 
+              - 'row "Y Yiyecek ve İçecek Kanvas Tablo > Yiyecek ve İçecek  /yiyecek-ve-icecek  Seçili Koleksiyon Kanvas Tablo  547 ürün  0 alt kategori Hazır Yiyecek ve İçecek | Canvasia #20  Aktif   " [ref=e1073]':
+                - cell "Y Yiyecek ve İçecek Kanvas Tablo > Yiyecek ve İçecek  /yiyecek-ve-icecek  Seçili Koleksiyon" [ref=e1074]:
+                  - generic [ref=e1075]:
+                    - generic [ref=e1076]: "Y"
+                    - generic [ref=e1077]:
+                      - generic [ref=e1078]: Yiyecek ve İçecek
+                      - generic [ref=e1079]: Kanvas Tablo > Yiyecek ve İçecek
+                      - generic [ref=e1080]:
+                        - generic [ref=e1081]:
+                          - generic [ref=e1082]: 
+                          - text: /yiyecek-ve-icecek
+                        - generic [ref=e1083]:
+                          - generic [ref=e1084]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1085]
+                - cell " 547 ürün  0 alt kategori" [ref=e1086]:
+                  - generic [ref=e1087]:
+                    - generic [ref=e1088]:
+                      - generic [ref=e1089]: 
+                      - text: 547 ürün
+                    - generic [ref=e1090]:
+                      - generic [ref=e1091]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Yiyecek ve İçecek | Canvasia" [ref=e1092]:
+                  - generic [ref=e1093]: Hazır
+                  - generic [ref=e1094]: Yiyecek ve İçecek | Canvasia
+                - cell "#20" [ref=e1095]
+                - cell " Aktif" [ref=e1096]:
+                  - generic [ref=e1097]:
+                    - generic [ref=e1098]: 
+                    - text: Aktif
+                - cell "  " [ref=e1099]:
+                  - generic [ref=e1100]:
+                    - link "" [ref=e1101] [cursor=pointer]:
+                      - /url: /Urun?k=20
+                      - generic [ref=e1102]: 
+                    - link "" [ref=e1103] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/20
+                      - generic [ref=e1104]: 
+                    - button "" [ref=e1106] [cursor=pointer]:
+                      - generic [ref=e1107]: 
+              - 'row "F Farklı Tasarımlar Kanvas Tablo > Farklı Tasarımlar  /farkli-tasarimlar  Seçili Koleksiyon Kanvas Tablo  1680 ürün  0 alt kategori Hazır Farklı Tasarımlar | Canvasia #21  Aktif   " [ref=e1108]':
+                - cell "F Farklı Tasarımlar Kanvas Tablo > Farklı Tasarımlar  /farkli-tasarimlar  Seçili Koleksiyon" [ref=e1109]:
+                  - generic [ref=e1110]:
+                    - generic [ref=e1111]: F
+                    - generic [ref=e1112]:
+                      - generic [ref=e1113]: Farklı Tasarımlar
+                      - generic [ref=e1114]: Kanvas Tablo > Farklı Tasarımlar
+                      - generic [ref=e1115]:
+                        - generic [ref=e1116]:
+                          - generic [ref=e1117]: 
+                          - text: /farkli-tasarimlar
+                        - generic [ref=e1118]:
+                          - generic [ref=e1119]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1120]
+                - cell " 1680 ürün  0 alt kategori" [ref=e1121]:
+                  - generic [ref=e1122]:
+                    - generic [ref=e1123]:
+                      - generic [ref=e1124]: 
+                      - text: 1680 ürün
+                    - generic [ref=e1125]:
+                      - generic [ref=e1126]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Farklı Tasarımlar | Canvasia" [ref=e1127]:
+                  - generic [ref=e1128]: Hazır
+                  - generic [ref=e1129]: Farklı Tasarımlar | Canvasia
+                - cell "#21" [ref=e1130]
+                - cell " Aktif" [ref=e1131]:
+                  - generic [ref=e1132]:
+                    - generic [ref=e1133]: 
+                    - text: Aktif
+                - cell "  " [ref=e1134]:
+                  - generic [ref=e1135]:
+                    - link "" [ref=e1136] [cursor=pointer]:
+                      - /url: /Urun?k=21
+                      - generic [ref=e1137]: 
+                    - link "" [ref=e1138] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/21
+                      - generic [ref=e1139]: 
+                    - button "" [ref=e1141] [cursor=pointer]:
+                      - generic [ref=e1142]: 
+              - 'row "A Aşk ve Romantizm Kanvas Tablo > Aşk ve Romantizm  /ask-ve-romantizm  Seçili Koleksiyon Kanvas Tablo  6 ürün  0 alt kategori Hazır Aşk ve Romantizm | Canvasia #22  Aktif   " [ref=e1143]':
+                - cell "A Aşk ve Romantizm Kanvas Tablo > Aşk ve Romantizm  /ask-ve-romantizm  Seçili Koleksiyon" [ref=e1144]:
+                  - generic [ref=e1145]:
+                    - generic [ref=e1146]: A
+                    - generic [ref=e1147]:
+                      - generic [ref=e1148]: Aşk ve Romantizm
+                      - generic [ref=e1149]: Kanvas Tablo > Aşk ve Romantizm
+                      - generic [ref=e1150]:
+                        - generic [ref=e1151]:
+                          - generic [ref=e1152]: 
+                          - text: /ask-ve-romantizm
+                        - generic [ref=e1153]:
+                          - generic [ref=e1154]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1155]
+                - cell " 6 ürün  0 alt kategori" [ref=e1156]:
+                  - generic [ref=e1157]:
+                    - generic [ref=e1158]:
+                      - generic [ref=e1159]: 
+                      - text: 6 ürün
+                    - generic [ref=e1160]:
+                      - generic [ref=e1161]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Aşk ve Romantizm | Canvasia" [ref=e1162]:
+                  - generic [ref=e1163]: Hazır
+                  - generic [ref=e1164]: Aşk ve Romantizm | Canvasia
+                - cell "#22" [ref=e1165]
+                - cell " Aktif" [ref=e1166]:
+                  - generic [ref=e1167]:
+                    - generic [ref=e1168]: 
+                    - text: Aktif
+                - cell "  " [ref=e1169]:
+                  - generic [ref=e1170]:
+                    - link "" [ref=e1171] [cursor=pointer]:
+                      - /url: /Urun?k=22
+                      - generic [ref=e1172]: 
+                    - link "" [ref=e1173] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/22
+                      - generic [ref=e1174]: 
+                    - button "" [ref=e1176] [cursor=pointer]:
+                      - generic [ref=e1177]: 
+              - 'row "K Kadın Temalı Kanvas Tablo > Kadın Temalı  /kadin-temali  Seçili Koleksiyon Kanvas Tablo  499 ürün  0 alt kategori Hazır Kadın Temalı | Canvasia #23  Aktif   " [ref=e1178]':
+                - cell "K Kadın Temalı Kanvas Tablo > Kadın Temalı  /kadin-temali  Seçili Koleksiyon" [ref=e1179]:
+                  - generic [ref=e1180]:
+                    - generic [ref=e1181]: K
+                    - generic [ref=e1182]:
+                      - generic [ref=e1183]: Kadın Temalı
+                      - generic [ref=e1184]: Kanvas Tablo > Kadın Temalı
+                      - generic [ref=e1185]:
+                        - generic [ref=e1186]:
+                          - generic [ref=e1187]: 
+                          - text: /kadin-temali
+                        - generic [ref=e1188]:
+                          - generic [ref=e1189]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1190]
+                - cell " 499 ürün  0 alt kategori" [ref=e1191]:
+                  - generic [ref=e1192]:
+                    - generic [ref=e1193]:
+                      - generic [ref=e1194]: 
+                      - text: 499 ürün
+                    - generic [ref=e1195]:
+                      - generic [ref=e1196]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Kadın Temalı | Canvasia" [ref=e1197]:
+                  - generic [ref=e1198]: Hazır
+                  - generic [ref=e1199]: Kadın Temalı | Canvasia
+                - cell "#23" [ref=e1200]
+                - cell " Aktif" [ref=e1201]:
+                  - generic [ref=e1202]:
+                    - generic [ref=e1203]: 
+                    - text: Aktif
+                - cell "  " [ref=e1204]:
+                  - generic [ref=e1205]:
+                    - link "" [ref=e1206] [cursor=pointer]:
+                      - /url: /Urun?k=23
+                      - generic [ref=e1207]: 
+                    - link "" [ref=e1208] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/23
+                      - generic [ref=e1209]: 
+                    - button "" [ref=e1211] [cursor=pointer]:
+                      - generic [ref=e1212]: 
+              - 'row "T Taraftar Köşesi Kanvas Tablo > Taraftar Köşesi  /taraftar-kosesi  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır Taraftar Köşesi | Canvasia #24  Aktif   " [ref=e1213]':
+                - cell "T Taraftar Köşesi Kanvas Tablo > Taraftar Köşesi  /taraftar-kosesi  Seçili Koleksiyon" [ref=e1214]:
+                  - generic [ref=e1215]:
+                    - generic [ref=e1216]: T
+                    - generic [ref=e1217]:
+                      - generic [ref=e1218]: Taraftar Köşesi
+                      - generic [ref=e1219]: Kanvas Tablo > Taraftar Köşesi
+                      - generic [ref=e1220]:
+                        - generic [ref=e1221]:
+                          - generic [ref=e1222]: 
+                          - text: /taraftar-kosesi
+                        - generic [ref=e1223]:
+                          - generic [ref=e1224]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1225]
+                - cell " 0 ürün  0 alt kategori" [ref=e1226]:
+                  - generic [ref=e1227]:
+                    - generic [ref=e1228]:
+                      - generic [ref=e1229]: 
+                      - text: 0 ürün
+                    - generic [ref=e1230]:
+                      - generic [ref=e1231]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Taraftar Köşesi | Canvasia" [ref=e1232]:
+                  - generic [ref=e1233]: Hazır
+                  - generic [ref=e1234]: Taraftar Köşesi | Canvasia
+                - cell "#24" [ref=e1235]
+                - cell " Aktif" [ref=e1236]:
+                  - generic [ref=e1237]:
+                    - generic [ref=e1238]: 
+                    - text: Aktif
+                - cell "  " [ref=e1239]:
+                  - generic [ref=e1240]:
+                    - link "" [ref=e1241] [cursor=pointer]:
+                      - /url: /Urun?k=24
+                      - generic [ref=e1242]: 
+                    - link "" [ref=e1243] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/24
+                      - generic [ref=e1244]: 
+                    - button "" [ref=e1246] [cursor=pointer]:
+                      - generic [ref=e1247]: 
+              - 'row "A Adalet ve Hukuk Kanvas Tablo > Adalet ve Hukuk  /adalet-ve-hukuk  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır Adalet ve Hukuk | Canvasia #25  Aktif   " [ref=e1248]':
+                - cell "A Adalet ve Hukuk Kanvas Tablo > Adalet ve Hukuk  /adalet-ve-hukuk  Seçili Koleksiyon" [ref=e1249]:
+                  - generic [ref=e1250]:
+                    - generic [ref=e1251]: A
+                    - generic [ref=e1252]:
+                      - generic [ref=e1253]: Adalet ve Hukuk
+                      - generic [ref=e1254]: Kanvas Tablo > Adalet ve Hukuk
+                      - generic [ref=e1255]:
+                        - generic [ref=e1256]:
+                          - generic [ref=e1257]: 
+                          - text: /adalet-ve-hukuk
+                        - generic [ref=e1258]:
+                          - generic [ref=e1259]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1260]
+                - cell " 0 ürün  0 alt kategori" [ref=e1261]:
+                  - generic [ref=e1262]:
+                    - generic [ref=e1263]:
+                      - generic [ref=e1264]: 
+                      - text: 0 ürün
+                    - generic [ref=e1265]:
+                      - generic [ref=e1266]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Adalet ve Hukuk | Canvasia" [ref=e1267]:
+                  - generic [ref=e1268]: Hazır
+                  - generic [ref=e1269]: Adalet ve Hukuk | Canvasia
+                - cell "#25" [ref=e1270]
+                - cell " Aktif" [ref=e1271]:
+                  - generic [ref=e1272]:
+                    - generic [ref=e1273]: 
+                    - text: Aktif
+                - cell "  " [ref=e1274]:
+                  - generic [ref=e1275]:
+                    - link "" [ref=e1276] [cursor=pointer]:
+                      - /url: /Urun?k=25
+                      - generic [ref=e1277]: 
+                    - link "" [ref=e1278] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/25
+                      - generic [ref=e1279]: 
+                    - button "" [ref=e1281] [cursor=pointer]:
+                      - generic [ref=e1282]: 
+              - 'row "Ç Çiçekli ve Dekoratif Kanvas Tablo > Çiçekli ve Dekoratif  /cicekli-ve-dekoratif  Seçili Koleksiyon Kanvas Tablo  1632 ürün  0 alt kategori Hazır Çiçekli ve Dekoratif | Canvasia #26  Aktif   " [ref=e1283]':
+                - cell "Ç Çiçekli ve Dekoratif Kanvas Tablo > Çiçekli ve Dekoratif  /cicekli-ve-dekoratif  Seçili Koleksiyon" [ref=e1284]:
+                  - generic [ref=e1285]:
+                    - generic [ref=e1286]: Ç
+                    - generic [ref=e1287]:
+                      - generic [ref=e1288]: Çiçekli ve Dekoratif
+                      - generic [ref=e1289]: Kanvas Tablo > Çiçekli ve Dekoratif
+                      - generic [ref=e1290]:
+                        - generic [ref=e1291]:
+                          - generic [ref=e1292]: 
+                          - text: /cicekli-ve-dekoratif
+                        - generic [ref=e1293]:
+                          - generic [ref=e1294]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1295]
+                - cell " 1632 ürün  0 alt kategori" [ref=e1296]:
+                  - generic [ref=e1297]:
+                    - generic [ref=e1298]:
+                      - generic [ref=e1299]: 
+                      - text: 1632 ürün
+                    - generic [ref=e1300]:
+                      - generic [ref=e1301]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Çiçekli ve Dekoratif | Canvasia" [ref=e1302]:
+                  - generic [ref=e1303]: Hazır
+                  - generic [ref=e1304]: Çiçekli ve Dekoratif | Canvasia
+                - cell "#26" [ref=e1305]
+                - cell " Aktif" [ref=e1306]:
+                  - generic [ref=e1307]:
+                    - generic [ref=e1308]: 
+                    - text: Aktif
+                - cell "  " [ref=e1309]:
+                  - generic [ref=e1310]:
+                    - link "" [ref=e1311] [cursor=pointer]:
+                      - /url: /Urun?k=26
+                      - generic [ref=e1312]: 
+                    - link "" [ref=e1313] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/26
+                      - generic [ref=e1314]: 
+                    - button "" [ref=e1316] [cursor=pointer]:
+                      - generic [ref=e1317]: 
+              - 'row "P Panoramik Tablolar Kanvas Tablo > Panoramik Tablolar  /panoramik-tablolar  Seçili Koleksiyon Kanvas Tablo  0 ürün  0 alt kategori Hazır Panoramik Tablolar | Canvasia #27  Aktif   " [ref=e1318]':
+                - cell "P Panoramik Tablolar Kanvas Tablo > Panoramik Tablolar  /panoramik-tablolar  Seçili Koleksiyon" [ref=e1319]:
+                  - generic [ref=e1320]:
+                    - generic [ref=e1321]: P
+                    - generic [ref=e1322]:
+                      - generic [ref=e1323]: Panoramik Tablolar
+                      - generic [ref=e1324]: Kanvas Tablo > Panoramik Tablolar
+                      - generic [ref=e1325]:
+                        - generic [ref=e1326]:
+                          - generic [ref=e1327]: 
+                          - text: /panoramik-tablolar
+                        - generic [ref=e1328]:
+                          - generic [ref=e1329]: 
+                          - text: Seçili Koleksiyon
+                - cell "Kanvas Tablo" [ref=e1330]
+                - cell " 0 ürün  0 alt kategori" [ref=e1331]:
+                  - generic [ref=e1332]:
+                    - generic [ref=e1333]:
+                      - generic [ref=e1334]: 
+                      - text: 0 ürün
+                    - generic [ref=e1335]:
+                      - generic [ref=e1336]: 
+                      - text: 0 alt kategori
+                - cell "Hazır Panoramik Tablolar | Canvasia" [ref=e1337]:
+                  - generic [ref=e1338]: Hazır
+                  - generic [ref=e1339]: Panoramik Tablolar | Canvasia
+                - cell "#27" [ref=e1340]
+                - cell " Aktif" [ref=e1341]:
+                  - generic [ref=e1342]:
+                    - generic [ref=e1343]: 
+                    - text: Aktif
+                - cell "  " [ref=e1344]:
+                  - generic [ref=e1345]:
+                    - link "" [ref=e1346] [cursor=pointer]:
+                      - /url: /Urun?k=27
+                      - generic [ref=e1347]: 
+                    - link "" [ref=e1348] [cursor=pointer]:
+                      - /url: /Admin/Kategori/Duzenle/27
+                      - generic [ref=e1349]: 
+                    - button "" [ref=e1351] [cursor=pointer]:
+                      - generic [ref=e1352]: 
+    - contentinfo [ref=e1353]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

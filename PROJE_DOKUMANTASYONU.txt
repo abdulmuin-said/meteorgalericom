@@ -1,0 +1,288 @@
+# CANVASİA E-TİCARET PROJESİ — KAPSAMLI PROJE DOKÜMANTASYONU
+# Oluşturulma: Nisan 2026 | Versiyon: 2.0
+
+===============================================================
+## 1. PROJE GENEL BİLGİLER
+===============================================================
+
+Proje Adı      : CANVASİA
+Eski Adı       : MeteorGaleri
+Proje Türü     : E-ticaret (Kanvas Tablo / Duvar Sanatı)
+Platform       : ASP.NET Core 8.0 MVC + PostgreSQL
+Mimari         : Clean Architecture (Core / Data / Service / Web)
+Proje Klasörü  : E:\Projeler\MeteorGaleri\
+
+===============================================================
+## 2. ÇALIŞMA ORTAMI VE BAŞLATMA
+===============================================================
+
+### GELIŞTIRME (LOCAL) — ⚡ Hızlı yol:
+  1. Docker Desktop'u aç
+  2. Sadece veritabanını başlat:
+       docker-compose up -d db
+  3. Web uygulamasını local'de başlat:
+       cd E:\Projeler\MeteorGaleri\KanvasProje.Web
+       dotnet watch run
+  4. Tarayıcı: http://localhost:5002
+
+### PRODUCTION (Docker):
+  1. docker-compose build --no-cache
+  2. docker-compose up -d
+  3. Tarayıcı: http://localhost:8080
+
+### Veritabanı İçe Aktarma (SQL Yedeği):
+  Get-Content E:\Projeler\MeteorGaleri\kanvasdb_yedek.sql | docker exec -i kanvasproje-db psql -U kanvasuser -d kanvasdb
+
+===============================================================
+## 3. VERİTABANI BİLGİLERİ
+===============================================================
+
+Container      : kanvasproje-db
+Veritabanı     : kanvasdb           (küçük harf!)
+Kullanıcı      : kanvasuser
+Şifre          : changeme_in_production
+Port           : 5432 (host) → 5432 (container)
+PostgreSQL     : 16-alpine
+
+### Önemli: Bağlantı Dizesi (secrets.json ve appsettings.Development.json)
+  Host=localhost;Port=5432;Database=kanvasdb;Username=kanvasuser;Password=changeme_in_production
+
+### Veritabanı İçeriği (Nisan 2026 itibariyle):
+  - Urunler        : ~1.360 ürün
+  - UrunResimleri  : ~3.754 resim
+  - UrunSecenekleri: ~7.416 seçenek
+  - Kategoriler    : 27 kategori
+  - AspNetUsers    : Identity kullanıcıları
+  - Siparisler     : Sipariş kayıtları
+  - Favoriler      : Kullanıcı favorileri
+  - SepetItems     : Sepet kalemleri
+
+### Ana Tablolar:
+  "Urunler"           → Ürünler
+  "Kategoriler"       → Kategoriler
+  "UrunResimleri"     → Ürün görselleri (ResimYolu property'si!)
+  "UrunSecenekleri"   → Boyut / renk seçenekleri
+  "AspNetUsers"       → Kullanıcılar (AppUser entity)
+  "Siparisler"        → Siparişler
+  "SiparisDetaylari"  → Sipariş kalemleri
+  "Sepetler"          → Sepetler
+  "SepetItems"        → Sepet kalemleri
+  "Adresler"          → Teslimat adresleri
+  "Favoriler"         → Kullanıcı favorileri
+  "Yorumlar"          → Ürün yorumları
+  "Kuponlar"          → İndirim kuponları
+  "BultenAbonelikleri"→ Bülten aboneleri
+
+===============================================================
+## 4. PROJE MİMARİSİ
+===============================================================
+
+KanvasProje.Core    → Entity'ler, Interface'ler, Helper'lar
+KanvasProje.Data    → DbContext (KanvasDbContext), Migration'lar
+KanvasProje.Service → Business Logic, Service'ler
+KanvasProje.Web     → MVC Controllers, Views, wwwroot
+
+### Önemli Entity Property'leri (çalışırken dikkat et!):
+  Urun.Baslik           → Ürün adı (NOT: "Ad" veya "Name" DEĞİL)
+  Urun.Slug             → URL için
+  Urun.Fiyat            → Normal fiyat
+  Urun.IndirimliFiyat   → İndirimli fiyat (nullable)
+  Urun.EtkinFiyat       → Aktif fiyat (indirim varsa IndirimliFiyat)
+  Urun.AnaGorselUrl     → Ana görsel URL
+  Urun.IndirimVarMi     → Boolean
+  Urun.YeniUrunMu       → Boolean
+  Urun.AktifMi          → Boolean
+  Urun.SilindiMi        → Soft delete
+  Urun.UrunResimleri    → Navigation property (List<UrunResim>)
+  UrunResim.ResimYolu   → Görsel yolu (NOT: "Url" DEĞİL)
+  UrunResim.Sira        → Sıralama
+  Kategori.Ad           → Kategori adı
+  Kategori.Slug         → URL için
+
+===============================================================
+## 5. FRONTEND / TEMA BİLGİLERİ
+===============================================================
+
+Tema Adı       : Artisan Canvas / CANVASİA Teması
+CSS Framework  : Tailwind CSS (CDN - cdn.tailwindcss.com)
+Ek CSS         : wwwroot/css/site.css (LEGACY - padding:0 override edildi!)
+                 wwwroot/css/storefront.css
+Icon Library   : Font Awesome 6.4.0
+
+### Font Stack (jackandabel.co.uk'dan alınmıştır):
+  Başlıklar  : EB Garamond (Google Fonts) — serif, zarif
+  Gövde      : Inter (Google Fonts) — sans-serif, okunabilir
+
+### Renk Paleti:
+  Ana koyu    : #313511  (zeytin yeşili koyu)
+  Altın       : #b58735  (duyuru çubuğu, vurgu)
+  Fildişi    : #fcf9f3  (sayfa arka plan)
+  Açık bej   : #f1ede7  (bölüm arka planları)
+  Kenar çizgi: #e5e2dc
+  Metin koyu  : #1c1c18
+  Metin orta  : #47473d
+
+### Layout Dosyası:
+  Views/Shared/_Layout.cshtml
+  - Üst kargo çubuğu: bg-[#b58735]
+  - Header: Ortalanmış CANVASİA logosu
+  - Kategori navigation: Dinamik DB'den çekiliyor
+  - Sepet sayısı: SepetService ile canlı
+
+### Yenilenen Sayfalar:
+  ✅ Views/Home/Index.cshtml          → Ana sayfa
+  ✅ Views/Urun/Index.cshtml          → Ürün listesi / katalog
+  ✅ Views/Hesap/GirisYap.cshtml      → Giriş yap
+  ✅ Views/Hesap/KayitOl.cshtml       → Kayıt ol
+  ✅ Views/Sepet/Index.cshtml         → Sepet
+  ✅ Views/Kurumsal/Iletisim.cshtml   → İletişim
+  ✅ Views/Profil/Index.cshtml        → Profil ana sayfa
+  ⏳ Views/Urun/Detay.cshtml          → Ürün detay (güncellenmeli)
+  ⏳ Views/Profil/Siparislerim.cshtml → Siparişlerim (güncellenmeli)
+  ⏳ Views/Profil/Adreslerim.cshtml   → Adreslerim (güncellenmeli)
+  ⏳ Views/Siparis/Basarili.cshtml    → Sipariş başarılı (güncellenmeli)
+
+===============================================================
+## 6. BACKEND SERVİS ENJEKSİYONLARI
+===============================================================
+
+### Layout'ta kullanılan:
+  @inject SignInManager<AppUser> SignInManager
+  @inject UserManager<AppUser> UserManager
+  @inject IHttpContextAccessor HttpContextAccessor
+  @inject ISepetService SepetService
+  @inject KanvasDbContext DbContext
+  @inject ISiteSettingsService SiteSettingsService
+
+### Önemli Servisler:
+  ISepetService          → Sepet işlemleri
+  ISiteSettingsService   → Site ayarları (para birimi, logo vb.)
+  CategoryPresentationHelper → Kategori ikonu ve görünümü
+  Hangfire               → Arkaplan görevler (terk edilmiş sepet bildirimi vb.)
+
+### URL Pattern'lar:
+  /Urun                       → Ürün listesi
+  /Urun/Detay/{slug}-{id}     → Ürün detay
+  /Urun?k={kategoriId}        → Kategori filtreli liste
+  /Urun?s={arama}             → Arama
+  /Sepet                      → Sepet
+  /Siparis/Odeme              → Ödeme
+  /Hesap/GirisYap             → Giriş
+  /Hesap/KayitOl              → Kayıt
+  /Profil                     → Profil
+  /Profil/Siparislerim        → Siparişler
+  /Profil/Adreslerim          → Adresler
+  /Favori                     → Favoriler
+  /Kurumsal/Iletisim          → İletişim
+
+===============================================================
+## 7. ÖDEME SİSTEMİ
+===============================================================
+
+Ödeme Altyapısı: İyzico (Sandbox modu aktif)
+  ApiKey  : appsettings.json'da "YOUR_IYZICO_API_KEY"
+  Sandbox : https://sandbox-api.iyzipay.com
+
+Ödeme Akışı:
+  Sepet → /Siparis/Odeme (adres + onay) → İyzico yönlendirme → /Siparis/Basarili veya /Siparis/Basarisiz
+
+===============================================================
+## 8. DOCKER YAPILANDIRMASI
+===============================================================
+
+### docker-compose.yml:
+  services:
+    db  → postgres:16-alpine (kanvasproje-db)
+    web → meteorgaleri-web:latest (kanvasproje-web)
+
+### Volumes:
+  postgres_data   → Veritabanı kalıcı depo
+  app_uploads     → /app/wwwroot/img/products
+  app_media       → /app/wwwroot/media/products
+  app_logs        → /app/logs
+  app_data        → /app/App_Data
+
+### Port Mapping:
+  5432:5432  → PostgreSQL
+  8080:8080  → Web uygulaması
+
+===============================================================
+## 9. ÖNEMLİ NOTLAR VE BİLİNEN SORUNLAR
+===============================================================
+
+1. site.css LEGACY CSS: body'ye eski padding-top ekliyordu.
+   ÇÖZÜM: _Layout.cshtml'de body { padding: 0 !important } override edildi.
+
+2. Ürün kartı scroll sorunu: translate-y animasyonu layout shift yapıyordu.
+   ÇÖZÜM: opacity-0 → opacity-100 ile değiştirildi.
+
+3. secrets.json: Geliştirme ortamı bağlantı dizesi burada saklanır.
+   KONUM: E:\Projeler\MeteorGaleri\KanvasProje.Web\secrets.json
+
+4. Kategori navigasyonu: _Layout.cshtml'de doğrudan DbContext sorgusu yapılıyor.
+   Performans için ileride cache eklenebilir.
+
+5. UrunResim property'si "ResimYolu" olmalı (NOT "Url" veya "ImageUrl")
+
+6. Urun.Baslik kullanılmalı (NOT "Ad" veya "Name")
+
+7. KanvasDbContext çoğullama: Tablo adları Türkçe ve büyük harfle başlıyor.
+   PostgreSQL sorguları tırnak işareti gerektirir: "Urunler", "Kategoriler" gibi
+
+===============================================================
+## 10. ÇALIŞMASI GEREKEN SONRAKI ADIMLAR
+===============================================================
+
+Frontend:
+  - Views/Urun/Detay.cshtml → Yeni temaya geçirilmeli
+  - Views/Profil/Siparislerim.cshtml → Güncellenmeli
+  - Views/Profil/Adreslerim.cshtml → Güncellenmeli
+  - Views/Siparis/Basarili.cshtml → Güncellenmeli
+  - Views/Siparis/Basarisiz.cshtml → Güncellenmeli
+
+Backend / Production:
+  - İyzico gerçek API anahtarları girilmeli
+  - Email SMTP ayarları yapılandırılmalı
+  - changeme_in_production şifresi gerçek şifreyle değiştirilmeli
+  - Sunucuya deploy: docker-compose build + up -d
+
+Ürün Görselleri:
+  - Mevcut ürün görsellerinin nerede saklandığı kontrol edilmeli
+  - ResimYolu değerlerinin gerçek URL'lere işaret ettiği doğrulanmalı
+
+===============================================================
+## 11. PROJE DOSYA YAPISI
+===============================================================
+
+E:\Projeler\MeteorGaleri\
+├── docker-compose.yml
+├── Dockerfile
+├── kanvasdb_yedek.sql          ← Veritabanı yedeği
+├── KanvasProje.Core\           ← Entity'ler, Interface'ler
+│   └── Varliklar\
+│       ├── Urun.cs             ← Ana ürün entity
+│       ├── UrunResim.cs        ← ResimYolu property'si burada
+│       ├── Kategori.cs
+│       ├── AppUser.cs
+│       └── ...
+├── KanvasProje.Data\           ← DbContext, Migration'lar
+├── KanvasProje.Service\        ← Business logic
+└── KanvasProje.Web\            ← MVC Web uygulaması
+    ├── Controllers\
+    ├── Views\
+    │   ├── Shared\_Layout.cshtml  ← ANA LAYOUT
+    │   ├── Home\Index.cshtml      ← Ana sayfa
+    │   ├── Urun\Index.cshtml      ← Katalog
+    │   ├── Urun\Detay.cshtml      ← Ürün detay
+    │   ├── Sepet\Index.cshtml     ← Sepet
+    │   ├── Siparis\Odeme.cshtml   ← Ödeme
+    │   ├── Hesap\GirisYap.cshtml  ← Login
+    │   ├── Hesap\KayitOl.cshtml   ← Register
+    │   └── Profil\*.cshtml        ← Profil sayfaları
+    ├── wwwroot\
+    │   └── css\
+    │       ├── site.css           ← LEGACY (overridden)
+    │       └── storefront.css
+    ├── appsettings.json
+    ├── appsettings.Development.json
+    └── secrets.json               ← DB bağlantısı (development)

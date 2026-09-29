@@ -1,0 +1,417 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Giriş Yap" [ref=e52] [cursor=pointer]:
+          - /url: /Hesap/GirisYap
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "0"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=e69]: 
+          - listitem [ref=e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=e72]: 
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=e75]: 
+          - listitem [ref=e76] [cursor=pointer]:
+            - link "Ayna " [ref=e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=e78]: 
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=e81]: 
+          - listitem [ref=e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=e84]: 
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=e87]: 
+          - listitem [ref=e88] [cursor=pointer]:
+            - link "Lightbox " [ref=e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=e90]: 
+          - listitem [ref=e91] [cursor=pointer]:
+            - link "Afiş " [ref=e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=e93]: 
+          - listitem [ref=e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=e96]:
+    - text:      
+    - generic [ref=e98]:
+      - link "Ana Sayfa" [ref=e99] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e100]: /
+      - link "Koleksiyon" [ref=e101] [cursor=pointer]:
+        - /url: /Urun
+      - generic [ref=e102]: /
+      - generic [ref=e103]: Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - img "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e108]
+            - button "" [ref=e109] [cursor=pointer]:
+              - generic [ref=e110]: 
+            - button "" [ref=e111] [cursor=pointer]:
+              - generic [ref=e112]: 
+            - generic [ref=e114]: 
+          - generic [ref=e115]:
+            - button "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e116] [cursor=pointer]:
+              - img "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e117]
+            - button "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e118] [cursor=pointer]:
+              - img "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e119]
+            - button "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e120] [cursor=pointer]:
+              - img "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e121]
+        - generic [ref=e122]:
+          - heading "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [level=1] [ref=e123]
+          - generic [ref=e124]:
+            - generic [ref=e125]:
+              - generic [ref=e126]: 
+              - generic [ref=e127]: 
+              - generic [ref=e128]: 
+              - generic [ref=e129]: 
+              - generic [ref=e130]: 
+            - generic [ref=e131]: (0 değerlendirme)
+          - generic [ref=e133]: 208,33 TL
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - generic [ref=e136]: 
+              - text: Siparişe özel hazırlanır
+            - generic [ref=e137]:
+              - generic [ref=e138]: 
+              - text: 3 iş günü içinde kargo
+            - generic [ref=e139]:
+              - generic [ref=e140]: 
+              - text: 3 iş günü üretim
+          - generic [ref=e141]:
+            - generic [ref=e142]: 
+            - text: Standart
+          - generic [ref=e143]:
+            - generic [ref=e144]: Ebat Seçiniz
+            - generic [ref=e146] [cursor=pointer]:
+              - radio "Standart" [checked] [ref=e147]
+              - text: Standart
+          - generic [ref=e148]:
+            - generic [ref=e149]:
+              - generic [ref=e150]: Adet
+              - generic [ref=e151]:
+                - button "-" [ref=e152] [cursor=pointer]
+                - spinbutton [ref=e153]: "1"
+                - button "+" [ref=e154] [cursor=pointer]
+            - button " Sepete Ekle" [ref=e156] [cursor=pointer]:
+              - generic [ref=e157]: 
+              - generic [ref=e158]: Sepete Ekle
+            - button "" [ref=e159] [cursor=pointer]:
+              - generic [ref=e160]: 
+          - text: 
+          - generic [ref=e161]:
+            - generic [ref=e162]: Paylaş
+            - link "Facebook'ta paylaş" [ref=e163] [cursor=pointer]:
+              - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.canvasia.com.tr%2FUrun%2FDetay%2Frenkli-kokteyl-ve-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-12611
+              - generic [ref=e164]: 
+            - link "Instagram'da aç" [ref=e165] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e166]: 
+            - link "WhatsApp ile paylaş" [ref=e167] [cursor=pointer]:
+              - /url: https://wa.me/?text=Renkli%20Kokteyl%20ve%20Tropikal%20Desenli%20Temperli%20Cam%20Kesme%20Tahtas%C4%B1%2020x30%20cm%20%7C%20Hijyenik%20ve%20Dayan%C4%B1kl%C4%B1%20@encodedProductUrl
+              - generic [ref=e168]: 
+            - button " Linki Kopyala" [ref=e169] [cursor=pointer]:
+              - generic [ref=e170]: 
+              - text: Linki Kopyala
+          - paragraph [ref=e172]: "Malzeme: Cam"
+          - generic [ref=e173]:
+            - generic [ref=e174]:
+              - paragraph [ref=e175]:
+                - generic [ref=e176]: 
+                - text: Üretim
+              - paragraph [ref=e177]: 3 iş günü
+            - generic [ref=e178]:
+              - paragraph [ref=e179]:
+                - generic [ref=e180]: 
+                - text: Paketleme
+              - paragraph [ref=e181]: Özenli ve korunaklı teslimat
+            - generic [ref=e182]:
+              - paragraph [ref=e183]:
+                - generic [ref=e184]: 
+                - text: Teslimat
+              - paragraph [ref=e185]: Tahmini 5 iş günü
+          - generic [ref=e186]:
+            - generic [ref=e187]:
+              - generic [ref=e188]: 
+              - paragraph [ref=e189]: Güvenli Ödeme
+              - paragraph [ref=e190]: 256-bit SSL
+            - generic [ref=e191]:
+              - generic [ref=e192]: 
+              - paragraph [ref=e193]: Ücretsiz Kargo
+              - paragraph [ref=e194]: 3 iş günü
+            - generic [ref=e195]:
+              - generic [ref=e196]: 
+              - paragraph [ref=e197]: İade Garantisi
+              - paragraph [ref=e198]: 14 gün içinde
+      - generic [ref=e200]:
+        - generic [ref=e202]:
+          - heading " Ürün Açıklaması" [level=2] [ref=e203]:
+            - generic [ref=e204]: 
+            - text: Ürün Açıklaması
+          - generic [ref=e206]:
+            - heading "📝 Ürün Açıklaması" [level=3] [ref=e207]:
+              - text: 📝
+              - strong [ref=e208]: Ürün Açıklaması
+            - paragraph [ref=e209]:
+              - strong [ref=e210]: Mutfakta hijyen, dayanıklılık ve estetik bir arada!
+              - text: Temperli cam kesme tahtası, zarif ve modern tasarımıyla mutfağınıza göz alıcı bir dokunuş katarken yüksek ısıya ve darbeye dayanıklı yapısıyla uzun ömürlü kullanım sunar. Kesme, doğrama ve servis sunumlarında pratik bir yardımcıdır.
+            - paragraph [ref=e211]: Pürüzsüz cam yüzeyi bakteri tutmaz, koku, leke veya renk barındırmaz. Kolayca temizlenir ve her kullanımda ilk günkü parlaklığını korur. Kaymaz silikon ayakları sayesinde tezgâh üzerinde güvenli bir şekilde kullanılabilir.
+            - paragraph [ref=e212]: Sevdiklerinize hem şık hem de kullanışlı bir hediye alternatifi sunar.
+            - separator [ref=e213]
+            - heading "🔍 Ürün Özellikleri" [level=3] [ref=e214]:
+              - text: 🔍
+              - strong [ref=e215]: Ürün Özellikleri
+            - list [ref=e216]:
+              - listitem [ref=e217]:
+                - paragraph [ref=e218]:
+                  - strong [ref=e219]: "Boyut:"
+                  - text: 20x30 cm
+              - listitem [ref=e220]:
+                - paragraph [ref=e221]:
+                  - strong [ref=e222]: "Malzeme:"
+                  - text: Temperli cam (ısıya ve darbeye dayanıklı)
+              - listitem [ref=e223]:
+                - paragraph [ref=e224]:
+                  - strong [ref=e225]: "Kullanım Alanı:"
+                  - text: Kesme, doğrama ve servis sunumu için uygundur
+              - listitem [ref=e226]:
+                - paragraph [ref=e227]:
+                  - strong [ref=e228]: "Hijyenik Yüzey:"
+                  - text: Bakteri barındırmaz, kolay temizlenir
+              - listitem [ref=e229]:
+                - paragraph [ref=e230]:
+                  - strong [ref=e231]: "Ayaklar:"
+                  - text: Kaymaz silikon taban ile güvenli kullanım
+              - listitem [ref=e232]:
+                - paragraph [ref=e233]:
+                  - strong [ref=e234]: "Bakım:"
+                  - text: Nemli bezle kolayca temizlenebilir
+            - separator [ref=e235]
+            - heading "🎁 Avantajlar" [level=3] [ref=e236]:
+              - text: 🎁
+              - strong [ref=e237]: Avantajlar
+            - list [ref=e238]:
+              - listitem [ref=e239]:
+                - paragraph [ref=e240]: Estetik ve modern mutfak dekorasyonu için ideal
+              - listitem [ref=e241]:
+                - paragraph [ref=e242]: Şık sunumlar ve davet sofraları için göz alıcı bir detay
+              - listitem [ref=e243]:
+                - paragraph [ref=e244]: Dayanıklı yapısıyla uzun yıllar kullanım imkânı
+              - listitem [ref=e245]:
+                - paragraph [ref=e246]: Temizliği pratik, hijyenik ve sağlıklıdır
+        - generic [ref=e247]:
+          - heading " Yorumlar" [level=2] [ref=e248]:
+            - generic [ref=e249]: 
+            - text: Yorumlar
+          - generic [ref=e250]:
+            - generic [ref=e251]: 
+            - heading "Henüz yorum yapılmamış" [level=5] [ref=e252]
+            - paragraph [ref=e253]: Bu ürün için ilk yorumu siz yapın!
+            - button "İlk Yorumu Yap" [ref=e254] [cursor=pointer]
+    - generic [ref=e256]:
+      - generic [ref=e257]:
+        - separator [ref=e258]
+        - heading "Benzer Ürünler" [level=2] [ref=e259]
+        - separator [ref=e260]
+      - generic [ref=e261]:
+        - link "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı 208,33 TL" [ref=e262] [cursor=pointer]:
+          - /url: /Urun/Detay/gri-mermer-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12608
+          - img "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e264]
+          - heading "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e265]
+          - generic [ref=e267]: 208,33 TL
+        - link "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı 208,33 TL" [ref=e268] [cursor=pointer]:
+          - /url: /Urun/Detay/canli-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12610
+          - img "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e270]
+          - heading "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e271]
+          - generic [ref=e273]: 208,33 TL
+        - link "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu 208,33 TL" [ref=e274] [cursor=pointer]:
+          - /url: /Urun/Detay/temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-dayanikli-kaymaz-silikon-ayakli-sik-mutfak-sunumu-12604
+          - img "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [ref=e276]
+          - heading "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [level=3] [ref=e277]
+          - generic [ref=e279]: 208,33 TL
+        - link "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı 208,33 TL" [ref=e280] [cursor=pointer]:
+          - /url: /Urun/Detay/lila-mavi-altin-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12606
+          - img "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e282]
+          - heading "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e283]
+          - generic [ref=e285]: 208,33 TL
+        - link "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı 208,33 TL" [ref=e286] [cursor=pointer]:
+          - /url: /Urun/Detay/pastel-mavi-bej-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-sik-mutfak-aksesuari-12607
+          - img "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [ref=e288]
+          - heading "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [level=3] [ref=e289]
+          - generic [ref=e291]: 208,33 TL
+        - link "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı 208,33 TL" [ref=e292] [cursor=pointer]:
+          - /url: /Urun/Detay/renkli-tropikal-meyve-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-modern-mutfak-aksesuari-12609
+          - img "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [ref=e294]
+          - heading "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [level=3] [ref=e295]
+          - generic [ref=e297]: 208,33 TL
+  - contentinfo [ref=e298]:
+    - generic [ref=e300]:
+      - generic [ref=e301]:
+        - generic [ref=e303]: 
+        - generic [ref=e304]:
+          - generic [ref=e305]: Tüm Türkiye'ye
+          - generic [ref=e306]: Ücretsiz Kargo
+      - generic [ref=e307]:
+        - generic [ref=e309]: 
+        - generic [ref=e310]:
+          - generic [ref=e311]: "%100 Güvenli Alışveriş"
+          - generic [ref=e312]: 256 Bit SSL Sertifikası
+      - generic [ref=e313]:
+        - generic [ref=e315]: 
+        - generic [ref=e316]:
+          - generic [ref=e317]: Tüm Kredi Kartlarına
+          - generic [ref=e318]: 12 Taksit İmkanı
+    - generic [ref=e319]:
+      - generic [ref=e320]:
+        - generic [ref=e321]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e322]
+          - paragraph [ref=e323]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e324]:
+            - textbox "E-posta Adresi" [ref=e325]
+            - button "ABONE OL" [ref=e326] [cursor=pointer]
+        - generic [ref=e327]:
+          - heading "KURUMSAL" [level=4] [ref=e328]
+          - list [ref=e329]:
+            - listitem [ref=e330]:
+              - link "Hakkımızda" [ref=e331] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e332]:
+              - link "İletişim" [ref=e333] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e334]:
+              - link "Koleksiyonlar" [ref=e335] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e336]:
+              - link "Gizlilik Politikası" [ref=e337] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e338]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e339] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e340]:
+            - link "Instagram" [ref=e341] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e342]: 
+            - link "WhatsApp" [ref=e343] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e344]: 
+      - generic [ref=e345]:
+        - paragraph [ref=e347]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e348]:
+          - link "Gizlilik Politikası" [ref=e349] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e350] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e351] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e354]
+  - link "WhatsApp ile iletişim" [ref=e355] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e356]
+    - generic [ref=e358]: WhatsApp
+  - text:        

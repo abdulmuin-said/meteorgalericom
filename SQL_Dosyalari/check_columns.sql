@@ -1,0 +1,1 @@
+SELECT column_name FROM information_schema.columns WHERE table_name = 'Urunler' AND column_name LIKE 'Seo%';

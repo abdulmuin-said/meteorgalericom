@@ -1,0 +1,24 @@
+{
+  "name": "meteorgaleri",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulmuin-said/meteorgaleri_canvasia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/abdulmuin-said/meteorgaleri_canvasia/issues"
+  },
+  "homepage": "https://github.com/abdulmuin-said/meteorgaleri_canvasia#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
+}

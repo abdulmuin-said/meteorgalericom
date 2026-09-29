@@ -1,0 +1,61 @@
+@model (string Title, string Prefix, KanvasProje.Core.Models.HomeProductBlockSettings Block)
+
+<div class="col-12">
+    <div class="ca-card">
+        <div class="ca-form-header" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);">
+            <div class="d-flex align-items-center position-relative" style="z-index:2;">
+                <div class="bg-white bg-opacity-25 rounded-3 p-3 me-3">
+                    <i class="fas fa-box-open fa-2x"></i>
+                </div>
+                <div>
+                    <h4 class="mb-1 fw-bold">@Model.Title</h4>
+                    <p class="mb-0 small" style="opacity:.7;">Baslik, aciklama, link ve gorunurluk ayarlari.</p>
+                </div>
+            </div>
+            <i class="fas fa-cubes ca-form-header-icon"></i>
+        </div>
+        <div class="ca-card-body">
+            <div class="row g-4">
+                <div class="col-md-2">
+                    <div class="ca-form-group">
+                        <label class="ca-label">Aktif</label>
+                        <div class="form-check form-switch mt-2">
+                            <input name="@($"{Model.Prefix}.Enabled")" value="true" type="checkbox" class="form-check-input" @(Model.Block.Enabled ? "checked" : null) />
+                            <input name="@($"{Model.Prefix}.Enabled")" value="false" type="hidden" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="ca-form-group">
+                        <label class="ca-label">Sira</label>
+                        <input name="@($"{Model.Prefix}.SortOrder")" value="@Model.Block.SortOrder" class="ca-input" type="number" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="ca-form-group">
+                        <label class="ca-label">Baslik</label>
+                        <input name="@($"{Model.Prefix}.Title")" value="@Model.Block.Title" class="ca-input" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="ca-form-group">
+                        <label class="ca-label">Alt Baslik</label>
+                        <input name="@($"{Model.Prefix}.Subtitle")" value="@Model.Block.Subtitle" class="ca-input" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="ca-form-group">
+                        <label class="ca-label">Buton Yazi</label>
+                        <input name="@($"{Model.Prefix}.ViewAllText")" value="@Model.Block.ViewAllText" class="ca-input" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="ca-form-group">
+                        <label class="ca-label">Buton Link</label>
+                        <input name="@($"{Model.Prefix}.ViewAllUrl")" value="@Model.Block.ViewAllUrl" class="ca-input" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

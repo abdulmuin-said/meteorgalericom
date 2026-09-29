@@ -1,0 +1,263 @@
+@model IEnumerable<KanvasProje.Core.Varliklar.Kupon>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Kupon Yönetimi";
+    var kuponlar = Model.ToList();
+    var now = DateTime.UtcNow;
+
+    string DiscountText(KanvasProje.Core.Varliklar.Kupon kupon)
+        => kupon.Tip == 0 ? $"%{kupon.Deger:N0}" : $"{kupon.Deger:N2} TL";
+
+    string StatusClass(KanvasProje.Core.Varliklar.Kupon kupon)
+    {
+        if (!kupon.AktifMi) return "ca-badge-secondary";
+        if (kupon.SonKullanmaTarihi <= now) return "ca-badge-danger";
+        if (kupon.KullanimLimiti > 0 && kupon.KullanilanMiktar >= kupon.KullanimLimiti) return "ca-badge-warning";
+        return "ca-badge-success";
+    }
+
+    string StatusText(KanvasProje.Core.Varliklar.Kupon kupon)
+    {
+        if (!kupon.AktifMi) return "Pasif";
+        if (kupon.SonKullanmaTarihi <= now) return "Süresi Doldu";
+        if (kupon.KullanimLimiti > 0 && kupon.KullanilanMiktar >= kupon.KullanimLimiti) return "Limit Doldu";
+        return "Aktif";
+    }
+}
+
+<style>
+    .ca-coupon-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    .ca-coupon-stat {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .ca-coupon-stat span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .82rem;
+        margin-bottom: 4px;
+    }
+
+    .ca-coupon-stat strong {
+        color: var(--ca-text);
+        font-size: 1.35rem;
+    }
+
+    .ca-coupon-stat i {
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--ca-primary-light);
+        color: var(--ca-primary);
+    }
+
+    .ca-coupon-code {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px dashed rgba(var(--ca-primary-rgb), .35);
+        border-radius: 999px;
+        background: var(--ca-primary-light);
+        color: var(--ca-primary);
+        padding: 7px 12px;
+        font-family: Consolas, monospace;
+        font-weight: 800;
+        letter-spacing: .06em;
+    }
+
+    .ca-badge-secondary {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+
+    .ca-usage-meter {
+        width: 130px;
+        max-width: 100%;
+    }
+
+    .ca-quick-actions {
+        display: inline-flex;
+        justify-content: flex-end;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .ca-mini-note {
+        color: var(--ca-text-muted);
+        font-size: .78rem;
+        margin-top: 3px;
+    }
+
+    @@media (max-width: 1100px) {
+        .ca-coupon-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .ca-coupon-stats {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Kupon Yönetimi</h1>
+            <p class="ca-page-subtitle">Sepet ve ödeme akışında kullanılacak kampanya kodlarını buradan yönetin.</p>
+        </div>
+        <a href="/Admin/Kupon/Ekle" class="ca-btn ca-btn-primary">
+            <i class="fas fa-plus"></i> Yeni Kupon
+        </a>
+    </div>
+
+    <div class="ca-coupon-stats">
+        <div class="ca-coupon-stat">
+            <div>
+                <span>Toplam Kupon</span>
+                <strong>@(ViewBag.ToplamKupon ?? 0)</strong>
+            </div>
+            <i class="fas fa-ticket"></i>
+        </div>
+        <div class="ca-coupon-stat">
+            <div>
+                <span>Aktif Kullanılabilir</span>
+                <strong>@(ViewBag.AktifKupon ?? 0)</strong>
+            </div>
+            <i class="fas fa-circle-check"></i>
+        </div>
+        <div class="ca-coupon-stat">
+            <div>
+                <span>Süresi Dolan</span>
+                <strong>@(ViewBag.SuresiDolan ?? 0)</strong>
+            </div>
+            <i class="fas fa-hourglass-end"></i>
+        </div>
+        <div class="ca-coupon-stat">
+            <div>
+                <span>Toplam Kullanım</span>
+                <strong>@(ViewBag.ToplamKullanim ?? 0)</strong>
+            </div>
+            <i class="fas fa-chart-line"></i>
+        </div>
+    </div>
+
+    <div class="ca-card">
+        <div class="ca-card-header">
+            <span class="ca-card-title"><i class="fas fa-tags me-2"></i>Kampanya Kodları</span>
+            <span class="ca-text-muted small">Sınırsız kullanım için limit alanına 0 yazılır.</span>
+        </div>
+
+        @if (!kuponlar.Any())
+        {
+            <div class="ca-empty">
+                <i class="fas fa-ticket-alt"></i>
+                <p>Henüz kupon eklenmemiş.</p>
+                <a href="/Admin/Kupon/Ekle" class="ca-btn ca-btn-primary mt-2">
+                    <i class="fas fa-plus"></i> İlk Kuponu Oluştur
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="ca-table-wrapper">
+                <table class="ca-table align-middle">
+                    <thead>
+                        <tr>
+                            <th class="ps-4">Kupon</th>
+                            <th>İndirim</th>
+                            <th>Minimum Sepet</th>
+                            <th>Kullanım</th>
+                            <th>Son Tarih</th>
+                            <th>Durum</th>
+                            <th class="text-end pe-4">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in kuponlar)
+                        {
+                            var usagePercent = item.KullanimLimiti > 0
+                                ? Math.Min(100, item.KullanilanMiktar * 100 / item.KullanimLimiti)
+                                : 0;
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="ca-coupon-code"><i class="fas fa-tag"></i>@item.Kod</span>
+                                    <div class="ca-mini-note">Oluşturma: @item.OlusturulmaTarihi.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</div>
+                                </td>
+                                <td>
+                                    <span class="ca-badge ca-badge-primary">@DiscountText(item)</span>
+                                </td>
+                                <td>
+                                    @if (item.MinSepetTutari > 0)
+                                    {
+                                        <span>@item.MinSepetTutari.ToString("N2") TL</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="ca-text-muted">Alt limit yok</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="ca-usage-meter">
+                                        <div class="d-flex justify-content-between small mb-1">
+                                            <span>@item.KullanilanMiktar</span>
+                                            <span>@(item.KullanimLimiti > 0 ? item.KullanimLimiti.ToString() : "Sınırsız")</span>
+                                        </div>
+                                        <div class="ca-progress-bar">
+                                            <div class="ca-progress-fill" style="width:@usagePercent%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="ca-fw-semi">@item.SonKullanmaTarihi.ToString("dd.MM.yyyy")</span>
+                                    <div class="ca-mini-note">Gün sonuna kadar geçerli</div>
+                                </td>
+                                <td>
+                                    <span class="ca-badge @StatusClass(item)">@StatusText(item)</span>
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="ca-quick-actions">
+                                        <a href="/Admin/Kupon/Duzenle/@item.Id" class="ca-btn-icon" title="Düzenle">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <form action="/Admin/Kupon/DurumDegistir" method="post" class="d-inline">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="ca-btn-icon" title="@(item.AktifMi ? "Pasife al" : "Aktif et")">
+                                                <i class="fas @(item.AktifMi ? "fa-pause" : "fa-play")"></i>
+                                            </button>
+                                        </form>
+                                        <form action="/Admin/Kupon/Sil" method="post" class="d-inline" onsubmit="return confirm('Bu kupon arşive alınsın mı? Geçmiş sipariş kayıtları korunur.')">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="ca-btn-icon delete" title="Arşive al">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

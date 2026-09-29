@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Ödeme Başarısız";
+}
+
+<div class="min-h-[70vh] flex items-center justify-center py-16 px-4 bg-[#FFFBF0]">
+    <div class="w-full max-w-lg text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-100 mb-6">
+            <i class="fas fa-times text-4xl text-red-600"></i>
+        </div>
+        <h1 class="font-serif text-3xl tracking-widest text-red-700 uppercase mb-4">Ödeme Başarısız</h1>
+
+        @if (ViewBag.Hata != null)
+        {
+            <div class="bg-white border border-red-200 text-red-700 text-sm px-6 py-4 rounded-lg mb-8 shadow-sm">
+                <p class="font-medium">Hata Detayı:</p>
+                <p class="mt-1">@ViewBag.Hata</p>
+            </div>
+        }
+        else
+        {
+            <p class="text-sm text-[#333333] mb-8 leading-relaxed">
+                Ödeme işleminiz sırasında bir sorun oluştu ve siparişiniz tamamlanamadı.
+                Kredi kartı bilgilerinizde veya limitinizde bir sorun olabilir.
+                Lütfen tekrar deneyin veya farklı bir kart kullanın.
+            </p>
+        }
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/Sepet" class="w-full sm:w-auto bg-[#1B2A4A] text-white px-8 py-3 text-xs tracking-widest uppercase rounded hover:bg-[#1c2001] transition-colors">
+                Sepete Dön ve Tekrar Dene
+            </a>
+            <a href="/Kurumsal/Iletisim" class="w-full sm:w-auto bg-white border border-[#F5E6C8] text-[#1B2A4A] px-8 py-3 text-xs tracking-widest uppercase rounded hover:bg-[#FFFBF0] transition-colors">
+                Destek Al
+            </a>
+        </div>
+
+        <div class="mt-8 bg-white border border-[#F5E6C8] rounded-lg p-5">
+            <p class="text-xs text-[#333333] flex items-start gap-3">
+                <i class="fas fa-info-circle text-[#C0392B] mt-0.5"></i>
+                <span>
+                    Ödemeniz tamamlanamadıysa bankanızla iletişime geçebilir veya
+                    <a href="/Kurumsal/Iletisim" class="text-[#1B2A4A] underline font-medium">bize ulaşarak</a>
+                    destek alabilirsiniz.
+                </span>
+            </p>
+        </div>
+    </div>
+</div>

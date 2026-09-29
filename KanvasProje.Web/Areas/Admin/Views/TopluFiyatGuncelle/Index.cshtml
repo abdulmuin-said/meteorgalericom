@@ -1,0 +1,394 @@
+﻿@model List<KanvasProje.Web.Areas.Admin.Controllers.OlcuFiyatModel>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Kanvas Tablo Fiyat Güncelleme";
+}
+
+<style>
+    .tf-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    
+    .tf-header-left h1 {
+        font-family: var(--ca-font-serif);
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: var(--ca-primary);
+        margin: 0 0 4px 0;
+    }
+    
+    .tf-header-left p {
+        font-size: 14px;
+        color: var(--ca-text-secondary);
+        margin: 0;
+    }
+    
+    .tf-header-right {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .tf-export-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        color: var(--ca-text-secondary);
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all var(--ca-transition);
+    }
+    
+    .tf-export-btn:hover {
+        background: var(--ca-surface-hover);
+        color: var(--ca-primary);
+        border-color: var(--ca-primary);
+    }
+    
+    .tf-search {
+        margin-bottom: 20px;
+    }
+    
+    .tf-search input {
+        max-width: 320px;
+        padding: 10px 14px;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    .tf-search input:focus {
+        outline: none;
+        border-color: var(--ca-accent);
+    }
+    
+    .tf-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+    }
+    
+    .tf-card {
+        background: #fff;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        padding: 16px;
+    }
+    
+    .tf-card-header {
+        font-weight: 600;
+        color: var(--ca-primary);
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+    
+    .tf-card-info {
+        font-size: 13px;
+        color: var(--ca-text-secondary);
+        margin-bottom: 12px;
+    }
+    
+    .tf-card-price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .tf-card-price label {
+        font-size: 13px;
+        color: var(--ca-text-secondary);
+    }
+    
+    .tf-card-price .price-value {
+        font-weight: 600;
+        color: var(--ca-success);
+    }
+    
+    .tf-input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .tf-input-group label {
+        font-size: 13px;
+        color: var(--ca-text-secondary);
+    }
+    
+    .tf-input-group input {
+        padding: 10px 12px;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius-sm);
+        font-size: 14px;
+    }
+    
+    .tf-input-group input:focus {
+        outline: none;
+        border-color: var(--ca-accent);
+    }
+    
+    .tf-save-btn {
+        background: var(--ca-success);
+        color: #fff;
+        border: none;
+        padding: 10px 16px;
+        border-radius: var(--ca-radius);
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all var(--ca-transition);
+    }
+    
+    .tf-save-btn:hover {
+        background: #0d9668;
+    }
+    
+    .tf-save-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+    
+    .tf-save-btn.loading {
+        opacity: 0.7;
+        pointer-events: none;
+    }
+    
+    .tf-toast {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: var(--ca-success);
+        color: #fff;
+        padding: 14px 20px;
+        border-radius: var(--ca-radius);
+        font-weight: 500;
+        font-size: 14px;
+        box-shadow: var(--ca-shadow-lg);
+        transform: translateX(120%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10001;
+    }
+    
+    .tf-toast.show {
+        transform: translateX(0);
+    }
+    
+    .tf-toast.error {
+        background: var(--ca-danger);
+    }
+    
+    .tf-count {
+        background: #FDF6E3;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 11px;
+    }
+    
+    .tf-empty {
+        text-align: center;
+        padding: 40px;
+        color: var(--ca-text-muted);
+    }
+</style>
+
+@Html.AntiForgeryToken()
+
+<div class="container-fluid">
+    <div class="tf-header">
+        <div class="tf-header-left">
+            <h1>Kanvas Tablo Fiyat Güncelleme</h1>
+            <p>Ölçülere göre toplu fiyat güncelleme işlemi yapabilirsiniz</p>
+        </div>
+        <div class="tf-header-right">
+            <button type="button" class="tf-export-btn" onclick="normalizeEt()" title="Ölçü formatlarını standartlaştırır">
+                <i class="fas fa-magic"></i> Normalize Et
+            </button>
+            <button type="button" class="tf-export-btn" onclick="exportXlsx()">
+                <i class="fas fa-file-excel text-success"></i> XLSX Export
+            </button>
+            <button type="button" class="tf-export-btn" onclick="exportPdf()">
+                <i class="fas fa-file-pdf text-danger"></i> PDF Export
+            </button>
+        </div>
+    </div>
+
+    <div class="tf-search" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <input type="text" id="olcuAra" placeholder="Ölçü ara (ör: 50cm x 70cm)..." onkeyup="filtrele()">
+        <select id="cerceveFiltre" onchange="filtrele()" style="padding: 10px 14px; border: 1px solid var(--ca-border); border-radius: var(--ca-radius); font-size: 14px; background: #fff;">
+            <option value="">Tüm Çerçeve Tipleri</option>
+            <option value="Çerçevesiz / Standart">Çerçevesiz / Standart</option>
+            <option value="Ahşap Çerçeve">Ahşap Çerçeve</option>
+        </select>
+    </div>
+
+    <div id="tfGrid" class="tf-grid">
+        @if (Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                var inputId = "fiyat_" + item.Olcu.Replace(" ", "_") + "_" + (item.CerceveTipi ?? "").Replace(" ", "_").Replace("/", "_");
+                <div class="tf-card" data-olcu="@item.Olcu" data-cerceve="@item.CerceveTipi">
+                    <div class="tf-card-header" style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                        <span>@item.Olcu</span>
+                        <span style="font-size: 11px; padding: 2px 8px; border-radius: 6px; background: @(item.CerceveTipi != null && item.CerceveTipi.Contains("Ahşap") ? "#fef3c7; color:#92400e" : "#FDF6E3; color:#1B2A4A"); font-weight: 500;">
+                            @(string.IsNullOrWhiteSpace(item.CerceveTipi) ? "Standart" : item.CerceveTipi)
+                        </span>
+                    </div>
+                    <div class="tf-card-info">
+                        @item.UrunSayisi ürün (@item.VaryasyonSayisi varyant)
+                    </div>
+                    <div class="tf-card-price">
+                        <label>Mevcut:</label>
+                        <span class="price-value">@item.MevcutFiyat.ToString("N2") TL</span>
+                    </div>
+                    <div class="tf-input-group">
+                        <label>Yeni Fiyat (TL)</label>
+                        <input type="number" 
+                               id="@inputId" 
+                               placeholder="@item.MevcutFiyat.ToString("N2")"
+                               step="0.01" 
+                               min="0" />
+                        <button type="button" class="tf-save-btn" onclick="kaydet('@item.Olcu', '@item.CerceveTipi', '@inputId', @item.MevcutFiyat)">
+                            <i class="fas fa-save"></i> Kaydet
+                        </button>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="tf-empty">Ölçü bulunamadı</div>
+        }
+    </div>
+</div>
+
+<div id="tfToast" class="tf-toast"></div>
+
+<script>
+function filtrele() {
+    const arama = document.getElementById('olcuAra').value.toLowerCase();
+    const cerceveSecim = document.getElementById('cerceveFiltre').value.toLowerCase();
+    const kartlar = document.querySelectorAll('.tf-card');
+    
+    kartlar.forEach(kart => {
+        const olcu = kart.getAttribute('data-olcu').toLowerCase();
+        const cerceve = (kart.getAttribute('data-cerceve') || '').toLowerCase();
+        
+        const olcuUyar = !arama || olcu.includes(arama);
+        const cerceveUyar = !cerceveSecim || cerceve.includes(cerceveSecim) || (cerceveSecim.includes('standart') && cerceve.includes('standart'));
+        
+        if (olcuUyar && cerceveUyar) {
+            kart.style.display = 'block';
+        } else {
+            kart.style.display = 'none';
+        }
+    });
+}
+
+function kaydet(olcu, cerceveTipi, inputId, mevcutFiyat) {
+    const input = document.getElementById(inputId);
+    const rawVal = (input.value || '').trim().replace(',', '.');
+    const yeniFiyat = parseFloat(rawVal);
+    
+    if (isNaN(yeniFiyat) || yeniFiyat <= 0) {
+        showToast('Lütfen geçerli bir fiyat girin', true);
+        return;
+    }
+    
+    const btn = input.parentElement.querySelector('.tf-save-btn');
+    btn.classList.add('loading');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Kaydediliyor...';
+    
+    const formData = new FormData();
+    formData.append('olcu', olcu);
+    formData.append('cerceveTipi', cerceveTipi);
+    formData.append('yeniFiyat', yeniFiyat);
+    
+    fetch('/Admin/TopluFiyatGuncelle/FiyatGuncelle', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showToast(olcu + ' (' + (cerceveTipi || 'Standart') + ') fiyatı güncellendi');
+            input.placeholder = yeniFiyat.toString();
+            input.value = '';
+            
+            const mevcutSpan = input.closest('.tf-card').querySelector('.price-value');
+            mevcutSpan.textContent = yeniFiyat.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+        } else {
+            showToast(data.message || 'Bir hata oluştu', true);
+        }
+    })
+    .catch(error => {
+        showToast('Bir hata oluştu: ' + error.message, true);
+    })
+    .finally(() => {
+        btn.classList.remove('loading');
+        btn.innerHTML = '<i class="fas fa-save"></i> Kaydet';
+    });
+}
+
+function showToast(message, isError = false) {
+    const toast = document.getElementById('tfToast');
+    toast.textContent = message;
+    toast.className = 'tf-toast' + (isError ? ' error' : '');
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3500);
+}
+
+
+
+function normalizeEt() {
+    if (!confirm('Kanvas tablolara ait ölçü metinleri standart formata getirilecek. Onaylıyor musunuz?')) {
+        return;
+    }
+
+    fetch('/Admin/TopluFiyatGuncelle/NormalizeOlcu', {
+        method: 'POST',
+        headers: {
+            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showToast(data.message);
+            setTimeout(() => location.reload(), 1200);
+        } else {
+            showToast(data.message || 'Hata oluştu', true);
+        }
+    })
+    .catch(err => {
+        showToast('Hata: ' + err.message, true);
+    });
+}
+
+function exportXlsx() {
+    const cerceve = document.getElementById('cerceveFiltre').value;
+    window.location.href = '/Admin/TopluFiyatGuncelle/ExportExcel' + (cerceve ? '?cerceve=' + encodeURIComponent(cerceve) : '');
+}
+
+function exportPdf() {
+    const cerceve = document.getElementById('cerceveFiltre').value;
+    window.location.href = '/Admin/TopluFiyatGuncelle/ExportPdf' + (cerceve ? '?cerceve=' + encodeURIComponent(cerceve) : '');
+}
+</script>

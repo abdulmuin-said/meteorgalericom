@@ -1,0 +1,243 @@
+@inject KanvasProje.Service.Services.ISiteSettingsService SiteSettingsService
+@{
+    var siteSettings = SiteSettingsService.GetSettings();
+    var brandName = string.IsNullOrWhiteSpace(siteSettings.MarkaAdi) ? siteSettings.SiteAdi : siteSettings.MarkaAdi;
+    var logoUrl = string.IsNullOrWhiteSpace(siteSettings.SiteLogoUrl) ? "/logo_svg.svg" : siteSettings.SiteLogoUrl;
+    var pageTitle = ViewData["Title"]?.ToString();
+    var layoutTitle = string.IsNullOrWhiteSpace(pageTitle) ? $"{brandName} Yönetim Paneli" : $"{pageTitle} - {brandName} Yönetim Paneli";
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString() ?? string.Empty;
+    var canViewDashboard = ViewBag.CanViewDashboard is bool dashboardAccess && dashboardAccess;
+    var canManageOrders = ViewBag.CanManageOrders is bool orderAccess && orderAccess;
+    var canManageProducts = ViewBag.CanManageProducts is bool productAccess && productAccess;
+    var canManageContent = ViewBag.CanManageContent is bool contentAccess && contentAccess;
+    var canManageUsers = ViewBag.CanManageUsers is bool userAccess && userAccess;
+    var canViewReports = ViewBag.CanViewReports is bool reportAccess && reportAccess;
+    var canManageSettings = ViewBag.CanManageSettings is bool settingsAccess && settingsAccess;
+    var isReadOnlyAdmin = ViewBag.IsReadOnlyAdmin is bool readOnlyAccess && readOnlyAccess;
+
+    var adminName = ViewBag.AdminName?.ToString();
+    if (string.IsNullOrWhiteSpace(adminName))
+    {
+        adminName = User.Identity?.Name ?? "Admin";
+    }
+
+    var adminRoleLabel = ViewBag.AdminRoleLabel?.ToString() ?? "Yönetici";
+    var lastLoginUtc = ViewBag.AdminLastLogin as DateTime?;
+    var lastLoginText = lastLoginUtc.HasValue
+        ? lastLoginUtc.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+        : "İlk aktif admin oturumu";
+    var safeAdminName = string.IsNullOrWhiteSpace(adminName) ? "Admin" : adminName;
+    var adminInitial = (safeAdminName ?? "Admin").Substring(0, 1).ToUpperInvariant();
+    var toastMessage = TempData["Mesaj"]?.ToString()
+        ?? TempData["Basari"]?.ToString()
+        ?? TempData["Hata"]?.ToString();
+    var toastStatus = (TempData["Durum"]?.ToString() ?? (TempData["Hata"] != null ? "danger" : "success")).ToLowerInvariant();
+    var toastType = toastStatus switch
+    {
+        "danger" => "error",
+        "error" => "error",
+        "warning" => "warning",
+        "info" => "info",
+        _ => "success"
+    };
+
+    var productControllers = new[] { "Urun", "Kategori", "UrunOzellik", "SlugTool", "TopluFiyatGuncelle", "CamTabloFiyatGuncelle" };
+    var contentControllers = new[] { "Slayt", "AnaSayfa", "HomeSections", "Kupon", "Yorum", "Bulten", "Iletisim" };
+    var reportControllers = new[] { "Home", "Rapor", "Ziyaretci", "Search" };
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@layoutTitle</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="~/css/admin.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="ca-admin-shell">
+        <header class="ca-partner-header">
+            <div class="ca-partner-brand">
+                <a href="/Admin/Home" class="ca-partner-logo" aria-label="@brandName yönetim paneli">
+                    <img src="@logoUrl" asp-append-version="true" alt="@brandName" width="160" height="66" decoding="async" />
+                </a>
+                <span class="ca-admin-mode">Satıcı Paneli</span>
+            </div>
+
+            <nav class="ca-partner-nav" aria-label="Admin ana menü">
+                @if (canViewDashboard)
+                {
+                    <a href="/Admin/Home" class="ca-partner-nav-link @(currentController == "Home" ? "active" : "")">
+                        <i class="fas fa-chart-line"></i> Panel
+                    </a>
+                }
+
+                @if (canManageOrders)
+                {
+                    <div class="dropdown">
+                        <button class="ca-partner-nav-link dropdown-toggle @(currentController == "Siparis" || currentController == "Iade" || currentController == "Kargo" ? "active" : "")" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bag-shopping"></i> Sipariş Yönetimi
+                            @if (ViewBag.BekleyenSiparis != null && (int)ViewBag.BekleyenSiparis > 0)
+                            {
+                                <span class="ca-top-badge">@ViewBag.BekleyenSiparis</span>
+                            }
+                        </button>
+                        <ul class="dropdown-menu ca-top-menu">
+                            <li><a class="dropdown-item" href="/Admin/Siparis"><i class="fas fa-list-check"></i> Siparişler</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Siparis?durum=0"><i class="fas fa-clock"></i> Yeni Siparişler</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Siparis?durum=8"><i class="fas fa-box"></i> Paketleniyor</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Kargo"><i class="fas fa-truck-fast"></i> Kargo Firmaları</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Iade"><i class="fas fa-rotate-left"></i> İade Talepleri</a></li>
+                        </ul>
+                    </div>
+                }
+
+                @if (canManageProducts)
+                {
+                    <div class="dropdown">
+                        <button class="ca-partner-nav-link dropdown-toggle @(productControllers.Contains(currentController) ? "active" : "")" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cubes"></i> Ürün Yönetimi
+                        </button>
+                        <ul class="dropdown-menu ca-top-menu">
+                            <li><a class="dropdown-item" href="/Admin/Urun"><i class="fas fa-box-open"></i> Ürünler</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Urun/Ekle"><i class="fas fa-plus"></i> Yeni Ürün Ekle</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Kategori"><i class="fas fa-layer-group"></i> Kategoriler</a></li>
+                            <li><a class="dropdown-item" href="/Admin/UrunOzellik"><i class="fas fa-sliders"></i> Ürün Özellikleri</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Urun/Excel"><i class="fas fa-file-excel"></i> Excel Ürün İşlemleri</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Urun/KanvasGorselYukle"><i class="fas fa-images"></i> Kanvas Görsellerini Yükle</a></li>
+                            <li><a class="dropdown-item" href="/Admin/TopluFiyatGuncelle"><i class="fas fa-tags"></i> Kanvas Tablo Fiyat Güncelleme</a></li>
+                            <li><a class="dropdown-item" href="/Admin/CamTabloFiyatGuncelle"><i class="fas fa-layer-group"></i> Cam Tablo Fiyat Güncelleme</a></li>
+                        </ul>
+                    </div>
+                }
+
+                @if (canManageContent)
+                {
+                    <div class="dropdown">
+                        <button class="ca-partner-nav-link dropdown-toggle @(contentControllers.Contains(currentController) ? "active" : "")" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-store"></i> Mağaza İçeriği
+                            @if (ViewBag.OkunmamisIletisim != null && (int)ViewBag.OkunmamisIletisim > 0)
+                            {
+                                <span class="ca-top-badge warning">@ViewBag.OkunmamisIletisim</span>
+                            }
+                        </button>
+                        <ul class="dropdown-menu ca-top-menu">
+                            <li><a class="dropdown-item" href="/Admin/Slayt"><i class="fas fa-images"></i> Slayt Yönetimi</a></li>
+                            <li><a class="dropdown-item" href="/Admin/AnaSayfa"><i class="fas fa-palette"></i> Ana Sayfa İçeriği</a></li>
+                            <li><a class="dropdown-item" href="/Admin/HomeSections"><i class="fas fa-layer-group"></i> Ana Sayfa Bölümleri</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Kupon"><i class="fas fa-tags"></i> Kuponlar</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Iletisim"><i class="fas fa-inbox"></i> Mesajlar</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Yorum"><i class="fas fa-comments"></i> Ürün Yorumları</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Bulten"><i class="fas fa-envelope-open-text"></i> Bülten Aboneleri</a></li>
+                        </ul>
+                    </div>
+                }
+
+                @if (canManageUsers)
+                {
+                    <a href="/Admin/Kullanici" class="ca-partner-nav-link @(currentController == "Kullanici" ? "active" : "")">
+                        <i class="fas fa-users"></i> Üyeler
+                    </a>
+                }
+
+                @if (canViewReports)
+                {
+                    <div class="dropdown">
+                        <button class="ca-partner-nav-link dropdown-toggle @(reportControllers.Contains(currentController) && currentController != "Home" ? "active" : "")" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-chart-pie"></i> Raporlar
+                        </button>
+                        <ul class="dropdown-menu ca-top-menu">
+                            <li><a class="dropdown-item" href="/Admin/Rapor"><i class="fas fa-chart-column"></i> Satış Raporları</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Ziyaretci"><i class="fas fa-user-clock"></i> Ziyaretçi Analizi</a></li>
+                        </ul>
+                    </div>
+                }
+
+                @if (canManageSettings)
+                {
+                    <a href="/Admin/Ayarlar" class="ca-partner-nav-link @(currentController == "Ayarlar" ? "active" : "")">
+                        <i class="fas fa-gear"></i> Ayarlar
+                    </a>
+                }
+            </nav>
+
+            <div class="ca-partner-actions">
+                @if (canViewDashboard)
+                {
+                    <form action="/Admin/Search" method="get" class="ca-partner-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" name="q" placeholder="Sipariş, ürün veya üye ara">
+                    </form>
+                }
+
+                @if (isReadOnlyAdmin)
+                {
+                    <span class="ca-readonly-chip">Salt okunur</span>
+                }
+
+                <div class="dropdown">
+                    <button class="ca-user-trigger" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="ca-user-meta d-none d-lg-block text-end">
+                            <strong>@adminName</strong>
+                            <small>@adminRoleLabel</small>
+                        </span>
+                        <span class="ca-avatar">@adminInitial</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end ca-dropdown-menu mt-2">
+                        <li class="dropdown-item-text">
+                            <div class="fw-semibold">@adminName</div>
+                            <div class="small text-muted">@adminRoleLabel</div>
+                            <div class="small text-muted">Son giriş: @lastLoginText</div>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a href="/" target="_blank" class="dropdown-item">
+                                <i class="fas fa-arrow-up-right-from-square me-2"></i> Canlı Siteyi Görüntüle
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form action="/Hesap/CikisYap" method="post" class="m-0">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="fas fa-right-from-bracket me-2"></i> Çıkış Yap
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="ca-admin-workspace">
+        <main class="ca-content ca-topnav-content">
+            @RenderBody()
+        </main>
+
+        <footer class="ca-footer ca-topnav-footer">
+            &copy; @DateTime.Now.Year @brandName Yönetim Paneli. Tüm hakları saklıdır.
+        </footer>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <script src="~/js/admin.js"></script>
+    @if (!string.IsNullOrWhiteSpace(toastMessage))
+    {
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                showToast(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(toastMessage)), '@toastType');
+            });
+        </script>
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

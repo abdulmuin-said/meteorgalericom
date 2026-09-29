@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "E-posta Onayı Gerekli";
+    var hata = TempData.Peek("Hata");
+    var basari = TempData.Peek("Basari");
+}
+
+<div class="min-h-[80vh] flex items-center justify-center py-16 px-4 bg-[#FFFBF0]">
+    <div class="w-full max-w-lg text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full @(hata == null ? "bg-[#e2e6b3]" : "bg-red-100") mb-6">
+            <i class="fas @(hata == null ? "fa-envelope-open-text text-[#1B2A4A]" : "fa-triangle-exclamation text-red-600") text-3xl"></i>
+        </div>
+
+        <h1 class="font-serif text-3xl tracking-widest text-[#1B2A4A] uppercase mb-4">E-Posta Onayı</h1>
+
+        @if (basari != null)
+        {
+            <div class="bg-[#f4f6df] border border-[#c6ca99] text-[#1B2A4A] text-sm px-4 py-3 rounded mb-6 text-left">
+                <i class="fas fa-check-circle me-2"></i>@basari
+            </div>
+        }
+
+        @if (hata != null)
+        {
+            <div class="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded mb-6 text-left">
+                <i class="fas fa-exclamation-circle me-2"></i>@hata
+            </div>
+            <p class="text-sm text-[#333333] mb-8 leading-relaxed">
+                Hesabınız oluşturuldu. E-posta gönderimi düzeltilince doğrulama bağlantısını tekrar gönderebiliriz.
+            </p>
+        }
+        else
+        {
+            <p class="text-sm text-[#333333] mb-8 leading-relaxed">
+                Kayıt işleminizi tamamlamak için e-posta adresinize bir onay bağlantısı gönderdik. Lütfen gelen kutunuzu ve spam klasörünü kontrol ederek e-postanızı doğrulayın.
+            </p>
+        }
+
+        <a href="/Hesap/GirisYap" class="inline-block bg-[#1B2A4A] text-white px-8 py-3 text-xs tracking-widest uppercase rounded hover:bg-[#1c2001] transition-colors">
+            Giriş Ekranına Dön
+        </a>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+SELECT DISTINCT "Olcu" FROM "UrunSecenekleri" WHERE "Olcu" IS NOT NULL AND "Olcu" != '' ORDER BY "Olcu";

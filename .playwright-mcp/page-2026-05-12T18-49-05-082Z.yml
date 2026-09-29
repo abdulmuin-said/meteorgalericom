@@ -1,0 +1,147 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:      
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Yeni Slayt Ekle" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Ana sayfa slider'ına yeni resim veya video slayt ekleyin.
+          - link " Slayt Listesine Dön" [ref=e45] [cursor=pointer]:
+            - /url: /Admin/Slayt
+            - generic [ref=e46]: 
+            - text: Slayt Listesine Dön
+        - generic [ref=e48]:
+          - generic [ref=e49]: 
+          - generic [ref=e50]:
+            - strong [ref=e51]: "Slider Boyutları:"
+            - list [ref=e52]:
+              - listitem [ref=e53]:
+                - strong [ref=e54]: "Resim:"
+                - text: En az 1920x700 px (yüksek kaliteli için 3840x1400 px önerilir). JPG, PNG veya WEBP formatında yükleyin.
+              - listitem [ref=e55]:
+                - strong [ref=e56]: "Video:"
+                - text: "MP4 formatı önerilir. Maksimum dosya boyutu: 50MB. Önerilen çözünürlük: 1920x700 veya üzeri."
+              - listitem [ref=e57]:
+                - text: Dosyalar
+                - code [ref=e58]: /uploads/slider/
+                - text: klasörüne kaydedilir ve sunucuda kalıcı olarak saklanır.
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - generic [ref=e62]:
+                - heading " Slayt Bilgileri" [level=3] [ref=e64]:
+                  - generic [ref=e65]: 
+                  - text: Slayt Bilgileri
+                - generic [ref=e66]:
+                  - generic [ref=e67]:
+                    - generic [ref=e68]: Başlık *
+                    - textbox "Slayt başlığı" [ref=e69]: Test Slayt 1
+                  - generic [ref=e70]:
+                    - generic [ref=e71]: Alt Başlık
+                    - textbox "Alt başlık" [ref=e72]: Test alt baslik
+                  - generic [ref=e73]:
+                    - generic [ref=e74]: Açıklama
+                    - textbox "Kısa açıklama" [ref=e75]
+              - generic [ref=e76]:
+                - heading " Görsel / Video" [level=3] [ref=e78]:
+                  - generic [ref=e79]: 
+                  - text: Görsel / Video
+                - generic [ref=e80]:
+                  - generic [ref=e81]:
+                    - generic [ref=e82]: Slayt Türü *
+                    - combobox [ref=e83]:
+                      - option "Resim" [selected]
+                      - option "Video"
+                  - generic [ref=e84]:
+                    - generic [ref=e85]: Görsel Yükle
+                    - button "Choose File" [ref=e86] [cursor=pointer]
+                    - generic [ref=e87]: "Desteklenen formatlar: JPG, PNG, WEBP. Maksimum dosya boyutu: 10MB."
+                    - img "Önizleme" [ref=e89]
+                  - generic [ref=e90]:
+                    - generic [ref=e91]:
+                      - generic [ref=e92]: veya Görsel URL
+                      - textbox "https://..." [ref=e93]: https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600&q=80
+                    - generic [ref=e94]:
+                      - generic [ref=e95]: veya Video URL
+                      - textbox "https://..." [ref=e96]
+            - generic [ref=e97]:
+              - generic [ref=e98]:
+                - heading " Ayarlar" [level=3] [ref=e100]:
+                  - generic [ref=e101]: 
+                  - text: Ayarlar
+                - generic [ref=e102]:
+                  - generic [ref=e103]:
+                    - generic [ref=e104]: Sıra
+                    - spinbutton [ref=e105]: "1"
+                    - generic [ref=e106]: Küçük numara = daha önce gösterilir.
+                  - generic [ref=e107]:
+                    - generic [ref=e108]:
+                      - checkbox "Aktif" [checked] [ref=e109]
+                      - generic [ref=e110]: Aktif
+                    - generic [ref=e111]: Pasif yapılırsa slider'da gösterilmez.
+              - generic [ref=e112]:
+                - heading " Önizleme" [level=3] [ref=e114]:
+                  - generic [ref=e115]: 
+                  - text: Önizleme
+                - img "Önizleme" [ref=e118]
+          - generic [ref=e119]:
+            - button " Kaydet" [ref=e120] [cursor=pointer]:
+              - generic [ref=e121]: 
+              - text: Kaydet
+            - link "İptal" [ref=e122] [cursor=pointer]:
+              - /url: /Admin/Slayt
+    - contentinfo [ref=e123]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

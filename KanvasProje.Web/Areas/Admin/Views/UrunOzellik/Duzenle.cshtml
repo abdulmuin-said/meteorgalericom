@@ -1,0 +1,396 @@
+@model KanvasProje.Core.Varliklar.UrunOzellikTanimi
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Ürün Özelliği Düzenle";
+
+    var secenekSayisi = Model.SecenekListesi.Count;
+    var alanTipiEtiketi = Model.AlanTipi switch
+    {
+        "textarea" => "Uzun Metin",
+        "number" => "Sayı",
+        "select" => "Seçimli Liste",
+        _ => "Kısa Metin"
+    };
+}
+
+<style>
+    .ca-feature-editor {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    .ca-feature-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 18px;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        margin-bottom: 16px;
+    }
+
+    .ca-feature-status {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .ca-feature-aside {
+        position: sticky;
+        top: 84px;
+        display: grid;
+        gap: 16px;
+    }
+
+    .ca-section-note {
+        border: 1px solid var(--ca-border);
+        border-left: 3px solid var(--ca-accent);
+        border-radius: var(--ca-radius);
+        padding: 12px 14px;
+        background: #fffaf0;
+        color: var(--ca-text-secondary);
+        font-size: .86rem;
+        margin-bottom: 18px;
+    }
+
+    .ca-switch-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .ca-switch-tile {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        padding: 12px;
+        background: #fff;
+        min-height: 74px;
+    }
+
+    .ca-preview-field {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 14px;
+    }
+
+    .ca-preview-control {
+        width: 100%;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius-sm);
+        background: #f8f6f0;
+        min-height: 42px;
+        padding: 9px 12px;
+        color: var(--ca-text-muted);
+    }
+
+    .ca-mini-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .ca-mini-stat {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius-sm);
+        padding: 10px;
+        background: #fff;
+    }
+
+    .ca-mini-stat span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .72rem;
+    }
+
+    .ca-mini-stat strong {
+        color: var(--ca-text);
+        font-size: 1rem;
+    }
+
+    .ca-save-rail {
+        position: sticky;
+        bottom: 0;
+        z-index: 30;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 14px 0 0;
+        margin-top: 18px;
+        background: linear-gradient(180deg, rgba(247, 244, 238, 0), #f7f4ee 34%);
+    }
+
+    @@media (max-width: 1180px) {
+        .ca-feature-editor {
+            grid-template-columns: 1fr;
+        }
+
+        .ca-feature-aside {
+            position: static;
+            grid-row: 1;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .ca-switch-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Ürün Özelliği Düzenle</h1>
+            <p class="ca-page-subtitle">@Model.Ad alanının ürün tipi, görünüm ve filtre ayarlarını yönetin.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="/Admin/UrunOzellik" class="ca-btn ca-btn-outline">
+                <i class="fas fa-arrow-left"></i> Özellik Alanlarına Dön
+            </a>
+        </div>
+    </div>
+
+    <form asp-action="Duzenle" asp-route-id="@Model.Id" method="post" id="featureEditForm">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="OlusturulmaTarihi" />
+        <input type="hidden" asp-for="SilindiMi" />
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        }
+
+        <div class="ca-feature-toolbar">
+            <div class="ca-feature-status">
+                <span class="ca-badge @(Model.AktifMi ? "ca-badge-success" : "ca-badge-danger")">
+                    <i class="fas @(Model.AktifMi ? "fa-check-circle" : "fa-circle-pause")"></i>
+                    @(Model.AktifMi ? "Aktif" : "Pasif")
+                </span>
+                <span class="ca-badge ca-badge-neutral">@Model.UrunTipi</span>
+                <span class="small text-muted">ID: #@Model.Id</span>
+            </div>
+            <button type="submit" class="ca-btn ca-btn-primary">
+                <i class="fas fa-save"></i> Değişiklikleri Kaydet
+            </button>
+        </div>
+
+        <div class="ca-feature-editor">
+            <div>
+                <div class="ca-card mb-4">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title"><i class="fas fa-sliders me-2"></i>Alan Tanımı</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-section-note">
+                            Bu alan ürün ekleme ve düzenleme ekranındaki dinamik özellik bölümünde görünür. Kod alanı sistem içinde kullanılır; boş bırakılırsa kayıtta başlıktan otomatik üretilir.
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <label class="ca-label">Alan Başlığı</label>
+                                <input asp-for="Ad" id="featureName" class="ca-input" placeholder="Örn: Baskı Kalitesi" />
+                                <span asp-validation-for="Ad" class="text-danger small"></span>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="ca-label">Kod</label>
+                                <input asp-for="Kod" id="featureCode" class="ca-input" placeholder="baski_kalitesi" />
+                                <span asp-validation-for="Kod" class="text-danger small"></span>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="ca-label">Ürün Tipi</label>
+                                <select asp-for="UrunTipi" asp-items="ViewBag.UrunTipleri" id="productType" class="ca-select"></select>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="ca-label">Alan Tipi</label>
+                                <select asp-for="AlanTipi" id="fieldType" class="ca-select">
+                                    <option value="text">Kısa Metin</option>
+                                    <option value="textarea">Uzun Metin</option>
+                                    <option value="number">Sayı</option>
+                                    <option value="select">Seçimli Liste</option>
+                                </select>
+                                <span asp-validation-for="AlanTipi" class="text-danger small"></span>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="ca-label">Sıra</label>
+                                <input asp-for="Sira" class="ca-input" type="number" min="0" />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">Yardım Metni</label>
+                                <input asp-for="YardimMetni" id="helpText" class="ca-input" placeholder="Müşteriye veya editöre kısa açıklama" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card mb-4" id="optionsCard">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title"><i class="fas fa-list me-2"></i>Seçenekler</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-section-note mb-3">
+                            Sadece “Seçimli Liste” alan tipinde kullanılır. Her satıra bir seçenek yazın. Örn: Mat, Parlak, Kanvas.
+                        </div>
+                        <label class="ca-label">Seçenek Listesi</label>
+                        <textarea asp-for="Secenekler" id="featureOptions" class="ca-textarea" rows="7" placeholder="Her satıra bir seçenek yazın.&#10;Mat&#10;Parlak&#10;Kanvas"></textarea>
+                        <span asp-validation-for="Secenekler" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title"><i class="fas fa-eye me-2"></i>Görünürlük ve Kullanım</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-switch-grid">
+                            <label class="ca-switch-tile form-check form-switch">
+                                <input asp-for="AktifMi" class="form-check-input" type="checkbox">
+                                <span class="form-check-label fw-semibold">Aktif</span>
+                                <div class="small text-muted mt-1">Alan ürün formlarında kullanılabilir.</div>
+                            </label>
+                            <label class="ca-switch-tile form-check form-switch">
+                                <input asp-for="FiltredeGoster" class="form-check-input" type="checkbox">
+                                <span class="form-check-label fw-semibold">Filtrede Kullan</span>
+                                <div class="small text-muted mt-1">Kategori/ürün listesi filtrelerinde gösterilir.</div>
+                            </label>
+                            <label class="ca-switch-tile form-check form-switch">
+                                <input asp-for="DetaySayfasindaGoster" class="form-check-input" type="checkbox">
+                                <span class="form-check-label fw-semibold">Detay Sayfasında</span>
+                                <div class="small text-muted mt-1">Ürün detayında bilgi olarak görünür.</div>
+                            </label>
+                            <label class="ca-switch-tile form-check form-switch">
+                                <input asp-for="TeknikTablodaGoster" class="form-check-input" type="checkbox">
+                                <span class="form-check-label fw-semibold">Teknik Tabloda</span>
+                                <div class="small text-muted mt-1">Teknik özellik tablosuna eklenir.</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-save-rail">
+                    <a href="/Admin/UrunOzellik" class="ca-btn ca-btn-outline">İptal</a>
+                    <button type="submit" class="ca-btn ca-btn-primary">
+                        <i class="fas fa-save"></i> Kaydet
+                    </button>
+                </div>
+            </div>
+
+            <aside class="ca-feature-aside">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Canlı Önizleme</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-preview-field">
+                            <label class="ca-label" id="previewLabel">@Model.Ad</label>
+                            <div id="previewControl" class="ca-preview-control"></div>
+                            <div id="previewHelp" class="small text-muted mt-2">@Model.YardimMetni</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Alan Özeti</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-mini-stat-grid">
+                            <div class="ca-mini-stat"><span>Alan Tipi</span><strong id="summaryFieldType">@alanTipiEtiketi</strong></div>
+                            <div class="ca-mini-stat"><span>Seçenek</span><strong id="summaryOptionCount">@secenekSayisi</strong></div>
+                            <div class="ca-mini-stat"><span>Ürün Tipi</span><strong id="summaryProductType">@Model.UrunTipi</strong></div>
+                            <div class="ca-mini-stat"><span>Sıra</span><strong>@Model.Sira</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Kullanım Notu</span>
+                    </div>
+                    <div class="ca-card-body small text-muted">
+                        <div class="mb-2"><i class="fas fa-check text-success me-1"></i> Seçimli liste için seçenekleri satır satır girin.</div>
+                        <div class="mb-2"><i class="fas fa-check text-success me-1"></i> Filtre alanlarını sadece müşterinin arayacağı bilgiler için açın.</div>
+                        <div><i class="fas fa-check text-success me-1"></i> Kod değişirse eski ürün değerleriyle eşleşme davranışı etkilenebilir.</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </form>
+</div>
+
+<script>
+    (function () {
+        const nameInput = document.getElementById('featureName');
+        const helpInput = document.getElementById('helpText');
+        const typeSelect = document.getElementById('fieldType');
+        const optionsInput = document.getElementById('featureOptions');
+        const productType = document.getElementById('productType');
+        const previewLabel = document.getElementById('previewLabel');
+        const previewControl = document.getElementById('previewControl');
+        const previewHelp = document.getElementById('previewHelp');
+        const summaryFieldType = document.getElementById('summaryFieldType');
+        const summaryOptionCount = document.getElementById('summaryOptionCount');
+        const summaryProductType = document.getElementById('summaryProductType');
+
+        const fieldTypeLabels = {
+            text: 'Kısa Metin',
+            textarea: 'Uzun Metin',
+            number: 'Sayı',
+            select: 'Seçimli Liste'
+        };
+
+        function getOptions() {
+            return (optionsInput?.value || '')
+                .split(/\r?\n/)
+                .map(x => x.trim())
+                .filter(Boolean);
+        }
+
+        function renderPreview() {
+            const type = typeSelect?.value || 'text';
+            const options = getOptions();
+            const label = nameInput?.value.trim() || 'Alan başlığı';
+            const help = helpInput?.value.trim() || 'Yardım metni girilmedi.';
+
+            previewLabel.textContent = label;
+            previewHelp.textContent = help;
+            summaryFieldType.textContent = fieldTypeLabels[type] || 'Kısa Metin';
+            summaryOptionCount.textContent = options.length;
+            summaryProductType.textContent = productType?.value || '-';
+
+            if (type === 'textarea') {
+                previewControl.innerHTML = '<div style="min-height:72px;">Uzun metin alanı</div>';
+            } else if (type === 'number') {
+                previewControl.textContent = '0';
+            } else if (type === 'select') {
+                previewControl.innerHTML = options.length
+                    ? options.map(x => `<div>${escapeHtml(x)}</div>`).join('')
+                    : 'Seçenek bekleniyor';
+            } else {
+                previewControl.textContent = 'Kısa metin alanı';
+            }
+        }
+
+        function escapeHtml(value) {
+            return value
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        [nameInput, helpInput, typeSelect, optionsInput, productType].forEach((element) => {
+            element?.addEventListener('input', renderPreview);
+            element?.addEventListener('change', renderPreview);
+        });
+
+        renderPreview();
+    })();
+</script>

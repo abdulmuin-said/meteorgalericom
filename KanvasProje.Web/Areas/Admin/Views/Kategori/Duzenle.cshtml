@@ -1,0 +1,344 @@
+@model KanvasProje.Core.Varliklar.Kategori
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Kategori Düzenle";
+    var urunSayisi = ViewBag.UrunSayisi as int? ?? 0;
+    var altKategoriSayisi = ViewBag.AltKategoriSayisi as int? ?? 0;
+    var ustKategoriAdi = ViewBag.UstKategoriAdi as string ?? "Ana kategori";
+    var magazaUrl = "/Urun?k=" + Model.Id;
+}
+
+<style>
+    .category-edit-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    .category-edit-tabs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .category-edit-tab {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .category-edit-tab i {
+        color: var(--ca-primary);
+    }
+
+    .category-edit-tab span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .74rem;
+    }
+
+    .category-edit-tab strong {
+        display: block;
+        color: var(--ca-text);
+        font-size: .92rem;
+    }
+
+    .category-aside {
+        position: sticky;
+        top: 84px;
+        display: grid;
+        gap: 16px;
+    }
+
+    .category-preview {
+        min-height: 180px;
+        border-radius: var(--ca-radius);
+        border: 1px solid var(--ca-border);
+        overflow: hidden;
+        background: linear-gradient(135deg, #f7f4ee, #ffffff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .category-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .category-preview-placeholder {
+        text-align: center;
+        color: var(--ca-text-muted);
+    }
+
+    .category-preview-placeholder i {
+        display: block;
+        font-size: 2rem;
+        margin-bottom: 8px;
+        color: var(--ca-primary);
+    }
+
+    .category-save-bar {
+        position: sticky;
+        bottom: 0;
+        z-index: 20;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 14px;
+        margin-top: 18px;
+        background: linear-gradient(180deg, rgba(247, 244, 238, 0), #f7f4ee 34%);
+    }
+
+    .ca-mini-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .ca-mini-stat {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius-sm);
+        padding: 10px;
+        background: #fff;
+    }
+
+    .ca-mini-stat span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .72rem;
+    }
+
+    .ca-mini-stat strong {
+        color: var(--ca-text);
+        font-size: 1rem;
+    }
+
+    @@media (max-width: 1180px) {
+        .category-edit-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .category-aside {
+            position: static;
+            grid-row: 1;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .category-edit-tabs {
+            grid-template-columns: 1fr;
+        }
+
+        .category-save-bar {
+            flex-direction: column-reverse;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Kategori Düzenle</h1>
+            <p class="ca-page-subtitle">@Model.Ad kategorisinin mağaza görünümü, hiyerarşisi ve SEO bilgileri.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="/Admin/Kategori" class="ca-btn ca-btn-outline">
+                <i class="fas fa-arrow-left"></i> Kategorilere Dön
+            </a>
+            <a href="@magazaUrl" target="_blank" class="ca-btn ca-btn-outline">
+                <i class="fas fa-eye"></i> Mağazada Gör
+            </a>
+        </div>
+    </div>
+
+    <form asp-action="Duzenle" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="OlusturulmaTarihi" />
+        <input type="hidden" asp-for="SilindiMi" />
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        }
+
+        <div class="category-edit-layout">
+            <div>
+                <div class="category-edit-tabs">
+                    <div class="category-edit-tab">
+                        <i class="fas fa-folder-tree"></i>
+                        <div><span>Üst Kategori</span><strong>@ustKategoriAdi</strong></div>
+                    </div>
+                    <div class="category-edit-tab">
+                        <i class="fas fa-box"></i>
+                        <div><span>Bağlı Ürün</span><strong>@urunSayisi ürün</strong></div>
+                    </div>
+                    <div class="category-edit-tab">
+                        <i class="fas fa-sitemap"></i>
+                        <div><span>Alt Kategori</span><strong>@altKategoriSayisi kayıt</strong></div>
+                    </div>
+                </div>
+
+                <div class="ca-card mb-3">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Temel Bilgiler</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="row g-3">
+                            <div class="col-lg-8">
+                                <label class="ca-label">Kategori Adı</label>
+                                <input asp-for="Ad" class="ca-input" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="ca-label">Üst Kategori</label>
+                                <select asp-for="ParentKategoriId" asp-items="ViewBag.ParentKategoriler" class="ca-select"></select>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="ca-label">Slug</label>
+                                <input asp-for="Slug" class="ca-input" placeholder="kanvas-tablo" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="ca-label">Sıra</label>
+                                <input asp-for="Sira" class="ca-input" type="number" min="0" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="ca-label">Ürün Sıralama Tipi</label>
+                                <select asp-for="UrunSiralamaTipi" class="ca-select">
+                                    <option value="manual">Elle Sıralama</option>
+                                    <option value="newest">En Yeniler</option>
+                                    <option value="popular">Popüler</option>
+                                    <option value="price_asc">Fiyat Artan</option>
+                                    <option value="price_desc">Fiyat Azalan</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Kısa Açıklama</label>
+                                <textarea asp-for="KisaAciklama" class="ca-textarea" rows="2"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Kategori Açıklaması</label>
+                                <textarea asp-for="Aciklama" class="ca-textarea" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card mb-3">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Görsel ve Vitrin</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <label class="ca-label">Kategori Görseli URL</label>
+                                <input asp-for="GorselUrl" class="ca-input" id="categoryImageUrl" onchange="updateCategoryPreview()" />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">Kategori Banner URL</label>
+                                <input asp-for="BannerUrl" class="ca-input" />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">Üst Metin</label>
+                                <textarea asp-for="UstMetin" class="ca-textarea" rows="4"></textarea>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">Alt Metin</label>
+                                <textarea asp-for="AltMetin" class="ca-textarea" rows="4"></textarea>
+                            </div>
+                            <div class="col-lg-8">
+                                <label class="ca-label">Kampanya Etiketi</label>
+                                <input asp-for="KampanyaEtiketi" class="ca-input" placeholder="Yeni sezon, çok satan, özel seri" />
+                            </div>
+                            <div class="col-lg-4 d-flex align-items-end">
+                                <label class="form-check form-switch w-100" style="padding:14px 16px; background:var(--ca-bg); border-radius:var(--ca-radius); border:1px solid var(--ca-border);">
+                                    <input asp-for="AktifMi" class="form-check-input" type="checkbox" style="width:3em; height:1.5em;">
+                                    <span class="form-check-label ms-2">Kategori yayında olsun</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">SEO Bilgileri</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <label class="ca-label">SEO Başlığı</label>
+                                <input asp-for="SeoTitle" class="ca-input" />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">SEO Açıklaması</label>
+                                <input asp-for="SeoDescription" class="ca-input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-save-bar">
+                    <a href="/Admin/Kategori" class="ca-btn ca-btn-outline">Vazgeç</a>
+                    <button type="submit" class="ca-btn ca-btn-primary">
+                        <i class="fas fa-save"></i> Değişiklikleri Kaydet
+                    </button>
+                </div>
+            </div>
+
+            <aside class="category-aside">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Kategori Özeti</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="category-preview mb-3" id="categoryPreview">
+                            @if (!string.IsNullOrWhiteSpace(Model.GorselUrl))
+                            {
+                                <img src="@Model.GorselUrl" alt="@Model.Ad görseli" onerror="this.closest('.category-preview').innerHTML='<div class=&quot;category-preview-placeholder&quot;><i class=&quot;fas fa-image&quot;></i>Görsel yüklenemedi</div>';" />
+                            }
+                            else
+                            {
+                                <div class="category-preview-placeholder">
+                                    <i class="fas fa-folder-open"></i>
+                                    Görsel tanımlı değil
+                                </div>
+                            }
+                        </div>
+                        <div class="fw-bold">@Model.Ad</div>
+                        <div class="small text-muted mb-3">/@(Model.Slug ?? "-")</div>
+                        <div class="ca-mini-stat-grid">
+                            <div class="ca-mini-stat"><span>Durum</span><strong>@(Model.AktifMi && !Model.SilindiMi ? "Aktif" : "Pasif")</strong></div>
+                            <div class="ca-mini-stat"><span>Tip</span><strong>@(Model.ParentKategoriId.HasValue ? "Alt" : "Ana")</strong></div>
+                            <div class="ca-mini-stat"><span>Ürün</span><strong>@urunSayisi</strong></div>
+                            <div class="ca-mini-stat"><span>Alt Kategori</span><strong>@altKategoriSayisi</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </form>
+</div>
+
+<script>
+    function updateCategoryPreview() {
+        const input = document.getElementById('categoryImageUrl');
+        const preview = document.getElementById('categoryPreview');
+        if (!input || !preview) return;
+
+        if (!input.value) {
+            preview.innerHTML = '<div class="category-preview-placeholder"><i class="fas fa-folder-open"></i>Görsel tanımlı değil</div>';
+            return;
+        }
+
+        preview.innerHTML = `<img src="${input.value}" alt="Kategori görseli" onerror="this.closest('.category-preview').innerHTML='<div class=&quot;category-preview-placeholder&quot;><i class=&quot;fas fa-image&quot;></i>Görsel yüklenemedi</div>';">`;
+    }
+</script>

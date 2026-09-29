@@ -1,0 +1,573 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:      
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Kullanıcı Yönetimi" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Rolleri, oturum durumunu ve temel müşteri bilgilerini tek ekrandan yönetin.
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: 
+              - text: 1 Admin
+            - generic [ref=e47]:
+              - generic [ref=e48]: 
+              - text: 11 Müşteri
+            - link " CSV Dışa Aktar" [ref=e49] [cursor=pointer]:
+              - /url: /Admin/Kullanici/ExcelExport
+              - generic [ref=e50]: 
+              - text: CSV Dışa Aktar
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - generic [ref=e54]:
+              - generic [ref=e55]: 
+              - textbox "İsim, e-posta veya telefon ara" [ref=e56]
+            - generic [ref=e57]: Toplam 12 kayıt listeleniyor.
+          - table [ref=e59]:
+            - rowgroup [ref=e60]:
+              - row "Kullanıcı İletişim Konum Rol Son Admin Girişi İşlemler" [ref=e61]:
+                - columnheader "Kullanıcı" [ref=e62]
+                - columnheader "İletişim" [ref=e63]
+                - columnheader "Konum" [ref=e64]
+                - columnheader "Rol" [ref=e65]
+                - columnheader "Son Admin Girişi" [ref=e66]
+                - columnheader "İşlemler" [ref=e67]
+            - rowgroup [ref=e68]:
+              - 'row "H Harun OK ID: #6bbb245b Bu hesap aktif oturumunuz.  admin@canvasia.com  -  İstanbul  Admin 13.05.2026 10:50 Önceki: 13.05.2026 10:33  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil Kendi hesabınızda engelleme ve silme kapalıdır." [ref=e69]':
+                - 'cell "H Harun OK ID: #6bbb245b Bu hesap aktif oturumunuz." [ref=e70]':
+                  - generic [ref=e71]:
+                    - generic [ref=e72]: H
+                    - generic [ref=e73]:
+                      - generic [ref=e74]: Harun OK
+                      - text: "ID: #6bbb245b"
+                      - generic [ref=e75]: Bu hesap aktif oturumunuz.
+                - cell " admin@canvasia.com  -" [ref=e76]:
+                  - generic [ref=e77]:
+                    - generic [ref=e78]: 
+                    - text: admin@canvasia.com
+                  - generic [ref=e79]:
+                    - generic [ref=e80]: 
+                    - text: "-"
+                - cell " İstanbul" [ref=e81]:
+                  - generic [ref=e82]:
+                    - generic [ref=e83]: 
+                    - text: İstanbul
+                - cell " Admin" [ref=e84]:
+                  - generic [ref=e85]:
+                    - generic [ref=e86]: 
+                    - text: Admin
+                - 'cell "13.05.2026 10:50 Önceki: 13.05.2026 10:33" [ref=e87]':
+                  - generic [ref=e88]: 13.05.2026 10:50
+                  - generic [ref=e89]: "Önceki: 13.05.2026 10:33"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil Kendi hesabınızda engelleme ve silme kapalıdır." [ref=e90]:
+                  - generic [ref=e91]:
+                    - link " Bilgileri Düzenle" [ref=e92] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/6bbb245b-4e2d-4a22-8fd8-3645195bc0f0
+                      - generic [ref=e93]: 
+                      - generic [ref=e94]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e95] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/6bbb245b-4e2d-4a22-8fd8-3645195bc0f0
+                      - generic [ref=e96]: 
+                      - generic [ref=e97]: Şifre Değiştir
+                    - button " Girişi Engelle" [disabled] [ref=e99]:
+                      - generic [ref=e100]: 
+                      - generic [ref=e101]: Girişi Engelle
+                    - button " Hesabı Sil" [disabled] [ref=e103]:
+                      - generic [ref=e104]: 
+                      - generic [ref=e105]: Hesabı Sil
+                  - generic [ref=e106]: Kendi hesabınızda engelleme ve silme kapalıdır.
+              - 'row "A abdulmuin said ID: #a991a5c2  abdulmuinsaid222@gmail.com  -  Ankara  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e107]':
+                - 'cell "A abdulmuin said ID: #a991a5c2" [ref=e108]':
+                  - generic [ref=e109]:
+                    - generic [ref=e110]: A
+                    - generic [ref=e111]:
+                      - generic [ref=e112]: abdulmuin said
+                      - text: "ID: #a991a5c2"
+                - cell " abdulmuinsaid222@gmail.com  -" [ref=e113]:
+                  - generic [ref=e114]:
+                    - generic [ref=e115]: 
+                    - text: abdulmuinsaid222@gmail.com
+                  - generic [ref=e116]:
+                    - generic [ref=e117]: 
+                    - text: "-"
+                - cell " Ankara" [ref=e118]:
+                  - generic [ref=e119]:
+                    - generic [ref=e120]: 
+                    - text: Ankara
+                - cell " Üye" [ref=e121]:
+                  - generic [ref=e122]:
+                    - generic [ref=e123]: 
+                    - text: Üye
+                - cell "-" [ref=e124]:
+                  - generic [ref=e125]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e126]:
+                  - generic [ref=e127]:
+                    - link " Bilgileri Düzenle" [ref=e128] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/a991a5c2-e09d-49a6-9d13-ffdc3e985351
+                      - generic [ref=e129]: 
+                      - generic [ref=e130]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e131] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/a991a5c2-e09d-49a6-9d13-ffdc3e985351
+                      - generic [ref=e132]: 
+                      - generic [ref=e133]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e135] [cursor=pointer]:
+                      - generic [ref=e136]: 
+                      - generic [ref=e137]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e139] [cursor=pointer]:
+                      - generic [ref=e140]: 
+                      - generic [ref=e141]: Hesabı Sil
+              - 'row "A abdulmuin said ID: #09b8fe99  abdulmuinoyun@gmail.com  -  Ankara  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e142]':
+                - 'cell "A abdulmuin said ID: #09b8fe99" [ref=e143]':
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: A
+                    - generic [ref=e146]:
+                      - generic [ref=e147]: abdulmuin said
+                      - text: "ID: #09b8fe99"
+                - cell " abdulmuinoyun@gmail.com  -" [ref=e148]:
+                  - generic [ref=e149]:
+                    - generic [ref=e150]: 
+                    - text: abdulmuinoyun@gmail.com
+                  - generic [ref=e151]:
+                    - generic [ref=e152]: 
+                    - text: "-"
+                - cell " Ankara" [ref=e153]:
+                  - generic [ref=e154]:
+                    - generic [ref=e155]: 
+                    - text: Ankara
+                - cell " Üye" [ref=e156]:
+                  - generic [ref=e157]:
+                    - generic [ref=e158]: 
+                    - text: Üye
+                - cell "-" [ref=e159]:
+                  - generic [ref=e160]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e161]:
+                  - generic [ref=e162]:
+                    - link " Bilgileri Düzenle" [ref=e163] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/09b8fe99-9734-4194-9681-dd5c109d7822
+                      - generic [ref=e164]: 
+                      - generic [ref=e165]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e166] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/09b8fe99-9734-4194-9681-dd5c109d7822
+                      - generic [ref=e167]: 
+                      - generic [ref=e168]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e170] [cursor=pointer]:
+                      - generic [ref=e171]: 
+                      - generic [ref=e172]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e174] [cursor=pointer]:
+                      - generic [ref=e175]: 
+                      - generic [ref=e176]: Hesabı Sil
+              - 'row "A abdulmuin said ID: #067f47b5  abdulmuinsaid55@gmail.com  -  Adana  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e177]':
+                - 'cell "A abdulmuin said ID: #067f47b5" [ref=e178]':
+                  - generic [ref=e179]:
+                    - generic [ref=e180]: A
+                    - generic [ref=e181]:
+                      - generic [ref=e182]: abdulmuin said
+                      - text: "ID: #067f47b5"
+                - cell " abdulmuinsaid55@gmail.com  -" [ref=e183]:
+                  - generic [ref=e184]:
+                    - generic [ref=e185]: 
+                    - text: abdulmuinsaid55@gmail.com
+                  - generic [ref=e186]:
+                    - generic [ref=e187]: 
+                    - text: "-"
+                - cell " Adana" [ref=e188]:
+                  - generic [ref=e189]:
+                    - generic [ref=e190]: 
+                    - text: Adana
+                - cell " Üye" [ref=e191]:
+                  - generic [ref=e192]:
+                    - generic [ref=e193]: 
+                    - text: Üye
+                - cell "-" [ref=e194]:
+                  - generic [ref=e195]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e196]:
+                  - generic [ref=e197]:
+                    - link " Bilgileri Düzenle" [ref=e198] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/067f47b5-d784-4202-830c-02519b266dfa
+                      - generic [ref=e199]: 
+                      - generic [ref=e200]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e201] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/067f47b5-d784-4202-830c-02519b266dfa
+                      - generic [ref=e202]: 
+                      - generic [ref=e203]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e205] [cursor=pointer]:
+                      - generic [ref=e206]: 
+                      - generic [ref=e207]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e209] [cursor=pointer]:
+                      - generic [ref=e210]: 
+                      - generic [ref=e211]: Hesabı Sil
+              - 'row "A Abdulmuin Said ID: #ae1ec0b6  abdulmuinsaid37@gmail.com  -  Ankara  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e212]':
+                - 'cell "A Abdulmuin Said ID: #ae1ec0b6" [ref=e213]':
+                  - generic [ref=e214]:
+                    - generic [ref=e215]: A
+                    - generic [ref=e216]:
+                      - generic [ref=e217]: Abdulmuin Said
+                      - text: "ID: #ae1ec0b6"
+                - cell " abdulmuinsaid37@gmail.com  -" [ref=e218]:
+                  - generic [ref=e219]:
+                    - generic [ref=e220]: 
+                    - text: abdulmuinsaid37@gmail.com
+                  - generic [ref=e221]:
+                    - generic [ref=e222]: 
+                    - text: "-"
+                - cell " Ankara" [ref=e223]:
+                  - generic [ref=e224]:
+                    - generic [ref=e225]: 
+                    - text: Ankara
+                - cell " Üye" [ref=e226]:
+                  - generic [ref=e227]:
+                    - generic [ref=e228]: 
+                    - text: Üye
+                - cell "-" [ref=e229]:
+                  - generic [ref=e230]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e231]:
+                  - generic [ref=e232]:
+                    - link " Bilgileri Düzenle" [ref=e233] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/ae1ec0b6-f3c3-4aa2-98bd-9a9df9e2897c
+                      - generic [ref=e234]: 
+                      - generic [ref=e235]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e236] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/ae1ec0b6-f3c3-4aa2-98bd-9a9df9e2897c
+                      - generic [ref=e237]: 
+                      - generic [ref=e238]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e240] [cursor=pointer]:
+                      - generic [ref=e241]: 
+                      - generic [ref=e242]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e244] [cursor=pointer]:
+                      - generic [ref=e245]: 
+                      - generic [ref=e246]: Hesabı Sil
+              - 'row "A Abdulmuin Said ID: #67e0a3e0  abdulmuinsaid255@gmail.com  -  Kastamonu  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e247]':
+                - 'cell "A Abdulmuin Said ID: #67e0a3e0" [ref=e248]':
+                  - generic [ref=e249]:
+                    - generic [ref=e250]: A
+                    - generic [ref=e251]:
+                      - generic [ref=e252]: Abdulmuin Said
+                      - text: "ID: #67e0a3e0"
+                - cell " abdulmuinsaid255@gmail.com  -" [ref=e253]:
+                  - generic [ref=e254]:
+                    - generic [ref=e255]: 
+                    - text: abdulmuinsaid255@gmail.com
+                  - generic [ref=e256]:
+                    - generic [ref=e257]: 
+                    - text: "-"
+                - cell " Kastamonu" [ref=e258]:
+                  - generic [ref=e259]:
+                    - generic [ref=e260]: 
+                    - text: Kastamonu
+                - cell " Üye" [ref=e261]:
+                  - generic [ref=e262]:
+                    - generic [ref=e263]: 
+                    - text: Üye
+                - cell "-" [ref=e264]:
+                  - generic [ref=e265]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e266]:
+                  - generic [ref=e267]:
+                    - link " Bilgileri Düzenle" [ref=e268] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/67e0a3e0-5ecf-45ac-936f-68f898ec03a2
+                      - generic [ref=e269]: 
+                      - generic [ref=e270]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e271] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/67e0a3e0-5ecf-45ac-936f-68f898ec03a2
+                      - generic [ref=e272]: 
+                      - generic [ref=e273]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e275] [cursor=pointer]:
+                      - generic [ref=e276]: 
+                      - generic [ref=e277]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e279] [cursor=pointer]:
+                      - generic [ref=e280]: 
+                      - generic [ref=e281]: Hesabı Sil
+              - 'row "A Abdulmuin Said ID: #1e034ae1  rambohh396@gmail.com  -  Adana  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e282]':
+                - 'cell "A Abdulmuin Said ID: #1e034ae1" [ref=e283]':
+                  - generic [ref=e284]:
+                    - generic [ref=e285]: A
+                    - generic [ref=e286]:
+                      - generic [ref=e287]: Abdulmuin Said
+                      - text: "ID: #1e034ae1"
+                - cell " rambohh396@gmail.com  -" [ref=e288]:
+                  - generic [ref=e289]:
+                    - generic [ref=e290]: 
+                    - text: rambohh396@gmail.com
+                  - generic [ref=e291]:
+                    - generic [ref=e292]: 
+                    - text: "-"
+                - cell " Adana" [ref=e293]:
+                  - generic [ref=e294]:
+                    - generic [ref=e295]: 
+                    - text: Adana
+                - cell " Üye" [ref=e296]:
+                  - generic [ref=e297]:
+                    - generic [ref=e298]: 
+                    - text: Üye
+                - cell "-" [ref=e299]:
+                  - generic [ref=e300]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e301]:
+                  - generic [ref=e302]:
+                    - link " Bilgileri Düzenle" [ref=e303] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/1e034ae1-010f-43b9-a221-d555b66deb39
+                      - generic [ref=e304]: 
+                      - generic [ref=e305]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e306] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/1e034ae1-010f-43b9-a221-d555b66deb39
+                      - generic [ref=e307]: 
+                      - generic [ref=e308]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e310] [cursor=pointer]:
+                      - generic [ref=e311]: 
+                      - generic [ref=e312]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e314] [cursor=pointer]:
+                      - generic [ref=e315]: 
+                      - generic [ref=e316]: Hesabı Sil
+              - 'row "C Cemile Said ID: #4ae75103  cemilesaid693@gmail.com  -  Eskişehir  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e317]':
+                - 'cell "C Cemile Said ID: #4ae75103" [ref=e318]':
+                  - generic [ref=e319]:
+                    - generic [ref=e320]: C
+                    - generic [ref=e321]:
+                      - generic [ref=e322]: Cemile Said
+                      - text: "ID: #4ae75103"
+                - cell " cemilesaid693@gmail.com  -" [ref=e323]:
+                  - generic [ref=e324]:
+                    - generic [ref=e325]: 
+                    - text: cemilesaid693@gmail.com
+                  - generic [ref=e326]:
+                    - generic [ref=e327]: 
+                    - text: "-"
+                - cell " Eskişehir" [ref=e328]:
+                  - generic [ref=e329]:
+                    - generic [ref=e330]: 
+                    - text: Eskişehir
+                - cell " Üye" [ref=e331]:
+                  - generic [ref=e332]:
+                    - generic [ref=e333]: 
+                    - text: Üye
+                - cell "-" [ref=e334]:
+                  - generic [ref=e335]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e336]:
+                  - generic [ref=e337]:
+                    - link " Bilgileri Düzenle" [ref=e338] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/4ae75103-0663-450d-ac8a-5076b0c24ab0
+                      - generic [ref=e339]: 
+                      - generic [ref=e340]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e341] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/4ae75103-0663-450d-ac8a-5076b0c24ab0
+                      - generic [ref=e342]: 
+                      - generic [ref=e343]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e345] [cursor=pointer]:
+                      - generic [ref=e346]: 
+                      - generic [ref=e347]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e349] [cursor=pointer]:
+                      - generic [ref=e350]: 
+                      - generic [ref=e351]: Hesabı Sil
+              - 'row "M maha el hüseyin ID: #c43ff111  abdulmuinsaid256@gmail.com  -  Yozgat  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e352]':
+                - 'cell "M maha el hüseyin ID: #c43ff111" [ref=e353]':
+                  - generic [ref=e354]:
+                    - generic [ref=e355]: M
+                    - generic [ref=e356]:
+                      - generic [ref=e357]: maha el hüseyin
+                      - text: "ID: #c43ff111"
+                - cell " abdulmuinsaid256@gmail.com  -" [ref=e358]:
+                  - generic [ref=e359]:
+                    - generic [ref=e360]: 
+                    - text: abdulmuinsaid256@gmail.com
+                  - generic [ref=e361]:
+                    - generic [ref=e362]: 
+                    - text: "-"
+                - cell " Yozgat" [ref=e363]:
+                  - generic [ref=e364]:
+                    - generic [ref=e365]: 
+                    - text: Yozgat
+                - cell " Üye" [ref=e366]:
+                  - generic [ref=e367]:
+                    - generic [ref=e368]: 
+                    - text: Üye
+                - cell "-" [ref=e369]:
+                  - generic [ref=e370]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e371]:
+                  - generic [ref=e372]:
+                    - link " Bilgileri Düzenle" [ref=e373] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/c43ff111-61fc-4066-936e-6daaeaa1f6d7
+                      - generic [ref=e374]: 
+                      - generic [ref=e375]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e376] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/c43ff111-61fc-4066-936e-6daaeaa1f6d7
+                      - generic [ref=e377]: 
+                      - generic [ref=e378]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e380] [cursor=pointer]:
+                      - generic [ref=e381]: 
+                      - generic [ref=e382]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e384] [cursor=pointer]:
+                      - generic [ref=e385]: 
+                      - generic [ref=e386]: Hesabı Sil
+              - 'row "R Ramazan said ID: #b6f70afa  muinyemek37@gmail.com  -  Ankara  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e387]':
+                - 'cell "R Ramazan said ID: #b6f70afa" [ref=e388]':
+                  - generic [ref=e389]:
+                    - generic [ref=e390]: R
+                    - generic [ref=e391]:
+                      - generic [ref=e392]: Ramazan said
+                      - text: "ID: #b6f70afa"
+                - cell " muinyemek37@gmail.com  -" [ref=e393]:
+                  - generic [ref=e394]:
+                    - generic [ref=e395]: 
+                    - text: muinyemek37@gmail.com
+                  - generic [ref=e396]:
+                    - generic [ref=e397]: 
+                    - text: "-"
+                - cell " Ankara" [ref=e398]:
+                  - generic [ref=e399]:
+                    - generic [ref=e400]: 
+                    - text: Ankara
+                - cell " Üye" [ref=e401]:
+                  - generic [ref=e402]:
+                    - generic [ref=e403]: 
+                    - text: Üye
+                - cell "-" [ref=e404]:
+                  - generic [ref=e405]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e406]:
+                  - generic [ref=e407]:
+                    - link " Bilgileri Düzenle" [ref=e408] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/b6f70afa-417b-4070-9f75-90dd11d96225
+                      - generic [ref=e409]: 
+                      - generic [ref=e410]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e411] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/b6f70afa-417b-4070-9f75-90dd11d96225
+                      - generic [ref=e412]: 
+                      - generic [ref=e413]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e415] [cursor=pointer]:
+                      - generic [ref=e416]: 
+                      - generic [ref=e417]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e419] [cursor=pointer]:
+                      - generic [ref=e420]: 
+                      - generic [ref=e421]: Hesabı Sil
+              - 'row "V viyam said ID: #7fdf734a  viyamsaid43@gmail.com  -  Kastamonu  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e422]':
+                - 'cell "V viyam said ID: #7fdf734a" [ref=e423]':
+                  - generic [ref=e424]:
+                    - generic [ref=e425]: V
+                    - generic [ref=e426]:
+                      - generic [ref=e427]: viyam said
+                      - text: "ID: #7fdf734a"
+                - cell " viyamsaid43@gmail.com  -" [ref=e428]:
+                  - generic [ref=e429]:
+                    - generic [ref=e430]: 
+                    - text: viyamsaid43@gmail.com
+                  - generic [ref=e431]:
+                    - generic [ref=e432]: 
+                    - text: "-"
+                - cell " Kastamonu" [ref=e433]:
+                  - generic [ref=e434]:
+                    - generic [ref=e435]: 
+                    - text: Kastamonu
+                - cell " Üye" [ref=e436]:
+                  - generic [ref=e437]:
+                    - generic [ref=e438]: 
+                    - text: Üye
+                - cell "-" [ref=e439]:
+                  - generic [ref=e440]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e441]:
+                  - generic [ref=e442]:
+                    - link " Bilgileri Düzenle" [ref=e443] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/7fdf734a-9e0e-46b9-8006-890cbc56fd50
+                      - generic [ref=e444]: 
+                      - generic [ref=e445]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e446] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/7fdf734a-9e0e-46b9-8006-890cbc56fd50
+                      - generic [ref=e447]: 
+                      - generic [ref=e448]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e450] [cursor=pointer]:
+                      - generic [ref=e451]: 
+                      - generic [ref=e452]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e454] [cursor=pointer]:
+                      - generic [ref=e455]: 
+                      - generic [ref=e456]: Hesabı Sil
+              - 'row "V viyam said ID: #4b8fcd9c  abdulmuinsaid444@gmail.com  -  Kastamonu  Üye -  Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e457]':
+                - 'cell "V viyam said ID: #4b8fcd9c" [ref=e458]':
+                  - generic [ref=e459]:
+                    - generic [ref=e460]: V
+                    - generic [ref=e461]:
+                      - generic [ref=e462]: viyam said
+                      - text: "ID: #4b8fcd9c"
+                - cell " abdulmuinsaid444@gmail.com  -" [ref=e463]:
+                  - generic [ref=e464]:
+                    - generic [ref=e465]: 
+                    - text: abdulmuinsaid444@gmail.com
+                  - generic [ref=e466]:
+                    - generic [ref=e467]: 
+                    - text: "-"
+                - cell " Kastamonu" [ref=e468]:
+                  - generic [ref=e469]:
+                    - generic [ref=e470]: 
+                    - text: Kastamonu
+                - cell " Üye" [ref=e471]:
+                  - generic [ref=e472]:
+                    - generic [ref=e473]: 
+                    - text: Üye
+                - cell "-" [ref=e474]:
+                  - generic [ref=e475]: "-"
+                - cell " Bilgileri Düzenle  Şifre Değiştir  Girişi Engelle  Hesabı Sil" [ref=e476]:
+                  - generic [ref=e477]:
+                    - link " Bilgileri Düzenle" [ref=e478] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/Duzenle/4b8fcd9c-4f87-489d-b800-a33103b248db
+                      - generic [ref=e479]: 
+                      - generic [ref=e480]: Bilgileri Düzenle
+                    - link " Şifre Değiştir" [ref=e481] [cursor=pointer]:
+                      - /url: /Admin/Kullanici/SifreSifirla/4b8fcd9c-4f87-489d-b800-a33103b248db
+                      - generic [ref=e482]: 
+                      - generic [ref=e483]: Şifre Değiştir
+                    - button " Girişi Engelle" [ref=e485] [cursor=pointer]:
+                      - generic [ref=e486]: 
+                      - generic [ref=e487]: Girişi Engelle
+                    - button " Hesabı Sil" [ref=e489] [cursor=pointer]:
+                      - generic [ref=e490]: 
+                      - generic [ref=e491]: Hesabı Sil
+    - contentinfo [ref=e492]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

@@ -1,0 +1,129 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:      
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Slayt Yönetimi" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Ana sayfa slider slaytlarını yönetin. Resim veya video slayt ekleyebilirsiniz.
+          - link "+ Yeni Slayt Ekle" [ref=e45] [cursor=pointer]:
+            - /url: /Admin/Slayt/Ekle
+            - generic [ref=e46]: +
+            - text: Yeni Slayt Ekle
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - heading " Slayt Listesi" [level=3] [ref=e49]:
+              - generic [ref=e50]: 
+              - text: Slayt Listesi
+            - paragraph [ref=e51]: Sıralamayı değiştirmek için slaytları sürükleyebilirsiniz.
+          - table [ref=e54]:
+            - rowgroup [ref=e55]:
+              - row "Sıra Önizleme Başlık Alt Başlık Tür Durum İşlemler" [ref=e56]:
+                - columnheader "Sıra" [ref=e57]
+                - columnheader "Önizleme" [ref=e58]
+                - columnheader "Başlık" [ref=e59]
+                - columnheader "Alt Başlık" [ref=e60]
+                - columnheader "Tür" [ref=e61]
+                - columnheader "Durum" [ref=e62]
+                - columnheader "İşlemler" [ref=e63]
+            - rowgroup [ref=e64]:
+              - row " 1 VIDEO SADE VE DOGAL Yasam alanlariniz icin ozende secilmis kanvas eserler. Canvasia Koleksiyonu  Video Aktif  " [ref=e65]:
+                - cell " 1" [ref=e66]:
+                  - generic [ref=e67]: 
+                  - generic [ref=e68]: "1"
+                - cell "VIDEO" [ref=e69]:
+                  - generic [ref=e72]: VIDEO
+                - cell "SADE VE DOGAL Yasam alanlariniz icin ozende secilmis kanvas eserler." [ref=e73]:
+                  - strong [ref=e74]: SADE VE DOGAL
+                  - generic [ref=e75]: Yasam alanlariniz icin ozende secilmis kanvas eserler.
+                - cell "Canvasia Koleksiyonu" [ref=e76]
+                - cell " Video" [ref=e77]:
+                  - generic [ref=e78]:
+                    - generic [ref=e79]: 
+                    - text: Video
+                - cell "Aktif" [ref=e80]:
+                  - generic [ref=e81]: Aktif
+                - cell " " [ref=e82]:
+                  - link "" [ref=e83] [cursor=pointer]:
+                    - /url: /Admin/Slayt/Duzenle/1
+                    - generic [ref=e84]: 
+                  - button "" [ref=e85] [cursor=pointer]:
+                    - generic [ref=e86]: 
+              - row " 2 VIDEO MODERN ESERLER Evinizi sanatin buyuleyici dunya...yla bulusturun. Yeni Sezon  Video Aktif  " [ref=e87]:
+                - cell " 2" [ref=e88]:
+                  - generic [ref=e89]: 
+                  - generic [ref=e90]: "2"
+                - cell "VIDEO" [ref=e91]:
+                  - generic [ref=e94]: VIDEO
+                - cell "MODERN ESERLER Evinizi sanatin buyuleyici dunya...yla bulusturun." [ref=e95]:
+                  - strong [ref=e96]: MODERN ESERLER
+                  - generic [ref=e97]: Evinizi sanatin buyuleyici dunya...yla bulusturun.
+                - cell "Yeni Sezon" [ref=e98]
+                - cell " Video" [ref=e99]:
+                  - generic [ref=e100]:
+                    - generic [ref=e101]: 
+                    - text: Video
+                - cell "Aktif" [ref=e102]:
+                  - generic [ref=e103]: Aktif
+                - cell " " [ref=e104]:
+                  - link "" [ref=e105] [cursor=pointer]:
+                    - /url: /Admin/Slayt/Duzenle/2
+                    - generic [ref=e106]: 
+                  - button "" [ref=e107] [cursor=pointer]:
+                    - generic [ref=e108]: 
+      - text:  
+    - contentinfo [ref=e109]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

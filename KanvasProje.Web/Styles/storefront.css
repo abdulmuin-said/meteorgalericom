@@ -1,0 +1,1416 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sf-ink: #22211f;
+    --sf-forest: #26413c;
+    --sf-forest-deep: #1a2d29;
+    --sf-gold: #af8452;
+    --sf-sand: #f4efe7;
+    --sf-mist: #e6ddd0;
+    --sf-cream: #fbf8f2;
+    --sf-border: rgba(34, 33, 31, 0.1);
+    --sf-border-strong: rgba(34, 33, 31, 0.18);
+    --sf-shadow: 0 18px 45px rgba(34, 33, 31, 0.08);
+    --sf-shadow-panel: 0 24px 60px rgba(28, 43, 40, 0.1);
+    --sf-header-offset: 12rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvasia-cream font-body text-canvasia-ink antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(175, 132, 82, 0.09), transparent 30%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+  }
+
+  main {
+    @apply relative;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading text-canvasia-ink;
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+
+  input,
+  select,
+  textarea {
+    @apply font-body;
+  }
+}
+
+@layer components {
+  .storefront-shell {
+    @apply relative min-h-screen overflow-x-hidden;
+  }
+
+  .shell-topbar {
+    @apply border-b border-white/10 bg-canvasia-forest-deep text-[0.72rem] uppercase tracking-[0.2em] text-white/85;
+  }
+
+  .shell-topbar-inner {
+    @apply mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8;
+  }
+
+  .shell-topbar-copy {
+    @apply flex items-center gap-2;
+  }
+
+  .shell-topbar-meta {
+    @apply hidden items-center gap-6 lg:flex;
+  }
+
+  .shell-header {
+    @apply sticky top-0 z-40 border-b border-black/5 bg-white/90 backdrop-blur-xl;
+  }
+
+  .shell-header-inner {
+    @apply mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8;
+  }
+
+  .shell-brand {
+    @apply flex min-w-0 items-center gap-4;
+  }
+
+  .shell-brand-mark {
+    @apply flex h-12 items-center justify-center overflow-hidden rounded-full border border-black/5 bg-white px-4 shadow-soft;
+  }
+
+  .shell-brand-mark img {
+    @apply h-8 w-auto object-contain;
+  }
+
+  .shell-brand-copy {
+    @apply hidden min-w-0 flex-col sm:flex;
+  }
+
+  .shell-brand-title {
+    @apply truncate font-heading text-2xl font-semibold leading-none text-canvasia-ink;
+  }
+
+  .shell-brand-subtitle {
+    @apply truncate text-xs uppercase tracking-[0.2em] text-black/55;
+  }
+
+  .shell-header-actions {
+    @apply flex items-center gap-2 sm:gap-3;
+  }
+
+  .shell-action-link {
+    @apply hidden items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-3 text-sm font-semibold text-canvasia-ink shadow-soft hover:border-canvasia-gold hover:text-canvasia-forest lg:inline-flex;
+  }
+
+  .shell-icon-button {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-canvasia-ink shadow-soft hover:border-canvasia-gold hover:text-canvasia-forest;
+  }
+
+  .header-cart-pill {
+    @apply inline-flex items-center gap-3 rounded-full bg-canvasia-forest px-5 py-3 text-sm font-semibold text-white shadow-panel hover:bg-canvasia-forest-deep;
+  }
+
+  .header-cart-count {
+    @apply inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full bg-white px-1 text-xs font-bold text-canvasia-forest;
+  }
+
+  .header-search-shell {
+    @apply hidden lg:block;
+  }
+
+  .header-search-form {
+    @apply flex min-w-[18rem] items-center gap-3 rounded-full border border-black/10 bg-white px-4 py-3 shadow-soft;
+  }
+
+  .header-search-form input {
+    @apply w-full border-0 bg-transparent p-0 text-sm text-canvasia-ink outline-none ring-0;
+  }
+
+  .desktop-nav {
+    @apply hidden border-t border-black/5 bg-white/80 lg:block;
+  }
+
+  .desktop-nav-inner {
+    @apply mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8;
+  }
+
+  .desktop-nav-links {
+    @apply flex flex-wrap items-center gap-6;
+  }
+
+  .desktop-nav-link {
+    @apply text-[0.82rem] font-semibold uppercase tracking-[0.18em] text-black/70 hover:text-canvasia-forest;
+  }
+
+  .desktop-nav-link-active {
+    @apply text-canvasia-forest;
+  }
+
+  .desktop-nav-caption {
+    @apply text-xs uppercase tracking-[0.18em] text-black/45;
+  }
+
+  .mobile-search-drawer {
+    @apply hidden border-t border-black/5 bg-white px-4 py-4 shadow-soft;
+  }
+
+  .mobile-search-drawer.active {
+    @apply block;
+  }
+
+  .mobile-search-form {
+    @apply flex items-center gap-3 rounded-[1.5rem] border border-black/10 bg-canvasia-cream px-4 py-3;
+  }
+
+  .mobile-search-form input {
+    @apply w-full border-0 bg-transparent p-0 text-sm outline-none ring-0;
+  }
+
+  .mobile-nav {
+    @apply fixed inset-x-0 bottom-0 z-40 border-t border-black/10 bg-white/95 px-4 py-3 shadow-[0_-10px_30px_rgba(34,33,31,0.12)] backdrop-blur-xl lg:hidden;
+  }
+
+  .mobile-nav-grid {
+    @apply mx-auto grid max-w-lg grid-cols-5 gap-2;
+  }
+
+  .mobile-nav-link {
+    @apply flex flex-col items-center gap-1 rounded-2xl px-2 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-black/55;
+  }
+
+  .mobile-nav-link.active {
+    @apply bg-canvasia-sand text-canvasia-forest;
+  }
+
+  .mobile-drawer-scrim {
+    @apply pointer-events-none fixed inset-0 z-40 bg-black/40 opacity-0 transition-opacity duration-200;
+  }
+
+  .mobile-drawer-scrim.active {
+    @apply pointer-events-auto opacity-100;
+  }
+
+  .mobile-category-drawer {
+    @apply fixed inset-y-0 left-0 z-50 flex w-full max-w-sm -translate-x-full flex-col bg-white p-6 shadow-panel transition-transform duration-300;
+  }
+
+  .mobile-category-drawer.active {
+    @apply translate-x-0;
+  }
+
+  .drawer-head {
+    @apply mb-6 flex items-center justify-between gap-4;
+  }
+
+  .drawer-kicker {
+    @apply block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-canvasia-gold;
+  }
+
+  .drawer-title {
+    @apply text-3xl font-semibold;
+  }
+
+  .drawer-grid {
+    @apply grid gap-3 overflow-y-auto pr-1;
+  }
+
+  .drawer-link {
+    @apply flex items-center justify-between rounded-[1.4rem] border border-black/10 bg-canvasia-cream px-4 py-4 text-sm font-semibold text-canvasia-ink shadow-soft hover:border-canvasia-gold hover:bg-white;
+  }
+
+  .shell-footer {
+    @apply mt-20 border-t border-black/5 bg-white;
+  }
+
+  .shell-footer-inner {
+    @apply mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8;
+  }
+
+  .footer-top {
+    @apply grid gap-8 border-b border-black/5 pb-10 lg:grid-cols-[1.5fr_1fr];
+  }
+
+  .footer-brand {
+    @apply space-y-5;
+  }
+
+  .footer-brand-copy {
+    @apply max-w-2xl text-sm leading-7 text-black/65;
+  }
+
+  .footer-socials {
+    @apply flex flex-wrap items-center gap-3;
+  }
+
+  .footer-socials a {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-canvasia-ink hover:border-canvasia-gold hover:text-canvasia-forest;
+  }
+
+  .footer-trust-list {
+    @apply grid gap-3 sm:grid-cols-3 lg:grid-cols-1;
+  }
+
+  .footer-trust-card {
+    @apply flex items-start gap-3 rounded-[1.5rem] border border-black/10 bg-canvasia-cream px-4 py-4;
+  }
+
+  .footer-columns {
+    @apply grid gap-8 pt-10 md:grid-cols-2 xl:grid-cols-4;
+  }
+
+  .footer-title {
+    @apply mb-4 text-2xl font-semibold;
+  }
+
+  .footer-list {
+    @apply space-y-3 text-sm text-black/65;
+  }
+
+  .footer-list a {
+    @apply hover:text-canvasia-forest;
+  }
+
+  .footer-bottom {
+    @apply mt-10 flex flex-col gap-4 border-t border-black/5 pt-6 text-sm text-black/55 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .storefront-main {
+    @apply pb-28 lg:pb-0;
+  }
+
+  .section-shell {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .editorial-section {
+    @apply py-12 lg:py-16;
+  }
+
+  .editorial-section-muted {
+    @apply rounded-[2rem] border border-black/5 bg-white shadow-soft;
+  }
+
+  .section-kicker {
+    @apply mb-3 block text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-canvasia-gold;
+  }
+
+  .section-heading {
+    @apply text-4xl font-semibold leading-tight sm:text-5xl;
+  }
+
+  .section-lead {
+    @apply mt-4 max-w-2xl text-sm leading-7 text-black/65 sm:text-base;
+  }
+
+  .section-link {
+    @apply inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-canvasia-forest hover:text-canvasia-gold;
+  }
+
+  .hero-shell {
+    @apply section-shell pt-6 lg:pt-10;
+  }
+
+  .hero-grid {
+    @apply grid gap-6 lg:grid-cols-[1.05fr_0.95fr];
+  }
+
+  .hero-copy-card {
+    @apply relative overflow-hidden rounded-[2rem] border border-black/10 bg-white px-6 py-8 shadow-panel sm:px-8 sm:py-10;
+  }
+
+  .hero-copy-card::before {
+    content: "";
+    @apply absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-canvasia-gold via-canvasia-forest to-canvasia-gold;
+  }
+
+  .hero-copy-card::after {
+    content: "";
+    @apply pointer-events-none absolute -right-16 -top-20 h-52 w-52 rounded-full bg-canvasia-sand/80 blur-3xl;
+  }
+
+  .hero-actions {
+    @apply mt-8 flex flex-wrap items-center gap-3;
+  }
+
+  .storefront-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-canvasia-forest px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-panel transition hover:bg-canvasia-forest-deep;
+  }
+
+  .storefront-button-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-canvasia-ink shadow-soft transition hover:border-canvasia-gold hover:text-canvasia-forest;
+  }
+
+  .hero-stats {
+    @apply mt-10 grid gap-4 sm:grid-cols-3;
+  }
+
+  .hero-stat {
+    @apply rounded-[1.5rem] border border-black/10 bg-canvasia-cream px-4 py-4;
+  }
+
+  .hero-stat strong {
+    @apply block font-heading text-3xl font-semibold text-canvasia-forest;
+  }
+
+  .hero-stat span {
+    @apply mt-2 block text-xs uppercase tracking-[0.18em] text-black/55;
+  }
+
+  .hero-media-card {
+    @apply relative overflow-hidden rounded-[2rem] border border-black/10 bg-[#e7dfd4] shadow-panel;
+  }
+
+  .hero-media-frame {
+    @apply relative h-[22rem] overflow-hidden sm:h-[28rem] lg:h-full;
+  }
+
+  .hero-media-slide {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+  }
+
+  .hero-media-slide.active {
+    @apply opacity-100;
+  }
+
+  .hero-media-slide img {
+    @apply h-full w-full object-cover;
+  }
+
+  .hero-media-overlay {
+    @apply pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent px-6 py-6 text-white;
+  }
+
+  .section-card-grid {
+    @apply grid gap-5 sm:grid-cols-2 xl:grid-cols-4;
+  }
+
+  .collection-card {
+    @apply flex items-center gap-4 rounded-[1.7rem] border border-black/10 bg-white px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-canvasia-gold hover:shadow-panel;
+  }
+
+  .collection-card-icon {
+    @apply inline-flex h-14 w-14 items-center justify-center rounded-full bg-canvasia-sand text-lg text-canvasia-forest;
+  }
+
+  .collection-card-copy {
+    @apply min-w-0 flex-1;
+  }
+
+  .collection-card-copy strong {
+    @apply block truncate text-lg font-semibold;
+  }
+
+  .collection-card-copy span {
+    @apply block text-xs uppercase tracking-[0.18em] text-black/50;
+  }
+
+  .feature-grid {
+    @apply grid gap-5 md:grid-cols-2 xl:grid-cols-4;
+  }
+
+  .feature-card {
+    @apply rounded-[1.7rem] border border-black/10 bg-white px-6 py-7 shadow-soft;
+  }
+
+  .feature-icon {
+    @apply mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-canvasia-sand text-xl text-canvasia-forest;
+  }
+
+  .feature-title {
+    @apply text-2xl font-semibold;
+  }
+
+  .feature-copy {
+    @apply mt-3 text-sm leading-7 text-black/65;
+  }
+
+  .product-grid {
+    @apply grid gap-5 sm:grid-cols-2 xl:grid-cols-4;
+  }
+
+  .pro-product-card {
+    @apply relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:border-canvasia-gold hover:shadow-panel;
+    transform-style: preserve-3d;
+  }
+
+  .product-badges {
+    @apply pointer-events-none absolute left-4 top-4 z-20 flex flex-col gap-2;
+  }
+
+  .badge-item {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em];
+  }
+
+  .badge-discount {
+    @apply bg-rose-100 text-rose-700;
+  }
+
+  .badge-new {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .badge-bestseller {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .like-btn,
+  .zoom-btn {
+    @apply absolute z-20 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-white/90 text-canvasia-ink shadow-soft backdrop-blur hover:border-canvasia-gold hover:text-canvasia-forest;
+  }
+
+  .like-btn {
+    @apply right-4 top-4;
+  }
+
+  .zoom-btn {
+    @apply left-4 top-4;
+  }
+
+  .pro-img-container {
+    @apply relative block overflow-hidden bg-canvasia-sand;
+    aspect-ratio: 4 / 4.45;
+  }
+
+  .pro-img {
+    @apply h-full w-full object-cover transition duration-500;
+  }
+
+  .pro-product-card:hover .pro-img {
+    transform: scale(1.05);
+  }
+
+  .card-glare {
+    @apply pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300;
+  }
+
+  .card-info {
+    @apply flex flex-1 flex-col gap-4 px-5 py-5;
+  }
+
+  .product-title {
+    @apply line-clamp-2 text-xl font-semibold leading-snug text-canvasia-ink hover:text-canvasia-forest;
+  }
+
+  .price-wrapper {
+    @apply flex flex-wrap items-end gap-2;
+  }
+
+  .old-price {
+    @apply text-sm text-black/45 line-through;
+  }
+
+  .new-price {
+    @apply text-2xl font-bold text-canvasia-forest;
+  }
+
+  .neon-btn-wrapper {
+    @apply mt-auto inline-flex w-full items-center justify-center rounded-full bg-canvasia-forest px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-panel transition hover:bg-canvasia-forest-deep;
+  }
+
+  .neon-btn-inner {
+    @apply inline-flex items-center justify-center gap-2;
+  }
+
+  .catalog-header {
+    @apply section-shell pt-8;
+  }
+
+  .catalog-intro {
+    @apply rounded-[2rem] border border-black/10 bg-white px-6 py-8 shadow-soft sm:px-8;
+  }
+
+  .catalog-chip-row {
+    @apply mt-6 flex gap-3 overflow-x-auto pb-2;
+    scrollbar-width: none;
+  }
+
+  .catalog-chip-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cat-chip {
+    @apply inline-flex shrink-0 items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-black/60 shadow-soft hover:border-canvasia-gold hover:text-canvasia-forest;
+  }
+
+  .cat-chip.active {
+    @apply border-canvasia-forest bg-canvasia-forest text-white;
+  }
+
+  .filter-bar {
+    @apply sticky z-30 mt-6 border-y border-black/5 bg-white/90 backdrop-blur-xl;
+    top: 4.75rem;
+  }
+
+  .filter-bar.scrolled {
+    box-shadow: var(--sf-shadow);
+  }
+
+  .filter-bar-inner {
+    @apply flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between;
+  }
+
+  .result-count {
+    @apply text-sm text-black/55;
+  }
+
+  .filter-controls {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .active-filter-tag {
+    @apply inline-flex items-center gap-2 rounded-full bg-canvasia-sand px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-canvasia-forest;
+  }
+
+  .remove-filter {
+    @apply inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-[0.65rem] text-canvasia-forest hover:bg-black hover:text-white;
+  }
+
+  .custom-dropdown {
+    @apply relative;
+  }
+
+  .filter-dropdown-btn {
+    @apply inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-canvasia-ink shadow-soft hover:border-canvasia-gold hover:text-canvasia-forest;
+  }
+
+  .custom-dropdown-menu {
+    @apply pointer-events-none absolute right-0 top-full z-30 mt-3 min-w-[15rem] translate-y-2 rounded-[1.5rem] border border-black/10 bg-white p-3 opacity-0 shadow-panel transition duration-200;
+  }
+
+  .custom-dropdown.open .custom-dropdown-menu {
+    @apply pointer-events-auto translate-y-0 opacity-100;
+  }
+
+  .sort-menu {
+    @apply space-y-1;
+  }
+
+  .sort-item,
+  .filter-option-btn {
+    @apply flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-canvasia-ink hover:bg-canvasia-sand hover:text-canvasia-forest;
+  }
+
+  .sort-item.active,
+  .filter-option-btn.active {
+    @apply bg-canvasia-sand text-canvasia-forest;
+  }
+
+  .filter-option-meta {
+    @apply text-xs uppercase tracking-[0.12em] text-black/40;
+  }
+
+  .price-filter-popup {
+    @apply space-y-3;
+  }
+
+  .price-input-group {
+    @apply flex items-center gap-3;
+  }
+
+  .price-input,
+  .coupon-input,
+  .auth-input,
+  .auth-select,
+  .checkout-input,
+  .checkout-select {
+    @apply w-full rounded-2xl border border-black/10 bg-canvasia-cream px-4 py-3 text-sm text-canvasia-ink outline-none transition focus:border-canvasia-gold focus:bg-white;
+  }
+
+  .empty-state {
+    @apply rounded-[2rem] border border-dashed border-black/10 bg-white px-6 py-16 text-center shadow-soft;
+  }
+
+  .empty-state-icon {
+    @apply mx-auto mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-canvasia-sand text-xl text-canvasia-forest;
+  }
+
+  .load-more-wrapper {
+    @apply mt-10 text-center;
+  }
+
+  .load-more-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-canvasia-ink shadow-soft hover:border-canvasia-gold hover:text-canvasia-forest;
+  }
+
+  .page-progress {
+    @apply mt-4 text-xs uppercase tracking-[0.16em] text-black/45;
+  }
+
+  .page-progress-bar {
+    @apply mx-auto mt-3 h-1.5 w-32 overflow-hidden rounded-full bg-black/10;
+  }
+
+  .page-progress-fill {
+    @apply h-full rounded-full bg-canvasia-forest;
+  }
+
+  .product-page-shell {
+    @apply section-shell py-8;
+  }
+
+  .product-breadcrumb {
+    @apply mb-6 text-xs uppercase tracking-[0.14em] text-black/45;
+  }
+
+  .product-breadcrumb a {
+    @apply hover:text-canvasia-forest;
+  }
+
+  .product-detail-grid {
+    @apply grid gap-8 lg:grid-cols-[1.05fr_0.95fr];
+  }
+
+  .product-gallery-panel,
+  .product-copy-panel,
+  .storefront-panel,
+  .order-summary,
+  .auth-card,
+  .checkout-section-card,
+  .checkout-summary-card {
+    @apply rounded-[2rem] border border-black/10 bg-white shadow-soft;
+  }
+
+  .product-gallery-panel,
+  .product-copy-panel {
+    @apply overflow-hidden;
+  }
+
+  .product-main-image {
+    @apply h-[28rem] w-full bg-canvasia-sand object-contain p-6 sm:h-[36rem];
+  }
+
+  .product-gallery {
+    @apply relative;
+  }
+
+  .breadcrumb-urun {
+    @apply product-breadcrumb;
+  }
+
+  .breadcrumb-urun .breadcrumb {
+    @apply mb-0 flex flex-wrap items-center gap-2 bg-transparent p-0;
+  }
+
+  .breadcrumb-urun .breadcrumb-item {
+    @apply text-xs uppercase tracking-[0.14em] text-black/45;
+  }
+
+  .breadcrumb-urun .breadcrumb-item + .breadcrumb-item::before {
+    @apply pr-2 text-black/30;
+    content: "/";
+  }
+
+  .zoom-btn {
+    @apply absolute left-5 top-5 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/90 text-canvasia-forest shadow-soft backdrop-blur hover:border-canvasia-gold hover:text-canvasia-gold;
+  }
+
+  .thumbnail-container {
+    @apply flex gap-3 overflow-x-auto px-6 py-5;
+    scrollbar-width: none;
+  }
+
+  .thumbnail-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .thumbnail-item {
+    @apply shrink-0 overflow-hidden rounded-[1.1rem] border border-black/10 bg-canvasia-cream p-1 transition hover:border-canvasia-gold;
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .thumbnail-item.active {
+    @apply border-canvasia-forest;
+  }
+
+  .thumbnail-img {
+    @apply h-full w-full rounded-[0.95rem] object-cover;
+  }
+
+  .product-copy-panel {
+    @apply px-6 py-7 sm:px-8;
+  }
+
+  .product-header h1 {
+    @apply text-4xl font-semibold leading-tight sm:text-5xl;
+  }
+
+  .price-container {
+    @apply mt-5 flex flex-wrap items-end gap-3;
+  }
+
+  .current-price {
+    @apply text-4xl font-bold text-canvasia-forest;
+  }
+
+  .discount-badge {
+    @apply inline-flex rounded-full bg-canvasia-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-canvasia-gold;
+  }
+
+  .variant-selection,
+  .quantity-selector,
+  .product-description-section {
+    @apply mt-8;
+  }
+
+  .variant-label,
+  .description-title {
+    @apply mb-3 text-2xl font-semibold;
+  }
+
+  .variant-options {
+    @apply flex flex-wrap gap-3;
+  }
+
+  .variant-radio {
+    @apply sr-only;
+  }
+
+  .variant-box {
+    @apply flex min-w-[11rem] flex-col gap-1 rounded-[1.3rem] border border-black/10 bg-canvasia-cream px-4 py-4 text-left text-sm font-semibold text-canvasia-ink transition hover:border-canvasia-gold;
+  }
+
+  .variant-radio:checked + .variant-box {
+    @apply border-canvasia-forest bg-canvasia-sand text-canvasia-forest;
+  }
+
+  .variant-option.disabled .variant-box,
+  .variant-radio:disabled + .variant-box {
+    @apply cursor-not-allowed border-black/5 bg-black/5 text-black/35;
+  }
+
+  .variant-meta {
+    @apply text-xs font-medium uppercase tracking-[0.12em] text-black/45;
+  }
+
+  .quantity-selector .d-flex {
+    @apply flex items-center gap-3;
+  }
+
+  .quantity-btn {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-lg text-canvasia-ink hover:border-canvasia-gold hover:text-canvasia-forest;
+  }
+
+  .quantity-input {
+    @apply h-11 w-20 rounded-full border border-black/10 bg-canvasia-cream text-center text-sm font-semibold;
+  }
+
+  .trust-badges {
+    @apply mt-8 grid gap-4 sm:grid-cols-3;
+  }
+
+  .trust-badges .badge-item {
+    @apply flex flex-col items-start rounded-[1.4rem] border border-black/10 bg-canvasia-cream px-4 py-4 text-left normal-case tracking-normal;
+  }
+
+  .badge-icon {
+    @apply mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-canvasia-forest;
+  }
+
+  .badge-text {
+    @apply text-base font-semibold text-canvasia-ink;
+  }
+
+  .badge-subtext {
+    @apply mt-1 text-sm text-black/55;
+  }
+
+  .description-content {
+    @apply text-sm leading-7 text-black/65;
+  }
+
+  .persuasion-features {
+    @apply mt-8 grid gap-4;
+  }
+
+  .feature-item {
+    @apply flex items-start gap-4 rounded-[1.5rem] border border-black/10 bg-canvasia-cream px-5 py-5;
+  }
+
+  .feature-icon {
+    @apply inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-canvasia-forest;
+  }
+
+  .feature-content h5 {
+    @apply text-lg font-semibold;
+  }
+
+  .feature-content p {
+    @apply mt-1 text-sm leading-6 text-black/55;
+  }
+
+  .mobile-lightbox {
+    @apply pointer-events-none fixed inset-0 z-[80] flex flex-col bg-black/95 opacity-0 transition;
+  }
+
+  .mobile-lightbox.active {
+    @apply pointer-events-auto opacity-100;
+  }
+
+  .lightbox-controls,
+  .lightbox-controls-desktop {
+    @apply flex items-center justify-between gap-3 p-4;
+  }
+
+  .lightbox-btn,
+  .lightbox-control-btn,
+  .zoom-btn-mobile {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white backdrop-blur transition hover:bg-white hover:text-canvasia-forest;
+  }
+
+  .lightbox-control-btn.close-btn {
+    @apply bg-white text-canvasia-forest;
+  }
+
+  .lightbox-img-container {
+    @apply relative flex min-h-0 flex-1 items-center justify-center overflow-hidden p-4 sm:p-8;
+  }
+
+  .lightbox-image {
+    @apply max-h-full w-auto max-w-full object-contain transition;
+    transform-origin: center center;
+  }
+
+  .zoom-controls {
+    @apply flex items-center justify-center gap-4 p-4 text-white;
+  }
+
+  .zoom-level {
+    @apply min-w-[4rem] text-center text-sm font-semibold uppercase tracking-[0.14em] text-white/70;
+  }
+
+  .modal-lightbox .modal-dialog {
+    @apply max-w-6xl;
+  }
+
+  .modal-lightbox .modal-content {
+    @apply overflow-hidden rounded-[2rem] border-0 bg-black;
+  }
+
+  .technical-spec-table {
+    @apply w-full border-collapse overflow-hidden rounded-[1.5rem] border border-black/10;
+  }
+
+  .technical-spec-table th,
+  .technical-spec-table td {
+    @apply border-b border-black/10 px-4 py-3 text-left text-sm;
+  }
+
+  .technical-spec-table th {
+    @apply w-[34%] bg-canvasia-cream font-semibold text-canvasia-ink;
+  }
+
+  .media-showcase-section,
+  .reviews-section {
+    @apply mt-12 space-y-8;
+  }
+
+  .media-showcase-block {
+    @apply rounded-[2rem] border border-black/10 bg-white px-6 py-7 shadow-soft;
+  }
+
+  .media-showcase-card {
+    @apply overflow-hidden rounded-[1.5rem] border border-black/10 bg-canvasia-cream;
+  }
+
+  .media-showcase-frame {
+    @apply overflow-hidden bg-white;
+    aspect-ratio: 1 / 0.85;
+  }
+
+  .media-showcase-frame img,
+  .media-showcase-frame video,
+  .media-showcase-frame iframe {
+    @apply h-full w-full object-cover;
+  }
+
+  .media-showcase-body {
+    @apply space-y-2 px-4 py-4;
+  }
+
+  .media-showcase-body h5 {
+    @apply text-xl font-semibold;
+  }
+
+  .media-showcase-tags {
+    @apply text-xs uppercase tracking-[0.16em] text-black/45;
+  }
+
+  .review-avatar {
+    @apply mr-4 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-canvasia-sand font-semibold text-canvasia-forest;
+  }
+
+  .auth-shell {
+    @apply section-shell py-10 lg:py-16;
+  }
+
+  .auth-card {
+    @apply overflow-hidden;
+  }
+
+  .auth-card-body,
+  .auth-form-panel {
+    @apply px-6 py-8 sm:px-8 sm:py-10;
+  }
+
+  .auth-card-body {
+    @apply bg-canvasia-forest text-white;
+  }
+
+  .auth-form-panel {
+    @apply bg-white;
+  }
+
+  .auth-kicker {
+    @apply inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-canvasia-gold;
+  }
+
+  .auth-title {
+    @apply mt-5 text-4xl font-semibold leading-tight text-white;
+  }
+
+  .auth-copy {
+    @apply mt-4 text-sm leading-7 text-white/75;
+  }
+
+  .auth-metrics {
+    @apply mt-8 space-y-4;
+  }
+
+  .auth-metric {
+    @apply flex items-start gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 px-4 py-4;
+  }
+
+  .auth-metric-icon {
+    @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/10 text-canvasia-gold;
+  }
+
+  .auth-field {
+    @apply space-y-2;
+  }
+
+  .auth-field label,
+  .checkout-label {
+    @apply text-sm font-semibold text-canvasia-ink;
+  }
+
+  .auth-input-wrap {
+    @apply flex items-center gap-3 rounded-2xl border border-black/10 bg-canvasia-cream px-4 py-3 transition focus-within:border-canvasia-gold focus-within:bg-white;
+  }
+
+  .auth-input-wrap i {
+    @apply text-black/35;
+  }
+
+  .auth-input,
+  .auth-select {
+    @apply border-0 bg-transparent p-0;
+  }
+
+  .auth-actions {
+    @apply mt-4 flex flex-wrap items-center justify-between gap-3 text-sm;
+  }
+
+  .auth-link {
+    @apply font-semibold text-canvasia-forest hover:text-canvasia-gold;
+  }
+
+  .btn-premium {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-canvasia-forest px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-panel transition hover:bg-canvasia-forest-deep;
+  }
+
+  .auth-footer {
+    @apply mt-6 text-sm text-black/55;
+  }
+
+  .cart-page {
+    @apply section-shell py-10 lg:py-14;
+  }
+
+  .cart-breadcrumb {
+    @apply mb-3 text-xs uppercase tracking-[0.16em] text-black/45;
+  }
+
+  .cart-breadcrumb a {
+    @apply hover:text-canvasia-forest;
+  }
+
+  .cart-title {
+    @apply text-4xl font-semibold;
+  }
+
+  .cart-count {
+    @apply mt-2 text-sm text-black/55;
+  }
+
+  .empty-cart {
+    @apply rounded-[2rem] border border-dashed border-black/10 bg-white px-6 py-16 text-center shadow-soft;
+  }
+
+  .empty-cart-circle {
+    @apply mx-auto mb-5 inline-flex h-20 w-20 items-center justify-center rounded-full bg-canvasia-sand text-2xl text-canvasia-forest;
+  }
+
+  .shop-now-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-canvasia-forest px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-panel hover:bg-canvasia-forest-deep;
+  }
+
+  .cart-item {
+    @apply relative mb-4 flex gap-4 rounded-[1.75rem] border border-black/10 bg-white p-5 shadow-soft;
+  }
+
+  .cart-item-img {
+    @apply h-24 w-24 shrink-0 rounded-[1.2rem] object-cover;
+  }
+
+  .cart-item-body {
+    @apply flex min-w-0 flex-1 flex-col gap-3;
+  }
+
+  .cart-item-title {
+    @apply line-clamp-2 text-lg font-semibold leading-snug;
+  }
+
+  .cart-item-variant {
+    @apply inline-flex self-start rounded-full bg-canvasia-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-canvasia-forest;
+  }
+
+  .cart-item-bottom {
+    @apply mt-auto flex flex-wrap items-center justify-between gap-3;
+  }
+
+  .cart-item-price {
+    @apply text-xl font-bold text-canvasia-forest;
+  }
+
+  .qty-control {
+    @apply inline-flex items-center overflow-hidden rounded-full border border-black/10 bg-canvasia-cream;
+  }
+
+  .qty-btn {
+    @apply inline-flex h-10 w-10 items-center justify-center text-sm text-canvasia-ink hover:bg-white hover:text-canvasia-forest;
+  }
+
+  .qty-num {
+    @apply inline-flex h-10 min-w-[2.5rem] items-center justify-center border-x border-black/10 bg-white px-3 text-sm font-semibold;
+  }
+
+  .cart-item-delete {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-full text-black/35 hover:bg-rose-50 hover:text-rose-600;
+  }
+
+  .summary-head {
+    @apply border-b border-black/5 bg-canvasia-cream px-6 py-5 text-lg font-semibold;
+  }
+
+  .order-summary {
+    @apply sticky top-28 overflow-hidden;
+  }
+
+  .summary-body {
+    @apply px-6 py-6;
+  }
+
+  .summary-line {
+    @apply flex items-center justify-between gap-4 py-2 text-sm;
+  }
+
+  .summary-line .label {
+    @apply text-black/55;
+  }
+
+  .summary-line .value {
+    @apply font-semibold text-canvasia-ink;
+  }
+
+  .summary-line.discount .value,
+  .summary-line.free .value {
+    @apply text-emerald-600;
+  }
+
+  .summary-line.total {
+    @apply mt-4 border-t border-black/10 pt-4;
+  }
+
+  .summary-line.total .label,
+  .summary-line.total .value {
+    @apply text-base;
+  }
+
+  .summary-line.total .value {
+    @apply text-2xl text-canvasia-forest;
+  }
+
+  .coupon-wrap {
+    @apply mt-5 border-t border-black/5 pt-5;
+  }
+
+  .coupon-row {
+    @apply flex gap-3;
+  }
+
+  .coupon-apply,
+  .checkout-btn,
+  .checkout-submit {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-canvasia-forest px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-panel hover:bg-canvasia-forest-deep;
+  }
+
+  .checkout-btn,
+  .checkout-submit {
+    @apply w-full;
+  }
+
+  .secure-note {
+    @apply mt-4 flex items-center justify-center gap-2 text-xs uppercase tracking-[0.16em] text-black/45;
+  }
+
+  .mobile-checkout-bar {
+    @apply fixed inset-x-0 bottom-0 z-40 border-t border-black/10 bg-white/95 px-4 py-3 shadow-[0_-10px_30px_rgba(34,33,31,0.12)] backdrop-blur-xl lg:hidden;
+  }
+
+  .mobile-checkout-inner {
+    @apply mx-auto flex max-w-lg items-center justify-between gap-4;
+  }
+
+  .mobile-total-label {
+    @apply text-[0.72rem] uppercase tracking-[0.16em] text-black/45;
+  }
+
+  .mobile-total-price {
+    @apply text-xl font-bold text-canvasia-forest;
+  }
+
+  .mobile-checkout-btn {
+    @apply inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-canvasia-forest px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-panel hover:bg-canvasia-forest-deep;
+  }
+
+  .checkout-shell {
+    @apply section-shell py-10 lg:py-14;
+  }
+
+  .checkout-hero {
+    @apply mb-8 overflow-hidden rounded-[2rem] bg-canvasia-forest px-6 py-8 text-white shadow-panel sm:px-8;
+  }
+
+  .checkout-hero-grid {
+    @apply flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between;
+  }
+
+  .checkout-stepper {
+    @apply flex items-center gap-3;
+  }
+
+  .checkout-step {
+    @apply flex items-center gap-3;
+  }
+
+  .checkout-step-circle {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold;
+  }
+
+  .checkout-step.active .checkout-step-circle,
+  .checkout-step.completed .checkout-step-circle {
+    @apply bg-white text-canvasia-forest;
+  }
+
+  .checkout-step-label {
+    @apply text-xs uppercase tracking-[0.18em] text-white/70;
+  }
+
+  .checkout-grid {
+    @apply grid gap-6 lg:grid-cols-[1.1fr_0.9fr];
+  }
+
+  .checkout-section-card,
+  .checkout-summary-card {
+    @apply overflow-hidden;
+  }
+
+  .checkout-section-head {
+    @apply border-b border-black/5 bg-canvasia-cream px-6 py-5 text-lg font-semibold;
+  }
+
+  .checkout-section-body {
+    @apply px-6 py-6;
+  }
+
+  .checkout-field-grid {
+    @apply grid gap-4 sm:grid-cols-2;
+  }
+
+  .checkout-field-grid .span-2 {
+    @apply sm:col-span-2;
+  }
+
+  .checkout-address-grid {
+    @apply grid gap-4 sm:grid-cols-2;
+  }
+
+  .checkout-address-card {
+    @apply relative rounded-[1.5rem] border border-black/10 bg-canvasia-cream p-4 transition hover:border-canvasia-gold hover:bg-white;
+  }
+
+  .checkout-address-card.selected {
+    @apply border-canvasia-forest bg-canvasia-sand;
+  }
+
+  .checkout-header {
+    @apply mb-8 overflow-hidden rounded-[2rem] bg-canvasia-forest px-6 py-8 text-white shadow-panel sm:px-8;
+  }
+
+  .stepper {
+    @apply flex items-center gap-3;
+  }
+
+  .stepper-item {
+    @apply flex items-center gap-3;
+  }
+
+  .stepper-circle {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold text-white;
+  }
+
+  .stepper-item.completed .stepper-circle,
+  .stepper-item.active .stepper-circle {
+    @apply bg-white text-canvasia-forest;
+  }
+
+  .stepper-label {
+    @apply text-xs uppercase tracking-[0.18em] text-white/70;
+  }
+
+  .stepper-divider {
+    @apply h-px w-8 bg-white/20;
+  }
+
+  .address-card {
+    @apply relative rounded-[1.5rem] border border-black/10 bg-canvasia-cream p-4 transition hover:border-canvasia-gold hover:bg-white;
+  }
+
+  .address-card.selected {
+    @apply border-canvasia-forest bg-canvasia-sand;
+  }
+
+  .radio-circle {
+    @apply inline-flex h-5 w-5 rounded-full border-2 border-black/20 bg-white transition;
+  }
+
+  .address-card.selected .radio-circle {
+    @apply border-canvasia-forest bg-canvasia-forest shadow-[inset_0_0_0_4px_white];
+  }
+
+  .address-selected-label {
+    @apply absolute right-4 top-4 rounded-full bg-canvasia-forest px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white opacity-0 transition;
+  }
+
+  .address-card.selected .address-selected-label {
+    @apply opacity-100;
+  }
+
+  .payment-method-card {
+    @apply rounded-[1.5rem] border border-black/10 bg-canvasia-cream p-5 text-center transition hover:border-canvasia-gold hover:bg-white;
+  }
+
+  .payment-method-card.active {
+    @apply border-canvasia-forest bg-canvasia-sand;
+  }
+
+  .payment-icon {
+    @apply text-canvasia-forest;
+  }
+
+  .star-rating {
+    @apply flex flex-row-reverse justify-end gap-2;
+  }
+
+  .star-rating input {
+    @apply hidden;
+  }
+
+  .star-rating label {
+    @apply cursor-pointer text-2xl text-black/20 transition hover:text-amber-400;
+  }
+
+  .star-rating input:checked ~ label,
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    @apply text-amber-400;
+  }
+
+  .checkout-radio-card {
+    @apply rounded-[1.5rem] border border-black/10 bg-canvasia-cream p-5 transition hover:border-canvasia-gold;
+  }
+
+  .checkout-radio-card.active {
+    @apply border-canvasia-forest bg-canvasia-sand;
+  }
+
+  .toast-container {
+    @apply fixed right-4 top-4 z-[90] flex w-full max-w-sm flex-col gap-3;
+  }
+
+  .toast-message {
+    @apply flex items-start gap-3 rounded-[1.4rem] border border-black/10 bg-white px-4 py-4 shadow-panel opacity-0 transition duration-300;
+    transform: translateY(-0.75rem);
+  }
+
+  .toast-message.show {
+    @apply opacity-100;
+    transform: translateY(0);
+  }
+
+  .toast-icon {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full bg-canvasia-sand text-canvasia-forest;
+  }
+
+  .toast-title {
+    @apply text-sm font-semibold uppercase tracking-[0.14em] text-canvasia-ink;
+  }
+
+  .toast-text {
+    @apply mt-1 text-sm leading-6 text-black/60;
+  }
+
+  .scroll-reveal {
+    @apply opacity-0 transition duration-700;
+    transform: translateY(1.25rem);
+  }
+
+  .scroll-reveal.revealed {
+    @apply opacity-100;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .sf-divider {
+    @apply h-px w-full bg-black/10;
+  }
+}
+
+@media (max-width: 1023px) {
+  .filter-bar {
+    top: 4.25rem;
+  }
+
+  .desktop-summary {
+    display: none;
+  }
+}

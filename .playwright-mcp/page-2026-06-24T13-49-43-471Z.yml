@@ -1,0 +1,762 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Giriş Yap" [ref=e52] [cursor=pointer]:
+          - /url: /Hesap/GirisYap
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "0"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=e69]: 
+          - listitem [ref=e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=e72]: 
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=e75]: 
+          - listitem [ref=e76] [cursor=pointer]:
+            - link "Ayna " [ref=e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=e78]: 
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=e81]: 
+          - listitem [ref=e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=e84]: 
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=e87]: 
+          - listitem [ref=e88] [cursor=pointer]:
+            - link "Lightbox " [ref=e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=e90]: 
+          - listitem [ref=e91] [cursor=pointer]:
+            - link "Afiş " [ref=e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=e93]: 
+          - listitem [ref=e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=e96]:
+    - generic [ref=e97]:
+      - button "Önceki slayt" [ref=e103] [cursor=pointer]:
+        - img [ref=e104]
+      - button "Sonraki slayt" [ref=e106] [cursor=pointer]:
+        - img [ref=e107]
+      - generic [ref=e109]:
+        - button "Slayt 1" [ref=e110] [cursor=pointer]
+        - button "Slayt 2" [ref=e111] [cursor=pointer]
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - generic [ref=e116]:
+          - heading "Yeni Eklenenler" [level=2] [ref=e117]
+          - paragraph [ref=e118]: Yeni eklenen cam tablo ve cam kesme tahtası modellerimiz
+        - link "Tümünü Gör " [ref=e119] [cursor=pointer]:
+          - /url: /Urun
+          - text: Tümünü Gör
+          - generic [ref=e120]: 
+      - generic [ref=e121]:
+        - article [ref=e122]:
+          - link "Ürgüp Uçan Balon Manzaralı Cam Tablo Ürgüp Uçan Balon Manzaralı Cam Tablo 236 TL" [ref=e123] [cursor=pointer]:
+            - /url: /Urun/Detay/urgup-ucan-balon--12605
+            - img "Ürgüp Uçan Balon Manzaralı Cam Tablo" [ref=e125]
+            - heading "Ürgüp Uçan Balon Manzaralı Cam Tablo" [level=3] [ref=e126]
+            - paragraph [ref=e127]: 236 TL
+        - article [ref=e128]:
+          - link "Kabe Cam Tablo Kabe Cam Tablo 236 TL" [ref=e129] [cursor=pointer]:
+            - /url: /Urun/Detay/kabe--12603
+            - img "Kabe Cam Tablo" [ref=e131]
+            - heading "Kabe Cam Tablo" [level=3] [ref=e132]
+            - paragraph [ref=e133]: 236 TL
+        - article [ref=e134]:
+          - link "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru 670 TL" [ref=e135] [cursor=pointer]:
+            - /url: /Urun/Detay/altin-detayli-kugu-yatay-temperli-cam-tablo-luks-floral-duvar-sanati-modern-salon-dekoru-12602
+            - img "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [ref=e137]
+            - heading "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [level=3] [ref=e138]
+            - paragraph [ref=e139]: 670 TL
+        - article [ref=e140]:
+          - link "Çiçekler Arasında Tavus Kuşu Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı Çiçekler Arasında Tavus Kuşu Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı 670 TL" [ref=e141] [cursor=pointer]:
+            - /url: /Urun/Detay/cicekler-arasinda-tavus-kusu-temperli-cam-tablo-zarif-ve-luks-cam-duvar-sanati-12601
+            - img "Çiçekler Arasında Tavus Kuşu Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [ref=e143]
+            - heading "Çiçekler Arasında Tavus Kuşu Temperli Cam Tablo | Zarif ve Lüks Cam Duvar Sanatı" [level=3] [ref=e144]
+            - paragraph [ref=e145]: 670 TL
+        - article [ref=e146]:
+          - link "Altın Güneşli Yaşam Ağacı Temperli Cam Tablo | Modern ve Anlamlı Cam Duvar Sanatı Altın Güneşli Yaşam Ağacı Temperli Cam Tablo | Modern ve Anlamlı Cam Duvar Sanatı 670 TL" [ref=e147] [cursor=pointer]:
+            - /url: /Urun/Detay/altin-gunesli-yasam-agaci-temperli-cam-tablo-modern-ve-anlamli-cam-duvar-sanati-12600
+            - img "Altın Güneşli Yaşam Ağacı Temperli Cam Tablo | Modern ve Anlamlı Cam Duvar Sanatı" [ref=e149]
+            - heading "Altın Güneşli Yaşam Ağacı Temperli Cam Tablo | Modern ve Anlamlı Cam Duvar Sanatı" [level=3] [ref=e150]
+            - paragraph [ref=e151]: 670 TL
+        - article [ref=e152]:
+          - link "Kış Manzaralı Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Huzur Veren Cam Duvar Sanatı Kış Manzaralı Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Huzur Veren Cam Duvar Sanatı 670 TL" [ref=e153] [cursor=pointer]:
+            - /url: /Urun/Detay/kis-manzarali-beyaz-cicekler-temperli-cam-tablo-zarif-ve-huzur-veren-cam-duvar-sanati-12599
+            - img "Kış Manzaralı Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Huzur Veren Cam Duvar Sanatı" [ref=e155]
+            - heading "Kış Manzaralı Beyaz Çiçekler Temperli Cam Tablo | Zarif ve Huzur Veren Cam Duvar Sanatı" [level=3] [ref=e156]
+            - paragraph [ref=e157]: 670 TL
+        - article [ref=e158]:
+          - link "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı 208 TL" [ref=e159] [cursor=pointer]:
+            - /url: /Urun/Detay/renkli-kokteyl-ve-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-12611
+            - img "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e161]
+            - heading "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [level=3] [ref=e162]
+            - paragraph [ref=e163]: 208 TL
+        - article [ref=e164]:
+          - link "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı 208 TL" [ref=e165] [cursor=pointer]:
+            - /url: /Urun/Detay/canli-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12610
+            - img "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e167]
+            - heading "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e168]
+            - paragraph [ref=e169]: 208 TL
+        - article [ref=e170]:
+          - link "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı 208 TL" [ref=e171] [cursor=pointer]:
+            - /url: /Urun/Detay/renkli-tropikal-meyve-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-modern-mutfak-aksesuari-12609
+            - img "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [ref=e173]
+            - heading "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [level=3] [ref=e174]
+            - paragraph [ref=e175]: 208 TL
+        - article [ref=e176]:
+          - link "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı 208 TL" [ref=e177] [cursor=pointer]:
+            - /url: /Urun/Detay/gri-mermer-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12608
+            - img "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e179]
+            - heading "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e180]
+            - paragraph [ref=e181]: 208 TL
+    - generic [ref=e183]:
+      - generic [ref=e184]:
+        - generic [ref=e185]:
+          - heading "5 Parçalı Tablolar" [level=2] [ref=e186]
+          - paragraph [ref=e187]: Yaşam alanlarına güçlü bir karakter kazandıran seçili çok parçalı kanvas tablo koleksiyonu.
+        - link "Tüm 5 Parçalıları Gör " [ref=e188] [cursor=pointer]:
+          - /url: /Urun?s=5%20Par%C3%A7a
+          - text: Tüm 5 Parçalıları Gör
+          - generic [ref=e189]: 
+      - generic [ref=e190]:
+        - article [ref=e191]:
+          - link "5 Parça Osmanlı Devlet Arması ve Ay Yıldız 5 Parça Kanvas Tablo Osmanlı Devlet Arması ve Ay Yıldız 5 Parça Kanvas Tablo 1.672 TL" [ref=e192] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-devlet-armasi-ve-ay-yildiz-5-parca-kanvas-tablo-1257
+            - generic [ref=e193]:
+              - generic [ref=e194]: 5 Parça
+              - img "Osmanlı Devlet Arması ve Ay Yıldız 5 Parça Kanvas Tablo" [ref=e195]
+            - heading "Osmanlı Devlet Arması ve Ay Yıldız 5 Parça Kanvas Tablo" [level=3] [ref=e196]
+            - paragraph [ref=e197]: 1.672 TL
+        - article [ref=e198]:
+          - link "5 Parça Kayı Boyu Bayrağı ve Osmanlı Devlet Arması 5 Parça Kanvas Tablo Kayı Boyu Bayrağı ve Osmanlı Devlet Arması 5 Parça Kanvas Tablo 1.672 TL" [ref=e199] [cursor=pointer]:
+            - /url: /Urun/Detay/kayi-boyu-bayragi-ve-osmanli-devlet-armasi-5-parca-kanvas-tablo-1251
+            - generic [ref=e200]:
+              - generic [ref=e201]: 5 Parça
+              - img "Kayı Boyu Bayrağı ve Osmanlı Devlet Arması 5 Parça Kanvas Tablo" [ref=e202]
+            - heading "Kayı Boyu Bayrağı ve Osmanlı Devlet Arması 5 Parça Kanvas Tablo" [level=3] [ref=e203]
+            - paragraph [ref=e204]: 1.672 TL
+        - article [ref=e205]:
+          - link "5 Parça Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo 1.377 TL" [ref=e206] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-tugrasi-ve-armasi-5-parca-kanvas-tablo-1065
+            - generic [ref=e207]:
+              - generic [ref=e208]: 5 Parça
+              - img "Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo" [ref=e209]
+            - heading "Osmanlı Tuğrası Ve Arması 5 Parça Kanvas Tablo" [level=3] [ref=e210]
+            - paragraph [ref=e211]: 1.377 TL
+        - article [ref=e212]:
+          - link "5 Parça Osmanlı Arması Ve Tuğrası 5 Parça Kanvas Tablosu Osmanlı Arması Ve Tuğrası 5 Parça Kanvas Tablosu 1.530 TL" [ref=e213] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-armasi-ve-tugrasi-5-parca-kanvas-tablosu-1064
+            - generic [ref=e214]:
+              - generic [ref=e215]: 5 Parça
+              - img "Osmanlı Arması Ve Tuğrası 5 Parça Kanvas Tablosu" [ref=e216]
+            - heading "Osmanlı Arması Ve Tuğrası 5 Parça Kanvas Tablosu" [level=3] [ref=e217]
+            - paragraph [ref=e218]: 1.530 TL
+        - article [ref=e219]:
+          - link "5 Parça Osmanlı Logolu Ay Yıldız Saatli 5 Parça Kanvas Tablo Osmanlı Logolu Ay Yıldız Saatli 5 Parça Kanvas Tablo 1.672 TL" [ref=e220] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-logolu-ay-yildiz-saatli-5-parca-kanvas-tablo-961
+            - generic [ref=e221]:
+              - generic [ref=e222]: 5 Parça
+              - img "Osmanlı Logolu Ay Yıldız Saatli 5 Parça Kanvas Tablo" [ref=e223]
+            - heading "Osmanlı Logolu Ay Yıldız Saatli 5 Parça Kanvas Tablo" [level=3] [ref=e224]
+            - paragraph [ref=e225]: 1.672 TL
+        - article [ref=e226]:
+          - link "5 Parça Turguaz Renkli Osmanlı Tuğra Saatli 5 Parça Kanvas Tablo Turguaz Renkli Osmanlı Tuğra Saatli 5 Parça Kanvas Tablo 1.672 TL" [ref=e227] [cursor=pointer]:
+            - /url: /Urun/Detay/turguaz-renkli-osmanli-tugra-saatli-5-parca-kanvas-tablo-933
+            - generic [ref=e228]:
+              - generic [ref=e229]: 5 Parça
+              - img "Turguaz Renkli Osmanlı Tuğra Saatli 5 Parça Kanvas Tablo"
+            - heading "Turguaz Renkli Osmanlı Tuğra Saatli 5 Parça Kanvas Tablo" [level=3] [ref=e230]
+            - paragraph [ref=e231]: 1.672 TL
+        - article [ref=e232]:
+          - link "5 Parça Osmanlı Tuğrası ve Hz Muhammed Mührü Şerifi 5 Parçalı Kanvas Tablo Osmanlı Tuğrası ve Hz Muhammed Mührü Şerifi 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e233] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-tugrasi-ve-hz-muhammed-muhru-serifi-5-parcali-kanvas-tablo-924
+            - generic [ref=e234]:
+              - generic [ref=e235]: 5 Parça
+              - img "Osmanlı Tuğrası ve Hz Muhammed Mührü Şerifi 5 Parçalı Kanvas Tablo"
+            - heading "Osmanlı Tuğrası ve Hz Muhammed Mührü Şerifi 5 Parçalı Kanvas Tablo" [level=3] [ref=e236]
+            - paragraph [ref=e237]: 1.672 TL
+        - article [ref=e238]:
+          - link "5 Parça Osmanlı Tuğrası Saatli 5 Parçalı Kanvas Tablo Osmanlı Tuğrası Saatli 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e239] [cursor=pointer]:
+            - /url: /Urun/Detay/osmanli-tugrasi-saatli-5-parcali-kanvas-tablo-914
+            - generic [ref=e240]:
+              - generic [ref=e241]: 5 Parça
+              - img "Osmanlı Tuğrası Saatli 5 Parçalı Kanvas Tablo"
+            - heading "Osmanlı Tuğrası Saatli 5 Parçalı Kanvas Tablo" [level=3] [ref=e242]
+            - paragraph [ref=e243]: 1.672 TL
+        - article [ref=e244]:
+          - link "5 Parça Turkuaz renkli Osmanlı Tuğralı 5 Parça Saatli Kanvas Tablo Turkuaz renkli Osmanlı Tuğralı 5 Parça Saatli Kanvas Tablo 843 TL" [ref=e245] [cursor=pointer]:
+            - /url: /Urun/Detay/turkuaz-renkli-osmanli-tugrali-5-parca-saatli-kanvas-tablo-570
+            - generic [ref=e246]:
+              - generic [ref=e247]: 5 Parça
+              - img "Turkuaz renkli Osmanlı Tuğralı 5 Parça Saatli Kanvas Tablo"
+            - heading "Turkuaz renkli Osmanlı Tuğralı 5 Parça Saatli Kanvas Tablo" [level=3] [ref=e248]
+            - paragraph [ref=e249]: 843 TL
+        - article [ref=e250]:
+          - link "5 Parça Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e251] [cursor=pointer]:
+            - /url: /Urun/Detay/ataturk-turk-bayragi-istiklal-marsi-ve-genclige-hitabe-5-parcali-kanvas-tablo-1357
+            - generic [ref=e252]:
+              - generic [ref=e253]: 5 Parça
+              - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo"
+            - heading "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [level=3] [ref=e254]
+            - paragraph [ref=e255]: 1.672 TL
+        - article [ref=e256]:
+          - link "5 Parça Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e257] [cursor=pointer]:
+            - /url: /Urun/Detay/ataturk-kalpakli-ataturk-resmi-istiklal-marsi-ve-genclige-hitabe-5-parcali-kanvas-tablo-1356
+            - generic [ref=e258]:
+              - generic [ref=e259]: 5 Parça
+              - img "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo"
+            - heading "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [level=3] [ref=e260]
+            - paragraph [ref=e261]: 1.672 TL
+        - article [ref=e262]:
+          - link "5 Parça Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo 1.530 TL" [ref=e263] [cursor=pointer]:
+            - /url: /Urun/Detay/dalgalanan-turk-bayragi-5-parca-kanvas-tablo-1066
+            - generic [ref=e264]:
+              - generic [ref=e265]: 5 Parça
+              - img "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo"
+            - heading "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo" [level=3] [ref=e266]
+            - paragraph [ref=e267]: 1.530 TL
+        - article [ref=e268]:
+          - link "5 Parça Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo 1.672 TL" [ref=e269] [cursor=pointer]:
+            - /url: /Urun/Detay/allah-muhammed-yazili-islami-tugrali-5-parcali-kanvas-tablo-1325
+            - generic [ref=e270]:
+              - generic [ref=e271]: 5 Parça
+              - img "Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo"
+            - heading "Allah Muhammed Yazılı İslami Tuğralı 5 Parçalı Kanvas Tablo" [level=3] [ref=e272]
+            - paragraph [ref=e273]: 1.672 TL
+        - article [ref=e274]:
+          - link "5 Parça Kırmızı Menekşeli Dekoratif Saatli 5 Parça Kanvas Tablosu Kırmızı Menekşeli Dekoratif Saatli 5 Parça Kanvas Tablosu 1.377 TL" [ref=e275] [cursor=pointer]:
+            - /url: /Urun/Detay/kirmizi-menekseli-dekoratif-saatli-5-parca-kanvas-tablosu-1070
+            - generic [ref=e276]:
+              - generic [ref=e277]: 5 Parça
+              - img "Kırmızı Menekşeli Dekoratif Saatli 5 Parça Kanvas Tablosu" [ref=e278]
+            - heading "Kırmızı Menekşeli Dekoratif Saatli 5 Parça Kanvas Tablosu" [level=3] [ref=e279]
+            - paragraph [ref=e280]: 1.377 TL
+        - article [ref=e281]:
+          - link "5 Parça Dünya Haritası 5 Parça Kanvas Tablo Dünya Haritası 5 Parça Kanvas Tablo 1.363 TL" [ref=e282] [cursor=pointer]:
+            - /url: /Urun/Detay/dunya-haritasi-5-parca-kanvas-tablo-1005
+            - generic [ref=e283]:
+              - generic [ref=e284]: 5 Parça
+              - img "Dünya Haritası 5 Parça Kanvas Tablo"
+            - heading "Dünya Haritası 5 Parça Kanvas Tablo" [level=3] [ref=e285]
+            - paragraph [ref=e286]: 1.363 TL
+    - generic [ref=e287]:
+      - generic [ref=e288]:
+        - separator [ref=e289]
+        - heading "Öne Çıkan Eserler" [level=2] [ref=e290]
+        - separator [ref=e291]
+      - paragraph [ref=e292]: Seçili vitrin ürünlerimiz
+      - generic [ref=e293]:
+        - generic [ref=e294] [cursor=pointer]:
+          - generic [ref=e295]:
+            - link "Yeni Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e296]:
+              - /url: /Urun/Detay/renkli-kokteyl-ve-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-12611
+              - generic [ref=e297]: Yeni
+              - img "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e298]
+            - button "" [ref=e299]:
+              - generic [ref=e300]: 
+          - heading "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [level=3] [ref=e301]:
+            - link "Renkli Kokteyl ve Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı" [ref=e302]:
+              - /url: /Urun/Detay/renkli-kokteyl-ve-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-12611
+          - paragraph [ref=e303]: 208 TL
+        - generic [ref=e304] [cursor=pointer]:
+          - generic [ref=e305]:
+            - link "Yeni Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e306]:
+              - /url: /Urun/Detay/canli-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12610
+              - generic [ref=e307]: Yeni
+              - img "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e308]
+            - button "" [ref=e309]:
+              - generic [ref=e310]: 
+          - heading "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e311]:
+            - link "Canlı Tropikal Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e312]:
+              - /url: /Urun/Detay/canli-tropikal-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12610
+          - paragraph [ref=e313]: 208 TL
+        - generic [ref=e314] [cursor=pointer]:
+          - generic [ref=e315]:
+            - link "Yeni Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [ref=e316]:
+              - /url: /Urun/Detay/renkli-tropikal-meyve-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-modern-mutfak-aksesuari-12609
+              - generic [ref=e317]: Yeni
+              - img "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [ref=e318]
+            - button "" [ref=e319]:
+              - generic [ref=e320]: 
+          - heading "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [level=3] [ref=e321]:
+            - link "Renkli Tropikal Meyve Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Modern Mutfak Aksesuarı" [ref=e322]:
+              - /url: /Urun/Detay/renkli-tropikal-meyve-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-modern-mutfak-aksesuari-12609
+          - paragraph [ref=e323]: 208 TL
+        - generic [ref=e324] [cursor=pointer]:
+          - generic [ref=e325]:
+            - link "Yeni Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e326]:
+              - /url: /Urun/Detay/gri-mermer-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12608
+              - generic [ref=e327]: Yeni
+              - img "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e328]
+            - button "" [ref=e329]:
+              - generic [ref=e330]: 
+          - heading "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e331]:
+            - link "Gri Mermer Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e332]:
+              - /url: /Urun/Detay/gri-mermer-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12608
+          - paragraph [ref=e333]: 208 TL
+        - generic [ref=e334] [cursor=pointer]:
+          - generic [ref=e335]:
+            - link "Yeni Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [ref=e336]:
+              - /url: /Urun/Detay/pastel-mavi-bej-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-sik-mutfak-aksesuari-12607
+              - generic [ref=e337]: Yeni
+              - img "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı"
+            - button "" [ref=e338]:
+              - generic [ref=e339]: 
+          - heading "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [level=3] [ref=e340]:
+            - link "Pastel Mavi Bej Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Şık Mutfak Aksesuarı" [ref=e341]:
+              - /url: /Urun/Detay/pastel-mavi-bej-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-sik-mutfak-aksesuari-12607
+          - paragraph [ref=e342]: 208 TL
+        - generic [ref=e343] [cursor=pointer]:
+          - generic [ref=e344]:
+            - link "Yeni Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e345]:
+              - /url: /Urun/Detay/lila-mavi-altin-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12606
+              - generic [ref=e346]: Yeni
+              - img "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı"
+            - button "" [ref=e347]:
+              - generic [ref=e348]: 
+          - heading "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [level=3] [ref=e349]:
+            - link "Lila Mavi Altın Desenli Temperli Cam Kesme Tahtası 20x30 cm | Hijyenik ve Dayanıklı Mutfak Aksesuarı" [ref=e350]:
+              - /url: /Urun/Detay/lila-mavi-altin-desenli-temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-ve-dayanikli-mutfak-aksesuari-12606
+          - paragraph [ref=e351]: 208 TL
+        - generic [ref=e352] [cursor=pointer]:
+          - generic [ref=e353]:
+            - link "Yeni Ürgüp Uçan Balon Manzaralı Cam Tablo" [ref=e354]:
+              - /url: /Urun/Detay/urgup-ucan-balon--12605
+              - generic [ref=e355]: Yeni
+              - img "Ürgüp Uçan Balon Manzaralı Cam Tablo" [ref=e356]
+            - button "" [ref=e357]:
+              - generic [ref=e358]: 
+          - heading "Ürgüp Uçan Balon Manzaralı Cam Tablo" [level=3] [ref=e359]:
+            - link "Ürgüp Uçan Balon Manzaralı Cam Tablo" [ref=e360]:
+              - /url: /Urun/Detay/urgup-ucan-balon--12605
+          - paragraph [ref=e361]: 236 TL
+        - generic [ref=e362] [cursor=pointer]:
+          - generic [ref=e363]:
+            - link "Yeni Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [ref=e364]:
+              - /url: /Urun/Detay/temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-dayanikli-kaymaz-silikon-ayakli-sik-mutfak-sunumu-12604
+              - generic [ref=e365]: Yeni
+              - img "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu"
+            - button "" [ref=e366]:
+              - generic [ref=e367]: 
+          - heading "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [level=3] [ref=e368]:
+            - link "Temperli Cam Kesme Tahtası 20x30 cm - Hijyenik, Dayanıklı, Kaymaz Silikon Ayaklı, Şık Mutfak Sunumu" [ref=e369]:
+              - /url: /Urun/Detay/temperli-cam-kesme-tahtasi-20x30-cm-hijyenik-dayanikli-kaymaz-silikon-ayakli-sik-mutfak-sunumu-12604
+          - paragraph [ref=e370]: 208 TL
+        - generic [ref=e371] [cursor=pointer]:
+          - generic [ref=e372]:
+            - link "Yeni Kabe Cam Tablo" [ref=e373]:
+              - /url: /Urun/Detay/kabe--12603
+              - generic [ref=e374]: Yeni
+              - img "Kabe Cam Tablo" [ref=e375]
+            - button "" [ref=e376]:
+              - generic [ref=e377]: 
+          - heading "Kabe Cam Tablo" [level=3] [ref=e378]:
+            - link "Kabe Cam Tablo" [ref=e379]:
+              - /url: /Urun/Detay/kabe--12603
+          - paragraph [ref=e380]: 236 TL
+        - generic [ref=e381] [cursor=pointer]:
+          - generic [ref=e382]:
+            - link "Yeni Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [ref=e383]:
+              - /url: /Urun/Detay/altin-detayli-kugu-yatay-temperli-cam-tablo-luks-floral-duvar-sanati-modern-salon-dekoru-12602
+              - generic [ref=e384]: Yeni
+              - img "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [ref=e385]
+            - button "" [ref=e386]:
+              - generic [ref=e387]: 
+          - heading "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [level=3] [ref=e388]:
+            - link "Altın Detaylı Kuğu Yatay Temperli Cam Tablo | Lüks Floral Duvar Sanatı Modern Salon Dekoru" [ref=e389]:
+              - /url: /Urun/Detay/altin-detayli-kugu-yatay-temperli-cam-tablo-luks-floral-duvar-sanati-modern-salon-dekoru-12602
+          - paragraph [ref=e390]: 670 TL
+      - link "Tümünü Gör" [ref=e392] [cursor=pointer]:
+        - /url: /Urun
+    - generic [ref=e393]:
+      - generic [ref=e394]:
+        - generic [ref=e395]:
+          - paragraph [ref=e396]: Çok satanlar
+          - heading "En çok tercih edilenler" [level=2] [ref=e397]
+        - link "Tümünü Gör " [ref=e398] [cursor=pointer]:
+          - /url: /Urun?sort=popularity
+          - text: Tümünü Gör
+          - generic [ref=e399]: 
+      - generic [ref=e400]:
+        - article [ref=e401]:
+          - link "Çok satan Mor Gelincik Çiçek Kanvas Tablo Mor Gelincik Çiçek Kanvas Tablo 681 TL" [ref=e402] [cursor=pointer]:
+            - /url: /Urun/Detay/mor-gelincik-cicek-kanvas-tablo-2
+            - generic [ref=e403]:
+              - generic [ref=e404]: Çok satan
+              - img "Mor Gelincik Çiçek Kanvas Tablo" [ref=e405]
+            - heading "Mor Gelincik Çiçek Kanvas Tablo" [level=3] [ref=e406]
+            - paragraph [ref=e407]: 681 TL
+        - article [ref=e408]:
+          - link "Çok satan Amsterdam Dikey Tablo - Model 2 Amsterdam Dikey Tablo - Model 2 999 TL" [ref=e409] [cursor=pointer]:
+            - /url: /Urun/Detay/amsterdam-dikey-tablo-model-2-2214
+            - generic [ref=e410]:
+              - generic [ref=e411]: Çok satan
+              - img "Amsterdam Dikey Tablo - Model 2" [ref=e412]
+            - heading "Amsterdam Dikey Tablo - Model 2" [level=3] [ref=e413]
+            - paragraph [ref=e414]: 999 TL
+        - article [ref=e415]:
+          - link "Çok satan Cartoon Vintage Tablo - Model 5 Cartoon Vintage Tablo - Model 5 2.149 TL" [ref=e416] [cursor=pointer]:
+            - /url: /Urun/Detay/cartoon-vintage-tablo-model-5-6440
+            - generic [ref=e417]:
+              - generic [ref=e418]: Çok satan
+              - img "Cartoon Vintage Tablo - Model 5"
+            - heading "Cartoon Vintage Tablo - Model 5" [level=3] [ref=e419]
+            - paragraph [ref=e420]: 2.149 TL
+        - article [ref=e421]:
+          - link "Çok satan Taka Tablosu - Model 1 Taka Tablosu - Model 1 999 TL" [ref=e422] [cursor=pointer]:
+            - /url: /Urun/Detay/taka-tablosu-model-1-7886
+            - generic [ref=e423]:
+              - generic [ref=e424]: Çok satan
+              - img "Taka Tablosu - Model 1"
+            - heading "Taka Tablosu - Model 1" [level=3] [ref=e425]
+            - paragraph [ref=e426]: 999 TL
+        - article [ref=e427]:
+          - link "Çok satan Lady Cat Retro Tablo Lady Cat Retro Tablo 999 TL" [ref=e428] [cursor=pointer]:
+            - /url: /Urun/Detay/lady-cat-retro-tablo-8140
+            - generic [ref=e429]:
+              - generic [ref=e430]: Çok satan
+              - img "Lady Cat Retro Tablo"
+            - heading "Lady Cat Retro Tablo" [level=3] [ref=e431]
+            - paragraph [ref=e432]: 999 TL
+        - article [ref=e433]:
+          - link "Çok satan Rene Magritte - The False Mirror Tablosu - Model 5 Rene Magritte - The False Mirror Tablosu - Model 5 2.149 TL" [ref=e434] [cursor=pointer]:
+            - /url: /Urun/Detay/rene-magritte-the-false-mirror-tablosu-model-5-12534
+            - generic [ref=e435]:
+              - generic [ref=e436]: Çok satan
+              - img "Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e437]
+            - heading "Rene Magritte - The False Mirror Tablosu - Model 5" [level=3] [ref=e438]
+            - paragraph [ref=e439]: 2.149 TL
+        - article [ref=e440]:
+          - link "Çok satan Dominique Appia - Les Quatre Saisons Tablosu Dominique Appia - Les Quatre Saisons Tablosu 999 TL" [ref=e441] [cursor=pointer]:
+            - /url: /Urun/Detay/dominique-appia-les-quatre-saisons-tablosu-12536
+            - generic [ref=e442]:
+              - generic [ref=e443]: Çok satan
+              - img "Dominique Appia - Les Quatre Saisons Tablosu"
+            - heading "Dominique Appia - Les Quatre Saisons Tablosu" [level=3] [ref=e444]
+            - paragraph [ref=e445]: 999 TL
+        - article [ref=e446]:
+          - link "Çok satan Salvador Dali - Le Sommeil Tablosu Salvador Dali - Le Sommeil Tablosu 999 TL" [ref=e447] [cursor=pointer]:
+            - /url: /Urun/Detay/salvador-dali-le-sommeil-tablosu-12538
+            - generic [ref=e448]:
+              - generic [ref=e449]: Çok satan
+              - img "Salvador Dali - Le Sommeil Tablosu"
+            - heading "Salvador Dali - Le Sommeil Tablosu" [level=3] [ref=e450]
+            - paragraph [ref=e451]: 999 TL
+    - generic [ref=e453]:
+      - generic [ref=e454]:
+        - generic [ref=e455]:
+          - paragraph [ref=e456]: Fırsat ürünleri
+          - heading "Kampanyalı seçimler" [level=2] [ref=e457]
+        - link "Fırsatları Gör " [ref=e458] [cursor=pointer]:
+          - /url: /Urun?sort=price_asc
+          - text: Fırsatları Gör
+          - generic [ref=e459]: 
+      - generic [ref=e460]:
+        - article [ref=e461]:
+          - link "Fırsat Van Gogh Terasta Kafe Çizimi Cam Tablo Van Gogh Terasta Kafe Çizimi Cam Tablo 236 TL 1.457 TL" [ref=e462] [cursor=pointer]:
+            - /url: /Urun/Detay/van-gogh-terasta-kafe-cizimi-cam-tablo-12558
+            - generic [ref=e463]:
+              - generic [ref=e464]: Fırsat
+              - img "Van Gogh Terasta Kafe Çizimi Cam Tablo"
+            - heading "Van Gogh Terasta Kafe Çizimi Cam Tablo" [level=3] [ref=e465]
+            - generic [ref=e466]:
+              - paragraph [ref=e467]: 236 TL
+              - paragraph [ref=e468]: 1.457 TL
+        - article [ref=e469]:
+          - link "Fırsat Baharat Desenli Cam Tablo Baharat Desenli Cam Tablo 236 TL 1.457 TL" [ref=e470] [cursor=pointer]:
+            - /url: /Urun/Detay/baharat-desenli-cam-tablo-12559
+            - generic [ref=e471]:
+              - generic [ref=e472]: Fırsat
+              - img "Baharat Desenli Cam Tablo" [ref=e473]
+            - heading "Baharat Desenli Cam Tablo" [level=3] [ref=e474]
+            - generic [ref=e475]:
+              - paragraph [ref=e476]: 236 TL
+              - paragraph [ref=e477]: 1.457 TL
+        - article [ref=e478]:
+          - link "Fırsat Kırmızı Pembe Renkli Çiçek Desenli Cam Tablo Kırmızı Pembe Renkli Çiçek Desenli Cam Tablo 236 TL 1.457 TL" [ref=e479] [cursor=pointer]:
+            - /url: /Urun/Detay/kirmizi-pembe-renkli-cicek-desenli-cam-tablo-12560
+            - generic [ref=e480]:
+              - generic [ref=e481]: Fırsat
+              - img "Kırmızı Pembe Renkli Çiçek Desenli Cam Tablo" [ref=e482]
+            - heading "Kırmızı Pembe Renkli Çiçek Desenli Cam Tablo" [level=3] [ref=e483]
+            - generic [ref=e484]:
+              - paragraph [ref=e485]: 236 TL
+              - paragraph [ref=e486]: 1.457 TL
+        - article [ref=e487]:
+          - link "Fırsat Mona Lisa Cam Tablo Mona Lisa Cam Tablo 236 TL 1.457 TL" [ref=e488] [cursor=pointer]:
+            - /url: /Urun/Detay/mona-lisa-cam-tablo-12561
+            - generic [ref=e489]:
+              - generic [ref=e490]: Fırsat
+              - img "Mona Lisa Cam Tablo"
+            - heading "Mona Lisa Cam Tablo" [level=3] [ref=e491]
+            - generic [ref=e492]:
+              - paragraph [ref=e493]: 236 TL
+              - paragraph [ref=e494]: 1.457 TL
+        - article [ref=e495]:
+          - link "Fırsat Pembe Renkli Vazoda Çiçek Cam Tablo Pembe Renkli Vazoda Çiçek Cam Tablo 236 TL 1.457 TL" [ref=e496] [cursor=pointer]:
+            - /url: /Urun/Detay/pembe-renkli-vazoda-cicek-cam-tablo-12562
+            - generic [ref=e497]:
+              - generic [ref=e498]: Fırsat
+              - img "Pembe Renkli Vazoda Çiçek Cam Tablo"
+            - heading "Pembe Renkli Vazoda Çiçek Cam Tablo" [level=3] [ref=e499]
+            - generic [ref=e500]:
+              - paragraph [ref=e501]: 236 TL
+              - paragraph [ref=e502]: 1.457 TL
+        - article [ref=e503]:
+          - link "Fırsat Elif Vav Harfi Dini Cam Tablo Elif Vav Harfi Dini Cam Tablo 236 TL 1.457 TL" [ref=e504] [cursor=pointer]:
+            - /url: /Urun/Detay/elif-vav-harfi-dini-cam-tablo-12564
+            - generic [ref=e505]:
+              - generic [ref=e506]: Fırsat
+              - img "Elif Vav Harfi Dini Cam Tablo"
+            - heading "Elif Vav Harfi Dini Cam Tablo" [level=3] [ref=e507]
+            - generic [ref=e508]:
+              - paragraph [ref=e509]: 236 TL
+              - paragraph [ref=e510]: 1.457 TL
+        - article [ref=e511]:
+          - link "Fırsat Siyah Beyaz Şanlı Atatürk Üçü Bir Tabloda Resimleri Cam Tablo Siyah Beyaz Şanlı Atatürk Üçü Bir Tabloda Resimleri Cam Tablo 236 TL 1.457 TL" [ref=e512] [cursor=pointer]:
+            - /url: /Urun/Detay/siyah-beyaz-sanli-ataturk-ucu-bir-tabloda-resimleri-cam-tablo-12565
+            - generic [ref=e513]:
+              - generic [ref=e514]: Fırsat
+              - img "Siyah Beyaz Şanlı Atatürk Üçü Bir Tabloda Resimleri Cam Tablo" [ref=e515]
+            - heading "Siyah Beyaz Şanlı Atatürk Üçü Bir Tabloda Resimleri Cam Tablo" [level=3] [ref=e516]
+            - generic [ref=e517]:
+              - paragraph [ref=e518]: 236 TL
+              - paragraph [ref=e519]: 1.457 TL
+        - article [ref=e520]:
+          - link "Fırsat Siyah Beyaz Fil ve Yavrusu Cam Tablo Siyah Beyaz Fil ve Yavrusu Cam Tablo 236 TL 1.457 TL" [ref=e521] [cursor=pointer]:
+            - /url: /Urun/Detay/siyah-beyaz-fil-ve-yavrusu-cam-tablo-12566
+            - generic [ref=e522]:
+              - generic [ref=e523]: Fırsat
+              - img "Siyah Beyaz Fil ve Yavrusu Cam Tablo" [ref=e524]
+            - heading "Siyah Beyaz Fil ve Yavrusu Cam Tablo" [level=3] [ref=e525]
+            - generic [ref=e526]:
+              - paragraph [ref=e527]: 236 TL
+              - paragraph [ref=e528]: 1.457 TL
+    - generic [ref=e531]:
+      - generic [ref=e532]:
+        - generic [ref=e534]: 
+        - heading "Güvenli Ödeme" [level=4] [ref=e535]
+        - paragraph [ref=e536]: 256-bit SSL ile %100 güvenli alışveriş deneyimi.
+      - generic [ref=e537]:
+        - generic [ref=e539]: 
+        - heading "Hızlı Teslimat" [level=4] [ref=e540]
+        - paragraph [ref=e541]: Özel kutusunda, hasarsız ve hızlı teslimat garantisi.
+      - generic [ref=e542]:
+        - generic [ref=e544]: 
+        - heading "Müşteri Memnuniyeti" [level=4] [ref=e545]
+        - paragraph [ref=e546]: Her türlü sorunuzda 7/24 yanınızdayız.
+    - generic [ref=e548]:
+      - generic [ref=e549]:
+        - generic [ref=e550]:
+          - paragraph [ref=e551]: Üretimden teslimata
+          - heading "Siparişiniz özenle hazırlanır" [level=2] [ref=e552]
+        - paragraph [ref=e553]: Canvasia, dekorasyon ürünlerini siparişe özel üretim yaklaşımıyla hazırlar; baskı, hazırlık ve paketleme süreci kalite kontrolünden geçer.
+      - generic [ref=e554]:
+        - generic [ref=e555]:
+          - generic [ref=e556]: "01"
+          - heading "Tasarım hazırlanır" [level=3] [ref=e557]
+          - paragraph [ref=e558]: Görsel ve ürün bilgisi üretime uygun şekilde kontrol edilir.
+        - generic [ref=e559]:
+          - generic [ref=e560]: "02"
+          - heading "Kaliteli baskı alınır" [level=3] [ref=e561]
+          - paragraph [ref=e562]: Renk canlılığı ve detay netliği korunacak şekilde baskı yapılır.
+        - generic [ref=e563]:
+          - generic [ref=e564]: "03"
+          - heading "Ürün hazırlanır" [level=3] [ref=e565]
+          - paragraph [ref=e566]: Ürün grubu ve seçilen ölçüye göre üretim tamamlanır.
+        - generic [ref=e567]:
+          - generic [ref=e568]: "04"
+          - heading "Özenle paketlenir" [level=3] [ref=e569]
+          - paragraph [ref=e570]: Kargoda hasar riskini azaltacak korunaklı paketleme uygulanır.
+        - generic [ref=e571]:
+          - generic [ref=e572]: "05"
+          - heading "Kargoya teslim edilir" [level=3] [ref=e573]
+          - paragraph [ref=e574]: Türkiye içi gönderim için siparişiniz takip edilebilir şekilde yola çıkar.
+    - generic [ref=e576]:
+      - generic:
+        - img "Canvasia üretim ve dekorasyon kalitesi"
+      - generic [ref=e577]:
+        - paragraph [ref=e578]: Malzeme ve baskı kalitesi
+        - heading "Yaşam alanlarına uzun ömürlü bir dokunuş" [level=2] [ref=e579]
+        - paragraph [ref=e580]: Kanvas tablo, cam tablo, duvar kağıdı ve dekorasyon ürünlerinde kullanılan yüzey, baskı ve paketleme tercihleri ürünün kullanım alanına göre planlanır.
+        - paragraph [ref=e581]: Amaç yalnızca güzel görünen bir ürün göndermek değil; müşterinin evinde, ofisinde veya yaşam alanında güvenle kullanabileceği premium bir dekorasyon deneyimi sunmaktır.
+        - generic [ref=e582]:
+          - generic [ref=e583]:
+            - generic [ref=e584]: 
+            - paragraph [ref=e585]: Canlı renkler
+          - generic [ref=e586]:
+            - generic [ref=e587]: 
+            - paragraph [ref=e588]: Ölçü seçenekleri
+          - generic [ref=e589]:
+            - generic [ref=e590]: 
+            - paragraph [ref=e591]: Korunaklı paket
+  - contentinfo [ref=e592]:
+    - generic [ref=e594]:
+      - generic [ref=e595]:
+        - generic [ref=e597]: 
+        - generic [ref=e598]:
+          - generic [ref=e599]: Tüm Türkiye'ye
+          - generic [ref=e600]: Ücretsiz Kargo
+      - generic [ref=e601]:
+        - generic [ref=e603]: 
+        - generic [ref=e604]:
+          - generic [ref=e605]: "%100 Güvenli Alışveriş"
+          - generic [ref=e606]: 256 Bit SSL Sertifikası
+      - generic [ref=e607]:
+        - generic [ref=e609]: 
+        - generic [ref=e610]:
+          - generic [ref=e611]: Tüm Kredi Kartlarına
+          - generic [ref=e612]: 12 Taksit İmkanı
+    - generic [ref=e613]:
+      - generic [ref=e614]:
+        - generic [ref=e615]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e616]
+          - paragraph [ref=e617]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e618]:
+            - textbox "E-posta Adresi" [ref=e619]
+            - button "ABONE OL" [ref=e620] [cursor=pointer]
+        - generic [ref=e621]:
+          - heading "KURUMSAL" [level=4] [ref=e622]
+          - list [ref=e623]:
+            - listitem [ref=e624]:
+              - link "Hakkımızda" [ref=e625] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e626]:
+              - link "İletişim" [ref=e627] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e628]:
+              - link "Koleksiyonlar" [ref=e629] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e630]:
+              - link "Gizlilik Politikası" [ref=e631] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e632]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e633] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e634]:
+            - link "Instagram" [ref=e635] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e636]: 
+            - link "WhatsApp" [ref=e637] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e638]: 
+      - generic [ref=e639]:
+        - paragraph [ref=e641]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e642]:
+          - link "Gizlilik Politikası" [ref=e643] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e644] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e645] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e648]
+  - link "WhatsApp ile iletişim" [ref=e649] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e650]
+    - generic [ref=e652]: WhatsApp

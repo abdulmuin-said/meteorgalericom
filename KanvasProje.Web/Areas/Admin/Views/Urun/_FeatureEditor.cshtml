@@ -1,0 +1,161 @@
+@model KanvasProje.Core.Varliklar.Urun
+@using KanvasProje.Service.Helpers
+@{
+    var definitions = (ViewBag.OzellikTanimlari as IEnumerable<KanvasProje.Core.Varliklar.UrunOzellikTanimi> ?? Enumerable.Empty<KanvasProje.Core.Varliklar.UrunOzellikTanimi>())
+        .OrderBy(x => x.Sira)
+        .ThenBy(x => x.Ad)
+        .ToList();
+
+    var currentValues = (Model.UrunOzellikleri ?? Enumerable.Empty<KanvasProje.Core.Varliklar.UrunOzellikDegeri>())
+        .Where(x => !x.SilindiMi)
+        .GroupBy(x => x.UrunOzellikTanimiId)
+        .ToDictionary(x => x.Key.ToString(), x => TurkishTextRepairHelper.RepairKnownBrokenTurkish(x.Last().Deger));
+
+    var definitionPayload = definitions.Select(x => new
+    {
+        id = x.Id,
+        ad = TurkishTextRepairHelper.RepairKnownBrokenTurkish(x.Ad),
+        urunTipi = x.UrunTipi,
+        alanTipi = x.AlanTipi,
+        yardimMetni = TurkishTextRepairHelper.RepairKnownBrokenTurkish(x.YardimMetni),
+        secenekler = x.SecenekListesi.Select(TurkishTextRepairHelper.RepairKnownBrokenTurkish).ToList(),
+        filtredeGoster = x.FiltredeGoster,
+        detaySayfasindaGoster = x.DetaySayfasindaGoster,
+        teknikTablodaGoster = x.TeknikTablodaGoster,
+        sira = x.Sira
+    });
+
+    var definitionsJson = System.Text.Json.JsonSerializer.Serialize(definitionPayload);
+    var valuesJson = System.Text.Json.JsonSerializer.Serialize(currentValues);
+}
+
+<div class="ca-card mt-4" style="border:1px solid var(--ca-border);">
+    <div class="ca-card-header">
+        <span class="ca-card-title">Ürün Tipi ve Özellik Seti</span>
+    </div>
+    <div class="ca-card-body">
+        <div class="row g-3 align-items-start">
+            <div class="col-lg-4">
+                <div class="ca-form-group mb-0">
+                    <label class="ca-label">Ürün Tipi</label>
+                    <select asp-for="UrunTipi" asp-items="ViewBag.UrunTipleri" class="ca-select" id="productTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="alert alert-light border mb-0">
+                    Bu seçim, ürüne hangi dinamik alanların açılacağını belirler. `Genel` alanlar her ürün tipinde görünmeye devam eder.
+                </div>
+            </div>
+        </div>
+
+        <div id="productFeatureSummary" class="small text-muted mt-3"></div>
+        <div id="productFeatureContainer" class="row g-3 mt-1"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const definitions = @Html.Raw(definitionsJson);
+        const featureValues = @Html.Raw(valuesJson);
+        const typeSelect = document.getElementById('productTypeSelect');
+        const container = document.getElementById('productFeatureContainer');
+        const summary = document.getElementById('productFeatureSummary');
+
+        if (!typeSelect || !container) {
+            return;
+        }
+
+        function escapeHtml(value) {
+            return (value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function captureCurrentValues() {
+            container.querySelectorAll('[data-feature-input]').forEach((input) => {
+                const definitionId = input.getAttribute('data-definition-id');
+                if (!definitionId) {
+                    return;
+                }
+
+                featureValues[definitionId] = input.value || '';
+            });
+        }
+
+        function buildInput(definition, index, value) {
+            const fieldName = `UrunOzellikleri[${index}].Deger`;
+            const hidden = `<input type="hidden" name="UrunOzellikleri[${index}].UrunOzellikTanimiId" value="${definition.id}" />`;
+            const escapedValue = escapeHtml(value);
+
+            if (definition.alanTipi === 'textarea') {
+                return `${hidden}<textarea class="ca-textarea" rows="3" name="${fieldName}" data-feature-input data-definition-id="${definition.id}">${escapedValue}</textarea>`;
+            }
+
+            if (definition.alanTipi === 'number') {
+                return `${hidden}<input class="ca-input" type="number" step="0.01" name="${fieldName}" value="${escapedValue}" data-feature-input data-definition-id="${definition.id}" />`;
+            }
+
+            if (definition.alanTipi === 'select') {
+                const options = (definition.secenekler || []).map((option) => {
+                    const normalized = option === 'true' ? 'Evet' : (option === 'false' ? 'Hayır' : option);
+                    const selected = option === value ? 'selected' : '';
+                    return `<option value="${escapeHtml(option)}" ${selected}>${escapeHtml(normalized)}</option>`;
+                }).join('');
+
+                return `${hidden}<select class="ca-select" name="${fieldName}" data-feature-input data-definition-id="${definition.id}"><option value="">Seçiniz</option>${options}</select>`;
+            }
+
+            return `${hidden}<input class="ca-input" type="text" name="${fieldName}" value="${escapedValue}" data-feature-input data-definition-id="${definition.id}" />`;
+        }
+
+        function renderFeatures() {
+            captureCurrentValues();
+
+            const selectedType = typeSelect.value || 'Genel';
+            const visibleDefinitions = definitions
+                .filter((definition) => definition.urunTipi === 'Genel' || definition.urunTipi === selectedType)
+                .sort((a, b) => (a.sira - b.sira) || a.ad.localeCompare(b.ad, 'tr'));
+
+            container.innerHTML = '';
+
+            if (visibleDefinitions.length === 0) {
+                summary.textContent = 'Seçili ürün tipi için tanımlı özellik alanı bulunmuyor.';
+                return;
+            }
+
+            const filterableCount = visibleDefinitions.filter((definition) => definition.filtredeGoster).length;
+            summary.textContent = `${visibleDefinitions.length} alan gösteriliyor. ${filterableCount} tanesi filtrelemeye hazır olarak işaretli.`;
+
+            visibleDefinitions.forEach((definition, index) => {
+                const value = featureValues[definition.id.toString()] || '';
+                const badges = [];
+                if (definition.filtredeGoster) badges.push('<span class="badge text-bg-light border">Filtre</span>');
+                if (definition.detaySayfasindaGoster) badges.push('<span class="badge text-bg-light border">Detay</span>');
+                if (definition.teknikTablodaGoster) badges.push('<span class="badge text-bg-light border">Teknik</span>');
+
+                const col = document.createElement('div');
+                col.className = definition.alanTipi === 'textarea' ? 'col-12' : 'col-lg-6';
+                col.innerHTML = `
+                    <div class="ca-card" style="border:1px solid var(--ca-border); box-shadow:none;">
+                        <div class="ca-card-body">
+                            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                <div>
+                                    <div class="fw-semibold">${escapeHtml(definition.ad)}</div>
+                                    ${definition.yardimMetni ? `<div class="small text-muted mt-1">${escapeHtml(definition.yardimMetni)}</div>` : ''}
+                                </div>
+                                <div class="d-flex flex-wrap gap-1 justify-content-end">${badges.join('')}</div>
+                            </div>
+                            ${buildInput(definition, index, value)}
+                        </div>
+                    </div>`;
+                container.appendChild(col);
+            });
+        }
+
+        typeSelect.addEventListener('change', renderFeatures);
+        renderFeatures();
+    })();
+</script>

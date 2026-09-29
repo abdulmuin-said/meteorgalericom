@@ -1,0 +1,1 @@
+UPDATE "__EFMigrationsHistory" SET "MigrationId" = '20260504111249_AddProductSeoFields' WHERE "MigrationId" = '20260504111249';

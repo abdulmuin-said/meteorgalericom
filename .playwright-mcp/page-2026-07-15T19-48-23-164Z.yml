@@ -1,0 +1,310 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e3]:
+    - generic [ref=f5e4]:
+      - generic [ref=f5e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=f5e6]:
+      - generic [ref=f5e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=f5e8]:
+      - generic [ref=f5e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f5e10]:
+      - generic [ref=f5e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f5e12]:
+      - generic [ref=f5e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f5e14]:
+      - generic [ref=f5e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f5e16]:
+      - generic [ref=f5e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f5e18]:
+      - generic [ref=f5e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f5e20]:
+      - generic [ref=f5e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f5e22]:
+      - generic [ref=f5e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=f5e24]:
+      - generic [ref=f5e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=f5e26]:
+      - generic [ref=f5e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=f5e28]:
+      - generic [ref=f5e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=f5e30]:
+      - generic [ref=f5e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=f5e32]:
+      - generic [ref=f5e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=f5e34]:
+      - generic [ref=f5e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=f5e36]:
+      - generic [ref=f5e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=f5e38]:
+      - generic [ref=f5e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=f5e40]:
+      - generic [ref=f5e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=f5e42]:
+      - generic [ref=f5e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=f5e44]:
+    - generic [ref=f5e45]:
+      - link "Canvasia" [ref=f5e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=f5e47]
+      - generic [ref=f5e48]:
+        - button "Arama" [ref=f5e49] [cursor=pointer]
+        - link "Giriş Yap" [ref=f5e52] [cursor=pointer]:
+          - /url: /Hesap/GirisYap
+        - link "Favoriler" [ref=f5e55] [cursor=pointer]:
+          - /url: /Favori
+        - link "Sepet" [ref=f5e58] [cursor=pointer]:
+          - /url: /Sepet
+          - generic [ref=f5e61]: "1"
+      - navigation [ref=f5e62]:
+        - list [ref=f5e63]:
+          - listitem [ref=f5e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=f5e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=f5e66]: 
+          - listitem [ref=f5e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=f5e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=f5e69]: 
+          - listitem [ref=f5e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=f5e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=f5e72]: 
+          - listitem [ref=f5e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=f5e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=f5e75]: 
+          - listitem [ref=f5e76] [cursor=pointer]:
+            - link "Ayna " [ref=f5e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=f5e78]: 
+          - listitem [ref=f5e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=f5e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=f5e81]: 
+          - listitem [ref=f5e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=f5e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=f5e84]: 
+          - listitem [ref=f5e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=f5e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=f5e87]: 
+          - listitem [ref=f5e88] [cursor=pointer]:
+            - link "Lightbox " [ref=f5e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=f5e90]: 
+          - listitem [ref=f5e91] [cursor=pointer]:
+            - link "Afiş " [ref=f5e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=f5e93]: 
+          - listitem [ref=f5e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=f5e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=f5e96]:
+    - generic [ref=f5e98]:
+      - link "Ana Sayfa" [ref=f5e99] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f5e100]: /
+      - generic [ref=f5e101]: Sepetim
+    - generic [ref=f5e102]:
+      - generic [ref=f5e103]:
+        - generic [ref=f5e104]:
+          - heading "Sepetim" [level=1] [ref=f5e105]
+          - paragraph [ref=f5e106]: 1 ürün
+        - button " Sepeti Boşalt" [ref=f5e108] [cursor=pointer]:
+          - generic [ref=f5e109]: 
+          - text: Sepeti Boşalt
+      - generic [ref=f5e110]:
+        - generic [ref=f5e111]:
+          - article [ref=f5e112]:
+            - button "" [ref=f5e114] [cursor=pointer]
+            - link [ref=f5e116] [cursor=pointer]:
+              - /url: /Urun/Detay/8726
+              - img "Çift Renk Amerikan Araba Tablosu - Model 1" [ref=f5e117]
+            - generic [ref=f5e118]:
+              - link "Çift Renk Amerikan Araba Tablosu - Model 1" [ref=f5e119] [cursor=pointer]:
+                - /url: /Urun/Detay/8726
+              - text: "90cm x 60cm | SKU: URN-008726-VAR-032927 | Çerçeve: Siyah"
+              - generic [ref=f5e121]:
+                - generic [ref=f5e122]: Not / Özel İstek
+                - textbox "Özel ölçü, renk tercihi, yazı isteği..." [ref=f5e123]
+                - generic [ref=f5e124]:
+                  - generic [ref=f5e125]: En fazla 500 karakter
+                  - button " Kaydet" [ref=f5e126] [cursor=pointer]:
+                    - generic [ref=f5e127]: 
+                    - text: Kaydet
+              - generic [ref=f5e128]:
+                - generic [ref=f5e129]:
+                  - button "" [ref=f5e131] [cursor=pointer]
+                  - generic [ref=f5e133]: "1"
+                  - button "+" [ref=f5e135] [cursor=pointer]
+                - generic [ref=f5e137]: ₺1.884,56
+          - generic [ref=f5e138]:
+            - heading "Sepetinize Özel Seçimler" [level=3] [ref=f5e139]
+            - generic [ref=f5e140]:
+              - generic [ref=f5e141]:
+                - generic [ref=f5e142]:
+                  - link [ref=f5e143] [cursor=pointer]:
+                    - /url: /Urun/Detay/mekke-cam-tablo-12581
+                    - img "Mekke Cam Tablo" [ref=f5e144]
+                  - link [ref=f5e145] [cursor=pointer]:
+                    - /url: /Urun/Detay/mekke-cam-tablo-12581
+                    - heading "Mekke Cam Tablo" [level=4] [ref=f5e146]
+                  - paragraph [ref=f5e147]: 2.775 TL
+                - button "Sepete Ekle" [ref=f5e148] [cursor=pointer]
+              - generic [ref=f5e149]:
+                - generic [ref=f5e150]:
+                  - link [ref=f5e151] [cursor=pointer]:
+                    - /url: /Urun/Detay/ataturk-resimli-makam-arkaligi-panosu-9450
+                    - img "Atatürk Resimli Makam Arkalığı Panosu" [ref=f5e152]
+                  - link [ref=f5e153] [cursor=pointer]:
+                    - /url: /Urun/Detay/ataturk-resimli-makam-arkaligi-panosu-9450
+                    - heading "Atatürk Resimli Makam Arkalığı Panosu" [level=4] [ref=f5e154]
+                  - paragraph [ref=f5e155]: 2.159 TL
+                - button "Sepete Ekle" [ref=f5e156] [cursor=pointer]
+              - generic [ref=f5e157]:
+                - generic [ref=f5e158]:
+                  - link [ref=f5e159] [cursor=pointer]:
+                    - /url: /Urun/Detay/sakarya-meydan-muharebesi-tablosu-9461
+                    - img "Sakarya Meydan Muharebesi Tablosu" [ref=f5e160]
+                  - link [ref=f5e161] [cursor=pointer]:
+                    - /url: /Urun/Detay/sakarya-meydan-muharebesi-tablosu-9461
+                    - heading "Sakarya Meydan Muharebesi Tablosu" [level=4] [ref=f5e162]
+                  - paragraph [ref=f5e163]: 2.159 TL
+                - button "Sepete Ekle" [ref=f5e164] [cursor=pointer]
+              - generic [ref=f5e165]:
+                - generic [ref=f5e166]:
+                  - link [ref=f5e167] [cursor=pointer]:
+                    - /url: /Urun/Detay/canakkale-makam-odasi-tablosu-9462
+                    - img "Çanakkale Makam Odası Tablosu" [ref=f5e168]
+                  - link [ref=f5e169] [cursor=pointer]:
+                    - /url: /Urun/Detay/canakkale-makam-odasi-tablosu-9462
+                    - heading "Çanakkale Makam Odası Tablosu" [level=4] [ref=f5e170]
+                  - paragraph [ref=f5e171]: 2.159 TL
+                - button "Sepete Ekle" [ref=f5e172] [cursor=pointer]
+        - complementary [ref=f5e173]:
+          - generic [ref=f5e174]:
+            - heading "Sipariş Özeti" [level=2] [ref=f5e175]
+            - generic [ref=f5e176]:
+              - generic [ref=f5e177]:
+                - generic [ref=f5e178]: Ara Toplam
+                - generic [ref=f5e179]: ₺1.884,56
+              - generic [ref=f5e180]:
+                - generic [ref=f5e181]: Kargo
+                - generic [ref=f5e182]: Ücretsiz
+              - generic [ref=f5e184]:
+                - generic [ref=f5e185]: Kargo Firması Seçin
+                - combobox [ref=f5e186]:
+                  - option "Aras Kargo (Ücretsiz)" [selected]
+                  - option "DHL eCommerce (Ücretsiz)"
+                  - option "PTT Kargo (Ücretsiz)"
+                  - option "Yurtiçi Kargo (Ücretsiz)"
+              - generic [ref=f5e187]:
+                - generic [ref=f5e188]: Toplam
+                - generic [ref=f5e189]: ₺1.884,56
+            - generic [ref=f5e190]:
+              - textbox "İndirim kodu" [ref=f5e191]
+              - button "Uygula" [ref=f5e192] [cursor=pointer]
+            - link " Ödemeye Geç" [ref=f5e193] [cursor=pointer]:
+              - /url: /Siparis/Odeme
+              - generic [ref=f5e194]: 
+              - text: Ödemeye Geç
+            - paragraph [ref=f5e195]:
+              - generic [ref=f5e196]: 
+              - text: 256-bit SSL ile güvenli ödeme
+      - text: 
+  - contentinfo [ref=f5e197]:
+    - generic [ref=f5e199]:
+      - generic [ref=f5e200]:
+        - generic [ref=f5e201]: 
+        - generic [ref=f5e203]:
+          - generic [ref=f5e204]: Tüm Türkiye'ye
+          - generic [ref=f5e205]: Ücretsiz Kargo
+      - generic [ref=f5e206]:
+        - generic [ref=f5e207]: 
+        - generic [ref=f5e209]:
+          - generic [ref=f5e210]: "%100 Güvenli Alışveriş"
+          - generic [ref=f5e211]: 256 Bit SSL Sertifikası
+      - generic [ref=f5e212]:
+        - generic [ref=f5e213]: 
+        - generic [ref=f5e215]:
+          - generic [ref=f5e216]: Tüm Kredi Kartlarına
+          - generic [ref=f5e217]: 12 Taksit İmkanı
+    - generic [ref=f5e218]:
+      - generic [ref=f5e219]:
+        - generic [ref=f5e220]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=f5e221]
+          - paragraph [ref=f5e222]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=f5e223]:
+            - textbox "E-posta Adresi" [ref=f5e224]
+            - button "ABONE OL" [ref=f5e225] [cursor=pointer]
+        - generic [ref=f5e226]:
+          - heading "KURUMSAL" [level=4] [ref=f5e227]
+          - list [ref=f5e228]:
+            - listitem [ref=f5e229]:
+              - link "Hakkımızda" [ref=f5e230] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=f5e231]:
+              - link "İletişim" [ref=f5e232] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=f5e233]:
+              - link "Koleksiyonlar" [ref=f5e234] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=f5e235]:
+              - link "Gizlilik Politikası" [ref=f5e236] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=f5e237]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=f5e238] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=f5e239]:
+            - link "Instagram" [ref=f5e240] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=f5e241]: 
+            - link "WhatsApp" [ref=f5e242] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=f5e243]: 
+      - generic [ref=f5e244]:
+        - paragraph [ref=f5e246]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=f5e247]:
+          - link "Gizlilik Politikası" [ref=f5e248] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=f5e249] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=f5e250] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=f5e253]
+  - link "WhatsApp ile iletişim" [ref=f5e254] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - generic [ref=f5e257]: WhatsApp

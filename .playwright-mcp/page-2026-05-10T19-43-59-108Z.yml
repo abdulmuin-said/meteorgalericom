@@ -1,0 +1,130 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:     
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Ana Sayfa Ayarları" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Canlı sitede görünen üst slider görsel ve videolarını buradan yönetin. Video varsa slayt video bitince değişir.
+          - generic [ref=e44]:
+            - link " Siteyi Görüntüle" [ref=e45] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e46]: 
+              - text: Siteyi Görüntüle
+            - button " Değişiklikleri Kaydet" [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]: 
+              - text: Değişiklikleri Kaydet
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]:
+              - generic [ref=e53]:
+                - generic [ref=e54]: 
+                - text: Ana Sayfa Slider
+              - checkbox [checked] [ref=e56]
+            - generic [ref=e58]:
+              - generic [ref=e60]:
+                - generic [ref=e64]: Slider 1
+                - generic [ref=e67]:
+                  - generic [ref=e68]:
+                    - generic [ref=e69]: Slider Görseli
+                    - button "Choose File" [ref=e70]
+                    - generic [ref=e71]: Video yüklenemezse veya tarayıcı videoyu oynatamazsa bu görsel yedek olarak kullanılır.
+                  - generic [ref=e72]:
+                    - generic [ref=e73]: Video URL
+                    - textbox "/video/slider1.mp4" [ref=e74]
+                    - generic [ref=e75]: "Örn: /video/slider1.mp4 veya ileride /video/slider1.webm."
+                  - generic [ref=e76]:
+                    - generic [ref=e77]: Video Dosyası Yükle
+                    - button "Choose File" [ref=e78]
+                    - generic [ref=e79]: Yeni video seçilmezse mevcut video korunur.
+              - generic [ref=e81]:
+                - generic [ref=e85]: Slider 2
+                - generic [ref=e88]:
+                  - generic [ref=e89]:
+                    - generic [ref=e90]: Slider Görseli
+                    - button "Choose File" [ref=e91]
+                    - generic [ref=e92]: Video yüklenemezse veya tarayıcı videoyu oynatamazsa bu görsel yedek olarak kullanılır.
+                  - generic [ref=e93]:
+                    - generic [ref=e94]: Video URL
+                    - textbox "/video/slider1.mp4" [ref=e95]: /video/slider2.mp4
+                    - generic [ref=e96]: "Örn: /video/slider1.mp4 veya ileride /video/slider1.webm."
+                  - generic [ref=e97]:
+                    - generic [ref=e98]: Video Dosyası Yükle
+                    - button "Choose File" [ref=e99]
+                    - generic [ref=e100]: Yeni video seçilmezse mevcut video korunur.
+          - complementary [ref=e101]:
+            - generic [ref=e103]:
+              - generic [ref=e104]: 
+              - text: Kullanım Notları
+            - generic [ref=e105]:
+              - list [ref=e106]:
+                - listitem [ref=e107]:
+                  - generic [ref=e108]: 
+                  - generic [ref=e109]: Video URL doluysa ana sayfada görsel yerine video oynatılır.
+                - listitem [ref=e110]:
+                  - generic [ref=e111]: 
+                  - generic [ref=e112]: Videolar sessiz, controlsuz ve arka plan gibi oynar; video bitince sonraki slayta geçer.
+                - listitem [ref=e113]:
+                  - generic [ref=e114]: 
+                  - generic [ref=e115]: Görsel alanı video için poster/yedek görsel olarak kullanılır.
+                - listitem [ref=e116]:
+                  - generic [ref=e117]: 
+                  - generic [ref=e118]: MP4 çalışır; dosya boyutu için yayına almadan önce WebM alternatifi kullanabilirsiniz.
+              - button " Kaydet" [ref=e120] [cursor=pointer]:
+                - generic [ref=e121]: 
+                - text: Kaydet
+    - contentinfo [ref=e122]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

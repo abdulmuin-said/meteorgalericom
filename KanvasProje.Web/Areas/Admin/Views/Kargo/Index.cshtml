@@ -1,0 +1,191 @@
+﻿@using KanvasProje.Core.Varliklar
+@model IEnumerable<KargoFirmasi>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Kargo Yönetimi";
+    var firmalar = Model.ToList();
+}
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Kargo Yönetimi</h1>
+            <p class="ca-page-subtitle">Siparişlerde kullanılacak kargo firmalarını, takip bağlantılarını ve etiket gönderici bilgilerini yönetin.</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-5">
+            <div class="ca-card">
+                <div class="ca-card-header">
+                    <h3 class="ca-card-title"><i class="fas fa-plus me-2"></i>Yeni Kargo Firması</h3>
+                </div>
+                <div class="ca-card-body">
+                    <form method="post" action="/Admin/Kargo/Kaydet">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="Id" value="0" />
+                        <input type="hidden" name="AktifMi" value="True" />
+                        <div class="row g-3">
+                            <div class="col-md-7">
+                                <label class="ca-label">Firma Adı</label>
+                                <input name="Ad" class="ca-input" placeholder="Örn: Aras Kargo" required />
+                            </div>
+                            <div class="col-md-5">
+                                <label class="ca-label">Kod</label>
+                                <input name="Kod" class="ca-input" placeholder="aras" />
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Logo URL</label>
+                                <input name="LogoUrl" class="ca-input" placeholder="/img/kargo/aras-kargo.svg" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ca-label">Telefon</label>
+                                <input name="Telefon" class="ca-input" placeholder="444 25 52" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ca-label">Kargo Ücreti (₺)</label>
+                                <input name="Fiyat" class="ca-input" type="number" step="0.01" min="0" value="0.00" required />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ca-label">Varsayılan</label>
+                                <select name="VarsayilanMi" class="ca-select">
+                                    <option value="false">Hayır</option>
+                                    <option value="true">Evet</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Takip URL</label>
+                                <input name="TakipUrl" class="ca-input" placeholder="https://..." />
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Gönderici Ünvanı</label>
+                                <input name="GondericiUnvan" class="ca-input" value="METEORGALERİ" />
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Gönderici Adresi</label>
+                                <textarea name="GondericiAdres" class="ca-textarea" rows="2" placeholder="Etikette görünecek gönderici adresi"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Gönderici Telefonu</label>
+                                <input name="GondericiTelefon" class="ca-input" placeholder="0850 123 45 67" />
+                            </div>
+                        </div>
+                        <button class="ca-btn ca-btn-primary mt-3" type="submit">
+                            <i class="fas fa-save"></i> Firmayı Kaydet
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="ca-card">
+                <div class="ca-card-header">
+                    <h3 class="ca-card-title"><i class="fas fa-truck-fast me-2"></i>Kargo Firmaları</h3>
+                </div>
+                <div class="ca-table-wrapper">
+                    <table class="ca-table">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">Firma</th>
+                                <th>Takip</th>
+                                <th>Kargo Ücreti</th>
+                                <th>Durum</th>
+                                <th class="text-end pe-4">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var firma in firmalar)
+                            {
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            @if (!string.IsNullOrWhiteSpace(firma.LogoUrl))
+                                            {
+                                                <img src="@firma.LogoUrl" alt="@firma.Ad" width="54" height="28" loading="lazy" decoding="async" style="object-fit:contain;">
+                                            }
+                                            <div>
+                                                <div class="ca-fw-bold">@firma.Ad</div>
+                                                <div class="small text-muted">@firma.Kod</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="small">@firma.Telefon</div>
+                                        <div class="small text-muted text-truncate" style="max-width:240px;">@firma.TakipUrl</div>
+                                    </td>
+                                    <td class="ca-fw-bold">
+                                        @firma.Fiyat.ToString("N2") TL
+                                    </td>
+                                    <td>
+                                        <span class="ca-badge @(firma.AktifMi ? "ca-badge-success" : "ca-badge-neutral")">@(firma.AktifMi ? "Aktif" : "Pasif")</span>
+                                        @if (firma.VarsayilanMi)
+                                        {
+                                            <span class="ca-badge ca-badge-warning ms-1">Varsayılan</span>
+                                        }
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <div class="dropdown">
+                                            <button class="ca-btn-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="İşlemler">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end ca-dropdown-menu">
+                                                <li>
+                                                    <form method="post" action="/Admin/Kargo/VarsayilanYap/@firma.Id" class="m-0">
+                                                        @Html.AntiForgeryToken()
+                                                        <button class="dropdown-item" type="submit">
+                                                            <i class="fas fa-star me-2"></i> Varsayılan Yap
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <button class="dropdown-item" type="button" data-bs-toggle="collapse" data-bs-target="#firma-@firma.Id">
+                                                        <i class="fas fa-pen me-2"></i> Düzenle
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="collapse" id="firma-@firma.Id">
+                                    <td colspan="5" class="p-4" style="background:var(--ca-bg);">
+                                        <form method="post" action="/Admin/Kargo/Kaydet">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="Id" value="@firma.Id" />
+                                            <div class="row g-3">
+                                                <div class="col-md-3"><input name="Ad" value="@firma.Ad" class="ca-input" placeholder="Firma Adı" /></div>
+                                                <div class="col-md-2"><input name="Kod" value="@firma.Kod" class="ca-input" placeholder="Kod" /></div>
+                                                <div class="col-md-2"><input name="Telefon" value="@firma.Telefon" class="ca-input" placeholder="Telefon" /></div>
+                                                <div class="col-md-2"><input name="Fiyat" value="@firma.Fiyat.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" class="ca-input" type="number" step="0.01" min="0" placeholder="Kargo Ücreti" required /></div>
+                                                <div class="col-md-3">
+                                                    <select name="AktifMi" class="ca-select">
+                                                        <option value="true" selected="@firma.AktifMi">Aktif</option>
+                                                        <option value="false" selected="@(!firma.AktifMi)">Pasif</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6"><input name="LogoUrl" value="@firma.LogoUrl" class="ca-input" /></div>
+                                                <div class="col-md-6"><input name="TakipUrl" value="@firma.TakipUrl" class="ca-input" /></div>
+                                                <div class="col-md-4"><input name="GondericiUnvan" value="@firma.GondericiUnvan" class="ca-input" /></div>
+                                                <div class="col-md-5"><input name="GondericiAdres" value="@firma.GondericiAdres" class="ca-input" /></div>
+                                                <div class="col-md-3"><input name="GondericiTelefon" value="@firma.GondericiTelefon" class="ca-input" /></div>
+                                                <div class="col-md-3">
+                                                    <select name="VarsayilanMi" class="ca-select">
+                                                        <option value="false" selected="@(!firma.VarsayilanMi)">Varsayılan Değil</option>
+                                                        <option value="true" selected="@firma.VarsayilanMi">Varsayılan</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-9 text-end">
+                                                    <button class="ca-btn ca-btn-primary" type="submit"><i class="fas fa-save"></i> Güncelle</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

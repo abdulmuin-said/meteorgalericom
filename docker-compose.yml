@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # PostgreSQL Veritabanı
+  # ==========================================
+  db:
+    image: postgres:16-alpine
+    container_name: meteorgaleri-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-meteorgaleridb}
+      POSTGRES_USER: ${POSTGRES_USER:-kanvasuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme_in_production}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-kanvasuser} -d ${POSTGRES_DB:-meteorgaleridb}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================
+  # Web Uygulaması
+  # ==========================================
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: meteorgaleri-web
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - DOTNET_RUNNING_IN_CONTAINER=true
+      - PORT=8080
+      - PERSISTENT_ROOT=/app/storage
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=${POSTGRES_DB:-meteorgaleridb};Username=${POSTGRES_USER:-kanvasuser};Password=${POSTGRES_PASSWORD:-changeme_in_production}
+      - EmailSettings__Host=${EMAIL_HOST:-smtp-relay.brevo.com}
+      - EmailSettings__Port=${EMAIL_PORT:-587}
+      - EmailSettings__EnableSSL=${EMAIL_ENABLE_SSL:-true}
+      - EmailSettings__Username=${EMAIL_USERNAME:-}
+      - EmailSettings__Password=${EMAIL_PASSWORD:-}
+      - EmailSettings__FromEmail=${EMAIL_FROM_EMAIL:-}
+      - EmailSettings__FromName=${EMAIL_FROM_NAME:-MeteorGaleri}
+    volumes:
+      - app_slider_uploads:/app/storage/uploads
+      - app_uploads:/app/storage/img/products
+      - app_media:/app/storage/media/products
+      - app_logs:/app/storage/logs
+      - app_data:/app/storage/App_Data
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+    driver: local
+  app_slider_uploads:
+    driver: local
+  app_uploads:
+    driver: local
+  app_media:
+    driver: local
+  app_logs:
+    driver: local
+  app_data:
+    driver: local

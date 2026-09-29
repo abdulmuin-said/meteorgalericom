@@ -1,0 +1,462 @@
+﻿@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Operasyon İzleme";
+
+    var logs = ViewBag.Logs as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
+    var ipStats = ViewBag.IpStats as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
+    int totalCount = ViewBag.TotalCount ?? 0;
+    int currentPage = ViewBag.Page ?? 1;
+    int pageSize = ViewBag.PageSize ?? 50;
+    int totalPages = Math.Max(1, ViewBag.TotalPages ?? 1);
+    string type = (ViewBag.Type ?? "").ToString();
+    bool allActive = string.IsNullOrWhiteSpace(type) || type == "all";
+    int topIp = ViewBag.ToplamIp ?? 0;
+    int topHit = ViewBag.ToplamHit ?? 0;
+    int ipLogCount = ViewBag.IpLogCount ?? 0;
+    int siparisLogCount = ViewBag.SiparisLogCount ?? 0;
+    int auditLogCount = ViewBag.AuditLogCount ?? 0;
+    var previousPage = Math.Max(1, currentPage - 1);
+    var nextPage = Math.Min(totalPages, currentPage + 1);
+    var typeQuery = string.IsNullOrWhiteSpace(type) ? "all" : type;
+    var refreshUrl = $"/admin/xyzsecretmonitor?type={typeQuery}&page=1&pageSize={pageSize}";
+    var previousUrl = $"/admin/xyzsecretmonitor?type={typeQuery}&page={previousPage}&pageSize={pageSize}";
+    var nextUrl = $"/admin/xyzsecretmonitor?type={typeQuery}&page={nextPage}&pageSize={pageSize}";
+}
+
+<style>
+    .monitor-shell {
+        display: grid;
+        gap: 18px;
+    }
+
+    .monitor-hero {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 22px;
+        border: 1px solid #F5E6C8;
+        border-radius: 8px;
+        background: #fffaf0;
+    }
+
+    .monitor-kicker {
+        color: #8a6a2f;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .monitor-title {
+        margin: 4px 0 6px;
+        color: #1B2A4A;
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .monitor-subtitle {
+        max-width: 760px;
+        margin: 0;
+        color: #6f6a5e;
+        font-size: 14px;
+    }
+
+    .monitor-refresh {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        border: 1px solid #d6c6aa;
+        border-radius: 999px;
+        padding: 9px 14px;
+        color: #1B2A4A;
+        text-decoration: none;
+        background: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .monitor-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .monitor-stat {
+        min-height: 98px;
+        border: 1px solid #F5E6C8;
+        border-radius: 8px;
+        background: #fff;
+        padding: 16px;
+    }
+
+    .monitor-stat span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #8a867c;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .monitor-stat strong {
+        display: block;
+        margin-top: 10px;
+        color: #1B2A4A;
+        font-size: 28px;
+        line-height: 1;
+    }
+
+    .monitor-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 16px;
+    }
+
+    .monitor-card {
+        border: 1px solid #F5E6C8;
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .monitor-card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 18px;
+        border-bottom: 1px solid #F5E6C8;
+        background: #fafaf8;
+    }
+
+    .monitor-card-head h2 {
+        margin: 0;
+        color: #1B2A4A;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .monitor-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .monitor-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        border: 1px solid #F5E6C8;
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: #333333;
+        text-decoration: none;
+        background: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .monitor-tab.active {
+        border-color: #1B2A4A;
+        color: #fff;
+        background: #1B2A4A;
+    }
+
+    .monitor-table-wrap {
+        overflow-x: auto;
+    }
+
+    .monitor-table {
+        width: 100%;
+        min-width: 900px;
+        border-collapse: collapse;
+    }
+
+    .monitor-table th,
+    .monitor-table td {
+        padding: 13px 16px;
+        border-bottom: 1px solid #f0ede6;
+        vertical-align: top;
+        font-size: 13px;
+    }
+
+    .monitor-table th {
+        color: #8a867c;
+        background: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    .monitor-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border-radius: 999px;
+        padding: 5px 9px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .04em;
+    }
+
+    .monitor-badge.ip {
+        color: #0f5132;
+        background: #d1e7dd;
+    }
+
+    .monitor-badge.siparis {
+        color: #664d03;
+        background: #fff3cd;
+    }
+
+    .monitor-badge.audit {
+        color: #842029;
+        background: #f8d7da;
+    }
+
+    .monitor-mono {
+        color: #1B2A4A;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+    }
+
+    .monitor-detail {
+        max-width: 460px;
+        color: #6f6a5e;
+        white-space: normal;
+    }
+
+    .monitor-ip-list {
+        display: grid;
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .monitor-ip-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #f0ede6;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .monitor-ip-row small {
+        display: block;
+        margin-top: 4px;
+        color: #8a867c;
+    }
+
+    .monitor-empty {
+        padding: 42px 18px;
+        color: #8a867c;
+        text-align: center;
+    }
+
+    .monitor-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 18px;
+        border-top: 1px solid #F5E6C8;
+        background: #fafaf8;
+    }
+
+    .monitor-page-actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    .monitor-page-actions a {
+        border: 1px solid #d6c6aa;
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: #1B2A4A;
+        text-decoration: none;
+        background: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .monitor-page-actions a.disabled {
+        pointer-events: none;
+        opacity: .45;
+    }
+
+    @@media (max-width: 1100px) {
+        .monitor-stats,
+        .monitor-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 720px) {
+        .monitor-hero,
+        .monitor-card-head,
+        .monitor-pagination {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .monitor-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+</style>
+
+<div class="monitor-shell">
+    <section class="monitor-hero">
+        <div>
+            <div class="monitor-kicker">Canlı operasyon takibi</div>
+            <h1 class="monitor-title">Operasyon İzleme Merkezi</h1>
+            <p class="monitor-subtitle">Ziyaretçi hareketleri, admin güvenlik olayları ve son sipariş kayıtlarını tek ekranda takip edin.</p>
+        </div>
+        <a class="monitor-refresh" href="@refreshUrl">
+            <i class="fas fa-rotate-right"></i> Yenile
+        </a>
+    </section>
+
+    <section class="monitor-stats" aria-label="Özet metrikler">
+        <div class="monitor-stat">
+            <span><i class="fas fa-stream"></i> Toplam kayıt</span>
+            <strong>@totalCount</strong>
+        </div>
+        <div class="monitor-stat">
+            <span><i class="fas fa-user-clock"></i> Ziyaretçi</span>
+            <strong>@ipLogCount</strong>
+        </div>
+        <div class="monitor-stat">
+            <span><i class="fas fa-bag-shopping"></i> Sipariş</span>
+            <strong>@siparisLogCount</strong>
+        </div>
+        <div class="monitor-stat">
+            <span><i class="fas fa-shield-halved"></i> Audit</span>
+            <strong>@auditLogCount</strong>
+        </div>
+    </section>
+
+    <section class="monitor-card">
+        <div class="monitor-card-head">
+            <h2>Filtreler</h2>
+            <div class="monitor-tabs">
+                <a href="/admin/xyzsecretmonitor?type=all&pageSize=@pageSize" class="monitor-tab @(allActive ? "active" : "")">
+                    <i class="fas fa-layer-group"></i> Tümü
+                </a>
+                <a href="/admin/xyzsecretmonitor?type=ip&pageSize=@pageSize" class="monitor-tab @(type == "ip" ? "active" : "")">
+                    <i class="fas fa-user-clock"></i> Ziyaretçi
+                </a>
+                <a href="/admin/xyzsecretmonitor?type=siparis&pageSize=@pageSize" class="monitor-tab @(type == "siparis" ? "active" : "")">
+                    <i class="fas fa-bag-shopping"></i> Sipariş
+                </a>
+                <a href="/admin/xyzsecretmonitor?type=audit&pageSize=@pageSize" class="monitor-tab @(type == "audit" ? "active" : "")">
+                    <i class="fas fa-shield-halved"></i> Audit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="monitor-grid">
+        <div class="monitor-card">
+            <div class="monitor-card-head">
+                <h2>Olay Akışı</h2>
+                <span class="text-muted small">Sayfa @currentPage / @totalPages</span>
+            </div>
+
+            <div class="monitor-table-wrap">
+                <table class="monitor-table">
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Kaynak</th>
+                            <th>Kullanıcı</th>
+                            <th>IP</th>
+                            <th>İşlem</th>
+                            <th>Detay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (logs.Any())
+                        {
+                            foreach (var log in logs)
+                            {
+                                var tip = (log.Tip ?? "").ToString().ToLowerInvariant();
+                                var badgeClass = tip == "siparis" ? "siparis" : (tip == "audit" ? "audit" : "ip");
+                                var icon = tip == "siparis" ? "fa-bag-shopping" : (tip == "audit" ? "fa-shield-halved" : "fa-user-clock");
+                                <tr>
+                                    <td class="monitor-mono">@log.Tarih</td>
+                                    <td>
+                                        <span class="monitor-badge @badgeClass">
+                                            <i class="fas @icon"></i> @log.Tip
+                                        </span>
+                                    </td>
+                                    <td>@(string.IsNullOrWhiteSpace((log.Kullanci ?? "").ToString()) ? "-" : log.Kullanci)</td>
+                                    <td class="monitor-mono">@(string.IsNullOrWhiteSpace((log.Ip ?? "").ToString()) ? "-" : log.Ip)</td>
+                                    <td><strong>@log.Islem</strong></td>
+                                    <td class="monitor-detail">@log.Detay</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6">
+                                    <div class="monitor-empty">
+                                        Bu filtre için kayıt bulunamadı.
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="monitor-pagination">
+                <span class="text-muted small">@totalCount kayıt içinde sayfa @currentPage gösteriliyor</span>
+                <div class="monitor-page-actions">
+                    <a class="@(currentPage <= 1 ? "disabled" : "")" href="@previousUrl">
+                        <i class="fas fa-chevron-left"></i> Önceki
+                    </a>
+                    <a class="@(currentPage >= totalPages ? "disabled" : "")" href="@nextUrl">
+                        Sonraki <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <aside class="monitor-card">
+            <div class="monitor-card-head">
+                <h2>IP Yoğunluğu</h2>
+                <span class="text-muted small">@topIp IP / @topHit hit</span>
+            </div>
+            <div class="monitor-ip-list">
+                @if (ipStats.Any())
+                {
+                    foreach (var stat in ipStats)
+                    {
+                        <div class="monitor-ip-row">
+                            <div>
+                                <strong class="monitor-mono">@stat.Ip</strong>
+                                <small>Ziyaretçi hareketi</small>
+                            </div>
+                            <span class="monitor-badge ip">@stat.Count</span>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="monitor-empty">
+                        IP istatistiği yok.
+                    </div>
+                }
+            </div>
+        </aside>
+    </section>
+</div>

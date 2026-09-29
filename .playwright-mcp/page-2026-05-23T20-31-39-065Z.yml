@@ -1,0 +1,401 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [expanded] [active] [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - list [ref=e358]:
+          - listitem [ref=e359]:
+            - link " Slayt Yönetimi" [ref=e360] [cursor=pointer]:
+              - /url: /Admin/Slayt
+              - generic [ref=e361]: 
+              - text: Slayt Yönetimi
+          - listitem [ref=e362]:
+            - link " Ana Sayfa İçeriği" [ref=e363] [cursor=pointer]:
+              - /url: /Admin/AnaSayfa
+              - generic [ref=e364]: 
+              - text: Ana Sayfa İçeriği
+          - listitem [ref=e365]:
+            - link " Ana Sayfa Bölümleri" [ref=e366] [cursor=pointer]:
+              - /url: /Admin/HomeSections
+              - generic [ref=e367]: 
+              - text: Ana Sayfa Bölümleri
+          - listitem [ref=e368]:
+            - link " Kuponlar" [ref=e369] [cursor=pointer]:
+              - /url: /Admin/Kupon
+              - generic [ref=e370]: 
+              - text: Kuponlar
+          - listitem [ref=e371]:
+            - link " Mesajlar" [ref=e372] [cursor=pointer]:
+              - /url: /Admin/Iletisim
+              - generic [ref=e373]: 
+              - text: Mesajlar
+          - listitem [ref=e374]:
+            - link " Ürün Yorumları" [ref=e375] [cursor=pointer]:
+              - /url: /Admin/Yorum
+              - generic [ref=e376]: 
+              - text: Ürün Yorumları
+          - listitem [ref=e377]:
+            - link " Bülten Aboneleri" [ref=e378] [cursor=pointer]:
+              - /url: /Admin/Bulten
+              - generic [ref=e379]: 
+              - text: Bülten Aboneleri
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+    - generic [ref=e29]:
+      - text: 
+      - generic [ref=e30]:
+        - button "Harun OK Admin H" [ref=e31] [cursor=pointer]:
+          - generic [ref=e32]:
+            - strong [ref=e33]: Harun OK
+            - text: Admin
+          - generic [ref=e34]: H
+        - text:  
+  - generic [ref=e35]:
+    - main [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - heading "Yönetim Paneli" [level=1] [ref=e40]
+            - paragraph [ref=e41]: Sipariş, stok ve trafik görünümünün tek ekrandaki özeti.
+          - generic [ref=e42]:
+            - generic [ref=e43]: 
+            - text: 23 Mayıs 2026, Cumartesi
+        - generic [ref=e44]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: Toplam Ciro
+            - generic [ref=e48]: 120.451,01 TL
+            - generic [ref=e49]: "Aylık: 9.998,00 TL"
+          - generic [ref=e51]:
+            - generic [ref=e52]: Bugünkü Ciro
+            - generic [ref=e53]: 0,00 TL
+            - generic [ref=e54]: "Haftalık: 0,00 TL"
+          - generic [ref=e56]:
+            - generic [ref=e57]: Toplam Sipariş
+            - generic [ref=e58]: "50"
+            - generic [ref=e59]: "Bugün: 0 sipariş"
+          - generic [ref=e61]:
+            - generic [ref=e62]: Bekleyen
+            - generic [ref=e63]: "4"
+            - generic [ref=e64]: "Kargoya hazır: 0"
+          - generic [ref=e66]:
+            - generic [ref=e67]: Kargoda / İade
+            - generic [ref=e68]: 0 / 7
+            - generic [ref=e69]: Operasyon özet durumu
+          - generic [ref=e71]:
+            - generic [ref=e72]: Mesaj / Aktif Ürün
+            - generic [ref=e73]: 10 / 11988
+            - generic [ref=e74]: Operasyon takibi
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - heading " Son 7 Gün Gelir Grafiği" [level=3] [ref=e79]:
+              - generic [ref=e80]: 
+              - text: Son 7 Gün Gelir Grafiği
+            - generic [ref=e84]:
+              - heading " Hızlı İşlemler" [level=3] [ref=e86]:
+                - generic [ref=e87]: 
+                - text: Hızlı İşlemler
+              - generic [ref=e89]:
+                - link " Ürün Ekle" [ref=e91] [cursor=pointer]:
+                  - /url: /Admin/Urun/Ekle
+                  - generic [ref=e92]:
+                    - generic [ref=e94]: 
+                    - generic [ref=e95]: Ürün Ekle
+                - link " Siparişler" [ref=e97] [cursor=pointer]:
+                  - /url: /Admin/Siparis
+                  - generic [ref=e98]:
+                    - generic [ref=e100]: 
+                    - generic [ref=e101]: Siparişler
+                - link " Özellik Alanları" [ref=e103] [cursor=pointer]:
+                  - /url: /Admin/UrunOzellik
+                  - generic [ref=e104]:
+                    - generic [ref=e106]: 
+                    - generic [ref=e107]: Özellik Alanları
+                - link " İletişim Kutusu" [ref=e109] [cursor=pointer]:
+                  - /url: /Admin/Iletisim
+                  - generic [ref=e110]:
+                    - generic [ref=e112]: 
+                    - generic [ref=e113]: İletişim Kutusu
+            - generic [ref=e114]:
+              - generic [ref=e116]:
+                - heading " En Çok Satanlar" [level=3] [ref=e118]:
+                  - generic [ref=e119]: 
+                  - text: En Çok Satanlar
+                - generic [ref=e121]:
+                  - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 7 adet " [ref=e122] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/1357
+                    - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e123]
+                    - generic [ref=e124]:
+                      - generic [ref=e125]: Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo
+                      - generic [ref=e126]: 7 adet
+                    - generic [ref=e127]: 
+                  - link "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 5 adet " [ref=e128] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/1356
+                    - img "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e129]
+                    - generic [ref=e130]:
+                      - generic [ref=e131]: Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo
+                      - generic [ref=e132]: 5 adet
+                    - generic [ref=e133]: 
+                  - link "Kabe Kapısı Tablosu - Model 2 Kabe Kapısı Tablosu - Model 2 4 adet " [ref=e134] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/9169
+                    - img "Kabe Kapısı Tablosu - Model 2" [ref=e135]
+                    - generic [ref=e136]:
+                      - generic [ref=e137]: Kabe Kapısı Tablosu - Model 2
+                      - generic [ref=e138]: 4 adet
+                    - generic [ref=e139]: 
+                  - link "Rene Magritte - Bird Tablosu Rene Magritte - Bird Tablosu 3 adet " [ref=e140] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/12537
+                    - img "Rene Magritte - Bird Tablosu" [ref=e141]
+                    - generic [ref=e142]:
+                      - generic [ref=e143]: Rene Magritte - Bird Tablosu
+                      - generic [ref=e144]: 3 adet
+                    - generic [ref=e145]: 
+                  - link "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo 2 adet " [ref=e146] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/1066
+                    - img "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo" [ref=e147]
+                    - generic [ref=e148]:
+                      - generic [ref=e149]: Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo
+                      - generic [ref=e150]: 2 adet
+                    - generic [ref=e151]: 
+              - generic [ref=e153]:
+                - heading " En Çok Görüntülenenler" [level=3] [ref=e155]:
+                  - generic [ref=e156]: 
+                  - text: En Çok Görüntülenenler
+                - generic [ref=e158]:
+                  - link "Salvador Dali - Masturbator Tablosu Salvador Dali - Masturbator Tablosu 18 görüntülenme " [ref=e159] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/12539
+                    - img "Salvador Dali - Masturbator Tablosu" [ref=e160]
+                    - generic [ref=e161]:
+                      - generic [ref=e162]: Salvador Dali - Masturbator Tablosu
+                      - generic [ref=e163]: 18 görüntülenme
+                    - generic [ref=e164]: 
+                  - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 12 görüntülenme " [ref=e165] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/1357
+                    - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e166]
+                    - generic [ref=e167]:
+                      - generic [ref=e168]: Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo
+                      - generic [ref=e169]: 12 görüntülenme
+                    - generic [ref=e170]: 
+                  - link "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 8 görüntülenme " [ref=e171] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/1356
+                    - img "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e172]
+                    - generic [ref=e173]:
+                      - generic [ref=e174]: Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo
+                      - generic [ref=e175]: 8 görüntülenme
+                    - generic [ref=e176]: 
+                  - link "Salvador Dali - Raphaelesque Tablosu - Model 7 Salvador Dali - Raphaelesque Tablosu - Model 7 6 görüntülenme " [ref=e177] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/12514
+                    - img "Salvador Dali - Raphaelesque Tablosu - Model 7" [ref=e178]
+                    - generic [ref=e179]:
+                      - generic [ref=e180]: Salvador Dali - Raphaelesque Tablosu - Model 7
+                      - generic [ref=e181]: 6 görüntülenme
+                    - generic [ref=e182]: 
+                  - link "ATATÜRK Cemal Paşa, Enver Paşa, Fahrettin Paşa, Talat Paşa Renkli Kanvas Tablo ATATÜRK Cemal Paşa, Enver Paşa, Fahrettin Paşa, Talat Paşa Renkli Kanvas Tablo 6 görüntülenme " [ref=e183] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/1353
+                    - img "ATATÜRK Cemal Paşa, Enver Paşa, Fahrettin Paşa, Talat Paşa Renkli Kanvas Tablo" [ref=e184]
+                    - generic [ref=e185]:
+                      - generic [ref=e186]: ATATÜRK Cemal Paşa, Enver Paşa, Fahrettin Paşa, Talat Paşa Renkli Kanvas Tablo
+                      - generic [ref=e187]: 6 görüntülenme
+                    - generic [ref=e188]: 
+            - generic [ref=e189]:
+              - generic [ref=e191]:
+                - heading " Son Eklenen Ürünler" [level=3] [ref=e193]:
+                  - generic [ref=e194]: 
+                  - text: Son Eklenen Ürünler
+                - generic [ref=e196]:
+                  - link "Salvador Dali - Masturbator Tablosu URN-012539 | 999,00 TL 04.05.2026 22:42" [ref=e197] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/12539
+                    - generic [ref=e198]: Salvador Dali - Masturbator Tablosu
+                    - generic [ref=e199]: URN-012539 | 999,00 TL
+                    - generic [ref=e200]: 04.05.2026 22:42
+                  - link "Salvador Dali - Le Sommeil Tablosu URN-012538 | 999,00 TL 04.05.2026 22:42" [ref=e201] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/12538
+                    - generic [ref=e202]: Salvador Dali - Le Sommeil Tablosu
+                    - generic [ref=e203]: URN-012538 | 999,00 TL
+                    - generic [ref=e204]: 04.05.2026 22:42
+                  - link "Rene Magritte - Bird Tablosu URN-012537 | 999,00 TL 04.05.2026 22:42" [ref=e205] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/12537
+                    - generic [ref=e206]: Rene Magritte - Bird Tablosu
+                    - generic [ref=e207]: URN-012537 | 999,00 TL
+                    - generic [ref=e208]: 04.05.2026 22:42
+                  - link "Dominique Appia - Les Quatre Saisons Tablosu URN-012536 | 999,00 TL 04.05.2026 22:42" [ref=e209] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/12536
+                    - generic [ref=e210]: Dominique Appia - Les Quatre Saisons Tablosu
+                    - generic [ref=e211]: URN-012536 | 999,00 TL
+                    - generic [ref=e212]: 04.05.2026 22:42
+                  - link "Rene Magritte - The False Mirror Tablosu - Model 5 URN-012534 | 2.149,00 TL 04.05.2026 22:42" [ref=e213] [cursor=pointer]:
+                    - /url: /Admin/Urun/Duzenle/12534
+                    - generic [ref=e214]: Rene Magritte - The False Mirror Tablosu - Model 5
+                    - generic [ref=e215]: URN-012534 | 2.149,00 TL
+                    - generic [ref=e216]: 04.05.2026 22:42
+              - generic [ref=e218]:
+                - heading " Son Müşteri Yorumları" [level=3] [ref=e220]:
+                  - generic [ref=e221]: 
+                  - text: Son Müşteri Yorumları
+                - generic [ref=e223]:
+                  - link "Abdulmuin Said Onaylı Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo | 1 / 5 Ürün kalitesi süper çok hoşuma gitti" [ref=e224] [cursor=pointer]:
+                    - /url: /Admin/Yorum
+                    - generic [ref=e225]:
+                      - generic [ref=e226]: Abdulmuin Said
+                      - generic [ref=e227]: Onaylı
+                    - generic [ref=e228]: Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo | 1 / 5
+                    - generic [ref=e229]: Ürün kalitesi süper çok hoşuma gitti
+                  - link "Canvasia Patron Onaylı Siyah Altın Renkli 5 Parça Desenli Kanvas Tablo | 5 / 5 ürün super" [ref=e230] [cursor=pointer]:
+                    - /url: /Admin/Yorum
+                    - generic [ref=e231]:
+                      - generic [ref=e232]: Canvasia Patron
+                      - generic [ref=e233]: Onaylı
+                    - generic [ref=e234]: Siyah Altın Renkli 5 Parça Desenli Kanvas Tablo | 5 / 5
+                    - generic [ref=e235]: ürün super
+                  - link "Elif Z. Onaylı Mert Fırat Hayvan Sevgisi Kanvas Tablo | 5 / 5 Bayıldım! Duvara asması çok kolay oldu. Tekrar sipariş vereceğim." [ref=e236] [cursor=pointer]:
+                    - /url: /Admin/Yorum
+                    - generic [ref=e237]:
+                      - generic [ref=e238]: Elif Z.
+                      - generic [ref=e239]: Onaylı
+                    - generic [ref=e240]: Mert Fırat Hayvan Sevgisi Kanvas Tablo | 5 / 5
+                    - generic [ref=e241]: Bayıldım! Duvara asması çok kolay oldu. Tekrar sipariş vereceğim.
+                  - link "İbrahim P. Onaylı Deniz Altında Balıklar ve Deniz Yıldızı | 5 / 5 Harika bir tablo. Odaya bambaşka bir derinlik kattı. Elinize emeğinize sağlık. ⭐" [ref=e242] [cursor=pointer]:
+                    - /url: /Admin/Yorum
+                    - generic [ref=e243]:
+                      - generic [ref=e244]: İbrahim P.
+                      - generic [ref=e245]: Onaylı
+                    - generic [ref=e246]: Deniz Altında Balıklar ve Deniz Yıldızı | 5 / 5
+                    - generic [ref=e247]: Harika bir tablo. Odaya bambaşka bir derinlik kattı. Elinize emeğinize sağlık. ⭐
+                  - link "Derya R. Onaylı Ağaç Dallarında Sallanan Renkler | 5 / 5 Açıkçası tereddüt etmiştim ama, Paketlemesi o kadar iyiydi ki açmakta zorlandım :) Kesinli..." [ref=e248] [cursor=pointer]:
+                    - /url: /Admin/Yorum
+                    - generic [ref=e249]:
+                      - generic [ref=e250]: Derya R.
+                      - generic [ref=e251]: Onaylı
+                    - generic [ref=e252]: Ağaç Dallarında Sallanan Renkler | 5 / 5
+                    - generic [ref=e253]: Açıkçası tereddüt etmiştim ama, Paketlemesi o kadar iyiydi ki açmakta zorlandım :) Kesinli...
+          - generic [ref=e254]:
+            - generic [ref=e255]:
+              - heading " Sistem Uyarıları" [level=3] [ref=e257]:
+                - generic [ref=e258]: 
+                - text: Sistem Uyarıları
+              - generic [ref=e259]:
+                - generic [ref=e260]:
+                  - generic [ref=e261]: Okunmamış iletişim talepleri
+                  - generic [ref=e262]: 10 mesaj yanıtlanmayı bekliyor.
+                  - link "Detaya Git" [ref=e263] [cursor=pointer]:
+                    - /url: /Admin/Iletisim
+                - generic [ref=e264]:
+                  - generic [ref=e265]: Bekleyen siparişler var
+                  - generic [ref=e266]: 4 sipariş işleme alınmayı bekliyor.
+                  - link "Detaya Git" [ref=e267] [cursor=pointer]:
+                    - /url: /Admin/Siparis?durum=0
+            - generic [ref=e268]:
+              - heading " Operasyon Özeti" [level=3] [ref=e270]:
+                - generic [ref=e271]: 
+                - text: Operasyon Özeti
+              - generic [ref=e272]:
+                - generic [ref=e273]:
+                  - generic [ref=e274]: Bekleyen sipariş
+                  - strong [ref=e275]: "4"
+                - generic [ref=e276]:
+                  - generic [ref=e277]: Kargoya hazır
+                  - strong [ref=e278]: "0"
+                - generic [ref=e279]:
+                  - generic [ref=e280]: Kargoda
+                  - strong [ref=e281]: "0"
+                - generic [ref=e282]:
+                  - generic [ref=e283]: İptal / İade
+                  - strong [ref=e284]: "7"
+            - generic [ref=e285]:
+              - heading " Trafik Alanı" [level=3] [ref=e287]:
+                - generic [ref=e288]: 
+                - text: Trafik Alanı
+              - generic [ref=e289]:
+                - generic [ref=e290]:
+                  - generic [ref=e291]: Son 7 gün ziyaret
+                  - strong [ref=e292]: "91"
+                - generic [ref=e293]:
+                  - generic [ref=e294]: Tekil ziyaretçi
+                  - strong [ref=e295]: "1"
+            - generic [ref=e296]:
+              - heading " Son Aktiviteler" [level=3] [ref=e298]:
+                - generic [ref=e299]: 
+                - text: Son Aktiviteler
+              - generic [ref=e300]:
+                - generic [ref=e301]:
+                  - generic [ref=e303]: 
+                  - generic [ref=e304]:
+                    - generic [ref=e305]: "Yeni sipariş #52"
+                    - generic [ref=e306]: abdulmuin said - 1.359,20 TL
+                  - generic [ref=e307]: 18:08
+                - generic [ref=e308]:
+                  - generic [ref=e310]: 
+                  - generic [ref=e311]:
+                    - generic [ref=e312]: "Yeni sipariş #51"
+                    - generic [ref=e313]: abdulmuin said - 1.699,00 TL
+                  - generic [ref=e314]: 15:05
+                - generic [ref=e315]:
+                  - generic [ref=e317]: 
+                  - generic [ref=e318]:
+                    - generic [ref=e319]: "Yeni sipariş #50"
+                    - generic [ref=e320]: abdulmuin said - 1.998,00 TL
+                  - generic [ref=e321]: 14:46
+                - generic [ref=e322]:
+                  - generic [ref=e324]: 
+                  - generic [ref=e325]:
+                    - generic [ref=e326]: "Yeni sipariş #49"
+                    - generic [ref=e327]: abdulmuin said - 4.283,00 TL
+                  - generic [ref=e328]: 09:23
+                - generic [ref=e329]:
+                  - generic [ref=e331]: 
+                  - generic [ref=e332]:
+                    - generic [ref=e333]: Yeni iletişim mesajı
+                    - generic [ref=e334]: abdulmuin said - merhaba
+                  - generic [ref=e335]: 12:14
+                - generic [ref=e336]:
+                  - generic [ref=e338]: 
+                  - generic [ref=e339]:
+                    - generic [ref=e340]: Yeni iletişim mesajı
+                    - generic [ref=e341]: abdulmuin said - Kanvas tablo
+                  - generic [ref=e342]: 12:01
+                - generic [ref=e343]:
+                  - generic [ref=e345]: 
+                  - generic [ref=e346]:
+                    - generic [ref=e347]: Yeni iletişim mesajı
+                    - generic [ref=e348]: abdulmuin said - Kanvas tablo
+                  - generic [ref=e349]: 11:51
+                - generic [ref=e350]:
+                  - generic [ref=e352]: 
+                  - generic [ref=e353]:
+                    - generic [ref=e354]: "Yeni sipariş #48"
+                    - generic [ref=e355]: abdulmuin said - 1.642,00 TL
+                  - generic [ref=e356]: 07:36
+    - contentinfo [ref=e357]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

@@ -1,0 +1,438 @@
+@model KanvasProje.Core.Models.KullaniciDuzenleViewModel
+@{
+    ViewData["Title"] = "Kullanıcı Düzenle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    var lastLoginText = Model.LastAdminLoginUtc.HasValue
+        ? Model.LastAdminLoginUtc.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+        : "Henüz admin girişi yok";
+
+    var previousLoginText = Model.PreviousAdminLoginUtc.HasValue
+        ? Model.PreviousAdminLoginUtc.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+        : "-";
+
+    var displayName = string.IsNullOrWhiteSpace(Model.AdSoyad) ? "İsimsiz Kullanıcı" : Model.AdSoyad;
+    var initial = displayName.Substring(0, 1).ToUpperInvariant();
+}
+
+<style>
+    .ca-user-edit-shell {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .ca-user-edit-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 18px;
+        align-items: start;
+    }
+
+    .ca-user-edit-hero {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: flex-start;
+        margin-bottom: 18px;
+    }
+
+    .ca-edit-section + .ca-edit-section {
+        border-top: 1px solid var(--ca-border);
+        margin-top: 24px;
+        padding-top: 24px;
+    }
+
+    .ca-edit-section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+        color: var(--ca-text);
+        font-weight: 800;
+        font-size: .96rem;
+    }
+
+    .ca-edit-section-title i {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(var(--ca-primary-rgb), .08);
+        color: var(--ca-primary);
+    }
+
+    .ca-readonly-input {
+        background: var(--ca-bg) !important;
+        color: var(--ca-text-muted);
+        cursor: not-allowed;
+    }
+
+    .ca-field-help {
+        display: block;
+        margin-top: 7px;
+        color: var(--ca-text-muted);
+        font-size: .78rem;
+        line-height: 1.45;
+    }
+
+    .ca-role-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .ca-role-option {
+        position: relative;
+        min-height: 116px;
+        border: 1px solid var(--ca-border);
+        border-radius: 10px;
+        background: #fff;
+        padding: 14px 14px 14px 42px;
+        cursor: pointer;
+        transition: .18s ease;
+    }
+
+    .ca-role-option:hover {
+        border-color: rgba(var(--ca-primary-rgb), .35);
+        box-shadow: 0 10px 24px rgba(49, 53, 17, .07);
+        transform: translateY(-1px);
+    }
+
+    .ca-role-option.is-selected {
+        border-color: var(--ca-primary);
+        background: rgba(var(--ca-primary-rgb), .04);
+    }
+
+    .ca-role-option.is-disabled {
+        cursor: not-allowed;
+        opacity: .72;
+    }
+
+    .ca-role-option input {
+        position: absolute;
+        top: 17px;
+        left: 15px;
+        accent-color: var(--ca-primary);
+    }
+
+    .ca-role-option strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ca-text);
+        font-size: .9rem;
+    }
+
+    .ca-role-option span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .78rem;
+        line-height: 1.45;
+    }
+
+    .ca-user-summary {
+        position: sticky;
+        top: 116px;
+    }
+
+    .ca-profile-head {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        padding: 18px;
+        border-bottom: 1px solid var(--ca-border);
+    }
+
+    .ca-profile-avatar-lg {
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--ca-primary);
+        color: #fff;
+        font-weight: 800;
+        font-size: 1.35rem;
+        flex: 0 0 auto;
+    }
+
+    .ca-summary-list {
+        display: grid;
+        gap: 12px;
+    }
+
+    .ca-summary-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--ca-border);
+    }
+
+    .ca-summary-item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .ca-summary-item span {
+        color: var(--ca-text-muted);
+        font-size: .78rem;
+    }
+
+    .ca-summary-item strong {
+        color: var(--ca-text);
+        font-size: .82rem;
+        text-align: right;
+    }
+
+    .ca-guidance-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+    }
+
+    .ca-guidance-list li {
+        display: flex;
+        gap: 9px;
+        color: var(--ca-text-muted);
+        font-size: .82rem;
+        line-height: 1.45;
+    }
+
+    .ca-guidance-list i {
+        color: var(--ca-accent);
+        margin-top: 3px;
+    }
+
+    @@media (max-width: 1100px) {
+        .ca-user-edit-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .ca-user-summary {
+            position: static;
+        }
+    }
+
+    @@media (max-width: 760px) {
+        .ca-user-edit-hero {
+            flex-direction: column;
+        }
+
+        .ca-role-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-user-edit-shell">
+        <div class="ca-user-edit-hero">
+            <div>
+                <div class="ca-page-kicker">ÜYE YÖNETİMİ</div>
+                <h1 class="ca-page-title">Kullanıcı Düzenle</h1>
+                <p class="ca-page-subtitle">Hesap bilgilerini, iletişim alanlarını ve admin paneli yetkisini güvenli şekilde yönetin.</p>
+            </div>
+            <div class="d-flex gap-2 flex-wrap justify-content-end">
+                <a href="/Admin/Kullanici" class="ca-btn ca-btn-outline">
+                    <i class="fas fa-arrow-left"></i> Kullanıcılara Dön
+                </a>
+                <a href="/Admin/Kullanici/SifreSifirla/@Model.Id" class="ca-btn ca-btn-outline">
+                    <i class="fas fa-key"></i> Şifre Değiştir
+                </a>
+            </div>
+        </div>
+
+        <div class="ca-user-edit-grid">
+            <form method="post" class="ca-card">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Email" />
+                @if (Model.IsCurrentUser)
+                {
+                    <input type="hidden" asp-for="SelectedRole" />
+                }
+
+                <div class="ca-card-header">
+                    <h2 class="ca-card-title mb-0">Hesap Bilgileri</h2>
+                </div>
+                <div class="ca-card-body">
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="ca-alert ca-alert-danger mb-3" asp-validation-summary="All"></div>
+                    }
+
+                    @if (TempData["Hata"] != null)
+                    {
+                        <div class="ca-alert ca-alert-danger mb-3">
+                            <i class="fas fa-triangle-exclamation"></i>
+                            <span>@TempData["Hata"]</span>
+                        </div>
+                    }
+
+                    @if (Model.IsCurrentUser)
+                    {
+                        <div class="ca-alert ca-alert-warning mb-3">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>Bu hesap şu an kullandığınız admin hesabı. Temel bilgileri güncelleyebilirsiniz; rol değişikliği güvenlik nedeniyle kapalıdır.</span>
+                        </div>
+                    }
+
+                    <section class="ca-edit-section">
+                        <div class="ca-edit-section-title">
+                            <i class="fas fa-address-card"></i>
+                            <span>Temel Bilgiler</span>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="ca-label" asp-for="AdSoyad">Ad Soyad <span class="required">*</span></label>
+                                <input asp-for="AdSoyad" class="ca-input" autocomplete="name" required />
+                                <span asp-validation-for="AdSoyad" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="ca-label" asp-for="Email">E-posta</label>
+                                <input asp-for="Email" class="ca-input ca-readonly-input" readonly />
+                                <span class="ca-field-help">E-posta adresi giriş kimliği olduğu için bu ekrandan değiştirilmez.</span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="ca-label" asp-for="PhoneNumber">Telefon</label>
+                                <input asp-for="PhoneNumber" class="ca-input" inputmode="tel" autocomplete="tel" placeholder="Örn: 05xx xxx xx xx" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="ca-label" asp-for="Sehir">Şehir</label>
+                                <input asp-for="Sehir" class="ca-input" autocomplete="address-level1" placeholder="Örn: İstanbul" />
+                                <span asp-validation-for="Sehir" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ca-edit-section">
+                        <div class="ca-edit-section-title">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Yetki ve Rol</span>
+                        </div>
+
+                        <div class="ca-role-grid">
+                            @foreach (var option in Model.RoleOptions)
+                            {
+                                var isSelected = string.Equals(Model.SelectedRole, option.Value, StringComparison.OrdinalIgnoreCase);
+                                var roleClass = isSelected ? "is-selected" : string.Empty;
+                                var disabledClass = Model.IsCurrentUser ? "is-disabled" : string.Empty;
+
+                                <label class="ca-role-option @roleClass @disabledClass">
+                                    <input type="radio"
+                                           asp-for="SelectedRole"
+                                           value="@option.Value"
+                                           disabled="@Model.IsCurrentUser" />
+                                    <strong>@option.Label</strong>
+                                    <span>@option.Description</span>
+                                </label>
+                            }
+                        </div>
+
+                        <span class="ca-field-help">
+                            Rol seçimi kullanıcının admin panelinde hangi ekranlara erişebileceğini belirler. Müşteri hesabı için “Üye” rolü seçili kalmalıdır.
+                        </span>
+                    </section>
+                </div>
+
+                <div class="ca-card-footer d-flex justify-content-end gap-2 flex-wrap">
+                    <a href="/Admin/Kullanici" class="ca-btn ca-btn-outline">İptal</a>
+                    <button type="submit" class="ca-btn ca-btn-primary">
+                        <i class="fas fa-save"></i> Değişiklikleri Kaydet
+                    </button>
+                </div>
+            </form>
+
+            <aside class="ca-user-summary">
+                <div class="ca-card mb-3">
+                    <div class="ca-profile-head">
+                        <span class="ca-profile-avatar-lg">@initial</span>
+                        <div class="min-w-0">
+                            <h2 class="ca-card-title mb-1">@displayName</h2>
+                            <div class="small text-muted text-break">@Model.Email</div>
+                            <div class="mt-2">
+                                @if (Model.IsBanned)
+                                {
+                                    <span class="ca-badge ca-badge-danger"><i class="fas fa-ban"></i> Giriş Engelli</span>
+                                }
+                                else
+                                {
+                                    <span class="ca-badge ca-badge-success"><i class="fas fa-check"></i> Aktif Hesap</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-summary-list">
+                            <div class="ca-summary-item">
+                                <span>Mevcut rol</span>
+                                <strong>@Model.CurrentRoleLabel</strong>
+                            </div>
+                            <div class="ca-summary-item">
+                                <span>Rol açıklaması</span>
+                                <strong>@Model.CurrentRoleDescription</strong>
+                            </div>
+                            <div class="ca-summary-item">
+                                <span>Son admin girişi</span>
+                                <strong>@lastLoginText</strong>
+                            </div>
+                            <div class="ca-summary-item">
+                                <span>Önceki admin girişi</span>
+                                <strong>@previousLoginText</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <h2 class="ca-card-title mb-0">Kullanım Notları</h2>
+                    </div>
+                    <div class="ca-card-body">
+                        <ul class="ca-guidance-list">
+                            <li>
+                                <i class="fas fa-circle-info"></i>
+                                <span>E-posta adresi kullanıcının giriş bilgisi olduğu için bu ekranda sadece görüntülenir.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-shield-halved"></i>
+                                <span>Admin yetkisi gerekmeyen müşteriler için rol “Üye” olarak bırakılmalıdır.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-key"></i>
+                                <span>Şifre işlemleri ayrı ekrandan yapılır ve işlem sonrası kullanıcının mevcut oturumu kapatılır.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.querySelectorAll('.ca-role-option input[type="radio"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                document.querySelectorAll('.ca-role-option').forEach(function (item) {
+                    item.classList.remove('is-selected');
+                });
+
+                if (radio.checked) {
+                    radio.closest('.ca-role-option')?.classList.add('is-selected');
+                }
+            });
+        });
+    </script>
+}

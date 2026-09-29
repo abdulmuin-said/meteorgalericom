@@ -1,0 +1,219 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Giriş Yap" [ref=e52] [cursor=pointer]:
+          - /url: /Hesap/GirisYap
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "0"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=e69]: 
+          - listitem [ref=e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=e72]: 
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=e75]: 
+          - listitem [ref=e76] [cursor=pointer]:
+            - link "Ayna " [ref=e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=e78]: 
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=e81]: 
+          - listitem [ref=e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=e84]: 
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=e87]: 
+          - listitem [ref=e88] [cursor=pointer]:
+            - link "Lightbox " [ref=e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=e90]: 
+          - listitem [ref=e91] [cursor=pointer]:
+            - link "Afiş " [ref=e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=e93]: 
+          - listitem [ref=e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=e96]:
+    - generic [ref=e98]:
+      - generic [ref=e100]: 
+      - heading "Ödeme Başarısız" [level=1] [ref=e101]
+      - paragraph [ref=e102]: Ödeme işleminiz sırasında bir sorun oluştu ve siparişiniz tamamlanamadı. Kredi kartı bilgilerinizde veya limitinizde bir sorun olabilir. Lütfen tekrar deneyin veya farklı bir kart kullanın.
+      - generic [ref=e103]:
+        - link "Sepete Dön ve Tekrar Dene" [ref=e104] [cursor=pointer]:
+          - /url: /Sepet
+        - link "Destek Al" [ref=e105] [cursor=pointer]:
+          - /url: /Kurumsal/Iletisim
+      - paragraph [ref=e107]:
+        - generic [ref=e108]: 
+        - generic [ref=e109]:
+          - text: Ödemeniz tamamlanamadıysa bankanızla iletişime geçebilir veya
+          - link "bize ulaşarak" [ref=e110] [cursor=pointer]:
+            - /url: /Kurumsal/Iletisim
+          - text: destek alabilirsiniz.
+  - contentinfo [ref=e111]:
+    - generic [ref=e113]:
+      - generic [ref=e114]:
+        - generic [ref=e116]: 
+        - generic [ref=e117]:
+          - generic [ref=e118]: Tüm Türkiye'ye
+          - generic [ref=e119]: Ücretsiz Kargo
+      - generic [ref=e120]:
+        - generic [ref=e122]: 
+        - generic [ref=e123]:
+          - generic [ref=e124]: "%100 Güvenli Alışveriş"
+          - generic [ref=e125]: 256 Bit SSL Sertifikası
+      - generic [ref=e126]:
+        - generic [ref=e128]: 
+        - generic [ref=e129]:
+          - generic [ref=e130]: Tüm Kredi Kartlarına
+          - generic [ref=e131]: 12 Taksit İmkanı
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e135]
+          - paragraph [ref=e136]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e137]:
+            - textbox "E-posta Adresi" [ref=e138]
+            - button "ABONE OL" [ref=e139] [cursor=pointer]
+        - generic [ref=e140]:
+          - heading "KURUMSAL" [level=4] [ref=e141]
+          - list [ref=e142]:
+            - listitem [ref=e143]:
+              - link "Hakkımızda" [ref=e144] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e145]:
+              - link "İletişim" [ref=e146] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e147]:
+              - link "Koleksiyonlar" [ref=e148] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e149]:
+              - link "Gizlilik Politikası" [ref=e150] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e151]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e152] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e153]:
+            - link "Instagram" [ref=e154] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e155]: 
+            - link "WhatsApp" [ref=e156] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e157]: 
+      - generic [ref=e158]:
+        - paragraph [ref=e160]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e161]:
+          - link "Gizlilik Politikası" [ref=e162] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e163] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e164] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e167]
+  - link "WhatsApp ile iletişim" [ref=e168] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e169]
+    - generic [ref=e171]: WhatsApp

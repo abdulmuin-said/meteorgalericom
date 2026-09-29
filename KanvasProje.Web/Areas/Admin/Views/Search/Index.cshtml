@@ -1,0 +1,39 @@
+@model List<KanvasProje.Web.Areas.Admin.Controllers.SearchResult>
+@{
+    ViewData["Title"] = "Arama Sonuçları";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Arama Sonuçları</h1>
+            <p class="ca-page-subtitle">"<strong class="ca-text-primary">@ViewBag.ArananKelime</strong>" için @Model.Count sonuç bulundu.</p>
+        </div>
+    </div>
+
+    @if (Model.Count == 0)
+    {
+        <div class="ca-card">
+            <div class="ca-empty">
+                <i class="fas fa-search"></i>
+                <p>Aradığınız kriterlere uygun kayıt bulunamadı.</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="ca-card" style="overflow:hidden;">
+            @foreach (var item in Model)
+            {
+                <a href="@item.Url" class="d-flex justify-content-between align-items-center" style="padding:14px 20px; text-decoration:none; color:var(--ca-text); border-bottom:1px solid var(--ca-border); transition:background .15s;">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="ca-badge ca-badge-neutral">@item.Tip</span>
+                        <span class="ca-fw-bold">@item.Baslik</span>
+                    </div>
+                    <small class="ca-text-muted">@item.Detay</small>
+                </a>
+            }
+        </div>
+    }
+</div>

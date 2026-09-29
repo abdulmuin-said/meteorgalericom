@@ -1,0 +1,383 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]
+        - link "Hesabım" [ref=e52] [cursor=pointer]:
+          - /url: /Profil
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - generic [ref=e61]: "1"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo " [ref=e68]:
+              - /url: /Urun?k=30
+              - text: Cam Tablo
+              - generic [ref=e69]: 
+          - listitem [ref=e70] [cursor=pointer]:
+            - link "Duvar Kağıdı " [ref=e71]:
+              - /url: /Urun?k=31
+              - text: Duvar Kağıdı
+              - generic [ref=e72]: 
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Cam Kesme Tahtası " [ref=e74]:
+              - /url: /Urun?k=32
+              - text: Cam Kesme Tahtası
+              - generic [ref=e75]: 
+          - listitem [ref=e76] [cursor=pointer]:
+            - link "Ayna " [ref=e77]:
+              - /url: /Urun?k=33
+              - text: Ayna
+              - generic [ref=e78]: 
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Baskılı Halı " [ref=e80]:
+              - /url: /Urun?k=34
+              - text: Baskılı Halı
+              - generic [ref=e81]: 
+          - listitem [ref=e82] [cursor=pointer]:
+            - link "Ahşap Dekorasyon " [ref=e83]:
+              - /url: /Urun?k=35
+              - text: Ahşap Dekorasyon
+              - generic [ref=e84]: 
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "Mobilya Aksesuar " [ref=e86]:
+              - /url: /Urun?k=36
+              - text: Mobilya Aksesuar
+              - generic [ref=e87]: 
+          - listitem [ref=e88] [cursor=pointer]:
+            - link "Lightbox " [ref=e89]:
+              - /url: /Urun?k=37
+              - text: Lightbox
+              - generic [ref=e90]: 
+          - listitem [ref=e91] [cursor=pointer]:
+            - link "Afiş " [ref=e92]:
+              - /url: /Urun?k=38
+              - text: Afiş
+              - generic [ref=e93]: 
+          - listitem [ref=e94] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e95]:
+              - /url: /Kurumsal/Iletisim
+    - text:    
+  - main [ref=e96]:
+    - text:      
+    - generic [ref=e98]:
+      - link "Ana Sayfa" [ref=e99] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e100]: /
+      - link "Koleksiyon" [ref=e101] [cursor=pointer]:
+        - /url: /Urun
+      - generic [ref=e102]: /
+      - generic [ref=e103]: Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e108]
+            - button "" [ref=e109] [cursor=pointer]
+            - button "" [ref=e111] [cursor=pointer]
+            - generic [ref=e113]: 
+          - generic [ref=e115]:
+            - button [ref=e116] [cursor=pointer]:
+              - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e117]
+            - button [ref=e118] [cursor=pointer]:
+              - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e119]
+            - button [ref=e120] [cursor=pointer]:
+              - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e121]
+            - button [ref=e122] [cursor=pointer]:
+              - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e123]
+            - button [ref=e124] [cursor=pointer]:
+              - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e125]
+            - button [ref=e126] [cursor=pointer]:
+              - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [ref=e127]
+        - generic [ref=e128]:
+          - heading "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna" [level=1] [ref=e129]
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - generic [ref=e132]: 
+              - generic [ref=e133]: 
+              - generic [ref=e134]: 
+              - generic [ref=e135]: 
+              - generic [ref=e136]: 
+            - generic [ref=e137]: (0 değerlendirme)
+          - generic [ref=e138]: 1.399,90 TL
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - generic [ref=e142]: 
+              - text: Siparişe özel hazırlanır
+            - generic [ref=e143]:
+              - generic [ref=e144]: 
+              - text: 3 iş günü içinde kargo
+            - generic [ref=e145]:
+              - generic [ref=e146]: 
+              - text: 3 iş günü üretim
+          - generic [ref=e147]:
+            - generic [ref=e148]: 
+            - text: 30x60 cm
+          - generic [ref=e149]:
+            - group "Ebat Seçiniz" [ref=e150]:
+              - generic [ref=e152]:
+                - generic [ref=e153] [cursor=pointer]:
+                  - radio "30x60 cm" [checked] [ref=e154]
+                  - text: 30x60 cm
+                - generic [ref=e155] [cursor=pointer]:
+                  - radio "40x80 cm" [ref=e156]
+                  - text: 40x80 cm
+                - generic [ref=e157] [cursor=pointer]:
+                  - radio "50x100 cm" [ref=e158]
+                  - text: 50x100 cm
+                - generic [ref=e159] [cursor=pointer]:
+                  - radio "60x120 cm" [ref=e160]
+                  - text: 60x120 cm
+                - generic [ref=e161] [cursor=pointer]:
+                  - radio "70x140 cm" [ref=e162]
+                  - text: 70x140 cm
+                - generic [ref=e163] [cursor=pointer]:
+                  - radio "80x160 cm" [ref=e164]
+                  - text: 80x160 cm
+            - group "Aydınlatma Seçeneği" [ref=e165]:
+              - generic [ref=e167]:
+                - generic [ref=e168] [cursor=pointer]:
+                  - radio "LED'siz Standart üretim" [checked] [ref=e169]
+                  - generic [ref=e170]: LED'siz
+                  - generic [ref=e173]: Standart üretim
+                - generic [ref=e174] [cursor=pointer]:
+                  - radio "Beyaz LED Soğuk ve net ışık +600 TL" [ref=e175]
+                  - generic [ref=e176]: Beyaz LED
+                  - generic [ref=e179]: Soğuk ve net ışık
+                  - generic [ref=e180]: +600 TL
+                - generic [ref=e181] [cursor=pointer]:
+                  - radio "Günışığı LED Doğal ve dengeli ışık +600 TL" [ref=e182]
+                  - generic [ref=e183]: Günışığı LED
+                  - generic [ref=e186]: Doğal ve dengeli ışık
+                  - generic [ref=e187]: +600 TL
+                - generic [ref=e188] [cursor=pointer]:
+                  - radio "Amber LED Sıcak ve dekoratif ışık +600 TL" [ref=e189]
+                  - generic [ref=e190]: Amber LED
+                  - generic [ref=e193]: Sıcak ve dekoratif ışık
+                  - generic [ref=e194]: +600 TL
+          - generic [ref=e195]:
+            - generic [ref=e196]:
+              - generic [ref=e197]: Adet
+              - generic [ref=e198]:
+                - button "-" [ref=e199] [cursor=pointer]
+                - spinbutton [ref=e200]: "1"
+                - button "+" [ref=e201] [cursor=pointer]
+            - generic [ref=e203]:
+              - button " Sepete Ekle" [ref=e204] [cursor=pointer]:
+                - generic [ref=e205]: 
+                - generic [ref=e206]: Sepete Ekle
+              - link "Sepete Git" [ref=e207] [cursor=pointer]:
+                - /url: /Sepet
+                - generic [ref=e208]: 
+            - button "" [ref=e210] [cursor=pointer]
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - generic [ref=e215]: 
+              - generic [ref=e216]: 30x60 cm
+            - generic [ref=e217]: "|"
+            - generic [ref=e218]: 1.399,9 TL
+          - generic [ref=e220]:
+            - generic [ref=e221]: Paylaş
+            - link "Facebook'ta paylaş" [ref=e222] [cursor=pointer]:
+              - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.canvasia.com.tr%2FUrun%2FDetay%2Fkisiye-ozel-instagram-tasarimli-duvar-aynasi-isimli-ve-fotografli-ayna-12595
+              - generic [ref=e223]: 
+            - link "Instagram'da aç" [ref=e224] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e225]: 
+            - link "WhatsApp ile paylaş" [ref=e226] [cursor=pointer]:
+              - /url: https://wa.me/?text=Ki%C5%9Fiye%20%C3%96zel%20Instagram%20Tasar%C4%B1ml%C4%B1%20Duvar%20Aynas%C4%B1%20%E2%80%93%20%C4%B0simli%20ve%20Foto%C4%9Frafl%C4%B1%20Ayna%20@encodedProductUrl
+              - generic [ref=e227]: 
+            - button " Linki Kopyala" [ref=e228] [cursor=pointer]:
+              - generic [ref=e229]: 
+              - text: Linki Kopyala
+          - paragraph [ref=e231]: "Malzeme: Cam"
+          - generic [ref=e232]:
+            - generic [ref=e233]:
+              - paragraph [ref=e234]:
+                - generic [ref=e235]: 
+                - text: Üretim
+              - paragraph [ref=e236]: 3 iş günü
+            - generic [ref=e237]:
+              - paragraph [ref=e238]:
+                - generic [ref=e239]: 
+                - text: Paketleme
+              - paragraph [ref=e240]: Özenli ve korunaklı teslimat
+            - generic [ref=e241]:
+              - paragraph [ref=e242]:
+                - generic [ref=e243]: 
+                - text: Teslimat
+              - paragraph [ref=e244]: Tahmini 5 iş günü
+          - generic [ref=e245]:
+            - generic [ref=e246]:
+              - generic [ref=e247]: 
+              - paragraph [ref=e248]: Güvenli Ödeme
+              - paragraph [ref=e249]: 256-bit SSL
+            - generic [ref=e250]:
+              - generic [ref=e251]: 
+              - paragraph [ref=e252]: Ücretsiz Kargo
+              - paragraph [ref=e253]: 3 iş günü
+            - generic [ref=e254]:
+              - generic [ref=e255]: 
+              - paragraph [ref=e256]: İade Garantisi
+              - paragraph [ref=e257]: 14 gün içinde
+      - generic [ref=e259]:
+        - heading " Ürün Açıklaması" [level=2] [ref=e262]:
+          - generic [ref=e263]: 
+          - text: Ürün Açıklaması
+        - generic [ref=e264]:
+          - heading " Yorumlar" [level=2] [ref=e265]:
+            - generic [ref=e266]: 
+            - text: Yorumlar
+          - generic [ref=e267]:
+            - generic [ref=e268]: 
+            - heading "Henüz yorum yapılmamış" [level=5] [ref=e269]
+            - paragraph [ref=e270]: Bu ürün için ilk yorumu siz yapın!
+            - button "İlk Yorumu Yap" [ref=e271] [cursor=pointer]
+    - generic [ref=e273]:
+      - generic [ref=e274]:
+        - separator [ref=e275]
+        - heading "Benzer Ürünler" [level=2] [ref=e276]
+        - separator [ref=e277]
+      - link "İnstagram Temalı Lazer Kazımalı LED Ayna İnstagram Temalı Lazer Kazımalı LED Ayna 4.000,00 TL" [ref=e279] [cursor=pointer]:
+        - /url: /Urun/Detay/instagram-temali-lazer-kazimali-led-ayna-12817
+        - img "İnstagram Temalı Lazer Kazımalı LED Ayna" [ref=e281]
+        - heading "İnstagram Temalı Lazer Kazımalı LED Ayna" [level=3] [ref=e282]
+        - generic [ref=e283]: 4.000,00 TL
+  - contentinfo [ref=e285]:
+    - generic [ref=e287]:
+      - generic [ref=e288]:
+        - generic [ref=e289]: 
+        - generic [ref=e291]:
+          - generic [ref=e292]: Tüm Türkiye'ye
+          - generic [ref=e293]: Ücretsiz Kargo
+      - generic [ref=e294]:
+        - generic [ref=e295]: 
+        - generic [ref=e297]:
+          - generic [ref=e298]: "%100 Güvenli Alışveriş"
+          - generic [ref=e299]: 256 Bit SSL Sertifikası
+      - generic [ref=e300]:
+        - generic [ref=e301]: 
+        - generic [ref=e303]:
+          - generic [ref=e304]: Tüm Kredi Kartlarına
+          - generic [ref=e305]: 12 Taksit İmkanı
+    - generic [ref=e306]:
+      - generic [ref=e307]:
+        - generic [ref=e308]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e309]
+          - paragraph [ref=e310]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e311]:
+            - textbox "E-posta Adresi" [ref=e312]
+            - button "ABONE OL" [ref=e313] [cursor=pointer]
+        - generic [ref=e314]:
+          - heading "KURUMSAL" [level=4] [ref=e315]
+          - list [ref=e316]:
+            - listitem [ref=e317]:
+              - link "Hakkımızda" [ref=e318] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e319]:
+              - link "İletişim" [ref=e320] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e321]:
+              - link "Koleksiyonlar" [ref=e322] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e323]:
+              - link "Gizlilik Politikası" [ref=e324] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e325]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e326] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e327]:
+            - link "Instagram" [ref=e328] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e329]: 
+            - link "WhatsApp" [ref=e330] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e331]: 
+      - generic [ref=e332]:
+        - paragraph [ref=e334]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e335]:
+          - link "Gizlilik Politikası" [ref=e336] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e337] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e338] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e341]
+  - link "WhatsApp ile iletişim" [ref=e342] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - generic [ref=e345]: WhatsApp
+  - text:        

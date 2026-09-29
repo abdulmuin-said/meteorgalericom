@@ -1,0 +1,420 @@
+﻿@model IEnumerable<KanvasProje.Core.Varliklar.Yorum>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Yorum Yönetimi";
+
+    var yorumlar = Model.ToList();
+    var durum = ViewBag.Durum is int d ? d : 0;
+    var search = ViewBag.Search as string ?? string.Empty;
+    var page = ViewBag.Page is int p ? p : 1;
+    var pageSize = ViewBag.PageSize is int ps ? ps : 20;
+    var totalPages = ViewBag.TotalPages is int tp ? tp : 1;
+    var totalCount = ViewBag.TotalCount is int tc ? tc : 0;
+    var pendingCount = ViewBag.PendingCount is int pc ? pc : 0;
+    var approvedCount = ViewBag.ApprovedCount is int ac ? ac : 0;
+    var averageRating = ViewBag.AverageRating is double avg ? avg : 0;
+
+    string StatusUrl(int targetStatus) => $"/Admin/Yorum?durum={targetStatus}&pageSize={pageSize}";
+    string PageUrl(int targetPage) => $"/Admin/Yorum?durum={durum}&q={Uri.EscapeDataString(search)}&page={targetPage}&pageSize={pageSize}";
+    string ExportUrl() => $"/Admin/Yorum/Export?durum={durum}&q={Uri.EscapeDataString(search)}";
+
+    static string Shorten(string? value, int max)
+    {
+        value = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
+        return value.Length <= max ? value : value[..max] + "...";
+    }
+}
+
+<style>
+    .ca-review-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    .ca-review-stat {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .ca-review-stat span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .82rem;
+        margin-bottom: 4px;
+    }
+
+    .ca-review-stat strong {
+        font-size: 1.35rem;
+        color: var(--ca-text);
+    }
+
+    .ca-review-stat i {
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--ca-primary-light);
+        color: var(--ca-primary);
+    }
+
+    .ca-review-toolbar {
+        display: grid;
+        grid-template-columns: minmax(260px, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 16px;
+        border-bottom: 1px solid var(--ca-border);
+    }
+
+    .ca-review-search {
+        position: relative;
+    }
+
+    .ca-review-search i {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--ca-text-muted);
+    }
+
+    .ca-review-search input {
+        padding-left: 40px;
+    }
+
+    .ca-review-product {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 260px;
+    }
+
+    .ca-review-product img,
+    .ca-review-product .ca-product-placeholder {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        border: 1px solid var(--ca-border);
+        object-fit: cover;
+        flex: 0 0 auto;
+        background: var(--ca-bg);
+    }
+
+    .ca-product-placeholder {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ca-text-muted);
+    }
+
+    .ca-stars {
+        color: #C0392B;
+        white-space: nowrap;
+    }
+
+    .ca-review-text {
+        min-width: 320px;
+        max-width: 520px;
+        color: var(--ca-text-muted);
+        line-height: 1.45;
+    }
+
+    .ca-review-actions {
+        display: inline-flex;
+        justify-content: flex-end;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .ca-badge-secondary {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+
+    .ca-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px;
+        border-top: 1px solid var(--ca-border);
+        flex-wrap: wrap;
+    }
+
+    @@media (max-width: 1100px) {
+        .ca-review-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .ca-review-toolbar {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .ca-review-stats {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Yorum Yönetimi</h1>
+            <p class="ca-page-subtitle">Müşteri yorumlarını inceleyin, onaylayın, arşivleyin ve Excel olarak dışa aktarın.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="@StatusUrl(0)" class="ca-btn @(durum == 0 ? "ca-btn-primary" : "ca-btn-outline")">
+                <i class="fas fa-clock"></i> Bekleyenler (@pendingCount)
+            </a>
+            <a href="@StatusUrl(1)" class="ca-btn @(durum == 1 ? "ca-btn-primary" : "ca-btn-outline")">
+                <i class="fas fa-check"></i> Onaylananlar (@approvedCount)
+            </a>
+            <a href="@StatusUrl(2)" class="ca-btn @(durum == 2 ? "ca-btn-primary" : "ca-btn-outline")">
+                <i class="fas fa-list"></i> Tümü
+            </a>
+        </div>
+    </div>
+
+    <div class="ca-review-stats">
+        <div class="ca-review-stat">
+            <div><span>Bekleyen</span><strong>@pendingCount</strong></div>
+            <i class="fas fa-hourglass-half"></i>
+        </div>
+        <div class="ca-review-stat">
+            <div><span>Onaylanan</span><strong>@approvedCount</strong></div>
+            <i class="fas fa-circle-check"></i>
+        </div>
+        <div class="ca-review-stat">
+            <div><span>Listelenen</span><strong>@totalCount</strong></div>
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="ca-review-stat">
+            <div><span>Ortalama Puan</span><strong>@averageRating.ToString("0.0")</strong></div>
+            <i class="fas fa-star"></i>
+        </div>
+    </div>
+
+    <form id="bulkApproveForm" action="/Admin/Yorum/TopluOnayla" method="post">
+        @Html.AntiForgeryToken()
+    </form>
+
+    <div class="ca-card">
+        <div class="ca-review-toolbar">
+            <form action="/Admin/Yorum" method="get" class="ca-review-search">
+                <i class="fas fa-search"></i>
+                <input type="hidden" name="durum" value="@durum" />
+                <input type="hidden" name="pageSize" value="@pageSize" />
+                <input class="ca-input" type="search" name="q" value="@search" placeholder="Ürün, müşteri veya yorum içinde ara" />
+            </form>
+            <div class="d-flex gap-2 justify-content-end flex-wrap">
+                <select class="ca-select" style="width:120px;" onchange="location.href='/Admin/Yorum?durum=@durum&q=@Uri.EscapeDataString(search)&pageSize=' + this.value">
+                    <option value="20" selected="@(pageSize == 20)">20</option>
+                    <option value="50" selected="@(pageSize == 50)">50</option>
+                    <option value="100" selected="@(pageSize == 100)">100</option>
+                </select>
+                <a href="@ExportUrl()" class="ca-btn ca-btn-excel">
+                    <i class="fas fa-file-excel"></i> Excel'e Aktar
+                </a>
+                <button type="submit" form="bulkApproveForm" class="ca-btn ca-btn-primary" id="bulkApproveButton" disabled>
+                    <i class="fas fa-check-double"></i> Seçilenleri Onayla
+                </button>
+            </div>
+        </div>
+
+        @if (!yorumlar.Any())
+        {
+            <div class="ca-empty" style="padding:44px;">
+                <i class="fas fa-comments"></i>
+                <p>Bu filtreye uygun yorum bulunmuyor.</p>
+            </div>
+        }
+        else
+        {
+            <div class="ca-table-wrapper">
+                <table class="ca-table align-middle">
+                    <thead>
+                        <tr>
+                            <th style="width:48px;" class="ps-4">
+                                <input type="checkbox" class="form-check-input" id="selectAllReviews" />
+                            </th>
+                            <th>Ürün</th>
+                            <th>Müşteri</th>
+                            <th>Yorum</th>
+                            <th>Puan</th>
+                            <th>Durum</th>
+                            <th class="text-end pe-4">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in yorumlar)
+                        {
+                            var modalId = $"reviewModal{item.Id}";
+                            var image = item.Urun?.AnaGorselUrl;
+                            <tr>
+                                <td class="ps-4">
+                                    <input type="checkbox" form="bulkApproveForm" name="yorumIds" value="@item.Id" class="form-check-input ca-review-checkbox" />
+                                </td>
+                                <td>
+                                    <div class="ca-review-product">
+                                        @if (!string.IsNullOrWhiteSpace(image))
+                                        {
+                                            <img src="@image" alt="@item.Urun?.Baslik" loading="lazy" decoding="async" />
+                                        }
+                                        else
+                                        {
+                                            <span class="ca-product-placeholder"><i class="fas fa-image"></i></span>
+                                        }
+                                        <div>
+                                            <div class="ca-fw-semi">@Shorten(item.Urun?.Baslik, 62)</div>
+                                            <div class="small text-muted">Ürün ID: @item.UrunId</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="ca-fw-semi">@item.AdSoyad</div>
+                                    <div class="small text-muted">@(string.IsNullOrWhiteSpace(item.AppUserId) ? "Misafir" : "Üye")</div>
+                                </td>
+                                <td>
+                                    <div class="ca-review-text">@Shorten(item.YorumMetni, 170)</div>
+                                    <div class="small text-muted">@item.OlusturulmaTarihi.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</div>
+                                </td>
+                                <td>
+                                    <div class="ca-stars">
+                                        @for (var i = 1; i <= 5; i++)
+                                        {
+                                            <i class="@(i <= item.Puan ? "fas" : "far") fa-star"></i>
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                    @if (item.OnayliMi)
+                                    {
+                                        <span class="ca-badge ca-badge-success">Onaylandı</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="ca-badge ca-badge-warning">Bekliyor</span>
+                                    }
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="ca-review-actions">
+                                        <button type="button" class="ca-btn-icon" data-bs-toggle="modal" data-bs-target="#@modalId" title="Yorumu görüntüle">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        @if (!item.OnayliMi)
+                                        {
+                                            <form action="/Admin/Yorum/Onayla" method="post" class="d-inline">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <button class="ca-btn-icon" title="Onayla"><i class="fas fa-check"></i></button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form action="/Admin/Yorum/OnayiKaldir" method="post" class="d-inline">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <button class="ca-btn-icon" title="Onayı kaldır"><i class="fas fa-rotate-left"></i></button>
+                                            </form>
+                                        }
+                                        <form action="/Admin/Yorum/Sil" method="post" class="d-inline" onsubmit="return confirm('Bu yorumu arşive almak istiyor musunuz?')">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button class="ca-btn-icon delete" title="Arşive al"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <div class="modal fade" id="@modalId" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content" style="border-radius:var(--ca-radius); border:1px solid var(--ca-border);">
+                                        <div class="modal-header">
+                                            <div>
+                                                <h5 class="modal-title ca-fw-bold">@item.AdSoyad</h5>
+                                                <div class="small text-muted">@item.Urun?.Baslik</div>
+                                            </div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="ca-stars mb-3">
+                                                @for (var i = 1; i <= 5; i++)
+                                                {
+                                                    <i class="@(i <= item.Puan ? "fas" : "far") fa-star"></i>
+                                                }
+                                            </div>
+                                            <p style="white-space:pre-wrap; line-height:1.7;">@item.YorumMetni</p>
+                                            <div class="small text-muted">@item.OlusturulmaTarihi.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="ca-btn ca-btn-outline" data-bs-dismiss="modal">Kapat</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ca-pagination">
+                <div class="small text-muted">
+                    @totalCount kayıt içinde sayfa @(page) / @totalPages
+                </div>
+                <div class="d-flex gap-2">
+                    <a class="ca-btn ca-btn-outline @(page <= 1 ? "disabled" : "")" href="@PageUrl(page - 1)">
+                        <i class="fas fa-chevron-left"></i> Önceki
+                    </a>
+                    <a class="ca-btn ca-btn-outline @(page >= totalPages ? "disabled" : "")" href="@PageUrl(page + 1)">
+                        Sonraki <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            const selectAll = document.getElementById('selectAllReviews');
+            const checkboxes = Array.from(document.querySelectorAll('.ca-review-checkbox'));
+            const bulkButton = document.getElementById('bulkApproveButton');
+
+            function refreshBulkState() {
+                const selected = checkboxes.filter(x => x.checked).length;
+                if (bulkButton) {
+                    bulkButton.disabled = selected === 0;
+                    bulkButton.innerHTML = selected === 0
+                        ? '<i class="fas fa-check-double"></i> Seçilenleri Onayla'
+                        : `<i class="fas fa-check-double"></i> ${selected} Yorumu Onayla`;
+                }
+
+                if (selectAll) {
+                    selectAll.checked = selected > 0 && selected === checkboxes.length;
+                    selectAll.indeterminate = selected > 0 && selected < checkboxes.length;
+                }
+            }
+
+            selectAll?.addEventListener('change', function () {
+                checkboxes.forEach(x => x.checked = selectAll.checked);
+                refreshBulkState();
+            });
+
+            checkboxes.forEach(x => x.addEventListener('change', refreshBulkState));
+            refreshBulkState();
+        })();
+    </script>
+}

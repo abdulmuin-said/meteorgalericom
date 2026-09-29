@@ -1,0 +1,381 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Arama" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - link "Hesabım" [ref=e52] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e53]
+        - link "Favoriler" [ref=e55] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e56]
+        - link "Sepet" [ref=e58] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e59]
+          - generic [ref=e61]: "6"
+      - navigation [ref=e62]:
+        - list [ref=e63]:
+          - listitem [ref=e64] [cursor=pointer]:
+            - link "Kanvas Tablo " [ref=e65]:
+              - /url: /Urun?k=29
+              - text: Kanvas Tablo
+              - generic [ref=e66]: 
+          - listitem [ref=e67] [cursor=pointer]:
+            - link "Cam Tablo" [ref=e68]:
+              - /url: /Urun?k=30
+          - listitem [ref=e69] [cursor=pointer]:
+            - link "Duvar Kağıdı" [ref=e70]:
+              - /url: /Urun?k=31
+          - listitem [ref=e71] [cursor=pointer]:
+            - link "Cam Kesme Tahtası" [ref=e72]:
+              - /url: /Urun?k=32
+          - listitem [ref=e73] [cursor=pointer]:
+            - link "Ayna" [ref=e74]:
+              - /url: /Urun?k=33
+          - listitem [ref=e75] [cursor=pointer]:
+            - link "Baskılı Halı" [ref=e76]:
+              - /url: /Urun?k=34
+          - listitem [ref=e77] [cursor=pointer]:
+            - link "Ahşap Dekorasyon" [ref=e78]:
+              - /url: /Urun?k=35
+          - listitem [ref=e79] [cursor=pointer]:
+            - link "Mobilya Aksesuar" [ref=e80]:
+              - /url: /Urun?k=36
+          - listitem [ref=e81] [cursor=pointer]:
+            - link "Lightbox" [ref=e82]:
+              - /url: /Urun?k=37
+          - listitem [ref=e83] [cursor=pointer]:
+            - link "Afiş" [ref=e84]:
+              - /url: /Urun?k=38
+          - listitem [ref=e85] [cursor=pointer]:
+            - link "TÜM ÜRÜNLER" [ref=e86]:
+              - /url: /Urun
+          - listitem [ref=e87] [cursor=pointer]:
+            - link "İLETİŞİM" [ref=e88]:
+              - /url: /Kurumsal/Iletisim
+    - text:   
+  - main [ref=e89]:
+    - text:             
+    - generic [ref=e91]:
+      - link "Ana Sayfa" [ref=e92] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e93]: /
+      - link "Koleksiyon" [ref=e94] [cursor=pointer]:
+        - /url: /Urun
+      - generic [ref=e95]: /
+      - generic [ref=e96]: Modern Soyut Kanvas Tablo Test
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - generic [ref=e99]:
+          - generic [ref=e100]:
+            - img "Modern Soyut Kanvas Tablo Test" [ref=e101]
+            - button "" [ref=e102] [cursor=pointer]:
+              - generic [ref=e103]: 
+            - button "" [ref=e104] [cursor=pointer]:
+              - generic [ref=e105]: 
+            - generic [ref=e107]: 
+          - button "Modern Soyut Kanvas Tablo Test" [ref=e109] [cursor=pointer]:
+            - img "Modern Soyut Kanvas Tablo Test" [ref=e110]
+        - generic [ref=e111]:
+          - heading "Modern Soyut Kanvas Tablo Test" [level=1] [ref=e112]
+          - generic [ref=e113]:
+            - generic [ref=e114]:
+              - generic [ref=e115]: 
+              - generic [ref=e116]: 
+              - generic [ref=e117]: 
+              - generic [ref=e118]: 
+              - generic [ref=e119]: 
+            - generic [ref=e120]: (0 değerlendirme)
+          - generic [ref=e121]:
+            - generic [ref=e122]: 1.299,00 TL
+            - generic [ref=e123]: 1.000,00 TL
+            - generic [ref=e124]: "%20 İndirim"
+          - generic [ref=e125]:
+            - generic [ref=e126]:
+              - generic [ref=e127]: 
+              - text: Siparişe özel hazırlanır
+            - generic [ref=e128]:
+              - generic [ref=e129]: 
+              - text: 3 iş günü içinde kargo
+          - generic [ref=e130]:
+            - generic [ref=e131]: 
+            - text: 60cm x 40cm / Çerçevesiz / Kanvas
+          - paragraph [ref=e132]: Salon ve ofis dekorasyonu için premium tablo.
+          - generic [ref=e133]:
+            - generic [ref=e134]: Ebat Seçiniz
+            - generic [ref=e136] [cursor=pointer]:
+              - radio "60cm x 40cm / Çerçevesiz / Kanvas" [checked] [ref=e137]
+              - text: 60cm x 40cm / Çerçevesiz / Kanvas
+          - generic [ref=e138]:
+            - generic [ref=e139]: Çerçeve Modeli Seçiniz
+            - generic [ref=e140]:
+              - generic "Çerçevesiz" [ref=e141] [cursor=pointer]:
+                - radio "Çerçevesiz Çerçevesiz" [ref=e142]
+                - img "Çerçevesiz" [ref=e144]
+                - text: Çerçevesiz
+              - generic "Siyah" [ref=e145] [cursor=pointer]:
+                - radio "Siyah Siyah" [checked] [active] [ref=e146]
+                - img "Siyah" [ref=e148]
+                - text: Siyah
+                - img [ref=e338]
+              - generic "Beyaz" [ref=e149] [cursor=pointer]:
+                - radio "Beyaz Beyaz" [ref=e150]
+                - img "Beyaz" [ref=e152]
+                - text: Beyaz
+              - generic "Altın" [ref=e153] [cursor=pointer]:
+                - radio "Altın Altın" [ref=e154]
+                - img "Altın" [ref=e156]
+                - text: Altın
+              - generic "Gümüş" [ref=e157] [cursor=pointer]:
+                - radio "Gümüş Gümüş" [ref=e158]
+                - img "Gümüş" [ref=e160]
+                - text: Gümüş
+              - generic "Naturel" [ref=e161] [cursor=pointer]:
+                - radio "Naturel Naturel" [ref=e162]
+                - img "Naturel" [ref=e164]
+                - text: Naturel
+              - generic "Ceviz" [ref=e165] [cursor=pointer]:
+                - radio "Ceviz Ceviz" [ref=e166]
+                - img "Ceviz" [ref=e168]
+                - text: Ceviz
+          - generic [ref=e169]:
+            - generic [ref=e170]:
+              - generic [ref=e171]: Adet
+              - generic [ref=e172]:
+                - button "-" [ref=e173] [cursor=pointer]
+                - spinbutton [ref=e174]: "1"
+                - button "+" [ref=e175] [cursor=pointer]
+            - button " Sepete Ekle" [ref=e177] [cursor=pointer]:
+              - generic [ref=e178]: 
+              - generic [ref=e179]: Sepete Ekle
+            - button "" [ref=e180] [cursor=pointer]:
+              - generic [ref=e181]: 
+          - generic [ref=e340]:
+            - paragraph [ref=e341]: "Seçilen:"
+            - paragraph [ref=e342]: 60cm x 40cm / Çerçevesiz / Kanvas | Siyah
+            - paragraph [ref=e343]: "Toplam: 1.299,00 TL"
+          - generic [ref=e182]:
+            - generic [ref=e183]: Paylaş
+            - link "Facebook'ta paylaş" [ref=e184] [cursor=pointer]:
+              - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.canvasia.com.tr%2FUrun%2FDetay%2Fmodern-soyut-kanvas-tablo-test-12543
+              - generic [ref=e185]: 
+            - link "Instagram'da aç" [ref=e186] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e187]: 
+            - link "WhatsApp ile paylaş" [ref=e188] [cursor=pointer]:
+              - /url: https://wa.me/?text=Modern%20Soyut%20Kanvas%20Tablo%20Test%20@encodedProductUrl
+              - generic [ref=e189]: 
+            - button " Linki Kopyala" [ref=e190] [cursor=pointer]:
+              - generic [ref=e191]: 
+              - text: Linki Kopyala
+          - generic [ref=e192]:
+            - generic [ref=e193]:
+              - paragraph [ref=e194]:
+                - generic [ref=e195]: 
+                - text: Üretim
+              - paragraph [ref=e196]: Siparişe özel hazırlanır
+            - generic [ref=e197]:
+              - paragraph [ref=e198]:
+                - generic [ref=e199]: 
+                - text: Paketleme
+              - paragraph [ref=e200]: Özenli ve korunaklı teslimat
+            - generic [ref=e201]:
+              - paragraph [ref=e202]:
+                - generic [ref=e203]: 
+                - text: Teslimat
+              - paragraph [ref=e204]: Tahmini 5 iş günü
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - generic [ref=e207]: 
+              - paragraph [ref=e208]: Güvenli Ödeme
+              - paragraph [ref=e209]: 256-bit SSL
+            - generic [ref=e210]:
+              - generic [ref=e211]: 
+              - paragraph [ref=e212]: Ücretsiz Kargo
+              - paragraph [ref=e213]: 3 iş günü
+            - generic [ref=e214]:
+              - generic [ref=e215]: 
+              - paragraph [ref=e216]: İade Garantisi
+              - paragraph [ref=e217]: 14 gün içinde
+      - generic [ref=e219]:
+        - generic [ref=e221]:
+          - heading " Ürün Açıklaması" [level=2] [ref=e222]:
+            - generic [ref=e223]: 
+            - text: Ürün Açıklaması
+          - generic [ref=e224]: Ürünün detaylı açıklaması bu alana yazılır.
+        - generic [ref=e225]:
+          - heading " Yorumlar" [level=2] [ref=e226]:
+            - generic [ref=e227]: 
+            - text: Yorumlar
+          - generic [ref=e228]:
+            - generic [ref=e229]: 
+            - heading "Henüz yorum yapılmamış" [level=5] [ref=e230]
+            - paragraph [ref=e231]: Bu ürün için ilk yorumu siz yapın!
+            - button "İlk Yorumu Yap" [ref=e232] [cursor=pointer]
+    - generic [ref=e234]:
+      - generic [ref=e235]:
+        - separator [ref=e236]
+        - heading "Benzer Ürünler" [level=2] [ref=e237]
+        - separator [ref=e238]
+      - generic [ref=e239]:
+        - link "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 1.671,73 TL" [ref=e240] [cursor=pointer]:
+          - /url: /Urun/Detay/ataturk-kalpakli-ataturk-resmi-istiklal-marsi-ve-genclige-hitabe-5-parcali-kanvas-tablo-1356
+          - img "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e242]
+          - heading "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [level=3] [ref=e243]
+          - generic [ref=e245]: 1.671,73 TL
+        - link "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo 1.529,84 TL" [ref=e246] [cursor=pointer]:
+          - /url: /Urun/Detay/dalgalanan-turk-bayragi-5-parca-kanvas-tablo-1066
+          - img "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo" [ref=e248]
+          - heading "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo" [level=3] [ref=e249]
+          - generic [ref=e251]: 1.529,84 TL
+        - link "test ürün test ürün 1.500,00 TL" [ref=e252] [cursor=pointer]:
+          - /url: /Urun/Detay/test-urun-12541
+          - img "test ürün" [ref=e254]
+          - heading "test ürün" [level=3] [ref=e255]
+          - generic [ref=e257]: 1.500,00 TL
+        - link "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 1.671,73 TL" [ref=e258] [cursor=pointer]:
+          - /url: /Urun/Detay/ataturk-turk-bayragi-istiklal-marsi-ve-genclige-hitabe-5-parcali-kanvas-tablo-1357
+          - img "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [ref=e260]
+          - heading "Atatürk, Türk Bayrağı, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo" [level=3] [ref=e261]
+          - generic [ref=e263]: 1.671,73 TL
+        - link "ATATÜRK Cemal Paşa, Enver Paşa, Fahrettin Paşa, Talat Paşa Renkli Kanvas Tablo ATATÜRK Cemal Paşa, Enver Paşa, Fahrettin Paşa, Talat Paşa Renkli Kanvas Tablo 1.671,73 TL" [ref=e264] [cursor=pointer]:
+          - /url: /Urun/Detay/ataturk-cemal-pasa-enver-pasa-fahrettin-pasa-talat-pasa-renkli-kanvas-tablo-1353
+          - img "ATATÜRK Cemal Paşa, Enver Paşa, Fahrettin Paşa, Talat Paşa Renkli Kanvas Tablo" [ref=e266]
+          - heading "ATATÜRK Cemal Paşa, Enver Paşa, Fahrettin Paşa, Talat Paşa Renkli Kanvas Tablo" [level=3] [ref=e267]
+          - generic [ref=e269]: 1.671,73 TL
+        - link "Atatürk Nihal Atsız Enver Paşa Alparslan Türkeş ve Ziya Gökalp Kanvas Tabloları Atatürk Nihal Atsız Enver Paşa Alparslan Türkeş ve Ziya Gökalp Kanvas Tabloları 1.376,86 TL" [ref=e270] [cursor=pointer]:
+          - /url: /Urun/Detay/ataturk-nihal-atsiz-enver-pasa-alparslan-turkes-ve-ziya-gokalp-kanvas-tablolari-1076
+          - img "Atatürk Nihal Atsız Enver Paşa Alparslan Türkeş ve Ziya Gökalp Kanvas Tabloları" [ref=e272]
+          - heading "Atatürk Nihal Atsız Enver Paşa Alparslan Türkeş ve Ziya Gökalp Kanvas Tabloları" [level=3] [ref=e273]
+          - generic [ref=e275]: 1.376,86 TL
+  - contentinfo [ref=e276]:
+    - generic [ref=e278]:
+      - generic [ref=e279]:
+        - generic [ref=e281]: 
+        - generic [ref=e282]:
+          - generic [ref=e283]: Tüm Türkiye'ye
+          - generic [ref=e284]: Ücretsiz Kargo
+      - generic [ref=e285]:
+        - generic [ref=e287]: 
+        - generic [ref=e288]:
+          - generic [ref=e289]: "%100 Güvenli Alışveriş"
+          - generic [ref=e290]: 256 Bit SSL Sertifikası
+      - generic [ref=e291]:
+        - generic [ref=e293]: 
+        - generic [ref=e294]:
+          - generic [ref=e295]: Tüm Kredi Kartlarına
+          - generic [ref=e296]: 12 Taksit İmkanı
+    - generic [ref=e297]:
+      - generic [ref=e298]:
+        - generic [ref=e299]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e300]
+          - paragraph [ref=e301]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e302]:
+            - textbox "E-posta Adresi" [ref=e303]
+            - button "ABONE OL" [ref=e304] [cursor=pointer]
+        - generic [ref=e305]:
+          - heading "KURUMSAL" [level=4] [ref=e306]
+          - list [ref=e307]:
+            - listitem [ref=e308]:
+              - link "Hakkımızda" [ref=e309] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e310]:
+              - link "İletişim" [ref=e311] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e312]:
+              - link "Koleksiyonlar" [ref=e313] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e314]:
+              - link "Gizlilik Politikası" [ref=e315] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e316]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e317] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e318]:
+            - link "Instagram" [ref=e319] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e320]: 
+            - link "WhatsApp" [ref=e321] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e322]: 
+      - generic [ref=e323]:
+        - paragraph [ref=e325]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e326]:
+          - link "Gizlilik Politikası" [ref=e327] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e328] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e329] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e332]
+  - link "WhatsApp ile iletişim" [ref=e333] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e334]
+    - generic [ref=e336]: WhatsApp

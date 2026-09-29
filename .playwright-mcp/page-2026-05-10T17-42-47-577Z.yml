@@ -1,0 +1,843 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+      - /url: /Admin/Home
+      - img "Canvasia" [ref=e6]
+    - navigation "Admin ana menü" [ref=e7]:
+      - link " Panel" [ref=e8] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e9]: 
+        - text: Panel
+      - generic [ref=e10]:
+        - button " Sipariş Yönetimi 3" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e13]: "3"
+        - text:     
+      - generic [ref=e14]:
+        - button " Ürün Yönetimi" [ref=e15] [cursor=pointer]:
+          - generic [ref=e16]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e17]:
+        - button " Mağaza İçeriği 10" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e20]: "10"
+        - text:     
+      - link " Üyeler" [ref=e21] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e22]: 
+        - text: Üyeler
+      - generic [ref=e23]:
+        - button " Raporlar" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e26] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e27]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e28] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e29]: 
+        - text: Yardım
+    - generic [ref=e30]:
+      - text: 
+      - generic [ref=e31]:
+        - button "H" [ref=e32] [cursor=pointer]:
+          - generic [ref=e33]: H
+        - text:  
+  - generic [ref=e34]:
+    - main [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - heading "Ürün Kataloğu" [level=1] [ref=e39]
+            - paragraph [ref=e40]: Ürünleri sayfalı, hızlı ve görsel yükü düşük bir yönetim ekranından takip edin.
+          - generic [ref=e41]:
+            - link " Tüm Ürünler XLSX" [ref=e42] [cursor=pointer]:
+              - /url: /Admin/Urun/UrunExcelExport
+              - generic [ref=e43]: 
+              - text: Tüm Ürünler XLSX
+            - link " Excel İşlemleri" [ref=e44] [cursor=pointer]:
+              - /url: /Admin/Urun/Excel
+              - generic [ref=e45]: 
+              - text: Excel İşlemleri
+            - button " SKU'ları Tamamla" [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]: 
+              - text: SKU'ları Tamamla
+            - link "+ Yeni Ürün" [ref=e49] [cursor=pointer]:
+              - /url: /Admin/Urun/Ekle
+              - generic [ref=e50]: +
+              - text: Yeni Ürün
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: 
+            - textbox "Başlık, SKU, barkod veya ID ara" [ref=e56]
+          - combobox [ref=e57]:
+            - option "Tüm Kategoriler" [selected]
+            - option "Atatürk Köşesi"
+            - option "Kanvas Tablo"
+            - option "Cam Tablo"
+            - option "İslami Sanat & Hat"
+            - option "Duvar Kağıdı"
+            - option "Dünya Klasikleri"
+            - option "Cam Kesme Tahtası"
+            - option "Modern & Soyut"
+            - option "Ayna"
+            - option "Şehir Manzaraları"
+            - option "Baskılı Halı"
+            - option "Ahşap Dekorasyon"
+            - option "Parçalı Tablolar"
+            - option "Dini ve Hat Sanatı"
+            - option "Mobilya Aksesuar"
+            - option "Lightbox"
+            - option "Manzara Temalı"
+            - option "Afiş"
+            - option "Atatürk ve Türkiye"
+            - option "Şehir ve Mimari"
+            - option "Soyut ve Sanatsal"
+            - option "Osmanlı ve Tuğra"
+            - option "Ünlüler ve Sinema"
+            - option "Hayvanlar Alemi"
+            - option "Araba ve Araçlar"
+            - option "Çocuk Odası"
+            - option "Nü Sanat"
+            - option "Klasik Eserler"
+            - option "Yiyecek ve İçecek"
+            - option "Farklı Tasarımlar"
+            - option "Aşk ve Romantizm"
+            - option "Kadın Temalı"
+            - option "Taraftar Köşesi"
+            - option "Adalet ve Hukuk"
+            - option "Çiçekli ve Dekoratif"
+            - option "Panoramik Tablolar"
+          - combobox [ref=e58]:
+            - option "20" [selected]
+            - option "50"
+            - option "100"
+          - button "" [ref=e59] [cursor=pointer]:
+            - generic [ref=e60]: 
+          - button " Seçili Aktif Yap" [disabled] [ref=e61] [cursor=pointer]:
+            - generic [ref=e62]: 
+            - text: Seçili Aktif Yap
+          - button " Seçili Pasif Yap" [disabled] [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]: 
+            - text: Seçili Pasif Yap
+          - button " Seçili Ürünleri Sil" [disabled] [ref=e65] [cursor=pointer]:
+            - generic [ref=e66]: 
+            - text: Seçili Ürünleri Sil
+          - button " Kalıcı Sil" [disabled] [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: 
+            - text: Kalıcı Sil
+          - generic [ref=e69]: Seçili ürün yok.
+          - generic [ref=e70]:
+            - text: Toplam
+            - strong [ref=e71]: "11992"
+            - text: ürün
+        - generic [ref=e72]:
+          - table [ref=e74]:
+            - rowgroup [ref=e75]:
+              - row "Görsel Ürün Kategori Fiyat Yayın Durumu İşlemler Bu sayfadaki ürünleri seç" [ref=e76]:
+                - columnheader "Görsel" [ref=e77]
+                - columnheader "Ürün" [ref=e78]
+                - columnheader "Kategori" [ref=e79]
+                - columnheader "Fiyat" [ref=e80]
+                - columnheader "Yayın Durumu" [ref=e81]
+                - columnheader "İşlemler" [ref=e82]
+                - columnheader "Bu sayfadaki ürünleri seç" [ref=e83]:
+                  - checkbox "Bu sayfadaki ürünleri seç" [ref=e84]
+            - rowgroup [ref=e85]:
+              - 'row "Salvador Dali - Masturbator Tablosu Salvador Dali - Masturbator Tablosu SKU: URN-012539 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Salvador Dali - Masturbator Tablosu ürününü seç" [ref=e86]':
+                - cell "Salvador Dali - Masturbator Tablosu" [ref=e87]:
+                  - img "Salvador Dali - Masturbator Tablosu" [ref=e88]
+                - 'cell "Salvador Dali - Masturbator Tablosu SKU: URN-012539 Yeni" [ref=e89]':
+                  - generic [ref=e90]:
+                    - generic [ref=e91]: Salvador Dali - Masturbator Tablosu
+                    - generic [ref=e92]: "SKU: URN-012539"
+                    - generic [ref=e94]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e95]':
+                  - generic [ref=e96]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e97]:
+                  - generic [ref=e98]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e99]':
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e103]:
+                  - generic [ref=e104]:
+                    - link "" [ref=e105] [cursor=pointer]:
+                      - /url: /Urun/Detay/12539
+                      - generic [ref=e106]: 
+                    - link "" [ref=e107] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12539
+                      - generic [ref=e108]: 
+                    - button "" [ref=e110] [cursor=pointer]:
+                      - generic [ref=e111]: 
+                    - button "" [ref=e113] [cursor=pointer]:
+                      - generic [ref=e114]: 
+                    - button "" [ref=e116] [cursor=pointer]:
+                      - generic [ref=e117]: 
+                - cell "Salvador Dali - Masturbator Tablosu ürününü seç" [ref=e118]:
+                  - checkbox "Salvador Dali - Masturbator Tablosu ürününü seç" [ref=e119]
+              - 'row "Salvador Dali - Le Sommeil Tablosu Salvador Dali - Le Sommeil Tablosu SKU: URN-012538 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Salvador Dali - Le Sommeil Tablosu ürününü seç" [ref=e120]':
+                - cell "Salvador Dali - Le Sommeil Tablosu" [ref=e121]:
+                  - img "Salvador Dali - Le Sommeil Tablosu" [ref=e122]
+                - 'cell "Salvador Dali - Le Sommeil Tablosu SKU: URN-012538 Yeni" [ref=e123]':
+                  - generic [ref=e124]:
+                    - generic [ref=e125]: Salvador Dali - Le Sommeil Tablosu
+                    - generic [ref=e126]: "SKU: URN-012538"
+                    - generic [ref=e128]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e129]':
+                  - generic [ref=e130]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e131]:
+                  - generic [ref=e132]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e133]':
+                  - generic [ref=e135]:
+                    - generic [ref=e136]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e137]:
+                  - generic [ref=e138]:
+                    - link "" [ref=e139] [cursor=pointer]:
+                      - /url: /Urun/Detay/12538
+                      - generic [ref=e140]: 
+                    - link "" [ref=e141] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12538
+                      - generic [ref=e142]: 
+                    - button "" [ref=e144] [cursor=pointer]:
+                      - generic [ref=e145]: 
+                    - button "" [ref=e147] [cursor=pointer]:
+                      - generic [ref=e148]: 
+                    - button "" [ref=e150] [cursor=pointer]:
+                      - generic [ref=e151]: 
+                - cell "Salvador Dali - Le Sommeil Tablosu ürününü seç" [ref=e152]:
+                  - checkbox "Salvador Dali - Le Sommeil Tablosu ürününü seç" [ref=e153]
+              - 'row "Rene Magritte - Bird Tablosu Rene Magritte - Bird Tablosu SKU: URN-012537 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Rene Magritte - Bird Tablosu ürününü seç" [ref=e154]':
+                - cell "Rene Magritte - Bird Tablosu" [ref=e155]:
+                  - img "Rene Magritte - Bird Tablosu" [ref=e156]
+                - 'cell "Rene Magritte - Bird Tablosu SKU: URN-012537 Yeni" [ref=e157]':
+                  - generic [ref=e158]:
+                    - generic [ref=e159]: Rene Magritte - Bird Tablosu
+                    - generic [ref=e160]: "SKU: URN-012537"
+                    - generic [ref=e162]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e163]':
+                  - generic [ref=e164]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e165]:
+                  - generic [ref=e166]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e167]':
+                  - generic [ref=e169]:
+                    - generic [ref=e170]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e171]:
+                  - generic [ref=e172]:
+                    - link "" [ref=e173] [cursor=pointer]:
+                      - /url: /Urun/Detay/12537
+                      - generic [ref=e174]: 
+                    - link "" [ref=e175] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12537
+                      - generic [ref=e176]: 
+                    - button "" [ref=e178] [cursor=pointer]:
+                      - generic [ref=e179]: 
+                    - button "" [ref=e181] [cursor=pointer]:
+                      - generic [ref=e182]: 
+                    - button "" [ref=e184] [cursor=pointer]:
+                      - generic [ref=e185]: 
+                - cell "Rene Magritte - Bird Tablosu ürününü seç" [ref=e186]:
+                  - checkbox "Rene Magritte - Bird Tablosu ürününü seç" [ref=e187]
+              - 'row "Dominique Appia - Les Quatre Saisons Tablosu Dominique Appia - Les Quatre Saisons Tablosu SKU: URN-012536 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Dominique Appia - Les Quatre Saisons Tablosu ürününü seç" [ref=e188]':
+                - cell "Dominique Appia - Les Quatre Saisons Tablosu" [ref=e189]:
+                  - img "Dominique Appia - Les Quatre Saisons Tablosu" [ref=e190]
+                - 'cell "Dominique Appia - Les Quatre Saisons Tablosu SKU: URN-012536 Yeni" [ref=e191]':
+                  - generic [ref=e192]:
+                    - generic [ref=e193]: Dominique Appia - Les Quatre Saisons Tablosu
+                    - generic [ref=e194]: "SKU: URN-012536"
+                    - generic [ref=e196]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e197]':
+                  - generic [ref=e198]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e199]:
+                  - generic [ref=e200]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e201]':
+                  - generic [ref=e203]:
+                    - generic [ref=e204]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e205]:
+                  - generic [ref=e206]:
+                    - link "" [ref=e207] [cursor=pointer]:
+                      - /url: /Urun/Detay/12536
+                      - generic [ref=e208]: 
+                    - link "" [ref=e209] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12536
+                      - generic [ref=e210]: 
+                    - button "" [ref=e212] [cursor=pointer]:
+                      - generic [ref=e213]: 
+                    - button "" [ref=e215] [cursor=pointer]:
+                      - generic [ref=e216]: 
+                    - button "" [ref=e218] [cursor=pointer]:
+                      - generic [ref=e219]: 
+                - cell "Dominique Appia - Les Quatre Saisons Tablosu ürününü seç" [ref=e220]:
+                  - checkbox "Dominique Appia - Les Quatre Saisons Tablosu ürününü seç" [ref=e221]
+              - 'row "Rene Magritte - The False Mirror Tablosu - Model 5 Rene Magritte - The False Mirror Tablosu - Model 5 SKU: URN-012534 Yeni Soyut ve Sanatsal Marka: - 2.149,00 TL  Yayında Durum: Stokta      Rene Magritte - The False Mirror Tablosu - Model 5 ürününü seç" [ref=e222]':
+                - cell "Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e223]:
+                  - img "Rene Magritte - The False Mirror Tablosu - Model 5" [ref=e224]
+                - 'cell "Rene Magritte - The False Mirror Tablosu - Model 5 SKU: URN-012534 Yeni" [ref=e225]':
+                  - generic [ref=e226]:
+                    - generic [ref=e227]: Rene Magritte - The False Mirror Tablosu - Model 5
+                    - generic [ref=e228]: "SKU: URN-012534"
+                    - generic [ref=e230]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e231]':
+                  - generic [ref=e232]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "2.149,00 TL" [ref=e233]:
+                  - generic [ref=e234]: 2.149,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e235]':
+                  - generic [ref=e237]:
+                    - generic [ref=e238]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e239]:
+                  - generic [ref=e240]:
+                    - link "" [ref=e241] [cursor=pointer]:
+                      - /url: /Urun/Detay/12534
+                      - generic [ref=e242]: 
+                    - link "" [ref=e243] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12534
+                      - generic [ref=e244]: 
+                    - button "" [ref=e246] [cursor=pointer]:
+                      - generic [ref=e247]: 
+                    - button "" [ref=e249] [cursor=pointer]:
+                      - generic [ref=e250]: 
+                    - button "" [ref=e252] [cursor=pointer]:
+                      - generic [ref=e253]: 
+                - cell "Rene Magritte - The False Mirror Tablosu - Model 5 ürününü seç" [ref=e254]:
+                  - checkbox "Rene Magritte - The False Mirror Tablosu - Model 5 ürününü seç" [ref=e255]
+              - 'row "Rene Magritte - The False Mirror Tablosu - Model 3 Rene Magritte - The False Mirror Tablosu - Model 3 SKU: URN-012533 Yeni Soyut ve Sanatsal Marka: - 849,00 TL  Yayında Durum: Stokta      Rene Magritte - The False Mirror Tablosu - Model 3 ürününü seç" [ref=e256]':
+                - cell "Rene Magritte - The False Mirror Tablosu - Model 3" [ref=e257]:
+                  - img "Rene Magritte - The False Mirror Tablosu - Model 3" [ref=e258]
+                - 'cell "Rene Magritte - The False Mirror Tablosu - Model 3 SKU: URN-012533 Yeni" [ref=e259]':
+                  - generic [ref=e260]:
+                    - generic [ref=e261]: Rene Magritte - The False Mirror Tablosu - Model 3
+                    - generic [ref=e262]: "SKU: URN-012533"
+                    - generic [ref=e264]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e265]':
+                  - generic [ref=e266]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "849,00 TL" [ref=e267]:
+                  - generic [ref=e268]: 849,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e269]':
+                  - generic [ref=e271]:
+                    - generic [ref=e272]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e273]:
+                  - generic [ref=e274]:
+                    - link "" [ref=e275] [cursor=pointer]:
+                      - /url: /Urun/Detay/12533
+                      - generic [ref=e276]: 
+                    - link "" [ref=e277] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12533
+                      - generic [ref=e278]: 
+                    - button "" [ref=e280] [cursor=pointer]:
+                      - generic [ref=e281]: 
+                    - button "" [ref=e283] [cursor=pointer]:
+                      - generic [ref=e284]: 
+                    - button "" [ref=e286] [cursor=pointer]:
+                      - generic [ref=e287]: 
+                - cell "Rene Magritte - The False Mirror Tablosu - Model 3 ürününü seç" [ref=e288]:
+                  - checkbox "Rene Magritte - The False Mirror Tablosu - Model 3 ürününü seç" [ref=e289]
+              - 'row "Rene Magritte - The False Mirror Tablosu - Model 1 Rene Magritte - The False Mirror Tablosu - Model 1 SKU: URN-012532 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Rene Magritte - The False Mirror Tablosu - Model 1 ürününü seç" [ref=e290]':
+                - cell "Rene Magritte - The False Mirror Tablosu - Model 1" [ref=e291]:
+                  - img "Rene Magritte - The False Mirror Tablosu - Model 1" [ref=e292]
+                - 'cell "Rene Magritte - The False Mirror Tablosu - Model 1 SKU: URN-012532 Yeni" [ref=e293]':
+                  - generic [ref=e294]:
+                    - generic [ref=e295]: Rene Magritte - The False Mirror Tablosu - Model 1
+                    - generic [ref=e296]: "SKU: URN-012532"
+                    - generic [ref=e298]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e299]':
+                  - generic [ref=e300]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e301]:
+                  - generic [ref=e302]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e303]':
+                  - generic [ref=e305]:
+                    - generic [ref=e306]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e307]:
+                  - generic [ref=e308]:
+                    - link "" [ref=e309] [cursor=pointer]:
+                      - /url: /Urun/Detay/12532
+                      - generic [ref=e310]: 
+                    - link "" [ref=e311] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12532
+                      - generic [ref=e312]: 
+                    - button "" [ref=e314] [cursor=pointer]:
+                      - generic [ref=e315]: 
+                    - button "" [ref=e317] [cursor=pointer]:
+                      - generic [ref=e318]: 
+                    - button "" [ref=e320] [cursor=pointer]:
+                      - generic [ref=e321]: 
+                - cell "Rene Magritte - The False Mirror Tablosu - Model 1 ürününü seç" [ref=e322]:
+                  - checkbox "Rene Magritte - The False Mirror Tablosu - Model 1 ürününü seç" [ref=e323]
+              - 'row "Rene Magritte - Personal Values Tablosu - Model 1 Rene Magritte - Personal Values Tablosu - Model 1 SKU: URN-012531 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Rene Magritte - Personal Values Tablosu - Model 1 ürününü seç" [ref=e324]':
+                - cell "Rene Magritte - Personal Values Tablosu - Model 1" [ref=e325]:
+                  - img "Rene Magritte - Personal Values Tablosu - Model 1" [ref=e326]
+                - 'cell "Rene Magritte - Personal Values Tablosu - Model 1 SKU: URN-012531 Yeni" [ref=e327]':
+                  - generic [ref=e328]:
+                    - generic [ref=e329]: Rene Magritte - Personal Values Tablosu - Model 1
+                    - generic [ref=e330]: "SKU: URN-012531"
+                    - generic [ref=e332]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e333]':
+                  - generic [ref=e334]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e335]:
+                  - generic [ref=e336]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e337]':
+                  - generic [ref=e339]:
+                    - generic [ref=e340]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e341]:
+                  - generic [ref=e342]:
+                    - link "" [ref=e343] [cursor=pointer]:
+                      - /url: /Urun/Detay/12531
+                      - generic [ref=e344]: 
+                    - link "" [ref=e345] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12531
+                      - generic [ref=e346]: 
+                    - button "" [ref=e348] [cursor=pointer]:
+                      - generic [ref=e349]: 
+                    - button "" [ref=e351] [cursor=pointer]:
+                      - generic [ref=e352]: 
+                    - button "" [ref=e354] [cursor=pointer]:
+                      - generic [ref=e355]: 
+                - cell "Rene Magritte - Personal Values Tablosu - Model 1 ürününü seç" [ref=e356]:
+                  - checkbox "Rene Magritte - Personal Values Tablosu - Model 1 ürününü seç" [ref=e357]
+              - 'row "Salvador Dali - Dream Caused Tablosu - Model 2 Salvador Dali - Dream Caused Tablosu - Model 2 SKU: URN-012530 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Salvador Dali - Dream Caused Tablosu - Model 2 ürününü seç" [ref=e358]':
+                - cell "Salvador Dali - Dream Caused Tablosu - Model 2" [ref=e359]:
+                  - img "Salvador Dali - Dream Caused Tablosu - Model 2" [ref=e360]
+                - 'cell "Salvador Dali - Dream Caused Tablosu - Model 2 SKU: URN-012530 Yeni" [ref=e361]':
+                  - generic [ref=e362]:
+                    - generic [ref=e363]: Salvador Dali - Dream Caused Tablosu - Model 2
+                    - generic [ref=e364]: "SKU: URN-012530"
+                    - generic [ref=e366]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e367]':
+                  - generic [ref=e368]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e369]:
+                  - generic [ref=e370]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e371]':
+                  - generic [ref=e373]:
+                    - generic [ref=e374]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e375]:
+                  - generic [ref=e376]:
+                    - link "" [ref=e377] [cursor=pointer]:
+                      - /url: /Urun/Detay/12530
+                      - generic [ref=e378]: 
+                    - link "" [ref=e379] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12530
+                      - generic [ref=e380]: 
+                    - button "" [ref=e382] [cursor=pointer]:
+                      - generic [ref=e383]: 
+                    - button "" [ref=e385] [cursor=pointer]:
+                      - generic [ref=e386]: 
+                    - button "" [ref=e388] [cursor=pointer]:
+                      - generic [ref=e389]: 
+                - cell "Salvador Dali - Dream Caused Tablosu - Model 2 ürününü seç" [ref=e390]:
+                  - checkbox "Salvador Dali - Dream Caused Tablosu - Model 2 ürününü seç" [ref=e391]
+              - 'row "Salvador Dali - Hallucinogenic Tablosu - Model 2 Salvador Dali - Hallucinogenic Tablosu - Model 2 SKU: URN-012529 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Salvador Dali - Hallucinogenic Tablosu - Model 2 ürününü seç" [ref=e392]':
+                - cell "Salvador Dali - Hallucinogenic Tablosu - Model 2" [ref=e393]:
+                  - img "Salvador Dali - Hallucinogenic Tablosu - Model 2" [ref=e394]
+                - 'cell "Salvador Dali - Hallucinogenic Tablosu - Model 2 SKU: URN-012529 Yeni" [ref=e395]':
+                  - generic [ref=e396]:
+                    - generic [ref=e397]: Salvador Dali - Hallucinogenic Tablosu - Model 2
+                    - generic [ref=e398]: "SKU: URN-012529"
+                    - generic [ref=e400]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e401]':
+                  - generic [ref=e402]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e403]:
+                  - generic [ref=e404]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e405]':
+                  - generic [ref=e407]:
+                    - generic [ref=e408]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e409]:
+                  - generic [ref=e410]:
+                    - link "" [ref=e411] [cursor=pointer]:
+                      - /url: /Urun/Detay/12529
+                      - generic [ref=e412]: 
+                    - link "" [ref=e413] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12529
+                      - generic [ref=e414]: 
+                    - button "" [ref=e416] [cursor=pointer]:
+                      - generic [ref=e417]: 
+                    - button "" [ref=e419] [cursor=pointer]:
+                      - generic [ref=e420]: 
+                    - button "" [ref=e422] [cursor=pointer]:
+                      - generic [ref=e423]: 
+                - cell "Salvador Dali - Hallucinogenic Tablosu - Model 2 ürününü seç" [ref=e424]:
+                  - checkbox "Salvador Dali - Hallucinogenic Tablosu - Model 2 ürününü seç" [ref=e425]
+              - 'row "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2 Rene Magritte - The Face Of Genius‏ Tablosu - Model 2 SKU: URN-012528 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Rene Magritte - The Face Of Genius‏ Tablosu - Model 2 ürününü seç" [ref=e426]':
+                - cell "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2" [ref=e427]:
+                  - img "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2" [ref=e428]
+                - 'cell "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2 SKU: URN-012528 Yeni" [ref=e429]':
+                  - generic [ref=e430]:
+                    - generic [ref=e431]: Rene Magritte - The Face Of Genius‏ Tablosu - Model 2
+                    - generic [ref=e432]: "SKU: URN-012528"
+                    - generic [ref=e434]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e435]':
+                  - generic [ref=e436]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e437]:
+                  - generic [ref=e438]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e439]':
+                  - generic [ref=e441]:
+                    - generic [ref=e442]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e443]:
+                  - generic [ref=e444]:
+                    - link "" [ref=e445] [cursor=pointer]:
+                      - /url: /Urun/Detay/12528
+                      - generic [ref=e446]: 
+                    - link "" [ref=e447] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12528
+                      - generic [ref=e448]: 
+                    - button "" [ref=e450] [cursor=pointer]:
+                      - generic [ref=e451]: 
+                    - button "" [ref=e453] [cursor=pointer]:
+                      - generic [ref=e454]: 
+                    - button "" [ref=e456] [cursor=pointer]:
+                      - generic [ref=e457]: 
+                - cell "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2 ürününü seç" [ref=e458]:
+                  - checkbox "Rene Magritte - The Face Of Genius‏ Tablosu - Model 2 ürününü seç" [ref=e459]
+              - 'row "Rene Magritte - The Son Of Man‏ Tablosu - Model 7 Rene Magritte - The Son Of Man‏ Tablosu - Model 7 SKU: URN-012527 Yeni Soyut ve Sanatsal Marka: - 2.149,00 TL  Yayında Durum: Stokta      Rene Magritte - The Son Of Man‏ Tablosu - Model 7 ürününü seç" [ref=e460]':
+                - cell "Rene Magritte - The Son Of Man‏ Tablosu - Model 7" [ref=e461]:
+                  - img "Rene Magritte - The Son Of Man‏ Tablosu - Model 7" [ref=e462]
+                - 'cell "Rene Magritte - The Son Of Man‏ Tablosu - Model 7 SKU: URN-012527 Yeni" [ref=e463]':
+                  - generic [ref=e464]:
+                    - generic [ref=e465]: Rene Magritte - The Son Of Man‏ Tablosu - Model 7
+                    - generic [ref=e466]: "SKU: URN-012527"
+                    - generic [ref=e468]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e469]':
+                  - generic [ref=e470]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "2.149,00 TL" [ref=e471]:
+                  - generic [ref=e472]: 2.149,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e473]':
+                  - generic [ref=e475]:
+                    - generic [ref=e476]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e477]:
+                  - generic [ref=e478]:
+                    - link "" [ref=e479] [cursor=pointer]:
+                      - /url: /Urun/Detay/12527
+                      - generic [ref=e480]: 
+                    - link "" [ref=e481] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12527
+                      - generic [ref=e482]: 
+                    - button "" [ref=e484] [cursor=pointer]:
+                      - generic [ref=e485]: 
+                    - button "" [ref=e487] [cursor=pointer]:
+                      - generic [ref=e488]: 
+                    - button "" [ref=e490] [cursor=pointer]:
+                      - generic [ref=e491]: 
+                - cell "Rene Magritte - The Son Of Man‏ Tablosu - Model 7 ürününü seç" [ref=e492]:
+                  - checkbox "Rene Magritte - The Son Of Man‏ Tablosu - Model 7 ürününü seç" [ref=e493]
+              - 'row "Rene Magritte - The Son Of Man‏ Tablosu - Model 2 Rene Magritte - The Son Of Man‏ Tablosu - Model 2 SKU: URN-012526 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Rene Magritte - The Son Of Man‏ Tablosu - Model 2 ürününü seç" [ref=e494]':
+                - cell "Rene Magritte - The Son Of Man‏ Tablosu - Model 2" [ref=e495]:
+                  - img "Rene Magritte - The Son Of Man‏ Tablosu - Model 2" [ref=e496]
+                - 'cell "Rene Magritte - The Son Of Man‏ Tablosu - Model 2 SKU: URN-012526 Yeni" [ref=e497]':
+                  - generic [ref=e498]:
+                    - generic [ref=e499]: Rene Magritte - The Son Of Man‏ Tablosu - Model 2
+                    - generic [ref=e500]: "SKU: URN-012526"
+                    - generic [ref=e502]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e503]':
+                  - generic [ref=e504]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e505]:
+                  - generic [ref=e506]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e507]':
+                  - generic [ref=e509]:
+                    - generic [ref=e510]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e511]:
+                  - generic [ref=e512]:
+                    - link "" [ref=e513] [cursor=pointer]:
+                      - /url: /Urun/Detay/12526
+                      - generic [ref=e514]: 
+                    - link "" [ref=e515] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12526
+                      - generic [ref=e516]: 
+                    - button "" [ref=e518] [cursor=pointer]:
+                      - generic [ref=e519]: 
+                    - button "" [ref=e521] [cursor=pointer]:
+                      - generic [ref=e522]: 
+                    - button "" [ref=e524] [cursor=pointer]:
+                      - generic [ref=e525]: 
+                - cell "Rene Magritte - The Son Of Man‏ Tablosu - Model 2 ürününü seç" [ref=e526]:
+                  - checkbox "Rene Magritte - The Son Of Man‏ Tablosu - Model 2 ürününü seç" [ref=e527]
+              - 'row "Rene Magritte - La Magie Noire‏ Tablosu - Model 2 Rene Magritte - La Magie Noire‏ Tablosu - Model 2 SKU: URN-012525 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Rene Magritte - La Magie Noire‏ Tablosu - Model 2 ürününü seç" [ref=e528]':
+                - cell "Rene Magritte - La Magie Noire‏ Tablosu - Model 2" [ref=e529]:
+                  - img "Rene Magritte - La Magie Noire‏ Tablosu - Model 2" [ref=e530]
+                - 'cell "Rene Magritte - La Magie Noire‏ Tablosu - Model 2 SKU: URN-012525 Yeni" [ref=e531]':
+                  - generic [ref=e532]:
+                    - generic [ref=e533]: Rene Magritte - La Magie Noire‏ Tablosu - Model 2
+                    - generic [ref=e534]: "SKU: URN-012525"
+                    - generic [ref=e536]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e537]':
+                  - generic [ref=e538]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e539]:
+                  - generic [ref=e540]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e541]':
+                  - generic [ref=e543]:
+                    - generic [ref=e544]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e545]:
+                  - generic [ref=e546]:
+                    - link "" [ref=e547] [cursor=pointer]:
+                      - /url: /Urun/Detay/12525
+                      - generic [ref=e548]: 
+                    - link "" [ref=e549] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12525
+                      - generic [ref=e550]: 
+                    - button "" [ref=e552] [cursor=pointer]:
+                      - generic [ref=e553]: 
+                    - button "" [ref=e555] [cursor=pointer]:
+                      - generic [ref=e556]: 
+                    - button "" [ref=e558] [cursor=pointer]:
+                      - generic [ref=e559]: 
+                - cell "Rene Magritte - La Magie Noire‏ Tablosu - Model 2 ürününü seç" [ref=e560]:
+                  - checkbox "Rene Magritte - La Magie Noire‏ Tablosu - Model 2 ürününü seç" [ref=e561]
+              - 'row "Giuseppe Arcimboldo - Figure II Tablosu - Model 2 Giuseppe Arcimboldo - Figure II Tablosu - Model 2 SKU: URN-012524 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Giuseppe Arcimboldo - Figure II Tablosu - Model 2 ürününü seç" [ref=e562]':
+                - cell "Giuseppe Arcimboldo - Figure II Tablosu - Model 2" [ref=e563]:
+                  - img "Giuseppe Arcimboldo - Figure II Tablosu - Model 2" [ref=e564]
+                - 'cell "Giuseppe Arcimboldo - Figure II Tablosu - Model 2 SKU: URN-012524 Yeni" [ref=e565]':
+                  - generic [ref=e566]:
+                    - generic [ref=e567]: Giuseppe Arcimboldo - Figure II Tablosu - Model 2
+                    - generic [ref=e568]: "SKU: URN-012524"
+                    - generic [ref=e570]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e571]':
+                  - generic [ref=e572]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e573]:
+                  - generic [ref=e574]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e575]':
+                  - generic [ref=e577]:
+                    - generic [ref=e578]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e579]:
+                  - generic [ref=e580]:
+                    - link "" [ref=e581] [cursor=pointer]:
+                      - /url: /Urun/Detay/12524
+                      - generic [ref=e582]: 
+                    - link "" [ref=e583] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12524
+                      - generic [ref=e584]: 
+                    - button "" [ref=e586] [cursor=pointer]:
+                      - generic [ref=e587]: 
+                    - button "" [ref=e589] [cursor=pointer]:
+                      - generic [ref=e590]: 
+                    - button "" [ref=e592] [cursor=pointer]:
+                      - generic [ref=e593]: 
+                - cell "Giuseppe Arcimboldo - Figure II Tablosu - Model 2 ürününü seç" [ref=e594]:
+                  - checkbox "Giuseppe Arcimboldo - Figure II Tablosu - Model 2 ürününü seç" [ref=e595]
+              - 'row "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2 Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2 SKU: URN-012523 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2 ürününü seç" [ref=e596]':
+                - cell "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2" [ref=e597]:
+                  - img "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2" [ref=e598]
+                - 'cell "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2 SKU: URN-012523 Yeni" [ref=e599]':
+                  - generic [ref=e600]:
+                    - generic [ref=e601]: Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2
+                    - generic [ref=e602]: "SKU: URN-012523"
+                    - generic [ref=e604]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e605]':
+                  - generic [ref=e606]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e607]:
+                  - generic [ref=e608]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e609]':
+                  - generic [ref=e611]:
+                    - generic [ref=e612]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e613]:
+                  - generic [ref=e614]:
+                    - link "" [ref=e615] [cursor=pointer]:
+                      - /url: /Urun/Detay/12523
+                      - generic [ref=e616]: 
+                    - link "" [ref=e617] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12523
+                      - generic [ref=e618]: 
+                    - button "" [ref=e620] [cursor=pointer]:
+                      - generic [ref=e621]: 
+                    - button "" [ref=e623] [cursor=pointer]:
+                      - generic [ref=e624]: 
+                    - button "" [ref=e626] [cursor=pointer]:
+                      - generic [ref=e627]: 
+                - cell "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2 ürününü seç" [ref=e628]:
+                  - checkbox "Giuseppe Arcimboldo - Summer 2 Tablosu - Model 2 ürününü seç" [ref=e629]
+              - 'row "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2 Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2 SKU: URN-012522 Yeni Soyut ve Sanatsal Marka: - 999,00 TL  Yayında Durum: Stokta      Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2 ürününü seç" [ref=e630]':
+                - cell "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2" [ref=e631]:
+                  - img "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2" [ref=e632]
+                - 'cell "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2 SKU: URN-012522 Yeni" [ref=e633]':
+                  - generic [ref=e634]:
+                    - generic [ref=e635]: Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2
+                    - generic [ref=e636]: "SKU: URN-012522"
+                    - generic [ref=e638]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e639]':
+                  - generic [ref=e640]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "999,00 TL" [ref=e641]:
+                  - generic [ref=e642]: 999,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e643]':
+                  - generic [ref=e645]:
+                    - generic [ref=e646]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e647]:
+                  - generic [ref=e648]:
+                    - link "" [ref=e649] [cursor=pointer]:
+                      - /url: /Urun/Detay/12522
+                      - generic [ref=e650]: 
+                    - link "" [ref=e651] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12522
+                      - generic [ref=e652]: 
+                    - button "" [ref=e654] [cursor=pointer]:
+                      - generic [ref=e655]: 
+                    - button "" [ref=e657] [cursor=pointer]:
+                      - generic [ref=e658]: 
+                    - button "" [ref=e660] [cursor=pointer]:
+                      - generic [ref=e661]: 
+                - cell "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2 ürününü seç" [ref=e662]:
+                  - checkbox "Giuseppe Arcimboldo - Vertumnus Tablosu - Model 2 ürününü seç" [ref=e663]
+              - 'row "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3 Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3 SKU: URN-012521 Yeni Soyut ve Sanatsal Marka: - 849,00 TL  Yayında Durum: Stokta      Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3 ürününü seç" [ref=e664]':
+                - cell "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3" [ref=e665]:
+                  - img "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3" [ref=e666]
+                - 'cell "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3 SKU: URN-012521 Yeni" [ref=e667]':
+                  - generic [ref=e668]:
+                    - generic [ref=e669]: Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3
+                    - generic [ref=e670]: "SKU: URN-012521"
+                    - generic [ref=e672]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e673]':
+                  - generic [ref=e674]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "849,00 TL" [ref=e675]:
+                  - generic [ref=e676]: 849,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e677]':
+                  - generic [ref=e679]:
+                    - generic [ref=e680]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e681]:
+                  - generic [ref=e682]:
+                    - link "" [ref=e683] [cursor=pointer]:
+                      - /url: /Urun/Detay/12521
+                      - generic [ref=e684]: 
+                    - link "" [ref=e685] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12521
+                      - generic [ref=e686]: 
+                    - button "" [ref=e688] [cursor=pointer]:
+                      - generic [ref=e689]: 
+                    - button "" [ref=e691] [cursor=pointer]:
+                      - generic [ref=e692]: 
+                    - button "" [ref=e694] [cursor=pointer]:
+                      - generic [ref=e695]: 
+                - cell "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3 ürününü seç" [ref=e696]:
+                  - checkbox "Rene Magritte - The Face Of Genius‏ II Tablosu - Model 3 ürününü seç" [ref=e697]
+              - 'row "Salvador Dali - Tiger Tablosu - Model 7 Salvador Dali - Tiger Tablosu - Model 7 SKU: URN-012520 Yeni Soyut ve Sanatsal Marka: - 2.149,00 TL  Yayında Durum: Stokta      Salvador Dali - Tiger Tablosu - Model 7 ürününü seç" [ref=e698]':
+                - cell "Salvador Dali - Tiger Tablosu - Model 7" [ref=e699]:
+                  - img "Salvador Dali - Tiger Tablosu - Model 7" [ref=e700]
+                - 'cell "Salvador Dali - Tiger Tablosu - Model 7 SKU: URN-012520 Yeni" [ref=e701]':
+                  - generic [ref=e702]:
+                    - generic [ref=e703]: Salvador Dali - Tiger Tablosu - Model 7
+                    - generic [ref=e704]: "SKU: URN-012520"
+                    - generic [ref=e706]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e707]':
+                  - generic [ref=e708]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "2.149,00 TL" [ref=e709]:
+                  - generic [ref=e710]: 2.149,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e711]':
+                  - generic [ref=e713]:
+                    - generic [ref=e714]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e715]:
+                  - generic [ref=e716]:
+                    - link "" [ref=e717] [cursor=pointer]:
+                      - /url: /Urun/Detay/12520
+                      - generic [ref=e718]: 
+                    - link "" [ref=e719] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12520
+                      - generic [ref=e720]: 
+                    - button "" [ref=e722] [cursor=pointer]:
+                      - generic [ref=e723]: 
+                    - button "" [ref=e725] [cursor=pointer]:
+                      - generic [ref=e726]: 
+                    - button "" [ref=e728] [cursor=pointer]:
+                      - generic [ref=e729]: 
+                - cell "Salvador Dali - Tiger Tablosu - Model 7 ürününü seç" [ref=e730]:
+                  - checkbox "Salvador Dali - Tiger Tablosu - Model 7 ürününü seç" [ref=e731]
+              - 'row "Salvador Dali - Tiger Tablosu - Model 3 Salvador Dali - Tiger Tablosu - Model 3 SKU: URN-012519 Yeni Soyut ve Sanatsal Marka: - 849,00 TL  Yayında Durum: Stokta      Salvador Dali - Tiger Tablosu - Model 3 ürününü seç" [ref=e732]':
+                - cell "Salvador Dali - Tiger Tablosu - Model 3" [ref=e733]:
+                  - img "Salvador Dali - Tiger Tablosu - Model 3" [ref=e734]
+                - 'cell "Salvador Dali - Tiger Tablosu - Model 3 SKU: URN-012519 Yeni" [ref=e735]':
+                  - generic [ref=e736]:
+                    - generic [ref=e737]: Salvador Dali - Tiger Tablosu - Model 3
+                    - generic [ref=e738]: "SKU: URN-012519"
+                    - generic [ref=e740]: Yeni
+                - 'cell "Soyut ve Sanatsal Marka: -" [ref=e741]':
+                  - generic [ref=e742]: Soyut ve Sanatsal
+                  - text: "Marka: -"
+                - cell "849,00 TL" [ref=e743]:
+                  - generic [ref=e744]: 849,00 TL
+                - 'cell " Yayında Durum: Stokta" [ref=e745]':
+                  - generic [ref=e747]:
+                    - generic [ref=e748]: 
+                    - text: Yayında
+                  - text: "Durum: Stokta"
+                - cell "    " [ref=e749]:
+                  - generic [ref=e750]:
+                    - link "" [ref=e751] [cursor=pointer]:
+                      - /url: /Urun/Detay/12519
+                      - generic [ref=e752]: 
+                    - link "" [ref=e753] [cursor=pointer]:
+                      - /url: /Admin/Urun/Duzenle/12519
+                      - generic [ref=e754]: 
+                    - button "" [ref=e756] [cursor=pointer]:
+                      - generic [ref=e757]: 
+                    - button "" [ref=e759] [cursor=pointer]:
+                      - generic [ref=e760]: 
+                    - button "" [ref=e762] [cursor=pointer]:
+                      - generic [ref=e763]: 
+                - cell "Salvador Dali - Tiger Tablosu - Model 3 ürününü seç" [ref=e764]:
+                  - checkbox "Salvador Dali - Tiger Tablosu - Model 3 ürününü seç" [ref=e765]
+          - generic [ref=e766]:
+            - generic [ref=e767]: Sayfa 1 / 600 - Bu sayfada 20 ürün gösteriliyor.
+            - generic [ref=e768]:
+              - generic [ref=e769]: "1"
+              - link "2" [ref=e770] [cursor=pointer]:
+                - /url: /Admin/Urun?page=2&pageSize=20
+              - link "3" [ref=e771] [cursor=pointer]:
+                - /url: /Admin/Urun?page=3&pageSize=20
+              - link "Sonraki" [ref=e772] [cursor=pointer]:
+                - /url: /Admin/Urun?page=2&pageSize=20
+                - generic [ref=e773]: 
+    - contentinfo [ref=e774]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

@@ -1,0 +1,341 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e6]:
+      - generic [ref=e7]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e8]:
+      - generic [ref=e9]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e10]:
+      - generic [ref=e11]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e12]:
+      - generic [ref=e13]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e18]:
+      - generic [ref=e19]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e22]:
+      - generic [ref=e23]: 
+      - text: WHATSAPP DESTEK
+    - generic [ref=e24]:
+      - generic [ref=e25]: 
+      - text: 500 TL ÜZERİ ÜCRETSİZ KARGO
+    - generic [ref=e26]:
+      - generic [ref=e27]: 
+      - text: VADE FARKSIZ 3 TAKSİT
+    - generic [ref=e28]:
+      - generic [ref=e29]: 
+      - text: GÜVENLİ ÖDEME
+    - generic [ref=e30]:
+      - generic [ref=e31]: 
+      - text: KREDİ KARTI İLE ÖDEME
+    - generic [ref=e32]:
+      - generic [ref=e33]: 
+      - text: HIZLI ÜRETİM
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: ÖZENLİ PAKETLEME
+    - generic [ref=e36]:
+      - generic [ref=e37]: 
+      - text: TÜRKİYE GENELİ KARGO
+    - generic [ref=e38]:
+      - generic [ref=e39]: 
+      - text: 14 GÜN KOLAY İADE
+    - generic [ref=e40]:
+      - generic [ref=e41]: 
+      - text: ÜRETİCİ FİRMA GÜVENCESİ
+    - generic [ref=e42]:
+      - generic [ref=e43]: 
+      - text: WHATSAPP DESTEK
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - link "Canvasia" [ref=e46] [cursor=pointer]:
+        - /url: /
+        - img "Canvasia" [ref=e47]
+      - generic [ref=e48]:
+        - button "Menüyü aç" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+        - button "Arama" [ref=e52] [cursor=pointer]:
+          - img [ref=e53]
+      - generic [ref=e55]:
+        - link "Hesabım" [ref=e56] [cursor=pointer]:
+          - /url: /Profil
+          - img [ref=e57]
+        - link "Favoriler" [ref=e59] [cursor=pointer]:
+          - /url: /Favori
+          - img [ref=e60]
+        - link "Sepet" [ref=e62] [cursor=pointer]:
+          - /url: /Sepet
+          - img [ref=e63]
+          - generic [ref=e65]: "1"
+      - text: 
+    - text:   
+  - main [ref=e66]:
+    - text:             
+    - generic [ref=e68]:
+      - link "Ana Sayfa" [ref=e69] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e70]: /
+      - link "Koleksiyon" [ref=e71] [cursor=pointer]:
+        - /url: /Urun
+      - generic [ref=e72]: /
+      - generic [ref=e73]: Salvador Dali - Le Sommeil Tablosu
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - img "Salvador Dali - Le Sommeil Tablosu" [ref=e78]
+            - button "" [ref=e79] [cursor=pointer]:
+              - generic [ref=e80]: 
+            - button "" [ref=e81] [cursor=pointer]:
+              - generic [ref=e82]: 
+            - generic [ref=e84]: 
+          - button "Salvador Dali - Le Sommeil Tablosu" [ref=e86] [cursor=pointer]:
+            - img "Salvador Dali - Le Sommeil Tablosu" [ref=e87]
+        - generic [ref=e88]:
+          - heading "Salvador Dali - Le Sommeil Tablosu" [level=1] [ref=e89]
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: 
+              - generic [ref=e93]: 
+              - generic [ref=e94]: 
+              - generic [ref=e95]: 
+              - generic [ref=e96]: 
+            - generic [ref=e97]: (0 değerlendirme)
+          - generic [ref=e99]: 999,00 TL
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]: 
+              - text: Siparişe özel hazırlanır
+            - generic [ref=e103]:
+              - generic [ref=e104]: 
+              - text: 3 iş günü içinde kargo
+            - generic [ref=e105]:
+              - generic [ref=e106]: 
+              - text: 3 iş günü üretim
+          - generic [ref=e107]:
+            - generic [ref=e108]: 
+            - text: 60cm x 40cm
+          - generic [ref=e109]:
+            - generic [ref=e110]: Paylaş
+            - link "Facebook'ta paylaş" [ref=e111] [cursor=pointer]:
+              - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.canvasia.com.tr%2FUrun%2FDetay%2F12538
+              - generic [ref=e112]: 
+            - link "Instagram'da aç" [ref=e113] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e114]: 
+            - link "WhatsApp ile paylaş" [ref=e115] [cursor=pointer]:
+              - /url: https://wa.me/?text=Salvador%20Dali%20-%20Le%20Sommeil%20Tablosu%20@encodedProductUrl
+              - generic [ref=e116]: 
+            - button " Linki Kopyala" [ref=e117] [cursor=pointer]:
+              - generic [ref=e118]: 
+              - text: Linki Kopyala
+          - generic [ref=e119]:
+            - generic [ref=e120]:
+              - paragraph [ref=e121]:
+                - generic [ref=e122]: 
+                - text: Üretim
+              - paragraph [ref=e123]: 3 iş günü
+            - generic [ref=e124]:
+              - paragraph [ref=e125]:
+                - generic [ref=e126]: 
+                - text: Paketleme
+              - paragraph [ref=e127]: Özenli ve korunaklı teslimat
+            - generic [ref=e128]:
+              - paragraph [ref=e129]:
+                - generic [ref=e130]: 
+                - text: Teslimat
+              - paragraph [ref=e131]: Tahmini 6 iş günü
+          - generic [ref=e132]:
+            - generic [ref=e133]: Ebat Seçiniz
+            - generic [ref=e134]:
+              - generic [ref=e135] [cursor=pointer]:
+                - radio "60cm x 40cm" [checked] [ref=e136]
+                - text: 60cm x 40cm
+              - generic [ref=e137] [cursor=pointer]:
+                - radio "90cm x 60cm" [ref=e138]
+                - text: 90cm x 60cm
+              - generic [ref=e139] [cursor=pointer]:
+                - radio "70cm x 100cm" [ref=e140]
+                - text: 70cm x 100cm
+          - generic [ref=e141]:
+            - generic [ref=e142]: Çerçeve Modeli Seçiniz
+            - generic [ref=e143]:
+              - generic "Çerçevesiz" [ref=e144] [cursor=pointer]:
+                - radio "Çerçevesiz Çerçevesiz" [ref=e145]
+                - img "Çerçevesiz" [ref=e147]
+                - text: Çerçevesiz
+              - generic "Siyah" [ref=e148] [cursor=pointer]:
+                - radio "Siyah Siyah" [ref=e149]
+                - img "Siyah" [ref=e151]
+                - text: Siyah
+              - generic "Beyaz" [ref=e152] [cursor=pointer]:
+                - radio "Beyaz Beyaz" [ref=e153]
+                - img "Beyaz" [ref=e155]
+                - text: Beyaz
+              - generic "Altın" [ref=e156] [cursor=pointer]:
+                - radio "Altın Altın" [ref=e157]
+                - img "Altın" [ref=e159]
+                - text: Altın
+              - generic "Gümüş" [ref=e160] [cursor=pointer]:
+                - radio "Gümüş Gümüş" [ref=e161]
+                - img "Gümüş" [ref=e163]
+                - text: Gümüş
+              - generic "Naturel" [ref=e164] [cursor=pointer]:
+                - radio "Naturel Naturel" [ref=e165]
+                - img "Naturel" [ref=e167]
+                - text: Naturel
+              - generic "Ceviz" [ref=e168] [cursor=pointer]:
+                - radio "Ceviz Ceviz" [ref=e169]
+                - img "Ceviz" [ref=e171]
+                - text: Ceviz
+          - generic [ref=e172]:
+            - generic [ref=e173]:
+              - generic [ref=e174]: Adet
+              - generic [ref=e175]:
+                - button "-" [ref=e176] [cursor=pointer]
+                - spinbutton [ref=e177]: "1"
+                - button "+" [ref=e178] [cursor=pointer]
+            - button " Sepete Ekle" [ref=e180] [cursor=pointer]:
+              - generic [ref=e181]: 
+              - text: Sepete Ekle
+            - button "" [ref=e182] [cursor=pointer]:
+              - generic [ref=e183]: 
+          - generic [ref=e184]:
+            - generic [ref=e185]:
+              - generic [ref=e186]: 
+              - paragraph [ref=e187]: Güvenli Ödeme
+              - paragraph [ref=e188]: 256-bit SSL
+            - generic [ref=e189]:
+              - generic [ref=e190]: 
+              - paragraph [ref=e191]: Ücretsiz Kargo
+              - paragraph [ref=e192]: 3 iş günü
+            - generic [ref=e193]:
+              - generic [ref=e194]: 
+              - paragraph [ref=e195]: İade Garantisi
+              - paragraph [ref=e196]: 14 gün içinde
+      - generic [ref=e198]:
+        - heading " Ürün Açıklaması" [level=2] [ref=e201]:
+          - generic [ref=e202]: 
+          - text: Ürün Açıklaması
+        - generic [ref=e203]:
+          - heading " Yorumlar" [level=2] [ref=e204]:
+            - generic [ref=e205]: 
+            - text: Yorumlar
+          - generic [ref=e206]:
+            - generic [ref=e207]: 
+            - heading "Henüz yorum yapılmamış" [level=5] [ref=e208]
+            - paragraph [ref=e209]: Bu ürün için ilk yorumu siz yapın!
+            - button "İlk Yorumu Yap" [ref=e210] [cursor=pointer]
+    - generic [ref=e212]:
+      - heading "Benzer Ürünler" [level=2] [ref=e214]
+      - generic [ref=e215]:
+        - link "Salvador Dali - Masturbator Tablosu Salvador Dali - Masturbator Tablosu 999,00 TL" [ref=e216] [cursor=pointer]:
+          - /url: /Urun/Detay/12539
+          - img "Salvador Dali - Masturbator Tablosu" [ref=e218]
+          - heading "Salvador Dali - Masturbator Tablosu" [level=3] [ref=e219]
+          - generic [ref=e221]: 999,00 TL
+        - link "Salvador Dali - Raphaelesque Tablosu - Model 7 Salvador Dali - Raphaelesque Tablosu - Model 7 2.149,00 TL" [ref=e222] [cursor=pointer]:
+          - /url: /Urun/Detay/12514
+          - img "Salvador Dali - Raphaelesque Tablosu - Model 7" [ref=e224]
+          - heading "Salvador Dali - Raphaelesque Tablosu - Model 7" [level=3] [ref=e225]
+          - generic [ref=e227]: 2.149,00 TL
+        - link "Rene Magritte - Bird Tablosu Rene Magritte - Bird Tablosu 999,00 TL" [ref=e228] [cursor=pointer]:
+          - /url: /Urun/Detay/12537
+          - img "Rene Magritte - Bird Tablosu" [ref=e230]
+          - heading "Rene Magritte - Bird Tablosu" [level=3] [ref=e231]
+          - generic [ref=e233]: 999,00 TL
+        - link "Bilge Ağaç Tablosu - Model 7 Bilge Ağaç Tablosu - Model 7 2.149,00 TL" [ref=e234] [cursor=pointer]:
+          - /url: /Urun/Detay/12476
+          - img "Bilge Ağaç Tablosu - Model 7" [ref=e236]
+          - heading "Bilge Ağaç Tablosu - Model 7" [level=3] [ref=e237]
+          - generic [ref=e239]: 2.149,00 TL
+        - link "Sürreal Ağaç Ev Tablosu - Model 3 Sürreal Ağaç Ev Tablosu - Model 3 849,00 TL" [ref=e240] [cursor=pointer]:
+          - /url: /Urun/Detay/12512
+          - img "Sürreal Ağaç Ev Tablosu - Model 3" [ref=e242]
+          - heading "Sürreal Ağaç Ev Tablosu - Model 3" [level=3] [ref=e243]
+          - generic [ref=e245]: 849,00 TL
+        - link "Rene Magritte - The Son Of Man‏ Tablosu - Model 7 Rene Magritte - The Son Of Man‏ Tablosu - Model 7 2.149,00 TL" [ref=e246] [cursor=pointer]:
+          - /url: /Urun/Detay/12527
+          - img "Rene Magritte - The Son Of Man‏ Tablosu - Model 7" [ref=e248]
+          - heading "Rene Magritte - The Son Of Man‏ Tablosu - Model 7" [level=3] [ref=e249]
+          - generic [ref=e251]: 2.149,00 TL
+  - contentinfo [ref=e252]:
+    - generic [ref=e254]:
+      - generic [ref=e255]:
+        - generic [ref=e257]: 
+        - generic [ref=e258]:
+          - generic [ref=e259]: Tüm Türkiye'ye
+          - generic [ref=e260]: Ücretsiz Kargo
+      - generic [ref=e261]:
+        - generic [ref=e263]: 
+        - generic [ref=e264]:
+          - generic [ref=e265]: "%100 Güvenli Alışveriş"
+          - generic [ref=e266]: 256 Bit SSL Sertifikası
+      - generic [ref=e267]:
+        - generic [ref=e269]: 
+        - generic [ref=e270]:
+          - generic [ref=e271]: Tüm Kredi Kartlarına
+          - generic [ref=e272]: 12 Taksit İmkanı
+    - generic [ref=e273]:
+      - generic [ref=e274]:
+        - generic [ref=e275]:
+          - heading "BÜLTENE ABONE OLUN" [level=3] [ref=e276]
+          - paragraph [ref=e277]: Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere Canvasia'dan en son haberleri almak için bültenimize abone olun.
+          - generic [ref=e278]:
+            - textbox "E-posta Adresi" [ref=e279]
+            - button "ABONE OL" [ref=e280] [cursor=pointer]
+        - generic [ref=e281]:
+          - heading "KURUMSAL" [level=4] [ref=e282]
+          - list [ref=e283]:
+            - listitem [ref=e284]:
+              - link "Hakkımızda" [ref=e285] [cursor=pointer]:
+                - /url: /Kurumsal/Hakkimizda
+            - listitem [ref=e286]:
+              - link "İletişim" [ref=e287] [cursor=pointer]:
+                - /url: /Kurumsal/Iletisim
+            - listitem [ref=e288]:
+              - link "Koleksiyonlar" [ref=e289] [cursor=pointer]:
+                - /url: /Urun
+            - listitem [ref=e290]:
+              - link "Gizlilik Politikası" [ref=e291] [cursor=pointer]:
+                - /url: /Sozlesmeler/Gizlilik
+            - listitem [ref=e292]:
+              - link "Mesafeli Satış Sözleşmesi" [ref=e293] [cursor=pointer]:
+                - /url: /Sozlesmeler/MesafeliSatis
+          - generic [ref=e294]:
+            - link "Instagram" [ref=e295] [cursor=pointer]:
+              - /url: https://www.instagram.com/canvasia.store
+              - generic [ref=e296]: 
+            - link "WhatsApp" [ref=e297] [cursor=pointer]:
+              - /url: https://wa.me/905432212320
+              - generic [ref=e298]: 
+      - generic [ref=e299]:
+        - paragraph [ref=e301]: © 2026 CANVASİA — Tüm hakları saklıdır.
+        - generic [ref=e302]:
+          - link "Gizlilik Politikası" [ref=e303] [cursor=pointer]:
+            - /url: /Kurumsal/Gizlilik
+          - text: "|"
+          - link "Kullanım Koşulları" [ref=e304] [cursor=pointer]:
+            - /url: /Kurumsal/KullaniciSozlesmesi
+          - text: "|"
+          - link "İade ve Değişim" [ref=e305] [cursor=pointer]:
+            - /url: /Kurumsal/IadeKosullari
+    - img "Ödeme Yöntemleri" [ref=e308]
+  - link "WhatsApp ile iletişim" [ref=e309] [cursor=pointer]:
+    - /url: https://wa.me/905432212320
+    - img [ref=e310]
+    - generic [ref=e312]: WhatsApp

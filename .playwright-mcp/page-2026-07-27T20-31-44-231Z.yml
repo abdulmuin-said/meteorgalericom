@@ -1,0 +1,215 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+        - text:     
+      - generic [ref=e14]:
+        - button " Ürün Yönetimi" [ref=e15] [cursor=pointer]:
+          - generic [ref=e16]: 
+          - text: Ürün Yönetimi
+        - text:  +     
+      - generic [ref=e17]:
+        - button " Mağaza İçeriği 10" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e20]: "10"
+        - text:       
+      - link " Üyeler" [ref=e21] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e22]: 
+        - text: Üyeler
+      - generic [ref=e23]:
+        - button " Raporlar" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e26] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e27]: 
+        - text: Ayarlar
+    - generic [ref=e28]:
+      - text: 
+      - generic [ref=e29]:
+        - button "Harun OK Admin H" [ref=e30] [cursor=pointer]:
+          - generic [ref=e31]:
+            - strong [ref=e32]: Harun OK
+            - text: Admin
+          - generic [ref=e33]: H
+        - text:  
+  - generic [ref=e34]:
+    - main [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - heading "Ürün Düzenle" [level=1] [ref=e39]
+            - paragraph [ref=e40]: Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna
+          - generic [ref=e41]:
+            - link " Ürünlere Dön" [ref=e42] [cursor=pointer]:
+              - /url: /Admin/Urun
+              - generic [ref=e43]: 
+              - text: Ürünlere Dön
+            - link " Sitede Gör" [ref=e44] [cursor=pointer]:
+              - /url: /Urun/Detay/kisiye-ozel-instagram-tasarimli-duvar-aynasi-isimli-ve-fotografli-ayna-12595
+              - generic [ref=e45]: 
+              - text: Sitede Gör
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - generic [ref=e50]: 
+                - text: Yayında
+              - generic [ref=e51]: Yeni Ürün
+              - generic [ref=e52]: "ID: #12595"
+            - button " Değişiklikleri Kaydet" [ref=e53] [cursor=pointer]:
+              - generic [ref=e54]: 
+              - text: Değişiklikleri Kaydet
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - tablist "Ürün düzenleme bölümleri" [ref=e57]:
+                - button " Temel" [ref=e58] [cursor=pointer]:
+                  - generic [ref=e59]: 
+                  - text: Temel
+                - button " Fiyat & Operasyon" [ref=e60] [cursor=pointer]:
+                  - generic [ref=e61]: 
+                  - text: Fiyat & Operasyon
+                - button " İçerik" [ref=e62] [cursor=pointer]:
+                  - generic [ref=e63]: 
+                  - text: İçerik
+                - button " Özellikler" [ref=e64] [cursor=pointer]:
+                  - generic [ref=e65]: 
+                  - text: Özellikler
+                - button " Varyasyonlar" [ref=e66] [cursor=pointer]:
+                  - generic [ref=e67]: 
+                  - text: Varyasyonlar
+                - button " Görseller" [ref=e68] [cursor=pointer]:
+                  - generic [ref=e69]: 
+                  - text: Görseller
+              - generic [ref=e71]:
+                - generic [ref=e72]: Temel Ürün Bilgisi
+                - generic [ref=e74]:
+                  - generic [ref=e75]: "Bu bölüm ürünün katalogda nasıl görüneceğini belirler. Zorunlu alanlar: ürün adı, kategori ve fiyat."
+                  - generic [ref=e76]:
+                    - generic [ref=e77]:
+                      - generic [ref=e78]: Ürün Adı
+                      - textbox [ref=e79]: Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna
+                    - generic [ref=e80]:
+                      - generic [ref=e81]: Kısa Ad
+                      - textbox "Panel içinde kısa kullanım adı" [ref=e82]
+                    - generic [ref=e83]:
+                      - generic [ref=e84]: Kategori
+                      - combobox [ref=e85]:
+                        - option "Kanvas Tablo"
+                        - option "-- Atatürk Köşesi"
+                        - option "-- İslami Sanat & Hat"
+                        - option "-- Dünya Klasikleri"
+                        - option "-- Modern & Soyut"
+                        - option "-- Şehir Manzaraları"
+                        - option "-- Parçalı Tablolar"
+                        - option "-- Dini ve Hat Sanatı"
+                        - option "-- Manzara Temalı"
+                        - option "-- Atatürk ve Türkiye"
+                        - option "-- Şehir ve Mimari"
+                        - option "-- Soyut ve Sanatsal"
+                        - option "-- Osmanlı ve Tuğra"
+                        - option "-- Ünlüler ve Sinema"
+                        - option "-- Hayvanlar Alemi"
+                        - option "-- Araba ve Araçlar"
+                        - option "-- Çocuk Odası"
+                        - option "-- Nü Sanat"
+                        - option "-- Klasik Eserler"
+                        - option "-- Yiyecek ve İçecek"
+                        - option "-- Farklı Tasarımlar"
+                        - option "-- Aşk ve Romantizm"
+                        - option "-- Kadın Temalı"
+                        - option "-- Taraftar Köşesi"
+                        - option "-- Adalet ve Hukuk"
+                        - option "-- Çiçekli ve Dekoratif"
+                        - option "-- Panoramik Tablolar"
+                        - option "Cam Tablo"
+                        - option "-- Atatürk Cam Tablolar"
+                        - option "-- Çiçekli Dekoratif Cam Tablolar"
+                        - option "-- Çocuk Odası Cam Tablolar"
+                        - option "-- Dini, Hat Temalı Cam Tablolar"
+                        - option "-- Farklı Tablolar"
+                        - option "-- Hayvan Temalı Cam Tablolar"
+                        - option "-- Manzara Cam Tablolar"
+                        - option "-- Modern Cam Tablolar"
+                        - option "-- Mutfak Cam Tablolar"
+                        - option "-- Osmanlı ve Tuğra Temalı Cam Tablo"
+                        - option "-- Soyut Cam Tablolar"
+                        - option "-- Spor ve Taraftar Temalı Cam Tablo"
+                        - option "Duvar Kağıdı"
+                        - option "Cam Kesme Tahtası"
+                        - option "Ayna" [selected]
+                        - option "Baskılı Halı"
+                        - option "Ahşap Dekorasyon"
+                        - option "Mobilya Aksesuar"
+                        - option "Lightbox"
+                        - option "Afiş"
+                    - generic [ref=e86]:
+                      - generic [ref=e87]: Marka
+                      - textbox [ref=e88]: MeteorGaleri
+                    - generic [ref=e89]:
+                      - generic [ref=e90]: SKU
+                      - textbox [ref=e91]: CUSTOM-01
+                    - generic [ref=e92]:
+                      - generic [ref=e93]: Barkod
+                      - textbox [ref=e94]
+                    - generic [ref=e95]:
+                      - generic [ref=e96]: Slug
+                      - textbox [ref=e97]: kisiye-ozel-instagram-tasarimli-duvar-aynasi-isimli-ve-fotografli-ayna
+                    - generic [ref=e98]:
+                      - generic [ref=e99]: SEO URL
+                      - textbox [ref=e100]: kisiye-ozel-instagram-tasarimli-duvar-aynasi-isimli-ve-fotografli-ayna
+                    - generic [ref=e101]:
+                      - generic [ref=e102]: Etiketler
+                      - textbox "modern, salon, dekorasyon" [ref=e103]
+                    - generic [ref=e104]:
+                      - generic [ref=e105]: Sıra
+                      - spinbutton [ref=e106]: "0"
+              - text:  +                        
+              - generic [ref=e107]:
+                - link "İptal" [ref=e108] [cursor=pointer]:
+                  - /url: /Admin/Urun
+                - button " Kaydet" [ref=e109] [cursor=pointer]:
+                  - generic [ref=e110]: 
+                  - text: Kaydet
+            - complementary [ref=e111]:
+              - generic [ref=e112]:
+                - generic [ref=e113]: Ürün Özeti
+                - generic [ref=e115]:
+                  - img "Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna ana görseli" [ref=e118]
+                  - generic [ref=e119]: Kişiye Özel Instagram Tasarımlı Duvar Aynası – İsimli ve Fotoğraflı Ayna
+                  - generic [ref=e120]: "SKU: CUSTOM-01"
+                  - generic [ref=e121]:
+                    - generic [ref=e122]:
+                      - generic [ref=e123]: Etkin Fiyat
+                      - strong [ref=e124]: 1.399,90 TL
+                    - generic [ref=e125]:
+                      - generic [ref=e126]: Satış
+                      - strong [ref=e127]: "0"
+                    - generic [ref=e128]:
+                      - generic [ref=e129]: Görüntülenme
+                      - strong [ref=e130]: "231"
+                    - generic [ref=e131]:
+                      - generic [ref=e132]: Favori
+                      - strong [ref=e133]: "0"
+                    - generic [ref=e134]:
+                      - generic [ref=e135]: Varyasyon
+                      - strong [ref=e136]: "24"
+                    - generic [ref=e137]:
+                      - generic [ref=e138]: Medya
+                      - strong [ref=e139]: "0"
+    - contentinfo [ref=e140]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

@@ -1,0 +1,125 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:      
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e41]:
+          - heading "İade Talepleri" [level=1] [ref=e42]
+          - paragraph [ref=e43]: Müşteri, sipariş ve ürün bilgileriyle iade taleplerini inceleyin.
+        - table [ref=e46]:
+          - rowgroup [ref=e47]:
+            - row "Talep Sipariş Müşteri Ürünler İade Nedeni Durum İşlem" [ref=e48]:
+              - columnheader "Talep" [ref=e49]
+              - columnheader "Sipariş" [ref=e50]
+              - columnheader "Müşteri" [ref=e51]
+              - columnheader "Ürünler" [ref=e52]
+              - columnheader "İade Nedeni" [ref=e53]
+              - columnheader "Durum" [ref=e54]
+              - columnheader "İşlem" [ref=e55]
+          - rowgroup [ref=e56]:
+            - row "#4 10.05.2026 21:06 20260504193234725 04.05.2026 - 6.966,38 TL abdulmuin said 05313919428 admin@canvasia.com Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 1 kalem / 2 adet Beklentimi Karşılamadı beğenmedim  Onaylandı  İncele" [ref=e57]:
+              - cell "#4 10.05.2026 21:06" [ref=e58]:
+                - generic [ref=e59]: "#4"
+                - text: 10.05.2026 21:06
+              - cell "20260504193234725 04.05.2026 - 6.966,38 TL" [ref=e60]:
+                - generic [ref=e61]: "20260504193234725"
+                - text: 04.05.2026 - 6.966,38 TL
+              - cell "abdulmuin said 05313919428 admin@canvasia.com" [ref=e62]:
+                - generic [ref=e63]: abdulmuin said
+                - generic [ref=e64]: "05313919428"
+                - text: admin@canvasia.com
+              - cell "Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo 1 kalem / 2 adet" [ref=e65]:
+                - generic [ref=e66]: Atatürk, Kalpaklı Atatürk Resmi, İstiklal Marşı ve Gençliğe Hitabe 5 Parçalı Kanvas Tablo
+                - text: 1 kalem / 2 adet
+              - cell "Beklentimi Karşılamadı beğenmedim" [ref=e67]:
+                - generic [ref=e68]: Beklentimi Karşılamadı
+                - text: beğenmedim
+              - cell " Onaylandı" [ref=e69]:
+                - generic [ref=e70]:
+                  - generic [ref=e71]: 
+                  - text: Onaylandı
+              - cell " İncele" [ref=e72]:
+                - link " İncele" [ref=e73] [cursor=pointer]:
+                  - /url: /Admin/Iade/Detay/4
+                  - generic [ref=e74]: 
+                  - text: İncele
+            - row "#3 10.05.2026 11:41 20260509073632615170 09.05.2026 - 1.642,00 TL abdulmuin said 05313919428 admin@canvasia.com Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo 1 kalem / 1 adet Yanlış Ürün yanlış ürün gönderildi  Reddedildi  İncele" [ref=e75]:
+              - cell "#3 10.05.2026 11:41" [ref=e76]:
+                - generic [ref=e77]: "#3"
+                - text: 10.05.2026 11:41
+              - cell "20260509073632615170 09.05.2026 - 1.642,00 TL" [ref=e78]:
+                - generic [ref=e79]: "20260509073632615170"
+                - text: 09.05.2026 - 1.642,00 TL
+              - cell "abdulmuin said 05313919428 admin@canvasia.com" [ref=e80]:
+                - generic [ref=e81]: abdulmuin said
+                - generic [ref=e82]: "05313919428"
+                - text: admin@canvasia.com
+              - cell "Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo 1 kalem / 1 adet" [ref=e83]:
+                - generic [ref=e84]: Dalgalanan Türk Bayrağı 5 Parça Kanvas Tablo
+                - text: 1 kalem / 1 adet
+              - cell "Yanlış Ürün yanlış ürün gönderildi" [ref=e85]:
+                - generic [ref=e86]: Yanlış Ürün
+                - text: yanlış ürün gönderildi
+              - cell " Reddedildi" [ref=e87]:
+                - generic [ref=e88]:
+                  - generic [ref=e89]: 
+                  - text: Reddedildi
+              - cell " İncele" [ref=e90]:
+                - link " İncele" [ref=e91] [cursor=pointer]:
+                  - /url: /Admin/Iade/Detay/3
+                  - generic [ref=e92]: 
+                  - text: İncele
+    - contentinfo [ref=e93]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

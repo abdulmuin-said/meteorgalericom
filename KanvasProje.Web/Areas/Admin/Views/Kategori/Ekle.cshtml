@@ -1,0 +1,228 @@
+@model KanvasProje.Core.Varliklar.Kategori
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Yeni Kategori";
+}
+
+<style>
+    .category-edit-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    .category-aside {
+        position: sticky;
+        top: 84px;
+        display: grid;
+        gap: 16px;
+    }
+
+    .category-preview {
+        min-height: 180px;
+        border-radius: var(--ca-radius);
+        border: 1px solid var(--ca-border);
+        overflow: hidden;
+        background: linear-gradient(135deg, #f7f4ee, #ffffff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .category-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .category-preview-placeholder {
+        text-align: center;
+        color: var(--ca-text-muted);
+    }
+
+    .category-preview-placeholder i {
+        display: block;
+        font-size: 2rem;
+        margin-bottom: 8px;
+        color: var(--ca-primary);
+    }
+
+    .category-save-bar {
+        position: sticky;
+        bottom: 0;
+        z-index: 20;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 14px;
+        margin-top: 18px;
+        background: linear-gradient(180deg, rgba(247, 244, 238, 0), #f7f4ee 34%);
+    }
+
+    @@media (max-width: 1180px) {
+        .category-edit-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .category-aside {
+            position: static;
+            grid-row: 1;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Yeni Kategori</h1>
+            <p class="ca-page-subtitle">Ana kategori veya alt kategori oluşturun; mağaza menüsü otomatik güncellenir.</p>
+        </div>
+        <a href="/Admin/Kategori" class="ca-btn ca-btn-outline">
+            <i class="fas fa-arrow-left"></i> Kategorilere Dön
+        </a>
+    </div>
+
+    <form asp-action="Ekle" method="post">
+        @Html.AntiForgeryToken()
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        }
+
+        <div class="category-edit-layout">
+            <div>
+                <div class="ca-card mb-3">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Temel Bilgiler</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="row g-3">
+                            <div class="col-lg-8">
+                                <label class="ca-label">Kategori Adı</label>
+                                <input asp-for="Ad" class="ca-input" placeholder="Örn: Cam Tablo" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="ca-label">Üst Kategori</label>
+                                <select asp-for="ParentKategoriId" asp-items="ViewBag.ParentKategoriler" class="ca-select"></select>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="ca-label">Slug</label>
+                                <input asp-for="Slug" class="ca-input" placeholder="cam-tablo" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="ca-label">Sıra</label>
+                                <input asp-for="Sira" class="ca-input" type="number" min="0" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="ca-label">Ürün Sıralama Tipi</label>
+                                <select asp-for="UrunSiralamaTipi" class="ca-select">
+                                    <option value="manual">Elle Sıralama</option>
+                                    <option value="newest">En Yeniler</option>
+                                    <option value="popular">Popüler</option>
+                                    <option value="price_asc">Fiyat Artan</option>
+                                    <option value="price_desc">Fiyat Azalan</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Kısa Açıklama</label>
+                                <textarea asp-for="KisaAciklama" class="ca-textarea" rows="2" placeholder="Listeleme ve SEO için kısa açıklama"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="ca-label">Kategori Açıklaması</label>
+                                <textarea asp-for="Aciklama" class="ca-textarea" rows="4" placeholder="Kategori sayfasında kullanılacak açıklama"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-card mb-3">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Görsel, Vitrin ve SEO</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <label class="ca-label">Kategori Görseli URL</label>
+                                <input asp-for="GorselUrl" class="ca-input" id="categoryImageUrl" onchange="updateCategoryPreview()" />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">Kategori Banner URL</label>
+                                <input asp-for="BannerUrl" class="ca-input" />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">SEO Başlığı</label>
+                                <input asp-for="SeoTitle" class="ca-input" />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">SEO Açıklaması</label>
+                                <input asp-for="SeoDescription" class="ca-input" />
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">Üst Metin</label>
+                                <textarea asp-for="UstMetin" class="ca-textarea" rows="4"></textarea>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="ca-label">Alt Metin</label>
+                                <textarea asp-for="AltMetin" class="ca-textarea" rows="4"></textarea>
+                            </div>
+                            <div class="col-lg-8">
+                                <label class="ca-label">Kampanya Etiketi</label>
+                                <input asp-for="KampanyaEtiketi" class="ca-input" placeholder="Yeni sezon, çok satan, özel seri" />
+                            </div>
+                            <div class="col-lg-4 d-flex align-items-end">
+                                <label class="form-check form-switch w-100" style="padding:14px 16px; background:var(--ca-bg); border-radius:var(--ca-radius); border:1px solid var(--ca-border);">
+                                    <input asp-for="AktifMi" class="form-check-input" type="checkbox" style="width:3em; height:1.5em;">
+                                    <span class="form-check-label ms-2">Kategori yayında olsun</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-save-bar">
+                    <a href="/Admin/Kategori" class="ca-btn ca-btn-outline">Vazgeç</a>
+                    <button type="submit" class="ca-btn ca-btn-primary">
+                        <i class="fas fa-save"></i> Kategoriyi Kaydet
+                    </button>
+                </div>
+            </div>
+
+            <aside class="category-aside">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Kullanım Notu</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="category-preview mb-3" id="categoryPreview">
+                            <div class="category-preview-placeholder">
+                                <i class="fas fa-folder-plus"></i>
+                                Görsel önizleme
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0">
+                            Ana kategori oluşturmak için üst kategoriyi “Ana kategori” bırakın. Alt kategori oluşturmak için örneğin “Kanvas Tablo” ana kategorisini seçin.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </form>
+</div>
+
+<script>
+    function updateCategoryPreview() {
+        const input = document.getElementById('categoryImageUrl');
+        const preview = document.getElementById('categoryPreview');
+        if (!input || !preview) return;
+
+        if (!input.value) {
+            preview.innerHTML = '<div class="category-preview-placeholder"><i class="fas fa-folder-plus"></i>Görsel önizleme</div>';
+            return;
+        }
+
+        preview.innerHTML = `<img src="${input.value}" alt="Kategori görseli" onerror="this.closest('.category-preview').innerHTML='<div class=&quot;category-preview-placeholder&quot;><i class=&quot;fas fa-image&quot;></i>Görsel yüklenemedi</div>';">`;
+    }
+</script>

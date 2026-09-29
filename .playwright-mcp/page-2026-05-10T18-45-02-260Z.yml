@@ -1,0 +1,209 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+      - /url: /Admin/Home
+      - img "Canvasia" [ref=e6]
+    - navigation "Admin ana menü" [ref=e7]:
+      - link " Panel" [ref=e8] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e9]: 
+        - text: Panel
+      - generic [ref=e10]:
+        - button " Sipariş Yönetimi 4" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e13]: "4"
+        - text:     
+      - generic [ref=e14]:
+        - button " Ürün Yönetimi" [ref=e15] [cursor=pointer]:
+          - generic [ref=e16]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e17]:
+        - button " Mağaza İçeriği 10" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e20]: "10"
+        - text:     
+      - link " Üyeler" [ref=e21] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e22]: 
+        - text: Üyeler
+      - generic [ref=e23]:
+        - button " Raporlar" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e26] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e27]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e28] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e29]: 
+        - text: Yardım
+    - generic [ref=e30]:
+      - text: 
+      - generic [ref=e31]:
+        - button "H" [ref=e32] [cursor=pointer]:
+          - generic [ref=e33]: H
+        - text:  
+  - generic [ref=e34]:
+    - main [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - heading "Sipariş Detayı 20260510180820251367" [level=1] [ref=e39]
+            - paragraph [ref=e40]: "10 Mayıs 2026 18:08 tarihinde oluşturuldu. Durum: Sipariş Alındı"
+          - generic [ref=e41]:
+            - link " Listeye Dön" [ref=e42] [cursor=pointer]:
+              - /url: /Admin/Siparis
+              - generic [ref=e43]: 
+              - text: Listeye Dön
+            - button " Kargo Etiketi Yazdır" [ref=e44] [cursor=pointer]:
+              - generic [ref=e45]: 
+              - text: Kargo Etiketi Yazdır
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - generic [ref=e50]: 
+            - generic [ref=e51]:
+              - generic [ref=e52]: Sipariş Alındı
+              - generic [ref=e53]: Oluşturuldu
+          - generic [ref=e54]:
+            - generic [ref=e56]: 
+            - generic [ref=e57]:
+              - generic [ref=e58]: Hazırlanıyor
+              - generic [ref=e59]: Baskı & Paket
+          - generic [ref=e60]:
+            - generic [ref=e62]: 
+            - generic [ref=e63]:
+              - generic [ref=e64]: Paketleniyor
+              - generic [ref=e65]: Korunaklı paket
+          - generic [ref=e66]:
+            - generic [ref=e68]: 
+            - generic [ref=e69]:
+              - generic [ref=e70]: Kargoya Verildi
+              - generic [ref=e71]: Yolda
+          - generic [ref=e72]:
+            - generic [ref=e74]: 
+            - generic [ref=e75]:
+              - generic [ref=e76]: Teslim Edildi
+              - generic [ref=e77]: Tamamlandı
+        - generic [ref=e78]:
+          - generic [ref=e79]:
+            - generic [ref=e80]:
+              - generic [ref=e81]:
+                - generic [ref=e82]:
+                  - generic [ref=e83]: 
+                  - text: Ürünler
+                - generic [ref=e84]: 1 adet
+              - table [ref=e86]:
+                - rowgroup [ref=e87]:
+                  - row "Ürün Varyasyon Adet Tutar" [ref=e88]:
+                    - columnheader "Ürün" [ref=e89]
+                    - columnheader "Varyasyon" [ref=e90]
+                    - columnheader "Adet" [ref=e91]
+                    - columnheader "Tutar" [ref=e92]
+                - rowgroup [ref=e93]:
+                  - 'row "Kabe Kapısı Tablosu - Model 3 Kabe Kapısı Tablosu - Model 3 70cm x 70cm Çerçeve: Beyaz  Not: test ürün notu 70cm x 70cm SKU: URN-009170-VAR-034366 1 1.699,00 TL" [ref=e94]':
+                    - 'cell "Kabe Kapısı Tablosu - Model 3 Kabe Kapısı Tablosu - Model 3 70cm x 70cm Çerçeve: Beyaz  Not: test ürün notu" [ref=e95]':
+                      - generic [ref=e96]:
+                        - img "Kabe Kapısı Tablosu - Model 3" [ref=e97]
+                        - generic [ref=e98]:
+                          - generic [ref=e99]: Kabe Kapısı Tablosu - Model 3
+                          - text: 70cm x 70cm
+                          - generic [ref=e100]: "Çerçeve: Beyaz"
+                          - generic [ref=e101]:
+                            - generic [ref=e102]: 
+                            - strong [ref=e103]: "Not:"
+                            - text: test ürün notu
+                    - 'cell "70cm x 70cm SKU: URN-009170-VAR-034366" [ref=e104]':
+                      - generic [ref=e105]: 70cm x 70cm
+                      - generic [ref=e106]: "SKU: URN-009170-VAR-034366"
+                    - cell "1" [ref=e107]
+                    - cell "1.699,00 TL" [ref=e108]
+            - generic [ref=e109]:
+              - generic [ref=e111]:
+                - generic [ref=e112]: 
+                - text: Ödeme ve Tutar
+              - generic [ref=e114]:
+                - generic [ref=e115]:
+                  - generic [ref=e116]: Ara Toplam
+                  - generic [ref=e117]: 1.359,20 TL
+                - generic [ref=e118]:
+                  - generic [ref=e119]: İndirim
+                  - generic [ref=e120]: 339,80 TL
+                - generic [ref=e121]:
+                  - generic [ref=e122]: Genel Toplam
+                  - generic [ref=e123]: 1.359,20 TL
+          - generic [ref=e124]:
+            - generic [ref=e125]:
+              - generic [ref=e127]:
+                - generic [ref=e128]: 
+                - text: Operasyon
+              - generic [ref=e129]:
+                - generic [ref=e130]:
+                  - generic [ref=e131]:
+                    - generic [ref=e132]: Sipariş Durumu
+                    - combobox [ref=e133]:
+                      - option "Sipariş Alındı" [selected]
+                      - option "Üretim Hazırlanıyor"
+                      - option "Paketleniyor"
+                      - option "Kargoya Verildi"
+                      - option "Teslim Edildi"
+                      - option "İptal Edildi"
+                  - generic [ref=e134]:
+                    - generic [ref=e135]: Kargo Firması
+                    - combobox [ref=e136]:
+                      - option "Aras Kargo" [selected]
+                  - generic [ref=e137]:
+                    - generic [ref=e138]: Kargo Takip No
+                    - textbox "Takip numarası girildiğinde etikette görünür" [ref=e139]
+                  - button " Operasyonu Güncelle" [ref=e140] [cursor=pointer]:
+                    - generic [ref=e141]: 
+                    - text: Operasyonu Güncelle
+                - button " Siparişi İptal Et" [ref=e143] [cursor=pointer]:
+                  - generic [ref=e144]: 
+                  - text: Siparişi İptal Et
+            - generic [ref=e145]:
+              - generic [ref=e147]:
+                - generic [ref=e148]: 
+                - text: Kargo Özeti
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - img "Aras Kargo" [ref=e151]
+                  - generic [ref=e152]:
+                    - generic [ref=e153]: Aras Kargo
+                    - generic [ref=e154]: Varsayılan kargo firması
+                - generic [ref=e155]: Takip No
+                - generic [ref=e156]: Henüz girilmedi
+                - link " Kargo Takip Sayfası" [ref=e157] [cursor=pointer]:
+                  - /url: https://www.araskargo.com.tr/tr/online-islemler/kargo-takip
+                  - generic [ref=e158]: 
+                  - text: Kargo Takip Sayfası
+            - generic [ref=e159]:
+              - generic [ref=e160]:
+                - generic [ref=e161]:
+                  - generic [ref=e162]: 
+                  - text: Elektronik Fatura
+                - generic [ref=e163]: Yok
+              - generic [ref=e165]:
+                - generic [ref=e166]: 
+                - paragraph [ref=e167]: Henüz fatura yüklenmemiş
+                - button " Fatura Yükle" [ref=e168] [cursor=pointer]:
+                  - generic [ref=e169]: 
+                  - text: Fatura Yükle
+            - generic [ref=e170]:
+              - generic [ref=e172]:
+                - generic [ref=e173]: 
+                - text: Müşteri
+              - generic [ref=e174]:
+                - heading "abdulmuin said" [level=5] [ref=e175]
+                - generic [ref=e176]: admin@canvasia.com
+                - generic [ref=e177]: "05313919428"
+                - generic [ref=e178]: Teslimat Adresi
+                - paragraph [ref=e179]:
+                  - text: "inönü mah. halil rıfat paşa cad no : 11 kastamonu/merkez"
+                  - strong [ref=e180]: merkez / Kastamonu
+      - text: 
+    - contentinfo [ref=e181]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

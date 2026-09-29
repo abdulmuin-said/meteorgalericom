@@ -1,0 +1,295 @@
+﻿@model KanvasProje.Core.Models.HomePageSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Ana Sayfa Ayarları";
+}
+
+<style>
+    .ca-home-settings {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    .ca-slider-list {
+        display: grid;
+        gap: 16px;
+    }
+
+    .ca-slide-editor {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .ca-slide-preview {
+        min-height: 230px;
+        background: #FDF6E3;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ca-slide-preview img,
+    .ca-slide-preview video {
+        width: 100%;
+        height: 100%;
+        min-height: 230px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .ca-slide-empty {
+        min-height: 230px;
+        display: grid;
+        place-items: center;
+        color: var(--ca-text-muted);
+        background: repeating-linear-gradient(45deg, #f7f2e8, #f7f2e8 12px, #efe7d8 12px, #efe7d8 24px);
+    }
+
+    .ca-slide-badge {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        border-radius: 999px;
+        background: rgba(49, 53, 17, .88);
+        color: #fff;
+        padding: 7px 12px;
+        font-size: .78rem;
+        font-weight: 700;
+    }
+
+    .ca-help-panel {
+        position: sticky;
+        top: 92px;
+    }
+
+    .ca-help-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .ca-help-list li {
+        display: flex;
+        gap: 10px;
+        color: var(--ca-text-muted);
+        font-size: .9rem;
+        line-height: 1.45;
+    }
+
+    .ca-help-list i {
+        color: var(--ca-primary);
+        margin-top: 3px;
+    }
+
+    @@media (max-width: 1100px) {
+        .ca-home-settings {
+            grid-template-columns: 1fr;
+        }
+
+        .ca-help-panel {
+            position: static;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Ana Sayfa Ayarları</h1>
+            <p class="ca-page-subtitle">Canlı sitede görünen üst slider görsel ve videolarını buradan yönetin. Video varsa slayt video bitince değişir.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="/" target="_blank" class="ca-btn ca-btn-outline">
+                <i class="fas fa-arrow-up-right-from-square"></i> Siteyi Görüntüle
+            </a>
+            <button type="submit" form="homeSettingsForm" class="ca-btn ca-btn-primary">
+                <i class="fas fa-save"></i> Değişiklikleri Kaydet
+            </button>
+        </div>
+    </div>
+
+    @if (TempData["Basari"] != null)
+    {
+        <div class="ca-alert ca-alert-success mb-3">
+            <i class="fas fa-check-circle"></i>
+            <span>@TempData["Basari"]</span>
+        </div>
+    }
+
+    @if (TempData["Hata"] != null)
+    {
+        <div class="ca-alert ca-alert-danger mb-3">
+            <i class="fas fa-triangle-exclamation"></i>
+            <span>@TempData["Hata"]</span>
+        </div>
+    }
+
+    <form method="post" asp-antiforgery="true" enctype="multipart/form-data" id="homeSettingsForm">
+        <div class="ca-home-settings">
+            <div class="ca-card">
+                <div class="ca-card-header">
+                    <span class="ca-card-title"><i class="fas fa-images me-2"></i>Ana Sayfa Slider</span>
+                    <div class="form-check form-switch m-0">
+                        <input asp-for="Hero.Enabled" class="form-check-input" />
+                    </div>
+                </div>
+                <div class="ca-card-body">
+                    <input type="hidden" asp-for="Hero.SortOrder" />
+                    <input type="hidden" asp-for="Hero.Title" />
+                    <input type="hidden" asp-for="Hero.Subtitle" />
+                    <input type="hidden" asp-for="Hero.PrimaryButtonText" />
+                    <input type="hidden" asp-for="Hero.PrimaryButtonUrl" />
+                    <input type="hidden" asp-for="Hero.SecondaryButtonText" />
+                    <input type="hidden" asp-for="Hero.SecondaryButtonUrl" />
+
+                    <div class="ca-slider-list">
+                        @for (var i = 0; i < Model.Hero.DesktopSlides.Count; i++)
+                        {
+                            <div class="ca-slide-editor">
+                                <div class="row g-0">
+                                    <div class="col-lg-5">
+                                        <div class="ca-slide-preview">
+                                            @if (!string.IsNullOrWhiteSpace(Model.Hero.DesktopSlides[i].VideoUrl))
+                                            {
+                                                <video src="@Model.Hero.DesktopSlides[i].VideoUrl"
+                                                       poster="@Model.Hero.DesktopSlides[i].ImageUrl"
+                                                       muted
+                                                       playsinline
+                                                       preload="metadata"></video>
+                                            }
+                                            else if (!string.IsNullOrWhiteSpace(Model.Hero.DesktopSlides[i].ImageUrl))
+                                            {
+                                                <img src="@Model.Hero.DesktopSlides[i].ImageUrl" alt="Slider @(i + 1)" loading="lazy" decoding="async" />
+                                            }
+                                            else
+                                            {
+                                                <div class="ca-slide-empty">
+                                                    <div class="text-center">
+                                                        <i class="fas fa-image fa-2x mb-2"></i>
+                                                        <div>Görsel bekleniyor</div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            <span class="ca-slide-badge">Slider @(i + 1)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="p-4">
+                                            <input type="hidden" asp-for="Hero.DesktopSlides[i].Id" />
+                                            <input type="hidden" asp-for="Hero.DesktopSlides[i].ImageUrl" />
+                                            <input type="hidden" asp-for="Hero.DesktopSlides[i].SortOrder" value="@i" />
+
+                                            <div class="row g-3">
+                                                <div class="col-12">
+                                                    <label class="ca-label">Slider Görseli</label>
+                                                    <input type="file" name="SlideImage_@i" class="ca-input" accept="image/*" />
+                                                    <div class="small text-muted mt-1">Video yüklenemezse veya tarayıcı videoyu oynatamazsa bu görsel yedek olarak kullanılır.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="ca-label">Video URL</label>
+                                                    <input asp-for="Hero.DesktopSlides[i].VideoUrl" class="ca-input" placeholder="/video/slider1.mp4" />
+                                                    <div class="small text-muted mt-1">Örn: /video/slider1.mp4 veya ileride /video/slider1.webm.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="ca-label">Video Dosyası Yükle</label>
+                                                    <input type="file" name="SlideVideo_@i" class="ca-input" accept="video/mp4,video/webm,video/ogg" />
+                                                    <div class="small text-muted mt-1">Yeni video seçilmezse mevcut video korunur.</div>
+                                                </div>
+                                                <input type="hidden" asp-for="Hero.DesktopSlides[i].Subtitle" />
+                                                <input type="hidden" asp-for="Hero.DesktopSlides[i].ButtonText" />
+                                                <input type="hidden" asp-for="Hero.DesktopSlides[i].Title" />
+                                                <input type="hidden" asp-for="Hero.DesktopSlides[i].Description" />
+                                                <input type="hidden" asp-for="Hero.DesktopSlides[i].ButtonUrl" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <aside class="ca-card ca-help-panel">
+                <div class="ca-card-header">
+                    <span class="ca-card-title"><i class="fas fa-circle-info me-2"></i>Kullanım Notları</span>
+                </div>
+                <div class="ca-card-body">
+                    <ul class="ca-help-list">
+                        <li><i class="fas fa-check"></i><span>Video URL doluysa ana sayfada görsel yerine video oynatılır.</span></li>
+                        <li><i class="fas fa-check"></i><span>Videolar sessiz, controlsuz ve arka plan gibi oynar; video bitince sonraki slayta geçer.</span></li>
+                        <li><i class="fas fa-check"></i><span>Görsel alanı video için poster/yedek görsel olarak kullanılır.</span></li>
+                        <li><i class="fas fa-check"></i><span>MP4 çalışır; dosya boyutu için yayına almadan önce WebM alternatifi kullanabilirsiniz.</span></li>
+                    </ul>
+                    <div class="mt-4">
+                        <button type="submit" class="ca-btn ca-btn-primary w-100">
+                            <i class="fas fa-save"></i> Kaydet
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <input type="hidden" asp-for="Categories.Enabled" />
+        <input type="hidden" asp-for="Categories.SortOrder" />
+        <input type="hidden" asp-for="Categories.Title" />
+        <input type="hidden" asp-for="Categories.Subtitle" />
+
+        <input type="hidden" asp-for="FeaturedProducts.Enabled" />
+        <input type="hidden" asp-for="FeaturedProducts.SortOrder" />
+        <input type="hidden" asp-for="FeaturedProducts.Title" />
+        <input type="hidden" asp-for="FeaturedProducts.Subtitle" />
+        <input type="hidden" asp-for="FeaturedProducts.ViewAllText" />
+        <input type="hidden" asp-for="FeaturedProducts.ViewAllUrl" />
+
+        <input type="hidden" asp-for="BestSellers.Enabled" />
+        <input type="hidden" asp-for="BestSellers.SortOrder" />
+        <input type="hidden" asp-for="BestSellers.Title" />
+        <input type="hidden" asp-for="BestSellers.Subtitle" />
+        <input type="hidden" asp-for="BestSellers.ViewAllText" />
+        <input type="hidden" asp-for="BestSellers.ViewAllUrl" />
+
+        <input type="hidden" asp-for="Deals.Enabled" />
+        <input type="hidden" asp-for="Deals.SortOrder" />
+        <input type="hidden" asp-for="Deals.Title" />
+        <input type="hidden" asp-for="Deals.Subtitle" />
+        <input type="hidden" asp-for="Deals.ViewAllText" />
+        <input type="hidden" asp-for="Deals.ViewAllUrl" />
+
+        <input type="hidden" asp-for="Features.Enabled" />
+        <input type="hidden" asp-for="Features.SortOrder" />
+        <input type="hidden" asp-for="Features.Title" />
+        <input type="hidden" asp-for="Features.Subtitle" />
+        @for (var i = 0; i < Model.Features.Items.Count; i++)
+        {
+            <input type="hidden" asp-for="Features.Items[i].Icon" />
+            <input type="hidden" asp-for="Features.Items[i].Title" />
+            <input type="hidden" asp-for="Features.Items[i].Description" />
+        }
+
+        <input type="hidden" asp-for="Newsletter.Enabled" />
+        <input type="hidden" asp-for="Newsletter.SortOrder" />
+        <input type="hidden" asp-for="Newsletter.Title" />
+        <input type="hidden" asp-for="Newsletter.Subtitle" />
+        <input type="hidden" asp-for="Newsletter.PlaceholderText" />
+        <input type="hidden" asp-for="Newsletter.ButtonText" />
+
+        @for (var i = 0; i < Model.Hero.MobileSlides.Count; i++)
+        {
+            <input type="hidden" asp-for="Hero.MobileSlides[i].Id" />
+            <input type="hidden" asp-for="Hero.MobileSlides[i].ImageUrl" />
+            <input type="hidden" asp-for="Hero.MobileSlides[i].VideoUrl" />
+            <input type="hidden" asp-for="Hero.MobileSlides[i].Title" />
+            <input type="hidden" asp-for="Hero.MobileSlides[i].Subtitle" />
+            <input type="hidden" asp-for="Hero.MobileSlides[i].Description" />
+            <input type="hidden" asp-for="Hero.MobileSlides[i].ButtonText" />
+            <input type="hidden" asp-for="Hero.MobileSlides[i].ButtonUrl" />
+            <input type="hidden" asp-for="Hero.MobileSlides[i].SortOrder" />
+        }
+    </form>
+</div>

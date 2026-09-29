@@ -1,0 +1,761 @@
+﻿@model KanvasProje.Core.Varliklar.Urun
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Ürün Düzenle";
+    var detailUrl = "/Urun/Detay/" + (string.IsNullOrWhiteSpace(Model.Slug) ? Model.Id.ToString() : Model.Slug + "-" + Model.Id);
+    var variantCount = Model.UrunSecenek?.Count(x => !x.SilindiMi) ?? 0;
+    var mediaCount = Model.UrunResimleri?.Count(x => !x.SilindiMi) ?? 0;
+    var previewItems = new List<(string Type, string Url, string Poster, string Alt)>();
+
+    if (!string.IsNullOrWhiteSpace(Model.AnaGorselUrl))
+    {
+        previewItems.Add(("image", Model.AnaGorselUrl, Model.AnaGorselUrl, $"{Model.Baslik} ana görseli"));
+    }
+
+    foreach (var media in (Model.UrunResimleri ?? Enumerable.Empty<KanvasProje.Core.Varliklar.UrunResim>())
+        .Where(x => !x.SilindiMi)
+        .OrderByDescending(x => x.VarsayilanMi)
+        .ThenBy(x => x.Sira)
+        .ThenBy(x => x.Id))
+    {
+        var mediaUrl = media.VideoMu
+            ? (string.IsNullOrWhiteSpace(media.ResimYolu) ? media.VideoUrl : media.ResimYolu)
+            : (string.IsNullOrWhiteSpace(media.ResimYolu) ? media.EtkinPosterYolu : media.ResimYolu);
+
+        if (string.IsNullOrWhiteSpace(mediaUrl))
+        {
+            continue;
+        }
+
+        previewItems.Add((
+            media.VideoMu ? "video" : "image",
+            mediaUrl,
+            media.EtkinPosterYolu ?? string.Empty,
+            string.IsNullOrWhiteSpace(media.AltMetin) ? Model.Baslik : media.AltMetin));
+    }
+
+    previewItems = previewItems
+        .GroupBy(x => $"{x.Type}|{x.Url}", StringComparer.OrdinalIgnoreCase)
+        .Select(x => x.First())
+        .ToList();
+}
+
+<style>
+    .ca-product-editor {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    .ca-product-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 18px;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: #fff;
+        margin-bottom: 16px;
+    }
+
+    .ca-product-status {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .ca-editor-tabs {
+        position: sticky;
+        top: 62px;
+        z-index: 20;
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        padding: 8px;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        background: rgba(255, 255, 255, .96);
+        backdrop-filter: blur(12px);
+        margin-bottom: 16px;
+    }
+
+    .ca-editor-tab {
+        border: none;
+        background: transparent;
+        color: var(--ca-text-secondary);
+        min-height: 36px;
+        padding: 0 12px;
+        border-radius: var(--ca-radius-sm);
+        font-size: .84rem;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .ca-editor-tab:hover {
+        background: var(--ca-surface-hover);
+        color: var(--ca-primary);
+    }
+
+    .ca-editor-tab.active {
+        background: var(--ca-primary);
+        color: #fff;
+    }
+
+    .ca-editor-tab.active i {
+        color: var(--ca-accent);
+    }
+
+    .ca-editor-panel {
+        display: none;
+    }
+
+    .ca-editor-panel.active {
+        display: block;
+    }
+
+    .ca-section-note {
+        border: 1px solid var(--ca-border);
+        border-left: 3px solid var(--ca-accent);
+        border-radius: var(--ca-radius);
+        padding: 12px 14px;
+        background: #fffaf0;
+        color: var(--ca-text-secondary);
+        font-size: .86rem;
+        margin-bottom: 18px;
+    }
+
+    .ca-product-aside {
+        position: sticky;
+        top: 84px;
+        display: grid;
+        gap: 16px;
+    }
+
+    .ca-product-preview {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .ca-product-preview img,
+    .ca-product-preview video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .ca-preview-slide {
+        display: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .ca-preview-slide.active {
+        display: block;
+    }
+
+    .ca-preview-nav {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(255, 255, 255, .65);
+        border-radius: 50%;
+        background: rgba(28, 28, 24, .58);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-50%);
+        transition: background .2s ease, transform .2s ease;
+    }
+
+    .ca-preview-nav:hover {
+        background: rgba(28, 28, 24, .82);
+        transform: translateY(-50%) scale(1.04);
+    }
+
+    .ca-preview-prev {
+        left: 10px;
+    }
+
+    .ca-preview-next {
+        right: 10px;
+    }
+
+    .ca-preview-counter {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        z-index: 2;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(28, 28, 24, .72);
+        color: #fff;
+        font-size: .72rem;
+        font-weight: 700;
+    }
+
+    .ca-preview-video-chip {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        z-index: 2;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(181, 135, 53, .92);
+        color: #fff;
+        font-size: .72rem;
+        font-weight: 700;
+    }
+
+    .ca-mini-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .ca-mini-stat {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius-sm);
+        padding: 10px;
+        background: #fff;
+    }
+
+    .ca-mini-stat span {
+        display: block;
+        color: var(--ca-text-muted);
+        font-size: .72rem;
+    }
+
+    .ca-mini-stat strong {
+        color: var(--ca-text);
+        font-size: 1rem;
+    }
+
+    .ca-switch-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .ca-switch-tile {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        padding: 12px;
+        background: #fff;
+        min-height: 72px;
+    }
+
+    .ca-save-rail {
+        position: sticky;
+        bottom: 0;
+        z-index: 30;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 14px 0 0;
+        margin-top: 18px;
+        background: linear-gradient(180deg, rgba(247, 244, 238, 0), #f7f4ee 34%);
+    }
+
+    @@media (max-width: 1180px) {
+        .ca-product-editor {
+            grid-template-columns: 1fr;
+        }
+
+        .ca-product-aside {
+            position: static;
+            grid-row: 1;
+        }
+
+        .ca-switch-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .ca-editor-tabs {
+            top: 112px;
+            overflow-x: auto;
+            flex-wrap: nowrap;
+        }
+
+        .ca-editor-tab {
+            white-space: nowrap;
+        }
+
+        .ca-switch-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container-fluid ca-fade-in">
+    <div class="ca-page-header">
+        <div>
+            <h1 class="ca-page-title">Ürün Düzenle</h1>
+            <p class="ca-page-subtitle">@Model.Baslik</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="/Admin/Urun" class="ca-btn ca-btn-outline">
+                <i class="fas fa-arrow-left"></i> Ürünlere Dön
+            </a>
+            <a href="@detailUrl" target="_blank" class="ca-btn ca-btn-outline">
+                <i class="fas fa-arrow-up-right-from-square"></i> Sitede Gör
+            </a>
+        </div>
+    </div>
+
+    <form asp-action="Duzenle" method="post" enctype="multipart/form-data" id="productEditForm">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="OlusturulmaTarihi" />
+        <input type="hidden" asp-for="SilindiMi" />
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="All" class="alert alert-danger"></div>
+        }
+
+        <div class="ca-product-toolbar">
+            <div class="ca-product-status">
+                <span class="ca-badge @(Model.AktifMi ? "ca-badge-success" : "ca-badge-danger")">
+                    <i class="fas @(Model.AktifMi ? "fa-check-circle" : "fa-circle-pause")"></i>
+                    @(Model.AktifMi ? "Yayında" : "Pasif")
+                </span>
+                @if (Model.OneCikanMi)
+                {
+                    <span class="ca-badge ca-badge-warning">Öne Çıkan</span>
+                }
+                @if (Model.YeniUrunMu)
+                {
+                    <span class="ca-badge ca-badge-success">Yeni Ürün</span>
+                }
+                @if (Model.KampanyaliMi)
+                {
+                    <span class="ca-badge ca-badge-danger">Kampanya</span>
+                }
+                <span class="small text-muted">ID: #@Model.Id</span>
+            </div>
+            <button type="submit" class="ca-btn ca-btn-primary">
+                <i class="fas fa-save"></i> Değişiklikleri Kaydet
+            </button>
+        </div>
+
+        <div class="ca-product-editor">
+            <div>
+                <div class="ca-editor-tabs" role="tablist" aria-label="Ürün düzenleme bölümleri">
+                    <button type="button" class="ca-editor-tab active" data-product-tab="temel"><i class="fas fa-box-open"></i> Temel</button>
+                    <button type="button" class="ca-editor-tab" data-product-tab="fiyat"><i class="fas fa-tags"></i> Fiyat & Operasyon</button>
+                    <button type="button" class="ca-editor-tab" data-product-tab="icerik"><i class="fas fa-align-left"></i> İçerik</button>
+                    <button type="button" class="ca-editor-tab" data-product-tab="ozellik"><i class="fas fa-sliders"></i> Özellikler</button>
+                    <button type="button" class="ca-editor-tab" data-product-tab="varyasyon"><i class="fas fa-layer-group"></i> Varyasyonlar</button>
+                    <button type="button" class="ca-editor-tab" data-product-tab="medya"><i class="fas fa-images"></i> Görseller</button>
+                </div>
+
+                <section class="ca-editor-panel active" data-product-panel="temel">
+                    <div class="ca-card">
+                        <div class="ca-card-header">
+                            <span class="ca-card-title">Temel Ürün Bilgisi</span>
+                        </div>
+                        <div class="ca-card-body">
+                            <div class="ca-section-note">
+                                Bu bölüm ürünün katalogda nasıl görüneceğini belirler. Zorunlu alanlar: ürün adı, kategori ve fiyat.
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-lg-8">
+                                    <label class="ca-label">Ürün Adı</label>
+                                    <input asp-for="Baslik" class="ca-input" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Kısa Ad</label>
+                                    <input asp-for="KisaAd" class="ca-input" placeholder="Panel içinde kısa kullanım adı" />
+                                </div>
+                                <div class="col-lg-5">
+                                    <label class="ca-label">Kategori</label>
+                                    <select asp-for="KategoriId" asp-items="ViewBag.Kategoriler" class="ca-select"></select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Marka</label>
+                                    <input asp-for="Marka" class="ca-input" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <label class="ca-label">SKU</label>
+                                    <input asp-for="SKU" class="ca-input" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <label class="ca-label">Barkod</label>
+                                    <input asp-for="Barkod" class="ca-input" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Slug</label>
+                                    <input asp-for="Slug" class="ca-input" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="ca-label">SEO URL</label>
+                                    <input asp-for="UrlYolu" class="ca-input" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="ca-label">Etiketler</label>
+                                    <input asp-for="Etiketler" class="ca-input" placeholder="modern, salon, dekorasyon" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Sıra</label>
+                                    <input asp-for="Sira" class="ca-input" type="number" min="0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ca-editor-panel" data-product-panel="fiyat">
+                    <div class="ca-card">
+                        <div class="ca-card-header">
+                            <span class="ca-card-title">Fiyat, Üretim ve Vitrin Durumu</span>
+                        </div>
+                        <div class="ca-card-body">
+                            <div class="row g-3">
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Satış Fiyatı</label>
+                                    <input asp-for="Fiyat" class="ca-input" type="number" step="0.01" min="0" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">İndirimli Fiyat</label>
+                                    <input asp-for="IndirimliFiyat" class="ca-input" type="number" step="0.01" min="0" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Maliyet</label>
+                                    <input asp-for="Maliyet" class="ca-input" type="number" step="0.01" min="0" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">KDV Oranı</label>
+                                    <input asp-for="KdvOrani" class="ca-input" type="number" step="0.01" min="0" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Stok Durumu</label>
+                                    <select asp-for="StokDurumu" class="ca-select">
+                                        <option value="Stokta">Stokta</option>
+                                        <option value="Tukendi">Tükendi</option>
+                                        <option value="OnSiparis">Ön Sipariş</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Minimum Sipariş</label>
+                                    <input asp-for="MinSiparisAdedi" class="ca-input" type="number" min="1" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Maksimum Sipariş</label>
+                                    <input asp-for="MaxSiparisAdedi" class="ca-input" type="number" min="1" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Üretim Süresi (Gün)</label>
+                                    <input asp-for="UretimSuresiGun" class="ca-input" type="number" min="0" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Kargoya Veriliş (Gün)</label>
+                                    <input asp-for="KargoyaVerilisSuresiGun" class="ca-input" type="number" min="0" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="ca-label">Tahmini Teslim (Gün)</label>
+                                    <input asp-for="TahminiTeslimSuresiGun" class="ca-input" type="number" min="0" />
+                                </div>
+                            </div>
+
+                            <hr style="border-color:var(--ca-border); margin:22px 0;">
+
+                            <div class="ca-switch-grid">
+                                <label class="ca-switch-tile form-check form-switch">
+                                    <input asp-for="AktifMi" class="form-check-input" type="checkbox">
+                                    <span class="form-check-label fw-semibold">Yayında</span>
+                                    <div class="small text-muted mt-1">Ürün sitede görünür.</div>
+                                </label>
+                                <label class="ca-switch-tile form-check form-switch">
+                                    <input asp-for="OneCikanMi" class="form-check-input" type="checkbox">
+                                    <span class="form-check-label fw-semibold">Öne Çıkan</span>
+                                    <div class="small text-muted mt-1">Vitrin alanlarında öne çıkar.</div>
+                                </label>
+                                <label class="ca-switch-tile form-check form-switch">
+                                    <input asp-for="YeniUrunMu" class="form-check-input" type="checkbox">
+                                    <span class="form-check-label fw-semibold">Yeni Ürün</span>
+                                    <div class="small text-muted mt-1">Yeni ürün etiketi alır.</div>
+                                </label>
+                                <label class="ca-switch-tile form-check form-switch">
+                                    <input asp-for="KampanyaliMi" class="form-check-input" type="checkbox">
+                                    <span class="form-check-label fw-semibold">Kampanyalı</span>
+                                    <div class="small text-muted mt-1">Kampanya vurgusu gösterir.</div>
+                                </label>
+                                <label class="ca-switch-tile form-check form-switch">
+                                    <input asp-for="AnaSayfadaGoster" class="form-check-input" type="checkbox">
+                                    <span class="form-check-label fw-semibold">Ana Sayfa</span>
+                                    <div class="small text-muted mt-1">Ana sayfa listelerine dahil olur.</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ca-editor-panel" data-product-panel="icerik">
+                    <div class="ca-card">
+                        <div class="ca-card-header">
+                            <span class="ca-card-title">Satış Metinleri ve Ürün İçeriği</span>
+                        </div>
+                        <div class="ca-card-body">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="ca-label">Kısa Açıklama</label>
+                                    <textarea asp-for="KisaAciklama" class="ca-textarea" rows="3" placeholder="Liste ve ürün detayında hızlı okunan satış cümlesi"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label class="ca-label">Detaylı Açıklama</label>
+                                    <textarea asp-for="Aciklama" class="ca-textarea" rows="7" placeholder="Ürünün kullanım alanı, kalite ve dekorasyon faydalarını anlatın"></textarea>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <div class="border rounded p-3" style="background:#fafaf8;">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <i class="fas fa-search me-2 text-muted"></i>
+                                            <span class="fw-bold">SEO Bilgileri</span>
+                                        </div>
+                                        <div class="small text-muted mb-3">Arama motorları için özelleştirilmiş meta etiketleri. Boş bırakırsanız otomatik ürün bilgileri kullanılır.</div>
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label class="ca-label">SEO Başlığı</label>
+                                                <input asp-for="SeoTitle" class="ca-input" placeholder="Örn: Modern Soyut Kanvas Tablo - METEORGALERİ" maxlength="70" />
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="ca-label">SEO Açıklaması</label>
+                                                <textarea asp-for="SeoDescription" class="ca-textarea" rows="2" placeholder="Örn: Premium kalite modern soyut kanvas tablo. Salon ve ofis dekorasyonu için ideal seçim." maxlength="160"></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="ca-label">SEO Anahtar Kelimeler</label>
+                                                <input asp-for="SeoKeywords" class="ca-input" placeholder="kanvas tablo, modern dekorasyon, duvar sanatı" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="ca-label">Teknik Özellikler</label>
+                                    <textarea asp-for="TeknikOzellikler" class="ca-textarea" rows="5"></textarea>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="ca-label">Malzeme Bilgisi</label>
+                                    <textarea asp-for="MalzemeBilgisi" class="ca-textarea" rows="5"></textarea>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="ca-label">Bakım Talimatı</label>
+                                    <textarea asp-for="BakimTalimati" class="ca-textarea" rows="4"></textarea>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="ca-label">Paketleme Bilgisi</label>
+                                    <textarea asp-for="PaketlemeBilgisi" class="ca-textarea" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ca-editor-panel" data-product-panel="ozellik">
+                    @await Html.PartialAsync("_FeatureEditor", Model)
+                </section>
+
+                <section class="ca-editor-panel" data-product-panel="varyasyon">
+                    @await Html.PartialAsync("_VariantEditor", Model.UrunSecenek?.ToList() ?? new System.Collections.Generic.List<KanvasProje.Core.Varliklar.UrunSecenek>())
+                </section>
+
+                <section class="ca-editor-panel" data-product-panel="medya">
+                    <div class="ca-card">
+                        <div class="ca-card-header">
+                            <span class="ca-card-title">Ana Görsel ve Klasik Galeri</span>
+                        </div>
+                        <div class="ca-card-body">
+                            <div class="row g-3">
+                                <div class="col-lg-7">
+                                    <label class="ca-label">Ana Görsel URL</label>
+                                    <input asp-for="AnaGorselUrl" id="mainImgUrl" class="ca-input" onchange="updatePreviewFromUrl('mainImgUrl','mainImgPreview')" />
+                                </div>
+                                <div class="col-lg-5">
+                                    <label class="ca-label">Yeni Ana Görsel Yükle</label>
+                                    <input type="file" name="anaResimDosyasi" form="productMediaUploadForm" class="ca-input" accept=".jpg,.jpeg,.png,.webp" onchange="previewFile(event,'mainImgPreview')" />
+                                </div>
+                                <div class="col-12">
+                                    <label class="ca-label">Galeri Görselleri</label>
+                                    <input type="file" name="galeriDosyalari" form="productMediaUploadForm" multiple class="ca-input" accept=".jpg,.jpeg,.png,.webp" />
+                                    <small class="ca-text-muted">PNG dosyaları otomatik olarak WebP'ye dönüştürülür. Her dosya en fazla 30 MB olabilir.</small>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" form="productMediaUploadForm" class="ca-btn ca-btn-primary">
+                                        <i class="fas fa-cloud-arrow-up"></i> Seçilen Görselleri Yükle
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mt-3" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:10px;">
+                                @foreach (var r in Model.UrunResimleri ?? Enumerable.Empty<KanvasProje.Core.Varliklar.UrunResim>())
+                                {
+                                    <div style="position:relative; aspect-ratio:1/1; border-radius:var(--ca-radius); overflow:hidden; border:1px solid var(--ca-border); background:#fff;">
+                                        <img src="@r.ResimYolu" alt="@Model.Baslik galeri görseli" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" />
+                                        <a href="/Admin/Urun/ResimSil/@r.Id" title="Görseli sil" style="position:absolute; top:6px; right:6px; width:24px; height:24px; border-radius:50%; background:rgba(239,68,68,.92); color:#fff; display:flex; align-items:center; justify-content:center; font-size:.72rem; text-decoration:none;">×</a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="ca-save-rail">
+                    <a href="/Admin/Urun" class="ca-btn ca-btn-outline">İptal</a>
+                    <button type="submit" class="ca-btn ca-btn-primary">
+                        <i class="fas fa-save"></i> Kaydet
+                    </button>
+                </div>
+            </div>
+
+            <aside class="ca-product-aside">
+                <div class="ca-card">
+                    <div class="ca-card-header">
+                        <span class="ca-card-title">Ürün Özeti</span>
+                    </div>
+                    <div class="ca-card-body">
+                        <div class="ca-product-preview mb-3">
+                            @if (previewItems.Any())
+                            {
+                                for (var i = 0; i < previewItems.Count; i++)
+                                {
+                                    var item = previewItems[i];
+                                    <div class="ca-preview-slide @(i == 0 ? "active" : string.Empty)" data-preview-slide>
+                                        @if (item.Type == "video")
+                                        {
+                                            <video src="@item.Url" poster="@item.Poster" preload="metadata" controls playsinline></video>
+                                            <span class="ca-preview-video-chip"><i class="fas fa-play"></i> Video</span>
+                                        }
+                                        else
+                                        {
+                                            <img src="@item.Url" id="@(i == 0 ? "mainImgPreview" : null)" alt="@item.Alt" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/800x800/f1ede7/8a8880?text=Gorsel';">
+                                        }
+                                    </div>
+                                }
+
+                                @if (previewItems.Count > 1)
+                                {
+                                    <button type="button" class="ca-preview-nav ca-preview-prev" data-preview-prev aria-label="Önceki medya">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button type="button" class="ca-preview-nav ca-preview-next" data-preview-next aria-label="Sonraki medya">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                    <span class="ca-preview-counter" data-preview-counter>1 / @previewItems.Count</span>
+                                }
+                            }
+                            else
+                            {
+                                <img src="https://placehold.co/800x800/f1ede7/8a8880?text=Gorsel" id="mainImgPreview" alt="@Model.Baslik ana görseli" loading="lazy" decoding="async">
+                            }
+                        </div>
+                        <div class="fw-bold">@Model.Baslik</div>
+                        <div class="small text-muted mb-3">SKU: @(string.IsNullOrWhiteSpace(Model.SKU) ? "-" : Model.SKU)</div>
+                        <div class="ca-mini-stat-grid">
+                            <div class="ca-mini-stat"><span>Etkin Fiyat</span><strong>@Model.EtkinFiyat.ToString("N2") TL</strong></div>
+                            <div class="ca-mini-stat"><span>Satış</span><strong>@Model.SatisSayisi</strong></div>
+                            <div class="ca-mini-stat"><span>Görüntülenme</span><strong>@Model.GoruntulenmeSayisi</strong></div>
+                            <div class="ca-mini-stat"><span>Favori</span><strong>@Model.FavoriSayisi</strong></div>
+                            <div class="ca-mini-stat"><span>Varyasyon</span><strong>@variantCount</strong></div>
+                            <div class="ca-mini-stat"><span>Medya</span><strong>@mediaCount</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </form>
+
+    <form id="productMediaUploadForm" asp-action="GorselYukle" method="post" enctype="multipart/form-data" class="d-none">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+    </form>
+
+</div>
+
+<script>
+    (function () {
+        const tabs = document.querySelectorAll('[data-product-tab]');
+        const panels = document.querySelectorAll('[data-product-panel]');
+        const storageKey = 'METEORGALERİ-product-editor-tab';
+
+        function activate(name) {
+            tabs.forEach((tab) => tab.classList.toggle('active', tab.dataset.productTab === name));
+            panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.productPanel === name));
+            localStorage.setItem(storageKey, name);
+        }
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => activate(tab.dataset.productTab));
+        });
+
+        const initial = localStorage.getItem(storageKey);
+        if (initial && document.querySelector(`[data-product-tab="${initial}"]`)) {
+            activate(initial);
+        }
+    })();
+
+    (function () {
+        const slides = Array.from(document.querySelectorAll('[data-preview-slide]'));
+        const prevButton = document.querySelector('[data-preview-prev]');
+        const nextButton = document.querySelector('[data-preview-next]');
+        const counter = document.querySelector('[data-preview-counter]');
+        let activeIndex = 0;
+
+        if (!slides.length) {
+            return;
+        }
+
+        function pauseVideos() {
+            slides.forEach((slide) => {
+                const video = slide.querySelector('video');
+                if (video && !video.paused) {
+                    video.pause();
+                }
+            });
+        }
+
+        function showSlide(index) {
+            activeIndex = (index + slides.length) % slides.length;
+            pauseVideos();
+
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.toggle('active', slideIndex === activeIndex);
+            });
+
+            if (counter) {
+                counter.textContent = `${activeIndex + 1} / ${slides.length}`;
+            }
+        }
+
+        prevButton?.addEventListener('click', () => showSlide(activeIndex - 1));
+        nextButton?.addEventListener('click', () => showSlide(activeIndex + 1));
+    })();
+
+    function previewFile(event, id) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => document.getElementById(id).src = reader.result;
+        reader.readAsDataURL(file);
+    }
+
+    function updatePreviewFromUrl(inputId, previewId) {
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(previewId);
+        if (input && preview) {
+            preview.src = input.value;
+        }
+    }
+</script>

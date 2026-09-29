@@ -1,0 +1,522 @@
+@model IList<KanvasProje.Core.Varliklar.UrunSecenek>
+@using KanvasProje.Service.Helpers
+@{
+    var variants = (Model ?? new System.Collections.Generic.List<KanvasProje.Core.Varliklar.UrunSecenek>())
+        .OrderByDescending(x => x.VarsayilanMi)
+        .ThenBy(x => x.Sira)
+        .ThenBy(x => x.Id)
+        .ToList();
+    var canvasOptionCategoryIds = ViewBag.CanvasOptionCategoryIds as IEnumerable<int> ?? Enumerable.Empty<int>();
+    var canvasOptionCategoryIdJson = System.Text.Json.JsonSerializer.Serialize(canvasOptionCategoryIds);
+}
+
+<div class="ca-card mt-4" style="border:1px solid var(--ca-border);">
+    <div class="ca-card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+            <span class="ca-card-title">Gelişmiş Varyasyonlar</span>
+            <div class="small text-muted mt-1">Ölçü, çerçeve, malzeme, kişiselleştirme ve lojistik alanlarını bu bölümden yönetin.</div>
+        </div>
+        <button type="button" class="ca-btn ca-btn-primary ca-btn-sm" onclick="window.caVariantEditor.add()">
+            <i class="fas fa-plus"></i> Varyasyon Ekle
+        </button>
+    </div>
+    <div class="ca-card-body">
+        <div id="variantEmptyState" class="alert alert-light border mb-3 @(variants.Any() ? "d-none" : string.Empty)">
+            Henüz varyasyon eklenmedi. Tek fiyatlı ürünleri boş bırakabilir ya da ilk kombinasyonu oluşturabilirsiniz.
+        </div>
+
+        <div id="variantList" class="ca-variant-grid">
+            @for (var i = 0; i < variants.Count; i++)
+            {
+                var variant = variants[i];
+                var temizOlcu = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.Olcu);
+                var temizCerceveTipi = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.CerceveTipi);
+                var temizCerceveRengi = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.CerceveRengi);
+                var temizCerceveKalinligi = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.CerceveKalinligi);
+                var temizMalzemeTuru = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.MalzemeTuru);
+                var temizYon = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.Yon);
+                var temizKisilestirmeMetni = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.KisilestirmeMetni);
+                var temizOzelTasarimNotu = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.OzelTasarimNotu);
+                var temizVaryantBasligi = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.VaryantBasligi);
+                var temizVaryantOzeti = TurkishTextRepairHelper.RepairKnownBrokenTurkish(variant.VaryantOzeti);
+                <div class="ca-variant-card" data-variant-card data-index="@i">
+                    <div class="ca-variant-card-head">
+                        <div>
+                            <div class="ca-variant-title" data-variant-title>@(string.IsNullOrWhiteSpace(temizVaryantBasligi) ? $"Varyasyon {i + 1}" : temizVaryantBasligi)</div>
+                            <div class="ca-variant-subtitle" data-variant-subtitle>@(string.IsNullOrWhiteSpace(temizVaryantOzeti) ? "Ölçü ve fiyat verileri ile kombinasyon tanımlayın." : temizVaryantOzeti)</div>
+                        </div>
+                        <button type="button" class="ca-btn ca-btn-outline ca-btn-sm" data-variant-remove>
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <input type="hidden" data-variant-field="Id" name="UrunSecenek[@i].Id" value="@variant.Id" />
+
+                    <div class="row g-3">
+                        <div class="col-lg-3 col-md-6">
+                            <label class="ca-label" data-label-for="Olcu">Ölçü</label>
+                            <input class="ca-input" data-variant-field="Olcu" name="UrunSecenek[@i].Olcu" value="@temizOlcu" />
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <label class="ca-label" data-label-for="CerceveTipi">Çerçeve / Seçenek</label>
+                            <input class="ca-input" data-variant-field="CerceveTipi" name="UrunSecenek[@i].CerceveTipi" value="@temizCerceveTipi" />
+                        </div>
+                        <div class="col-lg-2 col-md-6" data-canvas-option>
+                            <label class="ca-label" data-label-for="CerceveRengi">Çerçeve Rengi</label>
+                            <input class="ca-input" data-variant-field="CerceveRengi" name="UrunSecenek[@i].CerceveRengi" value="@temizCerceveRengi" />
+                        </div>
+                        <div class="col-lg-2 col-md-6" data-canvas-option>
+                            <label class="ca-label" data-label-for="CerceveKalinligi">Kalınlık</label>
+                            <input class="ca-input" data-variant-field="CerceveKalinligi" name="UrunSecenek[@i].CerceveKalinligi" value="@temizCerceveKalinligi" />
+                        </div>
+                        <div class="col-lg-2 col-md-6" data-canvas-option>
+                            <label class="ca-label" data-label-for="ParcaSayisi">Parça</label>
+                            <input class="ca-input" type="number" min="1" data-variant-field="ParcaSayisi" name="UrunSecenek[@i].ParcaSayisi" value="@(variant.ParcaSayisi < 1 ? 1 : variant.ParcaSayisi)" />
+                        </div>
+
+                        <div class="col-lg-3 col-md-6" data-canvas-option>
+                            <label class="ca-label" data-label-for="MalzemeTuru">Malzeme</label>
+                            <input class="ca-input" data-variant-field="MalzemeTuru" name="UrunSecenek[@i].MalzemeTuru" value="@temizMalzemeTuru" />
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="Yon">Yön</label>
+                            <input class="ca-input" data-variant-field="Yon" name="UrunSecenek[@i].Yon" value="@temizYon" />
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <label class="ca-label" data-label-for="VaryantSku">Varyant SKU</label>
+                            <input class="ca-input" data-variant-field="VaryantSku" name="UrunSecenek[@i].VaryantSku" value="@variant.VaryantSku" />
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="Sira">Sıra</label>
+                            <input class="ca-input" type="number" min="0" data-variant-field="Sira" name="UrunSecenek[@i].Sira" value="@variant.Sira" />
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="UretimSuresiGun">Üretim Günü</label>
+                            <input class="ca-input" type="number" min="0" data-variant-field="UretimSuresiGun" name="UrunSecenek[@i].UretimSuresiGun" value="@variant.UretimSuresiGun" />
+                        </div>
+
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="SatisFiyati">Satış Fiyatı</label>
+                            <input class="ca-input" type="number" step="0.01" min="0" data-variant-field="SatisFiyati" name="UrunSecenek[@i].SatisFiyati" value="@variant.SatisFiyati.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)" />
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="FiyatFarki">Fiyat Farkı</label>
+                            <input class="ca-input" type="number" step="0.01" data-variant-field="FiyatFarki" name="UrunSecenek[@i].FiyatFarki" value="@variant.FiyatFarki.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)" />
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="MaliyetFiyati">Maliyet</label>
+                            <input class="ca-input" type="number" step="0.01" min="0" data-variant-field="MaliyetFiyati" name="UrunSecenek[@i].MaliyetFiyati" value="@variant.MaliyetFiyati.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)" />
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="StokAdedi">Stok</label>
+                            <input class="ca-input" type="number" min="0" data-variant-field="StokAdedi" name="UrunSecenek[@i].StokAdedi" value="@variant.StokAdedi" />
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="Desi">Desi</label>
+                            <input class="ca-input" type="number" step="0.01" min="0" data-variant-field="Desi" name="UrunSecenek[@i].Desi" value="@variant.Desi.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)" />
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="ca-label" data-label-for="GorselUrl">Varyant Görseli</label>
+                            <input class="ca-input" data-variant-field="GorselUrl" name="UrunSecenek[@i].GorselUrl" value="@variant.GorselUrl" />
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="ca-label" data-label-for="KisilestirmeMetni">Kişiselleştirme Metni</label>
+                            <textarea class="ca-textarea" rows="2" data-variant-field="KisilestirmeMetni" name="UrunSecenek[@i].KisilestirmeMetni">@temizKisilestirmeMetni</textarea>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="ca-label" data-label-for="OzelTasarimNotu">Özel Tasarım Notu</label>
+                            <textarea class="ca-textarea" rows="2" data-variant-field="OzelTasarimNotu" name="UrunSecenek[@i].OzelTasarimNotu">@temizOzelTasarimNotu</textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="ca-variant-flags">
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" data-variant-field="AktifMi" name="UrunSecenek[@i].AktifMi" value="true" @(variant.AktifMi ? "checked" : string.Empty) />
+                                    <input type="hidden" name="UrunSecenek[@i].AktifMi" value="false" />
+                                    <span class="form-check-label">Aktif</span>
+                                </label>
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" data-variant-field="VarsayilanMi" name="UrunSecenek[@i].VarsayilanMi" value="true" @(variant.VarsayilanMi ? "checked" : string.Empty) data-variant-default />
+                                    <input type="hidden" name="UrunSecenek[@i].VarsayilanMi" value="false" />
+                                    <span class="form-check-label">Varsayılan</span>
+                                </label>
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" data-variant-field="TukeninceGizle" name="UrunSecenek[@i].TukeninceGizle" value="true" @(variant.TukeninceGizle ? "checked" : string.Empty) />
+                                    <input type="hidden" name="UrunSecenek[@i].TukeninceGizle" value="false" />
+                                    <span class="form-check-label">Tükenince Gizle</span>
+                                </label>
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" data-variant-field="OnSipariseAcikMi" name="UrunSecenek[@i].OnSipariseAcikMi" value="true" @(variant.OnSipariseAcikMi ? "checked" : string.Empty) />
+                                    <input type="hidden" name="UrunSecenek[@i].OnSipariseAcikMi" value="false" />
+                                    <span class="form-check-label">Ön Sipariş</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <template id="variantCardTemplate">
+            <div class="ca-variant-card" data-variant-card data-index="__index__">
+                <div class="ca-variant-card-head">
+                    <div>
+                        <div class="ca-variant-title" data-variant-title>Yeni varyasyon</div>
+                        <div class="ca-variant-subtitle" data-variant-subtitle>Ölçü ve fiyat verileri ile kombinasyon tanımlayın.</div>
+                    </div>
+                    <button type="button" class="ca-btn ca-btn-outline ca-btn-sm" data-variant-remove>
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+
+                <input type="hidden" data-variant-field="Id" name="UrunSecenek[__index__].Id" value="0" />
+
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6">
+                        <label class="ca-label" data-label-for="Olcu">Ölçü</label>
+                        <input class="ca-input" data-variant-field="Olcu" name="UrunSecenek[__index__].Olcu" value="" />
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <label class="ca-label" data-label-for="CerceveTipi">Çerçeve / Seçenek</label>
+                        <input class="ca-input" data-variant-field="CerceveTipi" name="UrunSecenek[__index__].CerceveTipi" value="" />
+                    </div>
+                    <div class="col-lg-2 col-md-6" data-canvas-option>
+                        <label class="ca-label" data-label-for="CerceveRengi">Çerçeve Rengi</label>
+                        <input class="ca-input" data-variant-field="CerceveRengi" name="UrunSecenek[__index__].CerceveRengi" value="" />
+                    </div>
+                    <div class="col-lg-2 col-md-6" data-canvas-option>
+                        <label class="ca-label" data-label-for="CerceveKalinligi">Kalınlık</label>
+                        <input class="ca-input" data-variant-field="CerceveKalinligi" name="UrunSecenek[__index__].CerceveKalinligi" value="" />
+                    </div>
+                    <div class="col-lg-2 col-md-6" data-canvas-option>
+                        <label class="ca-label" data-label-for="ParcaSayisi">Parça</label>
+                        <input class="ca-input" type="number" min="1" data-variant-field="ParcaSayisi" name="UrunSecenek[__index__].ParcaSayisi" value="1" />
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-canvas-option>
+                        <label class="ca-label" data-label-for="MalzemeTuru">Malzeme</label>
+                        <input class="ca-input" data-variant-field="MalzemeTuru" name="UrunSecenek[__index__].MalzemeTuru" value="" />
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="Yon">Yön</label>
+                        <input class="ca-input" data-variant-field="Yon" name="UrunSecenek[__index__].Yon" value="" />
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <label class="ca-label" data-label-for="VaryantSku">Varyant SKU</label>
+                        <input class="ca-input" data-variant-field="VaryantSku" name="UrunSecenek[__index__].VaryantSku" value="" />
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="Sira">Sıra</label>
+                        <input class="ca-input" type="number" min="0" data-variant-field="Sira" name="UrunSecenek[__index__].Sira" value="0" />
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="UretimSuresiGun">Üretim Günü</label>
+                        <input class="ca-input" type="number" min="0" data-variant-field="UretimSuresiGun" name="UrunSecenek[__index__].UretimSuresiGun" value="0" />
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="SatisFiyati">Satış Fiyatı</label>
+                        <input class="ca-input" type="number" step="0.01" min="0" data-variant-field="SatisFiyati" name="UrunSecenek[__index__].SatisFiyati" value="0" />
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="FiyatFarki">Fiyat Farkı</label>
+                        <input class="ca-input" type="number" step="0.01" data-variant-field="FiyatFarki" name="UrunSecenek[__index__].FiyatFarki" value="0" />
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="MaliyetFiyati">Maliyet</label>
+                        <input class="ca-input" type="number" step="0.01" min="0" data-variant-field="MaliyetFiyati" name="UrunSecenek[__index__].MaliyetFiyati" value="0" />
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="StokAdedi">Stok</label>
+                        <input class="ca-input" type="number" min="0" data-variant-field="StokAdedi" name="UrunSecenek[__index__].StokAdedi" value="0" />
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="Desi">Desi</label>
+                        <input class="ca-input" type="number" step="0.01" min="0" data-variant-field="Desi" name="UrunSecenek[__index__].Desi" value="0" />
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <label class="ca-label" data-label-for="GorselUrl">Varyant Görseli</label>
+                        <input class="ca-input" data-variant-field="GorselUrl" name="UrunSecenek[__index__].GorselUrl" value="" />
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label class="ca-label" data-label-for="KisilestirmeMetni">Kişiselleştirme Metni</label>
+                        <textarea class="ca-textarea" rows="2" data-variant-field="KisilestirmeMetni" name="UrunSecenek[__index__].KisilestirmeMetni"></textarea>
+                    </div>
+                    <div class="col-lg-6">
+                        <label class="ca-label" data-label-for="OzelTasarimNotu">Özel Tasarım Notu</label>
+                        <textarea class="ca-textarea" rows="2" data-variant-field="OzelTasarimNotu" name="UrunSecenek[__index__].OzelTasarimNotu"></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="ca-variant-flags">
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" data-variant-field="AktifMi" name="UrunSecenek[__index__].AktifMi" value="true" checked />
+                                <input type="hidden" name="UrunSecenek[__index__].AktifMi" value="false" />
+                                <span class="form-check-label">Aktif</span>
+                            </label>
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" data-variant-field="VarsayilanMi" name="UrunSecenek[__index__].VarsayilanMi" value="true" data-variant-default />
+                                <input type="hidden" name="UrunSecenek[__index__].VarsayilanMi" value="false" />
+                                <span class="form-check-label">Varsayılan</span>
+                            </label>
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" data-variant-field="TukeninceGizle" name="UrunSecenek[__index__].TukeninceGizle" value="true" />
+                                <input type="hidden" name="UrunSecenek[__index__].TukeninceGizle" value="false" />
+                                <span class="form-check-label">Tükenince Gizle</span>
+                            </label>
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" data-variant-field="OnSipariseAcikMi" name="UrunSecenek[__index__].OnSipariseAcikMi" value="true" />
+                                <input type="hidden" name="UrunSecenek[__index__].OnSipariseAcikMi" value="false" />
+                                <span class="form-check-label">Ön Sipariş</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</div>
+
+<style>
+    .ca-variant-grid {
+        display: grid;
+        gap: 16px;
+    }
+
+    .ca-variant-card {
+        border: 1px solid var(--ca-border);
+        border-radius: var(--ca-radius);
+        padding: 18px;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .ca-variant-card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+
+    .ca-variant-title {
+        font-weight: 700;
+        color: var(--ca-text);
+    }
+
+    .ca-variant-subtitle {
+        font-size: 0.85rem;
+        color: var(--ca-text-muted);
+        margin-top: 4px;
+    }
+
+    .ca-variant-flags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        padding-top: 4px;
+    }
+
+    .ca-canvas-option-hidden {
+        display: none !important;
+    }
+</style>
+
+<script>
+    (function () {
+        const form = document.querySelector('form[asp-action], form');
+        const list = document.getElementById('variantList');
+        const template = document.getElementById('variantCardTemplate');
+        const emptyState = document.getElementById('variantEmptyState');
+        const categorySelect = document.querySelector('[name="KategoriId"]');
+        const canvasOptionCategoryIds = new Set(@Html.Raw(canvasOptionCategoryIdJson));
+        const canvasFields = ['CerceveRengi', 'CerceveKalinligi', 'MalzemeTuru', 'ParcaSayisi'];
+
+        if (!list || !template) {
+            return;
+        }
+
+        function selector(card, fieldName) {
+            return card.querySelector(`[data-variant-field="${fieldName}"]`);
+        }
+
+        function supportsCanvasOptions() {
+            const categoryId = parseInt(categorySelect?.value || '0', 10);
+            return canvasOptionCategoryIds.has(categoryId);
+        }
+
+        function clearCanvasFields(card) {
+            canvasFields.forEach((field) => {
+                const input = selector(card, field);
+                if (!input) {
+                    return;
+                }
+
+                input.value = field === 'ParcaSayisi' ? '1' : '';
+            });
+        }
+
+        function applyCategoryScope() {
+            const enabled = supportsCanvasOptions();
+            list.querySelectorAll('[data-canvas-option]').forEach((el) => {
+                el.classList.toggle('ca-canvas-option-hidden', !enabled);
+            });
+        }
+
+        function toggleEmptyState() {
+            if (!emptyState) {
+                return;
+            }
+
+            emptyState.classList.toggle('d-none', list.querySelectorAll('[data-variant-card]').length > 0);
+        }
+
+        function buildTitle(card, index) {
+            const olcu = selector(card, 'Olcu')?.value?.trim() || '';
+            const cerceve = selector(card, 'CerceveTipi')?.value?.trim() || '';
+            const renk = supportsCanvasOptions() ? (selector(card, 'CerceveRengi')?.value?.trim() || '') : '';
+            const sku = selector(card, 'VaryantSku')?.value?.trim() || '';
+
+            const baseTitle = [olcu, cerceve, renk].filter(Boolean).join(' / ');
+            if (baseTitle) {
+                return baseTitle;
+            }
+
+            if (sku) {
+                return sku;
+            }
+
+            return `Varyasyon ${index + 1}`;
+        }
+
+        function buildSubtitle(card) {
+            const canvasEnabled = supportsCanvasOptions();
+            const malzeme = canvasEnabled ? selector(card, 'MalzemeTuru')?.value?.trim() || '' : '';
+            const yon = selector(card, 'Yon')?.value?.trim() || '';
+            const kisellestirme = selector(card, 'KisilestirmeMetni')?.value?.trim() || '';
+            const not = selector(card, 'OzelTasarimNotu')?.value?.trim() || '';
+            const parca = canvasEnabled ? parseInt(selector(card, 'ParcaSayisi')?.value || '1', 10) : 1;
+
+            const parts = [];
+            if (malzeme) parts.push(malzeme);
+            if (yon) parts.push(yon);
+            if (parca > 1) parts.push(`${parca} parça`);
+            if (kisellestirme) parts.push(`Kişiselleştirme: ${kisellestirme}`);
+            if (not) parts.push(`Not: ${not}`);
+
+            return parts.length > 0 ? parts.join(' | ') : 'Ölçü ve fiyat verileri ile kombinasyon tanımlayın.';
+        }
+
+        function syncDefaultCheckbox(activeCheckbox) {
+            if (!activeCheckbox.checked) {
+                return;
+            }
+
+            list.querySelectorAll('[data-variant-default]').forEach((checkbox) => {
+                if (checkbox !== activeCheckbox) {
+                    checkbox.checked = false;
+                }
+            });
+        }
+
+        function reindex() {
+            applyCategoryScope();
+
+            list.querySelectorAll('[data-variant-card]').forEach((card, index) => {
+                card.dataset.index = index;
+
+                card.querySelectorAll('[data-variant-field]').forEach((input) => {
+                    const field = input.getAttribute('data-variant-field');
+                    input.name = `UrunSecenek[${index}].${field}`;
+
+                    if (input.type !== 'hidden') {
+                        const id = `variant_${field}_${index}`;
+                        input.id = id;
+                        const label = card.querySelector(`[data-label-for="${field}"]`);
+                        if (label) {
+                            label.htmlFor = id;
+                        }
+                    }
+                });
+
+                card.querySelectorAll('input[type="hidden"][name^="UrunSecenek["]').forEach((input) => {
+                    input.name = input.name.replace(/UrunSecenek\[[^\]]+\]\./, `UrunSecenek[${index}].`);
+                });
+
+                const title = card.querySelector('[data-variant-title]');
+                const subtitle = card.querySelector('[data-variant-subtitle]');
+
+                if (title) {
+                    title.textContent = buildTitle(card, index);
+                }
+
+                if (subtitle) {
+                    subtitle.textContent = buildSubtitle(card);
+                }
+            });
+
+            toggleEmptyState();
+        }
+
+        function bindCard(card) {
+            card.querySelectorAll('input, textarea').forEach((input) => {
+                input.addEventListener('input', () => reindex());
+                input.addEventListener('change', () => reindex());
+            });
+
+            const removeButton = card.querySelector('[data-variant-remove]');
+            if (removeButton) {
+                removeButton.addEventListener('click', () => {
+                    card.remove();
+                    reindex();
+                });
+            }
+
+            const defaultCheckbox = card.querySelector('[data-variant-default]');
+            if (defaultCheckbox) {
+                defaultCheckbox.addEventListener('change', function () {
+                    syncDefaultCheckbox(this);
+                    reindex();
+                });
+            }
+        }
+
+        function addCard() {
+            const index = list.querySelectorAll('[data-variant-card]').length;
+            const html = template.innerHTML.replaceAll('__index__', index.toString());
+            list.insertAdjacentHTML('beforeend', html);
+            const card = list.querySelector('[data-variant-card]:last-child');
+            if (card) {
+                bindCard(card);
+            }
+            reindex();
+        }
+
+        list.querySelectorAll('[data-variant-card]').forEach(bindCard);
+        reindex();
+
+        if (form) {
+            form.addEventListener('submit', () => {
+                list.querySelectorAll('input[type="number"]').forEach((input) => {
+                    if (input.value === '') {
+                        input.value = input.min && parseFloat(input.min) > 0 ? input.min : '0';
+                    }
+                });
+            });
+        }
+
+        if (categorySelect) {
+            categorySelect.addEventListener('change', () => {
+                applyCategoryScope();
+                reindex();
+            });
+        }
+
+        window.caVariantEditor = {
+            add: addCard,
+            refresh: reindex
+        };
+    })();
+</script>

@@ -1,0 +1,158 @@
+﻿@model IEnumerable<KanvasProje.Core.Varliklar.Siparis>
+@{
+    ViewData["Title"] = "Siparişlerim";
+}
+
+@{
+    string DurumAdi(int durum) => durum switch
+    {
+        8 => "Paketleniyor",
+        0 => "Sipariş Alındı",
+        1 => "Hazırlanıyor",
+        2 => "Kargolandı",
+        3 => "Teslim Edildi",
+        5 => "İade Talebi",
+        6 => "İade Onaylandı",
+        7 => "İade Tamamlandı",
+        _ => "İptal Edildi"
+    };
+    string DurumIkon(int durum) => durum switch
+    {
+        8 => "fas fa-box",
+        0 => "fas fa-clock",
+        1 => "fas fa-box-open",
+        2 => "fas fa-truck-fast",
+        3 => "fas fa-circle-check",
+        5 => "fas fa-rotate-left",
+        6 => "fas fa-clipboard-check",
+        7 => "fas fa-coins",
+        _ => "fas fa-circle-xmark"
+    };
+    string DurumRenk(int durum) => durum switch
+    {
+        8 => "bg-amber-50 text-amber-700 border-amber-200",
+        3 or 7 => "bg-green-50 text-green-700 border-green-200",
+        2 => "bg-blue-50 text-blue-700 border-blue-200",
+        1 => "bg-amber-50 text-amber-700 border-amber-200",
+        4 => "bg-red-50 text-red-700 border-red-200",
+        _ => "bg-gray-50 text-gray-600 border-gray-200"
+    };
+}
+
+<!-- Breadcrumb -->
+<div class="bg-[#FDF6E3] border-b border-[#F5E6C8] py-3">
+    <div class="container mx-auto px-4 flex items-center gap-2 text-xs text-[#333333]">
+        <a href="/" class="hover:text-[#1B2A4A] transition-colors">Ana Sayfa</a>
+        <span>/</span>
+        <a href="/Profil" class="hover:text-[#1B2A4A] transition-colors">Hesabım</a>
+        <span>/</span>
+        <span class="text-[#1B2A4A] font-medium">Siparişlerim</span>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+        <!-- Yan Menü -->
+        <aside class="lg:w-56 flex-shrink-0">
+            <div class="bg-white border border-[#F5E6C8] rounded-lg overflow-hidden">
+                <div class="bg-[#1B2A4A] p-4 text-center">
+                    <p class="text-white text-sm font-medium">Hesabım</p>
+                </div>
+                <nav class="p-2">
+                    <a href="/Profil" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-user w-4"></i> Genel Bakış
+                    </a>
+                    <a href="/Profil/Siparislerim" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#1B2A4A] bg-[#FDF6E3] font-semibold mb-1">
+                        <i class="fas fa-box w-4"></i> Siparişlerim
+                    </a>
+                    <a href="/Profil/Adreslerim" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-location-dot w-4"></i> Adreslerim
+                    </a>
+                    <a href="/Favori" class="flex items-center gap-3 px-3 py-2.5 rounded text-sm text-[#333333] hover:bg-[#FDF6E3] transition-colors mb-1">
+                        <i class="fas fa-heart w-4"></i> Favorilerim
+                    </a>
+                    <hr class="border-[#F5E6C8] my-2" />
+                    <form action="/Hesap/CikisYap" method="post" class="m-0">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm text-red-500 hover:bg-red-50 transition-colors text-left">
+                            <i class="fas fa-right-from-bracket w-4"></i> Çıkış Yap
+                        </button>
+                    </form>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Ana İçerik -->
+        <main class="flex-1 min-w-0">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="font-serif text-3xl text-[#1B2A4A]">Siparişlerim</h1>
+                    <p class="text-xs text-[#333333] mt-1">@Model.Count() sipariş</p>
+                </div>
+                <a href="/Urun" class="border border-[#1B2A4A] text-[#1B2A4A] text-xs tracking-widest uppercase px-4 py-2 rounded hover:bg-[#1B2A4A] hover:text-white transition-colors">
+                    Alışverişe Dön
+                </a>
+            </div>
+
+            @if (!Model.Any())
+            {
+                <div class="text-center py-24 bg-white border border-[#F5E6C8] rounded-lg">
+                    <i class="fas fa-basket-shopping fa-4x text-[#F5E6C8] mb-6"></i>
+                    <h3 class="font-serif text-2xl text-[#1B2A4A] mb-3">Henüz siparişiniz bulunmuyor</h3>
+                    <p class="text-sm text-[#333333] mb-6 max-w-sm mx-auto">Ürün koleksiyonlarını inceleyerek ilk siparişinizi oluşturabilirsiniz.</p>
+                    <a href="/Urun" class="inline-block bg-[#1B2A4A] text-white px-6 py-3 text-xs tracking-widest uppercase rounded-full hover:bg-[#1c2001] transition-colors">
+                        Ürünleri İncele
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="space-y-3">
+                    @foreach (var item in Model.OrderByDescending(x => x.OlusturulmaTarihi))
+                    {
+                        <div class="bg-white border border-[#F5E6C8] rounded-lg p-5 hover:border-[#c5c0b8] transition-colors">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-[#e2e6b3] flex items-center justify-center flex-shrink-0">
+                                        <i class="@DurumIkon(item.Durum) text-[#1B2A4A] text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center gap-2 flex-wrap">
+                                            <span class="font-semibold text-[#1B2A4A] text-sm">#@item.Id</span>
+                                            <span class="border text-xs px-2 py-0.5 rounded-full @DurumRenk(item.Durum)">
+                                                @DurumAdi(item.Durum)
+                                            </span>
+                                            @if (item.FaturaYuklendiMi)
+                                            {
+                                                <a href="/Siparis/FaturaIndir?id=@item.Id" target="_blank" class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded hover:bg-green-100 transition-colors" title="Faturayı İndir">
+                                                    <i class="fas fa-file-pdf mr-1"></i>Fatura
+                                                </a>
+                                            }
+                                        </div>
+                                        <div class="text-xs text-[#333333] mt-0.5">
+                                            @item.OlusturulmaTarihi.ToTurkeyString("dd MMMM yyyy") — @item.OlusturulmaTarihi.ToTurkeyString("HH:mm")
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 sm:flex-shrink-0">
+                                    @if (!string.IsNullOrEmpty(item.KargoTakipNo))
+                                    {
+                                        <span class="text-xs bg-[#FDF6E3] text-[#333333] px-2 py-1 rounded">
+                                            <i class="fas fa-barcode mr-1"></i>@item.KargoTakipNo
+                                        </span>
+                                    }
+                                    <span class="font-semibold text-[#1B2A4A]">@item.ToplamTutar.ToString("N2") ₺</span>
+                                    <a href="/Profil/SiparisDetay/@item.Id"
+                                       class="text-xs border border-[#F5E6C8] px-3 py-1.5 rounded hover:bg-[#FDF6E3] text-[#1B2A4A] transition-colors whitespace-nowrap">
+                                        Detay <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </main>
+    </div>
+</div>

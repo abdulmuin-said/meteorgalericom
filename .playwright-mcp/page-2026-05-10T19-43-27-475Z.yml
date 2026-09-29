@@ -1,0 +1,154 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Canvasia yönetim paneli" [ref=e5] [cursor=pointer]:
+        - /url: /Admin/Home
+        - img "Canvasia" [ref=e6]
+      - generic [ref=e7]: Satıcı Paneli
+    - navigation "Admin ana menü" [ref=e8]:
+      - link " Panel" [ref=e9] [cursor=pointer]:
+        - /url: /Admin/Home
+        - generic [ref=e10]: 
+        - text: Panel
+      - generic [ref=e11]:
+        - button " Sipariş Yönetimi 4" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+          - text: Sipariş Yönetimi
+          - generic [ref=e14]: "4"
+        - text:     
+      - generic [ref=e15]:
+        - button " Ürün Yönetimi" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Ürün Yönetimi
+        - text:  +    
+      - generic [ref=e18]:
+        - button " Mağaza İçeriği 10" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+          - text: Mağaza İçeriği
+          - generic [ref=e21]: "10"
+        - text:     
+      - link " Üyeler" [ref=e22] [cursor=pointer]:
+        - /url: /Admin/Kullanici
+        - generic [ref=e23]: 
+        - text: Üyeler
+      - generic [ref=e24]:
+        - button " Raporlar" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: 
+          - text: Raporlar
+        - text:  
+      - link " Ayarlar" [ref=e27] [cursor=pointer]:
+        - /url: /Admin/Ayarlar
+        - generic [ref=e28]: 
+        - text: Ayarlar
+      - link " Yardım" [ref=e29] [cursor=pointer]:
+        - /url: /Admin/Yardim
+        - generic [ref=e30]: 
+        - text: Yardım
+    - generic [ref=e31]:
+      - text: 
+      - generic [ref=e32]:
+        - button "Harun OK Admin H" [ref=e33] [cursor=pointer]:
+          - generic [ref=e34]:
+            - strong [ref=e35]: Harun OK
+            - text: Admin
+          - generic [ref=e36]: H
+        - text:  
+  - generic [ref=e37]:
+    - main [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Admin Paneli Yardım" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Mağazayı günlük olarak yönetmek için temel ekranlar ve doğru kullanım notları.
+          - link " Panele Dön" [ref=e44] [cursor=pointer]:
+            - /url: /Admin/Home
+            - generic [ref=e45]: 
+            - text: Panele Dön
+        - generic [ref=e46]:
+          - generic [ref=e48]:
+            - generic [ref=e50]:
+              - generic [ref=e51]: 
+              - text: Kategori Yönetimi
+            - generic [ref=e52]:
+              - paragraph [ref=e53]: Ana kategori ve alt kategori yapısı ürünlerin doğru listelenmesi için kullanılır.
+              - list [ref=e54]:
+                - listitem [ref=e55]:
+                  - text: Yeni ana kategori için
+                  - strong [ref=e56]: Kategoriler
+                  - text: ekranından üst kategori seçmeden kayıt oluşturun.
+                - listitem [ref=e57]: Alt kategori eklerken ilgili ana kategoriyi seçin.
+                - listitem [ref=e58]: SEO URL alanı boş bırakılırsa sistem uygun bir URL üretir.
+                - listitem [ref=e59]: Kategori görseli vitrin alanlarında kullanılacağı için yatay ve kaliteli görsel tercih edin.
+          - generic [ref=e61]:
+            - generic [ref=e63]:
+              - generic [ref=e64]: 
+              - text: Ürün Ekleme
+            - generic [ref=e65]:
+              - paragraph [ref=e66]: Ürün ekranındaki alanlar veritabanına kaydedilir ve ürün detay, listeleme, SEO alanlarında kullanılır.
+              - list [ref=e67]:
+                - listitem [ref=e68]: Başlık, kısa açıklama, detaylı açıklama ve kategori alanlarını mutlaka doldurun.
+                - listitem [ref=e69]: Üretim süresi ve kargoya veriliş süresi ürün detayında müşteriye güven unsuru olarak gösterilir.
+                - listitem [ref=e70]: Ana görsel listeleme ve sosyal paylaşım ön izlemesinde kullanılır.
+                - listitem [ref=e71]: Ürün aktif değilse vitrinde görünmez; silmek yerine pasife almak daha güvenlidir.
+          - generic [ref=e73]:
+            - generic [ref=e75]:
+              - generic [ref=e76]: 
+              - text: Varyasyonlar
+            - generic [ref=e77]:
+              - paragraph [ref=e78]: Ölçü, çerçeve, baskı tipi ve ürün grubuna özel seçenekler burada yönetilir.
+              - list [ref=e79]:
+                - listitem [ref=e80]: Her satır ayrı satın alınabilir seçenek olarak çalışır.
+                - listitem [ref=e81]: Satış fiyatı varyasyon seçildiğinde ürün detay fiyatını değiştirir.
+                - listitem [ref=e82]: Stok bilgisi müşteri tarafında adet olarak gösterilmez; siparişe özel üretim algısı korunur.
+                - listitem [ref=e83]: Varsayılan varyasyon ürün detayında ilk seçili gelen seçenektir.
+          - generic [ref=e85]:
+            - generic [ref=e87]:
+              - generic [ref=e88]: 
+              - text: Medya ve Mockup
+            - generic [ref=e89]:
+              - paragraph [ref=e90]: Galeri, mockup oda görselleri, yakın detay ve video alanları ürün güvenini artırır.
+              - list [ref=e91]:
+                - listitem [ref=e92]: Genel galeri ürünün temel fotoğrafları için kullanılmalıdır.
+                - listitem [ref=e93]: Salon, ofis, mutfak gibi mockup alanları ürün detayında ayrı bölümde görünür.
+                - listitem [ref=e94]: Video için dosya yükleyebilir veya YouTube/Vimeo bağlantısı girebilirsiniz.
+                - listitem [ref=e95]: Alt metin alanı SEO ve erişilebilirlik için kısa, açıklayıcı olmalıdır.
+          - generic [ref=e97]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: 
+              - text: Sipariş Süreci
+            - generic [ref=e101]:
+              - paragraph [ref=e102]: Sipariş durumu değiştirildiğinde müşteri bilgilendirme e-postası gönderilir.
+              - list [ref=e103]:
+                - listitem [ref=e104]: "Önerilen akış: Sipariş Alındı, Üretim Hazırlanıyor, Paketleniyor, Kargoya Verildi, Teslim Edildi."
+                - listitem [ref=e105]: Kargoya verildi aşamasında takip numarası girerseniz kargo maili daha detaylı gider.
+                - listitem [ref=e106]: Kargo firması boş bırakılırsa mağaza ayarlarındaki varsayılan firma kullanılır.
+                - listitem [ref=e107]:
+                  - text: İade talepleri ayrı
+                  - strong [ref=e108]: İade Talepleri
+                  - text: ekranından yönetilir.
+          - generic [ref=e110]:
+            - generic [ref=e112]:
+              - generic [ref=e113]: 
+              - text: SEO ve Ayarlar
+            - generic [ref=e114]:
+              - paragraph [ref=e115]: Mağaza ayarları footer, sosyal medya, SEO, kargo ve iletişim bilgilerini besler.
+              - list [ref=e116]:
+                - listitem [ref=e117]: Base URL canlı alan adıyla aynı olmalıdır; canonical ve paylaşım linkleri buradan üretilir.
+                - listitem [ref=e118]: Meta title ve description ana sayfa için kullanılır.
+                - listitem [ref=e119]: Sosyal medya linkleri footer ve paylaşım alanlarında görünür.
+                - listitem [ref=e120]: Bakım modu açılırsa vitrin kapanır; admin panel açık kalır.
+        - generic [ref=e121]:
+          - generic [ref=e123]:
+            - generic [ref=e124]: 
+            - text: Performans Notları
+          - generic [ref=e126]:
+            - generic [ref=e128]:
+              - strong [ref=e129]: Görseller
+              - generic [ref=e130]: Ürün ve galeri görselleri mümkünse WebP/JPG, makul çözünürlükte ve sıkıştırılmış olmalıdır.
+            - generic [ref=e132]:
+              - strong [ref=e133]: Slider
+              - generic [ref=e134]: İlk slider görseli hızlı yüklenir; diğer slider ve ürün görselleri sayfa indikçe yüklenir.
+            - generic [ref=e136]:
+              - strong [ref=e137]: Video
+              - generic [ref=e138]: Uzun videoları doğrudan yüklemek yerine YouTube veya Vimeo bağlantısı kullanmak sayfayı hızlandırır.
+    - contentinfo [ref=e139]: © 2026 Canvasia Yönetim Paneli. Tüm hakları saklıdır.

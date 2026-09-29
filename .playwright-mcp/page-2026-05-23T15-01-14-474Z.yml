@@ -1,0 +1,68 @@
+- generic [active] [ref=e1]:
+  - heading "An unhandled exception occurred while processing the request." [level=1] [ref=e2]
+  - generic [ref=e3]: "InvalidOperationException: Unable to resolve service for type 'KanvasProje.Service.Services.IHomePageSettingsService' while attempting to activate 'KanvasProje.Web.Areas.Admin.Controllers.AnaSayfaController'."
+  - paragraph [ref=e4]: Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+  - list [ref=e5]:
+    - listitem [ref=e6] [cursor=pointer]: Stack
+    - listitem [ref=e7] [cursor=pointer]: Query
+    - listitem [ref=e8] [cursor=pointer]: Cookies
+    - listitem [ref=e9] [cursor=pointer]: Headers
+    - listitem [ref=e10] [cursor=pointer]: Routing
+  - list [ref=e12]:
+    - listitem [ref=e13]:
+      - 'heading "InvalidOperationException: Unable to resolve service for type ''KanvasProje.Service.Services.IHomePageSettingsService'' while attempting to activate ''KanvasProje.Web.Areas.Admin.Controllers.AnaSayfaController''." [level=2] [ref=e14]'
+      - list [ref=e15]:
+        - listitem [ref=e16]:
+          - heading "Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)" [level=3] [ref=e17]
+        - listitem [ref=e18]:
+          - heading "lambda_method1564(Closure , IServiceProvider , object[] )" [level=3] [ref=e19]
+        - listitem [ref=e20]:
+          - heading "Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider+<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)" [level=3] [ref=e21]
+        - listitem [ref=e22]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)" [level=3] [ref=e23]
+        - listitem [ref=e24]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()" [level=3] [ref=e25]
+        - listitem [ref=e26]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, object state, bool isCompleted)" [level=3] [ref=e27]
+        - listitem [ref=e28]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)" [level=3] [ref=e29]
+        - listitem [ref=e30]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(ref State next, ref Scope scope, ref object state, ref bool isCompleted)" [level=3] [ref=e31]
+        - listitem [ref=e32]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()" [level=3] [ref=e33]
+        - listitem [ref=e34]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)" [level=3] [ref=e35]
+        - listitem [ref=e36]:
+          - heading "Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)" [level=3] [ref=e37]
+        - listitem [ref=e38]:
+          - heading "Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)" [level=3] [ref=e39]
+        - listitem [ref=e40]:
+          - heading "Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)" [level=3] [ref=e41]
+        - listitem [ref=e42]:
+          - heading "Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)" [level=3] [ref=e43]
+        - listitem [ref=e44]:
+          - heading "Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)" [level=3] [ref=e45]
+        - listitem [ref=e46]:
+          - heading "Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)" [level=3] [ref=e47]
+        - listitem [ref=e48]:
+          - heading "Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)" [level=3] [ref=e49]
+        - listitem [ref=e50]:
+          - heading "Program+<>c+<<<Main>$>b__0_12>d.MoveNext() in Program.cs" [level=3] [ref=e51]:
+            - text: Program+<>c+<<<Main>$>b__0_12>d.MoveNext() in
+            - code [ref=e52]: Program.cs
+          - button "+" [ref=e53] [cursor=pointer]
+          - list [ref=e55]:
+            - listitem [ref=e56]: await next();
+        - listitem [ref=e57]:
+          - heading "Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)" [level=3] [ref=e58]
+        - listitem [ref=e59]:
+          - heading "Program+<>c+<<<Main>$>b__0_11>d.MoveNext() in Program.cs" [level=3] [ref=e60]:
+            - text: Program+<>c+<<<Main>$>b__0_11>d.MoveNext() in
+            - code [ref=e61]: Program.cs
+          - button "+" [ref=e62] [cursor=pointer]
+          - list [ref=e64]:
+            - listitem [ref=e65]: await next();
+        - listitem [ref=e66]:
+          - heading "Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)" [level=3] [ref=e67]
+    - listitem [ref=e68]:
+      - button "Show raw exception details" [ref=e70] [cursor=pointer]
