@@ -1,4 +1,4 @@
-using System.Net;
+﻿using System.Net;
 using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
@@ -78,7 +78,7 @@ namespace KanvasProje.Service.Services
                         <br/>
                     </td></tr>
                     <tr><td style='padding:0 40px 20px; text-align:center;'>
-                        <h1 style='font-family:"Playfair Display",Georgia,serif; font-size:28px; color:#1B2A4A; margin:0;'>{WebUtility.HtmlEncode(baslik)}</h1>
+                        <h1 style='font-family:Playfair Display,Georgia,serif; font-size:28px; color:#1B2A4A; margin:0;'>{WebUtility.HtmlEncode(baslik)}</h1>
                     </td></tr>
                     <tr><td style='padding:0 40px 20px;'>
                         <p style='font-family:system-ui,sans-serif; font-size:15px; color:#333333; line-height:1.7; margin:0;'>
