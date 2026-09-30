@@ -72,15 +72,23 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 .AddEntityFrameworkStores<KanvasDbContext>()
 .AddDefaultTokenProviders();
 
-// Google ile GiriÅŸ
-builder.Services.AddAuthentication()
-    .AddGoogle(options =>
-    {
-        options.ClientId = builder.Configuration["Google:ClientId"] ?? "";
-        options.ClientSecret = builder.Configuration["Google:ClientSecret"] ?? "";
-        options.Scope.Add("profile");
-        options.Scope.Add("email");
-    });
+// Google ile Giriş (sadece ClientId tanımlıysa aktif)
+var googleClientId = builder.Configuration["Authentication:Google:ClientId"]
+    ?? builder.Configuration["Google:ClientId"];
+var googleClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]
+    ?? builder.Configuration["Google:ClientSecret"];
+
+if (!string.IsNullOrWhiteSpace(googleClientId) && !string.IsNullOrWhiteSpace(googleClientSecret))
+{
+    builder.Services.AddAuthentication()
+        .AddGoogle(options =>
+        {
+            options.ClientId = googleClientId;
+            options.ClientSecret = googleClientSecret;
+            options.Scope.Add("profile");
+            options.Scope.Add("email");
+        });
+}
 
 // Facebook ile GiriÅŸ (sadece AppId tanÄ±mlÄ±ysa aktif)
 var facebookAppId = builder.Configuration["Authentication:Facebook:AppId"] ?? "";
