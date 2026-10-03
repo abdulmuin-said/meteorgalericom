@@ -43,6 +43,8 @@ App_Data/
 repomix-*.md
 repomix-*.txt
 *.md
+!CLAUDE.md
+!proje_tanitimi.md
 
 # Session dosyaları
 session-*.md
@@ -50,6 +52,7 @@ sonkonuşma.md
 
 # Orijinal proje yedek/analiz dosyaları (repo'ya girmez)
 *.dump
+!meteorgaleridb_clean.dump
 canvasia_*.sql
 kanvasdb_*.sql
 kanvasdb_*.dump
