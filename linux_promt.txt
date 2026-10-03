@@ -1,0 +1,20 @@
+4. Yeni Bilgisayarda Başlama:
+git clone https://github.com/abdulmuinsaid2026/meteorgalericom.git
+cd meteorgalericom
+createdb -U postgres meteorgaleridb
+pg_restore -U postgres -d meteorgaleridb -v meteorgaleridb_clean.dump
+cd KanvasProje.Web && dotnet watch run
+
+
+Selam, MeteorGaleri (meteorgaleri.com) projesine devam ediyoruz.
+Proje: ASP.NET Core 8.0 MVC + PostgreSQL Clean Architecture tabanlı, CANVASİA'dan white-label dönüştürülen kanvas/cam tablo e-ticaret platformudur.
+
+DETAYLI PROJE DÖKÜMANI: proje_tanitimi.md dosyasında eksiksiz olarak mevcuttur.
+GITHUB REPO: https://github.com/abdulmuinsaid2026/meteorgalericom (master branch)
+TEMİZ DB DUMP: meteorgaleridb_clean.dump (14.499 ürün, 223.856 seçenek, 5.143 yorum hazır)
+TEMA: Retro / Vintage (#FFFBF0 krem, #1B2A4A lacivert, #C0392B kiremit kırmızısı)
+TEST HESAPLARI:
+- Admin: meteor_medya@hotmail.com / MeteorAdmin2024!
+- Müşteri: musteri@meteorgaleri.com / MeteorUser2024!
+
+Kaldığımız yerden devam etmek için proje_tanitimi.md dosyasını incele ve sıradaki adımları yürütelim.
