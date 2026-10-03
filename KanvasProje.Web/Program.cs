@@ -246,6 +246,12 @@ builder.Services.AddResponseCompression(options =>
     options.EnableForHttps = true;
 });
 
+// Web Encoder (Türkçe karakterlerin &#x... şeklinde bozulmasını engeller)
+builder.Services.AddSingleton<System.Text.Encodings.Web.HtmlEncoder>(
+    System.Text.Encodings.Web.HtmlEncoder.Create(
+        System.Text.Unicode.UnicodeRanges.BasicLatin,
+        System.Text.Unicode.UnicodeRanges.All));
+
 // 8. MVC ve Session
 builder.Services.AddControllersWithViews(options =>
 {

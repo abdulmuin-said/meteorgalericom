@@ -70,6 +70,9 @@ anasayfa-*.png
 
 # Claude local settings
 .claude/settings.local.json
+
+# Playwright MCP artifacts
+.playwright-mcp/
 canvasia-*.png
 desktop-*.png
 dropdown-*.png
