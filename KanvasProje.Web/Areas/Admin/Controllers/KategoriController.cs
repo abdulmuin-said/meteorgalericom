@@ -40,7 +40,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> ExcelExport(string? arama, string? durum, string? tip)
         {
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             var kategoriler = await BuildCategoryListQuery(arama, durum, tip).ToListAsync();
             var categoryLookup = kategoriler.ToDictionary(x => x.Id);
 

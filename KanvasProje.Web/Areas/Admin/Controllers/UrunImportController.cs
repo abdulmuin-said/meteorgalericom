@@ -253,7 +253,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                         Slug = slug,
                         KisaAciklama = "",
                         Aciklama = "",
-                        SeoTitle = request.categoryName + " - Canvasia",
+                        SeoTitle = request.categoryName + " - MeteorGaleri",
                         SeoDescription = request.categoryName + " kategorisindeki kanvas tablolar",
                         Sira = maxSira + 1,
                         AktifMi = true,

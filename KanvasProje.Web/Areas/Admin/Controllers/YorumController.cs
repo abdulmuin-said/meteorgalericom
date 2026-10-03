@@ -54,7 +54,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                 .OrderByDescending(x => x.OlusturulmaTarihi)
                 .ToListAsync();
 
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             using var package = new ExcelPackage();
             var worksheet = package.Workbook.Worksheets.Add("Yorumlar");
             var headers = new[] { "Id", "Durum", "Ürün", "Müşteri", "Puan", "Yorum", "Tarih" };

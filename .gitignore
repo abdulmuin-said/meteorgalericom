@@ -67,6 +67,9 @@ SQL_Dosyalari/
 *.jpeg
 *.jpg
 anasayfa-*.png
+
+# Claude local settings
+.claude/settings.local.json
 canvasia-*.png
 desktop-*.png
 dropdown-*.png

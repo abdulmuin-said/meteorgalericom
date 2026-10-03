@@ -1,4 +1,4 @@
-4. Yeni Bilgisayarda Başlama:
+4. Yeni Bilgisayarda Başlama: eğer githubtan kod indiriliecekse eğer
 git clone https://github.com/abdulmuinsaid2026/meteorgalericom.git
 cd meteorgalericom
 createdb -U postgres meteorgaleridb

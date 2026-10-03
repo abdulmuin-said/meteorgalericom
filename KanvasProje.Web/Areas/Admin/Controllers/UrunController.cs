@@ -1005,7 +1005,7 @@ await _context.SaveChangesAsync();
         public async Task<IActionResult> ExcelSablon(string tip)
         {
             var operation = NormalizeExcelOperation(tip);
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             using var package = new ExcelPackage();
 
             var infoSheet = package.Workbook.Worksheets.Add("Bilgilendirme");
@@ -1222,7 +1222,7 @@ await _context.SaveChangesAsync();
 
         public async Task<IActionResult> UrunExcelExport()
         {
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             using var package = new ExcelPackage();
             var worksheet = package.Workbook.Worksheets.Add("Ürünler");
 
@@ -1308,7 +1308,7 @@ await _context.SaveChangesAsync();
 
         private async Task ProcessProductExcelImportAsync(string filePath, string operation, ProductExcelImportReport report)
         {
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             using var package = new ExcelPackage(new FileInfo(filePath));
             var worksheet = SelectProductImportWorksheet(package);
             if (worksheet?.Dimension == null)

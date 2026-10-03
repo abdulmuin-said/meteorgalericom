@@ -110,7 +110,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Export(string? q, string? metod, string? cihaz, DateTime? baslangic, DateTime? bitis)
         {
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             var kayitlar = await BuildFilteredQuery(q, metod, cihaz, baslangic, bitis)
                 .OrderByDescending(x => x.OlusturulmaTarihi)
                 .ToListAsync();

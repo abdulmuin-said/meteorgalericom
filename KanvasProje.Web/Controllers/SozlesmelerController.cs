@@ -23,10 +23,10 @@ namespace KanvasProje.Web.Controllers
             {
                 Baslik = "Mesafeli Satış Sözleşmesi",
                 Icerik = """
-                    <p>Bu sözleşme, Canvasia üzerinden verilen siparişlerde alıcı ile satıcı arasındaki mesafeli satış koşullarını açıklar. Sipariş veren müşteri, ödeme adımını tamamladığında bu sözleşmede yer alan temel koşulları kabul etmiş sayılır.</p>
+                    <p>Bu sözleşme, MeteorGaleri üzerinden verilen siparişlerde alıcı ile satıcı arasındaki mesafeli satış koşullarını açıklar. Sipariş veren müşteri, ödeme adımını tamamladığında bu sözleşmede yer alan temel koşulları kabul etmiş sayılır.</p>
 
                     <h2>1. Taraflar</h2>
-                    <p>Satıcı: Canvasia. Alıcı: Web sitesi üzerinden ürün veya hizmet satın alan gerçek ya da tüzel kişi. Satıcıya ait güncel iletişim bilgilerine <a href="/Kurumsal/Iletisim">İletişim</a> sayfasından ulaşılabilir.</p>
+                    <p>Satıcı: MeteorGaleri. Alıcı: Web sitesi üzerinden ürün veya hizmet satın alan gerçek ya da tüzel kişi. Satıcıya ait güncel iletişim bilgilerine <a href="/Kurumsal/Iletisim">İletişim</a> sayfasından ulaşılabilir.</p>
 
                     <h2>2. Sözleşmenin Konusu</h2>
                     <p>İşbu sözleşmenin konusu, alıcının elektronik ortamda sipariş verdiği ürünlerin satışı, teslimi, cayma hakkı, iade koşulları ve tarafların karşılıklı hak ve yükümlülüklerinin belirlenmesidir.</p>
@@ -41,7 +41,7 @@ namespace KanvasProje.Web.Controllers
                     <p>Standart ürünlerde cayma ve iade talepleri ilgili mevzuat çerçevesinde değerlendirilir. Müşterinin özel ölçü, özel tasarım, kişiselleştirme veya siparişe özel üretim tercihiyle hazırlanan ürünlerde cayma hakkı sınırlı olabilir. Detaylı bilgi için <a href="/Kurumsal/IadeKosullari">İade Koşulları</a> sayfası incelenmelidir.</p>
 
                     <h2>6. Ödeme ve Güvenlik</h2>
-                    <p>Ödeme işlemleri güvenli ödeme altyapısı üzerinden gerçekleştirilir. Kart bilgileri Canvasia sunucularında saklanmaz. Ödeme sırasında kullanılan güvenlik doğrulamaları bankanız veya ödeme sağlayıcınız tarafından yürütülür.</p>
+                    <p>Ödeme işlemleri güvenli ödeme altyapısı üzerinden gerçekleştirilir. Kart bilgileri MeteorGaleri sunucularında saklanmaz. Ödeme sırasında kullanılan güvenlik doğrulamaları bankanız veya ödeme sağlayıcınız tarafından yürütülür.</p>
 
                     <h2>7. Uyuşmazlık</h2>
                     <p>Taraflar arasında doğabilecek uyuşmazlıklarda, yürürlükteki tüketici mevzuatı kapsamında yetkili tüketici hakem heyetleri ve tüketici mahkemeleri yetkilidir.</p>

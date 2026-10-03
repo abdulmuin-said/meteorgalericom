@@ -261,7 +261,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> ExportExcel(string? cerceve)
         {
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             var olculer = await GetOlcuListesiAsync(cerceve);
 
             using var package = new ExcelPackage();
@@ -319,7 +319,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
 
                     page.Header().Column(col =>
                     {
-                        col.Item().Text("Canvasia - Kanvas Tablo Fiyat Listesi").FontSize(16).SemiBold().FontColor("#313511");
+                        col.Item().Text("MeteorGaleri - Kanvas Tablo Fiyat Listesi").FontSize(16).SemiBold().FontColor("#1B2A4A");
                         col.Item().Text($"Rapor Tarihi: {DateTime.Now:dd.MM.yyyy HH:mm} | Toplam Ölçü: {olculer.Count}")
                             .FontSize(9)
                             .FontColor("#6b6b61");

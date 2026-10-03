@@ -7,7 +7,7 @@ namespace KanvasProje.Core.Varliklar
         public string? LogoUrl { get; set; }
         public string? Telefon { get; set; }
         public string? TakipUrl { get; set; }
-        public string GondericiUnvan { get; set; } = "Canvasia";
+        public string GondericiUnvan { get; set; } = "MeteorGaleri";
         public string GondericiAdres { get; set; } = string.Empty;
         public string GondericiTelefon { get; set; } = string.Empty;
         public bool AktifMi { get; set; } = true;

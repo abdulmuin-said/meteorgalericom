@@ -165,7 +165,7 @@ namespace KanvasProje.Service.Services
 
         private static SiteAyarlari NormalizeSettings(SiteAyarlari settings)
         {
-            settings.SiteAdi = string.IsNullOrWhiteSpace(settings.SiteAdi) ? "Canvasia" : settings.SiteAdi.Trim();
+            settings.SiteAdi = string.IsNullOrWhiteSpace(settings.SiteAdi) ? "MeteorGaleri" : settings.SiteAdi.Trim();
             settings.MarkaAdi = string.IsNullOrWhiteSpace(settings.MarkaAdi) ? settings.SiteAdi : settings.MarkaAdi.Trim();
             settings.SiteBasligi = string.IsNullOrWhiteSpace(settings.SiteBasligi) ? $"{settings.MarkaAdi} - Online Dekorasyon Mağazası" : settings.SiteBasligi.Trim();
             settings.SiteAciklamasi = string.IsNullOrWhiteSpace(settings.SiteAciklamasi)
@@ -216,12 +216,12 @@ namespace KanvasProje.Service.Services
                 ? $"{settings.MarkaAdi}; kanvas tablo, cam tablo, duvar dekorasyonu ve yaşam alanlarına özel premium dekorasyon ürünleri sunar."
                 : settings.MetaDescription.Trim();
             settings.MetaKeywords = string.IsNullOrWhiteSpace(settings.MetaKeywords)
-                ? "kanvas tablo, cam tablo, duvar dekorasyonu, duvar sanatı, tablo, dekorasyon ürünleri, Canvasia"
+                ? "kanvas tablo, cam tablo, duvar dekorasyonu, duvar sanatı, tablo, dekorasyon ürünleri, MeteorGaleri"
                 : settings.MetaKeywords.Trim();
             settings.GoogleAnalyticsId = settings.GoogleAnalyticsId?.Trim() ?? string.Empty;
             settings.FacebookPixelId = settings.FacebookPixelId?.Trim() ?? string.Empty;
             settings.VarsayilanSosyalPaylasimGorseliUrl = string.IsNullOrWhiteSpace(settings.VarsayilanSosyalPaylasimGorseliUrl)
-                ? "/EmailTemplates/canvasia-logo.png"
+                ? "/EmailTemplates/meteorgaleri-logo.png"
                 : settings.VarsayilanSosyalPaylasimGorseliUrl.Trim();
             settings.CookieMetni = string.IsNullOrWhiteSpace(settings.CookieMetni)
                 ? "Deneyiminizi iyileştirmek, sepetinizi korumak ve site trafiğini analiz etmek için çerezler kullanıyoruz."
@@ -229,9 +229,10 @@ namespace KanvasProje.Service.Services
 
             settings.BildirimAliciEmail = settings.BildirimAliciEmail?.Trim() ?? string.Empty;
             if (string.IsNullOrWhiteSpace(settings.BildirimAliciEmail) ||
-                settings.BildirimAliciEmail.Equals("admin@canvasia.com", StringComparison.OrdinalIgnoreCase))
+                settings.BildirimAliciEmail.Equals("admin@canvasia.com", StringComparison.OrdinalIgnoreCase) ||
+                settings.BildirimAliciEmail.Equals("canvasia.com.tr@gmail.com", StringComparison.OrdinalIgnoreCase))
             {
-                settings.BildirimAliciEmail = "canvasia.com.tr@gmail.com";
+                settings.BildirimAliciEmail = "meteor_medya@hotmail.com";
             }
             settings.BakimModuMesaji = string.IsNullOrWhiteSpace(settings.BakimModuMesaji)
                 ? "Size daha iyi bir alışveriş deneyimi sunmak için kısa bir bakım çalışması yapıyoruz. Çok yakında premium dekorasyon ürünlerimizle yeniden yayında olacağız."

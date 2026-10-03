@@ -220,7 +220,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> ExcelExport()
         {
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             var siparisler = await _siparisService.GetAllAsync();
             using var package = new ExcelPackage();
             var worksheet = package.Workbook.Worksheets.Add("Siparişler");
@@ -618,7 +618,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                         </div>
                         <p>Ödeme yapıldıysa, iadeniz 3-5 iş günü içinde hesabınıza yapılacaktır.</p>
                         <p>Herhangi bir sorunuz varsa bizimle iletişime geçebilirsiniz.</p>
-                        <p style='margin-top: 30px;'>Saygılarımızla,<br/><strong>Canvasia</strong></p>
+                        <p style='margin-top: 30px;'>Saygılarımızla,<br/><strong>MeteorGaleri</strong></p>
                     </div>";
 
                 await _emailService.SendMailAsync(siparis.Eposta, $"Sipariş {siparisNo} - İptal", icerik);

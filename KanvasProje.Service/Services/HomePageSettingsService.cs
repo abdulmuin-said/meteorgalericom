@@ -95,14 +95,14 @@ namespace KanvasProje.Service.Services
                 settings.Hero.DesktopSlides,
                 new[]
                 {
-                    ("/img/banner/slider-1.webp", "/video/slider1.mp4", "SADE\\nVE DOĞAL", "Canvasia Koleksiyonu", "Yaşam alanlarınız için özenle seçilmiş kanvas eserler.", "Koleksiyonu Keşfet", "/Urun"),
+                    ("/img/banner/slider-1.webp", "/video/slider1.mp4", "SADE\\nVE DOĞAL", "MeteorGaleri Koleksiyonu", "Yaşam alanlarınız için özenle seçilmiş kanvas eserler.", "Koleksiyonu Keşfet", "/Urun"),
                     ("/img/banner/slider-2.webp", "/video/slider2.mp4", "MODERN\\nESERLER", "Yeni Sezon", "Evinizi sanatın büyüleyici dünyasıyla buluşturun.", "Tüm Ürünleri İncele", "/Urun")
                 });
             settings.Hero.MobileSlides = NormalizeSlides(
                 settings.Hero.MobileSlides,
                 new[]
                 {
-                    ("/img/banner/mobile-1.webp", "/video/slider1.mp4", "SADE\\nVE DOĞAL", "Canvasia Koleksiyonu", "Yaşam alanlarınız için özenle seçilmiş kanvas eserler.", "Koleksiyonu Keşfet", "/Urun"),
+                    ("/img/banner/mobile-1.webp", "/video/slider1.mp4", "SADE\\nVE DOĞAL", "MeteorGaleri Koleksiyonu", "Yaşam alanlarınız için özenle seçilmiş kanvas eserler.", "Koleksiyonu Keşfet", "/Urun"),
                     ("/img/banner/mobile-2.webp", "/video/slider2.mp4", "MODERN\\nESERLER", "Yeni Sezon", "Evinizi sanatın büyüleyici dünyasıyla buluşturun.", "Tüm Ürünleri İncele", "/Urun")
                 });
 

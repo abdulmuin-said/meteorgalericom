@@ -67,7 +67,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                 .ToListAsync();
             var model = await BuildSubscriberListAsync(aboneler);
 
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             using var package = new ExcelPackage();
             var worksheet = package.Workbook.Worksheets.Add("Bülten Aboneleri");
             var headers = new[] { "Id", "Durum", "E-Posta", "Kayıt Tarihi", "IP Adresi", "Şehir", "Ülke", "Cihaz", "Tarayıcı", "İşletim Sistemi" };
@@ -253,7 +253,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                     await _emailService.SendTemplateMailAsync(
                         email,
                         baslik,
-                        "Değerli Canvasia Abonesi",
+                        "Değerli MeteorGaleri Abonesi",
                         htmlIcerik,
                         normalizedButtonLink,
                         string.IsNullOrWhiteSpace(butonYazi) ? "Koleksiyonu İncele" : butonYazi);

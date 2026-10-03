@@ -36,7 +36,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
             var (startUtc, endUtc, startLocal, endLocal) = ResolveDateRange(baslangic, bitis);
             var model = await BuildReportAsync(startUtc, endUtc, startLocal, endLocal);
 
-            ExcelPackage.License.SetNonCommercialOrganization("Canvasia");
+            ExcelPackage.License.SetNonCommercialOrganization("MeteorGaleri");
             using var package = new ExcelPackage();
 
             AddSummarySheet(package, model);
@@ -67,7 +67,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
         {
             var (startUtc, endUtc, startLocal, endLocal) = ResolveDateRange(baslangic, bitis);
             var model = await BuildReportAsync(startUtc, endUtc, startLocal, endLocal);
-            var logoPath = Path.Combine(_webHostEnvironment.WebRootPath, "EmailTemplates", "canvasia-logo.png");
+            var logoPath = Path.Combine(_webHostEnvironment.WebRootPath, "EmailTemplates", "meteorgaleri-logo.png");
 
             QuestPDF.Settings.License = LicenseType.Community;
             var pdfBytes = Document.Create(container =>
@@ -84,7 +84,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                         {
                             row.RelativeItem().Column(header =>
                             {
-                                header.Item().Text("Canvasia Rapor Özeti").FontSize(18).Bold().FontColor("#313511");
+                                header.Item().Text("MeteorGaleri Rapor Özeti").FontSize(18).Bold().FontColor("#1B2A4A");
                                 header.Item().Text(model.AralikEtiketi).FontSize(9).FontColor("#6b6f45");
                             });
 
@@ -96,7 +96,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                                 }
                                 else
                                 {
-                                    box.Text("Canvasia").FontSize(14).Bold().FontColor("#313511");
+                                    box.Text("MeteorGaleri").FontSize(14).Bold().FontColor("#1B2A4A");
                                 }
                             });
                         });

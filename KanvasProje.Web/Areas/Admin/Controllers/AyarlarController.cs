@@ -132,7 +132,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                 await _emailService.SendTemplateMailAsync(
                     recipientEmail,
                     "Test Maili",
-                    string.IsNullOrWhiteSpace(model.MarkaAdi) ? "Canvasia" : model.MarkaAdi,
+                    string.IsNullOrWhiteSpace(model.MarkaAdi) ? "MeteorGaleri" : model.MarkaAdi,
                     "Mail altyapısı başarıyla çalışıyor. Sipariş, kargo, üyelik ve kampanya bildirimleri bu kanal üzerinden gönderilecektir.",
                     string.Empty,
                     string.Empty);
