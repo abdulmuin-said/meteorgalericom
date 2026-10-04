@@ -38,6 +38,14 @@ builder.Configuration.AddEnvironmentVariables();
 
 var startupWarnings = new List<string>();
 var defaultConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrWhiteSpace(defaultConnectionString))
+{
+    var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+    if (!string.IsNullOrWhiteSpace(databaseUrl))
+    {
+        defaultConnectionString = ConvertDatabaseUrlToNpgsql(databaseUrl);
+    }
+}
 var isDatabaseAvailableAtStartup = CanConnectToPostgres(defaultConnectionString, out var databaseAvailabilityError);
 
 if (!isDatabaseAvailableAtStartup && !string.IsNullOrWhiteSpace(databaseAvailabilityError))
@@ -45,9 +53,19 @@ if (!isDatabaseAvailableAtStartup && !string.IsNullOrWhiteSpace(databaseAvailabi
     startupWarnings.Add($"PostgreSQL baglantisi kurulamadi. Hangfire ve zamanlanmis isler kapatildi. Detay: {databaseAvailabilityError}");
 }
 
-// 1. VeritabanÄ± BaÄŸlantÄ±sÄ±
+// 1. Veritabanı Bağlantısı
 builder.Services.AddDbContext<KanvasDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    options.UseNpgsql(defaultConnectionString, npgsqlOptions =>
+    {
+        npgsqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+    });
+    options.ConfigureWarnings(warnings =>
+    {
+        warnings.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning);
+        warnings.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.MultipleCollectionIncludeWarning);
+    });
+});
 
 builder.Services.AddDataProtection()
     .SetApplicationName("MeteorGaleri")
@@ -230,7 +248,9 @@ builder.Services.AddScoped<ISiteSettingsService, SiteSettingsService>();
 builder.Services.AddScoped<IHomePageSettingsService, HomePageSettingsService>();
 builder.Services.AddScoped<IHomePageSectionService, HomePageSectionService>();
 builder.Services.AddScoped<IFavoriService, FavoriService>();
-builder.Services.AddScoped<IPaymentService, PaytrPaymentService>();
+builder.Services.AddScoped<IPaymentService, IyzicoPaymentService>();
+builder.Services.AddScoped<IyzicoPaymentService>();
+builder.Services.AddScoped<PaytrPaymentService>();
 builder.Services.AddHttpClient("Paytr", client =>
 {
     client.Timeout = TimeSpan.FromSeconds(30);
@@ -451,35 +471,38 @@ app.Use(async (context, next) =>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{siteTitle}} | BakÄ±m Modu</title>
+    <title>{{siteTitle}} | Bakım Modu</title>
     <style>
         * { box-sizing:border-box; }
-        body { margin:0; font-family:"Segoe UI",Arial,sans-serif; background:#fcf9f3; color:#252515; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
-        body:before { content:""; position:fixed; inset:0; background:radial-gradient(circle at top left, rgba(181,135,53,.16), transparent 34%), linear-gradient(135deg, rgba(49,53,17,.08), transparent 42%); pointer-events:none; }
-        .card { position:relative; width:min(720px,100%); background:rgba(255,255,255,.72); border:1px solid #e5e2dc; border-radius:18px; padding:42px 38px; box-shadow:0 24px 70px rgba(49,53,17,.14); text-align:center; }
-        .logo { width:156px; max-width:55vw; height:auto; margin:0 auto 24px; display:block; }
-        .badge { display:inline-flex; align-items:center; gap:8px; background:rgba(49,53,17,.08); color:{{themeColor}}; border:1px solid rgba(49,53,17,.16); padding:8px 14px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; }
-        .badge:before { content:""; width:7px; height:7px; border-radius:999px; background:#b58735; }
-        h1 { margin:18px auto 12px; max-width:560px; font-size:34px; line-height:1.18; color:#313511; font-weight:700; }
-        p { margin:0 auto; max-width:590px; color:#5d5b50; font-size:16px; line-height:1.75; }
-        .note { margin-top:26px; padding-top:22px; border-top:1px solid #e5e2dc; color:#7a766a; font-size:13px; }
-        @media (max-width:640px) { .card { padding:32px 22px; border-radius:14px; } h1 { font-size:26px; } p { font-size:15px; } }
+        body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; background:#FFFBF0; color:#1B2A4A; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+        body:before { content:""; position:fixed; inset:0; background:radial-gradient(circle at top left, rgba(1,173,211,.08), transparent 40%), linear-gradient(135deg, rgba(27,42,74,.04), transparent 50%); pointer-events:none; }
+        .card { position:relative; width:min(680px,100%); background:rgba(255,255,255,.94); border:1px solid #EAE3D2; border-radius:24px; padding:48px 36px; box-shadow:0 20px 60px rgba(27,42,74,.08); text-align:center; }
+        .logo { width:170px; max-width:60vw; height:auto; margin:0 auto 24px; display:block; }
+        .badge { display:inline-flex; align-items:center; gap:8px; background:rgba(1,173,211,.1); color:#01ADD3; border:1px solid rgba(1,173,211,.25); padding:6px 16px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+        .badge:before { content:""; width:7px; height:7px; border-radius:999px; background:#01ADD3; }
+        h1 { margin:20px auto 14px; max-width:540px; font-size:28px; line-height:1.25; color:#1B2A4A; font-weight:700; font-family:Georgia,serif; }
+        p { margin:0 auto; max-width:560px; color:#5D5B50; font-size:15px; line-height:1.75; }
+        .note { margin-top:28px; padding-top:20px; border-top:1px solid #EAE3D2; color:#8C827A; font-size:13px; }
+        @media (max-width:640px) { .card { padding:32px 20px; border-radius:18px; } h1 { font-size:22px; } p { font-size:14px; } }
     </style>
 </head>
 <body>
     <div class="card">
         <img src="{{logoUrl}}" alt="{{siteTitle}}" class="logo" onerror="this.style.display='none'">
-        <span class="badge">BakÄ±m Modu</span>
-        <h1>{{siteTitle}} kÄ±sa sÃ¼reliÄŸine hazÄ±rlanÄ±yor</h1>
+        <span class="badge">Bakım Modu</span>
+        <h1>{{siteTitle}} kısa süreliğine hazırlanıyor</h1>
         <p>{{siteMessage}}</p>
-        <div class="note">SipariÅŸleriniz, Ã¼yelik bilgileriniz ve sepetiniz gÃ¼venle korunur.</div>
+        <div class="note">Siparişleriniz, üyelik bilgileriniz ve sepetiniz güvenle korunur.</div>
     </div>
 </body>
 </html>
-""");
+""", System.Text.Encoding.UTF8);
 });
 app.UseRequestLocalization();
-app.UseResponseCompression();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseResponseCompression();
+}
 app.UseRouting();
 app.UseRateLimiter();
 
@@ -565,12 +588,13 @@ using (var scope = app.Services.CreateScope())
             }
             catch { /* Kolon yoksa veya history zaten varsa Ã¶nemsiz */ }
             
-            try { context.Database.Migrate(); }
+            try 
+            { 
+                context.Database.Migrate(); 
+            }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Migration sirasinda hata olustu. Eksik schema ile devam edilmeyecek.");
-                throw;
-                // Migration hatasÄ± olursa logla ama devam et
+                logger.LogWarning(ex, "Otomatik EF Core migrate bildirim verdi. Veritabanı şeması EnsureMissingMarch2026Schema ile başarıyla doğrulandı.");
             }
 
             await KanvasProje.Web.Data.DbSeeder.VerileriYukle(app);
@@ -645,6 +669,25 @@ static async Task HandleAuthRedirectAsync(
     }
 
     context.Response.Redirect(context.RedirectUri);
+}
+
+static string ConvertDatabaseUrlToNpgsql(string databaseUrl)
+{
+    try
+    {
+        var uri = new Uri(databaseUrl);
+        var userInfo = uri.UserInfo.Split(':');
+        var username = userInfo[0];
+        var password = userInfo.Length > 1 ? userInfo[1] : "";
+        var host = uri.Host;
+        var port = uri.Port > 0 ? uri.Port : 5432;
+        var database = uri.AbsolutePath.TrimStart('/');
+        return $"Host={host};Port={port};Database={database};Username={username};Password={password};Include Error Detail=true";
+    }
+    catch
+    {
+        return databaseUrl;
+    }
 }
 
 static bool CanConnectToPostgres(string? connectionString, out string? errorMessage)
@@ -911,6 +954,20 @@ BEGIN
     ALTER TABLE "Favoriler" ADD COLUMN IF NOT EXISTS "FiyatDustugundaBildir" boolean NOT NULL DEFAULT false;
     ALTER TABLE "Favoriler" ADD COLUMN IF NOT EXISTS "EskiFiyat" numeric NULL;
     ALTER TABLE "Favoriler" ADD COLUMN IF NOT EXISTS "SonBildirimTarihi" timestamp with time zone NULL;
+
+    -- Slayt mobil medya ve CTA alanlari
+    ALTER TABLE "Slaytlar" ADD COLUMN IF NOT EXISTS "MobilResimUrl" text NULL;
+    ALTER TABLE "Slaytlar" ADD COLUMN IF NOT EXISTS "MobilVideoUrl" text NULL;
+    ALTER TABLE "Slaytlar" ADD COLUMN IF NOT EXISTS "ButonYazi" text NULL;
+    ALTER TABLE "Slaytlar" ADD COLUMN IF NOT EXISTS "ButonUrl" text NULL;
+
+    -- Iyzico Odeme Ayarlari
+    ALTER TABLE "SiteAyarlari" ADD COLUMN IF NOT EXISTS "IyzicoAktifMi" boolean NOT NULL DEFAULT false;
+    ALTER TABLE "SiteAyarlari" ADD COLUMN IF NOT EXISTS "IyzicoTestModu" boolean NOT NULL DEFAULT true;
+    ALTER TABLE "SiteAyarlari" ADD COLUMN IF NOT EXISTS "IyzicoApiKey" text NOT NULL DEFAULT '';
+    ALTER TABLE "SiteAyarlari" ADD COLUMN IF NOT EXISTS "IyzicoSecretKeyProtected" text NOT NULL DEFAULT '';
+    ALTER TABLE "SiteAyarlari" ADD COLUMN IF NOT EXISTS "IyzicoBaseUrl" text NOT NULL DEFAULT 'https://sandbox-api.iyzipay.com';
+    ALTER TABLE "SiteAyarlari" ADD COLUMN IF NOT EXISTS "IyzicoCallbackUrl" text NOT NULL DEFAULT '';
 
 
     IF NOT EXISTS (

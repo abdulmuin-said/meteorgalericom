@@ -1,0 +1,99 @@
+@{
+    ViewData["Title"] = "İyzico ile Güvenli Ödeme - MeteorGaleri";
+    var checkoutFormContent = ViewBag.CheckoutFormContent as string;
+    var siparisNo = ViewBag.SiparisNo as string;
+    var toplamTutar = ViewBag.ToplamTutar is decimal t ? t : 0m;
+    var hata = ViewBag.Hata as string;
+}
+
+<!-- Breadcrumb -->
+<div class="bg-[#FDF6E3] border-b border-[#F5E6C8] py-4">
+    <div class="container mx-auto px-4 flex items-center justify-center gap-4 text-xs tracking-widest uppercase">
+        <a href="/Sepet" class="text-[#333333] hover:text-[#1B2A4A] transition-colors flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-[#F5E6C8] text-[#333333] flex items-center justify-center font-bold">1</span> Sepet
+        </a>
+        <span class="text-[#F5E6C8]">/</span>
+        <a href="/Siparis/Odeme" class="text-[#333333] hover:text-[#1B2A4A] transition-colors flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-[#F5E6C8] text-[#333333] flex items-center justify-center font-bold">2</span> Teslimat
+        </a>
+        <span class="text-[#F5E6C8]">/</span>
+        <span class="text-[#1B2A4A] font-bold flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-[#1B2A4A] text-white flex items-center justify-center font-bold">3</span> Ödeme
+        </span>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-8 md:py-12">
+    <div class="text-center mb-8">
+        <h1 class="font-serif text-3xl md:text-4xl text-[#1B2A4A] mb-2 font-bold">Güvenli Kart ile Ödeme</h1>
+        <p class="text-sm text-[#4A5568] max-w-xl mx-auto">
+            Siparişiniz oluşturuldu. 256-Bit SSL ve İyzico güvencesiyle taksitli veya tek çekim ödemenizi tamamlayabilirsiniz.
+        </p>
+    </div>
+
+    @if (!string.IsNullOrEmpty(hata))
+    {
+        <div class="max-w-2xl mx-auto mb-8 rounded-xl border border-red-200 bg-red-50 px-6 py-5 text-sm text-red-700 shadow-sm">
+            <div class="font-semibold mb-1 flex items-center gap-2">
+                <i class="fas fa-exclamation-circle text-red-600"></i> Ödeme Başlatılamadı
+            </div>
+            <p>@hata</p>
+            <div class="mt-4 flex gap-4">
+                <a href="/Siparis/Odeme" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#1B2A4A] text-white text-xs font-semibold hover:bg-black transition-colors">
+                    <i class="fas fa-arrow-left"></i> Bilgileri Güncelle & Tekrar Dene
+                </a>
+                <a href="/Kurumsal/Iletisim" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#1B2A4A] text-[#1B2A4A] text-xs font-semibold hover:bg-gray-100 transition-colors">
+                    Destek Al
+                </a>
+            </div>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(checkoutFormContent))
+    {
+        <!-- Sipariş Özeti Kartı -->
+        <div class="max-w-3xl mx-auto mb-6 bg-white border border-[#F5E6C8] rounded-2xl p-5 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <span class="text-[11px] uppercase tracking-widest text-[#666666] font-medium">Sipariş Referansı</span>
+                    <div class="text-lg font-bold text-[#1B2A4A] mt-0.5">#@siparisNo</div>
+                </div>
+                <div class="text-right">
+                    <span class="text-[11px] uppercase tracking-widest text-[#666666] font-medium">Ödenecek Tutar</span>
+                    <div class="text-2xl font-bold text-[#3A7CA5] mt-0.5">@toplamTutar.ToString("N2") TL</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- İyzico Responsive Checkout Form Container -->
+        <div class="max-w-3xl mx-auto bg-white border border-[#F5E6C8] rounded-2xl overflow-hidden shadow-md">
+            <div class="bg-[#1B2A4A] text-white text-xs tracking-wider uppercase px-6 py-3.5 flex items-center gap-3">
+                <i class="fas fa-lock text-[#F5E6C8]"></i>
+                <span class="font-semibold">256-Bit SSL & 3D Secure Korumalı Ödeme</span>
+                <span class="ml-auto flex items-center gap-2 text-white/90">
+                    <i class="fab fa-cc-visa text-base"></i>
+                    <i class="fab fa-cc-mastercard text-base"></i>
+                    <i class="fab fa-cc-amex text-base"></i>
+                </span>
+            </div>
+            
+            <div class="p-4 md:p-8 min-h-[500px]">
+                <div id="iyzipay-checkout-form" class="responsive"></div>
+                @Html.Raw(checkoutFormContent)
+            </div>
+
+            <div class="bg-[#FDF6E3] px-6 py-4 border-t border-[#F5E6C8] text-center">
+                <p class="text-xs text-[#555555]">
+                    <i class="fas fa-shield-alt text-[#3A7CA5] me-1"></i>
+                    Kart bilgileriniz MeteorGaleri sunucularında asla saklanmaz. Ödeme doğrudan BDDK lisanslı İyzico altyapısı üzerinden gerçekleşir.
+                </p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="max-w-2xl mx-auto text-center py-16">
+            <div class="animate-spin w-10 h-10 border-4 border-[#F5E6C8] border-t-[#3A7CA5] rounded-full mx-auto mb-4"></div>
+            <p class="text-[#333333] font-medium">Güvenli İyzico ödeme sayfası yükleniyor...</p>
+        </div>
+    }
+</div>

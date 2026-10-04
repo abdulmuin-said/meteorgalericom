@@ -33,17 +33,36 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
         {
             await HazirlaKargoFirmaSecenekleriAsync();
             HazirlaPaytrDurumu();
+            HazirlaIyzicoDurumu();
             return View(_siteSettingsService.GetSettings());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(SiteAyarlari model, string? paytrMerchantKey, string? paytrMerchantSalt)
+        public async Task<IActionResult> Index(SiteAyarlari model, string? paytrMerchantKey, string? paytrMerchantSalt, string? iyzicoSecretKey)
         {
             try
             {
                 var paytrKeyKayitli = _siteSettingsService.HasPaytrMerchantKey();
                 var paytrSaltKayitli = _siteSettingsService.HasPaytrMerchantSalt();
+                var iyzicoKeyKayitli = _siteSettingsService.HasIyzicoSecretKey();
+
+                if (model.IyzicoAktifMi)
+                {
+                    if (string.IsNullOrWhiteSpace(model.IyzicoApiKey))
+                    {
+                        TempData["Hata"] = "İyzico aktifken API Key zorunludur.";
+                        TempData["Durum"] = "warning";
+                        return RedirectToAction(nameof(Index));
+                    }
+
+                    if (!iyzicoKeyKayitli && string.IsNullOrWhiteSpace(iyzicoSecretKey))
+                    {
+                        TempData["Hata"] = "İyzico aktifken Secret Key zorunludur.";
+                        TempData["Durum"] = "warning";
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
 
                 if (model.PaytrAktifMi)
                 {
@@ -70,7 +89,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                 }
 
                 await VarsayilanKargoFirmasiniGuncelleAsync(model.KargoFirmasi);
-                _siteSettingsService.SaveSettings(model, paytrMerchantKey, paytrMerchantSalt);
+                _siteSettingsService.SaveSettings(model, paytrMerchantKey, paytrMerchantSalt, iyzicoSecretKey);
                 TempData["Basari"] = "Site ayarları başarıyla kaydedildi.";
                 TempData["Durum"] = "success";
             }
@@ -155,6 +174,11 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
         {
             ViewBag.PaytrMerchantKeyKayitli = _siteSettingsService.HasPaytrMerchantKey();
             ViewBag.PaytrMerchantSaltKayitli = _siteSettingsService.HasPaytrMerchantSalt();
+        }
+
+        private void HazirlaIyzicoDurumu()
+        {
+            ViewBag.IyzicoSecretKeyKayitli = _siteSettingsService.HasIyzicoSecretKey();
         }
 
         private async Task HazirlaKargoFirmaSecenekleriAsync()

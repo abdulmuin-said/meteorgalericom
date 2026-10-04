@@ -45,6 +45,14 @@ namespace KanvasProje.Core.Models
         public string PaytrBasariliDonusUrl { get; set; } = string.Empty;
         public string PaytrBasarisizDonusUrl { get; set; } = string.Empty;
 
+        // İyzico Ödeme Ayarları
+        public bool IyzicoAktifMi { get; set; } = true;
+        public bool IyzicoTestModu { get; set; } = true;
+        public string IyzicoApiKey { get; set; } = "sandbox-placeholder-key";
+        public string IyzicoSecretKeyProtected { get; set; } = string.Empty;
+        public string IyzicoBaseUrl { get; set; } = "https://sandbox-api.iyzipay.com";
+        public string IyzicoCallbackUrl { get; set; } = string.Empty;
+
         public string KargoFirmasi { get; set; } = "Aras Kargo";
         public string KargoTakipUrl { get; set; } = string.Empty;
         public int SiparisTeslimSuresiGun { get; set; } = 5;

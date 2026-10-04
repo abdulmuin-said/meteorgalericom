@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KanvasProje.Core.Varliklar.Siparis>
+@model IEnumerable<KanvasProje.Core.Varliklar.Siparis>
 @{
     ViewData["Title"] = "Siparişlerim";
 }
@@ -149,6 +149,22 @@
                                     </a>
                                 </div>
                             </div>
+                            @if (item.Durum != 4)
+                            {
+                                var currentProg = KanvasProje.Core.Helpers.SiparisDurumHelper.GetProgressStep(item.Durum);
+                                <div class="mt-4 pt-3 border-t border-[#F5E6C8]/70 flex flex-wrap items-center justify-between gap-3 text-xs">
+                                    <div class="flex items-center gap-1.5 w-48 sm:w-64">
+                                        @for (int s = 1; s <= 5; s++)
+                                        {
+                                            var isDone = s <= currentProg;
+                                            <div class="h-1.5 flex-1 rounded-full @(isDone ? "bg-[#01ADD3]" : "bg-gray-200")"></div>
+                                        }
+                                    </div>
+                                    <span class="text-[11px] text-gray-500 font-medium">
+                                        <i class="fas fa-clock-rotate-left text-[#01ADD3] me-1"></i>Süreç: <strong class="text-[#1B2A4A]">@KanvasProje.Core.Helpers.SiparisDurumHelper.GetLabel(item.Durum)</strong>
+                                    </span>
+                                </div>
+                            }
                         </div>
                     }
                 </div>

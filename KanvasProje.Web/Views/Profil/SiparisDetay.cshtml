@@ -1,4 +1,4 @@
-﻿@model KanvasProje.Core.Varliklar.Siparis
+@model KanvasProje.Core.Varliklar.Siparis
 @using KanvasProje.Core.Helpers
 @{
     ViewData["Title"] = "Sipariş Detayı #" + Model.Id;
@@ -59,7 +59,7 @@
             <!-- Header -->
             <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
                 <div>
-                    <span class="text-xs uppercase tracking-widest text-[#C0392B] font-medium block mb-1">Sipariş Detayı</span>
+                    <span class="text-xs uppercase tracking-widest text-[#01ADD3] font-semibold block mb-1">Sipariş Detayı</span>
                     <h1 class="font-serif text-3xl text-[#1B2A4A]">Sipariş #@Model.Id</h1>
                     <p class="text-xs text-[#333333] mt-2">@Model.OlusturulmaTarihi.ToTurkeyString() tarihinde oluşturuldu.</p>
                 </div>
@@ -84,79 +84,138 @@
                 </div>
             }
 
-            <!-- Takip Adımları -->
-            <div class="bg-white border border-[#F5E6C8] rounded-lg p-6 mb-8">
-                <h3 class="font-serif text-xl text-[#1B2A4A] mb-6 border-b border-[#F5E6C8] pb-4">
-                    @(isReturn ? "İade Süreci" : "Sipariş Takibi")
-                </h3>
-                
-                <div class="flex flex-col md:flex-row gap-6 relative">
-                    <!-- Progress Line -->
-                    <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-[#F5E6C8] -z-10 mx-12"></div>
-                    
-                    @if (isCancelled)
+            <!-- Görsel Süreç Zaman Çizelgesi (Timeline) -->
+            <div class="bg-white border border-[#F5E6C8] rounded-2xl p-6 md:p-8 mb-8 shadow-xs">
+                <div class="flex items-center justify-between border-b border-[#F5E6C8] pb-4 mb-8">
+                    <div>
+                        <h3 class="font-serif text-xl text-[#1B2A4A] font-bold">
+                            @(isReturn ? "İade & Değişim Süreci" : "Sipariş Süreç Takibi")
+                        </h3>
+                        <p class="text-xs text-gray-500 mt-1">Siparişinizin atölyeden kapınıza kadar olan canlı üretim ve teslimat akışı</p>
+                    </div>
+                    @if (!isCancelled && !isReturn)
                     {
-                        <div class="text-sm text-red-600 bg-red-50 p-4 rounded border border-red-100 w-full">
-                            <strong>İptal edilen sipariş:</strong> Bu sipariş işleme alınmadı veya daha sonra iptal edildi. Ayrıntılar için destek ekibiyle iletişime geçebilirsiniz.
-                        </div>
-                    }
-                    else if (isReturn)
-                    {
-                        var iadeAdimlari = new[] {
-                            new { Icon = "fas fa-file-signature", Baslik = "Talep alındı", Puan = 5 },
-                            new { Icon = "fas fa-clipboard-check", Baslik = "Onay verildi", Puan = 6 },
-                            new { Icon = "fas fa-coins", Baslik = "İade tamamlandı", Puan = 7 },
-                            new { Icon = "fas fa-circle-check", Baslik = "Süreç kapandı", Puan = 7 }
-                        };
-                        
-                        foreach (var adim in iadeAdimlari)
-                        {
-                            var isActive = isReturn
-                                ? statusStep >= adim.Puan
-                                : SiparisDurumHelper.GetProgressStep(Model.Durum) >= SiparisDurumHelper.GetProgressStep(adim.Puan);
-                            <div class="flex-1 text-center relative z-10">
-                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 transition-colors @(isActive ? "bg-[#1B2A4A] text-white" : "bg-[#FDF6E3] text-[#a09e99] border-2 border-white")">
-                                    <i class="@adim.Icon"></i>
-                                </div>
-                                <h4 class="text-xs font-semibold uppercase tracking-wider @(isActive ? "text-[#1B2A4A]" : "text-[#a09e99]")">@adim.Baslik</h4>
-                            </div>
-                        }
-                    }
-                    else
-                    {
-                        var adimlar = new[] {
-                            new { Icon = "fas fa-clipboard-check", Baslik = "Sipariş alındı", Puan = 0 },
-                            new { Icon = "fas fa-box-open", Baslik = "Üretim hazırlanıyor", Puan = 1 },
-                            new { Icon = "fas fa-box", Baslik = "Paketleniyor", Puan = 8 },
-                            new { Icon = "fas fa-truck", Baslik = "Kargoda", Puan = 2 },
-                            new { Icon = "fas fa-circle-check", Baslik = "Teslim edildi", Puan = 3 }
-                        };
-                        
-                        foreach (var adim in adimlar)
-                        {
-                            var isActive = isReturn
-                                ? statusStep >= adim.Puan
-                                : SiparisDurumHelper.GetProgressStep(Model.Durum) >= SiparisDurumHelper.GetProgressStep(adim.Puan);
-                            <div class="flex-1 text-center relative z-10">
-                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 transition-colors @(isActive ? "bg-[#1B2A4A] text-white" : "bg-[#FDF6E3] text-[#a09e99] border-2 border-white")">
-                                    <i class="@adim.Icon"></i>
-                                </div>
-                                <h4 class="text-xs font-semibold uppercase tracking-wider @(isActive ? "text-[#1B2A4A]" : "text-[#a09e99]")">@adim.Baslik</h4>
-                            </div>
-                        }
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#EBF5FB] text-[#01ADD3] border border-[#01ADD3]/30">
+                            <span class="w-2 h-2 rounded-full bg-[#01ADD3] animate-ping"></span>
+                            @SiparisDurumHelper.GetLabel(Model.Durum)
+                        </span>
                     }
                 </div>
 
+                @if (isCancelled)
+                {
+                    <div class="text-sm text-red-600 bg-red-50 p-5 rounded-xl border border-red-200 flex items-start gap-3">
+                        <i class="fas fa-circle-xmark text-lg mt-0.5 text-red-500"></i>
+                        <div>
+                            <strong class="font-semibold block mb-0.5">Sipariş İptal Edildi</strong>
+                            <p class="text-xs text-red-700 leading-relaxed">Bu sipariş işleme alınmadı veya iptal edildi. Ücret iadeniz bankanızın işlem süresine bağlı olarak 1-3 iş günü içinde kartınıza yansıyacaktır.</p>
+                        </div>
+                    </div>
+                }
+                else if (isReturn)
+                {
+                    var iadeAdimlari = new[] {
+                        new { Icon = "fas fa-file-signature", Baslik = "Talep Alındı", Detay = "İade başvurusu iletildi", Step = 5 },
+                        new { Icon = "fas fa-box-archive", Baslik = "Ürün Kabul", Detay = "Paket atölyemize ulaştı", Step = 6 },
+                        new { Icon = "fas fa-money-bill-transfer", Baslik = "İade Onaylandı", Detay = "Tutar bankaya aktarıldı", Step = 7 }
+                    };
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                        @foreach (var adim in iadeAdimlari)
+                        {
+                            var isActive = statusStep >= adim.Step;
+                            <div class="text-center relative z-10 p-4 rounded-xl @(isActive ? "bg-[#FDF6E3] border border-[#F5E6C8]" : "bg-gray-50/50")">
+                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 text-lg @(isActive ? "bg-[#01ADD3] text-white shadow-md" : "bg-gray-200 text-gray-400")">
+                                    <i class="@adim.Icon"></i>
+                                </div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-[#1B2A4A] mb-1">@adim.Baslik</h4>
+                                <p class="text-[11px] text-gray-500">@adim.Detay</p>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    var currentProgress = SiparisDurumHelper.GetProgressStep(Model.Durum);
+                    var adimlar = new[] {
+                        new { Step = 1, Icon = "fas fa-receipt", Baslik = "Sipariş Alındı", Detay = "Ödeme onaylandı & sipariş sisteme düştü" },
+                        new { Step = 2, Icon = "fas fa-palette", Baslik = "Atölyede Basılıyor", Detay = "Yüksek çözünürlüklü UV / kanvas baskı" },
+                        new { Step = 3, Icon = "fas fa-crop-simple", Baslik = "Çerçeveleniyor", Detay = "Ahşap çıta germe, çerçeve & kalite kontrol" },
+                        new { Step = 4, Icon = "fas fa-truck-fast", Baslik = "Kargoya Verildi", Detay = "Darbe emici korumalı ambalaj kuryede" },
+                        new { Step = 5, Icon = "fas fa-circle-check", Baslik = "Teslim Edildi", Detay = "Sipariş başarıyla kapınıza ulaştı" }
+                    };
+
+                    var percent = Math.Max(0, Math.Min(100, (currentProgress - 1) * 25));
+
+                    <div class="relative">
+                        <!-- Masaüstü Arka Plan Çizgisi -->
+                        <div class="hidden md:block absolute top-6 left-10 right-10 h-1.5 bg-[#F5E6C8] rounded-full z-0">
+                            <!-- Dolan İlerleme Çizgisi -->
+                            <div class="h-full bg-gradient-to-r from-[#01ADD3] to-emerald-500 rounded-full transition-all duration-700" style="width: @percent%;"></div>
+                        </div>
+
+                        <!-- 5 Adımlı Süreç Izgarası -->
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-2 relative z-10">
+                            @foreach (var adim in adimlar)
+                            {
+                                var isCompleted = adim.Step < currentProgress;
+                                var isCurrent = adim.Step == currentProgress;
+                                var isPending = adim.Step > currentProgress;
+
+                                <div class="text-center flex flex-row md:flex-col items-center md:items-center gap-4 md:gap-2.5 p-3 md:p-2 rounded-xl transition-all @(isCurrent ? "bg-[#FFFBF0] border border-[#01ADD3]/40 shadow-sm" : "")">
+                                    <!-- İkon Dairesi -->
+                                    <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-base font-bold transition-all duration-300
+                                                @(isCompleted ? "bg-emerald-600 text-white shadow-sm" :
+                                                  isCurrent ? "bg-[#01ADD3] text-white shadow-md ring-4 ring-[#01ADD3]/20" :
+                                                  "bg-white border-2 border-[#F5E6C8] text-[#a09e99]")">
+                                        @if (isCompleted)
+                                        {
+                                            <i class="fas fa-check"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="@adim.Icon"></i>
+                                        }
+                                    </div>
+
+                                    <!-- Metinler -->
+                                    <div class="text-left md:text-center min-w-0 flex-1">
+                                        <div class="text-[10px] uppercase font-bold tracking-widest mb-0.5
+                                                    @(isCompleted ? "text-emerald-700" :
+                                                      isCurrent ? "text-[#01ADD3]" :
+                                                      "text-gray-400")">
+                                            Adım @adim.Step
+                                        </div>
+                                        <h4 class="text-xs font-bold text-[#1B2A4A] leading-tight mb-1">
+                                            @adim.Baslik
+                                        </h4>
+                                        <p class="text-[10px] text-gray-500 leading-snug hidden sm:block">
+                                            @adim.Detay
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
                 @if (!string.IsNullOrEmpty(Model.KargoTakipNo) && !isCancelled)
                 {
-                    <div class="mt-8 bg-[#f8f9fa] border border-[#F5E6C8] rounded p-4 flex items-center justify-between">
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-[#333333] mb-1">Kargo Takip Numarası</p>
-                            <p class="font-mono text-lg font-medium text-[#1B2A4A]" id="trackingNo">@Model.KargoTakipNo</p>
+                    <div class="mt-8 bg-gradient-to-r from-[#FDF6E3] to-[#FFFBF0] border border-[#F5E6C8] rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-white border border-[#F5E6C8] flex items-center justify-center text-[#01ADD3]">
+                                <i class="fas fa-truck-ramp-box"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-widest text-gray-500 font-semibold">Kargo Takip Numarası (@(Model.KargoFirmasi ?? "Kargo"))</p>
+                                <p class="font-mono text-base font-bold text-[#1B2A4A]" id="trackingNo">@Model.KargoTakipNo</p>
+                            </div>
                         </div>
-                        <button type="button" class="border border-[#F5E6C8] bg-white text-[#333333] text-xs px-3 py-1.5 rounded hover:bg-[#FDF6E3] transition-colors flex items-center gap-2" onclick="copyTracking(this)">
-                            <i class="far fa-copy"></i> Kopyala
-                        </button>
+                        <div class="flex items-center gap-2 w-full sm:w-auto">
+                            <button type="button" class="border border-[#F5E6C8] bg-white text-[#1B2A4A] hover:bg-[#FDF6E3] text-xs font-medium px-4 py-2 rounded-lg transition-colors flex items-center justify-center gap-2 flex-1 sm:flex-initial" onclick="copyTracking(this)">
+                                <i class="far fa-copy"></i> Kopyala
+                            </button>
+                        </div>
                     </div>
                 }
             </div>

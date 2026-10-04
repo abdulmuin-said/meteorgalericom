@@ -1,4 +1,4 @@
-﻿@model KanvasProje.Core.Varliklar.Siparis
+@model KanvasProje.Core.Varliklar.Siparis
 @using KanvasProje.Core.Varliklar
 @{
     ViewData["Title"] = "Güvenli Ödeme";
@@ -52,16 +52,16 @@
             {
                 <section>
                     <h2 class="font-serif text-2xl text-[#1B2A4A] mb-6 flex items-center gap-3 border-b border-[#F5E6C8] pb-4">
-                        <i class="fas fa-address-book text-[#C0392B]"></i> Kayıtlı Adresleriniz
+                        <i class="fas fa-address-book text-[#3A7CA5]"></i> Kayıtlı Adresleriniz
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach (var adres in kayitliAdresler)
                         {
-                            <label class="relative border border-[#F5E6C8] rounded-lg p-5 cursor-pointer transition-colors hover:border-[#C0392B] has-[:checked]:border-[#1B2A4A] has-[:checked]:bg-[#FFFBF0] group block">
+                            <label class="relative border border-[#F5E6C8] rounded-lg p-5 cursor-pointer transition-colors hover:border-[#3A7CA5] has-[:checked]:border-[#1B2A4A] has-[:checked]:bg-[#FFFBF0] group block">
                                 <input type="radio" name="kayitliAdresSecimi" class="absolute opacity-0 w-0 h-0 peer" onclick="selectAddress('@adres.AdSoyad', '@adres.Telefon', '@adres.Sehir', '@adres.Ilce', '@adres.AcikAdres')">
                                 <div class="flex items-start gap-3">
-                                    <span class="address-radio w-5 h-5 rounded-full border-2 border-[#C0392B] flex items-center justify-center bg-white transition-all duration-200">
-                                        <span class="address-radio-inner w-2.5 h-2.5 rounded-full bg-[#C0392B] opacity-0 scale-0 transition-all duration-200"></span>
+                                    <span class="address-radio w-5 h-5 rounded-full border-2 border-[#3A7CA5] flex items-center justify-center bg-white transition-all duration-200">
+                                        <span class="address-radio-inner w-2.5 h-2.5 rounded-full bg-[#3A7CA5] opacity-0 scale-0 transition-all duration-200"></span>
                                     </span>
                                     <div class="flex-1">
                                         <div class="text-sm font-semibold text-[#1B2A4A] mb-2 uppercase tracking-wide">@adres.Baslik</div>
@@ -79,7 +79,7 @@
 
             <section>
                 <h2 class="font-serif text-2xl text-[#1B2A4A] mb-6 flex items-center gap-3 border-b border-[#F5E6C8] pb-4">
-                    <i class="fas fa-truck text-[#C0392B]"></i> Teslimat Bilgileri
+                    <i class="fas fa-truck text-[#3A7CA5]"></i> Teslimat Bilgileri
                 </h2>
 
                 @if (ViewBag.FormHata != null || !ViewData.ModelState.IsValid)
@@ -107,7 +107,7 @@
                             @if (girisYapmis)
                             {
                                 <input value="@Model.Eposta" class="w-full bg-transparent border-0 border-b border-[#F5E6C8] px-0 py-2 text-[#333333] cursor-not-allowed" readonly>
-                                <div class="mt-2 text-[10px] uppercase tracking-widest text-[#C0392B]">Kayıtlı e-posta adresiniz kullanılacak.</div>
+                                <div class="mt-2 text-[10px] uppercase tracking-widest text-[#3A7CA5]">Kayıtlı e-posta adresiniz kullanılacak.</div>
                             }
                             else
                             {
@@ -160,7 +160,7 @@
                     <!-- Kargo Firması Seçimi -->
                     <div class="mt-12">
                         <h2 class="font-serif text-2xl text-[#1B2A4A] mb-6 flex items-center gap-3 border-b border-[#F5E6C8] pb-4">
-                            <i class="fas fa-truck-fast text-[#C0392B]"></i> Kargo Firması Seçiniz
+                            <i class="fas fa-truck-fast text-[#3A7CA5]"></i> Kargo Firması Seçiniz
                         </h2>
                         
                         @{
@@ -176,7 +176,7 @@
                                 var isChecked = Model.KargoFirmasiId > 0 ? (kargo.Id == Model.KargoFirmasiId) : kargo.VarsayilanMi;
                                 var checkedAttr = isChecked ? "checked" : null;
                                 
-                                <label class="group relative cursor-pointer border border-[#F5E6C8] rounded-lg p-4 bg-white flex items-center justify-between gap-4 transition-all hover:border-[#C0392B] has-[:checked]:border-[#1B2A4A] has-[:checked]:bg-[#FFFBF0]">
+                                <label class="group relative cursor-pointer border border-[#F5E6C8] rounded-lg p-4 bg-white flex items-center justify-between gap-4 transition-all hover:border-[#3A7CA5] has-[:checked]:border-[#1B2A4A] has-[:checked]:bg-[#FFFBF0]">
                                     <div class="flex items-center gap-3">
                                         <input type="radio" name="KargoFirmasiId" value="@kargo.Id" class="kargo-radio w-4 h-4 text-[#1B2A4A] border-[#F5E6C8] focus:ring-[#1B2A4A]" checked="@checkedAttr" data-price="@kargoFiyat" data-name="@kargo.Ad" />
                                         <div>
@@ -201,11 +201,11 @@
 
                     <div class="mt-12">
                         <h2 class="font-serif text-2xl text-[#1B2A4A] mb-6 flex items-center gap-3 border-b border-[#F5E6C8] pb-4">
-                            <i class="fas fa-credit-card text-[#C0392B]"></i> Ödeme Yöntemi
+                            <i class="fas fa-credit-card text-[#3A7CA5]"></i> Ödeme Yöntemi
                         </h2>
                         
                         <div class="border border-[#F5E6C8] rounded-lg p-6 bg-white relative overflow-hidden">
-                            <div class="absolute top-0 right-0 bg-[#C0392B] text-white text-[10px] uppercase tracking-widest px-3 py-1 font-bold rounded-bl-lg">256-Bit SSL</div>
+                            <div class="absolute top-0 right-0 bg-[#3A7CA5] text-white text-[10px] uppercase tracking-widest px-3 py-1 font-bold rounded-bl-lg">256-Bit SSL</div>
                             
                             <div class="flex items-center gap-4 mb-4">
                                 <i class="fas fa-shield-alt text-[#1B2A4A] text-3xl"></i>
@@ -222,8 +222,8 @@
                             <label class="flex items-start gap-3 cursor-pointer group mt-4 bg-[#FFFBF0] p-4 rounded border border-[#F5E6C8]">
                                 <input type="checkbox" id="terms" required class="w-4 h-4 mt-0.5 text-[#1B2A4A] border-[#F5E6C8] rounded focus:ring-[#1B2A4A]">
                                 <span class="text-sm leading-relaxed text-[#333333]">
-                                    <a href="/Kurumsal/Gizlilik" class="text-[#1B2A4A] font-semibold hover:text-[#C0392B] transition-colors underline decoration-1 underline-offset-2">Gizlilik Politikası</a> ve 
-                                    <a href="/Kurumsal/KullaniciSozlesmesi" class="text-[#1B2A4A] font-semibold hover:text-[#C0392B] transition-colors underline decoration-1 underline-offset-2">Kullanıcı Sözleşmesi</a> şartlarını okudum, onaylıyorum.
+                                    <a href="/Kurumsal/Gizlilik" class="text-[#1B2A4A] font-semibold hover:text-[#3A7CA5] transition-colors underline decoration-1 underline-offset-2">Gizlilik Politikası</a> ve 
+                                    <a href="/Kurumsal/KullaniciSozlesmesi" class="text-[#1B2A4A] font-semibold hover:text-[#3A7CA5] transition-colors underline decoration-1 underline-offset-2">Kullanıcı Sözleşmesi</a> şartlarını okudum, onaylıyorum.
                                 </span>
                             </label>
                         </div>
@@ -274,7 +274,7 @@
 
                     @if (indirim > 0)
                     {
-                        <div class="flex justify-between text-[#C0392B] font-medium">
+                        <div class="flex justify-between text-[#3A7CA5] font-medium">
                             <span>İndirim (@kuponKodu)</span>
                             <span>-@indirim.ToString("N2") TL</span>
                         </div>
@@ -292,26 +292,51 @@
                 </div>
 
                 <div class="space-y-4 pt-6 border-t border-[#F5E6C8]">
-                    <div class="flex items-start gap-3">
-                        <i class="fas fa-shield-check text-[#C0392B] mt-1"></i>
+                    <!-- İyzico & SSL Güvencesi -->
+                    <div class="flex items-start gap-3 bg-white p-3.5 rounded-xl border border-[#F5E6C8] shadow-xs">
+                        <div class="w-8 h-8 rounded-full bg-[#EBF5FB] border border-[#01ADD3]/30 flex items-center justify-center shrink-0 text-[#01ADD3]">
+                            <i class="fas fa-shield-halved text-sm"></i>
+                        </div>
                         <div>
-                            <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider mb-1">256-Bit SSL Şifreleme</p>
-                            <p class="text-[10px] text-[#333333]">Tüm bilgileriniz uçtan uca şifrelenir ve bankaya iletilir.</p>
+                            <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider mb-0.5 flex items-center gap-1.5">
+                                BDDK Lisanslı İyzico Güvencesi
+                                <span class="bg-emerald-100 text-emerald-800 text-[9px] px-1.5 py-0.2 rounded font-semibold uppercase">256-Bit SSL</span>
+                            </p>
+                            <p class="text-[11px] text-[#555555] leading-relaxed">Kart bilgileriniz sunucularımızda saklanmaz. Ödemeniz 3D Secure ve banka düzeyinde güvenlik protokolüyle tamamlanır.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
-                        <i class="fas fa-box-open text-[#C0392B] mt-1"></i>
+
+                    <!-- Hasarsız Teslimat Garantisi -->
+                    <div class="flex items-start gap-3 bg-white p-3.5 rounded-xl border border-[#F5E6C8] shadow-xs">
+                        <div class="w-8 h-8 rounded-full bg-[#FEF9E7] border border-amber-300 flex items-center justify-center shrink-0 text-amber-600">
+                            <i class="fas fa-box-open text-sm"></i>
+                        </div>
                         <div>
-                            <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider mb-1">Hasarsız Teslimat</p>
-                            <p class="text-[10px] text-[#333333]">Özel korumalı ambalajlarla ürününüz güvenle kapınıza ulaşır.</p>
+                            <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider mb-0.5 flex items-center gap-1.5">
+                                Hasarsız Teslimat Garantisi
+                                <span class="bg-amber-100 text-amber-800 text-[9px] px-1.5 py-0.2 rounded font-semibold uppercase">Sıfır Risk</span>
+                            </p>
+                            <p class="text-[11px] text-[#555555] leading-relaxed">Tablo, cam ve ayna ürünleriniz petek korumalı özel sandıklarla paketlenir. Kargo esnasında hasar görürse <strong>koşulsuz yenisi ücretsiz</strong> gönderilir.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
-                        <i class="fas fa-undo text-[#C0392B] mt-1"></i>
-                        <div>
-                            <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider mb-1">Kolay İade</p>
-                            <p class="text-[10px] text-[#333333]">14 gün içinde koşulsuz iade hakkınız bulunmaktadır.</p>
+
+                    <!-- 14 Gün Kolay İade -->
+                    <div class="flex items-start gap-3 bg-white p-3.5 rounded-xl border border-[#F5E6C8] shadow-xs">
+                        <div class="w-8 h-8 rounded-full bg-[#EBF5FB] border border-[#3A7CA5]/30 flex items-center justify-center shrink-0 text-[#3A7CA5]">
+                            <i class="fas fa-arrow-rotate-left text-sm"></i>
                         </div>
+                        <div>
+                            <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider mb-0.5">14 Gün Kolay İade & Değişim</p>
+                            <p class="text-[11px] text-[#555555] leading-relaxed">Memnun kalmadığınız durumda yasal 14 gün içerisinde kolay iade veya değişim hakkınız saklıdır.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kart ve Ödeme Logoları -->
+                    <div class="pt-2 flex items-center justify-center gap-4 text-gray-400 text-lg">
+                        <i class="fab fa-cc-visa hover:text-[#1B2A4A] transition-colors" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard hover:text-[#1B2A4A] transition-colors" title="Mastercard"></i>
+                        <i class="fab fa-cc-amex hover:text-[#1B2A4A] transition-colors" title="American Express"></i>
+                        <span class="text-[10px] font-bold text-[#3A7CA5] border border-[#3A7CA5] rounded px-1 py-0.5 uppercase tracking-wider">TROY</span>
                     </div>
                 </div>
             </div>

@@ -37,18 +37,18 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [RequestSizeLimit(209_715_200)]
         [RequestFormLimits(MultipartBodyLengthLimit = 209_715_200)]
-        public async Task<IActionResult> Ekle(Slayt model, IFormFile? Resim, IFormFile? Video)
+        public async Task<IActionResult> Ekle(Slayt model, IFormFile? Resim, IFormFile? Video, IFormFile? MobilResim, IFormFile? MobilVideo)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
-            if (model.Tur == "Video" && Video == null && string.IsNullOrWhiteSpace(model.VideoUrl))
+            if (model.Tur == "Video" && Video == null && string.IsNullOrWhiteSpace(model.VideoUrl) && MobilVideo == null && string.IsNullOrWhiteSpace(model.MobilVideoUrl))
             {
                 ModelState.AddModelError("Video", "Video tipinde slayt için video yüklemeniz veya video URL'si girmeniz gerekir.");
                 return View(model);
             }
 
-            if (model.Tur == "Resim" && Resim == null && string.IsNullOrWhiteSpace(model.ResimUrl))
+            if (model.Tur == "Resim" && Resim == null && string.IsNullOrWhiteSpace(model.ResimUrl) && MobilResim == null && string.IsNullOrWhiteSpace(model.MobilResimUrl))
             {
                 ModelState.AddModelError("Resim", "Resim tipinde slayt için görsel yüklemeniz veya görsel URL'si girmeniz gerekir.");
                 return View(model);
@@ -64,6 +64,18 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
             {
                 var videoPath = await SaveFileAsync(Video, "uploads/slider");
                 model.VideoUrl = videoPath;
+            }
+
+            if (MobilResim != null)
+            {
+                var mobilResimPath = await SaveFileAsync(MobilResim, "uploads/slider");
+                model.MobilResimUrl = mobilResimPath;
+            }
+
+            if (MobilVideo != null)
+            {
+                var mobilVideoPath = await SaveFileAsync(MobilVideo, "uploads/slider");
+                model.MobilVideoUrl = mobilVideoPath;
             }
 
             var maxSira = await _db.Slaytlar.MaxAsync(s => (int?)s.Sira) ?? 0;
@@ -92,7 +104,7 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [RequestSizeLimit(209_715_200)]
         [RequestFormLimits(MultipartBodyLengthLimit = 209_715_200)]
-        public async Task<IActionResult> Duzenle(int id, Slayt model, IFormFile? Resim, IFormFile? Video, bool? ResimSil, bool? VideoSil)
+        public async Task<IActionResult> Duzenle(int id, Slayt model, IFormFile? Resim, IFormFile? Video, IFormFile? MobilResim, IFormFile? MobilVideo, bool? ResimSil, bool? VideoSil, bool? MobilResimSil, bool? MobilVideoSil)
         {
             var slayt = await _db.Slaytlar.FindAsync(id);
             if (slayt == null)
@@ -107,6 +119,8 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
             slayt.Baslik = model.Baslik;
             slayt.AltBaslik = model.AltBaslik;
             slayt.Aciklama = model.Aciklama;
+            slayt.ButonYazi = model.ButonYazi;
+            slayt.ButonUrl = model.ButonUrl;
             slayt.Tur = model.Tur;
             slayt.Sira = model.Sira;
             slayt.AktifMi = model.AktifMi;
@@ -125,6 +139,20 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                 slayt.VideoUrl = await SaveFileAsync(Video, "uploads/slider");
             }
 
+            if (MobilResim != null)
+            {
+                if (!string.IsNullOrEmpty(slayt.MobilResimUrl))
+                    DeleteFile(slayt.MobilResimUrl);
+                slayt.MobilResimUrl = await SaveFileAsync(MobilResim, "uploads/slider");
+            }
+
+            if (MobilVideo != null)
+            {
+                if (!string.IsNullOrEmpty(slayt.MobilVideoUrl))
+                    DeleteFile(slayt.MobilVideoUrl);
+                slayt.MobilVideoUrl = await SaveFileAsync(MobilVideo, "uploads/slider");
+            }
+
             if (ResimSil == true && !string.IsNullOrEmpty(slayt.ResimUrl))
             {
                 DeleteFile(slayt.ResimUrl);
@@ -137,6 +165,18 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
                 slayt.VideoUrl = null;
             }
 
+            if (MobilResimSil == true && !string.IsNullOrEmpty(slayt.MobilResimUrl))
+            {
+                DeleteFile(slayt.MobilResimUrl);
+                slayt.MobilResimUrl = null;
+            }
+
+            if (MobilVideoSil == true && !string.IsNullOrEmpty(slayt.MobilVideoUrl))
+            {
+                DeleteFile(slayt.MobilVideoUrl);
+                slayt.MobilVideoUrl = null;
+            }
+
             if (!string.IsNullOrWhiteSpace(model.ResimUrl) && model.ResimUrl != slayt.ResimUrl)
             {
                 slayt.ResimUrl = model.ResimUrl;
@@ -145,6 +185,16 @@ namespace KanvasProje.Web.Areas.Admin.Controllers
             if (!string.IsNullOrWhiteSpace(model.VideoUrl) && model.VideoUrl != slayt.VideoUrl)
             {
                 slayt.VideoUrl = model.VideoUrl;
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.MobilResimUrl) && model.MobilResimUrl != slayt.MobilResimUrl)
+            {
+                slayt.MobilResimUrl = model.MobilResimUrl;
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.MobilVideoUrl) && model.MobilVideoUrl != slayt.MobilVideoUrl)
+            {
+                slayt.MobilVideoUrl = model.MobilVideoUrl;
             }
 
             await _db.SaveChangesAsync();

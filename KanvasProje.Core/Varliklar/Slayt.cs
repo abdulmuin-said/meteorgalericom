@@ -8,6 +8,10 @@ namespace KanvasProje.Core.Varliklar
         public string Aciklama { get; set; } = string.Empty;
         public string? ResimUrl { get; set; }
         public string? VideoUrl { get; set; }
+        public string? MobilResimUrl { get; set; }
+        public string? MobilVideoUrl { get; set; }
+        public string? ButonYazi { get; set; }
+        public string? ButonUrl { get; set; }
         public string Tur { get; set; } = "Resim";
         public int Sira { get; set; }
         public bool AktifMi { get; set; } = true;

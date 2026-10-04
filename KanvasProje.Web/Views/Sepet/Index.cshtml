@@ -1,4 +1,4 @@
-﻿@model List<KanvasProje.Core.Varliklar.SepetItem>
+@model List<KanvasProje.Core.Varliklar.SepetItem>
 
 @{
     ViewData["Title"] = "Sepetim";
@@ -134,7 +134,7 @@
 
                         <!-- Ürün Bilgisi -->
                         <div class="flex-1 min-w-0 pr-6">
-                            <a href="/Urun/Detay/@item.UrunId" class="font-medium text-sm text-[#1B2A4A] hover:text-[#C0392B] transition-colors line-clamp-2 block mb-1">
+                            <a href="/Urun/Detay/@item.UrunId" class="font-medium text-sm text-[#1B2A4A] hover:text-[#3A7CA5] transition-colors line-clamp-2 block mb-1">
                                 @item.UrunBaslik
                             </a>
                             @if (!string.IsNullOrWhiteSpace(optionLabel))
@@ -151,7 +151,7 @@
                                              rows="2"
                                              maxlength="500"
                                              placeholder="Özel ölçü, renk tercihi, yazı isteği..."
-                                             class="w-full border border-[#F5E6C8] rounded px-3 py-2 text-xs text-[#1B2A4A] bg-[#FFFBF0] focus:ring-1 focus:ring-[#C0392B] focus:outline-none resize-none placeholder:text-[#a09e99]">@item.MusteriNotu</textarea>
+                                             class="w-full border border-[#F5E6C8] rounded px-3 py-2 text-xs text-[#1B2A4A] bg-[#FFFBF0] focus:ring-1 focus:ring-[#3A7CA5] focus:outline-none resize-none placeholder:text-[#a09e99]">@item.MusteriNotu</textarea>
                                     @if (!string.IsNullOrWhiteSpace(item.MusteriNotu))
                                     {
                                         <div class="rounded border border-[#dfd3ba] bg-[#f7f1e6] px-2 py-1 text-[10px] text-[#333333]">
@@ -160,7 +160,7 @@
                                     }
                                     <div class="flex items-center justify-between">
                                         <span class="text-[9px] text-[#a09e99]">En fazla 500 karakter</span>
-                                        <button type="submit" class="text-[10px] text-[#C0392B] hover:text-[#1B2A4A] transition-colors font-medium">
+                                        <button type="submit" class="text-[10px] text-[#3A7CA5] hover:text-[#1B2A4A] transition-colors font-medium">
                                             <i class="fas fa-save mr-1"></i>Kaydet
                                         </button>
                                     </div>
@@ -244,7 +244,7 @@
                                             }
                                         </a>
                                         <a href="@urunUrl" class="block">
-                                            <h4 class="text-xs font-semibold tracking-wide text-[#1B2A4A] hover:text-[#C0392B] transition-colors line-clamp-2 mb-1 min-h-[32px]">@urun.Baslik</h4>
+                                            <h4 class="text-xs font-semibold tracking-wide text-[#1B2A4A] hover:text-[#3A7CA5] transition-colors line-clamp-2 mb-1 min-h-[32px]">@urun.Baslik</h4>
                                         </a>
                                         <p class="text-xs font-medium text-[#333333] mb-3">@urun.EtkinFiyat.ToString("N0") TL</p>
                                     </div>
@@ -321,7 +321,7 @@
                         if (kalan > 0)
                         {
                             <div class="mb-4 bg-amber-50 border border-amber-200 rounded p-3 text-xs text-amber-800">
-                                <i class="fas fa-truck me-1 text-[#C0392B]"></i>Ücretsiz kargo için sepetinize <strong>₺@kalan.ToString("N2")</strong> değerinde ürün daha ekleyin!
+                                <i class="fas fa-truck me-1 text-[#3A7CA5]"></i>Ücretsiz kargo için sepetinize <strong>₺@kalan.ToString("N2")</strong> değerinde ürün daha ekleyin!
                             </div>
                         }
                     }
@@ -358,7 +358,7 @@
                                 <form id="kargoSecimForm" method="post" action="/Sepet/SecilenKargoGuncelle" class="flex flex-col gap-1">
                                     @Html.AntiForgeryToken()
                                     <label class="text-[10px] uppercase tracking-widest text-[#a09e99] font-medium">Kargo Firması Seçin</label>
-                                    <select name="kargoId" onchange="this.form.submit()" class="w-full border border-[#F5E6C8] rounded px-2.5 py-1.5 text-xs text-[#1B2A4A] bg-[#FFFBF0] focus:ring-1 focus:ring-[#C0392B] focus:outline-none outline-none">
+                                    <select name="kargoId" onchange="this.form.submit()" class="w-full border border-[#F5E6C8] rounded px-2.5 py-1.5 text-xs text-[#1B2A4A] bg-[#FFFBF0] focus:ring-1 focus:ring-[#3A7CA5] focus:outline-none outline-none">
                                         @foreach (var kargo in kargoList)
                                         {
                                             bool isSelected = kargo.Id == ViewBag.SecilenKargoId;
@@ -395,7 +395,7 @@
                         <form action="/Sepet/KuponUygula" method="post" class="flex mb-4">
                             @Html.AntiForgeryToken()
                             <input type="text" name="kuponKodu" placeholder="İndirim kodu" required
-                                   class="flex-1 border border-[#F5E6C8] border-r-0 rounded-l px-3 py-2 text-xs focus:ring-1 focus:ring-[#C0392B] outline-none bg-[#FFFBF0]" />
+                                   class="flex-1 border border-[#F5E6C8] border-r-0 rounded-l px-3 py-2 text-xs focus:ring-1 focus:ring-[#3A7CA5] outline-none bg-[#FFFBF0]" />
                             <button type="submit" class="bg-[#FDF6E3] border border-[#F5E6C8] rounded-r px-3 py-2 text-xs hover:bg-[#F5E6C8] transition-colors text-[#1B2A4A] font-medium">
                                 Uygula
                             </button>

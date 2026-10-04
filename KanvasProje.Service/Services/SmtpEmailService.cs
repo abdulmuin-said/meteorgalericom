@@ -88,11 +88,11 @@ namespace KanvasProje.Service.Services
                 var htmlView = AlternateView.CreateAlternateViewFromString(body, null, MediaTypeNames.Text.Html);
                 var logoResource = new LinkedResource(inlineLogoPath, "image/png")
                 {
-                    ContentId = "canvasia-logo",
+                    ContentId = "meteorgaleri-logo",
                     TransferEncoding = TransferEncoding.Base64
                 };
 
-                logoResource.ContentType.Name = "canvasia-logo.png";
+                logoResource.ContentType.Name = "meteorgaleri-logo.png";
                 htmlView.LinkedResources.Add(logoResource);
                 mailMessage.AlternateViews.Add(htmlView);
             }
@@ -108,13 +108,14 @@ namespace KanvasProje.Service.Services
             var siteUrl = _siteSettingsService.BuildAbsoluteUrl(string.Empty);
             var logoCandidates = new[]
             {
-                (FilePath: Path.Combine(_env.WebRootPath, "EmailTemplates", "canvasia-logo.png"), Url: "/EmailTemplates/canvasia-logo.png"),
-                (FilePath: Path.Combine(_env.WebRootPath, "img", "canvasia-logo.png"), Url: "/img/canvasia-logo.png")
+                (FilePath: Path.Combine(_env.WebRootPath, "EmailTemplates", "meteorgaleri-logo.png"), Url: "/EmailTemplates/meteorgaleri-logo.png"),
+                (FilePath: Path.Combine(_env.WebRootPath, "img", "meteorgaleri-logo.png"), Url: "/img/meteorgaleri-logo.png"),
+                (FilePath: Path.Combine(_env.WebRootPath, "EmailTemplates", "canvasia-logo.png"), Url: "/EmailTemplates/canvasia-logo.png")
             };
             var logoUrl = logoCandidates
                 .Where(x => File.Exists(x.FilePath))
                 .Select(x => _siteSettingsService.BuildAbsoluteUrl(x.Url))
-                .FirstOrDefault() ?? _siteSettingsService.BuildAbsoluteUrl("/EmailTemplates/canvasia-logo.png");
+                .FirstOrDefault() ?? _siteSettingsService.BuildAbsoluteUrl("/EmailTemplates/meteorgaleri-logo.png");
             var instagramUrl = string.IsNullOrWhiteSpace(siteSettings.InstagramUrl) ? siteUrl : siteSettings.InstagramUrl;
             var contactSeparator = !string.IsNullOrWhiteSpace(siteSettings.Email) && !string.IsNullOrWhiteSpace(siteSettings.Telefon)
                 ? "|"
@@ -152,15 +153,15 @@ namespace KanvasProje.Service.Services
                 var safeKargoTakipNo = WebUtility.HtmlEncode(kargoTakipNo);
                 var content = $@"
                     <p>Sipari&#351; numaran&#305;z <strong>{safeSiparisNo}</strong> olan &uuml;r&uuml;n&uuml;n&uuml;z kargoya verildi.</p>
-                    <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #e5e2dc; border-radius:12px; background:#fffaf0; margin:18px 0;'>
+                    <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #E8DFD0; border-radius:12px; background:#FFFBF0; margin:18px 0;'>
                         <tr>
-                            <td style='padding:16px; border-bottom:1px solid #e5e2dc; color:#47473d;'>
-                                <strong style='color:#313511;'>Kargo Firmas&#305;:</strong> {safeKargoFirmasi}
+                            <td style='padding:16px; border-bottom:1px solid #E8DFD0; color:#334155;'>
+                                <strong style='color:#1B2A4A;'>Kargo Firmas&#305;:</strong> {safeKargoFirmasi}
                             </td>
                         </tr>
                         <tr>
-                            <td style='padding:16px; color:#47473d;'>
-                                <strong style='color:#313511;'>Takip Numaras&#305;:</strong> <span style='font-size:18px; color:#b58735; font-weight:700;'>{safeKargoTakipNo}</span>
+                            <td style='padding:16px; color:#334155;'>
+                                <strong style='color:#1B2A4A;'>Takip Numaras&#305;:</strong> <span style='font-size:18px; color:#01ADD3; font-weight:700;'>{safeKargoTakipNo}</span>
                             </td>
                         </tr>
                     </table>
@@ -185,25 +186,25 @@ namespace KanvasProje.Service.Services
 
             if (firma.Contains("aras"))
             {
-                return $"<a href='https://kargotakip.araskargo.com.tr/mainpage.aspx?code={encodedTakipNo}' style='display:inline-block; background:#313511; color:#ffffff; padding:13px 24px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>Aras Kargo'da Takip Et</a>";
+                return $"<a href='https://kargotakip.araskargo.com.tr/mainpage.aspx?code={encodedTakipNo}' style='display:inline-block; background:#01ADD3; color:#ffffff; padding:14px 28px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.3);'>Aras Kargo'da Takip Et</a>";
             }
 
             if (firma.Contains("yurtici") || firma.Contains("yurti\u00E7i"))
             {
-                return $"<a href='https://www.yurticikargo.com/tr/online-servisler/gonderi-sorgula?code={encodedTakipNo}' style='display:inline-block; background:#313511; color:#ffffff; padding:13px 24px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>Yurti\u00E7i Kargo'da Takip Et</a>";
+                return $"<a href='https://www.yurticikargo.com/tr/online-servisler/gonderi-sorgula?code={encodedTakipNo}' style='display:inline-block; background:#01ADD3; color:#ffffff; padding:14px 28px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.3);'>Yurti\u00E7i Kargo'da Takip Et</a>";
             }
 
             if (firma.Contains("mng"))
             {
-                return $"<a href='https://www.mngkargo.com.tr/tracking?q={encodedTakipNo}' style='display:inline-block; background:#313511; color:#ffffff; padding:13px 24px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>MNG Kargo'da Takip Et</a>";
+                return $"<a href='https://www.mngkargo.com.tr/tracking?q={encodedTakipNo}' style='display:inline-block; background:#01ADD3; color:#ffffff; padding:14px 28px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.3);'>MNG Kargo'da Takip Et</a>";
             }
 
             if (firma.Contains("ptt"))
             {
-                return $"<a href='https://gonderitakip.ptt.gov.tr/Track/Verify?q={encodedTakipNo}' style='display:inline-block; background:#313511; color:#ffffff; padding:13px 24px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>PTT Kargo'da Takip Et</a>";
+                return $"<a href='https://gonderitakip.ptt.gov.tr/Track/Verify?q={encodedTakipNo}' style='display:inline-block; background:#01ADD3; color:#ffffff; padding:14px 28px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.3);'>PTT Kargo'da Takip Et</a>";
             }
 
-            return $"<div style='background:#fffaf0; border:1px solid #e5e2dc; padding:15px; border-radius:12px; text-align:center;'><strong>Takip No:</strong> {safeTakipNo}</div>";
+            return $"<div style='background:#FFFBF0; border:1px solid #E8DFD0; padding:15px; border-radius:12px; text-align:center;'><strong style='color:#1B2A4A;'>Takip No:</strong> <span style='color:#01ADD3; font-weight:700;'>{safeTakipNo}</span></div>";
         }
 
         private static bool TryCreateMailAddress(string? address, string? displayName, out MailAddress mailAddress)
@@ -277,17 +278,17 @@ private static bool IsBrevoSmtpLoginAddress(string? email)
                 var subject = $"Sipariş Faturanız Hazır - {siparisNo}";
                 var body = $@"
                     <div style='font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
-                        <h2 style='color: #313511; margin-bottom: 20px;'>Merhaba {musteriAdi},</h2>
+                        <h2 style='color: #1B2A4A; margin-bottom: 20px;'>Merhaba {musteriAdi},</h2>
                         <p style='color: #47473d; line-height: 1.6;'>
                             Siparişiniz için fatura hazırlanmıştır. Aşağıdaki ekten fatura belgesini indirebilirsiniz.
                         </p>
-                        <div style='background: #fcf9f3; border-radius: 12px; padding: 20px; margin: 20px 0; border: 1px solid #e5e2dc;'>
+                        <div style='background: #FFFBF0; border-radius: 12px; padding: 20px; margin: 20px 0; border: 1px solid #E8DFD0;'>
                             <p style='margin: 0;'><strong>Sipariş No:</strong> {siparisNo}</p>
                         </div>
                         <p style='color: #7a766a; font-size: 14px;'>
                             Herhangi bir sorunuz olursa bizimle iletişime geçebilirsiniz.
                         </p>
-                        <p style='color: #313511; margin-top: 30px;'>
+                        <p style='color: #1B2A4A; margin-top: 30px;'>
                             Saygılarımızla,<br/>
                             <strong>{brandName}</strong>
                         </p>

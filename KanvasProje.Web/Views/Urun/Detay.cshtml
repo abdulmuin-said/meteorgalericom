@@ -1,4 +1,4 @@
-﻿@model KanvasProje.Core.Varliklar.Urun
+@model KanvasProje.Core.Varliklar.Urun
 @using KanvasProje.Service.Helpers
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @inject KanvasProje.Service.Services.ISiteSettingsService SiteSettingsService
@@ -273,34 +273,39 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
             @Html.AntiForgeryToken()
             <input type="hidden" name="UrunId" value="@Model.Id" />
             
-            <div class="flex flex-row-reverse justify-center gap-2 mb-6">
-                <input type="radio" id="star5" name="Puan" value="5" class="hidden peer/5" />
-                <label for="star5" class="text-gray-300 peer-checked/5:text-[#C0392B] hover:text-[#C0392B] cursor-pointer text-2xl transition-colors"><i class="fas fa-star"></i></label>
-                
-                <input type="radio" id="star4" name="Puan" value="4" class="hidden peer/4" />
-                <label for="star4" class="text-gray-300 peer-checked/4:text-[#C0392B] hover:text-[#C0392B] cursor-pointer text-2xl transition-colors"><i class="fas fa-star"></i></label>
-                
-                <input type="radio" id="star3" name="Puan" value="3" class="hidden peer/3" />
-                <label for="star3" class="text-gray-300 peer-checked/3:text-[#C0392B] hover:text-[#C0392B] cursor-pointer text-2xl transition-colors"><i class="fas fa-star"></i></label>
-                
-                <input type="radio" id="star2" name="Puan" value="2" class="hidden peer/2" />
-                <label for="star2" class="text-gray-300 peer-checked/2:text-[#C0392B] hover:text-[#C0392B] cursor-pointer text-2xl transition-colors"><i class="fas fa-star"></i></label>
-                
-                <input type="radio" id="star1" name="Puan" value="1" class="hidden peer/1" checked />
-                <label for="star1" class="text-gray-300 peer-checked/1:text-[#C0392B] hover:text-[#C0392B] cursor-pointer text-2xl transition-colors"><i class="fas fa-star"></i></label>
+            <div class="flex flex-col items-center mb-6">
+                <input type="hidden" name="Puan" id="selectedPuan" value="5" />
+                <div class="flex items-center gap-2 text-3xl select-none" id="starRatingGroup">
+                    <button type="button" class="star-btn text-amber-400 hover:scale-110 transition-transform p-1 focus:outline-none cursor-pointer" data-value="1" title="1 Yıldız">
+                        <i class="fas fa-star"></i>
+                    </button>
+                    <button type="button" class="star-btn text-amber-400 hover:scale-110 transition-transform p-1 focus:outline-none cursor-pointer" data-value="2" title="2 Yıldız">
+                        <i class="fas fa-star"></i>
+                    </button>
+                    <button type="button" class="star-btn text-amber-400 hover:scale-110 transition-transform p-1 focus:outline-none cursor-pointer" data-value="3" title="3 Yıldız">
+                        <i class="fas fa-star"></i>
+                    </button>
+                    <button type="button" class="star-btn text-amber-400 hover:scale-110 transition-transform p-1 focus:outline-none cursor-pointer" data-value="4" title="4 Yıldız">
+                        <i class="fas fa-star"></i>
+                    </button>
+                    <button type="button" class="star-btn text-amber-400 hover:scale-110 transition-transform p-1 focus:outline-none cursor-pointer" data-value="5" title="5 Yıldız">
+                        <i class="fas fa-star"></i>
+                    </button>
+                </div>
+                <span id="starRatingLabel" class="text-xs font-semibold text-[#1B2A4A] mt-2">5 Yıldız - Mükemmel</span>
             </div>
 
             @if (User.Identity?.IsAuthenticated != true)
             {
                 <div class="mb-4">
                     <label class="block text-xs uppercase tracking-widest text-[#1B2A4A] font-medium mb-1.5">Adınız Soyadınız</label>
-                    <input type="text" name="AdSoyad" class="w-full border border-[#F5E6C8] rounded px-4 py-2 text-sm focus:ring-[#C0392B] focus:border-[#C0392B]" required>
+                    <input type="text" name="AdSoyad" class="w-full border border-[#F5E6C8] rounded px-4 py-2 text-sm focus:ring-[#3A7CA5] focus:border-[#3A7CA5]" required>
                 </div>
             }
 
             <div class="mb-6">
                 <label class="block text-xs uppercase tracking-widest text-[#1B2A4A] font-medium mb-1.5">Yorumunuz</label>
-                <textarea name="YorumMetni" class="w-full border border-[#F5E6C8] rounded px-4 py-2 text-sm focus:ring-[#C0392B] focus:border-[#C0392B]" rows="4" required></textarea>
+                <textarea name="YorumMetni" class="w-full border border-[#F5E6C8] rounded px-4 py-2 text-sm focus:ring-[#3A7CA5] focus:border-[#3A7CA5]" rows="4" required></textarea>
             </div>
 
             <button type="submit" class="w-full bg-[#1B2A4A] text-white text-xs tracking-widest uppercase py-3 rounded hover:bg-[#1c2001] transition-colors">Yorumu Gönder</button>
@@ -358,7 +363,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
             <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl text-[#1B2A4A] mb-4">@Model.Baslik</h1>
             
             <div class="flex items-center gap-4 mb-6">
-                <div class="flex text-[#C0392B] text-sm">
+                <div class="flex text-[#3A7CA5] text-sm">
                     @for (int i = 1; i <= 5; i++)
                     {
                         if (i <= tamYildiz) { <i class="fas fa-star"></i> }
@@ -381,13 +386,14 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                 }
                 @if (gosterilecekIndirimYuzdesi.HasValue)
                 {
-                    <span id="discountBadge" class="bg-[#C0392B] text-white text-xs px-2 py-1 rounded mb-1">%@gosterilecekIndirimYuzdesi.Value İndirim</span>
+                    <span id="discountBadge" class="bg-[#3A7CA5] text-white text-xs px-2 py-1 rounded mb-1">%@gosterilecekIndirimYuzdesi.Value İndirim</span>
                 }
                 else
                 {
-                    <span id="discountBadge" class="bg-[#C0392B] text-white text-xs px-2 py-1 rounded mb-1 hidden"></span>
+                    <span id="discountBadge" class="bg-[#3A7CA5] text-white text-xs px-2 py-1 rounded mb-1 hidden"></span>
                 }
             </div>
+
 
             <div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[#333333] mb-6 border-y border-[#F5E6C8] py-4">
                 <span id="stockStatusText" class="flex items-center gap-2"><i class="@stokIkonClass"></i> @stokDurumuMetni</span>
@@ -418,7 +424,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                                 @foreach (var olcu in olcuSecenekleri)
                                 {
                                     var olcuSatinAlinabilir = secenekler.Any(x => x.Olcu == olcu.Olcu && x.SatinAlinabilirMi);
-                                    <label class="relative rounded border border-[#F5E6C8] px-4 py-2 text-[#333333] transition-colors hover:border-[#C0392B] has-[:checked]:border-[#1B2A4A] has-[:checked]:bg-[#1B2A4A] has-[:checked]:text-white @(!olcuSatinAlinabilir ? "cursor-not-allowed opacity-50" : "cursor-pointer")">
+                                    <label class="relative rounded border border-[#F5E6C8] px-4 py-2 text-[#333333] transition-colors hover:border-[#3A7CA5] has-[:checked]:border-[#1B2A4A] has-[:checked]:bg-[#1B2A4A] has-[:checked]:text-white @(!olcuSatinAlinabilir ? "cursor-not-allowed opacity-50" : "cursor-pointer")">
                                         <input type="radio" name="structuredVariantSize" value="@olcu.Olcu" class="variant-size-radio absolute h-0 w-0 opacity-0" checked="@(olcu.Olcu == varsayilanSecenek?.Olcu ? "checked" : null)" disabled="@(!olcuSatinAlinabilir ? "disabled" : null)" />
                                         <span class="text-sm font-medium">@olcu.Olcu</span>
                                     </label>
@@ -431,14 +437,14 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                             <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
                                 @foreach (var aydinlatma in aydinlatmaSecenekleri)
                                 {
-                                    <label class="relative cursor-pointer rounded border border-[#F5E6C8] bg-white px-4 py-3 text-[#333333] transition-colors hover:border-[#C0392B] has-[:checked]:border-[#C0392B] has-[:checked]:bg-[#f7f1e6] has-[:checked]:text-[#1B2A4A] has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50">
+                                    <label class="relative cursor-pointer rounded border border-[#F5E6C8] bg-white px-4 py-3 text-[#333333] transition-colors hover:border-[#3A7CA5] has-[:checked]:border-[#3A7CA5] has-[:checked]:bg-[#f7f1e6] has-[:checked]:text-[#1B2A4A] has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50">
                                         <input type="radio" name="structuredVariantLighting" value="@aydinlatma.Anahtar" class="variant-lighting-radio absolute h-0 w-0 opacity-0" checked="@(aydinlatma.Anahtar == varsayilanAydinlatma ? "checked" : null)" />
                                         <span class="flex items-center gap-2 text-sm font-semibold">
                                             <span class="h-3 w-3 flex-none rounded-full shadow-sm @aydinlatma.NoktaClass"></span>
                                             <span>@aydinlatma.Baslik</span>
                                         </span>
                                         <span class="mt-1 block text-xs text-[#77736b]">@aydinlatma.Aciklama</span>
-                                        <span class="lighting-price-difference mt-1 block text-xs font-medium text-[#C0392B]" data-lighting-price="@aydinlatma.Anahtar"></span>
+                                        <span class="lighting-price-difference mt-1 block text-xs font-medium text-[#3A7CA5]" data-lighting-price="@aydinlatma.Anahtar"></span>
                                     </label>
                                 }
                             </div>
@@ -474,7 +480,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                                 var checkedAttr = varyant.Id == varsayilanSecenek?.Id ? "checked" : null;
                                 var disabledAttr = !varyantSatinAlinabilir ? "disabled" : null;
 
-                                <label class="relative border border-[#F5E6C8] rounded px-4 py-2 cursor-pointer transition-colors hover:border-[#C0392B] has-[:checked]:border-[#1B2A4A] has-[:checked]:bg-[#1B2A4A] has-[:checked]:text-white @(!varyantSatinAlinabilir ? "opacity-50 cursor-not-allowed" : "text-[#333333]")">
+                                <label class="relative border border-[#F5E6C8] rounded px-4 py-2 cursor-pointer transition-colors hover:border-[#3A7CA5] has-[:checked]:border-[#1B2A4A] has-[:checked]:bg-[#1B2A4A] has-[:checked]:text-white @(!varyantSatinAlinabilir ? "opacity-50 cursor-not-allowed" : "text-[#333333]")">
                                     <input type="radio" id="variant-@varyant.Id" name="productVariant" value="@varyant.Id" class="variant-radio absolute opacity-0 w-0 h-0" checked="@checkedAttr" disabled="@disabledAttr" data-price="@varyant.SatisFiyati.ToString(System.Globalization.CultureInfo.InvariantCulture)" data-framed-price="@cerceveliFiyat.ToString(System.Globalization.CultureInfo.InvariantCulture)" data-oldprice="@(varyantOldPrice > 0 ? varyantOldPrice.ToString(System.Globalization.CultureInfo.InvariantCulture) : string.Empty)" data-stock="@varyant.StokAdedi" data-preorder="@varyant.OnSipariseAcikMi.ToString().ToLowerInvariant()" data-production="@varyantUretimSuresi" data-image="@varyantMedyaUrl" data-label="@cleanVb" data-olcu="@cleanVb">
                                     <span class="text-sm font-medium">@cleanVb</span>
                                 </label>
@@ -504,7 +510,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                         @foreach (var cerceve in cerceveModelleri)
                         {
                             var map = cerceveMap.GetValueOrDefault(cerceve, (image: string.Empty, label: cerceve));
-                            <label class="group relative cursor-pointer rounded-lg border-2 border-[#F5E6C8] bg-white p-2 text-center transition-all hover:border-[#C0392B] has-[:checked]:border-[#C0392B] has-[:checked]:bg-[#f7f1e6] has-[:checked]:shadow-sm"
+                            <label class="group relative cursor-pointer rounded-lg border-2 border-[#F5E6C8] bg-white p-2 text-center transition-all hover:border-[#3A7CA5] has-[:checked]:border-[#3A7CA5] has-[:checked]:bg-[#f7f1e6] has-[:checked]:shadow-sm"
                                    title="@map.label"
                                    onclick="selectFrameOption(this, '@cerceve'); updatePriceWithFrame();">
                                 <input type="radio" name="CerceveModeli" value="@cerceve" class="frame-radio absolute h-0 w-0 opacity-0" />
@@ -512,7 +518,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                                     <img src="@map.image" alt="@map.label" class="max-h-full max-w-full object-contain" loading="lazy" onerror="this.style.display='none'" />
                                 </div>
                                 <span class="text-[11px] font-medium text-[#333333] group-has-[:checked]:text-[#1B2A4A]">@map.label</span>
-                                <div class="absolute -top-1.5 -right-1.5 hidden h-4 w-4 items-center justify-center rounded-full bg-[#C0392B] group-has-[:checked]:flex">
+                                <div class="absolute -top-1.5 -right-1.5 hidden h-4 w-4 items-center justify-center rounded-full bg-[#3A7CA5] group-has-[:checked]:flex">
                                     <svg class="h-2.5 w-2.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
                                 </div>
                             </label>
@@ -546,30 +552,30 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                             <button type="button" id="ajaxSepetBtn" class="min-w-0 flex-1 h-12 px-3 bg-[#1B2A4A] text-white text-xs uppercase tracking-widest rounded hover:bg-[#1c2001] transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
                                 <i class="fas fa-shopping-bag add-to-cart-icon flex-shrink-0"></i> <span class="add-to-cart-text truncate">Sepete Ekle</span>
                             </button>
-                            <a href="/Sepet" class="flex-none w-12 sm:w-36 h-12 bg-[#C0392B] text-white text-xs uppercase tracking-widest rounded hover:bg-[#8e6a28] transition-colors flex items-center justify-center gap-2 whitespace-nowrap" aria-label="Sepete Git">
+                            <a href="/Sepet" class="flex-none w-12 sm:w-36 h-12 bg-[#3A7CA5] text-white text-xs uppercase tracking-widest rounded hover:bg-[#8e6a28] transition-colors flex items-center justify-center gap-2 whitespace-nowrap" aria-label="Sepete Git">
                                 <i class="fas fa-shopping-cart flex-shrink-0"></i> <span class="hidden sm:inline">Sepete Git</span>
                             </a>
                         </div>
                     </form>
-                    <button type="button" onclick="window.toggleFavori(this, @Model.Id)" class="group/btn h-12 w-12 flex-shrink-0 flex items-center justify-center border border-[#F5E6C8] rounded hover:border-[#C0392B] transition-colors bg-white" title="Favorilere Ekle">
+                    <button type="button" onclick="window.toggleFavori(this, @Model.Id)" class="group/btn h-12 w-12 flex-shrink-0 flex items-center justify-center border border-[#F5E6C8] rounded hover:border-[#3A7CA5] transition-colors bg-white" title="Favorilere Ekle">
                         <i class="far fa-heart text-[#333333] group-hover/btn:text-red-500 transition-colors text-lg"></i>
                     </button>
                 </div>
 
-                <div id="selectionSummary" class="hidden mb-4 bg-gradient-to-r from-[#FFFBF0] to-[#f5f0e6] border-2 border-[#C0392B] rounded-xl px-3 py-3 sm:px-5 sm:py-4">
+                <div id="selectionSummary" class="hidden mb-4 bg-gradient-to-r from-[#FFFBF0] to-[#f5f0e6] border-2 border-[#3A7CA5] rounded-xl px-3 py-3 sm:px-5 sm:py-4">
                     <div class="flex items-center justify-center gap-1.5 overflow-hidden text-center sm:gap-2">
                         <div class="flex shrink-0 items-center gap-1 sm:gap-2">
-                            <i class="fas fa-ruler-combined hidden sm:inline text-[#C0392B] text-sm sm:text-lg"></i>
+                            <i class="fas fa-ruler-combined hidden sm:inline text-[#3A7CA5] text-sm sm:text-lg"></i>
                             <span id="summaryOlcu" class="whitespace-nowrap text-sm sm:text-lg font-bold text-[#1B2A4A]">-</span>
                         </div>
                         @if (cerceveSecimiGerekli)
                         {
-                            <span class="shrink-0 text-[#C0392B] text-sm sm:text-lg font-light">|</span>
+                            <span class="shrink-0 text-[#3A7CA5] text-sm sm:text-lg font-light">|</span>
                             <div class="min-w-0 max-w-[42%] sm:max-w-none">
                                 <span id="summaryCerceve" class="block truncate text-sm sm:text-lg font-bold text-[#1B2A4A]">Çerçeve seçiniz</span>
                             </div>
                         }
-                        <span class="shrink-0 text-[#C0392B] text-sm sm:text-lg font-light">|</span>
+                        <span class="shrink-0 text-[#3A7CA5] text-sm sm:text-lg font-light">|</span>
                         <div class="flex shrink-0 items-center">
                             <span id="summaryFiyat" class="whitespace-nowrap text-sm sm:text-xl font-extrabold text-[#1B2A4A]">0 @currencySymbol</span>
                             <span id="summaryBirimFiyat" class="hidden sm:inline text-xs text-[#333333] font-normal ml-1"></span>
@@ -579,16 +585,16 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
 
                 <div class="mb-8 flex flex-wrap items-center gap-3 border-y border-[#F5E6C8] py-4">
                 <span class="mr-1 text-xs uppercase tracking-widest text-[#333333]">Paylaş</span>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=@encodedProductUrl" target="_blank" rel="noopener noreferrer" aria-label="Facebook'ta paylaş" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F5E6C8] bg-white text-[#1B2A4A] transition-colors hover:border-[#C0392B] hover:text-[#C0392B]">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=@encodedProductUrl" target="_blank" rel="noopener noreferrer" aria-label="Facebook'ta paylaş" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F5E6C8] bg-white text-[#1B2A4A] transition-colors hover:border-[#3A7CA5] hover:text-[#3A7CA5]">
                     <i class="fab fa-facebook-f text-sm"></i>
                 </a>
-                <a href="@(string.IsNullOrWhiteSpace(siteSettings.InstagramUrl) ? "https://www.instagram.com/" : siteSettings.InstagramUrl)" target="_blank" rel="noopener noreferrer" aria-label="Instagram'da aç" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F5E6C8] bg-white text-[#1B2A4A] transition-colors hover:border-[#C0392B] hover:text-[#C0392B]">
+                <a href="@(string.IsNullOrWhiteSpace(siteSettings.InstagramUrl) ? "https://www.instagram.com/" : siteSettings.InstagramUrl)" target="_blank" rel="noopener noreferrer" aria-label="Instagram'da aç" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F5E6C8] bg-white text-[#1B2A4A] transition-colors hover:border-[#3A7CA5] hover:text-[#3A7CA5]">
                     <i class="fab fa-instagram text-sm"></i>
                 </a>
-                <a href="https://wa.me/?text=@encodedProductTitle%20@encodedProductUrl" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile paylaş" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F5E6C8] bg-white text-[#1B2A4A] transition-colors hover:border-[#C0392B] hover:text-[#C0392B]">
+                <a href="https://wa.me/?text=@encodedProductTitle%20@encodedProductUrl" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile paylaş" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#F5E6C8] bg-white text-[#1B2A4A] transition-colors hover:border-[#3A7CA5] hover:text-[#3A7CA5]">
                     <i class="fab fa-whatsapp text-sm"></i>
                 </a>
-                <button type="button" onclick="copyProductLink(this)" data-url="@productUrl" class="flex h-9 items-center gap-2 rounded-full border border-[#F5E6C8] bg-white px-4 text-xs uppercase tracking-widest text-[#1B2A4A] transition-colors hover:border-[#C0392B] hover:text-[#C0392B]">
+                <button type="button" onclick="copyProductLink(this)" data-url="@productUrl" class="flex h-9 items-center gap-2 rounded-full border border-[#F5E6C8] bg-white px-4 text-xs uppercase tracking-widest text-[#1B2A4A] transition-colors hover:border-[#3A7CA5] hover:text-[#3A7CA5]">
                     <i class="fas fa-link text-xs"></i>
                     Linki Kopyala
                 </button>
@@ -596,7 +602,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
 
             @if (!string.IsNullOrWhiteSpace(Model.MalzemeBilgisi) || !string.IsNullOrWhiteSpace(Model.PaketlemeBilgisi))
             {
-                <div class="mb-8 border-l-2 border-[#C0392B] bg-[#FDF6E3] px-5 py-4">
+                <div class="mb-8 border-l-2 border-[#3A7CA5] bg-[#FDF6E3] px-5 py-4">
                     @if (!string.IsNullOrWhiteSpace(Model.MalzemeBilgisi))
                     {
                         <p class="mb-2 text-sm text-[#1B2A4A]"><span class="font-semibold">Malzeme:</span> @Model.MalzemeBilgisi</p>
@@ -610,15 +616,15 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
 
             <div class="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <div class="border border-[#F5E6C8] bg-white px-4 py-3">
-                    <p class="mb-1 flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#1B2A4A]"><i class="fas fa-industry text-[#C0392B]"></i> Üretim</p>
+                    <p class="mb-1 flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#1B2A4A]"><i class="fas fa-industry text-[#3A7CA5]"></i> Üretim</p>
                     <p id="productionCardText" class="text-sm text-[#333333]">@(gosterilecekUretimSuresi > 0 ? $"{gosterilecekUretimSuresi} iş günü" : "Siparişe özel hazırlanır")</p>
                 </div>
                 <div class="border border-[#F5E6C8] bg-white px-4 py-3">
-                    <p class="mb-1 flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#1B2A4A]"><i class="fas fa-box-open text-[#C0392B]"></i> Paketleme</p>
+                    <p class="mb-1 flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#1B2A4A]"><i class="fas fa-box-open text-[#3A7CA5]"></i> Paketleme</p>
                     <p class="text-sm text-[#333333]">Özenli ve korunaklı teslimat</p>
                 </div>
                 <div class="border border-[#F5E6C8] bg-white px-4 py-3">
-                    <p class="mb-1 flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#1B2A4A]"><i class="fas fa-route text-[#C0392B]"></i> Teslimat</p>
+                    <p class="mb-1 flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#1B2A4A]"><i class="fas fa-route text-[#3A7CA5]"></i> Teslimat</p>
                     <p class="text-sm text-[#333333]">Tahmini @gosterilecekTeslimSuresi iş günü</p>
                 </div>
             </div>
@@ -632,17 +638,17 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
 
             <div class="grid grid-cols-3 gap-2 py-4 border-y border-[#F5E6C8]">
                 <div class="text-center">
-                    <i class="fas fa-shield-alt text-[#C0392B] mb-2 text-lg"></i>
+                    <i class="fas fa-shield-alt text-[#3A7CA5] mb-2 text-lg"></i>
                     <p class="text-xs text-[#1B2A4A] font-semibold mb-1">Güvenli Ödeme</p>
                     <p class="text-[10px] text-[#333333]">256-bit SSL</p>
                 </div>
                 <div class="text-center">
-                    <i class="fas fa-truck text-[#C0392B] mb-2 text-lg"></i>
+                    <i class="fas fa-truck text-[#3A7CA5] mb-2 text-lg"></i>
                     <p class="text-xs text-[#1B2A4A] font-semibold mb-1">Ücretsiz Kargo</p>
                     <p class="text-[10px] text-[#333333]">@gosterilecekKargoSuresi iş günü</p>
                 </div>
                 <div class="text-center">
-                    <i class="fas fa-undo-alt text-[#C0392B] mb-2 text-lg"></i>
+                    <i class="fas fa-undo-alt text-[#3A7CA5] mb-2 text-lg"></i>
                     <p class="text-xs text-[#1B2A4A] font-semibold mb-1">İade Garantisi</p>
                     <p class="text-[10px] text-[#333333]">@iadeSuresi gün içinde</p>
                 </div>
@@ -659,7 +665,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
             <div class="lg:w-2/3 space-y-12">
                 <div>
                     <h2 class="font-serif text-2xl text-[#1B2A4A] mb-6 flex items-center gap-3">
-                        <i class="fas fa-file-alt text-[#C0392B]"></i> Ürün Açıklaması
+                        <i class="fas fa-file-alt text-[#3A7CA5]"></i> Ürün Açıklaması
                     </h2>
                     <div class="prose prose-sm max-w-none text-[#333333] leading-relaxed">
                         @Html.Raw(Model.Aciklama ?? "Bu ürün için açıklama girilmemiştir.")
@@ -670,7 +676,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                 {
                     <div>
                         <h2 class="font-serif text-2xl text-[#1B2A4A] mb-6 flex items-center gap-3">
-                            <i class="fas fa-cogs text-[#C0392B]"></i> Teknik Özellikler
+                            <i class="fas fa-cogs text-[#3A7CA5]"></i> Teknik Özellikler
                         </h2>
                         <div class="bg-white border border-[#F5E6C8] rounded-lg overflow-hidden">
                             <table class="w-full text-sm text-left">
@@ -692,7 +698,7 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                 {
                     <div>
                         <h2 class="font-serif text-2xl text-[#1B2A4A] mb-6 flex items-center gap-3">
-                            <i class="fas fa-photo-video text-[#C0392B]"></i> Medya & Galeriler
+                            <i class="fas fa-photo-video text-[#3A7CA5]"></i> Medya & Galeriler
                         </h2>
                         
                         @if (videoMedyalari.Any())
@@ -732,14 +738,14 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
             <!-- Right: Reviews -->
             <div class="lg:w-1/3">
                 <h2 class="font-serif text-2xl text-[#1B2A4A] mb-6 flex items-center gap-3">
-                    <i class="fas fa-comments text-[#C0392B]"></i> Yorumlar
+                    <i class="fas fa-comments text-[#3A7CA5]"></i> Yorumlar
                 </h2>
                 
                 @if (yorumlar != null && yorumlar.Count > 0)
                 {
                     <div class="bg-white border border-[#F5E6C8] rounded-lg p-6 text-center mb-8">
                         <h3 class="font-serif text-5xl text-[#1B2A4A] mb-2">@ortalamaPuan.ToString("0.0")</h3>
-                        <div class="text-[#C0392B] mb-2">
+                        <div class="text-[#3A7CA5] mb-2">
                             @for (int i = 1; i <= 5; i++)
                             {
                                 if (i <= tamYildiz) { <i class="fas fa-star"></i> }
@@ -771,14 +777,17 @@ ViewData["SeoTitle"] = !string.IsNullOrWhiteSpace(Model.SeoTitle) ? Model.SeoTit
                                         </div>
                                         <div>
                                             <h5 class="text-sm font-semibold text-[#1B2A4A]">@yorum.AdSoyad</h5>
-                                            <div class="text-[#C0392B] text-[10px]">
+                                            <div class="text-[#3A7CA5] text-[10px]">
                                                 @for (int i = 0; i < yorum.Puan; i++) { <i class="fas fa-star"></i> }
                                             </div>
                                         </div>
                                     </div>
                                     <span class="text-[10px] text-[#333333]">@yorum.OlusturulmaTarihi.ToTurkeyString("dd MMM yyyy")</span>
                                 </div>
-                                <p class="text-sm text-[#333333] mt-2">@yorum.YorumMetni</p>
+                                @if (!string.IsNullOrWhiteSpace(yorum.YorumMetni))
+                                {
+                                    <p class="text-sm text-[#333333] mt-2">@yorum.YorumMetni</p>
+                                }
                             </div>
                         }
                     </div>
@@ -888,6 +897,55 @@ document.addEventListener('DOMContentLoaded', function() {
                 commentModal.classList.add('hidden');
                 commentModal.classList.remove('flex');
             });
+        }
+
+        const starRatingGroup = document.getElementById('starRatingGroup');
+        if (starRatingGroup) {
+            const starBtns = starRatingGroup.querySelectorAll('.star-btn');
+            const hiddenInput = document.getElementById('selectedPuan');
+            const labelSpan = document.getElementById('starRatingLabel');
+            const starLabels = {
+                1: '1 Yıldız - Çok Kötü',
+                2: '2 Yıldız - Kötü',
+                3: '3 Yıldız - Orta',
+                4: '4 Yıldız - İyi',
+                5: '5 Yıldız - Mükemmel'
+            };
+
+            function updateStarDisplay(rating) {
+                starBtns.forEach(btn => {
+                    const val = parseInt(btn.getAttribute('data-value'), 10);
+                    if (val <= rating) {
+                        btn.classList.remove('text-gray-300');
+                        btn.classList.add('text-amber-400');
+                    } else {
+                        btn.classList.remove('text-amber-400');
+                        btn.classList.add('text-gray-300');
+                    }
+                });
+                if (labelSpan && starLabels[rating]) {
+                    labelSpan.textContent = starLabels[rating];
+                }
+            }
+
+            starBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const val = parseInt(btn.getAttribute('data-value'), 10);
+                    if (hiddenInput) hiddenInput.value = val;
+                    updateStarDisplay(val);
+                });
+                btn.addEventListener('mouseenter', () => {
+                    const val = parseInt(btn.getAttribute('data-value'), 10);
+                    updateStarDisplay(val);
+                });
+            });
+
+            starRatingGroup.addEventListener('mouseleave', () => {
+                const currentVal = parseInt(hiddenInput?.value, 10) || 5;
+                updateStarDisplay(currentVal);
+            });
+
+            updateStarDisplay(parseInt(hiddenInput?.value, 10) || 5);
         }
     }
 

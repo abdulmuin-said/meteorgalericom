@@ -1,4 +1,4 @@
-﻿@using KanvasProje.Core.Varliklar
+@using KanvasProje.Core.Varliklar
 @model KanvasProje.Web.Models.HomeViewModel
 @inject KanvasProje.Service.Services.ISiteSettingsService SiteSettingsService
 
@@ -13,8 +13,6 @@
     ViewData["OgType"] = "website";
     var aktifSlaytlar = Model.AktifSlaytlar ?? new List<KanvasProje.Core.Varliklar.Slayt>();
     var siteUrl = SiteSettingsService.BuildAbsoluteUrl(string.Empty);
-    string BuildProductUrl(KanvasProje.Core.Varliklar.Urun urun)
-        => "/Urun/Detay/" + (string.IsNullOrEmpty(urun.Slug) ? (KanvasProje.Core.Helpers.SlugHelper.GenerateSlug(urun.Baslik) + "-" + urun.Id) : urun.Slug + "-" + urun.Id);
 
     var websiteSchema = new Dictionary<string, object?>
     {
@@ -49,67 +47,96 @@
 </script>
 @if (aktifSlaytlar.Any())
 {
-<!-- BEGIN: HeroSection - Otomatik Slider -->
-<section class="relative w-full min-h-[140px] h-[55vw] max-h-[320px] md:h-[700px] md:max-h-none overflow-hidden bg-[#FDF6E3]" id="heroSlider">
+<!-- BEGIN: HeroSection - Otomatik Slider (Modern Retro Magazine Galeri) -->
+<section class="max-w-[1440px] mx-auto px-3 sm:px-4 md:px-6 pt-3 md:pt-6 pb-2" aria-label="Öne Çıkan Koleksiyonlar">
+    <div class="relative w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-md hover:shadow-lg transition-shadow border border-[#F5E6C8] bg-[#FDF6E3] aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] lg:aspect-[2.4/1]" id="heroSlider">
 
-    <!-- Slayt Görselleri -->
-    <div id="heroTrack" class="flex h-full transition-transform duration-700 ease-in-out will-change-transform">
+        <!-- Slayt Görselleri ve Videoları -->
+        <div id="heroTrack" class="flex h-full w-full transition-transform duration-700 ease-in-out will-change-transform">
 
-        @for (int i = 0; i < aktifSlaytlar.Count; i++)
-        {
-            var slide = aktifSlaytlar[i];
-            <div class="hero-slide relative flex-shrink-0 w-full h-full">
-                @if (!string.IsNullOrWhiteSpace(slide.VideoUrl))
-                {
-                    <video class="absolute inset-0 w-full h-full object-contain md:object-cover"
-                           muted
-                           playsinline
-                           preload="metadata"
-                           data-hero-video>
-                        <source src="@slide.VideoUrl">
-                    </video>
-                }
-                else
-                {
-                    <img src="@(string.IsNullOrEmpty(slide.ResimUrl) ? "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600&q=80&auto=format&fit=crop" : slide.ResimUrl)"
-                         alt="@(string.IsNullOrWhiteSpace(slide.Baslik) ? "MeteorGaleri ana sayfa slider" : slide.Baslik)"
-                         class="absolute inset-0 w-full h-full object-contain md:object-cover"
-                         loading="@(i == 0 ? "eager" : "lazy")"
-                         decoding="async"
-                         fetchpriority="@(i == 0 ? "high" : "auto")">
-                }
-            </div>
-        }
+            @for (int i = 0; i < aktifSlaytlar.Count; i++)
+            {
+                var slide = aktifSlaytlar[i];
+                var hasVideo = !string.IsNullOrWhiteSpace(slide.VideoUrl) || !string.IsNullOrWhiteSpace(slide.MobilVideoUrl);
+                var hasOverlay = !string.IsNullOrWhiteSpace(slide.Baslik) || !string.IsNullOrWhiteSpace(slide.AltBaslik) || (!string.IsNullOrWhiteSpace(slide.ButonYazi) && !string.IsNullOrWhiteSpace(slide.ButonUrl));
+
+                <div class="hero-slide relative flex-shrink-0 w-full h-full overflow-hidden">
+                    @if (hasVideo)
+                    {
+                        @if (!string.IsNullOrWhiteSpace(slide.VideoUrl))
+                        {
+                            <video class="@(!string.IsNullOrWhiteSpace(slide.MobilVideoUrl) ? "hidden md:block" : "block") absolute inset-0 w-full h-full object-cover"
+                                   muted
+                                   playsinline
+                                   loop
+                                   preload="metadata"
+                                   data-hero-video>
+                                <source src="@slide.VideoUrl" type="video/mp4">
+                            </video>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(slide.MobilVideoUrl))
+                        {
+                            <video class="block md:hidden absolute inset-0 w-full h-full object-cover"
+                                   muted
+                                   playsinline
+                                   loop
+                                   preload="metadata"
+                                   data-hero-video>
+                                <source src="@slide.MobilVideoUrl" type="video/mp4">
+                            </video>
+                        }
+                    }
+                    else
+                    {
+                        var slideLink = !string.IsNullOrWhiteSpace(slide.ButonUrl) ? slide.ButonUrl : "/Urun";
+                        <a href="@slideLink" class="block w-full h-full cursor-pointer">
+                            <picture class="block w-full h-full">
+                                @if (!string.IsNullOrWhiteSpace(slide.MobilResimUrl))
+                                {
+                                    <source media="(max-width: 767px)" srcset="@slide.MobilResimUrl">
+                                }
+                                <img src="@(string.IsNullOrEmpty(slide.ResimUrl) ? (!string.IsNullOrEmpty(slide.MobilResimUrl) ? slide.MobilResimUrl : "/img/banner/slider-1.webp") : slide.ResimUrl)"
+                                     alt="@(string.IsNullOrWhiteSpace(slide.Baslik) ? "MeteorGaleri Sanat Koleksiyonu" : slide.Baslik)"
+                                     class="w-full h-full object-cover select-none"
+                                     loading="@(i == 0 ? "eager" : "lazy")"
+                                     decoding="async"
+                                     fetchpriority="@(i == 0 ? "high" : "auto")">
+                            </picture>
+                        </a>
+                    }
+                </div>
+            }
+
+        </div>
+
+        <!-- Ok Butonları (Sol / Sağ) -->
+        <button id="heroPrev" onclick="heroSlide(-1)" aria-label="Önceki slayt"
+                class="absolute left-2 sm:left-4 top-1/2 z-20 flex h-9 w-9 sm:h-11 sm:w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 hover:bg-white text-[#1B2A4A] shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-105 group border border-[#F5E6C8]">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
+            </svg>
+        </button>
+        <button id="heroNext" onclick="heroSlide(1)" aria-label="Sonraki slayt"
+                class="absolute right-2 sm:right-4 top-1/2 z-20 flex h-9 w-9 sm:h-11 sm:w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 hover:bg-white text-[#1B2A4A] shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-105 group border border-[#F5E6C8]">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+            </svg>
+        </button>
+
+        <!-- Nokta İndikatörler -->
+        <div class="absolute bottom-2.5 sm:bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-black/25 backdrop-blur-md" id="heroDots">
+            @for (int i = 0; i < aktifSlaytlar.Count; i++)
+            {
+                <button onclick="heroGoTo(@i)" class="hero-dot w-2 h-2 rounded-full bg-white/50 transition-all duration-300" aria-label="Slayt @(i+1)"></button>
+            }
+        </div>
+
+        <!-- İlerleme Çubuğu -->
+        <div class="absolute bottom-0 left-0 h-1 bg-white/20 w-full z-20">
+            <div id="heroProgress" class="h-full bg-[#3A7CA5] transition-none" style="width: 0%"></div>
+        </div>
 
     </div>
-
-    <!-- Ok Butonları (Sol / Sağ) -->
-    <button id="heroPrev" onclick="heroSlide(-1)" aria-label="Önceki slayt"
-            class="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#1B2A4A]/35 text-white backdrop-blur-sm transition-all duration-300 hover:bg-[#1B2A4A]/55 md:left-8 md:h-11 md:w-11 md:bg-white/20 md:hover:bg-white/40 group">
-<svg class="h-5 w-5 transition-transform group-hover:-translate-x-0.5 md:h-5 md:w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
-        </svg>
-    </button>
-    <button id="heroNext" onclick="heroSlide(1)" aria-label="Sonraki slayt"
-            class="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#1B2A4A]/35 text-white backdrop-blur-sm transition-all duration-300 hover:bg-[#1B2A4A]/55 md:right-8 md:h-11 md:w-11 md:bg-white/20 md:hover:bg-white/40 group">
-<svg class="h-5 w-5 transition-transform group-hover:translate-x-0.5 md:h-5 md:w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
-        </svg>
-    </button>
-
-    <!-- Nokta İndikatörler -->
-    <div class="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 md:bottom-6" id="heroDots">
-        @for (int i = 0; i < aktifSlaytlar.Count; i++)
-        {
-            <button onclick="heroGoTo(@i)" class="hero-dot w-2 h-2 rounded-full bg-white/50 transition-all duration-300" aria-label="Slayt @(i+1)"></button>
-        }
-    </div>
-
-    <!-- İlerleme Çubuğu -->
-    <div class="absolute bottom-0 left-0 h-0.5 bg-white/30 w-full z-20">
-        <div id="heroProgress" class="h-full bg-[#C0392B] transition-none" style="width: 0%"></div>
-    </div>
-
 </section>
 <!-- END: HeroSection -->
 }
@@ -308,56 +335,29 @@ goTo(0);
             {
                 <section class="bg-[#FFFBF0] py-14 md:py-16" data-motion-section>
                     <div class="container mx-auto px-4">
-                        <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                        <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between pb-4 border-b border-[#F5E6C8]/80">
                             <div>
-                                @if (!string.IsNullOrWhiteSpace(homeSection.Title))
-                                {
-                                    <h2 class="font-serif text-3xl text-[#1B2A4A]">@(homeSection.Title)</h2>
-                                }
+
+                                <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-[#1B2A4A] tracking-tight leading-tight">
+                                    @(string.IsNullOrWhiteSpace(homeSection.Title) ? "Öne Çıkan Eserler" : homeSection.Title)
+                                </h2>
                                 @if (!string.IsNullOrWhiteSpace(homeSection.Subtitle))
                                 {
-                                    <p class="mt-2 max-w-2xl text-sm text-[#333333]">@(homeSection.Subtitle)</p>
+                                    <p class="mt-2 max-w-2xl text-xs sm:text-sm text-[#666055] font-light leading-relaxed">@(homeSection.Subtitle)</p>
                                 }
                             </div>
                             @if (!string.IsNullOrWhiteSpace(homeSection.ViewAllUrl))
                             {
-                                <a href="@(homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 self-start border-b border-[#1B2A4A] pb-1 text-xs uppercase tracking-widest text-[#1B2A4A] transition-colors hover:text-[#C0392B] md:self-auto">
-                                    @(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tümünü Gör" : homeSection.ViewAllText)
-                                    <i class="fas fa-arrow-right text-[10px]"></i>
+                                <a href="@(homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 self-start md:self-auto px-5 py-2.5 rounded-full border border-[#E8DFD0] bg-white hover:bg-[#1B2A4A] hover:text-white hover:border-[#1B2A4A] text-xs font-bold tracking-wider uppercase text-[#1B2A4A] transition-all shadow-2xs group">
+                                    <span>@(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tümünü Gör" : homeSection.ViewAllText)</span>
+                                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                                 </a>
                             }
                         </div>
-                        <div class="grid grid-cols-2 gap-5 md:grid-cols-4 lg:grid-cols-5" data-motion-stagger>
+                        <div class="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 lg:grid-cols-5" data-motion-stagger>
                             @foreach (var urun in sectionProducts.Take(15))
                             {
-                                var gorsel = !string.IsNullOrWhiteSpace(urun.AnaGorselUrl)
-                                    ? urun.AnaGorselUrl
-                                    : urun.UrunResimleri?.OrderBy(r => r.Sira).FirstOrDefault()?.ResimYolu;
-
-                                <article class="group" data-motion-item>
-                                    <a href="@BuildProductUrl(urun)" class="block">
-                                        <div class="relative mb-3 aspect-square overflow-hidden bg-[#f8f6f2] shadow-[inset_0_0_8px_rgba(0,0,0,0.03)] flex items-center justify-center p-2">
-                                            @if (!string.IsNullOrWhiteSpace(gorsel))
-                                            {
-                                                <img src="@gorsel" alt="@urun.Baslik" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
-                                            }
-                                            else
-                                            {
-                                                <div class="flex h-full w-full items-center justify-center text-gray-300">
-                                                    <i class="fas fa-image fa-2x"></i>
-                                                </div>
-                                            }
-                                        </div>
-                                        <h3 class="mb-1 line-clamp-2 text-xs font-semibold tracking-wide text-[#1B2A4A] transition-colors group-hover:text-[#C0392B]">@urun.Baslik</h3>
-                                        <div class="flex flex-wrap items-baseline gap-1.5 mt-1">
-                                            <span class="text-sm font-semibold text-[#1B2A4A] group-hover:text-[#C0392B] transition-colors">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
-                                            @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
-                                            {
-                                                <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
-                                            }
-                                        </div>
-                                    </a>
-                                </article>
+                                <partial name="_UrunKarti" model="urun" />
                             }
                         </div>
                     </div>
@@ -391,48 +391,28 @@ goTo(0);
         {
             <section class="bg-[#FFFBF0] py-14 md:py-16">
                 <div class="container mx-auto px-4">
-                    <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                    <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between pb-4 border-b border-[#F5E6C8]/80">
                         <div>
-                            <h2 class="font-serif text-3xl text-[#1B2A4A]">@(string.IsNullOrWhiteSpace(homeSection.Title) ? "Öne Çıkan Ürünler" : homeSection.Title)</h2>
-                            <p class="mt-2 max-w-2xl text-sm text-[#333333]">@(string.IsNullOrWhiteSpace(homeSection.Subtitle) ? "Yaşam alanlarına güçlü bir karakter kazandıran seçili çok parçalı kanvas tablo koleksiyonu." : homeSection.Subtitle)</p>
+                            <div class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#01ADD3] mb-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#01ADD3]"></span>
+                                ✦ PANORAMİK DUVAR SANATI
+                            </div>
+                            <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-[#1B2A4A] tracking-tight leading-tight">
+                                @(string.IsNullOrWhiteSpace(homeSection.Title) ? "5 Parçalı Panoramik Koleksiyon" : homeSection.Title)
+                            </h2>
+                            <p class="mt-2 max-w-2xl text-xs sm:text-sm text-[#666055] font-light leading-relaxed">
+                                @(string.IsNullOrWhiteSpace(homeSection.Subtitle) ? "Yaşam alanlarına derinlik ve karakter katan seçili çok parçalı kanvas tablolar." : homeSection.Subtitle)
+                            </p>
                         </div>
-                        <a href="@(string.IsNullOrWhiteSpace(homeSection.ViewAllUrl) ? "/Urun?s=5%20Par%C3%A7a" : homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 self-start border-b border-[#1B2A4A] pb-1 text-xs uppercase tracking-widest text-[#1B2A4A] transition-colors hover:text-[#C0392B] md:self-auto">
-                            @(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tüm 5 Parçalıları Gör" : homeSection.ViewAllText)
-                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        <a href="@(string.IsNullOrWhiteSpace(homeSection.ViewAllUrl) ? "/Urun?s=5%20Par%C3%A7a" : homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 self-start md:self-auto px-5 py-2.5 rounded-full border border-[#E8DFD0] bg-white hover:bg-[#1B2A4A] hover:text-white hover:border-[#1B2A4A] text-xs font-bold tracking-wider uppercase text-[#1B2A4A] transition-all shadow-2xs group">
+                            <span>@(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tümünü İncele" : homeSection.ViewAllText)</span>
+                            <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    <div class="grid grid-cols-2 gap-5 md:grid-cols-4 lg:grid-cols-5">
+                    <div class="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 lg:grid-cols-5">
                         @foreach (var urun in Model.BesParcaliKoleksiyon.Take(15))
                         {
-                            var gorsel = !string.IsNullOrWhiteSpace(urun.AnaGorselUrl)
-                                ? urun.AnaGorselUrl
-                                : urun.UrunResimleri?.OrderBy(r => r.Sira).FirstOrDefault()?.ResimYolu;
-
-                            <article class="group">
-                                <a href="@BuildProductUrl(urun)" class="block">
-                                    <div class="relative mb-3 aspect-square overflow-hidden bg-[#f8f6f2] shadow-[inset_0_0_8px_rgba(0,0,0,0.03)] flex items-center justify-center p-2">
-                                        <span class="absolute left-2 top-2 z-10 bg-white/90 px-2 py-1 text-[9px] uppercase tracking-widest text-[#1B2A4A] shadow-sm">5 Parça</span>
-                                        @if (!string.IsNullOrWhiteSpace(gorsel))
-                                        {
-                                            <img src="@gorsel" alt="@urun.Baslik" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
-                                        }
-                                        else
-                                        {
-                                            <div class="flex h-full w-full items-center justify-center text-gray-300">
-                                                <i class="fas fa-image fa-2x"></i>
-                                            </div>
-                                        }
-                                    </div>
-                                    <h3 class="mb-1 line-clamp-2 text-xs font-semibold tracking-wide text-[#1B2A4A] transition-colors group-hover:text-[#C0392B]">@urun.Baslik</h3>
-                                    <div class="flex flex-wrap items-baseline gap-1.5 mt-1">
-                                        <span class="text-sm font-semibold text-[#1B2A4A] group-hover:text-[#C0392B] transition-colors">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
-                                        @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
-                                        {
-                                            <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
-                                        }
-                                    </div>
-                                </a>
-                            </article>
+                            <partial name="_UrunKarti" model="urun" />
                         }
                     </div>
                 </div>
@@ -443,66 +423,34 @@ goTo(0);
         // -------------------------------------------------------------
         else if (homeSection.SectionType == HomePageSectionType.AutoVitrin && Model.VitrinUrunleri != null && Model.VitrinUrunleri.Any())
         {
-            <section class="py-16 container mx-auto px-4">
-                <div class="flex items-center justify-center mb-10">
-                    <hr class="w-1/4 border-[#F5E6C8] hidden md:block"/>
-                    <h2 class="font-serif text-3xl mx-8 text-center text-[#1B2A4A]">@(string.IsNullOrWhiteSpace(homeSection.Title) ? "Öne Çıkan Eserler" : homeSection.Title)</h2>
-                    <hr class="w-1/4 border-[#F5E6C8] hidden md:block"/>
-                </div>
-                @if (!string.IsNullOrWhiteSpace(homeSection.Subtitle))
-                {
-                    <p class="text-center text-sm text-[#333333] mb-8 -mt-4">@homeSection.Subtitle</p>
-                }
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-                    @foreach (var urun in Model.VitrinUrunleri.Take(10))
-                    {
-                        <div class="group cursor-pointer flex flex-col">
-                            <div class="relative overflow-hidden mb-4 aspect-square bg-[#f8f6f2] shadow-[inset_0_0_8px_rgba(0,0,0,0.03)] flex items-center justify-center p-2">
-                                <a href="@BuildProductUrl(urun)" class="block w-full h-full flex items-center justify-center">
-                                @if (urun.YeniUrunMu || urun.IndirimVarMi)
-                                {
-                                    <span class="absolute top-2 left-2 bg-white px-2 py-1 text-[10px] uppercase tracking-wider z-10 shadow-sm text-[#1B2A4A]">
-                                        @(urun.YeniUrunMu ? "Yeni" : "Fırsat")
-                                    </span>
-                                }
-                                @{
-                                    var gorsel = !string.IsNullOrWhiteSpace(urun.AnaGorselUrl)
-                                        ? urun.AnaGorselUrl
-                                        : urun.UrunResimleri?.OrderBy(r => r.Sira).FirstOrDefault()?.ResimYolu;
-                                }
-                                @if (!string.IsNullOrWhiteSpace(gorsel))
-                                {
-                                <img alt="@urun.Baslik" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" src="@gorsel" loading="lazy" decoding="async"/>
-                                }
-                                else
-                                {
-                                    <div class="w-full h-full flex items-center justify-center text-gray-300">
-                                        <i class="fas fa-image fa-2x"></i>
-                                    </div>
-                                }
-                                </a>
-                                <!-- Kalp / Favori Butonu -->
-                                <button type="button" onclick="window.toggleFavori(this, @urun.Id)" class="group/btn absolute top-2 right-2 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 shadow-sm z-20 hover:scale-110" title="Favorilere Ekle">
-                                    <i class="far fa-heart text-sm text-[#333333] group-hover/btn:text-red-500 transition-colors"></i>
-                                </button>
-                            </div>
-                            <h3 class="text-xs font-semibold mb-1 text-[#1B2A4A] tracking-wide line-clamp-2">
-                                <a href="@BuildProductUrl(urun)" class="hover:text-[#C0392B] transition-colors">@urun.Baslik</a>
-                            </h3>
-                            <div class="flex flex-wrap items-baseline gap-1.5 mt-1">
-                                <span class="text-sm font-semibold text-[#1B2A4A]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
-                                @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
-                                {
-                                    <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
-                                }
-                            </div>
+            <section class="py-16 bg-white border-y border-[#F5E6C8]/60">
+                <div class="container mx-auto px-4">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <div class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.26em] text-[#01ADD3] mb-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#01ADD3]"></span>
+                            KÜRATÖR VİTRİNİ
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#01ADD3]"></span>
                         </div>
-                    }
-                </div>
-                <div class="text-center mt-12">
-                    <a href="@(string.IsNullOrWhiteSpace(homeSection.ViewAllUrl) ? "/Urun" : homeSection.ViewAllUrl)" class="inline-block border border-[#1B2A4A] text-[#1B2A4A] px-8 py-3 text-xs tracking-widest hover:bg-[#1B2A4A] hover:text-white transition-colors uppercase rounded-full">
-                        @(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tümünü Gör" : homeSection.ViewAllText)
-                    </a>
+                        <h2 class="font-serif text-3xl sm:text-4xl text-[#1B2A4A] tracking-tight font-normal leading-tight mb-3">
+                            @(string.IsNullOrWhiteSpace(homeSection.Title) ? "Seçkin Sanat & Vitrin Eserleri" : homeSection.Title)
+                        </h2>
+                        <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#01ADD3] to-transparent mx-auto mb-3"></div>
+                        <p class="text-xs sm:text-sm text-[#666055] font-light max-w-xl mx-auto leading-relaxed">
+                            @(string.IsNullOrWhiteSpace(homeSection.Subtitle) ? "İç mimarların ve sanatseverlerin bu sezon en çok tercih ettiği özel edisyonlar." : homeSection.Subtitle)
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 lg:grid-cols-5">
+                        @foreach (var urun in Model.VitrinUrunleri.Take(10))
+                        {
+                            <partial name="_UrunKarti" model="urun" />
+                        }
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="@(string.IsNullOrWhiteSpace(homeSection.ViewAllUrl) ? "/Urun" : homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 border border-[#1B2A4A] text-[#1B2A4A] px-8 py-3 text-xs tracking-widest hover:bg-[#1B2A4A] hover:text-white transition-all uppercase rounded-full font-bold shadow-xs">
+                            <span>@(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tüm Vitrini Gör" : homeSection.ViewAllText)</span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
             </section>
         }
@@ -511,49 +459,29 @@ goTo(0);
         // -------------------------------------------------------------
         else if (homeSection.SectionType == HomePageSectionType.AutoCokSatanlar && Model.CokSatanlar != null && Model.CokSatanlar.Any())
         {
-            <section class="container mx-auto px-4 pb-16">
-                <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <section class="container mx-auto px-4 py-14 md:py-16">
+                <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between pb-4 border-b border-[#F5E6C8]/80">
                     <div>
-                        <p class="mb-2 text-xs uppercase tracking-[0.25em] text-[#C0392B]">@(string.IsNullOrWhiteSpace(homeSection.Subtitle) ? "Çok satanlar" : homeSection.Subtitle)</p>
-                        <h2 class="font-serif text-3xl text-[#1B2A4A]">@(string.IsNullOrWhiteSpace(homeSection.Title) ? "En çok tercih edilenler" : homeSection.Title)</h2>
+                        <div class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#01ADD3] mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#01ADD3]"></span>
+                            ✦ FAVORİ TASARIMLAR
+                        </div>
+                        <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-[#1B2A4A] tracking-tight leading-tight">
+                            @(string.IsNullOrWhiteSpace(homeSection.Title) ? "En Çok Tercih Edilen Eserler" : homeSection.Title)
+                        </h2>
+                        <p class="mt-2 max-w-2xl text-xs sm:text-sm text-[#666055] font-light leading-relaxed">
+                            @(string.IsNullOrWhiteSpace(homeSection.Subtitle) ? "Müşteri memnuniyeti ve estetik uyumuyla öne çıkan çok satan modeller." : homeSection.Subtitle)
+                        </p>
                     </div>
-                    <a href="@(string.IsNullOrWhiteSpace(homeSection.ViewAllUrl) ? "/Urun?sort=popularity" : homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 self-start border-b border-[#1B2A4A] pb-1 text-xs uppercase tracking-widest text-[#1B2A4A] transition-colors hover:text-[#C0392B] md:self-auto">
-                        @(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tümünü Gör" : homeSection.ViewAllText)
-                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    <a href="@(string.IsNullOrWhiteSpace(homeSection.ViewAllUrl) ? "/Urun?sort=popularity" : homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 self-start md:self-auto px-5 py-2.5 rounded-full border border-[#E8DFD0] bg-white hover:bg-[#1B2A4A] hover:text-white hover:border-[#1B2A4A] text-xs font-bold tracking-wider uppercase text-[#1B2A4A] transition-all shadow-2xs group">
+                        <span>@(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tümünü İncele" : homeSection.ViewAllText)</span>
+                        <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
-                <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+                <div class="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 lg:grid-cols-4">
                     @foreach (var urun in Model.CokSatanlar.Take(8))
                     {
-                        var gorsel = !string.IsNullOrWhiteSpace(urun.AnaGorselUrl)
-                            ? urun.AnaGorselUrl
-                            : urun.UrunResimleri?.OrderBy(r => r.Sira).FirstOrDefault()?.ResimYolu;
-
-                        <article class="group">
-                            <a href="@BuildProductUrl(urun)" class="block">
-                                <div class="relative mb-4 aspect-[4/5] overflow-hidden bg-[#f8f6f2] shadow-[inset_0_0_8px_rgba(0,0,0,0.03)] flex items-center justify-center p-2">
-                                    <span class="absolute left-3 top-3 z-10 bg-white/90 px-2.5 py-1 text-[10px] uppercase tracking-widest text-[#1B2A4A]">Çok satan</span>
-                                    @if (!string.IsNullOrWhiteSpace(gorsel))
-                                    {
-                                        <img src="@gorsel" alt="@urun.Baslik" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
-                                    }
-                                    else
-                                    {
-                                        <div class="flex h-full w-full items-center justify-center text-gray-300">
-                                            <i class="fas fa-image fa-2x"></i>
-                                        </div>
-                                    }
-                                </div>
-                                <h3 class="mb-1 line-clamp-2 text-sm font-semibold tracking-wide text-[#1B2A4A] transition-colors group-hover:text-[#C0392B]">@urun.Baslik</h3>
-                                <div class="flex flex-wrap items-baseline gap-1.5 mt-1">
-                                    <span class="text-sm font-semibold text-[#1B2A4A] group-hover:text-[#C0392B] transition-colors">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
-                                    @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
-                                    {
-                                        <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
-                                    }
-                                </div>
-                            </a>
-                        </article>
+                        <partial name="_UrunKarti" model="urun" />
                     }
                 </div>
             </section>
@@ -563,50 +491,30 @@ goTo(0);
         // -------------------------------------------------------------
         else if (homeSection.SectionType == HomePageSectionType.AutoFirsatUrunleri && Model.FirsatUrunleri != null && Model.FirsatUrunleri.Any())
         {
-            <section class="bg-[#FDF6E3] py-16">
+            <section class="bg-[#FDF6E3] py-14 md:py-16 border-y border-[#F5E6C8]/80">
                 <div class="container mx-auto px-4">
-                    <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                    <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between pb-4 border-b border-[#E8DFD0]">
                         <div>
-                            <p class="mb-2 text-xs uppercase tracking-[0.25em] text-[#C0392B]">@(string.IsNullOrWhiteSpace(homeSection.Subtitle) ? "Fırsat ürünleri" : homeSection.Subtitle)</p>
-                            <h2 class="font-serif text-3xl text-[#1B2A4A]">@(string.IsNullOrWhiteSpace(homeSection.Title) ? "Kampanyalı seçimler" : homeSection.Title)</h2>
+                            <div class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#C0392B] mb-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#C0392B]"></span>
+                                ✦ SINIRLI ATÖLYE FIRSATLARI
+                            </div>
+                            <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-[#1B2A4A] tracking-tight leading-tight">
+                                @(string.IsNullOrWhiteSpace(homeSection.Title) ? "Haftanın Özel Fırsatları" : homeSection.Title)
+                            </h2>
+                            <p class="mt-2 max-w-2xl text-xs sm:text-sm text-[#666055] font-light leading-relaxed">
+                                @(string.IsNullOrWhiteSpace(homeSection.Subtitle) ? "Sınırlı atölye stoğuyla avantajlı fiyatlara sahip seçili tasarımlar." : homeSection.Subtitle)
+                            </p>
                         </div>
-                        <a href="@(string.IsNullOrWhiteSpace(homeSection.ViewAllUrl) ? "/Urun?sort=price_asc" : homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 self-start border-b border-[#1B2A4A] pb-1 text-xs uppercase tracking-widest text-[#1B2A4A] transition-colors hover:text-[#C0392B] md:self-auto">
-                            @(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Fırsatları Gör" : homeSection.ViewAllText)
-                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        <a href="@(string.IsNullOrWhiteSpace(homeSection.ViewAllUrl) ? "/Urun?sort=price_asc" : homeSection.ViewAllUrl)" class="inline-flex items-center gap-2 self-start md:self-auto px-5 py-2.5 rounded-full border border-[#E8DFD0] bg-white hover:bg-[#C0392B] hover:text-white hover:border-[#C0392B] text-xs font-bold tracking-wider uppercase text-[#1B2A4A] transition-all shadow-2xs group">
+                            <span>@(string.IsNullOrWhiteSpace(homeSection.ViewAllText) ? "Tüm Fırsatları Gör" : homeSection.ViewAllText)</span>
+                            <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+                    <div class="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 lg:grid-cols-4">
                         @foreach (var urun in Model.FirsatUrunleri.Take(8))
                         {
-                            var gorsel = !string.IsNullOrWhiteSpace(urun.AnaGorselUrl)
-                                ? urun.AnaGorselUrl
-                                : urun.UrunResimleri?.OrderBy(r => r.Sira).FirstOrDefault()?.ResimYolu;
-
-                            <article class="group">
-                                <a href="@BuildProductUrl(urun)" class="block">
-                                    <div class="relative mb-4 aspect-[4/5] overflow-hidden bg-[#f8f6f2] shadow-[inset_0_0_8px_rgba(0,0,0,0.03)] flex items-center justify-center p-2">
-                                        <span class="absolute left-3 top-3 z-10 bg-[#C0392B] px-2.5 py-1 text-[10px] uppercase tracking-widest text-white">Fırsat</span>
-                                        @if (!string.IsNullOrWhiteSpace(gorsel))
-                                        {
-                                        <img src="@gorsel" alt="@urun.Baslik" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
-                                        }
-                                        else
-                                        {
-                                            <div class="flex h-full w-full items-center justify-center text-gray-300">
-                                                <i class="fas fa-image fa-2x"></i>
-                                            </div>
-                                        }
-                                    </div>
-                                    <h3 class="mb-1 line-clamp-2 text-sm font-semibold tracking-wide text-[#1B2A4A] transition-colors group-hover:text-[#C0392B]">@urun.Baslik</h3>
-                                    <div class="flex flex-wrap items-baseline gap-2 mt-1">
-                                        <span class="text-sm font-bold text-[#C0392B]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
-                                        @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
-                                        {
-                                            <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
-                                        }
-                                    </div>
-                                </a>
-                            </article>
+                            <partial name="_UrunKarti" model="urun" />
                         }
                     </div>
                 </div>
@@ -620,21 +528,21 @@ goTo(0);
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="group">
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#C0392B] transition-all duration-300 group-hover:scale-110 group-hover:border-[#C0392B]">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#3A7CA5] transition-all duration-300 group-hover:scale-110 group-hover:border-[#3A7CA5]">
                     <i class="fas fa-shield-halved text-2xl"></i>
                 </div>
                 <h4 class="font-serif text-lg mb-2 text-[#1B2A4A]">Güvenli Ödeme</h4>
                 <p class="text-sm font-light text-[#333333]">256-bit SSL ile %100 güvenli alışveriş deneyimi.</p>
             </div>
             <div class="group">
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#C0392B] transition-all duration-300 group-hover:scale-110 group-hover:border-[#C0392B]">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#3A7CA5] transition-all duration-300 group-hover:scale-110 group-hover:border-[#3A7CA5]">
                     <i class="fas fa-truck-fast text-2xl"></i>
                 </div>
                 <h4 class="font-serif text-lg mb-2 text-[#1B2A4A]">Hızlı Teslimat</h4>
                 <p class="text-sm font-light text-[#333333]">Özel kutusunda, hasarsız ve hızlı teslimat garantisi.</p>
             </div>
             <div class="group">
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#C0392B] transition-all duration-300 group-hover:scale-110 group-hover:border-[#C0392B]">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#3A7CA5] transition-all duration-300 group-hover:scale-110 group-hover:border-[#3A7CA5]">
                     <i class="fas fa-headset text-2xl"></i>
                 </div>
                 <h4 class="font-serif text-lg mb-2 text-[#1B2A4A]">Müşteri Memnuniyeti</h4>
@@ -650,7 +558,7 @@ goTo(0);
     <div class="container mx-auto px-4">
         <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div class="max-w-2xl">
-                <p class="mb-3 text-xs uppercase tracking-[0.25em] text-[#C0392B]">Üretimden teslimata</p>
+                <p class="mb-3 text-xs uppercase tracking-[0.25em] text-[#3A7CA5]">Üretimden teslimata</p>
                 <h2 class="font-serif text-3xl text-[#1B2A4A] md:text-4xl">Siparişiniz özenle hazırlanır</h2>
             </div>
             <p class="max-w-md text-sm leading-relaxed text-[#333333]">
@@ -671,7 +579,7 @@ goTo(0);
             }
             @foreach (var step in productionSteps)
             {
-                <div class="border-t border-[#C0392B] pt-5">
+                <div class="border-t border-[#3A7CA5] pt-5">
                     <span class="mb-5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#1B2A4A] text-xs text-white">@step.Item1</span>
                     <h3 class="mb-3 font-serif text-xl text-[#1B2A4A]">@step.Item2</h3>
                     <p class="text-sm leading-relaxed text-[#333333]">@step.Item3</p>
@@ -687,7 +595,7 @@ goTo(0);
                     <img src="/img/banner/hakkimizda.jpg" alt="@brandName üretim ve dekorasyon kalitesi" class="h-full max-h-[520px] w-full object-cover" loading="lazy" decoding="async" />
         </div>
         <div class="max-w-xl">
-            <p class="mb-3 text-xs uppercase tracking-[0.25em] text-[#C0392B]">Malzeme ve baskı kalitesi</p>
+            <p class="mb-3 text-xs uppercase tracking-[0.25em] text-[#3A7CA5]">Malzeme ve baskı kalitesi</p>
             <h2 class="mb-6 font-serif text-3xl text-[#1B2A4A] md:text-4xl">Yaşam alanlarına uzun ömürlü bir dokunuş</h2>
             <p class="mb-5 text-sm leading-7 text-[#333333]">
                 Kanvas tablo, cam tablo, duvar kağıdı ve dekorasyon ürünlerinde kullanılan yüzey, baskı ve paketleme tercihleri ürünün kullanım alanına göre planlanır.
@@ -697,15 +605,15 @@ goTo(0);
             </p>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div>
-                    <i class="fas fa-palette mb-3 text-xl text-[#C0392B]"></i>
+                    <i class="fas fa-palette mb-3 text-xl text-[#3A7CA5]"></i>
                     <p class="text-xs font-semibold uppercase tracking-widest text-[#1B2A4A]">Canlı renkler</p>
                 </div>
                 <div>
-                    <i class="fas fa-ruler-combined mb-3 text-xl text-[#C0392B]"></i>
+                    <i class="fas fa-ruler-combined mb-3 text-xl text-[#3A7CA5]"></i>
                     <p class="text-xs font-semibold uppercase tracking-widest text-[#1B2A4A]">Ölçü seçenekleri</p>
                 </div>
                 <div>
-                    <i class="fas fa-box-open mb-3 text-xl text-[#C0392B]"></i>
+                    <i class="fas fa-box-open mb-3 text-xl text-[#3A7CA5]"></i>
                     <p class="text-xs font-semibold uppercase tracking-widest text-[#1B2A4A]">Korunaklı paket</p>
                 </div>
             </div>

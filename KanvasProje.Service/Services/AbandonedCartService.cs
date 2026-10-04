@@ -104,7 +104,7 @@ try
                                     string subject = "Sepetinizdeki ürünler sizi bekliyor";
                                     string body = $@"
                                         <p>Sepetinize eklediğiniz ürünleri sizin için ayırdık.</p>
-                                        <p>Sepetinizde <strong>{itemCount}</strong> adet ürün bekliyor. Siparişinizi tamamlayarak seçtiğiniz tabloları güvenle satın alabilirsiniz.</p>
+                                        <p>Sepetinizde <strong>{itemCount}</strong> adet ürün bekliyor. Siparişinizi tamamlayarak seçtiğiniz eser ve dekorasyon ürünlerini güvenle satın alabilirsiniz.</p>
                                         {(string.IsNullOrWhiteSpace(productList) ? string.Empty : $"<ul>{productList}</ul>")}
                                         <p>Stok ve kampanya koşulları değişmeden sepetinizi tamamlamak için aşağıdaki butonu kullanabilirsiniz.</p>";
 

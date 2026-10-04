@@ -63,9 +63,9 @@ veriler/
 SQL_Dosyalari/
 
 # Screenshot / analiz görselleri (kök dizindeki)
-*.png
-*.jpeg
-*.jpg
+/*.png
+/*.jpeg
+/*.jpg
 anasayfa-*.png
 
 # Claude local settings

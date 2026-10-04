@@ -19,16 +19,34 @@
         </div>
     </div>
 
-    <div class="alert alert-info mb-3">
-        <div class="d-flex align-items-start gap-2">
-            <i class="fas fa-info-circle mt-1"></i>
-            <div>
-                <strong>Slider Boyutları:</strong>
-                <ul class="mb-0 mt-1 small">
-                    <li><strong>Resim:</strong> En az 1920x700 px (yüksek kaliteli için 3840x1400 px önerilir). JPG, PNG veya WEBP formatında yükleyin.</li>
-                    <li><strong>Video:</strong> MP4 formatı önerilir. Maksimum dosya boyutu: 50MB. Önerilen çözünürlük: 1920x700 veya üzeri.</li>
-                    <li>Dosyalar <code>/uploads/slider/</code> klasörüne kaydedilir ve sunucuda kalıcı olarak saklanır.</li>
-                </ul>
+    <div class="alert alert-info mb-4 border-start border-4 border-info shadow-sm">
+        <div class="d-flex align-items-start gap-3">
+            <i class="fas fa-info-circle fa-2x text-info mt-1"></i>
+            <div class="w-100">
+                <h5 class="alert-heading mb-2 fw-bold">Profesyonel Slider Banner & Video Kılavuzu</h5>
+                <div class="row g-3 small">
+                    <div class="col-md-6">
+                        <div class="p-2 bg-white rounded border">
+                            <strong class="text-primary"><i class="fas fa-desktop me-1"></i> Masaüstü (Desktop) Ölçüleri:</strong>
+                            <ul class="mb-0 mt-1 ps-3">
+                                <li><strong>Görsel:</strong> <code>1920 x 800 px</code> veya <code>2400 x 1000 px</code> (En/Boy ~2.4:1). Format: WebP, JPG, PNG (Max 5MB).</li>
+                                <li><strong>Video:</strong> <code>1920 x 800 px</code> (veya 16:9), MP4 formatı (H.264), <strong>sessiz (muted)</strong>, 10-15 sn (Max 40MB).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-2 bg-white rounded border">
+                            <strong class="text-success"><i class="fas fa-mobile-alt me-1"></i> Mobil (Telefon) Ölçüleri:</strong>
+                            <ul class="mb-0 mt-1 ps-3">
+                                <li><strong>Görsel:</strong> <code>1080 x 1080 px</code> (1:1 kare) veya <code>1080 x 1350 px</code> (4:5 dikey). Format: WebP, JPG (Max 2MB).</li>
+                                <li><strong>Video:</strong> <code>1080 x 1080 px</code> veya <code>1080 x 1350 px</code>, MP4 formatı, <strong>sessiz (muted)</strong>, 10-15 sn (Max 20MB).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2 text-muted fst-italic">
+                    <i class="fas fa-shield-alt me-1 text-warning"></i> <strong>Güvenli Alan (Safe Zone):</strong> Farklı ekranlarda kırpılma olmaması için logo, yazı ve odak noktalarını kenarlardan en az %10 içeride konumlandırın.
+                </div>
             </div>
         </div>
     </div>
@@ -55,9 +73,9 @@
 
         <div class="row g-4">
             <div class="col-lg-8">
-                <div class="ca-card">
+                <div class="ca-card mb-4">
                     <div class="ca-card-header">
-                        <h3 class="ca-card-title"><i class="fas fa-edit me-2 ca-text-primary"></i>Slayt Bilgileri</h3>
+                        <h3 class="ca-card-title"><i class="fas fa-edit me-2 ca-text-primary"></i>Slayt Başlık & Buton Bilgileri</h3>
                     </div>
                     <div class="ca-card-body">
                         <div class="mb-3">
@@ -66,40 +84,52 @@
                             @Html.ValidationMessage("Baslik", "", new { @class = "text-danger small" })
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Alt Başlık</label>
-                            <input type="text" name="AltBaslik" value="@Model.AltBaslik" class="form-control" placeholder="Alt başlık" />
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Alt Başlık</label>
+                                <input type="text" name="AltBaslik" value="@Model.AltBaslik" class="form-control" placeholder="Alt başlık" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Slayt Türü</label>
+                                <select name="Tur" id="turSelect" class="form-select" onchange="toggleMediaFields()">
+                                    @Html.Raw("<option value=\"Resim\" " + (isVideoTur ? "" : "selected") + ">Görsel (Resim Banner)</option>")
+                                    @Html.Raw("<option value=\"Video\" " + (isVideoTur ? "selected" : "") + ">Video Banner</option>")
+                                </select>
+                            </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Açıklama</label>
                             <textarea name="Aciklama" class="form-control" rows="2" placeholder="Kısa açıklama">@Model.Aciklama</textarea>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">Buton Metni (Opsiyonel)</label>
+                                <input type="text" name="ButonYazi" value="@Model.ButonYazi" class="form-control" placeholder="Örn: Koleksiyonu İncele" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Buton Linki (URL)</label>
+                                <input type="text" name="ButonUrl" value="@Model.ButonUrl" class="form-control" placeholder="Örn: /Urun veya /Kategori/doga" />
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="ca-card">
-                    <div class="ca-card-header">
-                        <h3 class="ca-card-title"><i class="fas fa-photo-video me-2 ca-text-primary"></i>Görsel / Video</h3>
+                <!-- Masaüstü Medya Kartı -->
+                <div class="ca-card mb-4">
+                    <div class="ca-card-header bg-light">
+                        <h3 class="ca-card-title text-primary"><i class="fas fa-desktop me-2"></i>Masaüstü (Desktop) Medya</h3>
                     </div>
                     <div class="ca-card-body">
-                        <div class="mb-3">
-                            <label class="form-label">Slayt Türü</label>
-                            <select name="Tur" id="turSelect" class="form-select" onchange="toggleMediaFields()">
-                                @Html.Raw("<option value=\"Resim\" " + (isVideoTur ? "" : "selected") + ">Resim</option>")
-                                @Html.Raw("<option value=\"Video\" " + (isVideoTur ? "selected" : "") + ">Video</option>")
-                            </select>
-                        </div>
-
                         @if (!string.IsNullOrEmpty(Model.ResimUrl))
                         {
                             <div class="alert alert-secondary d-flex align-items-center gap-2 mb-3">
                                 <i class="fas fa-image text-muted"></i>
                                 <div>
-                                    <strong>Mevcut Görsel:</strong> @Model.ResimUrl
-                                    <div class="form-text">Yeni görsel yüklerseniz mevcut olan silinecektir. Görseli silmek için aşağıdaki onay kutusunu işaretleyin.</div>
-                                    <label class="form-check-label mt-1">
-                                        <input type="checkbox" name="ResimSil" value="true" class="form-check-input" /> Mevcut görseli sil
+                                    <strong>Mevcut Masaüstü Görsel:</strong> @Model.ResimUrl
+                                    <label class="form-check-label mt-1 d-block">
+                                        <input type="checkbox" name="ResimSil" value="true" class="form-check-input" /> Mevcut masaüstü görseli sil
                                     </label>
                                 </div>
                             </div>
@@ -113,10 +143,9 @@
                             <div class="alert alert-secondary d-flex align-items-center gap-2 mb-3">
                                 <i class="fas fa-video text-muted"></i>
                                 <div>
-                                    <strong>Mevcut Video:</strong> @Model.VideoUrl
-                                    <div class="form-text">Yeni video yüklerseniz mevcut olan silinecektir. Videoyu silmek için aşağıdaki onay kutusunu işaretleyin.</div>
-                                    <label class="form-check-label mt-1">
-                                        <input type="checkbox" name="VideoSil" value="true" class="form-check-input" /> Mevcut videoyu sil
+                                    <strong>Mevcut Masaüstü Video:</strong> @Model.VideoUrl
+                                    <label class="form-check-label mt-1 d-block">
+                                        <input type="checkbox" name="VideoSil" value="true" class="form-check-input" /> Mevcut masaüstü videoyu sil
                                     </label>
                                 </div>
                             </div>
@@ -126,31 +155,100 @@
                         }
 
                         <div id="resimYukleme" class="mb-3">
-                            <label class="form-label">Yeni Görsel Yükle</label>
+                            <label class="form-label fw-bold">Yeni Masaüstü Görsel Yükle</label>
                             <input type="file" name="Resim" id="resimInput" class="form-control" accept="image/*" onchange="previewResim(this)" />
-                            <div class="form-text">Desteklenen formatlar: JPG, PNG, WEBP. Maksimum dosya boyutu: 10MB.</div>
+                            <div class="form-text">Önerilen: <code>1920x800 px</code> veya <code>2400x1000 px</code> (Max 5MB WebP/JPG).</div>
                             <div id="resimOnizleme" class="d-none mt-2">
-                                <img src="" id="resimPreviewImg" class="img-thumbnail" style="max-height:200px;" alt="Önizleme" />
+                                <img src="" id="resimPreviewImg" class="img-thumbnail" style="max-height:180px;" alt="Önizleme" />
                             </div>
                         </div>
 
                         <div id="videoYukleme" class="@(isVideoTur ? "" : "d-none") mb-3">
-                            <label class="form-label">Yeni Video Yükle</label>
+                            <label class="form-label fw-bold">Yeni Masaüstü Video Yükle</label>
                             <input type="file" name="Video" id="videoInput" class="form-control" accept="video/mp4,video/webm" onchange="previewVideo(this)" />
-                            <div class="form-text">Desteklenen formatlar: MP4, WebM. Maksimum dosya boyutu: 50MB.</div>
+                            <div class="form-text">Önerilen: <code>1920x800 px</code>, MP4 (H.264), sessiz, max 40MB.</div>
                             <div id="videoOnizleme" class="d-none mt-2">
-                                <video src="" id="videoPreviewTag" controls style="max-height:200px;border-radius:8px;"></video>
+                                <video src="" id="videoPreviewTag" controls style="max-height:180px;border-radius:8px;"></video>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <label class="form-label">veya Görsel URL</label>
-                                <input type="url" name="ResimUrl" value="@Model.ResimUrl" class="form-control" placeholder="https://..." />
+                                <label class="form-label small text-muted">veya Harici Masaüstü Görsel URL</label>
+                                <input type="url" name="ResimUrl" value="@Model.ResimUrl" class="form-control form-control-sm" placeholder="https://..." />
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">veya Video URL</label>
-                                <input type="url" name="VideoUrl" value="@Model.VideoUrl" class="form-control" placeholder="https://..." />
+                                <label class="form-label small text-muted">veya Harici Masaüstü Video URL</label>
+                                <input type="url" name="VideoUrl" value="@Model.VideoUrl" class="form-control form-control-sm" placeholder="https://..." />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobil Medya Kartı -->
+                <div class="ca-card mb-4">
+                    <div class="ca-card-header bg-light">
+                        <h3 class="ca-card-title text-success"><i class="fas fa-mobile-alt me-2"></i>Mobil (Telefon) Medya (Özel Kırpılmasız Tasarım)</h3>
+                    </div>
+                    <div class="ca-card-body">
+                        @if (!string.IsNullOrEmpty(Model.MobilResimUrl))
+                        {
+                            <div class="alert alert-secondary d-flex align-items-center gap-2 mb-3">
+                                <i class="fas fa-mobile-alt text-muted"></i>
+                                <div>
+                                    <strong>Mevcut Mobil Görsel:</strong> @Model.MobilResimUrl
+                                    <label class="form-check-label mt-1 d-block">
+                                        <input type="checkbox" name="MobilResimSil" value="true" class="form-check-input" /> Mevcut mobil görseli sil
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <img src="@Model.MobilResimUrl" class="img-thumbnail" style="max-height:150px;" alt="Mevcut mobil görsel" />
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.MobilVideoUrl))
+                        {
+                            <div class="alert alert-secondary d-flex align-items-center gap-2 mb-3">
+                                <i class="fas fa-video text-muted"></i>
+                                <div>
+                                    <strong>Mevcut Mobil Video:</strong> @Model.MobilVideoUrl
+                                    <label class="form-check-label mt-1 d-block">
+                                        <input type="checkbox" name="MobilVideoSil" value="true" class="form-check-input" /> Mevcut mobil videoyu sil
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <video src="@Model.MobilVideoUrl" controls style="max-height:150px;border-radius:8px;"></video>
+                            </div>
+                        }
+
+                        <div id="mobilResimYukleme" class="mb-3">
+                            <label class="form-label fw-bold">Yeni Mobil Görsel Yükle</label>
+                            <input type="file" name="MobilResim" id="mobilResimInput" class="form-control" accept="image/*" onchange="previewMobilResim(this)" />
+                            <div class="form-text">Önerilen: <code>1080x1080 px</code> (1:1 kare) veya <code>1080x1350 px</code> (4:5 dikey). Format: WebP/JPG (Max 2MB).</div>
+                            <div id="mobilResimOnizleme" class="d-none mt-2">
+                                <img src="" id="mobilResimPreviewImg" class="img-thumbnail" style="max-height:180px;" alt="Mobil Önizleme" />
+                            </div>
+                        </div>
+
+                        <div id="mobilVideoYukleme" class="@(isVideoTur ? "" : "d-none") mb-3">
+                            <label class="form-label fw-bold">Yeni Mobil Video Yükle</label>
+                            <input type="file" name="MobilVideo" id="mobilVideoInput" class="form-control" accept="video/mp4,video/webm" onchange="previewMobilVideo(this)" />
+                            <div class="form-text">Önerilen: <code>1080x1080 px</code> veya <code>1080x1350 px</code> dikey video, MP4, max 20MB.</div>
+                            <div id="mobilVideoOnizleme" class="d-none mt-2">
+                                <video src="" id="mobilVideoPreviewTag" controls style="max-height:180px;border-radius:8px;"></video>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">veya Harici Mobil Görsel URL</label>
+                                <input type="url" name="MobilResimUrl" value="@Model.MobilResimUrl" class="form-control form-control-sm" placeholder="https://..." />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">veya Harici Mobil Video URL</label>
+                                <input type="url" name="MobilVideoUrl" value="@Model.MobilVideoUrl" class="form-control form-control-sm" placeholder="https://..." />
                             </div>
                         </div>
                     </div>
@@ -181,7 +279,7 @@
 
                 <div class="ca-card">
                     <div class="ca-card-header">
-                        <h3 class="ca-card-title"><i class="fas fa-eye me-2 ca-text-primary"></i>Önizleme</h3>
+                        <h3 class="ca-card-title"><i class="fas fa-eye me-2 ca-text-primary"></i>Masaüstü Önizleme</h3>
                     </div>
                     <div class="ca-card-body">
                         <div id="livePreview" class="bg-dark rounded p-2 text-center">
@@ -208,7 +306,7 @@
 
         <div class="mt-4">
             <button type="submit" class="btn btn-primary">
-                <i class="fas fa-save me-1"></i> Kaydet
+                <i class="fas fa-save me-1"></i> Değişiklikleri Kaydet
             </button>
             <a href="@Url.Action("Index", "Slayt")" class="btn btn-secondary ms-2">İptal</a>
         </div>
@@ -219,8 +317,13 @@
 <script>
 function toggleMediaFields() {
     var tur = document.getElementById('turSelect').value;
-    document.getElementById('resimYukleme').classList.toggle('d-none', tur === 'Video');
-    document.getElementById('videoYukleme').classList.toggle('d-none', tur === 'Resim');
+    var isVideo = tur === 'Video';
+    document.getElementById('resimYukleme').classList.toggle('d-none', isVideo);
+    document.getElementById('videoYukleme').classList.toggle('d-none', !isVideo);
+    var mobilResim = document.getElementById('mobilResimYukleme');
+    var mobilVideo = document.getElementById('mobilVideoYukleme');
+    if (mobilResim) mobilResim.classList.toggle('d-none', isVideo);
+    if (mobilVideo) mobilVideo.classList.toggle('d-none', !isVideo);
 }
 
 function previewResim(input) {
@@ -236,9 +339,35 @@ function previewResim(input) {
     }
 }
 
+function previewMobilResim(input) {
+    var preview = document.getElementById('mobilResimPreviewImg');
+    var container = document.getElementById('mobilResimOnizleme');
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            container.classList.remove('d-none');
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 function previewVideo(input) {
     var preview = document.getElementById('videoPreviewTag');
     var container = document.getElementById('videoOnizleme');
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            container.classList.remove('d-none');
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function previewMobilVideo(input) {
+    var preview = document.getElementById('mobilVideoPreviewTag');
+    var container = document.getElementById('mobilVideoOnizleme');
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {

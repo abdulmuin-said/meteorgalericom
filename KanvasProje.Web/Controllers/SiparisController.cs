@@ -143,8 +143,24 @@ namespace KanvasProje.Web.Controllers
 
             // --- KARGO HESAPLAMA VE KAYDETME ---
             var settings = _siteSettingsService.GetSettings();
-            siparis.OdemeSaglayici = settings.PaytrAktifMi ? "PayTR" : string.Empty;
-            siparis.OdemeDurumu = settings.PaytrAktifMi ? "Bekliyor" : "OdemeBeklenmiyor";
+            if (settings.IyzicoAktifMi)
+            {
+                siparis.OdemeSaglayici = "Iyzico";
+                siparis.OdemeDurumu = "Bekliyor";
+                siparis.Aciklama = "İyzico ile güvenli ödeme bekleniyor.";
+            }
+            else if (settings.PaytrAktifMi)
+            {
+                siparis.OdemeSaglayici = "PayTR";
+                siparis.OdemeDurumu = "Bekliyor";
+                siparis.Aciklama = "PayTR ile ödeme bekleniyor.";
+            }
+            else
+            {
+                siparis.OdemeSaglayici = string.Empty;
+                siparis.OdemeDurumu = "OdemeBeklenmiyor";
+                siparis.Aciklama = "Onay bekliyor.";
+            }
             siparis.OdemeTamamlandiMi = false;
             var secilenKargo = await _context.KargoFirmalari
                 .FirstOrDefaultAsync(x => x.Id == siparis.KargoFirmasiId && !x.SilindiMi && x.AktifMi);
@@ -234,20 +250,216 @@ namespace KanvasProje.Web.Controllers
             HttpContext.Session.Remove("UygulananKupon");
 
             _logger.LogInformation(
-                "Siparis olusturuldu, PayTR odemesine yonlendiriliyor. SiparisNo={SiparisNo}, Tutar={Tutar}",
+                "Siparis olusturuldu. SiparisNo={SiparisNo}, Tutar={Tutar}, Saglayici={Saglayici}",
                 siparis.SiparisNo,
-                siparis.ToplamTutar);
+                siparis.ToplamTutar,
+                siparis.OdemeSaglayici);
 
-            // PayTR aktifse ödeme sayfasına yönlendir, değilse beklemede bırak
+            // 1. İyzico aktifse İyzico Checkout Form sayfasına yönlendir
+            if (_siteSettingsService.GetSettings().IyzicoAktifMi)
+            {
+                return RedirectToAction(nameof(IyzicoOdeme), new { siparisNo = siparis.SiparisNo });
+            }
+
+            // 2. PayTR aktifse PayTR ödeme sayfasına yönlendir
             if (_siteSettingsService.GetSettings().PaytrAktifMi)
             {
                 return RedirectToAction(nameof(PaytrOdeme), new { siparisNo = siparis.SiparisNo });
             }
 
+            // 3. Hiçbiri aktif değilse siparişi beklemede oluştur
             await SendAdminOrderNotificationEmailAsync(siparis);
             await SendCustomerOrderConfirmationEmailAsync(siparis);
 
             return RedirectToAction(nameof(Beklemede), new { siparisNo = siparis.SiparisNo });
+        }
+
+        /// <summary>
+        /// İyzico ödeme sayfası — İyzico Checkout Form (3D Secure, taksit ve responsive form).
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> IyzicoOdeme(string siparisNo)
+        {
+            var siparis = await _context.Siparisler
+                .Include(x => x.SiparisDetaylari)
+                    .ThenInclude(x => x.Urun)
+                .FirstOrDefaultAsync(x => x.SiparisNo == siparisNo && !x.SilindiMi);
+
+            if (siparis == null)
+            {
+                return RedirectToAction("Index", "Sepet");
+            }
+
+            if (siparis.OdemeTamamlandiMi)
+            {
+                return RedirectToAction(nameof(IyzicoBasarili), new { siparisNo = siparis.SiparisNo });
+            }
+
+            if (string.Equals(siparis.OdemeDurumu, "Basarisiz", StringComparison.OrdinalIgnoreCase) ||
+                siparis.Durum == SiparisDurumHelper.IptalEdildi)
+            {
+                return RedirectToAction(nameof(IyzicoBasarisiz), new { siparisNo = siparis.SiparisNo });
+            }
+
+            var settings = _siteSettingsService.GetSettings();
+            var request = HttpContext.Request;
+            var baseUrl = $"{request.Scheme}://{request.Host}";
+
+            var sepetItems = siparis.SiparisDetaylari
+                .Where(x => !x.SilindiMi)
+                .Select(x => new PaymentBasketItem
+                {
+                    Name = x.Urun?.Baslik ?? $"Tablo #{x.UrunId}",
+                    Price = x.BirimFiyat,
+                    Quantity = x.Adet
+                })
+                .ToList();
+
+            var initRequest = new PaymentInitRequest
+            {
+                OrderId = siparis.SiparisNo,
+                TotalPrice = siparis.ToplamTutar,
+                BasketPrice = Math.Max(0, siparis.ToplamTutar - siparis.KargoUcreti),
+                CallbackUrl = $"{baseUrl}/Siparis/IyzicoCallback",
+                BuyerName = siparis.MusteriAdSoyad,
+                BuyerEmail = siparis.Eposta,
+                BuyerPhone = siparis.Telefon,
+                BuyerAddress = $"{siparis.AcikAdres}, {siparis.Ilce}/{siparis.Sehir}",
+                BuyerCity = siparis.Sehir,
+                BuyerIp = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "127.0.0.1",
+                BasketItems = sepetItems
+            };
+
+            var result = await _paymentService.InitializeCheckoutAsync(initRequest);
+
+            if (!result.Success || (string.IsNullOrWhiteSpace(result.CheckoutFormContent) && string.IsNullOrWhiteSpace(result.Token)))
+            {
+                _logger.LogWarning(
+                    "İyzico baslatilamadi. SiparisNo={SiparisNo}, Hata={Hata}",
+                    siparisNo, result.ErrorMessage);
+
+                ViewBag.Hata = result.ErrorMessage ?? "İyzico ödeme sayfası başlatılamadı. Lütfen yönetici ile iletişime geçin.";
+                ViewBag.SiparisNo = siparis.SiparisNo;
+                ViewBag.ToplamTutar = siparis.ToplamTutar;
+                return View("IyzicoOdeme");
+            }
+
+            ViewBag.CheckoutFormContent = result.CheckoutFormContent;
+            ViewBag.Token = result.Token;
+            ViewBag.PaymentPageUrl = result.PaymentPageUrl;
+            ViewBag.SiparisNo = siparis.SiparisNo;
+            ViewBag.ToplamTutar = siparis.ToplamTutar;
+
+            return View();
+        }
+
+        /// <summary>
+        /// İyzico Callback / Dönüş URL'i — Ödeme sonucu İyzico tarafından bu adrese POST edilir.
+        /// </summary>
+        [HttpPost]
+        [HttpGet]
+        [IgnoreAntiforgeryToken]
+        [AllowAnonymous]
+        public async Task<IActionResult> IyzicoCallback()
+        {
+            var token = string.Empty;
+            if (HttpContext.Request.HasFormContentType)
+            {
+                token = HttpContext.Request.Form["token"].FirstOrDefault() ?? string.Empty;
+            }
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                token = HttpContext.Request.Query["token"].FirstOrDefault() ?? string.Empty;
+            }
+
+            _logger.LogInformation("İyzico callback alindi. Token={Token}", token);
+
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                return RedirectToAction(nameof(IyzicoBasarisiz), new { hata = "İyzico doğrulama anahtarı (token) eksik." });
+            }
+
+            var verifyResult = await _paymentService.VerifyPaymentAsync(new PaymentVerifyRequest { Token = token });
+
+            var orderId = verifyResult.OrderId;
+            var siparis = !string.IsNullOrWhiteSpace(orderId)
+                ? await _context.Siparisler.FirstOrDefaultAsync(x => x.SiparisNo == orderId && !x.SilindiMi)
+                : null;
+
+            if (siparis == null)
+            {
+                _logger.LogWarning("İyzico callback sipariş bulunamadı. Token={Token}, OrderId={OrderId}", token, orderId);
+                return RedirectToAction(nameof(IyzicoBasarisiz), new { hata = "Ödeme ile ilişkili sipariş bulunamadı." });
+            }
+
+            if (verifyResult.PaymentSuccessful)
+            {
+                siparis.OdemeDurumu = "Basarili";
+                siparis.OdemeTamamlandiMi = true;
+                siparis.OdemeOnayTarihi = DateTime.UtcNow;
+                siparis.OdemeHataKodu = null;
+                siparis.OdemeHataMesaji = null;
+                siparis.Durum = SiparisDurumHelper.UretimHazirlaniyor;
+                siparis.Aciklama = $"İyzico ile ödeme başarıyla tamamlandı. İşlem No: {verifyResult.TransactionId ?? token}";
+
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation(
+                    "İyzico ödeme başarılı. SiparisNo={SiparisNo}, Tutar={Tutar}, IslemNo={IslemNo}",
+                    siparis.SiparisNo, verifyResult.PaidPrice, verifyResult.TransactionId ?? token);
+
+                await SendAdminOrderNotificationEmailAsync(siparis);
+                await SendCustomerOrderConfirmationEmailAsync(siparis);
+
+                return RedirectToAction(nameof(IyzicoBasarili), new { siparisNo = siparis.SiparisNo });
+            }
+            else
+            {
+                siparis.OdemeDurumu = "Basarisiz";
+                siparis.OdemeTamamlandiMi = false;
+                siparis.OdemeHataMesaji = verifyResult.ErrorMessage;
+                siparis.Durum = SiparisDurumHelper.IptalEdildi;
+                siparis.Aciklama = $"İyzico ödemesi başarısız: {verifyResult.ErrorMessage}";
+
+                await _context.SaveChangesAsync();
+
+                _logger.LogWarning(
+                    "İyzico ödeme başarısız. SiparisNo={SiparisNo}, Hata={Hata}",
+                    siparis.SiparisNo, verifyResult.ErrorMessage);
+
+                return RedirectToAction(nameof(IyzicoBasarisiz), new { siparisNo = siparis.SiparisNo, hata = verifyResult.ErrorMessage });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> IyzicoBasarili(string siparisNo)
+        {
+            var siparis = await _context.Siparisler
+                .Include(x => x.SiparisDetaylari)
+                    .ThenInclude(x => x.Urun)
+                .FirstOrDefaultAsync(x => x.SiparisNo == siparisNo && !x.SilindiMi);
+
+            if (siparis == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(siparis);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> IyzicoBasarisiz(string? siparisNo, string? hata)
+        {
+            ViewBag.Hata = hata ?? "Ödeme işlemi bankanız veya İyzico tarafından onaylanmadı.";
+            ViewBag.SiparisNo = siparisNo;
+
+            if (!string.IsNullOrWhiteSpace(siparisNo))
+            {
+                var siparis = await _context.Siparisler.FirstOrDefaultAsync(x => x.SiparisNo == siparisNo && !x.SilindiMi);
+                return View(siparis);
+            }
+
+            return View();
         }
 
         /// <summary>
@@ -748,9 +960,9 @@ namespace KanvasProje.Web.Controllers
                 <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #e5e2dc; border-radius:10px; background:#fff; margin:16px 0;'>
                     <thead>
                         <tr style='background:#fafaf8;'>
-                            <th style='padding:10px; text-align:left; color:#313511;'>Ürün</th>
-                            <th style='padding:10px; text-align:center; color:#313511;'>Adet</th>
-                            <th style='padding:10px; text-align:right; color:#313511;'>Tutar</th>
+                            <th style='padding:10px; text-align:left; color:#1B2A4A;'>Ürün</th>
+                            <th style='padding:10px; text-align:center; color:#1B2A4A;'>Adet</th>
+                            <th style='padding:10px; text-align:right; color:#1B2A4A;'>Tutar</th>
                         </tr>
                     </thead>
                     <tbody>{orderItemsHtml}</tbody>
@@ -807,7 +1019,7 @@ namespace KanvasProje.Web.Controllers
                             {notSatiri}
                         </td>
                         <td style='padding:12px; border-bottom:1px solid #e5e2dc; text-align:center; color:#47473d;'>{adet}</td>
-                        <td style='padding:12px; border-bottom:1px solid #e5e2dc; text-align:right; color:#313511; font-weight:600;'>{fiyat:N2} TL</td>
+                        <td style='padding:12px; border-bottom:1px solid #e5e2dc; text-align:right; color:#1B2A4A; font-weight:600;'>{fiyat:N2} TL</td>
                     </tr>");
             }
 
@@ -824,9 +1036,9 @@ namespace KanvasProje.Web.Controllers
                 <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #e5e2dc; border-radius:12px; background:#fff; margin:20px 0;'>
                     <thead>
                         <tr style='background:#fafaf8;'>
-                            <th style='padding:12px; border-bottom:2px solid #e5e2dc; text-align:left; color:#313511; font-size:13px;'>Ürün</th>
-                            <th style='padding:12px; border-bottom:2px solid #e5e2dc; text-align:center; color:#313511; font-size:13px;'>Adet</th>
-                            <th style='padding:12px; border-bottom:2px solid #e5e2dc; text-align:right; color:#313511; font-size:13px;'>Tutar</th>
+                            <th style='padding:12px; border-bottom:2px solid #e5e2dc; text-align:left; color:#1B2A4A; font-size:13px;'>Ürün</th>
+                            <th style='padding:12px; border-bottom:2px solid #e5e2dc; text-align:center; color:#1B2A4A; font-size:13px;'>Adet</th>
+                            <th style='padding:12px; border-bottom:2px solid #e5e2dc; text-align:right; color:#1B2A4A; font-size:13px;'>Tutar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -835,7 +1047,7 @@ namespace KanvasProje.Web.Controllers
                     <tfoot>
                         <tr style='background:#fafaf8;'>
                             <td colspan='2' style='padding:14px; border-top:2px solid #e5e2dc; text-align:right; color:#313511; font-weight:700;'>Toplam:</td>
-                            <td style='padding:14px; border-top:2px solid #e5e2dc; text-align:right; color:#b58735; font-size:18px; font-weight:700;'>{toplamTutar:N2} TL</td>
+                            <td style='padding:14px; border-top:2px solid #e5e2dc; text-align:right; color:#01ADD3; font-size:18px; font-weight:700;'>{toplamTutar:N2} TL</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -843,21 +1055,21 @@ namespace KanvasProje.Web.Controllers
                 <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #e5e2dc; border-radius:12px; background:#fffaf0; margin:20px 0;'>
                     <tr>
                         <td style='padding:16px; color:#47473d;'>
-                            <strong style='color:#313511;'>Sipari&#351; No:</strong> <span style='font-size:16px; color:#b58735; font-weight:700;'>{siparisNo}</span>
+                            <strong style='color:#1B2A4A;'>Sipari&#351; No:</strong> <span style='font-size:16px; color:#01ADD3; font-weight:700;'>{siparisNo}</span>
                         </td>
                     </tr>
                     <tr>
                         <td style='padding:16px; border-top:1px solid #e5e2dc; color:#47473d;'>
-                            <strong style='color:#313511;'>Teslimat Adresi:</strong> {teslimatBilgi}
+                            <strong style='color:#1B2A4A;'>Teslimat Adresi:</strong> {teslimatBilgi}
                         </td>
                     </tr>
                 </table>
                 
                 <p style='margin-top:24px; color:#47473d; font-size:14px;'>
-                    Sipari&#351;inizin durumunu <a href='{siteUrl}/Profil/Siparislerim' style='color:#313511; text-decoration:underline;'>sipari&#351;lerim</a> sayfas&#305;ndan takip edebilirsiniz.
+                    Sipari&#351;inizin durumunu <a href='{siteUrl}/Profil/Siparislerim' style='color:#01ADD3; font-weight:600; text-decoration:underline;'>sipari&#351;lerim</a> sayfas&#305;ndan takip edebilirsiniz.
                 </p>
                 <p style='margin-top:16px; color:#47473d; font-size:14px;'>
-                    Herhangi bir sorunuz veya talebiniz olursa bizimle <a href='{siteUrl}/Kurumsal/Iletisim' style='color:#313511; text-decoration:underline;'>ileti&#351;ime</a> geçebilirsiniz.
+                    Herhangi bir sorunuz veya talebiniz olursa bizimle <a href='{siteUrl}/Kurumsal/Iletisim' style='color:#01ADD3; font-weight:600; text-decoration:underline;'>ileti&#351;ime</a> geçebilirsiniz.
                 </p>
                 <p style='margin-top:24px; color:#999; font-size:13px;'>
                     Bu e-posta otomatik olarak g&ouml;nderilmi&#351;tir. L&uuml;tfen bu mesaj&#305; do&#287;rudan yan&#305;tlamay&#305;n.
@@ -903,7 +1115,7 @@ namespace KanvasProje.Web.Controllers
                             {detayHtml}
                         </td>
                         <td style='padding:10px; border-top:1px solid #e5e2dc; text-align:center; color:#47473d;'>{item.Adet}</td>
-                        <td style='padding:10px; border-top:1px solid #e5e2dc; text-align:right; color:#313511; font-weight:600;'>{(item.BirimFiyat * item.Adet):N2} TL</td>
+                        <td style='padding:10px; border-top:1px solid #e5e2dc; text-align:right; color:#1B2A4A; font-weight:600;'>{(item.BirimFiyat * item.Adet):N2} TL</td>
                     </tr>");
             }
 

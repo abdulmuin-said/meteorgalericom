@@ -5,75 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{MARKA_ADI} Bildirim</title>
 </head>
-<body style="margin:0; padding:0; background:#f1ede7; color:#313511; font-family:Arial, Helvetica, sans-serif;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1ede7; margin:0; padding:28px 12px;">
+<body style="margin:0; padding:0; background:#FDF6E3; color:#1B2A4A; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FDF6E3; margin:0; padding:32px 12px;">
         <tr>
             <td align="center">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px; background:#fcf9f3; border:1px solid #e5e2dc; border-radius:16px; overflow:hidden;">
+                <!-- Main Container -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px; background:#FFFFFF; border:1px solid #E8DFD0; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(27,42,74,0.06);">
+                    
+                    <!-- Retro Boutique Header -->
                     <tr>
-                        <td align="center" style="background:#313511; padding:30px 26px 24px;">
+                        <td align="center" style="background:#1B2A4A; padding:32px 24px 28px; border-bottom:4px solid #01ADD3;">
                             <a href="{SITE_URL}" target="_blank" style="text-decoration:none; display:inline-block;">
-                                <img src="{SITE_LOGO_URL}" alt="{MARKA_ADI}" width="112" height="112" style="display:block; width:112px; max-width:112px; height:112px; object-fit:contain; margin:0 auto 12px; border:0; border-radius:24px; background:#ffffff;">
+                                <div style="background:#FFFFFF; padding:10px 18px; border-radius:12px; display:inline-block; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+                                    <img src="{SITE_LOGO_URL}" alt="{MARKA_ADI}" width="180" height="38" style="display:block; width:180px; max-width:180px; height:auto; object-fit:contain; border:0;">
+                                </div>
                             </a>
-                            <div style="font-family:Georgia, 'Times New Roman', serif; font-size:24px; line-height:1.2; color:#f8f3e8; letter-spacing:.04em;">{MARKA_ADI}</div>
-                            <div style="font-size:11px; line-height:1.5; color:#c6ca99; letter-spacing:.22em; text-transform:uppercase; margin-top:8px;">Premium dekorasyon &uuml;r&uuml;nleri</div>
+                            <div style="font-family:'Playfair Display', Georgia, 'Times New Roman', serif; font-size:22px; line-height:1.2; color:#FFFFFF; letter-spacing:.03em; font-weight:700;">{MARKA_ADI}</div>
+                            <div style="font-size:11px; line-height:1.5; color:#01ADD3; letter-spacing:.22em; text-transform:uppercase; margin-top:6px; font-weight:600;">Sanat &amp; Dekorasyon At&ouml;lyesi</div>
                         </td>
                     </tr>
 
+                    <!-- Content Section -->
                     <tr>
-                        <td style="padding:34px 30px 12px;">
-                            <div style="display:inline-block; background:#e9ead6; color:#313511; border-radius:999px; padding:8px 13px; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:18px;">Bilgilendirme</div>
-                            <h1 style="margin:0 0 18px; color:#313511; font-family:Georgia, 'Times New Roman', serif; font-size:30px; font-weight:500; line-height:1.18;">{BASLIK}</h1>
-                            <p style="margin:0 0 16px; color:#47473d; font-size:15px; line-height:1.75;">Merhaba <strong style="color:#313511;">{ADSOYAD}</strong>,</p>
-                            <div style="color:#47473d; font-size:15px; line-height:1.75;">{ICERIK}</div>
+                        <td style="padding:36px 32px 20px;">
+                            <div style="display:inline-block; background:#E0F7FA; color:#017E9B; border:1px solid #B2EBF2; border-radius:999px; padding:6px 14px; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:18px;">Bilgilendirme</div>
+                            <h1 style="margin:0 0 18px; color:#1B2A4A; font-family:'Playfair Display', Georgia, serif; font-size:26px; font-weight:700; line-height:1.25;">{BASLIK}</h1>
+                            <p style="margin:0 0 16px; color:#2C3E50; font-size:15px; line-height:1.75;">Merhaba <strong style="color:#1B2A4A;">{ADSOYAD}</strong>,</p>
+                            <div style="color:#334155; font-size:15px; line-height:1.75;">{ICERIK}</div>
                         </td>
                     </tr>
 
+                    <!-- CTA Button -->
                     <tr style="display:{BUTON_GORUNUM};">
-                        <td align="center" style="padding:18px 30px 26px;">
-                            <a href="{BUTON_LINK}" target="_blank" style="display:inline-block; background:#313511; color:#ffffff; text-decoration:none; border-radius:999px; padding:14px 28px; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;">{BUTON_YAZI}</a>
+                        <td align="center" style="padding:10px 32px 28px;">
+                            <a href="{BUTON_LINK}" target="_blank" style="display:inline-block; background:#01ADD3; color:#FFFFFF; text-decoration:none; border-radius:999px; padding:15px 36px; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.35);">
+                                {BUTON_YAZI}
+                            </a>
                         </td>
                     </tr>
 
+                    <!-- Trust / Assurance Strip -->
                     <tr>
-                        <td style="padding:0 30px 28px;">
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e2dc; border-radius:12px; background:#fffaf0;">
+                        <td style="padding:0 32px 28px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E8DFD0; border-radius:12px; background:#FFFBF0;">
                                 <tr>
-                                    <td width="33.33%" align="center" style="padding:18px 8px; border-right:1px solid #e5e2dc;">
-                                        <div style="font-size:12px; font-weight:700; color:#313511;">G&uuml;venli Al&#305;&#351;veri&#351;</div>
-                                        <div style="font-size:11px; color:#777266; margin-top:4px;">SSL korumal&#305;</div>
+                                    <td width="33.33%" align="center" style="padding:16px 8px; border-right:1px solid #E8DFD0;">
+                                        <div style="font-size:18px; margin-bottom:4px;">&#128737;&#65039;</div>
+                                        <div style="font-size:11px; font-weight:700; color:#1B2A4A; text-transform:uppercase; letter-spacing:.05em;">256-Bit SSL</div>
+                                        <div style="font-size:11px; color:#64748B; margin-top:2px;">&#304;yzico G&uuml;vencesi</div>
                                     </td>
-                                    <td width="33.33%" align="center" style="padding:18px 8px; border-right:1px solid #e5e2dc;">
-                                        <div style="font-size:12px; font-weight:700; color:#313511;">&Ouml;zenli Paketleme</div>
-                                        <div style="font-size:11px; color:#777266; margin-top:4px;">Korunakl&#305; teslimat</div>
+                                    <td width="33.33%" align="center" style="padding:16px 8px; border-right:1px solid #E8DFD0;">
+                                        <div style="font-size:18px; margin-bottom:4px;">&#128230;</div>
+                                        <div style="font-size:11px; font-weight:700; color:#1B2A4A; text-transform:uppercase; letter-spacing:.05em;">Hasars&#305;z Teslimat</div>
+                                        <div style="font-size:11px; color:#64748B; margin-top:2px;">K&#305;r&#305;lma Garantisi</div>
                                     </td>
-                                    <td width="33.33%" align="center" style="padding:18px 8px;">
-                                        <div style="font-size:12px; font-weight:700; color:#313511;">T&uuml;rkiye Geneli</div>
-                                        <div style="font-size:11px; color:#777266; margin-top:4px;">Kargo deste&#287;i</div>
+                                    <td width="33.33%" align="center" style="padding:16px 8px;">
+                                        <div style="font-size:18px; margin-bottom:4px;">&#128666;</div>
+                                        <div style="font-size:11px; font-weight:700; color:#1B2A4A; text-transform:uppercase; letter-spacing:.05em;">Sigortal&#305; Kargo</div>
+                                        <div style="font-size:11px; color:#64748B; margin-top:2px;">T&uuml;m T&uuml;rkiye'ye</div>
                                     </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
 
+                    <!-- Sign-off -->
                     <tr>
-                        <td style="padding:0 30px 34px;">
-                            <p style="margin:0; color:#47473d; font-size:14px; line-height:1.7;">Sayg&#305;lar&#305;m&#305;zla,<br><strong style="color:#313511;">{MARKA_ADI} Ekibi</strong></p>
+                        <td style="padding:0 32px 30px;">
+                            <p style="margin:0; color:#475569; font-size:14px; line-height:1.7;">Sayg&#305;lar&#305;m&#305;zla,<br><strong style="color:#1B2A4A; font-family:'Playfair Display', Georgia, serif; font-size:15px;">{MARKA_ADI} At&ouml;lye Ekibi</strong></p>
                         </td>
                     </tr>
 
+                    <!-- Retro Dark Footer -->
                     <tr>
-                        <td align="center" style="background:#272a0f; padding:24px 24px; color:#d8d2c4;">
-                            <div style="font-size:12px; line-height:1.7;">Bu e-posta {SITE_ADI} taraf&#305;ndan g&ouml;nderilmi&#351;tir.</div>
-                            <div style="font-size:12px; line-height:1.7; margin-top:8px;">
-                                <a href="{SITE_URL}" target="_blank" style="color:#c6ca99; text-decoration:none; font-weight:700;">Web Sitesi</a>
-                                <span style="color:#777266;"> | </span>
-                                <a href="{INSTAGRAM_URL}" target="_blank" style="color:#c6ca99; text-decoration:none; font-weight:700;">Instagram</a>
+                        <td align="center" style="background:#131E35; padding:26px 24px; color:#94A3B8;">
+                            <div style="font-size:12px; line-height:1.7; color:#E2E8F0;">Bu e-posta <strong style="color:#FFFFFF;">{SITE_ADI}</strong> taraf&#305;ndan g&ouml;nderilmi&#351;tir.</div>
+                            <div style="font-size:12px; line-height:1.7; margin-top:10px;">
+                                <a href="{SITE_URL}" target="_blank" style="color:#01ADD3; text-decoration:none; font-weight:700;">Web Sitesini Ziyaret Et</a>
+                                <span style="color:#475569;"> &bull; </span>
+                                <a href="{INSTAGRAM_URL}" target="_blank" style="color:#01ADD3; text-decoration:none; font-weight:700;">Instagram At&ouml;lyemiz</a>
                             </div>
-                            <div style="font-size:11px; line-height:1.7; color:#aaa28f; margin-top:8px;">{SITE_EMAIL} {SITE_CONTACT_SEPARATOR} {SITE_PHONE}</div>
+                            <div style="font-size:11px; line-height:1.7; color:#64748B; margin-top:10px;">{SITE_EMAIL} {SITE_CONTACT_SEPARATOR} {SITE_PHONE}</div>
+                            <div style="font-size:10px; color:#475569; margin-top:6px;">&copy; 2026 {MARKA_ADI}. T&uuml;m haklar&#305; sakl&#305;d&#305;r.</div>
                         </td>
                     </tr>
                 </table>
+                <!-- End Main Container -->
             </td>
         </tr>
     </table>

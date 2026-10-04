@@ -52,6 +52,8 @@ namespace KanvasProje.Service.Interfaces
         public bool Success { get; set; }
         public string? Token { get; set; }
         public string? IframeUrl { get; set; }
+        public string? CheckoutFormContent { get; set; }
+        public string? PaymentPageUrl { get; set; }
         public string? ErrorMessage { get; set; }
     }
 
@@ -61,6 +63,7 @@ namespace KanvasProje.Service.Interfaces
         public string Status { get; set; } = string.Empty;
         public string TotalAmount { get; set; } = string.Empty;
         public string Hash { get; set; } = string.Empty;
+        public string Token { get; set; } = string.Empty;
     }
 
     public class PaymentVerifyResult
@@ -70,6 +73,8 @@ namespace KanvasProje.Service.Interfaces
         public string? PaymentType { get; set; }
         public string? Currency { get; set; }
         public decimal PaidPrice { get; set; }
+        public string? TransactionId { get; set; }
+        public string? OrderId { get; set; }
         public string? ErrorMessage { get; set; }
     }
 }

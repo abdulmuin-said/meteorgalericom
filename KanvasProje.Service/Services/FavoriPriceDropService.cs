@@ -121,10 +121,10 @@ namespace KanvasProje.Service.Services
                                     var subject = $"Favorinizdeki ürünün fiyatı düştü! 🎉";
                                     var body = $@"
                                         <p>Favori listenize eklediğiniz bir ürünün fiyatı düştü!</p>
-                                        <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #e5e2dc; border-radius:12px; background:#fffaf0; margin:18px 0;'>
+                                        <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #E8DFD0; border-radius:12px; background:#FFFBF0; margin:18px 0;'>
                                             <tr>
-                                                <td style='padding:16px; border-bottom:1px solid #e5e2dc;'>
-                                                    <strong style='color:#313511; font-size:16px;'>{System.Net.WebUtility.HtmlEncode(favori.Urun.Baslik)}</strong>
+                                                <td style='padding:16px; border-bottom:1px solid #E8DFD0;'>
+                                                    <strong style='color:#1B2A4A; font-size:16px;'>{System.Net.WebUtility.HtmlEncode(favori.Urun.Baslik)}</strong>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -133,7 +133,7 @@ namespace KanvasProje.Service.Services
                                                         <div>
                                                             <span style='color:#999; text-decoration:line-through; font-size:14px;'>{eskiFiyat:N2} ₺</span>
                                                             <br/>
-                                                            <span style='color:#b58735; font-size:24px; font-weight:700;'>{mevcutFiyat:N2} ₺</span>
+                                                            <span style='color:#01ADD3; font-size:24px; font-weight:700;'>{mevcutFiyat:N2} ₺</span>
                                                         </div>
                                                         <div style='background:#27ae60; color:white; padding:6px 14px; border-radius:999px; font-size:14px; font-weight:700;'>
                                                             %{indirimOrani} indirim

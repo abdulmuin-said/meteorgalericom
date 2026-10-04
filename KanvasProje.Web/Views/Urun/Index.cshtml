@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KanvasProje.Core.Varliklar.Urun>
+@model IEnumerable<KanvasProje.Core.Varliklar.Urun>
 @inject KanvasProje.Service.Services.ISiteSettingsService SiteSettingsService
 @using KanvasProje.Core.Helpers
 
@@ -45,8 +45,6 @@
         if (kat != null) aktifKategoriAd = kat.Ad;
     }
 
-    string BuildProductUrl(KanvasProje.Core.Varliklar.Urun urun)
-        => "/Urun/Detay/" + (string.IsNullOrEmpty(urun.Slug) ? (KanvasProje.Core.Helpers.SlugHelper.GenerateSlug(urun.Baslik) + "-" + urun.Id) : urun.Slug + "-" + urun.Id);
 
     int GetKategoriUrunSayisi(int kategoriId)
         => kategoriUrunSayilari.TryGetValue(kategoriId, out var count) ? count : 0;
@@ -131,7 +129,7 @@
                     <li>
                     @if (altKategoriler.Count == 0)
                     {
-                            <a href="/Urun?k=@anaKategori.Id" class="flex items-center justify-between rounded-lg px-3 py-2 @(anaAktif ? "bg-[#f6efe3] text-[#C0392B] font-semibold" : "text-[#333333] hover:bg-[#FDF6E3] hover:text-[#1B2A4A]") transition-colors">
+                            <a href="/Urun?k=@anaKategori.Id" class="flex items-center justify-between rounded-lg px-3 py-2 @(anaAktif ? "bg-[#f6efe3] text-[#3A7CA5] font-semibold" : "text-[#333333] hover:bg-[#FDF6E3] hover:text-[#1B2A4A]") transition-colors">
                                 <span>@anaKategori.Ad</span>
                                 <span class="text-xs @(anaUrunSayisi == 0 ? "text-red-400" : "text-[#9a958c]")">(@anaUrunSayisi)</span>
                             </a>
@@ -155,7 +153,7 @@
                                     {
                                         var altAktif = aktifKategori.HasValue && aktifKategori.Value == altKategori.Id;
                                         var altUrunSayisi = GetKategoriUrunSayisi(altKategori.Id);
-                                        <a href="/Urun?k=@altKategori.Id" class="flex items-center justify-between gap-3 rounded-lg px-2 py-1.5 text-xs @(altAktif ? "bg-[#f6efe3] text-[#C0392B] font-semibold" : "text-[#333333] hover:bg-[#FDF6E3] hover:text-[#1B2A4A]") transition-colors">
+                                        <a href="/Urun?k=@altKategori.Id" class="flex items-center justify-between gap-3 rounded-lg px-2 py-1.5 text-xs @(altAktif ? "bg-[#f6efe3] text-[#3A7CA5] font-semibold" : "text-[#333333] hover:bg-[#FDF6E3] hover:text-[#1B2A4A]") transition-colors">
                                             <span class="truncate">@altKategori.Ad</span>
                                             <span class="shrink-0 @(altUrunSayisi == 0 ? "text-red-400" : "text-[#9a958c]")">(@altUrunSayisi)</span>
                                         </a>
@@ -180,9 +178,9 @@
                 }
                 <input type="hidden" name="sort" value="@aktifSort" />
                 <div class="flex gap-2 items-center">
-                    <input name="min" type="number" placeholder="Min ₺" value="@aktifMin" class="w-full border border-[#F5E6C8] rounded px-2 py-1.5 text-xs focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] bg-white" />
+                    <input name="min" type="number" placeholder="Min ₺" value="@aktifMin" class="w-full border border-[#F5E6C8] rounded px-2 py-1.5 text-xs focus:ring-1 focus:ring-[#3A7CA5] focus:border-[#3A7CA5] bg-white" />
                     <span class="text-gray-400 text-xs">—</span>
-                    <input name="max" type="number" placeholder="Max ₺" value="@aktifMax" class="w-full border border-[#F5E6C8] rounded px-2 py-1.5 text-xs focus:ring-1 focus:ring-[#C0392B] focus:border-[#C0392B] bg-white" />
+                    <input name="max" type="number" placeholder="Max ₺" value="@aktifMax" class="w-full border border-[#F5E6C8] rounded px-2 py-1.5 text-xs focus:ring-1 focus:ring-[#3A7CA5] focus:border-[#3A7CA5] bg-white" />
                 </div>
                 <button type="submit" class="w-full bg-[#1B2A4A] text-white text-xs py-2 rounded hover:bg-[#1c2001] transition-colors tracking-widest uppercase">
                     Uygula
@@ -206,7 +204,7 @@
                             <a href="/Urun@(aktifKategori.HasValue ? "?k=" + aktifKategori : "")" class="ml-1 opacity-70 hover:opacity-100">×</a>
                         </span>
                     }
-                    <select id="sortSelect" onchange="window.location.href=this.value" class="border border-[#F5E6C8] text-xs rounded px-3 py-2 focus:ring-1 focus:ring-[#C0392B] bg-white text-[#333333]">
+                    <select id="sortSelect" onchange="window.location.href=this.value" class="border border-[#F5E6C8] text-xs rounded px-3 py-2 focus:ring-1 focus:ring-[#3A7CA5] bg-white text-[#333333]">
                         @foreach (var opt in sortOptions)
                         {
                             <option value="@BuildFilterUrl("sort", opt.Key)" selected="@(aktifSort == opt.Key)">@opt.Value</option>
@@ -234,51 +232,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                     @foreach (var urun in Model)
                     {
-                        var anaResim = urun.AnaGorselUrl;
-                        if (string.IsNullOrWhiteSpace(anaResim))
-                        {
-                            anaResim = urun.UrunResimleri?.OrderBy(r => r.Sira).FirstOrDefault()?.ResimYolu ?? "";
-                        }
-                        <div class="group relative">
-                            <a href="@BuildProductUrl(urun)" class="block relative overflow-hidden aspect-square bg-[#f8f6f2] mb-3 shadow-[inset_0_0_8px_rgba(0,0,0,0.03)] flex items-center justify-center p-2">
-                                @if (urun.YeniUrunMu)
-                                {
-                                    <span class="absolute top-2 left-2 z-10 bg-[#1B2A4A] text-white text-[9px] tracking-widest px-2 py-0.5 uppercase">Yeni</span>
-                                }
-                                else if (urun.IndirimVarMi)
-                                {
-                                    <span class="absolute top-2 left-2 z-10 bg-[#C0392B] text-white text-[9px] tracking-widest px-2 py-0.5 uppercase">İndirim</span>
-                                }
-                                @if (!string.IsNullOrWhiteSpace(anaResim))
-                                {
-                                    <img src="@anaResim" alt="@urun.Baslik" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
-                                }
-                                else
-                                {
-                                    <div class="w-full h-full flex items-center justify-center text-[#c5c0b8]">
-                                        <i class="fas fa-image fa-3x"></i>
-                                    </div>
-                                }
-                            </a>
-                            <!-- Kalp / Favori Butonu -->
-                            <button type="button" onclick="window.toggleFavori(this, @urun.Id)" class="group/btn absolute top-2 right-2 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 shadow-sm z-20 hover:scale-110" title="Favorilere Ekle">
-                                <i class="far fa-heart text-sm text-[#333333] group-hover/btn:text-red-500 transition-colors"></i>
-                            </button>
-                            <h3 class="text-xs font-medium text-[#1B2A4A] line-clamp-2 mb-1 leading-relaxed">
-                                <a href="@BuildProductUrl(urun)" class="hover:text-[#C0392B] transition-colors">@urun.Baslik</a>
-                            </h3>
-                            <div class="flex items-center gap-2">
-                                @if (urun.IndirimVarMi)
-                                {
-                                    <span class="text-sm font-semibold text-[#C0392B]">@urun.IndirimliFiyat?.ToString("N0") @currencySymbol</span>
-                                    <span class="text-xs text-gray-400 line-through">@urun.Fiyat.ToString("N0") @currencySymbol</span>
-                                }
-                                else
-                                {
-                                    <span class="text-sm font-semibold text-[#1B2A4A]">@urun.Fiyat.ToString("N0") @currencySymbol</span>
-                                }
-                            </div>
-                        </div>
+                        <partial name="_UrunKarti" model="urun" />
                     }
                 </div>
 

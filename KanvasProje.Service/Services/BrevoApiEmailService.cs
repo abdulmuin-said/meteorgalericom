@@ -72,7 +72,7 @@ namespace KanvasProje.Service.Services
     <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='background-color:#FDF6E3; padding:30px 10px;'>
         <tr>
             <td align='center'>
-                <table role='presentation' width='100%' style='max-width:600px; background-color:#ffffff; border-radius:4px; overflow:hidden; box-shadow:0 2px 12px rgba(27,42,74,.08); border-top:4px solid #C0392B;'>
+                <table role='presentation' width='100%' style='max-width:600px; background-color:#ffffff; border-radius:4px; overflow:hidden; box-shadow:0 2px 12px rgba(27,42,74,.08); border-top:4px solid #01ADD3;'>
                     <tr><td style='padding:36px 40px 0; text-align:center;'>
                         <img src='{logoUrl}' alt='{brandName}' style='max-height:60px; margin-bottom:20px;' />
                         <br/>
@@ -90,7 +90,7 @@ namespace KanvasProje.Service.Services
                     </td></tr>
                     {(string.IsNullOrEmpty(btnLink) ? "" : $@"
                     <tr><td style='padding:0 40px 30px; text-align:center;'>
-                        <a href='{btnLink}' style='display:inline-block; background-color:#C0392B; color:#ffffff; padding:14px 32px; text-decoration:none; border-radius:3px; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>
+                        <a href='{btnLink}' style='display:inline-block; background-color:#01ADD3; color:#ffffff; padding:14px 32px; text-decoration:none; border-radius:3px; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>
                             {WebUtility.HtmlEncode(btnYazi)}
                         </a>
                     </td></tr>")}
@@ -98,7 +98,7 @@ namespace KanvasProje.Service.Services
                         <table role='presentation' width='100%' cellpadding='0' cellspacing='0'>
                             <tr>
                                 <td style='text-align:center; font-family:system-ui,sans-serif; font-size:12px; color:#666666;'>
-                                    <a href='{siteUrl}' style='color:#C0392B; text-decoration:none;'>{brandName}</a>
+                                    <a href='{siteUrl}' style='color:#01ADD3; text-decoration:none;'>{brandName}</a>
                                     <br/>
                                     <span style='color:#999999;'>{siteSettings.Email} {contactSeparator} {siteSettings.Telefon}</span>
                                     <br/><br/>
@@ -139,15 +139,15 @@ namespace KanvasProje.Service.Services
                 var safeKargoTakipNo = WebUtility.HtmlEncode(kargoTakipNo);
                 var content = $@"
                     <p>Sipariş numaranız <strong>{safeSiparisNo}</strong> olan ürününüz kargoya verildi.</p>
-                    <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #e5e2dc; border-radius:12px; background:#fffaf0; margin:18px 0;'>
+                    <table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='border:1px solid #E8DFD0; border-radius:12px; background:#FFFBF0; margin:18px 0;'>
                         <tr>
                             <td style='padding:16px; border-bottom:1px solid #e5e2dc; color:#47473d;'>
-                                <strong style='color:#313511;'>Kargo Firması:</strong> {safeKargoFirmasi}
+                                <strong style='color:#1B2A4A;'>Kargo Firması:</strong> {safeKargoFirmasi}
                             </td>
                         </tr>
                         <tr>
                             <td style='padding:16px; color:#47473d;'>
-                                <strong style='color:#313511;'>Takip Numarası:</strong> <span style='font-size:18px; color:#b58735; font-weight:700;'>{safeKargoTakipNo}</span>
+                                <strong style='color:#1B2A4A;'>Takip Numarası:</strong> <span style='font-size:18px; color:#01ADD3; font-weight:700;'>{safeKargoTakipNo}</span>
                             </td>
                         </tr>
                     </table>
@@ -184,11 +184,11 @@ namespace KanvasProje.Service.Services
 
                 var body = $@"
                     <div style='font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
-                        <h2 style='color: #313511; margin-bottom: 20px;'>Merhaba {WebUtility.HtmlEncode(musteriAdi)},</h2>
+                        <h2 style='color: #1B2A4A; margin-bottom: 20px;'>Merhaba {WebUtility.HtmlEncode(musteriAdi)},</h2>
                         <p style='color: #47473d; line-height: 1.6;'>
                             Siparişiniz için fatura hazırlanmıştır. Ekte fatura belgesini bulabilirsiniz.
                         </p>
-                        <div style='background: #fcf9f3; border-radius: 12px; padding: 20px; margin: 20px 0; border: 1px solid #e5e2dc;'>
+                        <div style='background: #FFFBF0; border-radius: 12px; padding: 20px; margin: 20px 0; border: 1px solid #E8DFD0;'>
                             <p style='margin: 0;'><strong>Sipariş No:</strong> {WebUtility.HtmlEncode(siparisNo)}</p>
                         </div>
                         <p style='color: #7a766a; font-size: 14px;'>
@@ -282,18 +282,18 @@ namespace KanvasProje.Service.Services
             var safeTakipNo = WebUtility.HtmlEncode(takipNo);
 
             if (firma.Contains("aras"))
-                return $"<a href='https://kargotakip.araskargo.com.tr/mainpage.aspx?code={encodedTakipNo}' style='display:inline-block; background:#313511; color:#ffffff; padding:13px 24px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>Aras Kargo'da Takip Et</a>";
+                return $"<a href='https://kargotakip.araskargo.com.tr/mainpage.aspx?code={encodedTakipNo}' style='display:inline-block; background:#01ADD3; color:#ffffff; padding:14px 28px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.3);'>Aras Kargo'da Takip Et</a>";
 
             if (firma.Contains("yurtici") || firma.Contains("yurtiçi"))
-                return $"<a href='https://www.yurticikargo.com/tr/online-servisler/gonderi-sorgula?code={encodedTakipNo}' style='display:inline-block; background:#313511; color:#ffffff; padding:13px 24px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>Yurtiçi Kargo'da Takip Et</a>";
+                return $"<a href='https://www.yurticikargo.com/tr/online-servisler/gonderi-sorgula?code={encodedTakipNo}' style='display:inline-block; background:#01ADD3; color:#ffffff; padding:14px 28px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.3);'>Yurtiçi Kargo'da Takip Et</a>";
 
             if (firma.Contains("mng"))
-                return $"<a href='https://www.mngkargo.com.tr/tracking?q={encodedTakipNo}' style='display:inline-block; background:#313511; color:#ffffff; padding:13px 24px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>MNG Kargo'da Takip Et</a>";
+                return $"<a href='https://www.mngkargo.com.tr/tracking?q={encodedTakipNo}' style='display:inline-block; background:#01ADD3; color:#ffffff; padding:14px 28px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.3);'>MNG Kargo'da Takip Et</a>";
 
             if (firma.Contains("ptt"))
-                return $"<a href='https://gonderitakip.ptt.gov.tr/Track/Verify?q={encodedTakipNo}' style='display:inline-block; background:#313511; color:#ffffff; padding:13px 24px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;'>PTT Kargo'da Takip Et</a>";
+                return $"<a href='https://gonderitakip.ptt.gov.tr/Track/Verify?q={encodedTakipNo}' style='display:inline-block; background:#01ADD3; color:#ffffff; padding:14px 28px; text-decoration:none; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 3px 10px rgba(1,173,211,0.3);'>PTT Kargo'da Takip Et</a>";
 
-            return $"<div style='background:#fffaf0; border:1px solid #e5e2dc; padding:15px; border-radius:12px; text-align:center;'><strong>Takip No:</strong> {safeTakipNo}</div>";
+            return $"<div style='background:#FFFBF0; border:1px solid #E8DFD0; padding:15px; border-radius:12px; text-align:center;'><strong style='color:#1B2A4A;'>Takip No:</strong> <span style='color:#01ADD3; font-weight:700;'>{safeTakipNo}</span></div>";
         }
     }
 }
