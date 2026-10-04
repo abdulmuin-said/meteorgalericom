@@ -15,8 +15,9 @@ seed_directory() {
   source_dir="$1"
   target_dir="$2"
 
-  if [ -d "$source_dir" ] && [ -z "$(ls -A "$target_dir" 2>/dev/null || true)" ]; then
-    cp -a "$source_dir/." "$target_dir/"
+  if [ -d "$source_dir" ]; then
+    mkdir -p "$target_dir"
+    cp -rn "$source_dir/." "$target_dir/" 2>/dev/null || cp -a "$source_dir/." "$target_dir/"
   fi
 }
 

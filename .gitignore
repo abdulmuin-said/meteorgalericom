@@ -26,10 +26,13 @@ Thumbs.db
 .dotnet_home/
 .dotnetcli/
 
-# Uploads (büyük, repo'ya girmez)
+# Uploads (büyük, repo'ya girmez - slaytlar, slider ve ürün görselleri hariç)
 **/wwwroot/img/products/
 **/wwwroot/media/products/
-**/wwwroot/uploads/
+**/wwwroot/uploads/*
+!**/wwwroot/uploads/slaytlar/
+!**/wwwroot/uploads/slider/
+!**/wwwroot/uploads/products/
 
 # Geçici scriptler
 dump_railway*.py
