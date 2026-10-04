@@ -38,9 +38,14 @@ builder.Configuration.AddEnvironmentVariables();
 
 var startupWarnings = new List<string>();
 var defaultConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-if (string.IsNullOrWhiteSpace(defaultConnectionString))
+if (!string.IsNullOrWhiteSpace(defaultConnectionString))
 {
-    var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+    defaultConnectionString = ConvertDatabaseUrlToNpgsql(defaultConnectionString);
+}
+else
+{
+    var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL")
+        ?? builder.Configuration["DATABASE_URL"];
     if (!string.IsNullOrWhiteSpace(databaseUrl))
     {
         defaultConnectionString = ConvertDatabaseUrlToNpgsql(databaseUrl);
@@ -671,22 +676,31 @@ static async Task HandleAuthRedirectAsync(
     context.Response.Redirect(context.RedirectUri);
 }
 
-static string ConvertDatabaseUrlToNpgsql(string databaseUrl)
+static string ConvertDatabaseUrlToNpgsql(string? databaseUrl)
 {
+    if (string.IsNullOrWhiteSpace(databaseUrl)) return "";
+
+    var cleaned = databaseUrl.Trim().Trim('"', '\'').Trim();
+    if (cleaned.StartsWith("Host=", StringComparison.OrdinalIgnoreCase) ||
+        cleaned.StartsWith("Server=", StringComparison.OrdinalIgnoreCase))
+    {
+        return cleaned;
+    }
+
     try
     {
-        var uri = new Uri(databaseUrl);
+        var uri = new Uri(cleaned);
         var userInfo = uri.UserInfo.Split(':');
-        var username = userInfo[0];
-        var password = userInfo.Length > 1 ? userInfo[1] : "";
+        var username = userInfo.Length > 0 ? Uri.UnescapeDataString(userInfo[0]) : "";
+        var password = userInfo.Length > 1 ? Uri.UnescapeDataString(userInfo[1]) : "";
         var host = uri.Host;
         var port = uri.Port > 0 ? uri.Port : 5432;
         var database = uri.AbsolutePath.TrimStart('/');
-        return $"Host={host};Port={port};Database={database};Username={username};Password={password};Include Error Detail=true";
+        return $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Prefer;Trust Server Certificate=true;Include Error Detail=true";
     }
     catch
     {
-        return databaseUrl;
+        return cleaned;
     }
 }
 

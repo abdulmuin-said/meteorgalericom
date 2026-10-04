@@ -2,8 +2,8 @@
 set -eu
 
 APP_ROOT="/app"
-PERSISTENT_ROOT="${PERSISTENT_ROOT:-/app/storage}"
-APP_PORT="${PORT:-8080}"
+PERSISTENT_ROOT=$(echo "${PERSISTENT_ROOT:-/app/storage}" | tr -d '"'\'' ')
+APP_PORT=$(echo "${PORT:-8080}" | tr -d '"'\'' ')
 
 mkdir -p \
   "$PERSISTENT_ROOT/uploads" \
