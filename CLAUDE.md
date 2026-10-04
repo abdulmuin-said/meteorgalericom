@@ -4,36 +4,53 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-**CANVASİA** (formerly *MeteorGaleri*) — ASP.NET Core 8.0 MVC e-commerce site for canvas wall art, backed by PostgreSQL. Turkish-language UI and Turkish-named entities/tables throughout.
+**MeteorGaleri** (`meteorgaleri.com`) — Independent ASP.NET Core 8.0 MVC / .NET 10 e-commerce platform for premium canvas and glass wall art, backed by PostgreSQL. Completely rebranded from CANVASIA with an authentic Retro / Vintage identity.
 
-Authoritative running reference: `PROJE_DOKUMANTASYONU.txt` (Turkish) — contains DB credentials, SQL restore commands, URL patterns, and known-issue notes. Consult it before guessing.
+Authoritative running reference: `proje_tanitimi.md` (Turkish) — contains detailed architectural decisions, migration records, and step-by-step guides.
+
+## Brand Identity & Aesthetic (Retro / Vintage)
+
+- **Background (Body):** `#FFFBF0` (Warm cream)
+- **Surface / Cards:** `#FDF6E3` (Warm sand)
+- **Text / Ink:** `#1B2A4A` (Deep nostalgic navy)
+- **Primary / Accent:** `#C0392B` (Retro brick / crimson red)
+- **Deep Accent:** `#922B21` (Dark retro red)
+- **Borders & Dividers:** `#F5E6C8` (Warm cream-beige)
+- **Footer Bar:** `#131E35` (Deep midnight navy)
+- **Typography:**
+  - Headings: `Playfair Display` (Classic retro serif)
+  - Body / UI: `Source Sans 3` (Clean readable sans-serif)
+
+## Test Accounts & URLs
+
+- **Public Site:** `http://localhost:5002`
+- **Admin Panel:** `http://localhost:5002/Admin`
+  - Email: `meteor_medya@hotmail.com`
+  - Password: `MeteorAdmin2024!`
+- **Customer Account:** `http://localhost:5002/Profil`
+  - Email: `musteri@meteorgaleri.com`
+  - Password: `MeteorUser2024!`
 
 ## Commands
 
-### Local development (hybrid: DB in Docker, web on host)
+### Local development (Linux / Host)
 ```bash
-docker-compose up -d db                 # Postgres only
-cd KanvasProje.Web && dotnet watch run  # http://localhost:5002
+# PostgreSQL must be running (database: meteorgaleridb)
+cd KanvasProje.Web && dotnet run --launch-profile http  # http://localhost:5002
 ```
 
-### Full Docker stack (production-like)
+### Restore database from clean dump
 ```bash
-docker-compose build --no-cache
-docker-compose up -d                    # web on http://localhost:8080
+# Proje kökündeki 6.9 MB temiz dump (14.510 ürün, 223.856 seçenek, 5.143 yorum):
+createdb -U postgres meteorgaleridb
+# PostgreSQL 16+ or Docker:
+docker run --rm --network host -e PGPASSWORD=muin6655 -v "$(pwd)":/backup postgres:17 pg_restore -h localhost -U postgres -d meteorgaleridb --no-owner --no-privileges -v /backup/meteorgaleridb_clean.dump
 ```
 
-### Restore the bundled SQL dump into the `db` container
-```bash
-# PowerShell
-Get-Content kanvasdb_yedek.sql | docker exec -i kanvasproje-db psql -U kanvasuser -d kanvasdb
-```
-
-### Build / migrations / tailwind
+### Build & Tailwind
 ```bash
 dotnet build KanvasProje.sln
-dotnet ef migrations add <Name> --project KanvasProje.Data --startup-project KanvasProje.Web
-dotnet ef database update --project KanvasProje.Data --startup-project KanvasProje.Web
-cd KanvasProje.Web && npm run watch:storefront-css   # Tailwind → wwwroot/css/storefront.css
+cd KanvasProje.Web && npm run build:storefront-css   # Tailwind → wwwroot/css/storefront.css
 ```
 
 There is **no test project** in the solution — don't fabricate `dotnet test` instructions.
@@ -42,46 +59,31 @@ There is **no test project** in the solution — don't fabricate `dotnet test` i
 
 Clean Architecture with four projects referenced top-down (Web → Service → Data → Core):
 
-- **KanvasProje.Core** — Entities (`Varliklar/`), DTOs, interfaces, helpers. No framework dependencies beyond EF Core abstractions.
+- **KanvasProje.Core** — Entities (`Varliklar/`), DTOs, interfaces, helpers.
 - **KanvasProje.Data** — `KanvasDbContext`, EF Core migrations (Npgsql), generic repository + UnitOfWork pattern.
-- **KanvasProje.Service** — Business logic services, AutoMapper profiles, `SepetService` (DB-backed cart).
-- **KanvasProje.Web** — MVC controllers, Razor views, Identity, an `Admin` Area, and startup pipeline in `Program.cs`.
+- **KanvasProje.Service** — Business logic services, AutoMapper profiles, `SepetService` (DB-backed cart), `BrevoApiEmailService`.
+- **KanvasProje.Web** — MVC controllers, Razor views, Identity, `Admin` Area, and startup pipeline in `Program.cs`.
 
 ### Runtime pipeline highlights (`KanvasProje.Web/Program.cs`)
-- Loads `secrets.json` as an additional config source before env vars.
-- Probes the Postgres connection at startup; if unreachable, **Hangfire and the `AbandonedCartService` hosted service are disabled** instead of crashing. Preserve this degraded-start behavior when touching startup code.
-- On startup it runs `context.Database.Migrate()` **and** `EnsureMissingMarch2026SchemaAsync` — a hand-rolled idempotent `DO $$ ... $$` block that adds columns/tables to cover drift between the migration history and the expected March-2026 schema. If you add columns to `Urunler`, `Kategoriler`, `UrunSecenekleri`, or `UrunResimleri`, mirror them in that SQL block or it will diverge in prod.
+- Loads `secrets.json` before environment variables.
+- Configures global `HtmlEncoder` with `UnicodeRanges.All` so Turkish characters in image URLs and SEO metadata don't get entity-encoded.
+- Probes the Postgres connection at startup; if unreachable, Hangfire and background services degrade gracefully.
+- Runs `context.Database.Migrate()` and `EnsureMissingMarch2026SchemaAsync`.
 - Identity uses `AppUser` + `IdentityRole`, Turkish error descriptions (`TurkceIdentityErrorDescriber`), 30-day sliding cookie, 5-try lockout.
-- Admin-area auth redirects are intercepted to emit JSON 401/403 for `/api/admin/*` and log via `IAdminSecurityAuditService`.
 - Rate limiter policies: `"auth"` (10/5min per IP) and `"general"` (100/min per IP).
-- Global maintenance-mode middleware short-circuits non-admin/non-auth traffic based on `ISiteSettingsService`.
-- HTTPS redirect is skipped when `DOTNET_RUNNING_IN_CONTAINER=true` (the reverse proxy handles TLS).
-- Hangfire dashboard is mounted at `/admin/hangfire` with `LocalRequestsOnlyAuthorizationFilter`.
+- Hangfire dashboard is mounted at `/admin/hangfire`.
 
 ### Persistence conventions (PostgreSQL, quoted identifiers)
 
 Tables and columns use **Turkish PascalCase** and require double quotes in raw SQL: `"Urunler"`, `"Kategoriler"`, `"UrunResimleri"`, `"SepetItems"`, `"AspNetUsers"`, etc.
 
-Property names that are easy to get wrong — these are the canonical spellings:
+Key property names:
 - `Urun.Baslik` (product name, **not** `Ad`/`Name`), `Urun.Slug`, `Urun.Fiyat`, `Urun.IndirimliFiyat`, `Urun.EtkinFiyat`, `Urun.AnaGorselUrl`
 - `UrunResim.ResimYolu` (image path, **not** `Url`/`ImageUrl`), `UrunResim.Sira`
 - `Kategori.Ad`, `Kategori.Slug`
 
-### URL patterns (public site)
-`/Urun` (list) · `/Urun/Detay/{slug}-{id}` · `/Urun?k={kategoriId}` · `/Urun?s={arama}` · `/Sepet` · `/Siparis/Odeme` · `/Hesap/GirisYap` · `/Hesap/KayitOl` · `/Profil/*` · `/Favori` · `/Kurumsal/Iletisim` · `/admin/*` (Area).
+### Configuration & secrets
 
-### Payments
-İyzico integration (`IyzicoPaymentService`) in **sandbox mode** — `ApiKey` in `appsettings.json` is a placeholder until production keys land.
-
-## Configuration & secrets
-
-- `KanvasProje.Web/secrets.json` — local dev DB connection string (gitignored in spirit; do not commit real values).
-- `.env` / `.env.example` — docker-compose values: Postgres creds and Brevo SMTP.
-- Default local connection: `Host=localhost;Port=5432;Database=kanvasdb;Username=kanvasuser;Password=changeme_in_production`.
-- Docker container names: `kanvasproje-db`, `kanvasproje-web`. Volumes persist uploads (`/app/wwwroot/img/products`), media (`/app/wwwroot/media/products`), logs, and `App_Data`.
-
-## Frontend
-
-- Tailwind (local build via `npm run build:storefront-css`) writes to `wwwroot/css/storefront.css`. A Tailwind CDN is also referenced in some views.
-- Brand palette lives in `tailwind.config.js` under `theme.extend.colors.canvasia`. Fonts: Cormorant Garamond (headings) + Manrope (body).
-- `wwwroot/css/site.css` is **legacy** — `_Layout.cshtml` overrides its body padding with `!important`. Don't re-introduce those paddings.
+- `KanvasProje.Web/secrets.json` — gitignored local connection string and credentials.
+- Local DB: `Host=localhost;Port=5432;Database=meteorgaleridb;Username=postgres;Password=muin6655`.
+- Production: Railway managed PostgreSQL and environment variables.

@@ -107,7 +107,7 @@
 
     <!-- İlerleme Çubuğu -->
     <div class="absolute bottom-0 left-0 h-0.5 bg-white/30 w-full z-20">
-        <div id="heroProgress" class="h-full bg-[#c6ca99] transition-none" style="width: 0%"></div>
+        <div id="heroProgress" class="h-full bg-[#C0392B] transition-none" style="width: 0%"></div>
     </div>
 
 </section>
@@ -349,7 +349,13 @@ goTo(0);
                                             }
                                         </div>
                                         <h3 class="mb-1 line-clamp-2 text-xs font-semibold tracking-wide text-[#1B2A4A] transition-colors group-hover:text-[#C0392B]">@urun.Baslik</h3>
-                                        <p class="text-xs text-[#333333]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</p>
+                                        <div class="flex flex-wrap items-baseline gap-1.5 mt-1">
+                                            <span class="text-sm font-semibold text-[#1B2A4A] group-hover:text-[#C0392B] transition-colors">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
+                                            @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
+                                            {
+                                                <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
+                                            }
+                                        </div>
                                     </a>
                                 </article>
                             }
@@ -418,7 +424,13 @@ goTo(0);
                                         }
                                     </div>
                                     <h3 class="mb-1 line-clamp-2 text-xs font-semibold tracking-wide text-[#1B2A4A] transition-colors group-hover:text-[#C0392B]">@urun.Baslik</h3>
-                                    <p class="text-xs text-[#333333]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</p>
+                                    <div class="flex flex-wrap items-baseline gap-1.5 mt-1">
+                                        <span class="text-sm font-semibold text-[#1B2A4A] group-hover:text-[#C0392B] transition-colors">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
+                                        @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
+                                        {
+                                            <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
+                                        }
+                                    </div>
                                 </a>
                             </article>
                         }
@@ -477,7 +489,13 @@ goTo(0);
                             <h3 class="text-xs font-semibold mb-1 text-[#1B2A4A] tracking-wide line-clamp-2">
                                 <a href="@BuildProductUrl(urun)" class="hover:text-[#C0392B] transition-colors">@urun.Baslik</a>
                             </h3>
-                            <p class="text-xs text-[#333333]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</p>
+                            <div class="flex flex-wrap items-baseline gap-1.5 mt-1">
+                                <span class="text-sm font-semibold text-[#1B2A4A]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
+                                @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
+                                {
+                                    <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
+                                }
+                            </div>
                         </div>
                     }
                 </div>
@@ -527,7 +545,13 @@ goTo(0);
                                     }
                                 </div>
                                 <h3 class="mb-1 line-clamp-2 text-sm font-semibold tracking-wide text-[#1B2A4A] transition-colors group-hover:text-[#C0392B]">@urun.Baslik</h3>
-                                <p class="text-xs text-[#333333]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</p>
+                                <div class="flex flex-wrap items-baseline gap-1.5 mt-1">
+                                    <span class="text-sm font-semibold text-[#1B2A4A] group-hover:text-[#C0392B] transition-colors">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
+                                    @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
+                                    {
+                                        <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
+                                    }
+                                </div>
                             </a>
                         </article>
                     }
@@ -574,11 +598,11 @@ goTo(0);
                                         }
                                     </div>
                                     <h3 class="mb-1 line-clamp-2 text-sm font-semibold tracking-wide text-[#1B2A4A] transition-colors group-hover:text-[#C0392B]">@urun.Baslik</h3>
-                                    <div class="flex flex-wrap items-baseline gap-2">
-                                        <p class="text-xs text-[#333333]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</p>
-                                        @if (urun.IndirimVarMi)
+                                    <div class="flex flex-wrap items-baseline gap-2 mt-1">
+                                        <span class="text-sm font-bold text-[#C0392B]">@urun.EtkinFiyat.ToString("N0") @currencySymbol</span>
+                                        @if (urun.IndirimVarMi && urun.Fiyat > urun.EtkinFiyat)
                                         {
-                                            <p class="text-[11px] text-[#777267] line-through">@urun.Fiyat.ToString("N0") @currencySymbol</p>
+                                            <span class="text-xs text-[#8c827a] line-through font-normal">@urun.Fiyat.ToString("N0") @currencySymbol</span>
                                         }
                                     </div>
                                 </a>
@@ -592,25 +616,25 @@ goTo(0);
 }
 
 <!-- BEGIN: Features -->
-<section class="bg-[#FDF6E3] py-16">
+<section class="bg-[#FDF6E3] py-16 border-y border-[#F5E6C8]/60">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#e2e6b3] flex items-center justify-center text-[#1B2A4A]">
+            <div class="group">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#C0392B] transition-all duration-300 group-hover:scale-110 group-hover:border-[#C0392B]">
                     <i class="fas fa-shield-halved text-2xl"></i>
                 </div>
                 <h4 class="font-serif text-lg mb-2 text-[#1B2A4A]">Güvenli Ödeme</h4>
                 <p class="text-sm font-light text-[#333333]">256-bit SSL ile %100 güvenli alışveriş deneyimi.</p>
             </div>
-            <div>
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#e2e6b3] flex items-center justify-center text-[#1B2A4A]">
+            <div class="group">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#C0392B] transition-all duration-300 group-hover:scale-110 group-hover:border-[#C0392B]">
                     <i class="fas fa-truck-fast text-2xl"></i>
                 </div>
                 <h4 class="font-serif text-lg mb-2 text-[#1B2A4A]">Hızlı Teslimat</h4>
                 <p class="text-sm font-light text-[#333333]">Özel kutusunda, hasarsız ve hızlı teslimat garantisi.</p>
             </div>
-            <div>
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#e2e6b3] flex items-center justify-center text-[#1B2A4A]">
+            <div class="group">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white border border-[#F5E6C8] shadow-sm flex items-center justify-center text-[#C0392B] transition-all duration-300 group-hover:scale-110 group-hover:border-[#C0392B]">
                     <i class="fas fa-headset text-2xl"></i>
                 </div>
                 <h4 class="font-serif text-lg mb-2 text-[#1B2A4A]">Müşteri Memnuniyeti</h4>

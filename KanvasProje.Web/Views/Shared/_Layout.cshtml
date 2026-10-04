@@ -170,7 +170,17 @@ var touchIconUrl = "/favicon.svg";
     <meta name="twitter:image" content="@ogImage">
     <meta name="google-site-verification" content="lp3CR7os7YE1Ow3TF8fJXcGIMjuxQHEq_GVJW2IsvvM" />
 
+    <script>
+        (function() {
+            var origWarn = console.warn;
+            console.warn = function() {
+                if (arguments[0] && typeof arguments[0] === 'string' && arguments[0].indexOf('cdn.tailwindcss.com') !== -1) return;
+                origWarn.apply(console, arguments);
+            };
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="~/css/storefront.css" asp-append-version="true" />
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
@@ -536,32 +546,32 @@ var touchIconUrl = "/favicon.svg";
 
     <!-- BEGIN: Footer -->
     <footer class="bg-[#1B2A4A] text-[#f4f0ea] pt-0 pb-8 mt-auto">
-        <div class="border-b border-white/10 bg-[#25280c]">
+        <div class="border-b border-white/10 bg-[#131E35]">
             <div class="container mx-auto grid grid-cols-1 gap-4 px-8 py-5 text-center md:grid-cols-3">
                 <div class="flex items-center justify-center gap-3">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#c6ca99]/35 text-[#c6ca99]">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#F5E6C8]/30 text-[#F5E6C8]">
                         <i class="fas fa-truck-fast"></i>
                     </span>
                     <div>
-                        <div class="text-xs uppercase tracking-widest text-[#c6ca99]">Tüm Türkiye'ye</div>
+                        <div class="text-xs uppercase tracking-widest text-[#F5E6C8]">Tüm Türkiye'ye</div>
                         <div class="text-sm font-semibold text-white">Ücretsiz Kargo</div>
                     </div>
                 </div>
                 <div class="flex items-center justify-center gap-3">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#c6ca99]/35 text-[#c6ca99]">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#F5E6C8]/30 text-[#F5E6C8]">
                         <i class="fas fa-shield-halved"></i>
                     </span>
                     <div>
-                        <div class="text-xs uppercase tracking-widest text-[#c6ca99]">%100 Güvenli Alışveriş</div>
+                        <div class="text-xs uppercase tracking-widest text-[#F5E6C8]">%100 Güvenli Alışveriş</div>
                         <div class="text-sm font-semibold text-white">256 Bit SSL Sertifikası</div>
                     </div>
                 </div>
                 <div class="flex items-center justify-center gap-3">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#c6ca99]/35 text-[#c6ca99]">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#F5E6C8]/30 text-[#F5E6C8]">
                         <i class="fas fa-credit-card"></i>
                     </span>
                     <div>
-                        <div class="text-xs uppercase tracking-widest text-[#c6ca99]">Tüm Kredi Kartlarına</div>
+                        <div class="text-xs uppercase tracking-widest text-[#F5E6C8]">Tüm Kredi Kartlarına</div>
                         <div class="text-sm font-semibold text-white">12 Taksit İmkanı</div>
                     </div>
                 </div>
@@ -571,20 +581,20 @@ var touchIconUrl = "/favicon.svg";
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
                 <!-- Newsletter Signup -->
                 <div>
-                    <h3 class="font-serif text-2xl mb-4 text-[#c6ca99]">BÜLTENE ABONE OLUN</h3>
+                    <h3 class="font-serif text-2xl mb-4 text-[#F5E6C8]">BÜLTENE ABONE OLUN</h3>
                     <p class="text-sm font-light mb-6 text-gray-300 leading-relaxed max-w-md">
                         Yeni ürün lansmanları, sezonluk koleksiyonlar ve özel teklifler de dahil olmak üzere @brandName'dan en son haberleri almak için bültenimize abone olun.
                     </p>
                     <form id="newsletterForm" action="/Home/BulteneAboneOl" method="post" class="flex border-b border-gray-500 pb-2 max-w-md relative">
                         @Html.AntiForgeryToken()
                         <input name="email" id="newsletterEmail" class="bg-transparent border-none w-full focus:ring-0 text-sm px-0 text-white placeholder-gray-400 outline-none" placeholder="E-posta Adresi" required="" type="email"/>
-                        <button type="submit" class="text-xs tracking-widest uppercase hover:text-[#c6ca99] transition-colors ml-4 whitespace-nowrap">ABONE OL</button>
+                        <button type="submit" class="text-xs tracking-widest uppercase hover:text-[#C0392B] transition-colors ml-4 whitespace-nowrap">ABONE OL</button>
                     </form>
                     <div id="newsletterMessage" class="text-xs mt-2 hidden"></div>
                 </div>
                 <!-- Footer Links & Socials -->
                 <div class="flex flex-col md:items-end">
-                    <h4 class="font-bold text-sm tracking-widest mb-4 uppercase text-[#c6ca99]">KURUMSAL</h4>
+                    <h4 class="font-bold text-sm tracking-widest mb-4 uppercase text-[#F5E6C8]">KURUMSAL</h4>
                     <ul class="space-y-2 text-sm font-light text-gray-300 text-left md:text-right">
                         <li><a class="hover:text-white transition-colors" href="/Kurumsal/Hakkimizda">Hakkımızda</a></li>
                         <li><a class="hover:text-white transition-colors" href="/Kurumsal/Iletisim">İletişim</a></li>
